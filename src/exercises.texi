@@ -1,0 +1,413 @@
+@subsubheading Chapter 1 
+
+@multitable @columnfractions 0.058 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 
+@item 
+@ref{Exercise 1.1,,1.1} @tab 
+@ref{Exercise 1.2,,1.2} @tab 
+@ref{Exercise 1.3,,1.3} @tab 
+@ref{Exercise 1.4,,1.4} @tab 
+@ref{Exercise 1.5,,1.5} @tab 
+@ref{Exercise 1.6,,1.6} @tab 
+@ref{Exercise 1.7,,1.7} @tab 
+@ref{Exercise 1.8,,1.8} @tab 
+@ref{Exercise 1.9,,1.9} @tab 
+@ref{Exercise 1.10,,1.10} @tab 
+@ref{Exercise 1.11,,1.11} @tab 
+@ref{Exercise 1.12,,1.12}
+@item 
+@ref{Exercise 1.13,,1.13} @tab 
+@ref{Exercise 1.14,,1.14} @tab 
+@ref{Exercise 1.15,,1.15} @tab 
+@ref{Exercise 1.16,,1.16} @tab 
+@ref{Exercise 1.17,,1.17} @tab 
+@ref{Exercise 1.18,,1.18} @tab 
+@ref{Exercise 1.19,,1.19} @tab 
+@ref{Exercise 1.20,,1.20} @tab 
+@ref{Exercise 1.21,,1.21} @tab 
+@ref{Exercise 1.22,,1.22} @tab 
+@ref{Exercise 1.23,,1.23} @tab 
+@ref{Exercise 1.24,,1.24}
+@item 
+@ref{Exercise 1.25,,1.25} @tab 
+@ref{Exercise 1.26,,1.26} @tab 
+@ref{Exercise 1.27,,1.27} @tab 
+@ref{Exercise 1.28,,1.28} @tab 
+@ref{Exercise 1.29,,1.29} @tab 
+@ref{Exercise 1.30,,1.30} @tab 
+@ref{Exercise 1.31,,1.31} @tab 
+@ref{Exercise 1.32,,1.32} @tab 
+@ref{Exercise 1.33,,1.33} @tab 
+@ref{Exercise 1.34,,1.34} @tab 
+@ref{Exercise 1.35,,1.35} @tab 
+@ref{Exercise 1.36,,1.36}
+@item 
+@ref{Exercise 1.37,,1.37} @tab 
+@ref{Exercise 1.38,,1.38} @tab 
+@ref{Exercise 1.39,,1.39} @tab 
+@ref{Exercise 1.40,,1.40} @tab 
+@ref{Exercise 1.41,,1.41} @tab 
+@ref{Exercise 1.42,,1.42} @tab 
+@ref{Exercise 1.43,,1.43} @tab 
+@ref{Exercise 1.44,,1.44} @tab 
+@ref{Exercise 1.45,,1.45} @tab 
+@ref{Exercise 1.46,,1.46} @tab 
+@end multitable 
+
+@subsubheading Chapter 2 
+
+@multitable @columnfractions 0.058 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 
+@item 
+@ref{Exercise 2.1,,2.1} @tab 
+@ref{Exercise 2.2,,2.2} @tab 
+@ref{Exercise 2.3,,2.3} @tab 
+@ref{Exercise 2.4,,2.4} @tab 
+@ref{Exercise 2.5,,2.5} @tab 
+@ref{Exercise 2.6,,2.6} @tab 
+@ref{Exercise 2.7,,2.7} @tab 
+@ref{Exercise 2.8,,2.8} @tab 
+@ref{Exercise 2.9,,2.9} @tab 
+@ref{Exercise 2.10,,2.10} @tab 
+@ref{Exercise 2.11,,2.11} @tab 
+@ref{Exercise 2.12,,2.12}
+@item 
+@ref{Exercise 2.13,,2.13} @tab 
+@ref{Exercise 2.14,,2.14} @tab 
+@ref{Exercise 2.15,,2.15} @tab 
+@ref{Exercise 2.16,,2.16} @tab 
+@ref{Exercise 2.17,,2.17} @tab 
+@ref{Exercise 2.18,,2.18} @tab 
+@ref{Exercise 2.19,,2.19} @tab 
+@ref{Exercise 2.20,,2.20} @tab 
+@ref{Exercise 2.21,,2.21} @tab 
+@ref{Exercise 2.22,,2.22} @tab 
+@ref{Exercise 2.23,,2.23} @tab 
+@ref{Exercise 2.24,,2.24}
+@item 
+@ref{Exercise 2.25,,2.25} @tab 
+@ref{Exercise 2.26,,2.26} @tab 
+@ref{Exercise 2.27,,2.27} @tab 
+@ref{Exercise 2.28,,2.28} @tab 
+@ref{Exercise 2.29,,2.29} @tab 
+@ref{Exercise 2.30,,2.30} @tab 
+@ref{Exercise 2.31,,2.31} @tab 
+@ref{Exercise 2.32,,2.32} @tab 
+@ref{Exercise 2.33,,2.33} @tab 
+@ref{Exercise 2.34,,2.34} @tab 
+@ref{Exercise 2.35,,2.35} @tab 
+@ref{Exercise 2.36,,2.36}
+@item 
+@ref{Exercise 2.37,,2.37} @tab 
+@ref{Exercise 2.38,,2.38} @tab 
+@ref{Exercise 2.39,,2.39} @tab 
+@ref{Exercise 2.40,,2.40} @tab 
+@ref{Exercise 2.41,,2.41} @tab 
+@ref{Exercise 2.42,,2.42} @tab 
+@ref{Exercise 2.43,,2.43} @tab 
+@ref{Exercise 2.44,,2.44} @tab 
+@ref{Exercise 2.45,,2.45} @tab 
+@ref{Exercise 2.46,,2.46} @tab 
+@ref{Exercise 2.47,,2.47} @tab 
+@ref{Exercise 2.48,,2.48}
+@item 
+@ref{Exercise 2.49,,2.49} @tab 
+@ref{Exercise 2.50,,2.50} @tab 
+@ref{Exercise 2.51,,2.51} @tab 
+@ref{Exercise 2.52,,2.52} @tab 
+@ref{Exercise 2.53,,2.53} @tab 
+@ref{Exercise 2.54,,2.54} @tab 
+@ref{Exercise 2.55,,2.55} @tab 
+@ref{Exercise 2.56,,2.56} @tab 
+@ref{Exercise 2.57,,2.57} @tab 
+@ref{Exercise 2.58,,2.58} @tab 
+@ref{Exercise 2.59,,2.59} @tab 
+@ref{Exercise 2.60,,2.60}
+@item 
+@ref{Exercise 2.61,,2.61} @tab 
+@ref{Exercise 2.62,,2.62} @tab 
+@ref{Exercise 2.63,,2.63} @tab 
+@ref{Exercise 2.64,,2.64} @tab 
+@ref{Exercise 2.65,,2.65} @tab 
+@ref{Exercise 2.66,,2.66} @tab 
+@ref{Exercise 2.67,,2.67} @tab 
+@ref{Exercise 2.68,,2.68} @tab 
+@ref{Exercise 2.69,,2.69} @tab 
+@ref{Exercise 2.70,,2.70} @tab 
+@ref{Exercise 2.71,,2.71} @tab 
+@ref{Exercise 2.72,,2.72}
+@item 
+@ref{Exercise 2.73,,2.73} @tab 
+@ref{Exercise 2.74,,2.74} @tab 
+@ref{Exercise 2.75,,2.75} @tab 
+@ref{Exercise 2.76,,2.76} @tab 
+@ref{Exercise 2.77,,2.77} @tab 
+@ref{Exercise 2.78,,2.78} @tab 
+@ref{Exercise 2.79,,2.79} @tab 
+@ref{Exercise 2.80,,2.80} @tab 
+@ref{Exercise 2.81,,2.81} @tab 
+@ref{Exercise 2.82,,2.82} @tab 
+@ref{Exercise 2.83,,2.83} @tab 
+@ref{Exercise 2.84,,2.84}
+@item 
+@ref{Exercise 2.85,,2.85} @tab 
+@ref{Exercise 2.86,,2.86} @tab 
+@ref{Exercise 2.87,,2.87} @tab 
+@ref{Exercise 2.88,,2.88} @tab 
+@ref{Exercise 2.89,,2.89} @tab 
+@ref{Exercise 2.90,,2.90} @tab 
+@ref{Exercise 2.91,,2.91} @tab 
+@ref{Exercise 2.92,,2.92} @tab 
+@ref{Exercise 2.93,,2.93} @tab 
+@ref{Exercise 2.94,,2.94} @tab 
+@ref{Exercise 2.95,,2.95} @tab 
+@ref{Exercise 2.96,,2.96}
+@item 
+@ref{Exercise 2.97,,2.97} @tab 
+@end multitable 
+
+@subsubheading Chapter 3 
+
+@multitable @columnfractions 0.058 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 
+@item 
+@ref{Exercise 3.1,,3.1} @tab 
+@ref{Exercise 3.2,,3.2} @tab 
+@ref{Exercise 3.3,,3.3} @tab 
+@ref{Exercise 3.4,,3.4} @tab 
+@ref{Exercise 3.5,,3.5} @tab 
+@ref{Exercise 3.6,,3.6} @tab 
+@ref{Exercise 3.7,,3.7} @tab 
+@ref{Exercise 3.8,,3.8} @tab 
+@ref{Exercise 3.9,,3.9} @tab 
+@ref{Exercise 3.10,,3.10} @tab 
+@ref{Exercise 3.11,,3.11} @tab 
+@ref{Exercise 3.12,,3.12}
+@item 
+@ref{Exercise 3.13,,3.13} @tab 
+@ref{Exercise 3.14,,3.14} @tab 
+@ref{Exercise 3.15,,3.15} @tab 
+@ref{Exercise 3.16,,3.16} @tab 
+@ref{Exercise 3.17,,3.17} @tab 
+@ref{Exercise 3.18,,3.18} @tab 
+@ref{Exercise 3.19,,3.19} @tab 
+@ref{Exercise 3.20,,3.20} @tab 
+@ref{Exercise 3.21,,3.21} @tab 
+@ref{Exercise 3.22,,3.22} @tab 
+@ref{Exercise 3.23,,3.23} @tab 
+@ref{Exercise 3.24,,3.24}
+@item 
+@ref{Exercise 3.25,,3.25} @tab 
+@ref{Exercise 3.26,,3.26} @tab 
+@ref{Exercise 3.27,,3.27} @tab 
+@ref{Exercise 3.28,,3.28} @tab 
+@ref{Exercise 3.29,,3.29} @tab 
+@ref{Exercise 3.30,,3.30} @tab 
+@ref{Exercise 3.31,,3.31} @tab 
+@ref{Exercise 3.32,,3.32} @tab 
+@ref{Exercise 3.33,,3.33} @tab 
+@ref{Exercise 3.34,,3.34} @tab 
+@ref{Exercise 3.35,,3.35} @tab 
+@ref{Exercise 3.36,,3.36}
+@item 
+@ref{Exercise 3.37,,3.37} @tab 
+@ref{Exercise 3.38,,3.38} @tab 
+@ref{Exercise 3.39,,3.39} @tab 
+@ref{Exercise 3.40,,3.40} @tab 
+@ref{Exercise 3.41,,3.41} @tab 
+@ref{Exercise 3.42,,3.42} @tab 
+@ref{Exercise 3.43,,3.43} @tab 
+@ref{Exercise 3.44,,3.44} @tab 
+@ref{Exercise 3.45,,3.45} @tab 
+@ref{Exercise 3.46,,3.46} @tab 
+@ref{Exercise 3.47,,3.47} @tab 
+@ref{Exercise 3.48,,3.48}
+@item 
+@ref{Exercise 3.49,,3.49} @tab 
+@ref{Exercise 3.50,,3.50} @tab 
+@ref{Exercise 3.51,,3.51} @tab 
+@ref{Exercise 3.52,,3.52} @tab 
+@ref{Exercise 3.53,,3.53} @tab 
+@ref{Exercise 3.54,,3.54} @tab 
+@ref{Exercise 3.55,,3.55} @tab 
+@ref{Exercise 3.56,,3.56} @tab 
+@ref{Exercise 3.57,,3.57} @tab 
+@ref{Exercise 3.58,,3.58} @tab 
+@ref{Exercise 3.59,,3.59} @tab 
+@ref{Exercise 3.60,,3.60}
+@item 
+@ref{Exercise 3.61,,3.61} @tab 
+@ref{Exercise 3.62,,3.62} @tab 
+@ref{Exercise 3.63,,3.63} @tab 
+@ref{Exercise 3.64,,3.64} @tab 
+@ref{Exercise 3.65,,3.65} @tab 
+@ref{Exercise 3.66,,3.66} @tab 
+@ref{Exercise 3.67,,3.67} @tab 
+@ref{Exercise 3.68,,3.68} @tab 
+@ref{Exercise 3.69,,3.69} @tab 
+@ref{Exercise 3.70,,3.70} @tab 
+@ref{Exercise 3.71,,3.71} @tab 
+@ref{Exercise 3.72,,3.72}
+@item 
+@ref{Exercise 3.73,,3.73} @tab 
+@ref{Exercise 3.74,,3.74} @tab 
+@ref{Exercise 3.75,,3.75} @tab 
+@ref{Exercise 3.76,,3.76} @tab 
+@ref{Exercise 3.77,,3.77} @tab 
+@ref{Exercise 3.78,,3.78} @tab 
+@ref{Exercise 3.79,,3.79} @tab 
+@ref{Exercise 3.80,,3.80} @tab 
+@ref{Exercise 3.81,,3.81} @tab 
+@ref{Exercise 3.82,,3.82} @tab 
+@end multitable 
+
+@subsubheading Chapter 4 
+
+@multitable @columnfractions 0.058 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 
+@item 
+@ref{Exercise 4.1,,4.1} @tab 
+@ref{Exercise 4.2,,4.2} @tab 
+@ref{Exercise 4.3,,4.3} @tab 
+@ref{Exercise 4.4,,4.4} @tab 
+@ref{Exercise 4.5,,4.5} @tab 
+@ref{Exercise 4.6,,4.6} @tab 
+@ref{Exercise 4.7,,4.7} @tab 
+@ref{Exercise 4.8,,4.8} @tab 
+@ref{Exercise 4.9,,4.9} @tab 
+@ref{Exercise 4.10,,4.10} @tab 
+@ref{Exercise 4.11,,4.11} @tab 
+@ref{Exercise 4.12,,4.12}
+@item 
+@ref{Exercise 4.13,,4.13} @tab 
+@ref{Exercise 4.14,,4.14} @tab 
+@ref{Exercise 4.15,,4.15} @tab 
+@ref{Exercise 4.16,,4.16} @tab 
+@ref{Exercise 4.17,,4.17} @tab 
+@ref{Exercise 4.18,,4.18} @tab 
+@ref{Exercise 4.19,,4.19} @tab 
+@ref{Exercise 4.20,,4.20} @tab 
+@ref{Exercise 4.21,,4.21} @tab 
+@ref{Exercise 4.22,,4.22} @tab 
+@ref{Exercise 4.23,,4.23} @tab 
+@ref{Exercise 4.24,,4.24}
+@item 
+@ref{Exercise 4.25,,4.25} @tab 
+@ref{Exercise 4.26,,4.26} @tab 
+@ref{Exercise 4.27,,4.27} @tab 
+@ref{Exercise 4.28,,4.28} @tab 
+@ref{Exercise 4.29,,4.29} @tab 
+@ref{Exercise 4.30,,4.30} @tab 
+@ref{Exercise 4.31,,4.31} @tab 
+@ref{Exercise 4.32,,4.32} @tab 
+@ref{Exercise 4.33,,4.33} @tab 
+@ref{Exercise 4.34,,4.34} @tab 
+@ref{Exercise 4.35,,4.35} @tab 
+@ref{Exercise 4.36,,4.36}
+@item 
+@ref{Exercise 4.37,,4.37} @tab 
+@ref{Exercise 4.38,,4.38} @tab 
+@ref{Exercise 4.39,,4.39} @tab 
+@ref{Exercise 4.40,,4.40} @tab 
+@ref{Exercise 4.41,,4.41} @tab 
+@ref{Exercise 4.42,,4.42} @tab 
+@ref{Exercise 4.43,,4.43} @tab 
+@ref{Exercise 4.44,,4.44} @tab 
+@ref{Exercise 4.45,,4.45} @tab 
+@ref{Exercise 4.46,,4.46} @tab 
+@ref{Exercise 4.47,,4.47} @tab 
+@ref{Exercise 4.48,,4.48}
+@item 
+@ref{Exercise 4.49,,4.49} @tab 
+@ref{Exercise 4.50,,4.50} @tab 
+@ref{Exercise 4.51,,4.51} @tab 
+@ref{Exercise 4.52,,4.52} @tab 
+@ref{Exercise 4.53,,4.53} @tab 
+@ref{Exercise 4.54,,4.54} @tab 
+@ref{Exercise 4.55,,4.55} @tab 
+@ref{Exercise 4.56,,4.56} @tab 
+@ref{Exercise 4.57,,4.57} @tab 
+@ref{Exercise 4.58,,4.58} @tab 
+@ref{Exercise 4.59,,4.59} @tab 
+@ref{Exercise 4.60,,4.60}
+@item 
+@ref{Exercise 4.61,,4.61} @tab 
+@ref{Exercise 4.62,,4.62} @tab 
+@ref{Exercise 4.63,,4.63} @tab 
+@ref{Exercise 4.64,,4.64} @tab 
+@ref{Exercise 4.65,,4.65} @tab 
+@ref{Exercise 4.66,,4.66} @tab 
+@ref{Exercise 4.67,,4.67} @tab 
+@ref{Exercise 4.68,,4.68} @tab 
+@ref{Exercise 4.69,,4.69} @tab 
+@ref{Exercise 4.70,,4.70} @tab 
+@ref{Exercise 4.71,,4.71} @tab 
+@ref{Exercise 4.72,,4.72}
+@item 
+@ref{Exercise 4.73,,4.73} @tab 
+@ref{Exercise 4.74,,4.74} @tab 
+@ref{Exercise 4.75,,4.75} @tab 
+@ref{Exercise 4.76,,4.76} @tab 
+@ref{Exercise 4.77,,4.77} @tab 
+@ref{Exercise 4.78,,4.78} @tab 
+@ref{Exercise 4.79,,4.79} @tab 
+@end multitable 
+
+@subsubheading Chapter 5 
+
+@multitable @columnfractions 0.058 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 0.083 
+@item 
+@ref{Exercise 5.1,,5.1} @tab 
+@ref{Exercise 5.2,,5.2} @tab 
+@ref{Exercise 5.3,,5.3} @tab 
+@ref{Exercise 5.4,,5.4} @tab 
+@ref{Exercise 5.5,,5.5} @tab 
+@ref{Exercise 5.6,,5.6} @tab 
+@ref{Exercise 5.7,,5.7} @tab 
+@ref{Exercise 5.8,,5.8} @tab 
+@ref{Exercise 5.9,,5.9} @tab 
+@ref{Exercise 5.10,,5.10} @tab 
+@ref{Exercise 5.11,,5.11} @tab 
+@ref{Exercise 5.12,,5.12}
+@item 
+@ref{Exercise 5.13,,5.13} @tab 
+@ref{Exercise 5.14,,5.14} @tab 
+@ref{Exercise 5.15,,5.15} @tab 
+@ref{Exercise 5.16,,5.16} @tab 
+@ref{Exercise 5.17,,5.17} @tab 
+@ref{Exercise 5.18,,5.18} @tab 
+@ref{Exercise 5.19,,5.19} @tab 
+@ref{Exercise 5.20,,5.20} @tab 
+@ref{Exercise 5.21,,5.21} @tab 
+@ref{Exercise 5.22,,5.22} @tab 
+@ref{Exercise 5.23,,5.23} @tab 
+@ref{Exercise 5.24,,5.24}
+@item 
+@ref{Exercise 5.25,,5.25} @tab 
+@ref{Exercise 5.26,,5.26} @tab 
+@ref{Exercise 5.27,,5.27} @tab 
+@ref{Exercise 5.28,,5.28} @tab 
+@ref{Exercise 5.29,,5.29} @tab 
+@ref{Exercise 5.30,,5.30} @tab 
+@ref{Exercise 5.31,,5.31} @tab 
+@ref{Exercise 5.32,,5.32} @tab 
+@ref{Exercise 5.33,,5.33} @tab 
+@ref{Exercise 5.34,,5.34} @tab 
+@ref{Exercise 5.35,,5.35} @tab 
+@ref{Exercise 5.36,,5.36}
+@item 
+@ref{Exercise 5.37,,5.37} @tab 
+@ref{Exercise 5.38,,5.38} @tab 
+@ref{Exercise 5.39,,5.39} @tab 
+@ref{Exercise 5.40,,5.40} @tab 
+@ref{Exercise 5.41,,5.41} @tab 
+@ref{Exercise 5.42,,5.42} @tab 
+@ref{Exercise 5.43,,5.43} @tab 
+@ref{Exercise 5.44,,5.44} @tab 
+@ref{Exercise 5.45,,5.45} @tab 
+@ref{Exercise 5.46,,5.46} @tab 
+@ref{Exercise 5.47,,5.47} @tab 
+@ref{Exercise 5.48,,5.48}
+@item 
+@ref{Exercise 5.49,,5.49} @tab 
+@ref{Exercise 5.50,,5.50} @tab 
+@ref{Exercise 5.51,,5.51} @tab 
+@ref{Exercise 5.52,,5.52} @tab 
+@end multitable 
+

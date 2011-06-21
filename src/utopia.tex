@@ -1,0 +1,307 @@
+@c utopia.tex -- TeXinfo macros to set the default Roman font to Utopia
+@c
+@def@utopiaversion{2011-04-14.01}
+@c
+@c--------------------------------------------------------------------------------
+@c This file is edited by Andres Raba combining and borrowing from three files: 
+@c palatino.tex from GNU Press,
+@c texinfo.tex from Free Software Foundation, and
+@c font_utopia.tex from font-change CTAN package created by Amit Raj Dhawan.
+@c 
+@c You can get original palatino.tex from GNU Press CVS:
+@c cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/gnupress co gnupress
+@c The procedure is documented by Sandip Bhattacharya at:
+@c http://blog.sandipb.net/2009/02/12/getting-more-printable-pdfs-from-texinfo-manuals/
+@c
+@c The latest texinfo.tex is available from:
+@c http://www.gnu.org/software/texinfo/
+@c--------------------------------------------------------------------------------
+@c
+@c Copyright (C) 2003  Free Software Foundation, Inc.
+@c
+@c This utopia.tex file is free software; you can redistribute it and/or
+@c modify it under the terms of the GNU General Public License as
+@c published by the Free Software Foundation; either version 2, or (at
+@c your option) any later version.
+@c
+@c This utopia.tex file is distributed in the hope that it will be
+@c useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+@c of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+@c General Public License for more details.
+@c
+@c You should have received a copy of the GNU General Public License
+@c along with this utopia.tex file; see the file LICENSE.  If not, write
+@c to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+@c Boston, MA 02111-1307, USA.
+@c
+@c To use this module, go to your root .texi file and make sure
+@c it reads like this:
+@c     \input texinfo  @c -*-texinfo-*-
+@c     @input utopia
+
+@message{Loading utopia [version @utopiaversion]:}
+
+@c Turn on the normal TeX command characters.
+@catcode`\=0
+\catcode`\%=14
+% Set the font macro #1 to the font named #2#3. #4 is the point size.
+% We save \setfont as \setfontorig, so we can restore it at the end of this
+% section.
+\catcode`\#=6
+\let\setfontorig=\setfont
+\def\setfont#1#2#3#4{\font#1=#2#3 at #4}
+\catcode`\#=\other
+
+% Set Utopia as the default roman font face
+\def\rmfontprefix{mdput}
+
+% Only define roman font attributes here.
+\def\rmshape{r7t}
+\def\rmbshape{b7t}
+\def\bfshape{b7t}
+\def\bxshape{b7t}
+\def\itshape{ri7t}
+\def\itbshape{bi7t}
+\def\slshape{ro7t}
+\def\slbshape{bo7t}
+\def\scshape{rfc8t}
+\def\scbshape{bfc8t}
+
+% Set Bera Sans Mono as the default typewriter font face
+\def\ttfontprefix{fvm}
+
+% Define tt font attributes here for fvm
+\def\ttshape{r8t}
+\def\ttbshape{b8t}
+\def\ttslshape{ro8t}
+\def\ttbslshape{bo8t}
+
+% Set Fourier as the math italic and math symbols font face
+\def\mtfontprefix{fut}
+
+% Define math font attributes here
+\def\mtitshape{mii}			% math italic
+\def\mtsyshape{sy}			% math symbol
+\font\elevenex=  mdputr7v at 17.4pt 	% math extension
+
+\ifx\bigger\relax
+  % not really supported.
+  \def\textfontsize{17.4pt}
+  \setfont\textrm\rmfontprefix\rmshape{\textfontsize}
+\else
+  % was 10pt:
+  \def\textfontsize{16pt}
+  \textleading = 24pt % added more leading for Utopia, was 15.4pt (new leading 50%) 
+  \setfont\textrm\rmfontprefix\rmshape{\textfontsize}
+\fi
+\setfont\textbf\rmfontprefix\bfshape{\textfontsize}
+\setfont\textit\rmfontprefix\itshape{\textfontsize}
+\setfont\textsl\rmfontprefix\slshape{\textfontsize}
+\setfont\textsc\rmfontprefix\scshape{\textfontsize}
+% For tt shapes:
+\setfont\texttt\ttfontprefix\ttshape{14.4pt}	% Bera Sans Mono is bigger than Utopia,
+\setfont\textttsl\ttfontprefix\ttslshape{14.4pt}	% needs scaling
+% For math:
+\setfont\texti\mtfontprefix\mtitshape{17.4pt}	% Fourier is smaller than Utopia, 
+\setfont\textsy\mtfontprefix\mtsyshape{17.4pt}	% needs scaling
+
+% A few fonts for \defun, etc.
+\setfont\defbf\rmfontprefix\bxshape{14.5pt} %was 1314
+\def\df{\let\tentt=\deftt \let\tenbf = \defbf \bf}
+
+% Fonts for indices, footnotes, small examples (9pt).
+\def\smallfontsize{14pt}		% was 9pt
+\setfont\smallrm\rmfontprefix\rmshape{\smallfontsize}
+\setfont\smallbf\rmfontprefix\bfshape{\smallfontsize}
+\setfont\smallit\rmfontprefix\itshape{\smallfontsize}
+\setfont\smallsl\rmfontprefix\slshape{\smallfontsize}
+\setfont\smallsc\rmfontprefix\scshape{\smallfontsize}
+% For tt shapes:
+\setfont\smalltt\ttfontprefix\ttshape{12.6pt}
+\setfont\smallttsl\ttfontprefix\ttslshape{12.6pt}
+% For math:
+\setfont\smalli\mtfontprefix\mtitshape{15.6pt}
+\setfont\smallsy\mtfontprefix\mtsyshape{15.6pt}
+
+% Fonts for small examples (8pt).
+\def\smallerfontsize{12.3pt}		% was 8pt
+\setfont\smallerrm\rmfontprefix\rmshape{\smallerfontsize}
+\setfont\smallerbf\rmfontprefix\bfshape{\smallerfontsize}
+\setfont\smallerit\rmfontprefix\itshape{\smallerfontsize}
+\setfont\smallersl\rmfontprefix\slshape{\smallerfontsize}
+\setfont\smallersc\rmfontprefix\scshape{\smallerfontsize}
+% For tt shapes:
+\setfont\smallertt\ttfontprefix\ttshape{11.1pt}
+\setfont\smallerttsl\ttfontprefix\ttslshape{11.1pt}
+% For math:
+\setfont\smalleri\mtfontprefix\mtitshape{\smallerfontsize}
+\setfont\smallersy\mtfontprefix\mtsyshape{\smallerfontsize}
+
+% Fonts for title page:
+\def\titlefontsize{40pt} % was 26.8pt (34pt)
+\setfont\titlerm\rmfontprefix\rmbshape{\titlefontsize}
+\setfont\titleit\rmfontprefix\itbshape{\titlefontsize}
+\setfont\titlesl\rmfontprefix\slbshape{\titlefontsize}
+\let\titlebf=\titlerm
+\setfont\titlesc\rmfontprefix\scbshape{\titlefontsize}
+\setfont\titlei\mtfontprefix\mtitshape{\titlefontsize}
+\setfont\titlesy\mtfontprefix\mtsyshape{\titlefontsize}
+\def\authorrm{\secrm}
+\def\authortt{\sectt}
+
+% Chapter (and unnumbered) fonts (17.28pt).
+\def\chapfontsize{25pt}
+\setfont\chaprm\rmfontprefix\rmbshape{\chapfontsize}
+\setfont\chapit\rmfontprefix\itbshape{\chapfontsize}
+\setfont\chapsl\rmfontprefix\slbshape{\chapfontsize}
+\let\chapbf=\chaprm
+\setfont\chapsc\rmfontprefix\scbshape{\chapfontsize}
+% For tt shapes:
+\setfont\chaptt\ttfontprefix\ttbshape{22.5pt}
+\setfont\chapttsl\ttfontprefix\ttbslshape{22.5pt}
+% For math:
+\setfont\chapi\mtfontprefix\mtitshape{\chapfontsize}
+\setfont\chapsy\mtfontprefix\mtsyshape{\chapfontsize}
+
+% Section fonts (14.4pt).
+\def\secfontsize{21pt}
+\setfont\secrm\rmfontprefix\rmbshape{\secfontsize}
+\setfont\secit\rmfontprefix\itbshape{\secfontsize}
+\setfont\secsl\rmfontprefix\slbshape{\secfontsize}
+\let\secbf\secrm
+\setfont\secsc\rmfontprefix\scbshape{\secfontsize}
+% For tt shapes:
+\setfont\sectt\ttfontprefix\ttbshape{18.9pt}
+\setfont\secttsl\ttfontprefix\ttbslshape{18.9pt}
+% For math:
+\setfont\seci\mtfontprefix\mtitshape{\secfontsize}
+\setfont\secsy\mtfontprefix\mtsyshape{\secfontsize}
+
+% Subsection fonts (13.15pt).
+\def\ssecfontsize{19pt}
+\def\ttssecfontsize{17.1pt}
+\setfont\ssecrm\rmfontprefix\rmbshape{\ssecfontsize}
+\setfont\ssecit\rmfontprefix\itbshape{\ssecfontsize}
+\setfont\ssecsl\rmfontprefix\slbshape{\ssecfontsize}
+\let\ssecbf\ssecrm
+\setfont\ssecsc\rmfontprefix\scbshape{\ssecfontsize}
+% For tt shapes:
+\setfont\ssectt\ttfontprefix\ttbshape{\ttssecfontsize}
+\setfont\ssecttsl\ttfontprefix\ttbslshape{\ttssecfontsize}
+% For math:
+\setfont\sseci\mtfontprefix\mtitshape{\ssecfontsize}
+\setfont\ssecsy\mtfontprefix\mtsyshape{\ssecfontsize}
+
+% Reduced fonts for @acro in text (10pt).
+\def\reducedfontsize{14.5pt}
+\setfont\reducedrm\rmfontprefix\rmshape{\reducedfontsize}
+\setfont\reducedbf\rmfontprefix\rmbshape{\reducedfontsize}
+\setfont\reducedit\rmfontprefix\itshape{\reducedfontsize}
+\setfont\reducedsl\rmfontprefix\slshape{\reducedfontsize}
+\setfont\reducedsc\rmfontprefix\scshape{\reducedfontsize}
+% For tt shapes:
+\setfont\reducedtt\ttfontprefix\ttshape{13.1pt}
+\setfont\reducedttsl\ttfontprefix\ttslshape{13.1pt}
+% For math:
+\setfont\reducedi\mtfontprefix\mtitshape{\reducedfontsize}
+\setfont\reducedsy\mtfontprefix\mtsyshape{\reducedfontsize}
+
+% The smallcaps and symbol fonts should actually be scaled \magstep1.5,
+% but that is not a standard magnification.
+
+% Fonts for short table of contents.
+\setfont\shortcontrm\rmfontprefix\rmshape{17.4pt}
+\setfont\shortcontbf\rmfontprefix\bxshape{17.4pt}
+\setfont\shortcontsl\rmfontprefix\slshape{17.4pt}
+
+% Set keyfont as well.
+\setfont\keyrm\rmfontprefix\rmshape{11.6pt}
+\setfont\keysy\mtfontprefix\mtsyshape{13.1pt}
+
+% Fonts for ordinal number superscripts 
+% (1st, 2nd, 6th, etc.) in text and footnote
+\setfont\ordrm\rmfontprefix\rmshape{11pt}
+\setfont\fordrm\rmfontprefix\rmshape{9.6pt}
+
+\let\subtitlerm=\textbf
+\def\subtitlefont{\subtitlerm \normalbaselineskip = 24pt \normalbaselines}
+
+% Adapted from font_utopia.tex (original author Amit Raj Dhawan):
+
+\font\eightrm=	mdputr7t at 12.3pt
+\font\sixrm=	mdputr7t at 8.7pt
+
+\font\eighti=	futmii at 12.3pt
+\font\sixi=	futmii at 8.7pt
+
+\font\eightsy=	futsy at 12.3pt
+\font\sixsy=	futsy at 8.7pt
+
+\font\eightex=	mdputr7v at 12.3pt
+\font\sixex=	mdputr7v at 8.7pt
+
+\font\eightit=	mdputri7t at 12.3pt
+\font\sixit=	mdputri7t at 8.7pt
+
+\font\eightsl=	mdputro7t at 12.3pt
+\font\sixsl=	mdputro7t at 8.7pt
+
+\font\eightbf=	mdputb7t at 12.3pt
+\font\sixbf=	mdputb7t at 8.7pt
+
+\font\eighttt=	fvmr8t at 12.3pt
+\font\sixtt=	fvmr8t at 8.7pt
+
+% Family 0 (roman text)
+\scriptfont0=\eightrm
+\scriptscriptfont0=\sixrm
+%
+% Family 1 (math italic)
+\scriptfont1=\eighti
+\scriptscriptfont1=\sixi
+%
+% Family 2 (math symbol)
+\scriptfont2=\eightsy
+\scriptscriptfont2=\sixsy
+%
+% Family 3 (math extension)
+\textfont3=\elevenex
+\scriptfont3=\eightex
+\scriptscriptfont3=\sixex
+%
+% Family 4 (italic text)
+%\def\it{\fam=\itfam \tenit}%
+\scriptfont\itfam=\eightit
+\scriptscriptfont\itfam=\sixit
+%
+% Family 5 (slanted text)
+\scriptfont\slfam=\eightsl
+\scriptscriptfont\slfam=\sixsl
+%
+% Family 6 (boldface text)
+\scriptfont\bffam=\eightbf
+\scriptscriptfont\bffam=\sixbf
+%
+% Family 7 (typewriter text)
+\scriptfont\ttfam=\eighttt
+\scriptscriptfont\ttfam=\sixtt
+
+
+\let\setfont=\setfontorig
+\def\setfontorig{\relax}
+
+% Restore the TeXinfo character set.
+\catcode`\\=\active
+@catcode`@%=@other
+
+@c Set initial fonts (again)
+@textfonts
+@rm
+
+@c Local variables:
+@c eval: (add-hook 'write-file-hooks 'time-stamp)
+@c page-delimiter: "^\\\\message"
+@c time-stamp-start: "def\\\\utopiaversion{"
+@c time-stamp-format: "%:y-%02m-%02d.%02H"
+@c time-stamp-end: "}"
+@c End:

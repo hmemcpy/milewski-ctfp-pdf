@@ -1,0 +1,21 @@
+
+
+                            sicp.texi
+                           ===========
+
+  ---------------------------------------------------------------
+    This is the Texinfo source of Structure and Interpretation 
+    of Computer Programs (SICP), 2nd ed.  by Abelson & Sussman. 
+  ---------------------------------------------------------------
+
+          This work is licensed under a Creative Commons 
+          Attribution-Noncommercial 3.0 Unported License 
+          http://creativecommons.org/licenses/by-nc/3.0/
+
+  ---------------------------------------------------------------
+
+          To compile the source, producing a PDF, enter:
+
+          texi2pdf sicp.texi
+
+  ---------------------------------------------------------------
