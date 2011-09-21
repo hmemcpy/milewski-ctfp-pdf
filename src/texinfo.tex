@@ -754,7 +754,8 @@ where each line of input produces a line of output.}
 
 % @endpage starts a new page without restarting footnote counter from zero	% new def added by A.R
 %
-\def\endpage{\par\vfill\par\penalty -20000}
+%\def\endpage{\par\vfill\par\penalty -20000}
+\def\endpage{}
 
 % @exdent text....
 % outputs text on separate line in roman font, starting at standard page margin
@@ -9192,8 +9193,8 @@ directory should work if nowhere else does.}
   % Parameters in order: 1) textheight; 2) textwidth;
   % 3) voffset; 4) hoffset; 5) binding offset; 6) topskip;
   % 7) physical page height; 8) physical page width.
-  \internalpagesizes{7in}{5.5in}%
-                    {-0.5in}{-0.75in}%
+  \internalpagesizes{7.5in}{5.5in}%
+                    {-0.75in}{-0.75in}%
                     {0pt}{0pt}%
                     {8in}{6in}%
   %

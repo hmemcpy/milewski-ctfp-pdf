@@ -133,6 +133,8 @@ based on @url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10
 @end titlepage
 @everyheading @| @| @thispage
 
+@headingsoff
+
 @c to suppress the black boxes after overfull lines:
 @finalout
 
