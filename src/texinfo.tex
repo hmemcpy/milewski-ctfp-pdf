@@ -253,7 +253,7 @@
 \newdimen\outerhsize \newdimen\outervsize % set by the paper size routines
 \newdimen\cornerlong  \cornerlong=1pc
 \newdimen\cornerthick \cornerthick=.3pt
-\newdimen\topandbottommargin \topandbottommargin=.75in
+\newdimen\topandbottommargin \topandbottommargin=0in
 
 % Output a mark which sets \thischapter, \thissection and \thiscolor.
 % We dump everything together because we only have one kind of mark.
@@ -754,7 +754,8 @@ where each line of input produces a line of output.}
 
 % @endpage starts a new page without restarting footnote counter from zero	% new def added by A.R
 %
-\def\endpage{\par\vfill\par\penalty -20000}
+%\def\endpage{\par\vfill\par\penalty -20000}
+\def\endpage{}
 
 % @exdent text....
 % outputs text on separate line in roman font, starting at standard page margin
@@ -9182,6 +9183,26 @@ directory should work if nowhere else does.}
                     {\voffset}{-0.30in}%	% text block distance from left edge, changed by A.R, was 0.25in
                     {\bindingoffset}{34pt}%	% text block distance from page header, ch. by A.R, was 36pt
                     {11.5in}{8.8in}%
+}}
+
+% Use @kindle for Kindle formatting (based on smallbook)
+\def\kindle{{\globaldefs = 1
+  \parskip = 2pt plus 1pt
+  \textleading = 20pt
+  %
+  % Parameters in order: 1) textheight; 2) textwidth;
+  % 3) voffset; 4) hoffset; 5) binding offset; 6) topskip;
+  % 7) physical page height; 8) physical page width.
+  \internalpagesizes{7.5in}{5.5in}%
+                    {-0.75in}{-0.75in}%
+                    {0pt}{0pt}%
+                    {8in}{6in}%
+  %
+  \lispnarrowing = 0.3in
+  \tolerance = 700
+  \hfuzz = 1pt
+  \contentsrightmargin = 0pt
+  \defbodyindent = .5cm
 }}
 
 % Use @smallbook to reset parameters for 7x9.25 trim size.

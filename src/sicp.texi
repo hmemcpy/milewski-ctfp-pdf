@@ -1,5 +1,6 @@
 \input texinfo
 @input utopia
+@kindle
 @comment             **********************************************************
 @setfilename         sicp
 @settitle            Structure and Interpretation of Computer Programs, 2e
@@ -131,6 +132,8 @@ based on @url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10
 
 @end titlepage
 @everyheading @| @| @thispage
+
+@headingsoff
 
 @c to suppress the black boxes after overfull lines:
 @finalout
