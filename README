@@ -5,3 +5,8 @@ Typography and layout are improved for better on-screen legibility.
 It is based on Neil Van Dyke's Texinfo version: http://www.neilvandyke.org/sicp-texi/
 
 Official SICP page with HTML version: http://mitpress.mit.edu/sicp/
+
+Adapted to Kindle format by Gavrie Philipson:
+* Page size matches the 600*800 screen aspect ratio of the Kindle
+* Page numbers have been removed
+* Size of text is larger and closer to standard Kindle ebooks
