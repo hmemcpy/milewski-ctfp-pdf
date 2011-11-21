@@ -126,11 +126,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="246.35754"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="402.07183"
      inkscape:cy="810.19584"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer3"
      showgrid="false"
      inkscape:snap-global="true"
      inkscape:window-width="1440"
@@ -243,7 +243,7 @@
      inkscape:label="Lines"
      style="display:inline">
     <path
-       style="fill:none;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#EmptyTriangleOutL);marker-end:url(#EmptyTriangleOutL)"
+       style="fill:none;stroke:#000000;stroke-width:1.41732283;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#EmptyTriangleOutL);marker-end:url(#EmptyTriangleOutL)"
        d="m 280,84.362183 25,0 c 20,0 35,5 45.625,8.125 96.25,37.916667 183.125,71.958327 279.375,109.874997 25,10 30,20 30,35 0,15 -5,26.51523 -30,35 -131.25,43.75 -260.625,88.875 -391.875,132.625 -23.125,7.375 -40.86142,9.375 -63.125,9.375 l -35,0"
        id="path4118"
        inkscape:connector-curvature="0"

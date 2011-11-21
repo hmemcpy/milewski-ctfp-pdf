@@ -1,7 +1,13 @@
 A PDF version of "Structure and Interpretation of Computer Programs" (SICP) by Abelson and Sussman. 
 Low resolution bitmap images are replaced by vector graphics (SVG) and mathematics is typeset in TeX. 
-Typography and layout are improved for better on-screen legibility.
+Typography and layout are improved for better on-screen legibility. This edition is suitable for 
+medium-sized screens (like iPad).
 
 It is based on Neil Van Dyke's Texinfo version: http://www.neilvandyke.org/sicp-texi/
 
 Official SICP page with HTML version: http://mitpress.mit.edu/sicp/
+
+(See also http://github.com/sarabander/sicp-pocket/
+ It's a new project cloned from the current one (sicp-pdf) to adapt the PDF to small screens (like Kindle).
+ We are still in very early stage. Thanks Gavrie (http://github.com/gavrie/sicp-pdf) for the start!) 
+
