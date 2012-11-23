@@ -14,7 +14,7 @@
    id="svg3108"
    version="1.1"
    inkscape:version="0.48.0 r9654"
-   sodipodi:docname="Fig3.24a.svg"
+   sodipodi:docname="Fig3.24b.svg"
    style="display:inline">
   <defs
      id="defs3110" />
@@ -25,11 +25,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2"
-     inkscape:cx="271.15886"
-     inkscape:cy="961.46645"
+     inkscape:zoom="4"
+     inkscape:cx="279.23498"
+     inkscape:cy="975.60859"
      inkscape:document-units="px"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer2"
      showgrid="false"
      inkscape:window-width="1440"
      inkscape:window-height="823"
@@ -40,18 +40,56 @@
        type="xygrid"
        id="grid3116" />
   </sodipodi:namedview>
+  
   <metadata
-     id="metadata3113">
+      id="metadata_3.24">
     <rdf:RDF>
       <cc:Work
-         rdf:about="">
+          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>SICP Figure 3.24</dc:title>
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
+        <dc:description>Based on the diagram in Abelson, Sussman &amp; Sussman's "Structure and Interpretation of Computer Programs", 2nd ed.</dc:description>
+        <dc:source>http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-22.html#%_fig_3.24</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Andres Raba</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:date>2012-11-17</dc:date>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>digital</rdf:li>
+            <rdf:li>logic</rdf:li>
+            <rdf:li>primitive</rdf:li>
+            <rdf:li>function</rdf:li>
+            <rdf:li>inverter</rdf:li>
+            <rdf:li>and-gate</rdf:li>
+            <rdf:li>or-gate</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
       </cc:Work>
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+            rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+            rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+            rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
+
   <g
      inkscape:groupmode="layer"
      id="layer2"
@@ -105,30 +143,30 @@
        id="path5898-11"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.53149606;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
-       d="m 167,52.33184 c 0.97049,0 3,1 23,11 1.25254,0.68433 1.28411,2.25254 0,3 -20,10 -22.02806,11 -23,11 -0.98149,0 -1.77165,-0.79015 -1.77165,-1.77165 l 0,-21.45669 c 0,-0.9815 0.79016,-1.77166 1.77165,-1.77166 z"
+       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.53149605;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
+       d="m 172,52.33184 c 0.97049,0 3,1 23,11 1.25254,0.68433 1.28411,2.25254 0,3 -20,10 -22.02806,11 -23,11 -0.98149,0 -1.77165,-0.79015 -1.77165,-1.77165 l 0,-21.45669 c 0,-0.9815 0.79016,-1.77166 1.77165,-1.77166 z"
        id="rect3794-77-9-4-42-8-2"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccssc" />
     <path
        sodipodi:type="arc"
-       style="fill:none;stroke:#000000;stroke-width:0.53149606;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       style="fill:none;stroke:#000000;stroke-width:0.53149605;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="path3164"
        sodipodi:cx="282.5"
        sodipodi:cy="209.86218"
        sodipodi:rx="3.0625"
        sodipodi:ry="3.0625"
        d="m 285.5625,209.86218 a 3.0625,3.0625 0 1 1 -6.125,0 3.0625,3.0625 0 1 1 6.125,0 z"
-       transform="translate(-88.4375,-145.03034)" />
+       transform="translate(-83.4375,-145.03034)" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.53149605;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 150,64.86218 15.13258,0"
+       d="m 155,64.86218 15.13258,0"
        id="path5898-2-0"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.53149605;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 197.2487,64.86218 15.7513,0"
+       d="m 202.2487,64.86218 9.39775,0"
        id="path5898-2-4"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
@@ -141,13 +179,13 @@
     <text
        xml:space="preserve"
        style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
-       x="181"
+       x="186"
        y="98.862183"
        id="text4012"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4014"
-         x="181"
+         x="186"
          y="98.862183"
          style="font-size:10px">Inverter</tspan></text>
     <text

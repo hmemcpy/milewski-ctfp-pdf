@@ -14,7 +14,7 @@
    id="svg7561"
    version="1.1"
    inkscape:version="0.48.0 r9654"
-   sodipodi:docname="Fig5.7a.svg">
+   sodipodi:docname="Fig5.7b.svg">
   <defs
      id="defs7563">
     <marker
@@ -236,18 +236,54 @@
        type="xygrid"
        id="grid7569" />
   </sodipodi:namedview>
+  
   <metadata
-     id="metadata7566">
+      id="metadata_5.7">
     <rdf:RDF>
       <cc:Work
-         rdf:about="">
+          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>SICP Figure 5.7</dc:title>
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
+        <dc:description>Based on the diagram in Abelson, Sussman &amp; Sussman's "Structure and Interpretation of Computer Programs", 2nd ed.</dc:description>
+        <dc:source>http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-31.html#%_fig_5.7</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Andres Raba</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:date>2012-11-17</dc:date>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>gcd</rdf:li>
+            <rdf:li>machine</rdf:li>
+            <rdf:li>controller</rdf:li>
+            <rdf:li>data</rdf:li>
+            <rdf:li>path</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
       </cc:Work>
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+            rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+            rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+            rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
+
   <g
      inkscape:label="Lines"
      inkscape:groupmode="layer"
@@ -383,47 +419,47 @@
        xml:space="preserve"
        style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:139.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
        x="65"
-       y="247.36218"
+       y="251.36218"
        id="text8128"
        sodipodi:linespacing="140%"><tspan
          sodipodi:role="line"
          id="tspan8130"
          x="65"
-         y="247.36218"
+         y="251.36218"
          style="font-size:9px;line-height:139.99999762%">gcd-1</tspan><tspan
          sodipodi:role="line"
          x="65"
-         y="259.96219"
+         y="263.96219"
          id="tspan8132"
          style="font-size:9px;line-height:139.99999762%"> (test (op =) (reg b) (const 0))</tspan><tspan
          sodipodi:role="line"
          x="65"
-         y="272.56219"
+         y="276.56219"
          id="tspan8134"
          style="font-size:9px;line-height:139.99999762%"> (branch (label after-gcd-1))</tspan><tspan
          sodipodi:role="line"
          x="65"
-         y="285.16217"
+         y="289.16217"
          id="tspan8136"
          style="font-size:9px;line-height:139.99999762%"> (assign t (op rem) (reg a) (reg b))</tspan><tspan
          sodipodi:role="line"
          x="65"
-         y="297.76218"
+         y="301.76218"
          id="tspan8138"
          style="font-size:9px;line-height:139.99999762%"> (assign a (reg b))</tspan><tspan
          sodipodi:role="line"
          x="65"
-         y="310.36218"
+         y="314.36218"
          id="tspan8140"
          style="font-size:9px;line-height:139.99999762%"> (assign b (reg t))</tspan><tspan
          sodipodi:role="line"
          x="65"
-         y="322.96219"
+         y="326.96219"
          id="tspan8142"
          style="font-size:9px;line-height:139.99999762%"> (goto (label gcd-1))</tspan><tspan
          sodipodi:role="line"
          x="65"
-         y="335.56219"
+         y="339.56219"
          id="tspan8162"
          style="font-size:9px;line-height:139.99999762%">after-gcd-1</tspan></text>
     <g
@@ -730,47 +766,47 @@
        xml:space="preserve"
        style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:139.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
        x="280"
-       y="247.36218"
+       y="251.36218"
        id="text8257"
        sodipodi:linespacing="140%"><tspan
          sodipodi:role="line"
          id="tspan8259"
          x="280"
-         y="247.36218"
+         y="251.36218"
          style="font-size:9px;line-height:139.99999762%">gcd-2</tspan><tspan
          sodipodi:role="line"
          x="280"
-         y="259.96219"
+         y="263.96219"
          id="tspan8261"
          style="font-size:9px;line-height:139.99999762%"> (test (op =) (reg d) (const 0))</tspan><tspan
          sodipodi:role="line"
          x="280"
-         y="272.56219"
+         y="276.56219"
          id="tspan8263"
          style="font-size:9px;line-height:139.99999762%"> (branch (label after-gcd-2))</tspan><tspan
          sodipodi:role="line"
          x="280"
-         y="285.16217"
+         y="289.16217"
          id="tspan8265"
          style="font-size:9px;line-height:139.99999762%"> (assign s (op rem) (reg c) (reg d))</tspan><tspan
          sodipodi:role="line"
          x="280"
-         y="297.76218"
+         y="301.76218"
          id="tspan8267"
          style="font-size:9px;line-height:139.99999762%"> (assign c (reg d))</tspan><tspan
          sodipodi:role="line"
          x="280"
-         y="310.36218"
+         y="314.36218"
          id="tspan8269"
          style="font-size:9px;line-height:139.99999762%"> (assign d (reg s))</tspan><tspan
          sodipodi:role="line"
          x="280"
-         y="322.96219"
+         y="326.96219"
          id="tspan8271"
          style="font-size:9px;line-height:139.99999762%"> (goto (label gcd-2))</tspan><tspan
          sodipodi:role="line"
          x="280"
-         y="335.56219"
+         y="339.56219"
          id="tspan8273"
          style="font-size:9px;line-height:139.99999762%">after-gcd-2</tspan></text>
     <g

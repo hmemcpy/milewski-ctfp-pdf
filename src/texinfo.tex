@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2011-04-14.01.A.R}
+\def\texinfoversion{2012-10-12.01}
 %
 %---------------------------------------------------------------
 % This file is modified by Andres Raba on lines marked by "A.R"
@@ -11,7 +11,7 @@
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
-% 2007, 2008, 2009, 2010, 2011 Free Software Foundation, Inc.
+% 2007, 2008, 2009, 2010, 2011, 2012 Free Software Foundation, Inc.
 %
 % This texinfo.tex file is free software: you can redistribute it and/or
 % modify it under the terms of the GNU General Public License as
@@ -59,6 +59,12 @@
 % full Texinfo distribution.
 %
 % The GNU Texinfo home page is http://www.gnu.org/software/texinfo.
+
+
+% We set PDF version to 1.4 for compatibility reasons.
+% (Recent pdftex generates version 1.5 by default,
+% Adobe Reader 9 has trouble rendering it properly.)
+\pdfminorversion=4                                      % added by A.R
 
 
 \message{Loading texinfo [version \texinfoversion]:}
@@ -2144,7 +2150,7 @@ end
   \let\tenttsl=\chapttsl
   \def\curfontsize{chap}%
   \def\lsize{sec}\def\lllsize{text}%
-  \resetmathfonts \setleading{19pt}}
+  \resetmathfonts \setleading{30pt}}				% 20% (A.R)
 \def\secfonts{%
   \let\tenrm=\secrm \let\tenit=\secit \let\tensl=\secsl
   \let\tenbf=\secbf \let\tentt=\sectt \let\smallcaps=\secsc
@@ -2152,7 +2158,7 @@ end
   \let\tenttsl=\secttsl
   \def\curfontsize{sec}%
   \def\lsize{subsec}\def\lllsize{reduced}%
-  \resetmathfonts \setleading{16pt}}
+  \resetmathfonts \setleading{25.2pt}}				% 20% (A.R)
 \def\subsecfonts{%
   \let\tenrm=\ssecrm \let\tenit=\ssecit \let\tensl=\ssecsl
   \let\tenbf=\ssecbf \let\tentt=\ssectt \let\smallcaps=\ssecsc
@@ -2160,7 +2166,7 @@ end
   \let\tenttsl=\ssecttsl
   \def\curfontsize{ssec}%
   \def\lsize{text}\def\lllsize{small}%
-  \resetmathfonts \setleading{15pt}}
+  \resetmathfonts \setleading{22.8pt}}				% 20% (A.R)
 \let\subsubsecfonts = \subsecfonts
 \def\reducedfonts{%
   \let\tenrm=\reducedrm \let\tenit=\reducedit \let\tensl=\reducedsl
@@ -2169,7 +2175,7 @@ end
   \let\tenttsl=\reducedttsl
   \def\curfontsize{reduced}%
   \def\lsize{small}\def\lllsize{smaller}%
-  \resetmathfonts \setleading{10.5pt}}
+  \resetmathfonts \setleading{20.3pt}}				% 40% (A.R)
 \def\smallfonts{%
   \let\tenrm=\smallrm \let\tenit=\smallit \let\tensl=\smallsl
   \let\tenbf=\smallbf \let\tentt=\smalltt \let\smallcaps=\smallsc
@@ -4843,7 +4849,7 @@ end
     %
     % \hangafter is reset to 1 (which is the value we want) at the start
     % of each paragraph, so we need not do anything with that.
-    \hangindent = 2em
+    \hangindent = 1em	% less indentation on second line of index entry, was 2em (A.R)
     %
     % When the entry text needs to be broken, just fill out the first line
     % with blank space.
@@ -5950,7 +5956,7 @@ end
     \let\sl=\shortcontsl \let\tt=\shortconttt
     \rm
     \hyphenpenalty = 10000
-    \advance\baselineskip by 12pt % Open it up a little.	% changed by A.R, was 1pt
+    \advance\baselineskip by 2pt % Open it up a little.	% changed by A.R, was 1pt
     \def\numsecentry##1##2##3##4{}
     \let\appsecentry = \numsecentry
     \let\unnsecentry = \numsecentry
@@ -6057,8 +6063,8 @@ end
 % If the toc has to be broken over pages, we want it to be at chapters
 % if at all possible; hence the \penalty.
 \def\dochapentry#1#2{%
-   \penalty-300 \vskip1\baselineskip plus.33\baselineskip minus.25\baselineskip
-   \begingroup
+   \penalty-300 \vskip0.7\baselineskip plus.33\baselineskip minus.25\baselineskip % was \vskip1 (A.R)
+   \begingroup				% (\vskip controls vertical space between chapter entries in TOC)
      \chapentryfonts
      \tocentry{#1}{\dopageno\bgroup#2\egroup}%
    \endgroup
@@ -6081,7 +6087,53 @@ end
 \endgroup}
 
 % We use the same \entry macro as for the index entries.
-\let\tocentry = \entry
+%\let\tocentry = \entry					% commented out by A.R
+
+\def\tocentry{%
+  \begingroup
+    %
+    % Start a new paragraph if necessary, so our assignments below can't
+    % affect previous text.
+    \par
+    %
+    % Do not fill out the last line with white space.
+    \parfillskip = 0in
+    %
+    % No extra space above this paragraph.
+    \parskip = 0in
+    %
+    % Do not prefer a separate line ending with a hyphen to fewer lines.
+    \finalhyphendemerits = 0
+    %
+    % \hangindent is only relevant when the entry text and page number
+    % don't both fit on one line.  In that case, bob suggests starting the
+    % dots pretty far over on the line.  Unfortunately, a large
+    % indentation looks wrong when the entry text itself is broken across
+    % lines.  So we use a small indentation and put up with long leaders.
+    %
+    % \hangafter is reset to 1 (which is the value we want) at the start
+    % of each paragraph, so we need not do anything with that.
+    \hangindent = 2.97em % multiline subsection entries line up vertically (A.R)
+    %
+    % When the entry text needs to be broken, just fill out the first line
+    % with blank space.
+    \rightskip = 0pt plus1fil
+    %
+    % A bit of stretch before each entry for the benefit of balancing
+    % columns.
+    \vskip 1.5pt plus1pt				% was \vskip 0pt plus1pt (A.R)
+    %
+    % When reading the text of entry, convert explicit line breaks
+    % from @* into spaces.  The user might give these in long section
+    % titles, for instance.
+    \def\*{\unskip\space\ignorespaces}%
+    \def\entrybreak{\hfil\break}%
+    %
+    % Swallow the left brace of the text (first parameter):
+    \afterassignment\doentry
+    \let\temp =
+}
+
 
 % Space between chapter (or whatever) number and the title.
 \def\labelspace{\hskip1em \relax}
@@ -6089,7 +6141,7 @@ end
 \def\dopageno#1{{\rm #1}}
 \def\doshortpageno#1{{\rm #1}}
 
-\def\chapentryfonts{\secfonts \rm}
+\def\chapentryfonts{\subsecfonts \rm}			% was \secfonts (A.R)
 \def\secentryfonts{\textfonts}
 \def\subsecentryfonts{\textfonts}
 \def\subsubsecentryfonts{\textfonts}
@@ -9178,9 +9230,9 @@ directory should work if nowhere else does.}
   \textleading = 13.2pt
   %
   % If page is nothing but text, make it come out even.
-  \internalpagesizes{706pt}{7.4in}% that's 32 lines	% changed by A.R
-                    {0.0in}{-0.1in}%			%
-                    {\bindingoffset}{22pt}%		%
+  \internalpagesizes{10.0in}{7.4in}% that's 33 lines	% changed by A.R
+                    {-0.15in}{-0.1in}%			%
+                    {\bindingoffset}{20pt}%		%
                     {12.3in}{9.2in}%			%
 }}
 

@@ -167,10 +167,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="277.4418"
-     inkscape:cy="846.28004"
+     inkscape:cx="378.45705"
+     inkscape:cy="866.48309"
      inkscape:document-units="px"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer3"
      showgrid="false"
      inkscape:window-width="1440"
      inkscape:window-height="823"
@@ -181,18 +181,50 @@
        type="xygrid"
        id="grid4160" />
   </sodipodi:namedview>
+  
   <metadata
-     id="metadata4157">
+      id="metadata_3.8">
     <rdf:RDF>
       <cc:Work
-         rdf:about="">
+          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>SICP Figure 3.8</dc:title>
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
+        <dc:description>Based on the diagram in Abelson, Sussman &amp; Sussman's "Structure and Interpretation of Computer Programs", 2nd ed.</dc:description>
+        <dc:source>http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-21.html#%_fig_3.8</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Andres Raba</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:date>2012-11-17</dc:date>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>environment</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
       </cc:Work>
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+            rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+            rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+            rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
+
   <g
      inkscape:groupmode="layer"
      id="layer2"
@@ -362,20 +394,20 @@
     <text
        xml:space="preserve"
        style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:139.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:Sans"
-       x="120"
-       y="252.36218"
+       x="75.010147"
+       y="252.86726"
        id="text5497"
        sodipodi:linespacing="140%"><tspan
          sodipodi:role="line"
          id="tspan5499"
-         x="120"
-         y="252.36218">parameters:  <tspan
+         x="75.010147"
+         y="252.86726">parameters:  <tspan
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:139.99999762%;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
    id="tspan5868"
    dx="2.5">amount</tspan></tspan><tspan
          sodipodi:role="line"
-         x="120"
-         y="267.76218"
+         x="75.010147"
+         y="268.26727"
          id="tspan5914"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:139.99999762%;font-family:DejaVu Sans;-inkscape-font-specification:Sans">body:  <tspan
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:139.99999762%;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
@@ -400,55 +432,51 @@
     <text
        xml:space="preserve"
        style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:139.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
-       x="359.74747"
+       x="358.73734"
        y="151.60455"
        id="text6205"
        sodipodi:linespacing="140%"><tspan
          sodipodi:role="line"
          id="tspan6207"
-         x="359.74747"
+         x="358.73734"
          y="151.60455"
          style="font-size:10px;line-height:139.99999762%">Here is the balance</tspan><tspan
          sodipodi:role="line"
-         x="359.74747"
+         x="358.73734"
          y="165.60455"
          id="tspan6209"
          style="font-size:10px;line-height:139.99999762%">that will be changed</tspan><tspan
          sodipodi:role="line"
-         x="359.74747"
+         x="358.73734"
          y="179.60455"
          id="tspan6211"
          style="font-size:10px;line-height:139.99999762%">by the set!</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:139.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
-       x="276.86221"
+       x="224.35713"
        y="252.36218"
        id="text6213"
        sodipodi:linespacing="140%"><tspan
          sodipodi:role="line"
-         id="tspan6215"
-         x="276.86221"
-         y="252.36218">(if (&gt;= balance amount)</tspan><tspan
+         x="224.35713"
+         y="252.36218"
+         id="tspan3075">(if (&gt;= balance amount)</tspan><tspan
          sodipodi:role="line"
-         x="276.86221"
+         x="224.35713"
          y="267.76218"
-         id="tspan6217">    (begin (set! balance </tspan><tspan
+         id="tspan3097">    (begin (set! balance </tspan><tspan
          sodipodi:role="line"
-         x="276.86221"
+         x="224.35713"
          y="283.16217"
-         id="tspan6223">                 (- balance </tspan><tspan
+         id="tspan3099">                 (- balance amount))</tspan><tspan
          sodipodi:role="line"
-         x="276.86221"
+         x="224.35713"
          y="298.56219"
-         id="tspan6225">                    amount))</tspan><tspan
+         id="tspan3101">           balance)</tspan><tspan
          sodipodi:role="line"
-         x="276.86221"
+         x="224.35713"
          y="313.96219"
-         id="tspan6219">           balance)</tspan><tspan
-         sodipodi:role="line"
-         x="276.86221"
-         y="329.36218"
-         id="tspan6221">    &quot;insufficient funds&quot;)</tspan></text>
+         id="tspan3103">    &quot;insufficient funds&quot;)</tspan></text>
   </g>
 </svg>
