@@ -2461,8 +2461,8 @@ end
 \def\tclose#1{%
   {%
     % Change normal interword space to be same as for the current font.
-    \spaceskip = \fontdimen2\font
-    %
+    %\spaceskip = \fontdimen2\font    % commented out by A.R because 
+    %                                 % normal space looks too thin for typewriter
     % Switch to typewriter.
     \tt
     %
