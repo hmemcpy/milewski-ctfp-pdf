@@ -5,8 +5,8 @@
 @settitle            Structure and Interpretation of Computer Programs, 2e
 @comment             Unofficial Texinfo Format
 @comment
-@set utfversion      2.andresraba3 
-@set utfversiondate  November 22, 2012
+@set utfversion      2.andresraba3.1
+@set utfversiondate  August 27, 2013
 @comment
 @comment             This file is licensed under a Creative Commons 
 @comment             Attribution-ShareAlike 3.0 Unported License 
