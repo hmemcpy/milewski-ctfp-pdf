@@ -9,11 +9,11 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
+   width="251.39227"
+   height="295.4252"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.0 r9654"
+   inkscape:version="0.48.3.1 r9886"
    sodipodi:docname="Fig3.37a.svg">
   <defs
      id="defs4">
@@ -180,33 +180,34 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="685.238"
-     inkscape:cy="854.09529"
+     inkscape:cx="226.16094"
+     inkscape:cy="149.30789"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
      showgrid="false"
-     inkscape:window-width="1440"
-     inkscape:window-height="823"
+     inkscape:window-width="1920"
+     inkscape:window-height="1004"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
-       id="grid2985" />
+       id="grid2985"
+       originx="-459.58214px"
+       originy="-704.7874px" />
   </sodipodi:namedview>
-  
   <metadata
-      id="metadata_3.37">
+     id="metadata_3.37">
     <rdf:RDF>
       <cc:Work
-          rdf:about="">
+         rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
-            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
         <dc:title>SICP Figure 3.37</dc:title>
         <cc:license
-            rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
-        <dc:description>Based on the diagram in Abelson, Sussman &amp; Sussman's "Structure and Interpretation of Computer Programs", 2nd ed.</dc:description>
+           rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
+        <dc:description>Based on the diagram in Abelson, Sussman &amp; Sussman's &quot;Structure and Interpretation of Computer Programs&quot;, 2nd ed.</dc:description>
         <dc:source>http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-24.html#%_fig_3.37</dc:source>
         <dc:creator>
           <cc:Agent>
@@ -227,30 +228,30 @@
         </dc:subject>
       </cc:Work>
       <cc:License
-          rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
+         rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
         <cc:permits
-            rdf:resource="http://creativecommons.org/ns#Reproduction" />
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
         <cc:permits
-            rdf:resource="http://creativecommons.org/ns#Distribution" />
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
         <cc:requires
-            rdf:resource="http://creativecommons.org/ns#Notice" />
+           rdf:resource="http://creativecommons.org/ns#Notice" />
         <cc:requires
-            rdf:resource="http://creativecommons.org/ns#Attribution" />
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
         <cc:permits
-            rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
         <cc:requires
-            rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
       </cc:License>
     </rdf:RDF>
   </metadata>
-
   <g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Lines"
-     style="display:inline">
+     style="display:inline"
+     transform="translate(-459.58214,-52.149584)">
     <rect
-       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.42519685;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
+       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.42519686;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
        id="rect6788-9-4"
        width="80"
        height="35"
@@ -259,7 +260,7 @@
        rx="3.5433071"
        ry="3.5433071" />
     <rect
-       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.42519685;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
+       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.42519686;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
        id="rect6788-9-4-0"
        width="80"
        height="35"
@@ -268,7 +269,7 @@
        rx="3.5433071"
        ry="3.5433071" />
     <rect
-       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.42519685;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
+       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.42519686;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
        id="rect6788-9-4-1"
        width="80"
        height="35"
@@ -277,7 +278,7 @@
        rx="3.5433071"
        ry="3.5433071" />
     <rect
-       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.42519685;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
+       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.42519686;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
        id="rect6788-9-4-1-4"
        width="80"
        height="35"
@@ -286,7 +287,7 @@
        rx="3.5433071"
        ry="3.5433071" />
     <rect
-       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.42519685;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
+       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.42519686;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
        id="rect6788-9-4-1-4-4"
        width="80"
        height="35"
@@ -295,19 +296,19 @@
        rx="3.5433071"
        ry="3.5433071" />
     <path
-       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.42519685;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0;display:inline;stroke-dasharray:none"
+       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.42519686;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
        d="m 485,237.46171 c -3,-1 -5,1 -5,3.54331 l 0,47.91339 c 0,2.5433 2,4.5433 5,3.5433 l 54,-24 c 4,-2 4,-5 0,-7 z"
        id="rect6788-0-5-5"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="csscccc" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.77952756000000001;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;marker-end:url(#Arrow1Mend);display:inline;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;stroke:#000000;stroke-width:0.77952754;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Mend);display:inline"
        d="m 542.17858,264.89792 35.82142,0"
        id="path8845-9-3"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.77952756000000001;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;marker-end:url(#Arrow1Mend);display:inline;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;stroke:#000000;stroke-width:0.77952754;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Mend);display:inline"
        d="m 660,134.89792 50,0"
        id="path8845-9-7"
        inkscape:connector-curvature="0"
@@ -315,15 +316,15 @@
     <path
        transform="translate(443.93687,6.5133184)"
        sodipodi:type="arc"
-       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.06299213;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.0629921;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
        id="path9674-69"
        sodipodi:cx="236"
        sodipodi:cy="128.36218"
        sodipodi:rx="1"
        sodipodi:ry="1"
-       d="m 237,128.36218 a 1,1 0 1 1 -2,0 1,1 0 1 1 2,0 z" />
+       d="m 237,128.36218 c 0,0.55229 -0.44772,1 -1,1 -0.55228,0 -1,-0.44771 -1,-1 0,-0.55228 0.44772,-1 1,-1 0.55228,0 1,0.44772 1,1 z" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.77952756000000001;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;marker-end:url(#Arrow1Mend);display:inline;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;stroke:#000000;stroke-width:0.77952754;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Mend);display:inline"
        d="m 660,264.86722 50,0"
        id="path8845-9-7-6"
        inkscape:connector-curvature="0"
@@ -331,27 +332,27 @@
     <path
        transform="translate(443.93687,136.48267)"
        sodipodi:type="arc"
-       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.06299213;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.0629921;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
        id="path9674-69-7"
        sodipodi:cx="236"
        sodipodi:cy="128.36218"
        sodipodi:rx="1"
        sodipodi:ry="1"
-       d="m 237,128.36218 a 1,1 0 1 1 -2,0 1,1 0 1 1 2,0 z" />
+       d="m 237,128.36218 c 0,0.55229 -0.44772,1 -1,1 -0.55228,0 -1,-0.44771 -1,-1 0,-0.55228 0.44772,-1 1,-1 0.55228,0 1,0.44772 1,1 z" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.77952756;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;marker-end:url(#Arrow1Mend);display:inline;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;stroke:#000000;stroke-width:0.77952754;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Mend);display:inline"
        d="m 680,134.36218 0,-59.464287 c 0,-3 -2,-4.999996 -5,-4.999996 l -13,0"
        id="path8845-9-7-4"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.77952756;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;marker-end:url(#Arrow1Mend);display:inline;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;stroke:#000000;stroke-width:0.77952754;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Mend);display:inline"
        d="m 680,264.36218 0,-59.44643 c 0,-3 -2,-5 -5,-5 l -13,0"
        id="path8845-9-7-4-5"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.77952756;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;marker-end:url(#Arrow1Mend);display:inline;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;stroke:#000000;stroke-width:0.77952754;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Mend);display:inline"
        d="m 680,265.36218 0,59.55357 c 0,3 -2,5 -5,5 l -13,0"
        id="path8845-9-7-4-6"
        inkscape:connector-curvature="0"
@@ -369,19 +370,19 @@
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccc" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.77952756000000001;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;marker-end:url(#Arrow1Mend);display:inline;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;stroke:#000000;stroke-width:0.77952754;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Mend);display:inline"
        d="m 579.82143,199.84432 -14.82143,0 c -3,0 -5,-2 -5,-5 l 0,-54.92857 c 0,-3 2,-5 5,-5 l 13,0"
        id="path8845-9-7-4-4"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccc" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.77952756;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3.11811024,3.11811024;stroke-dashoffset:0;marker-end:url(#Arrow1Mend)"
+       style="fill:none;stroke:#000000;stroke-width:0.77952754;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3.11811024, 3.11811024;stroke-dashoffset:0;marker-end:url(#Arrow1Mend)"
        d="m 640,167.36218 -15,0 c -3,0 -5,-2 -5,-5 l 0,-8"
        id="path8845-1"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.77952756;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3.11811024,3.11811024;stroke-dashoffset:0;marker-end:url(#Arrow1Mend)"
+       style="fill:none;stroke:#000000;stroke-width:0.77952754;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3.11811024, 3.11811024;stroke-dashoffset:0;marker-end:url(#Arrow1Mend)"
        d="m 640,297.36218 -15,0 c -3,0 -5,-2 -5,-5 l 0,-8"
        id="path8845-1-5"
        inkscape:connector-curvature="0"
@@ -391,10 +392,11 @@
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="Text"
-     style="display:inline">
+     style="display:inline"
+     transform="translate(-459.58214,-52.149584)">
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Serif;-inkscape-font-specification:Sans Italic"
+       style="font-size:13px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Linux Libertine O;-inkscape-font-specification:Sans Italic"
        x="560"
        y="257.36218"
        id="text11756"
@@ -408,7 +410,7 @@
    id="tspan4109">L</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Serif;-inkscape-font-specification:Sans Italic"
+       style="font-size:13px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Linux Libertine O;-inkscape-font-specification:Sans Italic"
        x="652"
        y="169.36218"
        id="text11756-2"
@@ -424,7 +426,7 @@
    id="tspan4486">0</tspan></tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Serif;-inkscape-font-specification:Sans Italic"
+       style="font-size:13px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Linux Libertine O;-inkscape-font-specification:Sans Italic"
        x="695"
        y="257.36218"
        id="text11756-3"
@@ -438,7 +440,7 @@
    id="tspan4109-0">L</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Serif;-inkscape-font-specification:Sans Italic"
+       style="font-size:13px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Linux Libertine O;-inkscape-font-specification:Sans Italic"
        x="695"
        y="127.40292"
        id="text11756-5"
@@ -452,7 +454,7 @@
    id="tspan4109-7">C</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Serif;-inkscape-font-specification:Sans Italic"
+       style="font-size:13px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Linux Libertine O;-inkscape-font-specification:Sans Italic"
        x="546"
        y="169.36218"
        id="text11756-5-9"
@@ -467,7 +469,7 @@
    id="tspan4109-7-8">C</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Serif;-inkscape-font-specification:Sans Italic"
+       style="font-size:13px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Linux Libertine O;-inkscape-font-specification:Sans Italic"
        x="652"
        y="299.36218"
        id="text11756-2-7"
@@ -483,7 +485,7 @@
    id="tspan4486-5">0</tspan></tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Inconsolata LGC;-inkscape-font-specification:Inconsolata LGC"
        x="620"
        y="73.119774"
        id="text8815-8-3"
@@ -496,12 +498,12 @@
          id="tspan8821-8-7"
          style="font-size:10.5px">scale: <tspan
    id="tspan4065"
-   style="font-size:10.5px;font-style:oblique;-inkscape-font-specification:DejaVu Sans Mono Oblique"><tspan
+   style="font-size:10.5px;font-style:oblique;-inkscape-font-specification:Inconsolata LGC Oblique"><tspan
    id="tspan4548"
-   style="font-size:10.5px;font-style:normal;-inkscape-font-specification:DejaVu Sans Mono">1</tspan>/L</tspan></tspan></text>
+   style="font-size:10.5px;font-style:normal;-inkscape-font-specification:Inconsolata LGC">1</tspan>/L</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Inconsolata LGC;-inkscape-font-specification:Inconsolata LGC"
        x="620"
        y="138.11977"
        id="text8815-8-3-2"
@@ -513,7 +515,7 @@
          style="font-size:10.5px">integral</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Inconsolata LGC;-inkscape-font-specification:Inconsolata LGC"
        x="620"
        y="203.11977"
        id="text8815-8-3-6"
@@ -526,12 +528,12 @@
          id="tspan8821-8-7-1"
          style="font-size:10.5px">scale:-<tspan
    id="tspan4061"
-   style="font-size:10.5px;font-style:oblique;-inkscape-font-specification:DejaVu Sans Mono Oblique"><tspan
+   style="font-size:10.5px;font-style:oblique;-inkscape-font-specification:Inconsolata LGC Oblique"><tspan
    id="tspan4550"
-   style="font-size:10.5px;font-style:normal;-inkscape-font-specification:DejaVu Sans Mono">1</tspan>/C</tspan></tspan></text>
+   style="font-size:10.5px;font-style:normal;-inkscape-font-specification:Inconsolata LGC">1</tspan>/C</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Inconsolata LGC;-inkscape-font-specification:Inconsolata LGC"
        x="620"
        y="268.11978"
        id="text8815-8-3-6-3"
@@ -543,7 +545,7 @@
          style="font-size:10.5px">integral</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Inconsolata LGC;-inkscape-font-specification:Inconsolata LGC"
        x="620"
        y="333.11978"
        id="text8815-8-3-6-3-5"
@@ -556,10 +558,10 @@
          id="tspan8821-8-7-1-7-5"
          style="font-size:10.5px">scale:-<tspan
    id="tspan4057"
-   style="font-size:10.5px;font-style:oblique;-inkscape-font-specification:DejaVu Sans Mono Oblique">R/L</tspan></tspan></text>
+   style="font-size:10.5px;font-style:oblique;-inkscape-font-specification:Inconsolata LGC Oblique">R/L</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Inconsolata LGC;-inkscape-font-specification:Inconsolata LGC"
        x="489"
        y="268.43106"
        id="text9178-7"

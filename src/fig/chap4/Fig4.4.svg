@@ -9,11 +9,11 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
+   width="396.36417"
+   height="146.117"
    id="svg4154"
    version="1.1"
-   inkscape:version="0.48.0 r9654"
+   inkscape:version="0.48.3.1 r9886"
    sodipodi:docname="Fig4.4.svg">
   <defs
      id="defs4156">
@@ -68,33 +68,34 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="302.37203"
-     inkscape:cy="909.10624"
+     inkscape:cx="218.26687"
+     inkscape:cy="106.14924"
      inkscape:document-units="px"
-     inkscape:current-layer="layer4"
+     inkscape:current-layer="layer5"
      showgrid="false"
-     inkscape:window-width="1440"
-     inkscape:window-height="823"
+     inkscape:window-width="1920"
+     inkscape:window-height="1004"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
-       id="grid4162" />
+       id="grid4162"
+       originx="-84.610236px"
+       originy="-802.957px" />
   </sodipodi:namedview>
-  
   <metadata
-      id="metadata_4.4">
+     id="metadata_4.4">
     <rdf:RDF>
       <cc:Work
-          rdf:about="">
+         rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
-            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
         <dc:title>SICP Figure 4.4</dc:title>
         <cc:license
-            rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
-        <dc:description>Based on the diagram in Abelson, Sussman &amp; Sussman's "Structure and Interpretation of Computer Programs", 2nd ed.</dc:description>
+           rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
+        <dc:description>Based on the diagram in Abelson, Sussman &amp; Sussman's &quot;Structure and Interpretation of Computer Programs&quot;, 2nd ed.</dc:description>
         <dc:source>http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-29.html#%_fig_4.4</dc:source>
         <dc:creator>
           <cc:Agent>
@@ -114,30 +115,30 @@
         </dc:subject>
       </cc:Work>
       <cc:License
-          rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
+         rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
         <cc:permits
-            rdf:resource="http://creativecommons.org/ns#Reproduction" />
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
         <cc:permits
-            rdf:resource="http://creativecommons.org/ns#Distribution" />
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
         <cc:requires
-            rdf:resource="http://creativecommons.org/ns#Notice" />
+           rdf:resource="http://creativecommons.org/ns#Notice" />
         <cc:requires
-            rdf:resource="http://creativecommons.org/ns#Attribution" />
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
         <cc:permits
-            rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
         <cc:requires
-            rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
       </cc:License>
     </rdf:RDF>
   </metadata>
-
   <g
      inkscape:groupmode="layer"
      id="layer4"
      inkscape:label="Lines"
-     style="display:inline">
+     style="display:inline"
+     transform="translate(-84.610236,-103.28818)">
     <rect
-       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.53149606;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
+       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.53149605;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
        id="rect6788-7-9"
        width="100"
        height="59.999996"
@@ -152,7 +153,7 @@
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.77952756;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;stroke:#000000;stroke-width:0.77952754;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Mend)"
        d="m 300,142.36218 180,0"
        id="path8845-6-4"
        inkscape:connector-curvature="0"
@@ -168,40 +169,45 @@
      inkscape:groupmode="layer"
      id="layer5"
      inkscape:label="Text"
-     style="display:inline">
+     style="display:inline"
+     transform="translate(-84.610236,-103.28818)">
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:139.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:129.99999523%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
        x="110"
        y="112.36218"
        id="text4754"
-       sodipodi:linespacing="140%"><tspan
+       sodipodi:linespacing="130%"><tspan
          sodipodi:role="line"
          id="tspan4756"
          x="110"
-         y="112.36218">input stream</tspan><tspan
+         y="112.36218"
+         style="line-height:129.99999523%">input stream</tspan><tspan
          sodipodi:role="line"
          x="110"
-         y="127.76218"
-         id="tspan4758">of frames</tspan></text>
+         y="129.26218"
+         id="tspan4758"
+         style="line-height:129.99999523%">of frames</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:139.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:129.99999523%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
        x="320"
        y="112.36218"
        id="text4760"
-       sodipodi:linespacing="140%"><tspan
+       sodipodi:linespacing="130%"><tspan
          sodipodi:role="line"
          x="320"
          y="112.36218"
-         id="tspan4764">output stream of frames,</tspan><tspan
+         id="tspan4764"
+         style="line-height:129.99999523%">output stream of frames,</tspan><tspan
          sodipodi:role="line"
          x="320"
-         y="127.76218"
-         id="tspan4766">filtered and extended</tspan></text>
+         y="129.26218"
+         id="tspan4766"
+         style="line-height:129.99999523%">filtered and extended</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Inconsolata LGC;-inkscape-font-specification:Inconsolata LGC"
        x="250"
        y="135.36218"
        id="text4781"
@@ -212,7 +218,7 @@
          y="135.36218">query</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans Mono;-inkscape-font-specification:DejaVu Sans Mono"
+       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Inconsolata LGC;-inkscape-font-specification:Inconsolata LGC"
        x="250"
        y="157.36218"
        id="text4785"
@@ -223,18 +229,20 @@
          y="157.36218">(job ?x ?y)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:139.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:129.99999523%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
        x="250"
        y="232.36218"
        id="text4775"
-       sodipodi:linespacing="140%"><tspan
+       sodipodi:linespacing="130%"><tspan
          sodipodi:role="line"
          id="tspan4777"
          x="250"
-         y="232.36218">stream of assertions</tspan><tspan
+         y="232.36218"
+         style="line-height:129.99999523%">stream of assertions</tspan><tspan
          sodipodi:role="line"
          x="250"
-         y="247.76218"
-         id="tspan4779">from data base</tspan></text>
+         y="249.26218"
+         id="tspan4779"
+         style="line-height:129.99999523%">from data base</tspan></text>
   </g>
 </svg>

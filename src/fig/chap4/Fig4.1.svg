@@ -9,65 +9,69 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
+   width="388.39911"
+   height="164.48775"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.0 r9654"
+   inkscape:version="0.48.3.1 r9886"
    sodipodi:docname="Fig4.1.svg">
   <defs
      id="defs4">
     <marker
        inkscape:stockid="Arrow2Lstart"
        orient="auto"
-       refY="0.0"
-       refX="0.0"
+       refY="0"
+       refX="0"
        id="Arrow2Lstart"
        style="overflow:visible">
       <path
          id="path3899"
-         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round"
-         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
-         transform="scale(1.1) translate(1,0)" />
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         inkscape:connector-curvature="0" />
     </marker>
     <marker
        inkscape:stockid="Arrow1Mstart"
        orient="auto"
-       refY="0.0"
-       refX="0.0"
+       refY="0"
+       refX="0"
        id="Arrow1Mstart"
        style="overflow:visible">
       <path
          id="path3887"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
-         transform="scale(0.4) translate(10,0)" />
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         inkscape:connector-curvature="0" />
     </marker>
     <marker
        inkscape:stockid="Arrow1Lstart"
        orient="auto"
-       refY="0.0"
-       refX="0.0"
+       refY="0"
+       refX="0"
        id="Arrow1Lstart"
        style="overflow:visible">
       <path
          id="path3881"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
-         transform="scale(0.8) translate(12.5,0)" />
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
     </marker>
     <marker
        inkscape:stockid="Arrow1Lend"
        orient="auto"
-       refY="0.0"
-       refX="0.0"
+       refY="0"
+       refX="0"
        id="Arrow1Lend"
-       style="overflow:visible;">
+       style="overflow:visible">
       <path
          id="path3884"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
-         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
     </marker>
   </defs>
   <sodipodi:namedview
@@ -78,33 +82,34 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="245.2357"
-     inkscape:cy="917.04805"
+     inkscape:cx="190.53278"
+     inkscape:cy="84.291925"
      inkscape:document-units="px"
      inkscape:current-layer="layer3"
      showgrid="false"
-     inkscape:window-width="1440"
-     inkscape:window-height="823"
+     inkscape:window-width="1920"
+     inkscape:window-height="1004"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
-       id="grid2985" />
+       id="grid2985"
+       originx="-55.208px"
+       originy="-832.75613px" />
   </sodipodi:namedview>
-  
   <metadata
-      id="metadata_4.1">
+     id="metadata_4.1">
     <rdf:RDF>
       <cc:Work
-          rdf:about="">
+         rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
-            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
         <dc:title>SICP Figure 4.1</dc:title>
         <cc:license
-            rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
-        <dc:description>Based on the diagram in Abelson, Sussman &amp; Sussman's "Structure and Interpretation of Computer Programs", 2nd ed.</dc:description>
+           rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
+        <dc:description>Based on the diagram in Abelson, Sussman &amp; Sussman's &quot;Structure and Interpretation of Computer Programs&quot;, 2nd ed.</dc:description>
         <dc:source>http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-26.html#%_fig_4.1</dc:source>
         <dc:creator>
           <cc:Agent>
@@ -121,28 +126,28 @@
         </dc:subject>
       </cc:Work>
       <cc:License
-          rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
+         rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
         <cc:permits
-            rdf:resource="http://creativecommons.org/ns#Reproduction" />
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
         <cc:permits
-            rdf:resource="http://creativecommons.org/ns#Distribution" />
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
         <cc:requires
-            rdf:resource="http://creativecommons.org/ns#Notice" />
+           rdf:resource="http://creativecommons.org/ns#Notice" />
         <cc:requires
-            rdf:resource="http://creativecommons.org/ns#Attribution" />
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
         <cc:permits
-            rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
         <cc:requires
-            rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
       </cc:License>
     </rdf:RDF>
   </metadata>
-
   <g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Lines"
-     style="display:inline">
+     style="display:inline"
+     transform="translate(-55.208,-55.118304)">
     <path
        sodipodi:type="arc"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
@@ -151,7 +156,7 @@
        sodipodi:cy="137.36218"
        sodipodi:rx="75"
        sodipodi:ry="75"
-       d="m 320,137.36218 a 75,75 0 1 1 -150,0 75,75 0 1 1 150,0 z" />
+       d="m 320,137.36218 c 0,41.42136 -33.57864,75 -75,75 -41.42136,0 -75,-33.57864 -75,-75 0,-41.421354 33.57864,-74.999997 75,-74.999997 41.42136,0 75,33.578643 75,74.999997 z" />
     <path
        id="path3770-3-3"
        transform="matrix(1,0,0,-1,0,277.22437)"
@@ -172,7 +177,7 @@
        sodipodi:cy="137.36218"
        sodipodi:rx="115"
        sodipodi:ry="115"
-       d="m 163.68272,218.67946 a 115,115 0 0 1 0,-162.634556"
+       d="m 163.68272,218.67946 c -44.91029,-44.91029 -44.91029,-117.72426 0,-162.634556"
        sodipodi:start="2.3561945"
        sodipodi:end="3.9269908"
        sodipodi:open="true" />
@@ -184,7 +189,7 @@
        sodipodi:cy="137.36218"
        sodipodi:rx="115"
        sodipodi:ry="115"
-       d="m 326.31728,56.044899 a 115,115 0 0 1 0,162.634561"
+       d="m 326.31728,56.044899 c 44.91029,44.910291 44.91029,117.724261 0,162.634561 0,0 0,0 0,0"
        sodipodi:start="5.4977871"
        sodipodi:end="7.0685835"
        sodipodi:open="true" />
@@ -193,10 +198,11 @@
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="Text"
-     style="display:inline">
+     style="display:inline"
+     transform="translate(-55.208,-55.118304)">
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans Mono;-inkscape-font-specification:Sans"
+       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Inconsolata LGC;-inkscape-font-specification:Sans"
        x="207.32143"
        y="140.71933"
        id="text3813"
@@ -207,7 +213,7 @@
          y="140.71933">Eval</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans Mono;-inkscape-font-specification:Sans"
+       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Inconsolata LGC;-inkscape-font-specification:Sans"
        x="282.32141"
        y="140.71933"
        id="text3817"
@@ -218,33 +224,37 @@
          y="140.71933">Apply</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:139.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:129.99999523%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
        x="55"
        y="133.71931"
        id="text5250"
-       sodipodi:linespacing="140%"><tspan
+       sodipodi:linespacing="130%"><tspan
          sodipodi:role="line"
          id="tspan5252"
          x="55"
-         y="133.71931">Procedure,</tspan><tspan
+         y="133.71931"
+         style="line-height:129.99999523%">Procedure,</tspan><tspan
          sodipodi:role="line"
          x="55"
-         y="149.11931"
-         id="tspan5254">Arguments</tspan></text>
+         y="150.61931"
+         id="tspan5254"
+         style="line-height:129.99999523%">Arguments</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:139.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:129.99999523%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
        x="375"
        y="133.79077"
        id="text5256"
-       sodipodi:linespacing="140%"><tspan
+       sodipodi:linespacing="130%"><tspan
          sodipodi:role="line"
          id="tspan5258"
          x="375"
-         y="133.79077">Expression,</tspan><tspan
+         y="133.79077"
+         style="line-height:129.99999523%">Expression,</tspan><tspan
          sodipodi:role="line"
          x="375"
-         y="149.19077"
-         id="tspan5260">Environment</tspan></text>
+         y="150.69077"
+         id="tspan5260"
+         style="line-height:129.99999523%">Environment</tspan></text>
   </g>
 </svg>

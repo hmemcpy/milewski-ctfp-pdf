@@ -9,11 +9,11 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448"
-   height="1052.3622"
+   width="200.49533"
+   height="195.7562"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.0 r9654"
+   inkscape:version="0.48.3.1 r9886"
    sodipodi:docname="Fig2.15a.svg"
    style="display:inline">
   <defs
@@ -152,34 +152,43 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="208.12331"
-     inkscape:cy="903.2197"
+     inkscape:zoom="1.979899"
+     inkscape:cx="187.63955"
+     inkscape:cy="62.144598"
      inkscape:document-units="px"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer3"
      showgrid="false"
-     inkscape:window-width="1440"
-     inkscape:window-height="823"
+     inkscape:window-width="1920"
+     inkscape:window-height="1004"
      inkscape:window-x="0"
      inkscape:window-y="24"
-     inkscape:window-maximized="1">
+     inkscape:window-maximized="1"
+     fit-margin-top="1"
+     fit-margin-left="1"
+     fit-margin-right="1"
+     fit-margin-bottom="1">
     <inkscape:grid
        type="xygrid"
-       id="grid2985" />
+       id="grid2985"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       originx="-61.247px"
+       originy="-800.669px" />
   </sodipodi:namedview>
-  
   <metadata
-      id="metadata_2.15">
+     id="metadata_2.15">
     <rdf:RDF>
       <cc:Work
-          rdf:about="">
+         rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
-            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
         <dc:title>SICP Figure 2.15</dc:title>
         <cc:license
-            rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
-        <dc:description>Based on the diagram in Abelson, Sussman &amp; Sussman's "Structure and Interpretation of Computer Programs", 2nd ed.</dc:description>
+           rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
+        <dc:description>Based on the diagram in Abelson, Sussman &amp; Sussman's &quot;Structure and Interpretation of Computer Programs&quot;, 2nd ed.</dc:description>
         <dc:source>http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-15.html#%_fig_2.15</dc:source>
         <dc:creator>
           <cc:Agent>
@@ -197,28 +206,28 @@
         </dc:subject>
       </cc:Work>
       <cc:License
-          rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
+         rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
         <cc:permits
-            rdf:resource="http://creativecommons.org/ns#Reproduction" />
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
         <cc:permits
-            rdf:resource="http://creativecommons.org/ns#Distribution" />
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
         <cc:requires
-            rdf:resource="http://creativecommons.org/ns#Notice" />
+           rdf:resource="http://creativecommons.org/ns#Notice" />
         <cc:requires
-            rdf:resource="http://creativecommons.org/ns#Attribution" />
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
         <cc:permits
-            rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
         <cc:requires
-            rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
       </cc:License>
     </rdf:RDF>
   </metadata>
-
   <g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Lines"
-     style="display:inline">
+     style="display:inline"
+     transform="translate(-61.247,-55.936986)">
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;marker-start:url(#Arrow1Mstart)"
        d="M 243.91071,123.18361 130,192.36218"
@@ -245,16 +254,16 @@
        sodipodi:cy="212.36218"
        sodipodi:rx="5"
        sodipodi:ry="5"
-       d="m 240,212.36218 a 5,5 0 1 1 -10,0 5,5 0 1 1 10,0 z"
+       d="m 240,212.36218 c 0,2.76143 -2.23858,5 -5,5 -2.76142,0 -5,-2.23857 -5,-5 0,-2.76142 2.23858,-5 5,-5 2.76142,0 5,2.23858 5,5 z"
        transform="matrix(0.40000028,0,0,0.40000028,125.99993,127.41725)" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.8503937;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:5.1023622,5.1023622;stroke-dashoffset:0;marker-start:none;display:inline"
+       style="fill:none;stroke:#000000;stroke-width:0.85039371;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:5.1023622, 5.1023622;stroke-dashoffset:0;marker-start:none;display:inline"
        d="M 205,57.362183 90,127.36218"
        id="path5021-4"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.8503937;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:5.1023622,5.1023622;stroke-dashoffset:0;marker-start:none;display:inline"
+       style="fill:none;stroke:#000000;stroke-width:0.85039371;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:5.1023622, 5.1023622;stroke-dashoffset:0;marker-start:none;display:inline"
        d="m 205,57.362185 40,64.999995"
        id="path5953-6"
        inkscape:connector-curvature="0"
@@ -264,10 +273,11 @@
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="Text"
-     style="display:inline">
+     style="display:inline"
+     transform="translate(-61.247,-55.936986)">
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
        x="228"
        y="152.36218"
        id="text3000"
@@ -275,18 +285,21 @@
          sodipodi:role="line"
          x="228"
          y="152.36218"
-         id="tspan3004">frame</tspan><tspan
+         id="tspan3004"
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O">frame</tspan><tspan
          sodipodi:role="line"
          x="228"
-         y="166.11218"
-         id="tspan3008">edge1</tspan><tspan
+         y="168.61218"
+         id="tspan3008"
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O">edge1</tspan><tspan
          sodipodi:role="line"
          x="228"
-         y="179.86218"
-         id="tspan3010">vector</tspan></text>
+         y="184.86218"
+         id="tspan3010"
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O">vector</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
        x="62"
        y="157.36218"
        id="text3000-7"
@@ -294,48 +307,56 @@
          sodipodi:role="line"
          x="62"
          y="157.36218"
-         id="tspan3004-3">frame</tspan><tspan
+         id="tspan3004-3"
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O">frame</tspan><tspan
          sodipodi:role="line"
          x="62"
-         y="171.11218"
-         id="tspan3008-3">edge2</tspan><tspan
+         y="173.61218"
+         id="tspan3008-3"
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O">edge2</tspan><tspan
          sodipodi:role="line"
          x="62"
-         y="184.86218"
-         id="tspan3010-9">vector</tspan></text>
+         y="189.86218"
+         id="tspan3010-9"
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O">vector</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
        x="130"
-       y="215.60458"
+       y="214.89029"
        id="text3039"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          x="130"
-         y="215.60458"
-         id="tspan3043">frame</tspan><tspan
+         y="214.89029"
+         id="tspan3043"
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O">frame</tspan><tspan
          sodipodi:role="line"
          x="130"
-         y="229.35458"
-         id="tspan3045">origin</tspan><tspan
+         y="231.14029"
+         id="tspan3045"
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O">origin</tspan><tspan
          sodipodi:role="line"
          x="130"
-         y="243.10458"
-         id="tspan3053">vector</tspan></text>
+         y="247.39029"
+         id="tspan3053"
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O">vector</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
        x="185"
-       y="229.36218"
+       y="231.36218"
        id="text3055"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          x="185"
-         y="229.36218"
-         id="tspan3059">(0, 0) point on </tspan><tspan
+         y="231.36218"
+         id="tspan3059"
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O">(0, 0) point on </tspan><tspan
          sodipodi:role="line"
          x="185"
-         y="243.11218"
-         id="tspan3994">display screen</tspan></text>
+         y="247.61218"
+         id="tspan3994"
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O">display screen</tspan></text>
   </g>
 </svg>

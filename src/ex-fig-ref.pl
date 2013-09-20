@@ -1,19 +1,19 @@
 #! /usr/bin/perl -w
 
-###################################################
+ ################################################# 
+#                                                 #
 #  Generates tabulated cross references           #
 #  pointing to all exercises or figures in SICP.  #
-#  Usage: ./ex-fig-ref.pl -e > exercises.texi     #
-#  or ./ex-fig-ref.pl -f > figures.texi           #
-#  (both of which are @included by sicp.texi).    #
+#  Usage: ./ex-fig-ref.pl -e > exercises.tex      #
+#  or ./ex-fig-ref.pl -f > figures.tex            #
+#  (both of which will be read in by sicp.tex).   #
 #                                                 #
-#  © 2012 Andres Raba / License: GNU GPL v.3      #
-###################################################
+#  © 2013 Andres Raba / License: GNU GPL v.3      #
+#                                                 #
+ ################################################# 
 
-use Math::BigFloat;
 
-$columns = 12;		# no. of columns in the table
-$squeeze = 0.70;	# decrease first column width 
+$columns = 10;		# no. of columns in the table
 
 %ex_per_chap = (	# how many exercises per chapter
 	1 => 46,
@@ -45,35 +45,21 @@ if (defined($ARGV[0]) and $ARGV[0] eq "-e") {
 
 foreach $chap_no (sort keys(%ref_per_chap)) {
 
-	print "\@subsubheading Chapter $chap_no \n\n";
-	print "\@multitable \@columnfractions ";
-
-	$frac = Math::BigFloat->new(1.0 / $columns);
-	# each column as a fraction of page width
-
-	$roundfrac = $frac->fround(2);		
-	# is there a simpler way to round?
-
-	print $squeeze * $roundfrac, " ";
-	for ($i = 2; $i <= $columns; $i++) {
-		print "$roundfrac ";
-	}
-	print "\n";
+	print "\\subsubsection*\{Chapter $chap_no\} \n\n";
+	print "\\begin\{tabular\}\{" . 'l' x $columns . "\}\n";
 
 	for ($ref_no = 1; $ref_no <= $ref_per_chap{$chap_no}; $ref_no++) {
 
-		if (($ref_no == 1) || ((($ref_no - 1) % $columns) == 0)) {
-			print "\@item \n";
+		if ($ref_no != 1 and (($ref_no - 1) % $columns) == 0) {
+			print "\n\\\\ \n";
 		}
 
-		print "\@ref{$reftype $chap_no.$ref_no,,$chap_no.$ref_no}";
+		print "\\hyperref[$reftype $chap_no.$ref_no]{$chap_no.$ref_no}";
 
 		if (($ref_no % $columns) != 0) {
-			print " \@tab \n";
-		} else {
-			print "\n";
-		}
+			print " \&\n";
+		} 
 	}
 
-	print "\@end multitable \n\n";
+	print "\\end\{tabular\} \n\n";
 }

@@ -1,21 +1,6 @@
+The commands for compilation are:
 
+./texi-to-latex.pl sicp.texi ; xelatex sicp.tex
 
-                            sicp.texi
-                           ===========
-
-  ---------------------------------------------------------------
-    This is the Texinfo source of Structure and Interpretation 
-    of Computer Programs (SICP), 2nd ed.  by Abelson & Sussman. 
-  ---------------------------------------------------------------
-
-          This work is licensed under a Creative Commons 
-          Attribution-ShareAlike 3.0 Unported License 
-          http://creativecommons.org/licenses/by-sa/3.0/
-
-  ---------------------------------------------------------------
-
-          To compile the source, producing a PDF, enter:
-
-          texi2pdf sicp.texi
-
-  ---------------------------------------------------------------
+You may need to run xelatex two or three times 
+to get labels and cross-references right.

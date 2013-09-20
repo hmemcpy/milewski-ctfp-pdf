@@ -1,12 +1,12 @@
 
     LICENSING TERMS
  
- 1. sicp.texi, sicp.pdf, and illustrations in directory 'fig' 
+ 1. sicp.texi, sicp.tex, sicp.pdf, and illustrations in directory 'fig' 
     are licensed under Creative Commons Attribution-ShareAlike 3.0 
     Unported License (http://creativecommons.org/licenses/by-sa/3.0/).
  
- 2. The configuration and macro files needed to compile the book -- 
-    ex-fig-ref.pl, texinfo.tex, and utopia.tex -- are under GNU GPL v.3:
+ 2. The script files ex-fig-ref.pl, survey.rb, and texi-to-latex.pl 
+    are under GNU GPL v.3:
 
 
                     GNU GENERAL PUBLIC LICENSE
