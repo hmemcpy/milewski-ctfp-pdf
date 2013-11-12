@@ -290,7 +290,7 @@ Montreal, Toronto
 
 \vspace{1.26em}
 \noindent
-Unofficial Texinfo Format \href{http://sicpebook.wordpress.com}{2.andresraba5} (September 20, 2013),\\ 
+Unofficial Texinfo Format \href{http://sicpebook.wordpress.com}{2.andresraba5.1} (November 12, 2013),\\ 
 based on \href{http://www.neilvandyke.org/sicp-texi/}{2.neilvandyke4} (January 10, 2007).
 
 \end{small}
@@ -304,8 +304,8 @@ based on \href{http://www.neilvandyke.org/sicp-texi/}{2.neilvandyke4} (January 1
 %            Structure and Interpretation of Computer Programs, 2e
 %             Unofficial Texinfo Format
 %
-% utfversion      2.andresraba5 
-% utfversiondate  September 20, 2013
+% utfversion      2.andresraba5.1 
+% utfversiondate  November 12, 2013
 %
 %             This file is licensed under a Creative Commons 
 %             Attribution-ShareAlike 3.0 Unported License 
@@ -1884,7 +1884,7 @@ actions in the different cases according to the rule
  |x| = \left\{ \begin{array}{r@{\quad \mathrm{if} \quad}l}	 	 
         x  &  x > 0, \\
 	0  &  x = 0, \\
-       -x  &  x < 0. \end{array} \right. 
+  \!\! -x  &  x < 0. \end{array} \right. 
 \end{displaymath}
 This construct is called a \newterm{case analysis}, and there is a special form
 in Lisp for notating such a case analysis.  It is called \code{cond} (which
@@ -9568,7 +9568,7 @@ next.
 We can imagine many ways to use list structure to represent algebraic
 expressions.  For example, we could use lists of symbols that mirror the usual
 algebraic notation, representing \( ax + b \) as the list \code{(a * x +
-b)} .  However, one especially straightforward choice is to use the same
+b)}.  However, one especially straightforward choice is to use the same
 parenthesized prefix notation that Lisp uses for combinations; that is, to
 represent \( ax + b \) as \code{(+ (* a x) b)}.  Then our data
 representation for the differentiation problem is as follows:
