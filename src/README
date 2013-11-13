@@ -1,6 +1,0 @@
-The commands for compilation are:
-
-./texi-to-latex.pl sicp.texi ; xelatex sicp.tex
-
-You may need to run xelatex two or three times 
-to get labels and cross-references right.

@@ -12,19 +12,31 @@ Biggest change in this revision (2.andresraba5) is the conversion to LaTeX, whic
 Source
 ------
 
-The `src` directory contains both Texinfo and LaTeX sources. To recompile the book, enter:
+The `src` directory contains both Texinfo and LaTeX sources. To recompile the book, go there and enter:
 
 ```bash
-$ ./texi-to-latex.pl sicp.texi ; xelatex sicp.tex
+$ make
 ```
 
-You may need to issue the `xelatex sicp.tex` command again once or twice to get the labels and cross-references right.
+The file `preamble.tex` contains all the configuration and style declarations. Note that the LaTeX file `sicp.tex` will be generated on the fly, overwriting the previous version. To keep `sicp.texi` and `sicp.tex` in sync, I make changes to `sicp.texi,` which is already a hybrid of Texinfo and LaTeX code. This is fine, because all non-Texinfo content remains unchanged by the script.
 
-The Perl script pulls in both `preamble.tex` and `postamble.tex.` The preamble contains all the configuration and style declarations. Note that the LaTeX file `sicp.tex` will be generated on the fly, overwriting the previous version. To keep `sicp.texi` and `sicp.tex` in sync, I make changes to `sicp.texi,` which is already a hybrid of Texinfo and LaTeX code. This is fine, because all non-Texinfo content remains unchanged by the script.
+Chances for successful compilation are increased if you have almost complete installation of recent TeX Live distribution (the pdf here is compiled with 2012 release). The needed OpenType fonts must be installed in the operating system. You also need Inkscape to recreate image PDFs from SVGs.
 
-Chances for successful compilation by `xelatex` are increased if you have almost complete installation of recent TeX Live distribution (the pdf here is compiled with 2012 edition). The needed OpenType fonts must be installed in the operating system.
+If compilation stops with "LaTeX Error: Too many unprocessed floats.", you could try to increase the width and height of text area in [preamble](https://github.com/sarabander/sicp-pdf/blob/master/src/preamble.tex#L70-L71). Newer TeX Live or updated fonts could result in different character metrics, so that some figures no longer fit. The problem is reported in issue [#5](https://github.com/sarabander/sicp-pdf/issues/5).
 
-If compilation stops with "LaTeX Error: Too many unprocessed floats.", you could try to increase the width and height of text area in [preamble](https://github.com/sarabander/sicp-pdf/blob/master/src/preamble.tex#L70-L71). Newer TeX Live or fonts could result in different character metrics, so that some figures no longer fit. The problem is reported in issue [#5](https://github.com/sarabander/sicp-pdf/issues/5).
+To clean up after the build:
+
+```bash
+$ make clean
+```
+
+This deletes the temporary files written during sicp.pdf creation, including sicp.pdf itself. Move it up to root directory if you want to keep it.
+
+To remove all the generated PDFs and auxiliary files in the whole `src` tree:
+
+```bash
+$ make clean-all
+```
 
 Acknowledgements
 ----------------
@@ -34,6 +46,7 @@ Acknowledgements
 * Gavrie Philipson
 * J. E. Johnson
 * Mingshen Sun
+* holomorph
 
 License
 -------
