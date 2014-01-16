@@ -54,3 +54,8 @@ License
 The files `sicp.texi, sicp.tex, sicp.pdf,` and the diagrams in directory `src/fig` are licensed under Creative Commons Attribution-ShareAlike 3.0 Unported License ([cc by-sa](http://creativecommons.org/licenses/by-sa/3.0/)).
           
 The script files `ex-fig-ref.pl, survey.rb,` and `texi-to-latex.pl` are licensed under GNU General Public License version 3 (for details, see src/LICENSE).
+
+Sister project
+--------------
+
+A new [HTML5 version](https://github.com/sarabander/sicp) is out, bringing the advantages of adjustable font size and reflowable text to mobile reading.
