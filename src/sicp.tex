@@ -67,9 +67,9 @@
 % Page geometry for 10-inch tablets:
 \usepackage[papersize={148mm,197mm},
             top=21mm,
-            textwidth=111mm,
-            textheight=148mm,
-            hcentering,
+            textwidth=111mm,  % increase one or both of these by 1mm or so to
+            textheight=148mm, % make the source compile with TeX Live 2013
+            hcentering,       % if you get "Too many unprocessed floats" error
 ]{geometry}
 
 \usepackage{titlesec}  % to change the appearance of section titles 
@@ -89,14 +89,14 @@
 
 % Document colors 
 \definecolor{SchemeLight}  {HTML} {686868}
-\definecolor{SchemeSteel}  {HTML} {787878}
+\definecolor{SchemeSteel}  {HTML} {888888}
 \definecolor{SchemeDark}   {HTML} {262626}
 \definecolor{SchemeBlue}   {HTML} {4172A3}
 \definecolor{SchemeGreen}  {HTML} {487818}
 \definecolor{SchemeBrown}  {HTML} {A07040}
 \definecolor{SchemeRed}    {HTML} {AD4D3A}
 \definecolor{SchemeViolet} {HTML} {7040A0}
-\definecolor{DropCapGray}  {HTML} {A8A8A8}
+\definecolor{DropCapGray}  {HTML} {B8B8B8}
 \definecolor{ChapterGray}  {HTML} {C8C8C8}
 
 \usepackage{lettrine}  % adds commands that make drop capitals
@@ -290,7 +290,7 @@ Montreal, Toronto
 
 \vspace{1.26em}
 \noindent
-Unofficial Texinfo Format \href{http://sicpebook.wordpress.com}{2.andresraba5.1} (November 12, 2013),\\ 
+Unofficial Texinfo Format \href{http://sicpebook.wordpress.com}{2.andresraba5.2} (February 10, 2014),\\ 
 based on \href{http://www.neilvandyke.org/sicp-texi/}{2.neilvandyke4} (January 10, 2007).
 
 \end{small}
@@ -304,8 +304,8 @@ based on \href{http://www.neilvandyke.org/sicp-texi/}{2.neilvandyke4} (January 1
 %            Structure and Interpretation of Computer Programs, 2e
 %             Unofficial Texinfo Format
 %
-% utfversion      2.andresraba5.1 
-% utfversiondate  November 12, 2013
+% utfversion      2.andresraba5.2 
+% utfversiondate  February 10, 2014
 %
 %             This file is licensed under a Creative Commons 
 %             Attribution-ShareAlike 3.0 Unported License 
@@ -24495,7 +24495,7 @@ modifying the ordinary Scheme evaluator.
 
 To extend Scheme to support nondeterminism, we introduce a new special form
 called \code{amb}.\footnote{The idea of \code{amb} for nondeterministic
-programming was first described in 1961 by John McCarthy (see \link{McCarthy 1967}).}
+programming was first described in 1961 by John McCarthy (see \link{McCarthy 1963}).}
 The expression
 
 \begin{scheme}
@@ -35530,7 +35530,7 @@ Functional Programming}, pp. 106-118.
 \phantomsection \label{Hanson 1991}
 Hanson, Christopher P.  1991.  A syntactic closures macro facility.  \textit{Lisp
 Pointers}, 4(3).
-\href{ftp://ftp.cs.indiana.edu/pub/scheme-repository/doc/prop/synclo.ps.gz}{\code{(Online)}}
+\href{http://groups.csail.mit.edu/mac/ftpdir/scheme-reports/synclo.ps}{\code{(Online)}}
 
 \phantomsection \label{Hardy 1921}
 Hardy, Godfrey H.  1921.  Srinivasa Ramanujan.  \textit{Proceedings of the London
@@ -35556,8 +35556,8 @@ Implementation}. Englewood Cliffs, N.J.: Prentice-Hall.
 \phantomsection \label{Henderson 1982}
 Henderson. Peter. 1982. Functional Geometry. In \textit{Conference Record of the
 1982 \acronym{ACM} Symposium on Lisp and Functional Programming}, pp. 179-187.
-\href{http://users.ecs.soton.ac.uk/ph/funcgeo.pdf}{\code{(Online)}}
-\href{http://users.ecs.soton.ac.uk/ph/papers/funcgeo2.pdf}{\code{(2002 version)}}
+\href{http://pmh-systems.co.uk/phAcademic/papers/funcgeo.pdf}{\code{(Online)}}
+\href{http://eprints.soton.ac.uk/257577/1/funcgeo2.pdf}{\code{(2002 version)}}
 
 \phantomsection \label{Hewitt (1969)}
 Hewitt, Carl E.  1969.  \acronym{PLANNER}: A language for proving
@@ -35669,19 +35669,19 @@ McAllester, David Allen.  1980.  An outlook on truth maintenance.  Memo 551,
 McCarthy, John.  1960.  Recursive functions of symbolic expressions and their
 computation by machine.  \textit{Communications of the \acronym{ACM}}
 3(4): 184-195.
-\href{http://www-formal.stanford.edu/jmc/recursive.html}{\code{(Online)}}
+\href{http://innovation.it.uts.edu.au/projectjmc/articles/recursive.html}{\code{(Online)}}
 
-\phantomsection \label{McCarthy 1967}
-McCarthy, John.  1967.  A basis for a mathematical theory of computation.  In
+\phantomsection \label{McCarthy 1963}
+McCarthy, John.  1963.  A basis for a mathematical theory of computation.  In
 \textit{Computer Programming and Formal Systems}, edited by P. Braffort and
 D. Hirschberg.  North-Holland.
-\href{http://www-formal.stanford.edu/jmc/basis.html}{\code{(Online)}}
+\href{http://innovation.it.uts.edu.au/projectjmc/articles/basis.html}{\code{(Online)}}
 
 \phantomsection \label{McCarthy 1978}
 McCarthy, John.  1978.  The history of Lisp.  In \textit{Proceedings of the
 \acronym{ACM} \acronym{SIGPLAN} Conference on the History of Programming
 Languages}.
-\href{http://www-formal.stanford.edu/jmc/history/lisp.html}{\code{(Online)}}
+\href{http://innovation.it.uts.edu.au/projectjmc/articles/lisp.html}{\code{(Online)}}
 
 \phantomsection \label{McCarthy et al. 1965}
 McCarthy, John, P. W. Abrahams, D. J. Edwards, T. P. Hart, and M. I.  Levin.

@@ -49,7 +49,7 @@ Montreal, Toronto
 
 @sp 1.26
 @noindent
-Unofficial Texinfo Format @url{http://sicpebook.wordpress.com, 2.andresraba5.1} (November 12, 2013),@* 
+Unofficial Texinfo Format @url{http://sicpebook.wordpress.com, 2.andresraba5.2} (February 10, 2014),@* 
 based on @url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10, 2007).
 
 \end{small}
@@ -63,8 +63,8 @@ based on @url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10
 @settitle            Structure and Interpretation of Computer Programs, 2e
 @comment             Unofficial Texinfo Format
 @comment
-@set utfversion      2.andresraba5.1 
-@set utfversiondate  November 12, 2013
+@set utfversion      2.andresraba5.2 
+@set utfversiondate  February 10, 2014
 @comment
 @comment             This file is licensed under a Creative Commons 
 @comment             Attribution-ShareAlike 3.0 Unported License 
@@ -24870,7 +24870,7 @@ modifying the ordinary Scheme evaluator.
 
 To extend Scheme to support nondeterminism, we introduce a new special form
 called @code{amb}.@footnote{The idea of @code{amb} for nondeterministic
-programming was first described in 1961 by John McCarthy (see @ref{McCarthy 1967}).}
+programming was first described in 1961 by John McCarthy (see @ref{McCarthy 1963}).}
 The expression
 
 @lisp
@@ -36002,7 +36002,7 @@ Functional Programming}, pp. 106-118.
 \phantomsection @anchor{Hanson 1991}
 Hanson, Christopher P.  1991.  A syntactic closures macro facility.  @cite{Lisp
 Pointers}, 4(3).
-@url{ftp://ftp.cs.indiana.edu/pub/scheme-repository/doc/prop/synclo.ps.gz, @code{(Online)}}
+@url{http://groups.csail.mit.edu/mac/ftpdir/scheme-reports/synclo.ps, @code{(Online)}}
 
 \phantomsection @anchor{Hardy 1921}
 Hardy, Godfrey H.  1921.  Srinivasa Ramanujan.  @cite{Proceedings of the London
@@ -36028,8 +36028,8 @@ Implementation}. Englewood Cliffs, N.J.: Prentice-Hall.
 \phantomsection @anchor{Henderson 1982}
 Henderson. Peter. 1982. Functional Geometry. In @cite{Conference Record of the
 1982 @acronym{ACM} Symposium on Lisp and Functional Programming}, pp. 179-187.
-@url{http://users.ecs.soton.ac.uk/ph/funcgeo.pdf, @code{(Online)}}
-@url{http://users.ecs.soton.ac.uk/ph/papers/funcgeo2.pdf, @code{(2002 version)}}
+@url{http://pmh-systems.co.uk/phAcademic/papers/funcgeo.pdf, @code{(Online)}}
+@url{http://eprints.soton.ac.uk/257577/1/funcgeo2.pdf, @code{(2002 version)}}
 
 \phantomsection @anchor{Hewitt (1969)}
 Hewitt, Carl E.  1969.  @acronym{PLANNER}: A language for proving
@@ -36141,19 +36141,19 @@ McAllester, David Allen.  1980.  An outlook on truth maintenance.  Memo 551,
 McCarthy, John.  1960.  Recursive functions of symbolic expressions and their
 computation by machine.  @cite{Communications of the @acronym{ACM}}
 3(4): 184-195.
-@url{http://www-formal.stanford.edu/jmc/recursive.html, @code{(Online)}}
+@url{http://innovation.it.uts.edu.au/projectjmc/articles/recursive.html, @code{(Online)}}
 
-\phantomsection @anchor{McCarthy 1967}
-McCarthy, John.  1967.  A basis for a mathematical theory of computation.  In
+\phantomsection @anchor{McCarthy 1963}
+McCarthy, John.  1963.  A basis for a mathematical theory of computation.  In
 @cite{Computer Programming and Formal Systems}, edited by P. Braffort and
 D. Hirschberg.  North-Holland.
-@url{http://www-formal.stanford.edu/jmc/basis.html, @code{(Online)}}
+@url{http://innovation.it.uts.edu.au/projectjmc/articles/basis.html, @code{(Online)}}
 
 \phantomsection @anchor{McCarthy 1978}
 McCarthy, John.  1978.  The history of Lisp.  In @cite{Proceedings of the
 @acronym{ACM} @acronym{SIGPLAN} Conference on the History of Programming
 Languages}.
-@url{http://www-formal.stanford.edu/jmc/history/lisp.html, @code{(Online)}}
+@url{http://innovation.it.uts.edu.au/projectjmc/articles/lisp.html, @code{(Online)}}
 
 \phantomsection @anchor{McCarthy et al. 1965}
 McCarthy, John, P. W. Abrahams, D. J. Edwards, T. P. Hart, and M. I.  Levin.

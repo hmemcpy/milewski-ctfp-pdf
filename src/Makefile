@@ -7,7 +7,7 @@ all: sicp.pdf
 sicp.pdf: sicp.tex coverpage.pdf ${FIG}
 	latexmk -pdflatex="xelatex %O %S" -pdf -dvi- -ps- $<
 
-sicp.tex: sicp.texi
+sicp.tex: sicp.texi preamble.tex postamble.tex 
 	./texi-to-latex.pl $<
 
 coverpage.pdf: coverpage.svg
