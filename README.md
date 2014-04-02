@@ -59,3 +59,8 @@ Sister project
 --------------
 
 A new [HTML5 version](https://github.com/sarabander/sicp) is out, bringing the advantages of adjustable font size and reflowable text to mobile reading.
+
+Translation
+-----------
+
+There is a new [Japanese translation](https://github.com/minghai/sicp-pdf/) of the PDF by Narumi Katoh. Great to see new languages joining the collection!
