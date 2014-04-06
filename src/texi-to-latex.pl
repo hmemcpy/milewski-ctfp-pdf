@@ -412,7 +412,7 @@ sub transform { # expects a string and an environment
     $pointer += $+[0];
     if (defined($syntax{$tag}) and 
         substr($in, $pointer) =~ $syntax{$tag}[0]) {
-      $arg = scalar($+{arg} or '');
+      $arg = scalar($+{arg});
       $pointer += $+[0];
       $out .= $toggle . $syntax{$tag}[1]->($arg, $env) . $toggle;
     } else {

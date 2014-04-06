@@ -49,7 +49,7 @@ Montreal, Toronto
 
 @sp 1.26
 @noindent
-Unofficial Texinfo Format @url{http://sicpebook.wordpress.com, 2.andresraba5.2} (February 10, 2014),@* 
+Unofficial Texinfo Format @url{http://sicpebook.wordpress.com, 2.andresraba5.3} (April 6, 2014),@* 
 based on @url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10, 2007).
 
 \end{small}
@@ -63,8 +63,8 @@ based on @url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10
 @settitle            Structure and Interpretation of Computer Programs, 2e
 @comment             Unofficial Texinfo Format
 @comment
-@set utfversion      2.andresraba5.2 
-@set utfversiondate  February 10, 2014
+@set utfversion      2.andresraba5.3 
+@set utfversiondate  April 6, 2014
 @comment
 @comment             This file is licensed under a Creative Commons 
 @comment             Attribution-ShareAlike 3.0 Unported License 
