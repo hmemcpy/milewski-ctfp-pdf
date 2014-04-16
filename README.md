@@ -49,6 +49,7 @@ Acknowledgements
 * J. E. Johnson
 * Mingshen Sun
 * holomorph
+* Narumi Katoh
 * tfgit
 
 License
