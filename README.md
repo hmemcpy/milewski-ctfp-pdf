@@ -12,7 +12,7 @@ Biggest change in this revision (2.andresraba5) is the conversion to LaTeX, whic
 Source
 ------
 
-*For OS X Users:* The Inconsolata LGC and Linux Libertine fonts are not included in MacTex. You need to install them separately. Download the Inconsolata LGC fonts [here](https://github.com/MihailJP/Inconsolata-LGC/downloads) and the Linux Libertine fonts [here](http://sourceforge.net/projects/linuxlibertine/files/linuxlibertine/5.3.0/LinLibertineOTF_5.3.0_2012_07_02.tgz/download). To install the fonts system-wide, move all the downloaded `.otf` files into the `Library/Fonts` folder. After completing these tasks, continue with the instructions below.
+*For OS X Users:* The Inconsolata LGC and Linux Libertine fonts are not included in MacTex. You need to install them separately. Download the Inconsolata LGC fonts [here](https://github.com/MihailJP/Inconsolata-LGC/downloads) and the Linux Libertine fonts [here](http://sourceforge.net/projects/linuxlibertine/files/linuxlibertine/5.3.0/LinLibertineOTF_5.3.0_2012_07_02.tgz/download). To install the fonts system-wide, move all the downloaded `.otf` files into the `/Library/Fonts` folder. After completing these tasks, continue with the instructions below.
 
 The `src` directory contains both Texinfo and LaTeX sources. To recompile the book, go there and enter:
 
