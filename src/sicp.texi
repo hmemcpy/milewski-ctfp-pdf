@@ -19788,8 +19788,9 @@ expressions
 What is the value of @code{sum} after each of the above expressions is
 evaluated?  What is the printed response to evaluating the @code{stream-ref}
 and @code{display-stream} expressions?  Would these responses differ if we had
-implemented @code{(delay @math{\langle}@var{exp}@math{\rangle})} simply as @code{(lambda () @math{\langle}@var{exp}@math{\rangle})}
-without using the optimization provided by @code{memo-proc}?  Explain
+implemented @code{(delay @math{\langle}@var{exp}@math{\rangle})} simply as 
+@code{(lambda () @math{\langle}@var{exp}@math{\rangle})}
+without using the optimization provided by @code{memo-proc}?  Explain.
 @end quotation
 
 @subsection Infinite Streams
