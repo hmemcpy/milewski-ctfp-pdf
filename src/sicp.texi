@@ -36142,19 +36142,19 @@ data abstractions.  @cite{@acronym{IEEE} Transactions on Software Engineering}
 @b{McCarthy}, John.  1960.  Recursive functions of symbolic expressions and their
 computation by machine.  @cite{Communications of the @acronym{ACM}}
 3(4): 184-195.
-@url{http://innovation.it.uts.edu.au/projectjmc/articles/recursive.html, @code{(Online)}}
+@url{http://www-formal.stanford.edu/jmc/recursive.pdf, @code{(Online)}}
 
 \phantomsection @anchor{McCarthy 1963}
 @b{McCarthy}, John.  1963.  A basis for a mathematical theory of computation.  In
 @cite{Computer Programming and Formal Systems}, edited by P. Braffort and
 D. Hirschberg.  North-Holland.
-@url{http://innovation.it.uts.edu.au/projectjmc/articles/basis.html, @code{(Online)}}
+@url{http://www-formal.stanford.edu/jmc/basis.html, @code{(Online)}}
 
 \phantomsection @anchor{McCarthy 1978}
 @b{McCarthy}, John.  1978.  The history of Lisp.  In @cite{Proceedings of the
 @acronym{ACM} @acronym{SIGPLAN} Conference on the History of Programming
 Languages}.
-@url{http://innovation.it.uts.edu.au/projectjmc/articles/lisp.html, @code{(Online)}}
+@url{http://www-formal.stanford.edu/jmc/history/lisp/lisp.html, @code{(Online)}}
 
 \phantomsection @anchor{McCarthy et al. 1965}
 @b{McCarthy}, John, P. W. Abrahams, D. J. Edwards, T. P. Hart, and M. I.  Levin.
@@ -36223,7 +36223,7 @@ lambda: The ultimate software tool.  In @cite{Conference Record of the 1982
 
 @b{Rees}, Jonathan, and William Clinger (eds). 1991.  The @math{\rm revised^4} report on the
 algorithmic language Scheme.  @cite{Lisp Pointers}, 4(3).
-@url{http://people.csail.mit.edu/jaffer/r4rs_toc.html, @code{(Online)}}
+@url{http://people.csail.mit.edu/jaffer/r4rs.pdf, @code{(Online)}}
 
 \phantomsection @anchor{Rivest et al. (1977)}
 @b{Rivest}, Ronald, Adi Shamir, and Leonard Adleman.  1977.  A method for obtaining
@@ -36299,8 +36299,8 @@ reference manual.  Memo 203A, @acronym{MIT} Artificial Intelligence Laboratory.
 
 \phantomsection @anchor{Sutherland (1963)}
 @b{Sutherland}, Ivan E.  1963.  @acronym{SKETCHPAD}: A man-machine graphical
-com@-mu@-ni@-cation system.  Technical report 296, @acronym{MIT} Lincoln Laboratory.
-@url{http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.10.4290, @code{(Onl.)}}
+communication system.  Technical report 296, @acronym{MIT} Lincoln Laboratory.
+@url{http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.10.4290, @code{(Online)}}
 
 \phantomsection @anchor{Teitelman 1974}
 @b{Teitelman}, Warren.  1974.  Interlisp reference manual.  Technical report, Xerox
