@@ -8142,25 +8142,13 @@ any book on matrix algebra) are the following:
 
 @end ifinfo
 @tex
-% $$ 
-% \eqalign{ 
-% 	\hbox{\tt (dot-product v w)} 		&\; {\rm returns\;the\;sum\;} 
-% 		\Sigma_i v_i w_i, \cr
-% 	\hbox{\tt (matrix-*-vector m v)} 	&\; {\rm returns\;the\;vector\;} {\bf t}, 
-% 		\; {\rm where\;} t_i = \Sigma_j m_{ij} v_j, \cr
-% 	\hbox{\tt (matrix-*-matrix m n)} 	&\; {\rm returns\;the\;matrix\;} {\bf p},
-% 		\; {\rm where\;} p_{ij} = \Sigma_k m_{ik} n_{kj}, \cr
-% 	\hbox{\tt (transpose m)} 			&\; {\rm returns\;the\;matrix\;} {\bf n}, 
-% 		\; {\rm where\;} n_{ij} = m_{ji}. \cr
-% } $$
 \begin{array}{rl}
-	\hbox{\tt (dot-product v w)} 		&\; {\rm returns\;the\;sum\;} 
-		\Sigma_i v_i w_i, \\
+	\hbox{\tt (dot-product v w)} 		&\; {\rm returns\;the\;sum\;} \Sigma_i v_i w_i; \\
 	\hbox{\tt (matrix-*-vector m v)} 	&\; {\rm returns\;the\;vector\;} \hbox{\bf t}, \\ 
-		&\; {\rm where\;} t_i = \Sigma_j m_{ij} v_j, \\
+		&\; {\rm where\;} t_i = \Sigma_j m_{ij} v_j; \\
 	\hbox{\tt (matrix-*-matrix m n)} 	&\; {\rm returns\;the\;matrix\;} \hbox{\bf p}, \\
-		&\; {\rm where\;} p_{ij} = \Sigma_k m_{ik} n_{kj}, \\
-	\hbox{\tt (transpose m)} 			&\; {\rm returns\;the\;matrix\;} \hbox{\bf n}, \\
+		&\; {\rm where\;} p_{ij} = \Sigma_k m_{ik} n_{kj}; \\
+	\hbox{\tt (transpose m)} 		&\; {\rm returns\;the\;matrix\;} \hbox{\bf n}, \\
 		&\; {\rm where\;} n_{ij} = m_{ji}.
 \end{array}
 @end tex
