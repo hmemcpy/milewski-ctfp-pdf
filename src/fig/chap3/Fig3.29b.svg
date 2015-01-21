@@ -15,6 +15,8 @@
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
    sodipodi:docname="Fig3.29b.svg">
+  <title
+     id="title3061">SICP Figure 3.29</title>
   <defs
      id="defs4">
     <marker
@@ -179,9 +181,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="361.92933"
-     inkscape:cy="185.5443"
+     inkscape:zoom="1.979899"
+     inkscape:cx="244.83182"
+     inkscape:cy="183.09326"
      inkscape:document-units="px"
      inkscape:current-layer="layer3"
      showgrid="false"
@@ -431,7 +433,13 @@
          id="tspan3972"
          x="192.62495"
          y="216.35202"
-         style="font-size:13px">new value: 100-10=90</tspan></text>
+         style="font-size:13px">new value: 10<tspan
+   style="letter-spacing:2.5px"
+   id="tspan3325">0</tspan><tspan
+   style="letter-spacing:1px"
+   id="tspan3317">–</tspan>1<tspan
+   style="letter-spacing:2px"
+   id="tspan3329">0=</tspan>90</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
@@ -544,7 +552,15 @@
          id="tspan3972-1"
          x="432.51617"
          y="241.35202"
-         style="font-size:13px">new value: 100-25=75</tspan></text>
+         style="font-size:13px">new value: 10<tspan
+   style="letter-spacing:2px"
+   id="tspan3333"><tspan
+   style="letter-spacing:2.5px"
+   id="tspan3374">0</tspan>–</tspan>2<tspan
+   style="letter-spacing:2px"
+   id="tspan3339">5</tspan><tspan
+   id="tspan3347"
+   style="letter-spacing:1.4px">=</tspan>75</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"

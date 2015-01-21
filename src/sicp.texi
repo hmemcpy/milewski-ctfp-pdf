@@ -3133,9 +3133,7 @@ b <- a
 
 @end ifinfo
 @tex
-% $$\eqalign{a &\gets a + b, \cr 
-% b &\gets a. \cr}$$
-\begin{array}{l@{\quad\gets\quad}l}
+\begin{array}{l@{\;\;\gets\;\;}l}
   a & a + b, \\ 
   b & a.
 \end{array}
@@ -3331,7 +3329,7 @@ means of a recursive process.
 the closest integer to @math{\varphi^n / \sqrt{5}}, where @math{\varphi = (1 +
 \sqrt{5}) / 2}.  Hint: Let @math{\psi = (1 - \sqrt{5}) / 2}.
 Use induction and the definition of the Fibonacci numbers (see @ref{1.2.2}) 
-to prove that Fib(@math{n}) = @math{(\varphi^n - \psi^n) / \sqrt{5}}.
+to prove that @math{\text{Fib}(n) = (\varphi^n - \psi^n) / \sqrt{5}}.
 @end quotation
 
 @subsection Orders of Growth
@@ -20939,7 +20937,7 @@ S_i = C + >   x_j dt
 
 @end ifinfo
 @tex
-$$ S_i = C + \sum_{j=1}^i x_j dt $$
+$$ S_i = C + \sum_{j=1}^i x_{\kern-0.07em j} \kern0.1em dt $$
 @end tex
 @noindent
 and returns the stream of values @math{S = (S_i)}.  The following

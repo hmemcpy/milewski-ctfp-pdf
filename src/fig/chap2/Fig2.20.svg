@@ -16,6 +16,8 @@
    inkscape:version="0.48.3.1 r9886"
    sodipodi:docname="Fig2.20.svg"
    style="display:inline">
+  <title
+     id="title3021">SICP Figure 2.20</title>
   <defs
      id="defs4">
     <marker
@@ -97,10 +99,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="166.57366"
+     inkscape:cx="167.28794"
      inkscape:cy="90.992367"
      inkscape:document-units="px"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer3"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1004"
@@ -280,7 +282,16 @@
          id="tspan3925"
          x="415"
          y="150.36218"
-         dx="0 0 0 0 0 0 0 0 0 0.40000001 0 0 0 0 0.80000001">z = x + iy = re<tspan
+         dx="0 0 0 -0.60000002 0 0 0 -0.60000002 0 0.40000001 0 0 -0.60000002 0 0.80000001">z <tspan
+   style="font-style:normal;-inkscape-font-specification:Linux Libertine O"
+   id="tspan3020"
+   dx="0.60000002">=</tspan> x <tspan
+   style="font-style:normal;-inkscape-font-specification:Linux Libertine O"
+   id="tspan3018"
+   dx="0.60000002">+</tspan> iy <tspan
+   style="font-style:normal;-inkscape-font-specification:Linux Libertine O"
+   id="tspan3022"
+   dx="0.60000002">=</tspan> re<tspan
    style="font-size:65.00091553%;baseline-shift:super"
    id="tspan3927"
    dx="0.40000001 0.40000001">iA</tspan></tspan></text>

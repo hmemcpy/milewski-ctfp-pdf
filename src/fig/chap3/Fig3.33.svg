@@ -15,6 +15,8 @@
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
    sodipodi:docname="Fig3.33.svg">
+  <title
+     id="title3070">SICP Figure 3.33</title>
   <defs
      id="defs10779">
     <marker
@@ -123,8 +125,8 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="219.34797"
+     inkscape:zoom="2.8"
+     inkscape:cx="219.70511"
      inkscape:cy="101.45925"
      inkscape:document-units="px"
      inkscape:current-layer="layer10"
@@ -495,75 +497,7 @@
        transform="translate(-76.03572,1.7321344)">
       <g
          id="g12148"
-         style="display:inline">
-        <text
-           xml:space="preserve"
-           style="font-size:13px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Libertine O;-inkscape-font-specification:Sans Italic"
-           x="367.03574"
-           y="578.79077"
-           id="text10849"
-           sodipodi:linespacing="125%"><tspan
-             sodipodi:role="line"
-             id="tspan10851"
-             x="367.03574"
-             y="578.79077"
-             dx="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 2 -0.30000001 0 0 0 0 1.5"
-             dy="0 0 0 0 0 0 0 0 0 0 -6.5 5.4600024 0 0 0 0 1">v = v<tspan
-   style="font-size:65.00091553%;font-style:normal;baseline-shift:sub;-inkscape-font-specification:Linux Libertine O"
-   id="tspan11388">0</tspan><tspan
-   style="font-style:normal;-inkscape-font-specification:Linux Libertine O"
-   id="tspan11392"> +  1</tspan>     i<tspan
-   style="font-style:italic;-inkscape-font-specification:Linux Libertine O Italic"
-   id="tspan11422">d</tspan>t <tspan
-   style="font-style:normal;-inkscape-font-specification:Linux Libertine O"
-   id="tspan11394">+</tspan> Ri</tspan></text>
-        <g
-           id="g11402"
-           transform="translate(-67.721894,171.48724)">
-          <text
-             sodipodi:linespacing="125%"
-             id="text10829"
-             y="414.64789"
-             x="496.46432"
-             style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Libertine O;-inkscape-font-specification:Sans"
-             xml:space="preserve"><tspan
-               style="font-size:65.00091553%;baseline-shift:sub"
-               y="414.64789"
-               x="496.46432"
-               id="tspan10831"
-               sodipodi:role="line">0</tspan></text>
-          <text
-             sodipodi:linespacing="125%"
-             id="text10833"
-             y="399.64789"
-             x="502"
-             style="font-size:13px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Libertine O;-inkscape-font-specification:Sans Italic"
-             xml:space="preserve"><tspan
-               style="font-size:65.00091553%;baseline-shift:super"
-               y="399.64789"
-               x="502"
-               id="tspan10835"
-               sodipodi:role="line"
-               dx="0.5">t</tspan></text>
-        </g>
-        <text
-           xml:space="preserve"
-           style="font-size:13px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Libertine O;-inkscape-font-specification:Sans Italic"
-           x="411.77304"
-           y="585.57648"
-           id="text10853"
-           sodipodi:linespacing="125%"><tspan
-             sodipodi:role="line"
-             id="tspan10855"
-             x="411.77304"
-             y="585.57648">C</tspan></text>
-        <path
-           style="fill:none;stroke:#000000;stroke-width:0.69999999;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-           d="m 412.24238,575.16576 9,0"
-           id="path10857"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cc" />
-      </g>
+         style="display:inline" />
     </g>
     <text
        xml:space="preserve"
@@ -576,17 +510,92 @@
          id="tspan3082"
          x="461.63971"
          y="620.52197" /></text>
-    <text
-       xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:jsMath-cmex10;-inkscape-font-specification:jsMath-cmex10 Medium"
-       x="346.66946"
-       y="564.55414"
-       id="text3088"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3090"
+    <g
+       id="g4022">
+      <text
+         sodipodi:linespacing="125%"
+         id="text10849"
+         y="580.52289"
+         x="291"
+         style="font-size:13px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Linux Libertine O;-inkscape-font-specification:Sans Italic"
+         xml:space="preserve"><tspan
+           dy="0 0 0 0 0 0 0 0 0 0 -6.5 5.4600024 0 0 0 0 1"
+           dx="0 0 0 -0.5 0 0 0 0 0 0 0 0 0 0 0 0 -1 2 -0.30000001 0 0 -0.30000001 0 1.5"
+           y="580.52289"
+           x="291"
+           id="tspan10851"
+           sodipodi:role="line">v <tspan
+   dx="0.5"
+   id="tspan3969"
+   style="font-style:normal;-inkscape-font-specification:Linux Libertine O">=</tspan> v<tspan
+   id="tspan11388"
+   style="font-size:65.00091553%;font-style:normal;baseline-shift:sub;-inkscape-font-specification:Linux Libertine O">0</tspan><tspan
+   id="tspan11392"
+   style="font-style:normal;-inkscape-font-specification:Linux Libertine O"> +  1</tspan>     i<tspan
+   id="tspan11422"
+   style="font-style:italic;-inkscape-font-specification:Linux Libertine O Italic">d</tspan>t <tspan
+   dx="0.30000001"
+   id="tspan11394"
+   style="font-style:normal;-inkscape-font-specification:Linux Libertine O">+</tspan> Ri</tspan></text>
+      <g
+         transform="translate(-143.75761,173.21937)"
+         id="g11402"
+         style="display:inline">
+        <text
+           xml:space="preserve"
+           style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Libertine O;-inkscape-font-specification:Sans"
+           x="496.46432"
+           y="414.64789"
+           id="text10829"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan10831"
+             x="496.46432"
+             y="414.64789"
+             style="font-size:65.00091553%;baseline-shift:sub">0</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:13px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Libertine O;-inkscape-font-specification:Sans Italic"
+           x="502"
+           y="399.64789"
+           id="text10833"
+           sodipodi:linespacing="125%"><tspan
+             dx="0.5"
+             sodipodi:role="line"
+             id="tspan10835"
+             x="502"
+             y="399.64789"
+             style="font-size:65.00091553%;baseline-shift:super">t</tspan></text>
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text10853"
+         y="587.30859"
+         x="335.7373"
+         style="font-size:13px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Linux Libertine O;-inkscape-font-specification:Sans Italic"
+         xml:space="preserve"><tspan
+           y="587.30859"
+           x="335.7373"
+           id="tspan10855"
+           sodipodi:role="line">C</tspan></text>
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path10857"
+         d="m 336.20666,576.89789 9,0"
+         style="fill:none;stroke:#000000;stroke-width:0.69999999;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3088"
+         y="564.55414"
          x="346.66946"
-         y="564.55414">Z</tspan></text>
+         style="font-size:11px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:jsMath-cmex10;-inkscape-font-specification:jsMath-cmex10 Medium"
+         xml:space="preserve"><tspan
+           y="564.55414"
+           x="346.66946"
+           id="tspan3090"
+           sodipodi:role="line">Z</tspan></text>
+    </g>
   </g>
   <path
      style="fill:none;stroke:#000000;stroke-width:0.89999998;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
