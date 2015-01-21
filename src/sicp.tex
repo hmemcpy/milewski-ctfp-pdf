@@ -8011,7 +8011,7 @@ of \code{accumulate\-/n}:
 \begin{quote}
 \heading{\phantomsection\label{Exercise 2.37}Exercise 2.37:}
 Suppose we represent vectors \( \hbox{\bf v} = (v_i) \) as sequences of numbers, and
-matrices \( \hbox{\bf m} = (m_{ij}) \) as sequences of vectors (the rows of the
+matrices \( \hbox{\bf m} = (m_{i\!j}) \) as sequences of vectors (the rows of the
 matrix).  For example, the matrix
 \begin{comment}
 
@@ -8062,26 +8062,14 @@ any book on matrix algebra) are the following:
 
 \end{comment}
 \begin{displaymath}
-%  
-% \eqalign{ 
-% 	\hbox{\tt (dot-product v w)} 		&\; {\rm returns\;the\;sum\;} 
-% 		\Sigma_i v_i w_i, \cr
-% 	\hbox{\tt (matrix-*-vector m v)} 	&\; {\rm returns\;the\;vector\;} {\bf t}, 
-% 		\; {\rm where\;} t_i = \Sigma_j m_{ij} v_j, \cr
-% 	\hbox{\tt (matrix-*-matrix m n)} 	&\; {\rm returns\;the\;matrix\;} {\bf p},
-% 		\; {\rm where\;} p_{ij} = \Sigma_k m_{ik} n_{kj}, \cr
-% 	\hbox{\tt (transpose m)} 			&\; {\rm returns\;the\;matrix\;} {\bf n}, 
-% 		\; {\rm where\;} n_{ij} = m_{ji}. \cr
-% } 
 \begin{array}{rl}
-	\hbox{\tt (dot-product v w)} 		&\; {\rm returns\;the\;sum\;} 
-		\Sigma_i v_i w_i, \\
-	\hbox{\tt (matrix-*-vector m v)} 	&\; {\rm returns\;the\;vector\;} \hbox{\bf t}, \\ 
-		&\; {\rm where\;} t_i = \Sigma_j m_{ij} v_j, \\
-	\hbox{\tt (matrix-*-matrix m n)} 	&\; {\rm returns\;the\;matrix\;} \hbox{\bf p}, \\
-		&\; {\rm where\;} p_{ij} = \Sigma_k m_{ik} n_{kj}, \\
-	\hbox{\tt (transpose m)} 			&\; {\rm returns\;the\;matrix\;} \hbox{\bf n}, \\
-		&\; {\rm where\;} n_{ij} = m_{ji}.
+	\hbox{\tt (dot-product v w)} 		& {\rm returns\;the\;sum\;} \Sigma_i v_i w_i; \\
+	\hbox{\tt (matrix-*-vector m v)} 	& {\rm returns\;the\;vector\;} \hbox{\bf t},  \\
+		& {\rm where\;} t_i = \Sigma_{\kern-0.1em j} m_{i\!j} v_{\kern-0.1em j};      \\
+	\hbox{\tt (matrix-*-matrix m n)} 	& {\rm returns\;the\;matrix\;} \hbox{\bf p},  \\
+		& {\rm where\;} p_{i\!j} = \Sigma_k m_{ik} n_{k\!j};                          \\
+	\hbox{\tt (transpose m)} 		& {\rm returns\;the\;matrix\;} \hbox{\bf n},  \\
+		& {\rm where\;} n_{i\!j} = m_{\kern-0.1em ji}.
 \end{array}
 \end{displaymath}
 We can define the dot product as\footnote{This definition uses the extended
