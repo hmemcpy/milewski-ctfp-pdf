@@ -51,6 +51,7 @@ Acknowledgements
 * holomorph
 * Narumi Katoh
 * tfgit
+* Brian Wignall
 
 License
 -------
