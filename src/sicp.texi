@@ -30,7 +30,7 @@ with Julie Sussman, foreword by Alan J. Perlis
 
 @sp 0.4
 @noindent
-This work is licensed under a Creative Commons@* 
+This work is licensed under a Creative Commons@*
 Attribution-ShareAlike 3.0 Unported License@*
 (@url{http://creativecommons.org/licenses/by-sa/3.0/, @acronym{CC BY-SA} 3.0}).
 Based on a work at @url{http://mitpress.mit.edu/sicp/, mitpress.mit.edu}.
@@ -38,18 +38,18 @@ Based on a work at @url{http://mitpress.mit.edu/sicp/, mitpress.mit.edu}.
 @sp 1.26
 @noindent
 The @acronym{MIT} Press@*
-Cambridge, Massachusetts@* 
+Cambridge, Massachusetts@*
 London, England
 
 @sp 1.26
 @noindent
 McGraw-Hill Book Company@*
-New York, St. Louis, San Francisco,@* 
+New York, St. Louis, San Francisco,@*
 Montreal, Toronto
 
 @sp 1.26
 @noindent
-Unofficial Texinfo Format @url{http://sicpebook.wordpress.com, 2.andresraba5.3} (April 6, 2014),@* 
+Unofficial Texinfo Format @url{http://sicpebook.wordpress.com, 2.andresraba5.3} (April 6, 2014),@*
 based on @url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10, 2007).
 
 \end{small}
@@ -63,26 +63,26 @@ based on @url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10
 @settitle            Structure and Interpretation of Computer Programs, 2e
 @comment             Unofficial Texinfo Format
 @comment
-@set utfversion      2.andresraba5.3 
+@set utfversion      2.andresraba5.3
 @set utfversiondate  April 6, 2014
 @comment
-@comment             This file is licensed under a Creative Commons 
-@comment             Attribution-ShareAlike 3.0 Unported License 
+@comment             This file is licensed under a Creative Commons
+@comment             Attribution-ShareAlike 3.0 Unported License
 @comment             http://creativecommons.org/licenses/by-sa/3.0/
-@comment             
+@comment
 @comment             This is a Texinfo file.  To convert it to Info hypertext
 @comment             format, you will need the `makeinfo' program from the GNU
-@comment             Texinfo package.  To produce a PDF, use `texi2pdf'. 
+@comment             Texinfo package.  To produce a PDF, use `texi2pdf'.
 @comment             For more information about this file,
 @comment             see the text under `@node UTF' below.
-@comment             
+@comment
 @comment             Various versions of sicp.texi and preformatted sicp.info
 @comment             can be found at the following Web pages:
-@comment             
+@comment
 @comment                 http://www.neilvandyke.org/sicp-texi/
 @comment                 http://sicpebook.wordpress.com/
 @comment                 [add your own here]
-@comment             
+@comment
 @comment             **********************************************************
 
 @comment HISTORY:
@@ -93,7 +93,7 @@ based on @url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10
 @comment
 @comment * Version 2.nwv1 (March 11, 2002) by Neil W. Van Dyke.
 @comment   Cosmetic change to heading in Info format, and comment changes.
-@comment 
+@comment
 @comment * Version 2.neilvandyke1 (February 10, 2003) by Neil W. Van Dyke
 @comment   Correction to Exercise 1.39 formula, spotted by Steve VanDevender.
 @comment   Added URL of Abelson and Sussman video lectures.
@@ -174,21 +174,21 @@ with Julie Sussman, foreword by Alan J. Perlis
 @image{fig/icons/sa, 6mm,,,.pdf}
 
 @noindent
-This work is licensed under a Creative Commons@* 
-Attribution-ShareAlike 3.0 Unported License 
+This work is licensed under a Creative Commons@*
+Attribution-ShareAlike 3.0 Unported License
 (@url{http://creativecommons.org/licenses/by-sa/3.0/, CC BY-SA 3.0}).@*
 Based on a work at @url{http://mitpress.mit.edu/sicp/, mitpress.mit.edu}.
 
 @sp 0.5
 @noindent
 The @acronym{MIT} Press@*
-Cambridge, Massachusetts@* 
+Cambridge, Massachusetts@*
 London, England
 
 @sp 0.5
 @noindent
 McGraw-Hill Book Company@*
-New York, St. Louis, San Francisco,@* 
+New York, St. Louis, San Francisco,@*
 Montreal, Toronto
 
 @sp 0.5
@@ -464,7 +464,7 @@ Format.
 
 You are probably reading it in an Info hypertext browser, such as the Info
 mode of Emacs.  You might alternatively be reading it @TeX{}-formatted on your
-screen or printer, though that would be silly.  And, if printed, expensive. 
+screen or printer, though that would be silly.  And, if printed, expensive.
 
 The freely-distributed official @acronym{HTML}-and-@acronym{GIF} format was
 first converted personally to Unofficial Texinfo Format (@acronym{UTF})
@@ -512,17 +512,17 @@ you use your full name or distribute Info, @acronym{DVI}, PostScript, or
 @sp 1.0
 @noindent
 @b{Addendum:} See also the @acronym{SICP} video lectures by Abelson and Sussman:@*
-at @url{http://groups.csail.mit.edu/mac/classes/6.001/abelson-sussman-lectures/, @acronym{MIT CSAIL}} or 
+at @url{http://groups.csail.mit.edu/mac/classes/6.001/abelson-sussman-lectures/, @acronym{MIT CSAIL}} or
 @url{http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/, @acronym{MIT OCW}}.
 
 @sp 0.5
-@noindent 
-@b{Second Addendum:} Above is the original introduction to the @acronym{UTF} 
-from 2001. Ten years later, @acronym{UTF} has been transformed: mathematical 
-symbols and formulas are properly typeset, and figures drawn in 
-vector graphics. The original text formulas and @acronym{ASCII} art figures 
-are still there in the Texinfo source, but will display only when compiled 
-to Info output. At the dawn of e-book readers and tablets, reading a 
+@noindent
+@b{Second Addendum:} Above is the original introduction to the @acronym{UTF}
+from 2001. Ten years later, @acronym{UTF} has been transformed: mathematical
+symbols and formulas are properly typeset, and figures drawn in
+vector graphics. The original text formulas and @acronym{ASCII} art figures
+are still there in the Texinfo source, but will display only when compiled
+to Info output. At the dawn of e-book readers and tablets, reading a
 @acronym{PDF} on screen is officially not silly anymore. Enjoy!
 
 \enlargethispage{\baselineskip}
@@ -768,8 +768,8 @@ The first edition of the book closely followed the syllabus of our
 edition, it will not be possible to cover everything in a single semester, so
 the instructor will have to pick and choose.  In our own teaching, we sometimes
 skip the section on logic programming (@ref{4.4}), we have students use
-the register-machine simulator but we do not cover its implementation (@ref{5.2}), 
-and we give only a cursory overview of the compiler (@ref{5.5}).  
+the register-machine simulator but we do not cover its implementation (@ref{5.2}),
+and we give only a cursory overview of the compiler (@ref{5.5}).
 Even so, this is still an intense course.  Some instructors may
 wish to cover only the first three or four chapters, leaving the other material
 for subsequent courses.
@@ -1121,7 +1121,7 @@ motion of the Solar System that extended previous results by nearly two orders
 of magnitude, and demonstrated that the dynamics of the Solar System is
 chaotic.  This computation was made possible by new integration algorithms, a
 special-purpose compiler, and a special-purpose computer all implemented with
-the aid of software tools written in Lisp (@ref{Abelson et al. 1992}; @ref{Sussman and Wisdom 1992}).}  
+the aid of software tools written in Lisp (@ref{Abelson et al. 1992}; @ref{Sussman and Wisdom 1992}).}
 Although Lisp has not yet overcome its old reputation as
 hopelessly inefficient, Lisp is now used in many applications where efficiency
 is not the central concern.  For example, Lisp has become a language of choice
@@ -1623,7 +1623,7 @@ procedures that have already been created.  We will see how to do this in
 The general form of a procedure definition is
 
 @lisp
-(define (@math{\langle}@var{name}@math{\kern0.03em\rangle} @math{\langle}@var{formal parameters}@math{\kern0.02em\rangle}) 
+(define (@math{\langle}@var{name}@math{\kern0.03em\rangle} @math{\langle}@var{formal parameters}@math{\kern0.02em\rangle})
   @math{\langle\kern0.08em}@var{body}@math{\rangle})
 @end lisp
 
@@ -1884,10 +1884,10 @@ actions in the different cases according to the rule
 
 @end ifinfo
 @tex
- |x| = \left\{ \begin{array}{r@{\quad \mathrm{if} \quad}l}	 	 
+ |x| = \left\{ \begin{array}{r@{\quad \mathrm{if} \quad}l}
         x  &  x > 0, \\
 	0  &  x = 0, \\
-  \!\! -x  &  x < 0. \end{array} \right. 
+  \!\! -x  &  x < 0. \end{array} \right.
 @end tex
 This construct is called a @newterm{case analysis}, and there is a special form
 in Lisp for notating such a case analysis.  It is called @code{cond} (which
@@ -1956,7 +1956,7 @@ Another way to write the absolute-value procedure is
 @end lisp
 
 @noindent
-which could be expressed in English as ``If @math{x} is less than zero return 
+which could be expressed in English as ``If @math{x} is less than zero return
 @math{-x;} otherwise return @math{x}.''  @code{Else} is a special symbol that can be
 used in place of the @math{\langle{p}\rangle} in the final clause of a @code{cond}.  This
 causes the @code{cond} to return as its value the value of the corresponding
@@ -2173,7 +2173,7 @@ sqrt(x) = the y such that y >= 0 and y^2 = x
 
 @end ifinfo
 @tex
-$$\sqrt{x}\;\; = {\rm\;\; the\;\;} y 
+$$\sqrt{x}\;\; = {\rm\;\; the\;\;} y
 {\rm\;\; such\;\; that\;\;} y \ge 0 {\rm\;\; and\;\;} y^2 = x.$$
 @end tex
 This describes a perfectly legitimate mathematical function.  We could use it
@@ -2185,7 +2185,7 @@ rephrase this definition in pseudo-Lisp:
 
 @lisp
 (define (sqrt x)
-  (the y (and (>= y 0) 
+  (the y (and (>= y 0)
               (= (square y) x))))
 @end lisp
 
@@ -2222,7 +2222,7 @@ root) by averaging @math{y} with @math{x / y}.@footnote{This square-root algorit
 is actually a special case of Newton's method, which is a general technique for
 finding roots of equations.  The square-root algorithm itself was developed by
 Heron of Alexandria in the first century @acronym{A.D.}  We will see how to
-express the general Newton's method as a Lisp procedure in @ref{1.3.4}.} 
+express the general Newton's method as a Lisp procedure in @ref{1.3.4}.}
 For example, we can compute the square root of 2 as follows.
 Suppose our initial guess is 1:
 
@@ -2271,7 +2271,7 @@ where
 
 @noindent
 We also have to say what we mean by ``good enough.''  The following will do for
-illustration, but it is not really a very good test.  (See @ref{Exercise 1.7}.)  
+illustration, but it is not really a very good test.  (See @ref{Exercise 1.7}.)
 The idea is to improve the answer until it is close
 enough so that its square differs from the radicand by less than a
 predetermined tolerance (here 0.001):@footnote{We will usually give predicates
@@ -2331,7 +2331,7 @@ direct the computer to do something over and over again.  @code{Sqrt-iter}, on
 the other hand, demonstrates how iteration can be accomplished using no special
 construct other than the ordinary ability to call a procedure.@footnote{Readers
 who are worried about the efficiency issues involved in using procedure calls
-to implement iteration should note the remarks on ``tail recursion'' in 
+to implement iteration should note the remarks on ``tail recursion'' in
 @ref{1.2.1}.}
 
 @quotation
@@ -2617,10 +2617,10 @@ scope of @code{x}.  Thus, it is not necessary to pass @code{x} explicitly to
 each of these procedures.  Instead, we allow @code{x} to be a free variable in
 the internal definitions, as shown below. Then @code{x} gets its value from the
 argument with which the enclosing procedure @code{sqrt} is called.  This
-discipline is called @newterm{lexical scoping}.@footnote{Lexical scoping dictates 
-that free variables in a procedure are taken to refer to bindings made by enclosing 
+discipline is called @newterm{lexical scoping}.@footnote{Lexical scoping dictates
+that free variables in a procedure are taken to refer to bindings made by enclosing
 procedure definitions; that is, they are looked up in the environment in which the
-procedure was defined. We will see how this works in detail in chapter 3 when we study 
+procedure was defined. We will see how this works in detail in chapter 3 when we study
 environments and the detailed behavior of the interpreter.@anchor{Footnote 28}}
 
 @lisp
@@ -3015,11 +3015,11 @@ Fib(n) = <  1                        if n = 1
 
 @end ifinfo
 @tex
-$$ {\rm Fib}(n) = 
-\begin{cases}	
+$$ {\rm Fib}(n) =
+\begin{cases}
         \; 0 & {\rm if} \;\; n=0, \\
 	\; 1 & {\rm if} \;\; n=1, \\
-	\; {\rm Fib}(n-1) + {\rm Fib}(n-2) \quad & {\rm otherwise}. 
+	\; {\rm Fib}(n-1) + {\rm Fib}(n-2) \quad & {\rm otherwise}.
 \end{cases} $$
 @end tex
 We can immediately translate this definition into a recursive procedure for
@@ -3082,23 +3082,23 @@ $$\varphi^2 = \varphi + 1. $$
 
 @example
 
-                   ..<............ fib5   <.......... 
-                ...     ___________/  \___________   .  
-             ...       /       . .....            \    . 
-           ..       fib4     .        . . . .     fib3  .  
-         ..     ____/. \____  ..             .  __/  \__  .  
-       ..      /  . .  ..   \    .        ..   /  . .   \   . 
+                   ..<............ fib5   <..........
+                ...     ___________/  \___________   .
+             ...       /       . .....            \    .
+           ..       fib4     .        . . . .     fib3  .
+         ..     ____/. \____  ..             .  __/  \__  .
+       ..      /  . .  ..   \    .        ..   /  . .   \   .
      ..     fib3 .       .  fib2 .        . fib2 .   .  fib1 .
    ..      / . \  .     .   /  \  .      .  /  \ ...  .  |  .
  ..       / . . \   .  .   /  . \   .  .   / .  \   .  . 1 .
 .      fib2 . . fib1.  .fib1 .  fib0 . .fib1. . fib0 .  .  .
 .      /  \  . . |  .  . |  .  . |   . . |   . . |   .   .>
 V     /  . \   . 1  .  . 1  .  . 0  .  . 1  .  . 0  ..
-.  fib1 .. fib0..  .   .   .   .   .   V   .   ..  . 
+.  fib1 .. fib0..  .   .   .   .   .   V   .   ..  .
 .   |  .  . |  . .>     .>.     . .    ..>.      .>
-.   1 .   . 0  .      
- .   .     .  .       
-  .>.       ..        
+.   1 .   . 0  .
+ .   .     .  .
+  .>.       ..
 
 @end example
 @end ifinfo
@@ -3133,10 +3133,10 @@ b <- a
 
 @end ifinfo
 @tex
-% $$\eqalign{a &\gets a + b, \cr 
+% $$\eqalign{a &\gets a + b, \cr
 % b &\gets a. \cr}$$
 \begin{array}{l@{\quad\gets\quad}l}
-  a & a + b, \\ 
+  a & a + b, \\
   b & a.
 \end{array}
 @end tex
@@ -3241,7 +3241,7 @@ We can easily translate this description into a recursive procedure:
         (else (+ (cc amount
                      (- kinds-of-coins 1))
                  (cc (- amount
-                        (first-denomination 
+                        (first-denomination
                          kinds-of-coins))
                      kinds-of-coins)))))
 (define (first-denomination kinds-of-coins)
@@ -3286,11 +3286,11 @@ linearly with the input.  See @ref{Exercise 3.27}.}
 
 @quotation
 @strong{@anchor{Exercise 1.11}Exercise 1.11:} A function @math{f} is defined by
-the rule that 
+the rule that
 @tex
-f(n) = 
-\begin{cases} 
-\;\; n \quad \text{if \; \( n < 3 \),} \\ 
+f(n) =
+\begin{cases}
+\;\; n \quad \text{if \; \( n < 3 \),} \\
 \;\; f(n-1) + 2\kern-0.08em f(n-2) + 3\kern-0.08em f(n-3) \quad \text{if \; \( n \ge 3 \).}
 \end{cases}
 @end tex
@@ -3330,7 +3330,7 @@ means of a recursive process.
 @strong{@anchor{Exercise 1.13}Exercise 1.13:} Prove that Fib(@math{n}) is
 the closest integer to @math{\varphi^n / \sqrt{5}}, where @math{\varphi = (1 +
 \sqrt{5}) / 2}.  Hint: Let @math{\psi = (1 - \sqrt{5}) / 2}.
-Use induction and the definition of the Fibonacci numbers (see @ref{1.2.2}) 
+Use induction and the definition of the Fibonacci numbers (see @ref{1.2.2})
 to prove that Fib(@math{n}) = @math{(\varphi^n - \psi^n) / \sqrt{5}}.
 @end quotation
 
@@ -3360,7 +3360,7 @@ proportional to the number of elementary machine operations performed.
 We say that @math{R(n)} has order of growth @math{\Theta(f(n))}, written
 @math{R(n)} = @math{\Theta(f(n))} (pronounced ``theta of
 @math{f(n)}''), if there are positive constants @math{k_1} and @math{k_2}
-independent of @math{n} such that @math{k_1f(n) \le R(n) \le k_2f(n)} 
+independent of @math{n} such that @math{k_1f(n) \le R(n) \le k_2f(n)}
 for any sufficiently large value of @math{n}.  (In other words, for large @math{n},
 the value @math{R(n)} is sandwiched between @math{k_1f(n)} and
 @math{k_2f(n)}.)
@@ -3392,7 +3392,7 @@ provides a useful indication of how we may expect the behavior of the process
 to change as we change the size of the problem.  For a @math{\Theta(n)}
 (linear) process, doubling the size will roughly double the amount of resources
 used.  For an exponential process, each increment in problem size will multiply
-the resource utilization by a constant factor.  In the remainder of 
+the resource utilization by a constant factor.  In the remainder of
 @ref{1.2} we will examine two algorithms whose order of growth is logarithmic,
 so that doubling the problem size increases the resource requirement by a
 constant amount.
@@ -3407,7 +3407,7 @@ number of steps used by this process as the amount to be changed increases?
 
 @quotation
 @strong{@anchor{Exercise 1.15}Exercise 1.15:} The sine of an angle (specified
-in radians) can be computed by making use of the approximation 
+in radians) can be computed by making use of the approximation
 @w{@math{\sin x \approx x}} if @math{x} is sufficiently small, and the trigonometric
 identity
 @ifinfo
@@ -3467,10 +3467,10 @@ b^0 = 1
 
 @end ifinfo
 @tex
-% $$\eqalign{b^n &= b\cdot b^{n-1}, \cr 
+% $$\eqalign{b^n &= b\cdot b^{n-1}, \cr
 % b^0 &= 1, \cr} $$
 \begin{array}{l@{{}={}}l}
-  b^n & b\cdot b^{n-1}, \\ 
+  b^n & b\cdot b^{n-1}, \\
   b^0 & 1,
 \end{array}
 @end tex
@@ -3593,7 +3593,7 @@ example, @code{fast-expt} for @math{n} = 1000 requires only 14
 multiplications.@footnote{You may wonder why anyone would care about raising
 numbers to the 1000th power.  See @ref{1.2.6}.} It is also possible to
 use the idea of successive squaring to devise an iterative algorithm that
-computes exponentials with a logarithmic number of steps (see @ref{Exercise 1.16}), 
+computes exponentials with a logarithmic number of steps (see @ref{Exercise 1.16}),
 although, as is often the case with iterative algorithms, this is not
 written down so straightforwardly as the recursive algorithm.@footnote{This
 iterative algorithm is ancient.  It appears in the @cite{Chandah-sutra} by
@@ -3607,7 +3607,7 @@ an iterative exponentiation process that uses successive squaring and uses a
 logarithmic number of steps, as does @code{fast-expt}.  (Hint: Using the
 observation that @math{(b^{n / 2})^2 = (b^2)^{n / 2}}, keep, along with
 the exponent @math{n} and the base @math{b}, an additional state variable @math{a}, and
-define the state transformation in such a way that the product @math{ab^n} 
+define the state transformation in such a way that the product @math{ab^n}
 is unchanged from state to state.  At the beginning of the process
 @math{a} is taken to be 1, and the answer is given by the value of @math{a} at the
 end of the process.  In general, the technique of defining an
@@ -3656,12 +3656,12 @@ computing the Fibonacci numbers in a logarithmic number of steps.  Recall the
 transformation of the state variables @math{a} and @math{b} in the @code{fib-iter}
 process of @ref{1.2.2}: @math{a \gets a + b} and @math{b \gets a}.
 Call this transformation @math{T}, and observe that applying @math{T} over and over
-again @math{n} times, starting with 1 and 0, produces the pair Fib(@math{n+1}) and 
+again @math{n} times, starting with 1 and 0, produces the pair Fib(@math{n+1}) and
 Fib(@math{n}).  In other words, the Fibonacci numbers are produced
 by applying @math{T^n}, the @math{n^{\mathrm{th}}} power of the transformation @math{T},
 starting with the pair (1, 0).  Now consider @math{T} to be the special case of
 @math{p=0} and @math{q=1} in a family of transformations @math{T_{pq}},
-where @math{T_{pq}} transforms the pair @math{(a, b)} according to 
+where @math{T_{pq}} transforms the pair @math{(a, b)} according to
 @math{a \gets bq + aq + ap} and @math{b \gets bp + aq}.
 Show that if we apply such a transformation @math{T_{pq}} twice, the
 effect is the same as using a single transformation @math{T_{p'\!q'}} of the
@@ -3734,7 +3734,7 @@ repeated reductions will always eventually produce a pair where the second
 number is 0.  Then the @acronym{GCD} is the other number in the pair.  This
 method for computing the @acronym{GCD} is known as @newterm{Euclid's
 Algorithm}.@footnote{Euclid's Algorithm is so called because it appears in
-Euclid's @cite{Elements} (Book 7, ca. 300 @acronym{B.C.}).  According to @ref{Knuth (1973)}, 
+Euclid's @cite{Elements} (Book 7, ca. 300 @acronym{B.C.}).  According to @ref{Knuth (1973)},
 it can be considered the oldest known nontrivial algorithm.  The
 ancient Egyptian method of multiplication (@ref{Exercise 1.18}) is surely
 older, but, as Knuth explains, Euclid's algorithm is the oldest known to have
@@ -3781,7 +3781,7 @@ steps that the algorithm requires to terminate.  The result is true for @math{k 
 1}, since this merely requires that @math{b} be at least as large as Fib(1)
 = 1.  Now, assume that the result is true for all integers less than or equal
 to @math{k} and establish the result for @math{k + 1}.  Let @math{(a_{k+1},
-b_{k+1}) \to (a_k, b_k) \to (a_{k-1}, b_{k-1})} be successive pairs in the 
+b_{k+1}) \to (a_k, b_k) \to (a_{k-1}, b_{k-1})} be successive pairs in the
 reduction process.  By our
 induction hypotheses, we have @math{b_{k-1} \ge {\rm Fib}(k - 1)} and
 @math{b_k \ge {\rm Fib}(k)}.  Thus, applying the claim we just proved
@@ -3793,7 +3793,7 @@ b_k + b_{k-1} \ge {\rm Fib}(k) + {\rm Fib}(k-1) =
 @noindent
 We can use this theorem to get an order-of-growth estimate for Euclid's
 Algorithm.  Let @math{n} be the smaller of the two inputs to the procedure.  If
-the process takes @math{k} steps, then we must have @math{n \ge {\rm Fib}(k) 
+the process takes @math{k} steps, then we must have @math{n \ge {\rm Fib}(k)
 \approx \varphi^k / \sqrt{5}}.  Therefore the number of steps @math{k}
 grows as the logarithm (to the base @math{\varphi}) of @math{n}.  Hence, the order of
 growth is @math{\Theta(\log n)}.
@@ -4003,7 +4003,7 @@ applications of probabilistic prime testing has been to the field of
 cryptography.  Although it is now computationally infeasible to factor an
 arbitrary 200-digit number, the primality of such a number can be checked in a
 few seconds with the Fermat test.  This fact forms the basis of a technique for
-constructing ``unbreakable codes'' suggested by @ref{Rivest et al. (1977)}.  
+constructing ``unbreakable codes'' suggested by @ref{Rivest et al. (1977)}.
 The resulting @newterm{RSA algorithm} has become a widely used
 technique for enhancing the security of electronic communications.  Because of
 this and related developments, the study of prime numbers, once considered the
@@ -4029,10 +4029,10 @@ time used in performing the test.
 @lisp
 (define (timed-prime-test n)
   (newline)
-  (display n) 
+  (display n)
   (start-prime-test n (runtime)))
 (define (start-prime-test n start-time)
-  (if (prime? n) 
+  (if (prime? n)
       (report-prime (- (runtime) start-time))))
 (define (report-prime elapsed-time)
   (display " *** ")
@@ -4110,7 +4110,7 @@ calling @code{square}:
                        (expmod base (/ exp 2) m))
                     m))
         (else
-         (remainder (* base 
+         (remainder (* base
                        (expmod base (- exp 1) m))
                     m))))
 @end lisp
@@ -4213,7 +4213,7 @@ integers from @code{a} through @code{b}:
 
 @lisp
 (define (sum-integers a b)
-  (if (> a b) 
+  (if (> a b)
       0
       (+ a (sum-integers (+ a 1) b))))
 @end lisp
@@ -4245,8 +4245,8 @@ $$ {1\over1\cdot 3} +  {1\over5\cdot 7} + {1\over9\cdot 11} + \dots, $$
 @end tex
 @noindent
 which converges to @math{\pi / 8} (very slowly):@footnote{This series, usually
-written in the equivalent form 
-@math{{\pi\over4} = 1 - {1\over3} + {1\over5} - {1\over7} + \dots}, 
+written in the equivalent form
+@math{{\pi\over4} = 1 - {1\over3} + {1\over5} - {1\over7} + \dots},
 is due to Leibniz.  We'll see how to use this as the basis for some
 fancy numerical tricks in @ref{3.5.3}.}
 
@@ -4390,8 +4390,8 @@ formula
 
 @end ifinfo
 @tex
-$${\int_a^b \!\!\! f} = {\left[\;f\! \left(a + {dx \over 2}\right) 
-		+ f\! \left(a + dx + {dx \over 2}\right) 
+$${\int_a^b \!\!\! f} = {\left[\;f\! \left(a + {dx \over 2}\right)
+		+ f\! \left(a + dx + {dx \over 2}\right)
 		+ f\! \left(a + 2dx + {dx \over 2}\right) + \,\dots \;\right]\! dx} $$
 @end tex
 @noindent
@@ -4399,9 +4399,9 @@ for small values of @math{dx}.  We can express this directly as a procedure:
 
 @lisp
 (define (integral f a b dx)
-  (define (add-dx x) 
+  (define (add-dx x)
     (+ x dx))
-  (* (sum f (+ a (/ dx 2.0)) add-dx b) 
+  (* (sum f (+ a (/ dx 2.0)) add-dx b)
      dx))
 
 (integral cube 0 1 0.01)
@@ -4488,7 +4488,7 @@ pi   2 * 4 * 4 * 6 * 6 * 8 ...
 
 @end ifinfo
 @tex
-$$ {\pi\over 4} = {2\cdot 4\cdot 4\cdot 6\cdot 6\cdot 8\cdots\over 
+$$ {\pi\over 4} = {2\cdot 4\cdot 4\cdot 6\cdot 6\cdot 8\cdots\over
 		   3\cdot 3\cdot 5\cdot 5\cdot 7\cdot 7\cdots}\,. $$
 @end tex
 @item
@@ -4649,8 +4649,8 @@ name.@footnote{It would be clearer and less intimidating to people learning
 Lisp if a name more obvious than @code{lambda}, such as @code{make-procedure},
 were used.  But the convention is firmly entrenched.  The notation is adopted
 from the λ-calculus, a mathematical formalism introduced by the
-mathematical logician Alonzo @ref{Church (1941)}.  Church developed the 
-λ-calculus to provide a rigorous foundation for studying the 
+mathematical logician Alonzo @ref{Church (1941)}.  Church developed the
+λ-calculus to provide a rigorous foundation for studying the
 notions of function
 and function application.  The λ-calculus has become a basic tool
 for mathematical investigations of the semantics of programming languages.}
@@ -4780,10 +4780,11 @@ underlying @code{lambda} application.
 We can see from this equivalence that the scope of a variable specified by a
 @code{let} expression is the body of the @code{let}.  This implies that:
 
+
 @itemize @bullet
 
 @item
-@code{Let} allows one to bind variables as locally as possible to where they
+@code{let} allows one to bind variables as locally as possible to where they
 are to be used.  For example, if the value of @code{x} is 5, the value of the
 expression
 
@@ -4835,7 +4836,7 @@ internal @code{define} only for internal procedures.@footnote{Understanding
 internal definitions well enough to be sure a program means what we intend it
 to mean requires a more elaborate model of the evaluation process than we have
 presented in this chapter.  The subtleties do not arise with internal
-definitions of procedures, however.  We will return to this issue in 
+definitions of procedures, however.  We will return to this issue in
 @ref{4.1.6}, after we learn more about evaluation.}
 
 @quotation
@@ -4997,7 +4998,7 @@ less than some prescribed tolerance:
 (define tolerance 0.00001)
 (define (fixed-point f first-guess)
   (define (close-enough? v1 v2)
-    (< (abs (- v1 v2)) 
+    (< (abs (- v1 v2))
        tolerance))
   (define (try guess)
     (let ((next (f guess)))
@@ -5019,7 +5020,7 @@ repeatedly press the @code{cos} button until you obtain the fixed point.}
 @end lisp
 
 @noindent
-Similarly, we can find a solution to the equation 
+Similarly, we can find a solution to the equation
 @math{y = \sin y + \cos y}:
 
 @lisp
@@ -5034,11 +5035,11 @@ square roots in @ref{1.1.7}.  Both are based on the idea of repeatedly
 improving a guess until the result satisfies some criterion.  In fact, we can
 readily formulate the square-root computation as a fixed-point search.
 Computing the square root of some number @math{x} requires finding a @math{y} such
-that @math{y^2 = x}.  Putting this equation into the equivalent form 
+that @math{y^2 = x}.  Putting this equation into the equivalent form
 @math{y = x / y}, we recognize that we are looking for a fixed point of the
 function@footnote{@math{\mapsto} (pronounced ``maps to'') is the mathematician's way of
 writing @code{lambda}.  @math{y \mapsto x / y} means @code{(lambda (y) (/ x y))},
-that is, the function whose value at @math{y} is @math{x / y}.} @math{y \mapsto x / y}, 
+that is, the function whose value at @math{y} is @math{x / y}.} @math{y \mapsto x / y},
 and we can therefore try to compute square roots as
 
 @lisp
@@ -5057,11 +5058,11 @@ over, oscillating about the answer.
 One way to control such oscillations is to prevent the guesses from changing so
 much.  Since the answer is always between our guess @math{y} and @math{x / y}, we
 can make a new guess that is not as far from @math{y} as @math{x / y} by averaging
-@math{y} with @math{x / y}, so that the next guess after @math{y} is 
-@math{{1\over2}(y + x / y)} 
+@math{y} with @math{x / y}, so that the next guess after @math{y} is
+@math{{1\over2}(y + x / y)}
 instead of @math{x / y}.  The process of making such a sequence of
-guesses is simply the process of looking for a fixed point of 
-@math{y \mapsto {1\over2}(y + x / y)}: 
+guesses is simply the process of looking for a fixed point of
+@math{y \mapsto {1\over2}(y + x / y)}:
 
 @lisp
 (define (sqrt x)
@@ -5083,8 +5084,8 @@ averaging successive approximations to a solution, a technique that we call
 
 @quotation
 @strong{@anchor{Exercise 1.35}Exercise 1.35:} Show that the golden ratio
-@math{\varphi} (@ref{1.2.2}) is a fixed point of the transformation 
-@math{x \mapsto 1 + 1 / x}, and use this fact to compute @math{\varphi} by means 
+@math{\varphi} (@ref{1.2.2}) is a fixed point of the transformation
+@math{x \mapsto 1 + 1 / x}, and use this fact to compute @math{\varphi} by means
 of the @code{fixed-point} procedure.
 @end quotation
 
@@ -5173,7 +5174,7 @@ Leonhard Euler published a memoir @cite{De Fractionibus Continuis}, which
 included a continued fraction expansion for @math{e - 2}, where @math{e} is the base
 of the natural logarithms.  In this fraction, the @math{N_i} are all 1, and
 the @math{D_i} are successively 1, 2, 1, 1, 4, 1, 1, 6, 1, 1, 8, @dots{}.
-Write a program that uses your @code{cont-frac} procedure from @ref{Exercise 1.37} 
+Write a program that uses your @code{cont-frac} procedure from @ref{Exercise 1.37}
 to approximate @math{e}, based on Euler's expansion.
 @end quotation
 
@@ -5314,7 +5315,7 @@ will converge much more rapidly than the half-interval method.}
 In order to implement Newton's method as a procedure, we must first express the
 idea of derivative.  Note that ``derivative,'' like average damping, is
 something that transforms a function into another function.  For instance, the
-derivative of the function @math{x \mapsto x^3} is the function @math{x \mapsto 3x^2\!.}  
+derivative of the function @math{x \mapsto x^3} is the function @math{x \mapsto 3x^2\!.}
 In general, if @math{g} is a function and @math{dx} is a small number,
 then the derivative @math{Dg} of @math{g} is the function whose value at any
 number @math{x} is given (in the limit of small @math{dx}) by
@@ -5541,7 +5542,7 @@ Hint: You may find it convenient to use @code{compose} from @ref{Exercise 1.42}.
 @strong{@anchor{Exercise 1.44}Exercise 1.44:} The idea of @newterm{smoothing} a
 function is an important concept in signal processing.  If @math{f} is a function
 and @math{dx} is some small number, then the smoothed version of @math{f} is the
-function whose value at a point @math{x} is the average of @math{f(x - dx)}, 
+function whose value at a point @math{x} is the average of @math{f(x - dx)},
 @math{f(x)}, and @math{f(x + dx)}.  Write a procedure
 @code{smooth} that takes as input a procedure that computes @math{f} and returns a
 procedure that computes the smoothed @math{f}.  It is sometimes valuable to
@@ -5559,10 +5560,10 @@ damping.  The same method works for finding cube roots as fixed points of the
 average-damped @math{y \mapsto x / y^2}.  Unfortunately, the process does not
 work for fourth roots---a single average damp is not enough to make a
 fixed-point search for @math{y \mapsto x / y^3} converge.  On the other hand, if
-we average damp twice (i.e., use the average damp of the average damp of 
+we average damp twice (i.e., use the average damp of the average damp of
 @math{y \mapsto x / y^3}) the fixed-point search does converge.  Do some experiments
 to determine how many average damps are required to compute @math{n^{\mathrm{th}}} roots as a
-fixed-point search based upon repeated average damping of @math{y \mapsto x / y^{n-1}}.  
+fixed-point search based upon repeated average damping of @math{y \mapsto x / y^{n-1}}.
 Use this to implement a simple procedure for computing
 @math{n^{\mathrm{th}}} roots using @code{fixed-point}, @code{average-damp}, and the
 @code{repeated} procedure of @ref{Exercise 1.43}.  Assume that any arithmetic
@@ -5579,7 +5580,7 @@ if the guess is good enough, and otherwise improve the guess and continue the
 process using the improved guess as the new guess.  Write a procedure
 @code{iterative-improve} that takes two procedures as arguments: a method for
 telling whether a guess is good enough and a method for improving a guess.
-@code{Iterative-improve} should return as its value a procedure that takes a
+@code{iterative-improve} should return as its value a procedure that takes a
 guess as argument and keeps improving the guess until it is good enough.
 Rewrite the @code{sqrt} procedure of @ref{1.1.7} and the
 @code{fixed-point} procedure of @ref{1.3.3} in terms of
@@ -5703,7 +5704,7 @@ compound objects directly: Without this, there is no way for a procedure such
 as @code{linear-combination} to pass its arguments along to @code{add} and
 @code{mul} without having to know their detailed structure.@footnote{The
 ability to directly manipulate procedures provides an analogous increase in the
-expressive power of a programming language.  For example, in 
+expressive power of a programming language.  For example, in
 @ref{1.3.1} we introduced the @code{sum} procedure, which takes a procedure
 @code{term} as an argument and computes the sum of the values of @code{term}
 over some specified interval.  In order to define @code{sum}, it is crucial
@@ -5870,8 +5871,8 @@ d_1   d_2
   {n_1 \over d_1} - {n_2 \over d_2} 	&= {n_1 d_2 - n_2 d_1 \over d_1 d_2}, \\
   {n_1 \over d_1} \cdot {n_2 \over d_2}	&= {n_1 n_2 \over d_1 d_2}, \\
   {n_1 / d_1} \over {n_2 / d_2} 	&= {n_1 d_2 \over d_1 n_2}, \\
-  {n_1 \over d_1} 			&= {n_2 \over d_2} \quad 
-						{\rm\ if\ and\ only\ if\quad} 
+  {n_1 \over d_1} 			&= {n_2 \over d_2} \quad
+						{\rm\ if\ and\ only\ if\quad}
 						n_1 d_2 = n_2 d_1.
 \end{align*}
 @noindent
@@ -6023,7 +6024,7 @@ Now we can try our rational-number procedures:
 @noindent
 As the final example shows, our rational-number implementation does not reduce
 rational numbers to lowest terms.  We can remedy this by changing
-@code{make-rat}. If we have a @code{gcd} procedure like the one in 
+@code{make-rat}. If we have a @code{gcd} procedure like the one in
 @ref{1.2.5} that produces the greatest common divisor of two integers, we can
 use @code{gcd} to reduce the numerator and the denominator to lowest terms
 before constructing the pair:
@@ -6102,7 +6103,7 @@ manipulating the data.
 @end iftex
 @end float
 
-We can envision the structure of the rational-number system as shown in 
+We can envision the structure of the rational-number system as shown in
 @ref{Figure 2.1}.  The horizontal lines represent @newterm{abstraction
 barriers} that isolate different ``levels'' of the system.  At each level, the
 barrier separates the programs (above) that use the data abstraction from the
@@ -6245,8 +6246,8 @@ rational-number representation was stated in terms of facts about integers
 objects in terms of previously defined types of data objects.  Assertions about
 data objects can therefore be checked by reducing them to assertions about
 previously defined data objects.  Another approach, introduced by Zilles at
-@acronym{MIT}, by Goguen, Thatcher, Wagner, and Wright at IBM 
-(see @ref{Thatcher et al. 1978}), 
+@acronym{MIT}, by Goguen, Thatcher, Wagner, and Wright at IBM
+(see @ref{Thatcher et al. 1978}),
 and by Guttag at Toronto (see @ref{Guttag 1977}), is called
 @newterm{algebraic specification}.  It regards the ``procedures'' as elements
 of an abstract algebraic system whose behavior is specified by axioms that
@@ -6333,7 +6334,7 @@ works, make use of the substitution model of @ref{1.1.5}.)
 @quotation
 @strong{@anchor{Exercise 2.5}Exercise 2.5:} Show that we can represent pairs of
 nonnegative integers using only numbers and arithmetic operations if we
-represent the pair @math{a} and @math{b} as the integer that is the product @math{2^a 3^b}.  
+represent the pair @math{a} and @math{b} as the integer that is the product @math{2^a 3^b}.
 Give the corresponding definitions of the procedures @code{cons},
 @code{car}, and @code{cdr}.
 @end quotation
@@ -6417,7 +6418,7 @@ the two upper bounds:
 @noindent
 Alyssa also works out the product of two intervals by finding the minimum and
 the maximum of the products of the bounds and using them as the bounds of the
-resulting interval.  (@code{Min} and @code{max} are primitives that find the
+resulting interval.  (@code{min} and @code{max} are primitives that find the
 minimum or maximum of any number of arguments.)
 
 @lisp
@@ -6437,7 +6438,7 @@ the upper bound and the reciprocal of the lower bound, in that order.
 
 @lisp
 (define (div-interval x y)
-  (mul-interval 
+  (mul-interval
    x
    (make-interval (/ 1.0 (upper-bound y))
                   (/ 1.0 (lower-bound y)))))
@@ -6569,7 +6570,7 @@ parallel-resistors formula differently:
 @lisp
 (define (par2 r1 r2)
   (let ((one (make-interval 1 1)))
-    (div-interval 
+    (div-interval
      one (add-interval (div-interval one r1)
                        (div-interval one r2)))))
 @end lisp
@@ -7045,10 +7046,10 @@ follows:
         ((or (< amount 0) (no-more? coin-values)) 0)
         (else
          (+ (cc amount
-                (except-first-denomination 
+                (except-first-denomination
                  coin-values))
             (cc (- amount
-                   (first-denomination 
+                   (first-denomination
                     coin-values))
                 coin-values)))))
 @end lisp
@@ -7131,7 +7132,7 @@ procedure scales each number in a list by a given factor:
   (if (null? items)
       nil
       (cons (* (car items) factor)
-            (scale-list (cdr items) 
+            (scale-list (cdr items)
                         factor))))
 (scale-list (list 1 2 3 4 5) 10)
 @i{(10 20 30 40 50)}
@@ -7140,7 +7141,7 @@ procedure scales each number in a list by a given factor:
 @noindent
 We can abstract this general idea and capture it as a common pattern expressed
 as a higher-order procedure, just as in @ref{1.3}.  The higher-order
-procedure here is called @code{map}.  @code{Map} takes as arguments a procedure
+procedure here is called @code{map}.  @code{map} takes as arguments a procedure
 of one argument and a list, and returns a list of the results produced by
 applying the procedure to each element in the list:@footnote{@anchor{Footnote 12}
 Scheme standardly provides a @code{map} procedure that
@@ -7181,7 +7182,7 @@ Now we can give a new definition of @code{scale-list} in terms of @code{map}:
 @end lisp
 
 @noindent
-@code{Map} is an important construct, not only because it captures a common
+@code{map} is an important construct, not only because it captures a common
 pattern, but because it establishes a higher level of abstraction in dealing
 with lists.  In the original definition of @code{scale-list}, the recursive
 structure of the program draws attention to the element-by-element processing
@@ -7763,7 +7764,7 @@ the commonality between the two programs.
 @end ifinfo
 @iftex
 @sp 0.4
-@center @image{fig/chap2/Fig2.7d,111mm,,,.pdf} 
+@center @image{fig/chap2/Fig2.7d,111mm,,,.pdf}
 @c 187mm
 @sp 0.4
 @quotation
@@ -8034,7 +8035,7 @@ many additions and multiplications as does Horner's rule, and thus Horner's
 rule is an optimal algorithm for polynomial evaluation.  This was proved (for
 the number of additions) by A. M. Ostrowski in a 1954 paper that essentially
 founded the modern study of optimal algorithms.  The analogous statement for
-multiplications was proved by V. Y. Pan in 1966.  The book by @ref{Borodin and Munro (1975)} 
+multiplications was proved by V. Y. Pan in 1966.  The book by @ref{Borodin and Munro (1975)}
 provides an overview of these and other results about optimal
 algorithms.}
 
@@ -8105,7 +8106,7 @@ matrix).  For example, the matrix
 
 @end ifinfo
 @tex
-% $$ 
+% $$
 % \left(\matrix{	1 & 2 & 3 & 4 \cr
 % 		4 & 5 & 6 & 6 \cr
 % 		6 & 7 & 8 & 9 \cr }\right) $$
@@ -8113,9 +8114,9 @@ matrix).  For example, the matrix
 \begin{array}{cccc}
   1 & 2 & 3 & 4 \\
   4 & 5 & 6 & 6 \\
-  6 & 7 & 8 & 9 
+  6 & 7 & 8 & 9
 \end{array}
-\right) 
+\right)
 @end tex
 @noindent
 is represented as the sequence @code{((1 2 3 4) (4 5 6 6) (6 7 8 9))}.  With
@@ -8142,21 +8143,21 @@ any book on matrix algebra) are the following:
 
 @end ifinfo
 @tex
-% $$ 
-% \eqalign{ 
-% 	\hbox{\tt (dot-product v w)} 		&\; {\rm returns\;the\;sum\;} 
+% $$
+% \eqalign{
+% 	\hbox{\tt (dot-product v w)} 		&\; {\rm returns\;the\;sum\;}
 % 		\Sigma_i v_i w_i, \cr
-% 	\hbox{\tt (matrix-*-vector m v)} 	&\; {\rm returns\;the\;vector\;} {\bf t}, 
+% 	\hbox{\tt (matrix-*-vector m v)} 	&\; {\rm returns\;the\;vector\;} {\bf t},
 % 		\; {\rm where\;} t_i = \Sigma_j m_{ij} v_j, \cr
 % 	\hbox{\tt (matrix-*-matrix m n)} 	&\; {\rm returns\;the\;matrix\;} {\bf p},
 % 		\; {\rm where\;} p_{ij} = \Sigma_k m_{ik} n_{kj}, \cr
-% 	\hbox{\tt (transpose m)} 			&\; {\rm returns\;the\;matrix\;} {\bf n}, 
+% 	\hbox{\tt (transpose m)} 			&\; {\rm returns\;the\;matrix\;} {\bf n},
 % 		\; {\rm where\;} n_{ij} = m_{ji}. \cr
 % } $$
 \begin{array}{rl}
-	\hbox{\tt (dot-product v w)} 		&\; {\rm returns\;the\;sum\;} 
+	\hbox{\tt (dot-product v w)} 		&\; {\rm returns\;the\;sum\;}
 		\Sigma_i v_i w_i, \\
-	\hbox{\tt (matrix-*-vector m v)} 	&\; {\rm returns\;the\;vector\;} \hbox{\bf t}, \\ 
+	\hbox{\tt (matrix-*-vector m v)} 	&\; {\rm returns\;the\;vector\;} \hbox{\bf t}, \\
 		&\; {\rm where\;} t_i = \Sigma_j m_{ij} v_j, \\
 	\hbox{\tt (matrix-*-matrix m n)} 	&\; {\rm returns\;the\;matrix\;} \hbox{\bf p}, \\
 		&\; {\rm where\;} p_{ij} = \Sigma_k m_{ik} n_{kj}, \\
@@ -8240,7 +8241,7 @@ provide elegant formalisms for dealing with these constructs.  The examples in
 this section (see also @ref{Exercise 2.42}) are adapted from @ref{Turner 1981}.  In
 @ref{3.5.3}, we'll see how this approach generalizes to infinite
 sequences.} Consider this problem: Given a positive integer @math{n}, find all
-ordered pairs of distinct positive integers @math{i} and @math{j}, where 
+ordered pairs of distinct positive integers @math{i} and @math{j}, where
 @math{1 \le j < i \le n}, such that @math{i + j} is prime.  For example, if @math{n} is 6,
 then the pairs are the following:
 @ifinfo
@@ -8257,7 +8258,7 @@ i + j | 3 5 5 7 7 7 11
 $$\vbox{
 \offinterlineskip
 \halign{
-\strut \hfil \quad #\quad \hfil & \vrule 
+\strut \hfil \quad #\quad \hfil & \vrule
 	\hfil \quad #\quad \hfil &
 	\hfil \quad #\quad \hfil &
 	\hfil \quad #\quad \hfil &
@@ -8277,7 +8278,7 @@ ordered pairs of positive integers less than or equal to @math{n}, filter to
 select those pairs whose sum is prime, and then, for each pair @math{(i, j)}
 that passes through the filter, produce the triple @math{(i, j, i + j)}.
 
-Here is a way to generate the sequence of pairs: For each integer @math{i \le n}, 
+Here is a way to generate the sequence of pairs: For each integer @math{i \le n},
 enumerate the integers @math{j < i}, and for each such @math{i} and @math{j}
 generate the pair @math{(i, j)}.  In terms of sequence operations, we map along
 the sequence @code{(enumerate-interval 1 n)}.  For each @math{i} in this sequence,
@@ -9026,7 +9027,7 @@ subtraction, and multiplying a vector by a scalar:
 @end example
 @end ifinfo
 @tex
-% $$ 
+% $$
 % \eqalign{
 % 	(x_1, y_1) + (x_2, y_2) 	&= (x_1 + x_2, y_1 + y_2), \cr
 % 	(x_1, y_1) - (x_2, y_2) 	&= (x_1 - x_2, y_1 - y_2), \cr
@@ -9035,7 +9036,7 @@ subtraction, and multiplying a vector by a scalar:
 \begin{array}{r@{{}={}}l}
 	(x_1, y_1) + (x_2, y_2) 	& (x_1 + x_2, y_1 + y_2), \\
 	(x_1, y_1) - (x_2, y_2) 	& (x_1 - x_2, y_1 - y_2), \\
-	s \cdot (x, y) 			& (sx, sy). 
+	s \cdot (x, y) 			& (sx, sy).
 \end{array}
 @end tex
 @end quotation
@@ -9077,7 +9078,7 @@ also uses the @code{for-each} procedure described in @ref{Exercise 2.23}.}
     (for-each
      (lambda (segment)
        (draw-line
-        ((frame-coord-map frame) 
+        ((frame-coord-map frame)
          (start-segment segment))
         ((frame-coord-map frame)
          (end-segment segment))))
@@ -9102,7 +9103,7 @@ different types of painters, we are capitalizing on the abstract data idea
 discussed in @ref{2.1.3}, where we argued that a rational-number
 representation could be anything at all that satisfies an appropriate
 condition.  Here we're using the fact that a painter can be implemented in any
-way at all, so long as it draws something in the designated frame.  
+way at all, so long as it draws something in the designated frame.
 @ref{2.1.3} also showed how pairs could be implemented as procedures.  Painters
 are our second example of a procedural representation for data.}
 
@@ -9161,7 +9162,7 @@ contained within the original frame.
   (lambda (frame)
     (let ((m (frame-coord-map frame)))
       (let ((new-origin (m origin)))
-        (painter (make-frame 
+        (painter (make-frame
                   new-origin
                   (sub-vect (m corner1) new-origin)
                   (sub-vect (m corner2) new-origin)))))))
@@ -9197,7 +9198,7 @@ because it also stretches and shrinks the image to fit into the rotated frame.}
 
 @lisp
 (define (rotate90 painter)
-  (transform-painter painter 
+  (transform-painter painter
                      (make-vect 1.0 0.0)
                      (make-vect 1.0 1.0)
                      (make-vect 0.0 0.0)))
@@ -9229,7 +9230,7 @@ right half of the frame:
 (define (beside painter1 painter2)
   (let ((split-point (make-vect 0.5 0.0)))
     (let ((paint-left
-           (transform-painter 
+           (transform-painter
             painter1
             (make-vect 0.0 0.0)
             split-point
@@ -9373,9 +9374,9 @@ Lists containing symbols can look just like the expressions of our
 language:
 
 @lisp
-(* (+ 23 45) 
+(* (+ 23 45)
    (+ x 9))
-(define (fact n) 
+(define (fact n)
   (if (= n 1) 1 (* n (fact (- n 1)))))
 @end lisp
 
@@ -9606,17 +9607,17 @@ d(uv)     / dv \     / du \
 
 @end ifinfo
 @tex
-{{\it dc} \over {\it dx}} 		= 0, 
-	\quad {\rm for\ } c\ {\rm a\ constant\ or\ a\ variable\ different\ from\ } x, 
+{{\it dc} \over {\it dx}} 		= 0,
+	\quad {\rm for\ } c\ {\rm a\ constant\ or\ a\ variable\ different\ from\ } x,
 @end tex
 @tex
-{{\it dx} \over {\it dx}} 		= 1, 
+{{\it dx} \over {\it dx}} 		= 1,
 @end tex
 @tex
-{{\it d\,(u + v\,)} \over {\it dx}} 	= {{\it du} \over {\it dx}} + {{\it dv} \over {\it dx}}, 
+{{\it d\,(u + v\,)} \over {\it dx}} 	= {{\it du} \over {\it dx}} + {{\it dv} \over {\it dx}},
 @end tex
 @tex
-{{\it d\,(uv\,)} \over {\it dx}} 	= u {{\it dv} \over {\it dx}} + v {{\it du} \over {\it dx}}. 
+{{\it d\,(uv\,)} \over {\it dx}} 	= u {{\it dv} \over {\it dx}} + v {{\it du} \over {\it dx}}.
 @end tex
 @noindent
 Observe that the latter two rules are recursive in nature.  That is, to obtain
@@ -9859,7 +9860,7 @@ the differentiation rule
 
 @example
 d(u^n)            du
------- = nu^(n-1) --  
+------ = nu^(n-1) --
   dx              dx
 @end example
 
@@ -10311,7 +10312,7 @@ procedures converts a binary tree to a list.
       '()
       (append (tree->list-1 (left-branch tree))
               (cons (entry tree)
-                    (tree->list-1 
+                    (tree->list-1
                       (right-branch tree))))))
 (define (tree->list-2 tree)
   (define (copy-to-list tree result-list)
@@ -10319,7 +10320,7 @@ procedures converts a binary tree to a list.
         result-list
         (copy-to-list (left-branch tree)
                       (cons (entry tree)
-                            (copy-to-list 
+                            (copy-to-list
                               (right-branch tree)
                               result-list)))))
   (copy-to-list tree '()))
@@ -10356,18 +10357,18 @@ and whose @code{cdr} is the list of elements not included in the tree.
   (if (= n 0)
       (cons '() elts)
       (let ((left-size (quotient (- n 1) 2)))
-        (let ((left-result 
+        (let ((left-result
                (partial-tree elts left-size)))
           (let ((left-tree (car left-result))
                 (non-left-elts (cdr left-result))
                 (right-size (- n (+ left-size 1))))
             (let ((this-entry (car non-left-elts))
-                  (right-result 
-                   (partial-tree 
+                  (right-result
+                   (partial-tree
                     (cdr non-left-elts)
                     right-size)))
               (let ((right-tree (car right-result))
-                    (remaining-elts 
+                    (remaining-elts
                      (cdr right-result)))
                 (cons (make-tree this-entry
                                  left-tree
@@ -10390,7 +10391,7 @@ What is the order of growth in the number of steps required by
 @end quotation
 
 @quotation
-@strong{@anchor{Exercise 2.65}Exercise 2.65:} Use the results of @ref{Exercise 2.63} 
+@strong{@anchor{Exercise 2.65}Exercise 2.65:} Use the results of @ref{Exercise 2.63}
 and @ref{Exercise 2.64} to give @math{\Theta(n)} implementations of
 @code{union-set} and @code{intersection-set} for sets implemented as (balanced)
 binary trees.@footnote{@ref{Exercise 2.63} through @ref{Exercise 2.65} are due
@@ -10578,7 +10579,7 @@ root and moving down until we reach the leaf that holds the symbol.  Each time
 we move down a left branch we add a 0 to the code, and each time we move down a
 right branch we add a 1.  (We decide which branch to follow by testing to see
 which branch either is the leaf node for the symbol or contains the symbol in
-its set.)  For example, starting from the root of the tree in @ref{Figure 2.18}, 
+its set.)  For example, starting from the root of the tree in @ref{Figure 2.18},
 we arrive at the leaf for D by following a right branch, then a left
 branch, then a right branch, then a right branch; hence, the code for D is
 1011.
@@ -10605,7 +10606,7 @@ with the fewest bits?)  Huffman gave an algorithm for doing this and showed
 that the resulting code is indeed the best variable-length code for messages
 where the relative frequency of the symbols matches the frequencies with which
 the code was constructed.  We will not prove this optimality of Huffman codes
-here, but we will show how Huffman trees are constructed.@footnote{See @ref{Hamming 1980} 
+here, but we will show how Huffman trees are constructed.@footnote{See @ref{Hamming 1980}
 for a discussion of the mathematical properties of Huffman codes.}
 
 The algorithm for generating a Huffman tree is very simple. The idea is to
@@ -10663,7 +10664,7 @@ symbols, rather than some more sophisticated set representation.  When we make
 a tree by merging two nodes, we obtain the weight of the tree as the sum of the
 weights of the nodes, and the set of symbols as the union of the sets of
 symbols for the nodes.  Since our symbol sets are represented as lists, we can
-form the union by using the @code{append} procedure we defined in 
+form the union by using the @code{append} procedure we defined in
 @ref{2.2.1}:
 
 @lisp
@@ -10874,7 +10875,7 @@ that you designed in @ref{Exercise 2.68}.  What is the order of growth in the
 number of steps needed to encode a symbol?  Be sure to include the number of
 steps needed to search the symbol list at each node encountered.  To answer
 this question in general is difficult.  Consider the special case where the
-relative frequencies of the @math{n} symbols are as described in @ref{Exercise 2.71}, 
+relative frequencies of the @math{n} symbols are as described in @ref{Exercise 2.71},
 and give the order of growth (as a function of @math{n}) of the number of
 steps needed to encode the most frequent and least frequent symbols in the
 alphabet.
@@ -10889,7 +10890,7 @@ involved in implementing the data objects that the program manipulates.  For
 example, we saw in @ref{2.1.1} how to separate the task of designing a
 program that uses rational numbers from the task of implementing rational
 numbers in terms of the computer language's primitive mechanisms for
-constructing compound data.  The key idea was to erect an abstraction 
+constructing compound data.  The key idea was to erect an abstraction
 barrier---in this case, the selectors and constructors for rational numbers
 (@code{make-rat}, @code{numer}, @code{denom})---that isolates the way rational
 numbers are used from their underlying representation in terms of list
@@ -10947,10 +10948,10 @@ procedures for complex numbers (@code{add-@/complex}, @code{sub-complex},
 access parts of a complex number independent of how the number is represented.
 The resulting complex-number system, as shown in @ref{Figure 2.19}, contains
 two different kinds of abstraction barriers.  The ``horizontal'' abstraction
-barriers play the same role as the ones in @ref{Figure 2.1}.  
-They isolate``higher-level'' operations from ``lower-level'' 
-rep@-re@-sen@-ta@-tions.  In addition, there is a ``vertical'' barrier that 
-gives us the ability to separately design and install alternative 
+barriers play the same role as the ones in @ref{Figure 2.1}.
+They isolate``higher-level'' operations from ``lower-level''
+rep@-re@-sen@-ta@-tions.  In addition, there is a ``vertical'' barrier that
+gives us the ability to separately design and install alternative
 representations.
 
 @endpage
@@ -10986,7 +10987,7 @@ representations.
 In @ref{2.5} we will show how to use type tags and data-directed style
 to develop a generic arithmetic package.  This provides procedures (@code{add},
 @code{mul}, and so on) that can be used to manipulate all sorts of ``numbers''
-and can be easily extended when a new kind of number is needed.  In 
+and can be easily extended when a new kind of number is needed.  In
 @ref{2.5.3}, we'll show how to use generic arithmetic in a system that performs
 symbolic algebra.
 
@@ -11008,14 +11009,14 @@ form is preferable to polar form most of the time because of roundoff errors in
 conversion between rectangular and polar form.  This is why the complex-number
 example is unrealistic.  Nevertheless, it provides a clear illustration of the
 design of a system using generic operations and a good introduction to the more
-substantial systems to be developed later in this chapter.}  
+substantial systems to be developed later in this chapter.}
 @ref{2.4.2} will show how both representations can be made to coexist in a
 single system through the use of type tags and generic operations.
 
 Like rational numbers, complex numbers are naturally represented as ordered
 pairs.  The set of complex numbers can be thought of as a two-dimensional space
 with two orthogonal axes, the ``real'' axis and the ``imaginary'' axis. (See
-@ref{Figure 2.20}.)  From this point of view, the complex number 
+@ref{Figure 2.20}.)  From this point of view, the complex number
 @math{z = x + iy} (where @math{i^2 = -1}) can be thought of as the point in the plane
 whose real coordinate is @math{x} and whose imaginary coordinate is @math{y}.
 Addition of complex numbers reduces in this representation to addition of
@@ -11031,16 +11032,16 @@ Imaginary-part(z_1 + z_2) = Imaginary-part(z_1) + Imaginary-part(z_2)
 @end ifinfo
 @tex
 % $$ \eqalign{
-% \hbox{Real-part} (z_1 + z_2)\; 		&= 
+% \hbox{Real-part} (z_1 + z_2)\; 		&=
 % 	\hbox{ Real-part} (z_1)\; + \hbox{ Real-part} (z_2), \cr
-% \hbox{Imaginary-part} (z_1 + z_2)\; 	&= 
-% 	\hbox{ Imaginary-part} (z_1)\; + \hbox{ Imaginary-part} (z_2). \cr 
+% \hbox{Imaginary-part} (z_1 + z_2)\; 	&=
+% 	\hbox{ Imaginary-part} (z_1)\; + \hbox{ Imaginary-part} (z_2). \cr
 % } $$
 \begin{array}{r@{{}={}}l}
-  \hbox{Real-part} (z_1 + z_2)\; 	& 
+  \hbox{Real-part} (z_1 + z_2)\; 	&
 	\hbox{ Real-part} (z_1)\; + \hbox{ Real-part} (z_2), \\
-  \hbox{Imaginary-part} (z_1 + z_2)\; 	& 
-	\hbox{ Imaginary-part} (z_1)\; + \hbox{ Imaginary-part} (z_2). 
+  \hbox{Imaginary-part} (z_1 + z_2)\; 	&
+	\hbox{ Imaginary-part} (z_1)\; + \hbox{ Imaginary-part} (z_2).
 \end{array}
 @end tex
 
@@ -11091,16 +11092,16 @@ Angle(z_1 * z_2) = Angle(z_1) + Angle(z_2)
 @end ifinfo
 @tex
 % $$ \eqalign{
-% 	\hbox{Magnitude} (z_1 \cdot z_2)\; 	&= 
+% 	\hbox{Magnitude} (z_1 \cdot z_2)\; 	&=
 % 		\hbox{ Magnitude} (z_1)\; \cdot \hbox{ Magnitude} (z_2), \cr
-% 	\hbox{Angle} (z_1 \cdot z_2)\; 		&= 
+% 	\hbox{Angle} (z_1 \cdot z_2)\; 		&=
 % 		\hbox{ Angle} (z_1)\; + \hbox{ Angle} (z_2). \cr
 % } $$
 \begin{array}{r@{{}={}}l}
-	\hbox{Magnitude} (z_1 \cdot z_2)\; 	& 
+	\hbox{Magnitude} (z_1 \cdot z_2)\; 	&
 		\hbox{ Magnitude} (z_1)\; \cdot \hbox{ Magnitude} (z_2), \\
-	\hbox{Angle} (z_1 \cdot z_2)\; 		& 
-		\hbox{ Angle} (z_1)\; + \hbox{ Angle} (z_2). 
+	\hbox{Angle} (z_1 \cdot z_2)\; 		&
+		\hbox{ Angle} (z_1)\; + \hbox{ Angle} (z_2).
 \end{array}
 @end tex
 
@@ -11195,7 +11196,7 @@ y = r sin A     A = arctan(y,x)
 % } $$
 \begin{array}{r@{{}={}}lr@{{}={}}l}
 	x & r \cos A, \qquad 	& r & \sqrt{x^2 + y^2}, \\
-	y & r \sin A, \qquad 	& A & \arctan(y, x), 
+	y & r \sin A, \qquad 	& A & \arctan(y, x),
 \end{array}
 @end tex
 @noindent
@@ -11246,7 +11247,7 @@ representation.
 @node	2.4.2, 2.4.3, 2.4.1, 2.4
 
 One way to view data abstraction is as an application of the ``principle of
-least commitment.''  In implementing the complex-number system in 
+least commitment.''  In implementing the complex-number system in
 @ref{2.4.1}, we can use either Ben's rectangular representation or Alyssa's
 polar representation.  The abstraction barrier formed by the selectors and
 constructors permits us to defer to the last possible moment the choice of a
@@ -11305,7 +11306,7 @@ constructs a complex number, she tags it as polar.  In addition, Ben and Alyssa
 must make sure that the names of their procedures do not conflict.  One way to
 do this is for Ben to append the suffix @code{rectangular} to the name of each
 of his representation procedures and for Alyssa to append @code{polar} to the
-names of hers.  Here is Ben's revised rectangular representation from 
+names of hers.  Here is Ben's revised rectangular representation from
 @ref{2.4.1}:
 
 @lisp
@@ -11405,7 +11406,7 @@ construct polar numbers whenever we have magnitudes and angles:
 @end lisp
 
 @noindent
-The resulting complex-number system has the structure shown in @ref{Figure 2.21}.  
+The resulting complex-number system has the structure shown in @ref{Figure 2.21}.
 The system has been decomposed into three relatively independent parts:
 the complex-number-arithmetic operations, Alyssa's polar implementation, and
 Ben's rectangular implementation.  The polar and rectangular implementations
@@ -11477,7 +11478,7 @@ and apply the appropriate selector for that representation.
 Another weakness of the technique is that even though the individual
 representations can be designed separately, we must guarantee that no two
 procedures in the entire system have the same name.  This is why Ben and Alyssa
-had to change the names of their original procedures from 
+had to change the names of their original procedures from
 @ref{Section 2.4.1}.
 
 The issue underlying both of these weaknesses is that the technique for
@@ -11601,7 +11602,7 @@ numbers.  This is accomplished by calling the following procedure:
 @end lisp
 
 @noindent
-Notice that the internal procedures here are the same procedures from 
+Notice that the internal procedures here are the same procedures from
 @ref{2.4.1} that Ben wrote when he was working in isolation.  No changes are
 necessary in order to interface them to the rest of the system.  Moreover,
 since these procedure definitions are internal to the installation procedure,
@@ -11715,7 +11716,7 @@ program that performs symbolic differentiation:
 @lisp
 (define (deriv exp var)
   (cond ((number? exp) 0)
-        ((variable? exp) 
+        ((variable? exp)
          (if (same-variable? exp var) 1 0))
         ((sum? exp)
          (make-sum (deriv (addend exp) var)
@@ -11724,11 +11725,11 @@ program that performs symbolic differentiation:
          (make-sum (make-product
                     (multiplier exp)
                     (deriv (multiplicand exp) var))
-                   (make-product 
+                   (make-product
                     (deriv (multiplier exp) var)
                     (multiplicand exp))))
         @math{\langle}@var{more rules can be added here}@math{\rangle}
-        (else (error "unknown expression type: 
+        (else (error "unknown expression type:
                       DERIV" exp))))
 @end lisp
 
@@ -11742,7 +11743,7 @@ data-directed style by rewriting the basic derivative procedure as
 (define (deriv exp var)
   (cond ((number? exp) 0)
         ((variable? exp) (if (same-variable? exp var) 1 0))
-        (else ((get 'deriv (operator exp)) 
+        (else ((get 'deriv (operator exp))
                (operands exp) var))))
 (define (operator exp) (car exp))
 (define (operands exp) (cdr exp))
@@ -11832,7 +11833,7 @@ incorporate the new personnel information into the central system?
 
 The key idea of data-directed programming is to handle generic operations in
 programs by dealing explicitly with operation-and-type tables, such as the
-table in @ref{Figure 2.22}.  The style of programming we used in 
+table in @ref{Figure 2.22}.  The style of programming we used in
 @ref{2.4.2} organized the required dispatching on type by having each operation
 take care of its own dispatching.  In effect, this decomposes the
 operation-and-type table into rows, with each generic operation procedure
@@ -11952,12 +11953,12 @@ incorporates all the arithmetic packages we have already constructed.
 @end quotation
 @end float
 
-@ref{Figure 2.23} shows the structure of the system we shall build.  
+@ref{Figure 2.23} shows the structure of the system we shall build.
 Notice the
 abstraction barriers.  From the perspective of someone using ``numb@-ers,'' there
 is a single procedure @code{add} that operates on whatever numb@-ers are
 supplied.  @code{Add} is part of a generic interface that allows the separate
-or@-di@-na@-ry-@/arithmetic, rational-@/arithmetic, and complex-@/arithmetic 
+or@-di@-na@-ry-@/arithmetic, rational-@/arithmetic, and complex-@/arithmetic
 packages to be
 accessed uniformly by programs that use numbers.  Any individual arithmetic
 package (such as the complex package) may itself be accessed through generic
@@ -12136,7 +12137,7 @@ outside world.
 
 @noindent
 What we have here is a two-level tag system.  A typical complex number, such as
-@math{3 + 4i} in rectangular form, would be represented as shown in @ref{Figure 2.24}.  
+@math{3 + 4i} in rectangular form, would be represented as shown in @ref{Figure 2.24}.
 The outer tag (@code{complex}) is used to direct the number to the
 complex package.  Once within the complex package, the next tag
 (@code{rectangular}) is used to direct the number to the rectangular package.
@@ -12314,7 +12315,7 @@ the names of the two types:
 
 @lisp
 (put-coercion 'scheme-number
-              'complex 
+              'complex
               scheme-number->complex)
 @end lisp
 
@@ -12355,9 +12356,9 @@ procedure:
                     (a2 (cadr args)))
                 (let ((t1->t2 (get-coercion type1 type2))
                       (t2->t1 (get-coercion type2 type1)))
-                  (cond (t1->t2 
+                  (cond (t1->t2
                          (apply-generic op (t1->t2 a1) a2))
-                        (t2->t1 
+                        (t2->t1
                          (apply-generic op a1 (t2->t1 a2)))
                         (else (error "No method for these types"
                                      (list op type-tags))))))
@@ -12563,7 +12564,7 @@ their own type.  For example, in addition to the
 @lisp
 (define (scheme-number->scheme-number n) n)
 (define (complex->complex z) z)
-(put-coercion 'scheme-number 
+(put-coercion 'scheme-number
               'scheme-number
               scheme-number->scheme-number)
 (put-coercion 'complex 'complex complex->complex)
@@ -12589,7 +12590,7 @@ package but not in any other package:
 @lisp
 @r{;; following added to Scheme-number package}
 (put 'exp '(scheme-number scheme-number)
-     (lambda (x y) (tag (expt x y)))) 
+     (lambda (x y) (tag (expt x y))))
      @r{; using primitive @code{expt}}
 @end lisp
 
@@ -12642,7 +12643,7 @@ adding new levels to the tower.
 for ``simplifying'' a data object by lowering it in the tower of types as far
 as possible.  Design a procedure @code{drop} that accomplishes this for the
 tower described in @ref{Exercise 2.83}.  The key is to decide, in some general
-way, whether an object can be lowered.  For example, the complex number 
+way, whether an object can be lowered.  For example, the complex number
 @math{1.5 + 0i} can be lowered as far as @code{real}, the complex number @math{1 + 0i} can
 be lowered as far as @code{integer}, and the complex number @math{2 + 3i} cannot
 be lowered at all.  Here is a plan for determining whether an object can be
@@ -12778,7 +12779,7 @@ called a @newterm{poly}, which consists of a variable and a collection of
 terms.  We assume that we have selectors @code{variable} and @code{term-list}
 that extract those parts from a poly and a constructor @code{make-poly} that
 assembles a poly from a given variable and a term list.  A variable will be
-just a symbol, so we can use the @code{same-variable?}  procedure of 
+just a symbol, so we can use the @code{same-variable?}  procedure of
 @ref{2.3.2} to compare variables.  The following procedures define addition and
 multiplication of polys:
 
@@ -12860,7 +12861,7 @@ for a sum is almost identical to @code{union-set}.}
   (cond ((empty-termlist? L1) L2)
         ((empty-termlist? L2) L1)
         (else
-         (let ((t1 (first-term L1)) 
+         (let ((t1 (first-term L1))
                (t2 (first-term L2)))
            (cond ((> (order t1) (order t2))
                   (adjoin-term
@@ -12910,7 +12911,7 @@ This is really all there is to polynomial addition and multiplication.  Notice
 that, since we operate on terms using the generic procedures @code{add} and
 @code{mul}, our polynomial package is automatically able to handle any type of
 coefficient that is known about by the generic arithmetic package.  If we
-include a coercion mechanism such as one of those discussed in 
+include a coercion mechanism such as one of those discussed in
 @ref{2.5.2}, then we also are automatically able to handle operations on
 polynomials of different coefficient types, such as
 @ifinfo
@@ -13083,7 +13084,7 @@ polynomials.
 @strong{@anchor{Exercise 2.90}Exercise 2.90:} Suppose we want to have a
 polynomial system that is efficient for both sparse and dense polynomials.  One
 way to do this is to allow both kinds of term-list representations in our
-system.  The situation is analogous to the complex-number example of 
+system.  The situation is analogous to the complex-number example of
 @ref{2.4}, where we allowed both rectangular and polar representations.  To do
 this we must distinguish different types of term lists and make the operations
 on term lists generic.  Redesign the polynomial system to implement this
@@ -13218,7 +13219,7 @@ x^3 - 1   x^2 - 1    x^4 + x^3 - x - 1
 
 @end ifinfo
 @tex
-$$ {x + 1 \over x^3 - 1} + {x \over x^2 - 1} = 
+$$ {x + 1 \over x^3 - 1} + {x \over x^2 - 1} =
 	{x^3 + 2x^2 + 3x + 1 \over x^4 + x^3 - x - 1}\,. $$
 @end tex
 @noindent
@@ -13257,7 +13258,7 @@ polynomials is formalized in algebra by saying that polynomials form a kind of
 algebraic domain called a @newterm{Euclidean ring}.  A Euclidean ring is a
 domain that admits addition, subtraction, and commutative multiplication,
 together with a way of assigning to each element @math{x} of the ring a positive
-integer ``measure'' @math{m(x)} with the properties that 
+integer ``measure'' @math{m(x)} with the properties that
 @math{m(xy) \ge m(x)} for any nonzero @math{x} and @math{y} and that, given any @math{x} and
 @math{y}, there exists a @math{q} such that @math{y = qx + r} and either
 @math{r = 0} or @math{m(r) < m(x)}.  From an abstract point of view, this
@@ -13299,7 +13300,7 @@ polys are not in the same variable.)  Install in the system a generic operation
 and to ordinary @code{gcd} for ordinary numbers.  As a test, try
 
 @lisp
-(define p1 (make-polynomial 
+(define p1 (make-polynomial
             'x '((4 1) (3 -1) (2 -2) (1 2))))
 (define p2 (make-polynomial 'x '((3 1) (1 -1))))
 (greatest-common-divisor p1 p2)
@@ -13332,12 +13333,12 @@ P_3 : 13x + 5
 \begin{array}{l@{{}:}l}
 	P_1 	& \quad x^2 - 2x + 1, \\
 	P_2 	& \quad 11x^2 + 7, \\
-	P_3 	& \quad 13x + 5. 
+	P_3 	& \quad 13x + 5.
 \end{array}
 @end tex
 Now define @math{Q_1} to be the product of @math{P_1} and @math{P_2} and @math{Q_2} to be
 the product of @math{P_1} and @math{P_3}, and use @code{greatest-common-divisor}
-(@ref{Exercise 2.94}) to compute the @acronym{GCD} of @math{Q_1} 
+(@ref{Exercise 2.94}) to compute the @acronym{GCD} of @math{Q_1}
 and @math{Q_2}.
 Note that the answer is not the same as @math{P_1}.  This example introduces
 noninteger operations into the computation, causing difficulties with the
@@ -13484,7 +13485,7 @@ of better algorithms for computing polynomial @acronym{GCD}s.@footnote{One
 extremely efficient and elegant method for computing polynomial @acronym{GCD}s
 was discovered by Richard @ref{Zippel (1979)}.  The method is a probabilistic
 algorithm, as is the fast test for primality that we discussed in @ref{Chapter
-1}.  Zippel's book (@ref{Zippel 1993}) describes this method, together with 
+1}.  Zippel's book (@ref{Zippel 1993}) describes this method, together with
 other ways to compute polynomial @acronym{GCD}s.}
 
 
@@ -13635,7 +13636,7 @@ functions.  A call to a procedure computed the value of the function applied to
 the given arguments, and two calls to the same procedure with the same
 arguments always produced the same result.@footnote{Actually, this is not quite
 true.  One exception was the random-number generator in @ref{1.2.6}.
-Another exception involved the operation/type tables we introduced in 
+Another exception involved the operation/type tables we introduced in
 @ref{2.4.3}, where the values of two calls to @code{get} with the same
 arguments depended on intervening calls to @code{put}.  On the other hand,
 until we introduce assignment, we have no way to create such procedures
@@ -13958,7 +13959,7 @@ start with a given number @math{x_1} and form
 @noindent
 then the sequence of values @math{x_1}, @math{x_2}, @math{x_3}, @dots{} will have the
 desired statistical properties.@footnote{One common way to implement
-@code{rand-update} is to use the rule that @math{x} is updated to @math{ax + b} 
+@code{rand-update} is to use the rule that @math{x} is updated to @math{ax + b}
 modulo @math{m}, where @math{a}, @math{b}, and @math{m} are appropriately chosen
 integers.  Chapter 3 of @ref{Knuth 1981} includes an extensive discussion of
 techniques for generating sequences of random numbers and establishing their
@@ -13981,7 +13982,7 @@ returns this as the random number, and also stores this as the new value of
 
 @lisp
 (define rand (let ((x random-init))
-               (lambda () 
+               (lambda ()
                  (set! x (rand-update x))
                  x)))
 @end lisp
@@ -14026,10 +14027,10 @@ trials in which the experiment was found to be true.
     (cond ((= trials-remaining 0)
            (/ trials-passed trials))
           ((experiment)
-           (iter (- trials-remaining 1) 
+           (iter (- trials-remaining 1)
                  (+ trials-passed 1)))
           (else
-           (iter (- trials-remaining 1) 
+           (iter (- trials-remaining 1)
                  trials-passed))))
   (iter trials 0))
 @end lisp
@@ -14123,7 +14124,7 @@ measuring the area of a unit circle.
 
 You will find it useful to have a procedure that returns a number chosen at
 random from a given range.  The following @code{random-@/in-@/range} procedure
-implements this in terms of the @code{random} procedure used in 
+implements this in terms of the @code{random} procedure used in
 @ref{1.2.6}, which returns a nonnegative number less than its
 input.@footnote{@acronym{MIT} Scheme provides such a procedure.  If
 @code{random} is given an exact integer (as in @ref{1.2.6}) it returns
@@ -14383,7 +14384,7 @@ we forget that a change to an object may also, as a ``side effect,'' change a
 single object appearing under different aliases.  These so-called
 @newterm{side-effect bugs} are so difficult to locate and to analyze that some
 people have proposed that programming languages be designed in such a way as to
-not allow side effects or aliasing (@ref{Lampson et al. 1981}; 
+not allow side effects or aliasing (@ref{Lampson et al. 1981};
 @ref{Morris et al. 1980}).}
 
 With reference to the above remarks on ``sameness'' and ``change,'' observe
@@ -14409,7 +14410,7 @@ In contrast to functional programming, programming that makes extensive use of
 assignment is known as @newterm{imperative programming}.  In addition to
 raising complications about computational models, programs written in
 imperative style are susceptible to bugs that cannot occur in functional
-programs.  For example, recall the iterative factorial program from 
+programs.  For example, recall the iterative factorial program from
 @ref{Section 1.2.1}:
 
 @lisp
@@ -14502,7 +14503,7 @@ expression is to evaluate its subexpressions.  But we never specified the order
 in which the subexpressions should be evaluated (e.g., left to right or right
 to left).  When we introduce assignment, the order in which the arguments to a
 procedure are evaluated can make a difference to the result.  Define a simple
-procedure @code{f} such that evaluating 
+procedure @code{f} such that evaluating
 
 @lisp
 (+ (f 0) (f 1))
@@ -14731,7 +14732,7 @@ environment, evaluate the procedure body.
 
 To show how this rule is followed, @ref{Figure 3.3} illustrates the environment
 structure created by evaluating the expression @code{(square 5)} in the global
-environment, where @code{square} is the procedure generated in @ref{Figure 3.2}.  
+environment, where @code{square} is the procedure generated in @ref{Figure 3.2}.
 Applying the procedure results in the creation of a new environment,
 labeled E1 in the figure, that begins with a frame in which @code{x}, the
 formal parameter for the procedure, is bound to the argument 5.  The pointer
@@ -15492,7 +15493,7 @@ of @ref{3.1.1}:
   (define (dispatch m)
     (cond ((eq? m 'withdraw) withdraw)
           ((eq? m 'deposit) deposit)
-          (else 
+          (else
            (error "Unknown request: MAKE-ACCOUNT"
                   m))))
   dispatch)
@@ -15837,7 +15838,7 @@ w
 @math{\langle}@var{response}@math{\rangle}
 @end lisp
 
-What are the missing @math{\langle}@var{response}@math{\rangle}s?  
+What are the missing @math{\langle}@var{response}@math{\rangle}s?
 Draw box-and-pointer @* diagrams to explain your answer.
 @end quotation
 
@@ -16123,12 +16124,12 @@ using @code{make-account} in @ref{3.1.1}:
           ((eq? m 'cdr) y)
           ((eq? m 'set-car!) set-x!)
           ((eq? m 'set-cdr!) set-y!)
-          (else 
+          (else
            (error "Undefined operation: CONS" m))))
   dispatch)
 (define (car z) (z 'car))
 (define (cdr z) (z 'cdr))
-(define (set-car! z new-value) 
+(define (set-car! z new-value)
   ((z 'set-car!) new-value) z)
 (define (set-cdr! z new-value)
   ((z 'set-cdr!) new-value) z)
@@ -16215,7 +16216,7 @@ a constructor: @code{(make-queue)} returns an empty queue (a queue containing
 no items).
 
 @item
-two selectors: 
+two selectors:
 
 @code{(empty-queue? @math{\langle}@var{queue}@math{\rangle})}
 tests if the queue is empty.
@@ -16305,9 +16306,9 @@ to select and to modify the front and rear pointers of a queue:
 @lisp
 (define (front-ptr queue) (car queue))
 (define (rear-ptr  queue) (cdr queue))
-(define (set-front-ptr! queue item) 
+(define (set-front-ptr! queue item)
   (set-car! queue item))
-(define (set-rear-ptr!  queue item) 
+(define (set-rear-ptr!  queue item)
   (set-cdr! queue item))
 @end lisp
 
@@ -16316,7 +16317,7 @@ Now we can implement the actual queue operations.  We will consider a queue to
 be empty if its front pointer is the empty list:
 
 @lisp
-(define (empty-queue? queue) 
+(define (empty-queue? queue)
   (null? (front-ptr queue)))
 @end lisp
 
@@ -16427,7 +16428,7 @@ also set the rear pointer to the new pair.
 @noindent
 To delete the item at the front of the queue, we merely modify the front
 pointer so that it now points at the second item in the queue, which can be
-found by following the @code{cdr} pointer of the first item (see 
+found by following the @code{cdr} pointer of the first item (see
 @ref{Figure 3.21}):@footnote{If the first item is the final item in the queue, the front
 pointer will be the empty list after the deletion, which will mark the queue as
 empty; we needn't worry about updating the rear pointer, which will still point
@@ -16500,7 +16501,7 @@ the predicate @code{empty-@/deque?}, selectors @code{front-@/deque} and
 @code{rear-@/insert-@/deque!}, @code{front-@/delete-@/deque!}, and
 @code{rear-@/delete-@/deque!}.  Show how to represent deques using pairs, and give
 implementations of the operations.@footnote{Be careful not to make the
-interpreter try to print a structure that contains cycles.  (See @ref{Exercise 3.13}.)}  
+interpreter try to print a structure that contains cycles.  (See @ref{Exercise 3.13}.)}
 All operations should be accomplished in @math{\Theta}(1) steps.
 @end quotation
 
@@ -16643,10 +16644,10 @@ Then we use the second key to identify the record within the subtable.
 
 @lisp
 (define (lookup key-1 key-2 table)
-  (let ((subtable 
+  (let ((subtable
          (assoc key-1 (cdr table))))
     (if subtable
-        (let ((record 
+        (let ((record
                (assoc key-2 (cdr subtable))))
           (if record
               (cdr record)
@@ -16742,18 +16743,18 @@ generator for two-dimensional tables represented in this fashion:
 (define (make-table)
   (let ((local-table (list '*table*)))
     (define (lookup key-1 key-2)
-      (let ((subtable 
+      (let ((subtable
              (assoc key-1 (cdr local-table))))
         (if subtable
-            (let ((record 
+            (let ((record
                    (assoc key-2 (cdr subtable))))
               (if record (cdr record) false))
             false)))
     (define (insert! key-1 key-2 value)
-      (let ((subtable 
+      (let ((subtable
              (assoc key-1 (cdr local-table))))
         (if subtable
-            (let ((record 
+            (let ((record
                    (assoc key-2 (cdr subtable))))
               (if record
                   (set-cdr! record value)
@@ -16857,7 +16858,7 @@ where the memoizer is defined as
 (define (memoize f)
   (let ((table (make-table)))
     (lambda (x)
-      (let ((previously-computed-result 
+      (let ((previously-computed-result
              (lookup x table)))
         (or previously-computed-result
             (let ((result (f x)))
@@ -16897,7 +16898,7 @@ time that depends on the type of the function box.  For example, an
 input signal to an inverter changes to 0, then one inverter-delay later the
 inverter will change its output signal to 1.  If the input signal to an
 inverter changes to 1, then one inverter-delay later the inverter will change
-its output signal to 0.  We draw an inverter symbolically as in @ref{Figure 3.24}.  
+its output signal to 0.  We draw an inverter symbolically as in @ref{Figure 3.24}.
 An @newterm{and-gate}, also shown in @ref{Figure 3.24}, is a primitive
 function box with two inputs and one output.  It drives its output signal to a
 value that is the @newterm{logical and} of the inputs.  That is, if both of its
@@ -17027,7 +17028,7 @@ to be attached to the half-adder:
 
 @noindent
 The advantage of making this definition is that we can use @code{half-adder}
-itself as a building block in creating more complex circuits.  @ref{Figure 3.26}, 
+itself as a building block in creating more complex circuits.  @ref{Figure 3.26},
 for example, shows a @newterm{full-adder} composed of two half-adders
 and an or-gate.@footnote{A full-adder is a basic circuit element used in adding
 two binary numbers.  Here A and B are the bits at corresponding positions in
@@ -17149,7 +17150,7 @@ the output wire after one @code{and-gate-delay}.
   (define (and-action-procedure)
     (let ((new-value
            (logical-and (get-signal a1) (get-signal a2))))
-      (after-delay 
+      (after-delay
        and-gate-delay
        (lambda () (set-signal! output new-value)))))
   (add-action! a1 and-action-procedure)
@@ -17175,10 +17176,10 @@ the delay time of the or-gate in terms of @code{and-gate-delay} and
 @strong{@anchor{Exercise 3.30}Exercise 3.30:} @ref{Figure 3.27} shows a
 @newterm{ripple-carry adder} formed by stringing together @math{n} full-adders.
 This is the simplest form of parallel adder for adding two @math{n}-bit binary
-numbers.  The inputs @math{A_1}, @math{A_2}, @math{A_3}, @dots{}, @math{A_n} and 
+numbers.  The inputs @math{A_1}, @math{A_2}, @math{A_3}, @dots{}, @math{A_n} and
 @math{B_1}, @math{B_2}, @math{B_3},
 @dots{}, @math{B_n} are the two binary numbers to be added (each @math{A_k} and
-@math{B_k} is a 0 or a 1).  The circuit generates @math{S_1}, @math{S_2}, 
+@math{B_k} is a 0 or a 1).  The circuit generates @math{S_1}, @math{S_2},
 @math{S_3}, @dots{}, @math{S_n},
 the @math{n} bits of the sum, and @math{C}, the carry from the addition.  Write a
 procedure @code{ripple-carry-adder} that generates this circuit.  The procedure
@@ -17200,14 +17201,14 @@ and inverters?
    :                                              :   :
    : A_1 B_1   C_1   A_2 B_2   C_2   A_3 B_3   C_3:   : A_n B_n C_n=0
    :  |   |   +---+   |   |   +---+   |   |   +-----  :  |   |   +-
-   |  |   |   |   |   |   |   |   |   |   |   |   :   :  |   |   | 
+   |  |   |   |   |   |   |   |   |   |   |   |   :   :  |   |   |
    : ++---+---++  |  ++---+---++  |  ++---+---++  :   : ++---+---++
    : |   FA    |  |  |   FA    |  |  |   FA    |  :   : |   FA    |
    : +--+---+--+  |  +--+---+--+  |  +--+---+--+  :   : +--+---+--+
-   :    |   |     |     |   |     |     |   |     :   :    |   |   
-C ------+   |     +-----+   |     +-----+   |     :  ------+   |   
-   :        |       C_1     |       C_2     |     :   :C_(n-1) |   
-   :        |               |               |     :   :        |   
+   :    |   |     |     |   |     |     |   |     :   :    |   |
+C ------+   |     +-----+   |     +-----+   |     :  ------+   |
+   :        |       C_1     |       C_2     |     :   :C_(n-1) |
+   :        |               |               |     :   :        |
            S_1             S_2             S_3                S_n
 @end example
 @end ifinfo
@@ -17228,7 +17229,7 @@ variables: a @code{signal-value} (initially taken to be 0) and a collection of
 @code{action-procedures} to be run when the signal changes value.  We implement
 the wire, using message-passing style, as a collection of local procedures
 together with a @code{dispatch} procedure that selects the appropriate local
-operation, just as we did with the simple bank-account object in 
+operation, just as we did with the simple bank-account object in
 @ref{3.1.1}:
 
 @lisp
@@ -17240,7 +17241,7 @@ operation, just as we did with the simple bank-account object in
                  (call-each action-procedures))
           'done))
     (define (accept-action-procedure! proc)
-      (set! action-procedures 
+      (set! action-procedures
             (cons proc action-procedures))
       (proc))
     (define (dispatch m)
@@ -17463,7 +17464,7 @@ would differ if we had defined @code{accept-@/action-@/procedure!} as
 
 @lisp
 (define (accept-action-procedure! proc)
-  (set! action-procedures 
+  (set! action-procedures
         (cons proc action-procedures)))
 @end lisp
 @end quotation
@@ -17493,7 +17494,7 @@ the tables described in @ref{3.3.3} in that the segments will be sorted
 in order of increasing time.  In addition, we store the @newterm{current time}
 (i.e., the time of the last action that was processed) at the head of the
 agenda.  A newly constructed agenda has no time segments and has a current time
-of 0:@footnote{The agenda is a headed list, like the tables in 
+of 0:@footnote{The agenda is a headed list, like the tables in
 @ref{3.3.3}, but since the list is headed by the time, we do not need an
 additional dummy header (such as the @code{*table*} symbol used with tables).}
 
@@ -17586,7 +17587,7 @@ been deleted.}
   (if (empty-agenda? agenda)
       (error "Agenda is empty: FIRST-AGENDA-ITEM")
       (let ((first-seg (first-segment agenda)))
-        (set-current-time! agenda 
+        (set-current-time! agenda
                            (segment-time first-seg))
         (front-queue (segment-queue first-seg)))))
 @end lisp
@@ -17642,8 +17643,8 @@ In this section, we sketch the design of a language that enables us to work in
 terms of relations themselves.  The primitive elements of the language are
 @newterm{primitive constraints}, which state that certain relations hold
 between quantities.  For example, @code{(adder a b c)} specifies that the
-quantities @math{a}, @math{b}, and @math{c} must be related by the equation 
-@math{a + b = c}, @code{(multiplier x y z)} expresses the constraint 
+quantities @math{a}, @math{b}, and @math{c} must be related by the equation
+@math{a + b = c}, @code{(multiplier x y z)} expresses the constraint
 @math{xy = z}, and @code{(constant 3.14 x)} says that the value of @math{x} must be 3.14.
 
 Our language provides a means of combining primitive constraints in order to
@@ -17753,7 +17754,7 @@ The procedure that creates the network is defined as follows:
 This procedure creates the internal connectors @code{u}, @code{v}, @code{w},
 @code{x}, and @code{y}, and links them as shown in @ref{Figure 3.28} using the
 primitive constraint constructors @code{adder}, @code{multiplier}, and
-@code{constant}.  Just as with the digital-circuit simulator of 
+@code{constant}.  Just as with the digital-circuit simulator of
 @ref{3.3.4}, expressing these combinations of primitive elements in terms of
 procedures automatically provides our language with a means of abstraction for
 compound objects.
@@ -17831,7 +17832,7 @@ distinguishing feature of constraint-based systems.
 @subsubheading Implementing the constraint system
 
 The constraint system is implemented via procedural objects with local state,
-in a manner very similar to the digital-circuit simulator of 
+in a manner very similar to the digital-circuit simulator of
 @ref{3.3.4}.  Although the primitive objects of the constraint system are
 somewhat more complex, the overall system is simpler, since there is no concern
 about agendas and logic delays.
@@ -17947,12 +17948,12 @@ if either of the factors is 0, even if the other factor is not known.
                        me))
           ((and (has-value? product) (has-value? m1))
            (set-value! m2
-                       (/ (get-value product) 
+                       (/ (get-value product)
                           (get-value m1))
                        me))
           ((and (has-value? product) (has-value? m2))
            (set-value! m1
-                       (/ (get-value product) 
+                       (/ (get-value product)
                           (get-value m2))
                        me))))
   (define (process-forget-value)
@@ -17963,7 +17964,7 @@ if either of the factors is 0, even if the other factor is not known.
   (define (me request)
     (cond ((eq? request 'I-have-a-value)  (process-new-value))
           ((eq? request 'I-lost-my-value) (process-forget-value))
-          (else (error "Unknown request: MULTIPLIER" 
+          (else (error "Unknown request: MULTIPLIER"
                        request))))
   (connect m1 me)
   (connect m2 me)
@@ -18087,9 +18088,9 @@ procedures and also represents the connector as an object.  The following
 procedures provide a syntax interface for the dispatch:
 
 @lisp
-(define (has-value? connector) 
+(define (has-value? connector)
   (connector 'has-value?))
-(define (get-value connector) 
+(define (get-value connector)
   (connector 'value))
 (define (set-value! connector new-value informant)
   ((connector 'set-value!) new-value informant))
@@ -18115,7 +18116,7 @@ value @code{a} on the first terminal.  He proposes the following simple device
 made from a multiplier:
 
 @lisp
-(define (squarer a b) 
+(define (squarer a b)
   (multiplier a a b))
 @end lisp
 
@@ -18133,7 +18134,7 @@ procedure to implement such a constraint:
   (define (process-new-value)
     (if (has-value? b)
         (if (< (get-value b) 0)
-            (error "square less than 0: SQUARER" 
+            (error "square less than 0: SQUARER"
                    (get-value b))
             @math{\langle}@var{alternative1}@math{\rangle})
         @math{\langle}@var{alternative2}@math{\rangle}))
@@ -18158,7 +18159,7 @@ At some time during evaluation of the @code{set-value!}, the following
 expression from the connector's local procedure is evaluated:
 
 @lisp
-(for-each-except 
+(for-each-except
   setter inform-about-value constraints)
 @end lisp
 
@@ -18198,7 +18199,7 @@ converter example above.@footnote{The expression-oriented format is convenient
 because it avoids the need to name the intermediate expressions in a
 computation.  Our original formulation of the constraint language is cumbersome
 in the same way that many languages are cumbersome when dealing with operations
-on compound data.  For example, if we wanted to compute the product 
+on compound data.  For example, if we wanted to compute the product
 @math{(a + b) \cdot (c + d)}, where the variables represent vectors, we could work
 in ``imperative style,'' using procedures that set the values of designated
 vector arguments but do not themselves return vectors as values:
@@ -18342,7 +18343,7 @@ variable @code{balance}, each process specified by the procedure given in
 (define (withdraw amount)
   (if (>= balance amount)
       (begin
-        (set! balance (- balance amount)) 
+        (set! balance (- balance amount))
         balance)
       "Insufficient funds"))
 @end lisp
@@ -18371,7 +18372,7 @@ value.
 @float[tp]
 @anchor{Figure 3.29}
 @ifinfo
-@strong{Figure 3.29:} Timing diagram showing how interleaving the order of events 
+@strong{Figure 3.29:} Timing diagram showing how interleaving the order of events
 in two banking withdrawals can lead to an incorrect final balance.
 
 @example
@@ -18381,11 +18382,11 @@ in two banking withdrawals can lead to an incorrect final balance.
  |             .--------------| $100 |-------------.
  |             |               \____/              |
  |             V                                   V
- |  .----------------------.            .----------------------.           
+ |  .----------------------.            .----------------------.
  |  | Access balance: $100 |            | Access balance: $100 |
  |  `----------+-----------'            `----------+-----------'
  |             V                                   V
- |  .----------------------.            .----------------------.           
+ |  .----------------------.            .----------------------.
  |  | new value: 100-10=90 |            | new value: 100-25=75 |
  |  `----------+-----------'            `----------+-----------'
  |             V                                   |
@@ -18483,27 +18484,27 @@ Peter's withdrawal from the shared account.
 @quotation
 @anchor{Figure 3.30}
 @ifinfo
-@strong{Figure 3.30:} Concurrent deposits and withdrawals from a joint account 
+@strong{Figure 3.30:} Concurrent deposits and withdrawals from a joint account
 in Bank1 and a private account in Bank2.
 
 @example
  |    Peter          Bank1          Paul           Bank2
- |    ____           ____           ____           ____  
- |   /    \         /    \         /    \         /    \ 
+ |    ____           ____           ____           ____
+ |   /    \         /    \         /    \         /    \
  |  |  $7  |--. .--| $100 |       |  $5  |--. .--| $300 |
- |   \____/   V V   \____/         \____/   V V   \____/ 
- |           +---+                         +---+         
- |           | W |                         | D |         
- |    ____   ++-++   ____           ____   ++-++   ____  
- |   /    \   | |   /    \         /    \   | |   /    \ 
+ |   \____/   V V   \____/         \____/   V V   \____/
+ |           +---+                         +---+
+ |           | W |                         | D |
+ |    ____   ++-++   ____           ____   ++-++   ____
+ |   /    \   | |   /    \         /    \   | |   /    \
  |  | $17  |<-' `->| $90  |--. .--|  $0  |<-' `->| $305 |
- |   \____/         \____/   V V   \____/         \____/ 
+ |   \____/         \____/   V V   \____/         \____/
  |                          +---+
  |                          | W |
- |    ____           ____   ++-++   ____           ____  
- |   /    \         /    \   | |   /    \         /    \ 
+ |    ____           ____   ++-++   ____           ____
+ |   /    \         /    \   | |   /    \         /    \
  |  | $17  |       | $65  |<-' `->| $25  |       | $305 |
- |   \____/         \____/         \____/         \____/ 
+ |   \____/         \____/         \____/         \____/
  V
 time
 @end example
@@ -18569,7 +18570,7 @@ three processes to run sequentially in some order.
 
 @item
 What are some other values that could be produced if the system allows the
-processes to be interleaved?  Draw timing diagrams like the one in @ref{Figure 3.29} 
+processes to be interleaved?  Draw timing diagrams like the one in @ref{Figure 3.29}
 to explain how these values can occur.
 
 @end enumerate
@@ -18664,7 +18665,7 @@ depending on the interleaving of the events of @math{P_1} and @math{P_2}:
 @lisp
 101: @r{@math{P_1} sets @code{x} to 100 and then @math{P_2} increments @code{x} to 101.}
 121: @r{@math{P_2} increments @code{x} to 11 and then @math{P_1} sets @code{x} to @code{x} @code{*} @code{x}.}
-110: @r{@math{P_2} changes @code{x} from 10 to 11 between the two times that} 
+110: @r{@math{P_2} changes @code{x} from 10 to 11 between the two times that}
      @r{@math{P_1} accesses the value of @code{x} during the evaluation of @code{(* x x)}.}
  11: @r{@math{P_2} accesses @code{x}, then @math{P_1} sets @code{x} to 100, then @math{P_2} sets @code{x}.}
 100: @r{@math{P_1} accesses @code{x} (twice), then @math{P_2} sets @code{x} to 11, then @math{P_1} sets @code{x}.}
@@ -18693,7 +18694,7 @@ can produce only two possible values for @code{x}, 101 or 121.  The other
 possibilities are eliminated, because the execution of @math{P_1} and @math{P_2}
 cannot be interleaved.
 
-Here is a version of the @code{make-account} procedure from 
+Here is a version of the @code{make-account} procedure from
 @ref{3.1.1}, where the deposits and withdrawals have been serialized:
 
 @lisp
@@ -18733,7 +18734,7 @@ as follows:
 @lisp
 (define x 10)
 (define s (make-serializer))
-(parallel-execute 
+(parallel-execute
  (lambda () (set! x ((s (lambda () (* x x))))))
  (s (lambda () (set! x (+ x 1)))))
 @end lisp
@@ -18768,7 +18769,7 @@ line has been changed):
 (define (make-account balance)
   (define (withdraw amount)
     (if (>= balance amount)
-        (begin (set! balance 
+        (begin (set! balance
                      (- balance amount))
                balance)
         "Insufficient funds"))
@@ -18780,7 +18781,7 @@ line has been changed):
       (cond ((eq? m 'withdraw) (protected withdraw))
             ((eq? m 'deposit) (protected deposit))
             ((eq? m 'balance)
-             ((protected 
+             ((protected
                (lambda () balance)))) @r{; serialized}
             (else
              (error "Unknown request: MAKE-ACCOUNT"
@@ -18820,7 +18821,7 @@ time it is asked for a withdrawal procedure.
         (cond ((eq? m 'withdraw) protected-withdraw)
               ((eq? m 'deposit) protected-deposit)
               ((eq? m 'balance) balance)
-              (else 
+              (else
                (error "Unknown request: MAKE-ACCOUNT"
                       m))))
       dispatch)))
@@ -19177,13 +19178,13 @@ unique identification number and rewrite @code{serialized-exchange} so that a
 process will always attempt to enter a procedure protecting the lowest-numbered
 account first.  Although this method works well for the exchange problem, there
 are other situations that require more sophisticated deadlock-avoidance
-techniques, or where deadlock cannot be avoided at all.  (See @ref{Exercise 3.48} 
+techniques, or where deadlock cannot be avoided at all.  (See @ref{Exercise 3.48}
 and @ref{Exercise 3.49}.)@footnote{The general technique for avoiding
 deadlock by numbering the shared resources and acquiring them in order is due
 to @ref{Havender (1968)}.  Situations where deadlock cannot be avoided require
 @newterm{deadlock-recovery} methods, which entail having processes ``back out''
 of the deadlocked state and try again.  Deadlock-recovery mechanisms are widely
-used in database management systems, a topic that is treated in detail in 
+used in database management systems, a topic that is treated in detail in
 @ref{Gray and Reuter 1993}.}
 
 @quotation
@@ -19226,7 +19227,7 @@ to execute as they please, but establishes certain synchronization points
 have reached the barrier.  Modern processors provide machine instructions that
 permit programmers to establish synchronization points at places where
 consistency is required.  The @acronym{PowerPC}, for example, includes for
-this purpose two instructions called @acronym{SYNC} and @acronym{EIEIO} 
+this purpose two instructions called @acronym{SYNC} and @acronym{EIEIO}
 (Enforced In-order Execution of Input/Output).}
 
 The problematic aspects of shared state also arise in large, distributed
@@ -19344,7 +19345,7 @@ as in @ref{1.2.6}) that tests for primality.}
 (define (sum-primes a b)
   (define (iter count accum)
     (cond ((> count b) accum)
-          ((prime? count) 
+          ((prime? count)
              (iter (+ count 1) (+ count accum)))
           (else (iter (+ count 1) accum))))
   (iter a 0))
@@ -19358,7 +19359,7 @@ of @ref{2.2.3}:
 (define (sum-primes a b)
   (accumulate +
               0
-              (filter prime? 
+              (filter prime?
                       (enumerate-interval a b))))
 @end lisp
 
@@ -19426,7 +19427,7 @@ you.  The fact that we are defining such similar procedures for streams and
 lists indicates that we are missing some underlying abstraction.
 Unfortunately, in order to exploit this abstraction, we will need to exert
 finer control over the process of evaluation than we can at present.  We will
-discuss this point further at the end of @ref{3.5.4}.  In 
+discuss this point further at the end of @ref{3.5.4}.  In
 @ref{4.2}, we'll develop a framework that unifies lists and streams.}
 
 @lisp
@@ -19450,7 +19451,7 @@ discuss this point further at the end of @ref{3.5.4}.  In
 @code{Stream-for-each} is useful for viewing streams:
 
 @lisp
-(define (display-stream s) 
+(define (display-stream s)
   (stream-for-each display-line s))
 (define (display-line x) (newline) (display x))
 @end lisp
@@ -19525,8 +19526,8 @@ computation we saw above, reformulated in terms of streams:
 @lisp
 (stream-car
  (stream-cdr
-  (stream-filter prime? 
-                 (stream-enumerate-interval 
+  (stream-filter prime?
+                 (stream-enumerate-interval
                   10000 1000000))))
 @end lisp
 
@@ -19570,7 +19571,7 @@ using the stream analog of the @code{filter} procedure (@ref{2.2.3}):
   (cond ((stream-null? stream) the-empty-stream)
         ((pred (stream-car stream))
          (cons-stream (stream-car stream)
-                      (stream-filter 
+                      (stream-filter
                        pred
                        (stream-cdr stream))))
         (else (stream-filter pred (stream-cdr stream)))))
@@ -19720,7 +19721,7 @@ versions as @newterm{call-by-need thunks}.}
 @quotation
 @strong{@anchor{Exercise 3.50}Exercise 3.50:} Complete the following
 definition, which generalizes @code{stream-map} to allow procedures that take
-multiple arguments, analogous to @code{map} in @ref{2.2.1}, 
+multiple arguments, analogous to @code{map} in @ref{2.2.1},
 @ref{Footnote 12}.
 
 @lisp
@@ -19759,8 +19760,8 @@ precisely what we cannot afford to do in the presence of assignment, which
 forces us to be concerned with time and change.}
 
 @lisp
-(define x 
-  (stream-map show 
+(define x
+  (stream-map show
               (stream-enumerate-interval 0 10)))
 (stream-ref x 5)
 (stream-ref x 7)
@@ -19774,11 +19775,11 @@ expressions
 @lisp
 (define sum 0)
 (define (accum x) (set! sum (+ x sum)) sum)
-(define seq 
+(define seq
   (stream-map accum
               (stream-enumerate-interval 1 20)))
 (define y (stream-filter even? seq))
-(define z 
+(define z
   (stream-filter (lambda (x) (= (remainder x 5) 0))
                  seq))
 (stream-ref y 7)
@@ -19893,7 +19894,7 @@ Now to find a particular prime we need only ask for it:
 
 @noindent
 It is interesting to contemplate the signal-processing system set up by
-@code{sieve}, shown in the ``Henderson diagram'' in 
+@code{sieve}, shown in the ``Henderson diagram'' in
 @ref{Figure 3.31}.@footnote{We have named these figures after Peter Henderson, who was the
 first person to show us diagrams of this sort as a way of thinking about stream
 processing.  Each solid line represents a stream of values being transmitted.
@@ -19971,7 +19972,7 @@ streams:@footnote{This uses the generalized version of @code{stream-map} from
 Now we can define the integers as follows:
 
 @lisp
-(define integers 
+(define integers
   (cons-stream 1 (add-streams ones integers)))
 @end lisp
 
@@ -19987,7 +19988,7 @@ back into the definition to produce the next integer.
 We can define the Fibonacci numbers in the same style:
 
 @lisp
-(define fibs 
+(define fibs
   (cons-stream
    0
    (cons-stream 1 (add-streams (stream-cdr fibs) fibs))))
@@ -20085,7 +20086,7 @@ stream of @code{integers} to complete the following definition of the stream
 whose @math{n^{\mathrm{th}}} element (counting from 0) is @math{n + 1} factorial:
 
 @lisp
-(define factorials 
+(define factorials
   (cons-stream 1 (mul-streams @math{\langle}??@math{\rangle} @math{\langle}??@math{\rangle})))
 @end lisp
 @c @noindent
@@ -20095,7 +20096,7 @@ whose @math{n^{\mathrm{th}}} element (counting from 0) is @math{n + 1} factorial
 @quotation
 @strong{@anchor{Exercise 3.55}Exercise 3.55:} Define a procedure
 @code{partial-sums} that takes as argument a stream @math{S} and returns the
-stream whose elements are @math{S_0}, @math{S_0 + S_1}, @math{S_0 + S_1 + S_2, \dots}.  
+stream whose elements are @math{S_0}, @math{S_0 + S_1}, @math{S_0 + S_1 + S_2, \dots}.
 For example, @code{(partial-sums integers)} should be the
 stream 1, 3, 6, 10, 15, @dots{}.
 @end quotation
@@ -20140,15 +20141,15 @@ ordered result stream, eliminating repetitions:
          (let ((s1car (stream-car s1))
                (s2car (stream-car s2)))
            (cond ((< s1car s2car)
-                  (cons-stream 
-                   s1car 
+                  (cons-stream
+                   s1car
                    (merge (stream-cdr s1) s2)))
                  ((> s1car s2car)
-                  (cons-stream 
-                   s2car 
+                  (cons-stream
+                   s2car
                    (merge s1 (stream-cdr s2))))
                  (else
-                  (cons-stream 
+                  (cons-stream
                    s1car
                    (merge (stream-cdr s1)
                           (stream-cdr s2)))))))))
@@ -20169,7 +20170,7 @@ when we compute the @math{n^{\mathrm{th}}} Fibonacci number using the definition
 @code{fibs} based on the @code{add-streams} procedure?  Show that the number of
 additions would be exponentially greater if we had implemented @code{(delay
 @math{\langle}@var{exp}@math{\rangle})} simply as @code{(lambda () @math{\langle}@var{exp}@math{\rangle})}, without using the
-optimization provided by the @code{memo-proc} procedure described in 
+optimization provided by the @code{memo-proc} procedure described in
 @ref{3.5.1}.@footnote{This exercise shows how call-by-need is closely related
 to ordinary memoization as described in @ref{Exercise 3.27}.  In that exercise,
 we used assignment to explicitly construct a local table.  Our call-by-need
@@ -20215,13 +20216,13 @@ sin x = x - ----- + ------------- - ...
 
 @end ifinfo
 @tex
-e^x = 1 + x + \displaystyle\frac{x^2}{2} + \displaystyle\frac{x^3}{3 \cdot 2} + \displaystyle\frac{x^4}{4 \cdot 3 \cdot 2} + \dots, 
+e^x = 1 + x + \displaystyle\frac{x^2}{2} + \displaystyle\frac{x^3}{3 \cdot 2} + \displaystyle\frac{x^4}{4 \cdot 3 \cdot 2} + \dots,
 @end tex
 @tex
-\cos x = 1 - \displaystyle\frac{x^2}{2} + \displaystyle\frac{x^4}{4 \cdot 3 \cdot 2} - \dots, 
+\cos x = 1 - \displaystyle\frac{x^2}{2} + \displaystyle\frac{x^4}{4 \cdot 3 \cdot 2} - \dots,
 @end tex
 @tex
-\sin x = x - \displaystyle\frac{x^3}{3 \cdot 2} + \displaystyle\frac{x^5}{5 \cdot 4 \cdot 3 \cdot 2} - \dots 
+\sin x = x - \displaystyle\frac{x^3}{3 \cdot 2} + \displaystyle\frac{x^5}{5 \cdot 4 \cdot 3 \cdot 2} - \dots
 @end tex
 @noindent
 represented as infinite streams.  We will represent the series @math{a_0 +
@@ -20285,7 +20286,7 @@ multiplying series:
   (cons-stream @math{\langle}??@math{\rangle} (add-streams @math{\langle}??@math{\rangle} @math{\langle}??@math{\rangle})))
 @end lisp
 
-You can test your procedure by verifying that @w{@math{\sin^2\!x + \cos^2\!x = 1}}, 
+You can test your procedure by verifying that @w{@math{\sin^2\!x + \cos^2\!x = 1}},
 using the series from @ref{Exercise 3.59}.
 @end quotation
 
@@ -20316,7 +20317,7 @@ constant term.  Then we can solve for @math{X} as follows:
 	        S \cdot X 	& 1, \\
 	(1 + S_R) \cdot X 	& 1, \\
 	  X + S_R \cdot X 	& 1, \\
-	            	X 	& 1 - S_R \cdot X. 
+	            	X 	& 1 - S_R \cdot X.
 \end{array}
 @end tex
 In other words, @math{X} is the power series whose constant term is 1 and whose
@@ -20327,7 +20328,7 @@ for a power series @math{S} with constant term 1.  You will need to use
 @end quotation
 
 @quotation
-@strong{@anchor{Exercise 3.62}Exercise 3.62:} Use the results of @ref{Exercise 3.60} 
+@strong{@anchor{Exercise 3.62}Exercise 3.62:} Use the results of @ref{Exercise 3.60}
 and @ref{Exercise 3.61} to define a procedure @code{div-series} that
 divides two power series.  @code{Div-series} should work for any two series,
 provided that the denominator series begins with a nonzero constant term.  (If
@@ -20415,7 +20416,7 @@ $$ {\pi\over4} = 1 - {1\over3} + {1\over5} - {1\over7} + \dots. $$
 @end tex
 We first generate the stream of summands of the series (the reciprocals of the
 odd integers, with alternating signs).  Then we take the stream of sums of more
-and more terms (using the @code{partial-sums} procedure of 
+and more terms (using the @code{partial-sums} procedure of
 @ref{Exercise 3.55}) and scale the result by 4:
 
 @lisp
@@ -20522,7 +20523,7 @@ s_00   s_01   s_02   s_03   s_04   ...
 $$ \vbox{
 \offinterlineskip
 \halign{
-\strut 	\hfil \  #\  \hfil & 
+\strut 	\hfil \  #\  \hfil &
 	\hfil \  #\  \hfil &
 	\hfil \  #\  \hfil &
 	\hfil \  #\  \hfil &
@@ -20638,7 +20639,7 @@ For example, suppose we want to generalize the @code{prime-sum-pairs} procedure
 of @ref{2.2.3} to produce the stream of pairs of @emph{all} integers
 @math{(i, j)} with @math{i \le j} such that @math{i + j} is prime.  If
 @code{int-pairs} is the sequence of all pairs of integers @math{(i, j)} with
-@math{i \le j}, then our required stream is simply@footnote{As in 
+@math{i \le j}, then our required stream is simply@footnote{As in
 @ref{2.2.3}, we represent a pair of integers as a list rather than a Lisp
 pair.}
 
@@ -20666,7 +20667,7 @@ and imagine the infinite rectangular array
 $$ \vbox{
 \offinterlineskip
 \halign{
-\strut 	\hfil \  #\  \hfil & 
+\strut 	\hfil \  #\  \hfil &
 	\hfil \  #\  \hfil &
 	\hfil \  #\  \hfil &
 	\hfil \  #\  \hfil \cr
@@ -20693,7 +20694,7 @@ on or above the diagonal, i.e., the pairs
 $$ \vbox{
 \offinterlineskip
 \halign{
-\strut 	\hfil \  #\  \hfil & 
+\strut 	\hfil \  #\  \hfil &
 	\hfil \  #\  \hfil &
 	\hfil \  #\  \hfil &
 	\hfil \  #\  \hfil \cr
@@ -20862,7 +20863,7 @@ integers)} using Louis's definition of @code{pairs}.
 @quotation
 @strong{@anchor{Exercise 3.69}Exercise 3.69:} Write a procedure @code{triples}
 that takes three infinite streams, @math{S}, @math{T}, and @math{U}, and produces the
-stream of triples @math{(S_i, T_j, U_k)} such that @math{i \le j \le k}.  
+stream of triples @math{(S_i, T_j, U_k)} such that @math{i \le j \le k}.
 Use @code{triples} to generate the stream of all Pythagorean
 triples of positive integers, i.e., the triples @math{(i, j, k)} such that
 @math{i \le j} and @math{i^2 + j^2 = k^2}.
@@ -20906,7 +20907,7 @@ ordered according to the sum @math{2i + 3j + 5i\!j}.
 @strong{@anchor{Exercise 3.71}Exercise 3.71:} Numbers that can be expressed as
 the sum of two cubes in more than one way are sometimes called
 @newterm{Ramanujan numbers}, in honor of the mathematician Srinivasa
-Ramanujan.@footnote{To quote from G. H. Hardy's obituary of Ramanujan (@ref{Hardy 1921}): 
+Ramanujan.@footnote{To quote from G. H. Hardy's obituary of Ramanujan (@ref{Hardy 1921}):
 ``It was Mr. Littlewood (I believe) who remarked that `every positive
 integer was one of his friends.'  I remember once going to see him when he was
 lying ill at Putney.  I had ridden in taxi-cab No. 1729, and remarked that the
@@ -20924,7 +20925,7 @@ Ramanujan numbers.  The first such number is 1,729.  What are the next five?
 @end quotation
 
 @quotation
-@strong{@anchor{Exercise 3.72}Exercise 3.72:} In a similar way to @ref{Exercise 3.71} 
+@strong{@anchor{Exercise 3.72}Exercise 3.72:} In a similar way to @ref{Exercise 3.71}
 generate a stream of all numbers that can be written as the sum of two
 squares in three different ways (showing how they can be so written).
 @end quotation
@@ -21088,7 +21089,7 @@ constructs her zero-crossing stream as follows:
 (define (make-zero-crossings input-stream last-value)
   (cons-stream
    (sign-change-detector
-    (stream-car input-stream) 
+    (stream-car input-stream)
     last-value)
    (make-zero-crossings
     (stream-cdr input-stream)
@@ -21124,12 +21125,12 @@ idea, altering Alyssa's program as follows:
 
 @lisp
 (define (make-zero-crossings input-stream last-value)
-  (let ((avpt (/ (+ (stream-car input-stream) 
-                    last-value) 
+  (let ((avpt (/ (+ (stream-car input-stream)
+                    last-value)
                  2)))
     (cons-stream
      (sign-change-detector avpt last-value)
-     (make-zero-crossings 
+     (make-zero-crossings
       (stream-cdr input-stream) avpt))))
 @end lisp
 
@@ -21280,9 +21281,9 @@ solution to the differential equation @math{dy / dt = y} with initial
 condition @math{y(0) = 1}:
 
 @lisp
-(stream-ref (solve (lambda (y) y) 
-                   1 
-                   0.001) 
+(stream-ref (solve (lambda (y) y)
+                   1
+                   0.001)
             1000)
 @i{2.716924}
 @end lisp
@@ -21549,7 +21550,7 @@ Rather, we would need a different mapping procedure for each different
 combination of argument and result data types that might be specified for a
 @code{proc}.  Maintaining a practical notion of ``data type'' in the presence
 of higher-order procedures raises many difficult issues.  One way of dealing
-with this problem is illustrated by the language ML (@ref{Gordon et al. 1979}), 
+with this problem is illustrated by the language ML (@ref{Gordon et al. 1979}),
 whose ``polymorphic data types'' include templates for
 higher-order transformations between data types.  Moreover, data types for most
 procedures in ML are never explicitly declared by the programmer.  Instead, ML
@@ -21767,9 +21768,9 @@ procedures implement well-defined mathematical functions of their arguments,
 whose behavior does not change.  The functional approach is extremely
 attractive for dealing with concurrent systems.@footnote{John Backus, the
 inventor of Fortran, gave high visibility to functional programming when he was
-awarded the @acronym{ACM} Turing award in 1978.  His acceptance speech 
+awarded the @acronym{ACM} Turing award in 1978.  His acceptance speech
 (@ref{Backus 1978}) strongly advocated the functional approach.  A good overview of
-functional programming is given in @ref{Henderson 1980} and in 
+functional programming is given in @ref{Henderson 1980} and in
 @ref{Darlington et al. 1982}.}
 
 On the other hand, if we look closely, we can see time-related problems
@@ -21779,7 +21780,7 @@ interactions between independent entities.  For instance, consider once more
 the implementation a banking system that permits joint bank accounts.  In a
 conventional system using assignment and objects, we would model the fact that
 Peter and Paul share an account by having both Peter and Paul send their
-transaction requests to the same bank-account object, as we saw in 
+transaction requests to the same bank-account object, as we saw in
 @ref{3.1.3}.  From the stream point of view, where there are no ``objects''
 @emph{per se}, we have already indicated that a bank account can be modeled as
 a process that operates on a stream of transaction requests to produce a stream
@@ -21826,9 +21827,9 @@ than one acceptable order of interleaving.  Thus, technically, ``merge'' is a
 relation rather than a function---the answer is not a deterministic function of
 the inputs.  We already mentioned (@ref{Footnote 39}) that nondeterminism is
 essential when dealing with concurrency.  The merge relation illustrates the
-same essential nondeterminism, from the functional perspective.  In 
+same essential nondeterminism, from the functional perspective.  In
 @ref{4.3}, we will look at nondeterminism from yet another point of view.} This
-is precisely the same constraint that we had to deal with in 
+is precisely the same constraint that we had to deal with in
 @ref{3.4.1}, where we found the need to introduce explicit synchronization to
 ensure a ``correct'' order of events in concurrent processing of objects with
 state.  Thus, in an attempt to support the functional style, the need to merge
@@ -21946,7 +21947,7 @@ embodies the rules of polynomial arithmetic and implements them in terms of
 operations on list-structured data.  If we augment this system with procedures
 to read and print polynomial expressions, we have the core of a special-purpose
 language for dealing with problems in symbolic mathematics.  The digital-logic
-simulator of @ref{3.3.4} and the constraint propagator of 
+simulator of @ref{3.3.4} and the constraint propagator of
 @ref{3.3.5} are legitimate languages in their own right, each with its own
 primitives, means of combination, and means of abstraction.  Seen from this
 perspective, the technology for coping with large-scale computer systems merges
@@ -22081,7 +22082,7 @@ evaluating expressions, and providing a mechanism that enables procedures to
 accept arguments.
 
 @math{\bullet} The evaluator provides the special forms, which must be evaluated differently
-from procedure calls.} 
+from procedure calls.}
 This evaluation cycle will be embodied by the interplay between the two
 critical procedures in the evaluator, @code{eval} and @code{apply}, which are
 described in @ref{4.1.1} (see @ref{Figure 4.1}).
@@ -22672,14 +22673,14 @@ it false.}
 @noindent
 Expressions (such as @code{cond}) that we choose to implement as syntactic
 transformations are called @newterm{derived expressions}.  @code{Let}
-expressions are also derived expressions (see 
+expressions are also derived expressions (see
 @ref{Exercise 4.6}).@footnote{Practical Lisp systems provide a mechanism that allows a user
 to add new derived expressions and specify their implementation as syntactic
 transformations without modifying the evaluator.  Such a user-defined
 transformation is called a @newterm{macro}.  Although it is easy to add an
 elementary mechanism for defining macros, the resulting language has subtle
 name-conflict problems.  There has been much research on mechanisms for macro
-definition that do not cause these difficulties.  See, for example, @ref{Kohlbecker 1986}, 
+definition that do not cause these difficulties.  See, for example, @ref{Kohlbecker 1986},
 @ref{Clinger and Rees 1991}, and @ref{Hanson 1991}.}
 
 @quotation
@@ -22826,7 +22827,7 @@ The @math{\langle}@var{bindings}@math{\kern0.08em\rangle} and @math{\langle}@var
 except that @math{\langle}@var{var}@math{\kern0.08em\rangle} is bound within @math{\langle}@var{body}@math{\kern0.08em\rangle} to a procedure whose body
 is @math{\langle}@var{body}@math{\kern0.08em\rangle} and whose parameters are the variables in the @math{\langle}@var{bindings}@math{\kern0.08em\rangle}.
 Thus, one can repeatedly execute the @math{\langle}@var{body}@math{\kern0.08em\rangle} by invoking the procedure
-named @math{\langle}@var{var}@math{\kern0.08em\rangle}.  For example, the iterative Fibonacci procedure 
+named @math{\langle}@var{var}@math{\kern0.08em\rangle}.  For example, the iterative Fibonacci procedure
 (@ref{1.2.2}) can be rewritten using named @code{let} as follows:
 
 @lisp
@@ -22904,7 +22905,7 @@ tests whether @math{\langle}@var{proc}@math{\kern0.08em\rangle} is a primitive p
 @end itemize
 
 @noindent
-These mechanisms for handling primitives are further described in 
+These mechanisms for handling primitives are further described in
 @ref{Section 4.1.4}.
 
 Compound procedures are constructed from parameters, procedure bodies, and
@@ -23501,7 +23502,7 @@ definitions in sequence, extending the environment frame one definition at a
 time.  This is particularly convenient for interactive program development, in
 which the programmer needs to freely mix the application of procedures with the
 definition of new procedures.  However, if we think carefully about the
-internal definitions used to implement block structure (introduced in 
+internal definitions used to implement block structure (introduced in
 @ref{1.1.8}), we will find that name-by-name extension of the environment may
 not be the best way to define local variables.
 
@@ -23990,7 +23991,7 @@ To analyze an application, we analyze the operator and operands and construct
 an execution procedure that calls the operator execution procedure (to obtain
 the actual procedure to be applied) and the operand execution procedures (to
 obtain the actual arguments).  We then pass these to
-@code{execute-application}, which is the analog of @code{apply} in 
+@code{execute-application}, which is the analog of @code{apply} in
 @ref{4.1.1}.  @code{Execute-application} differs from @code{apply} in that the
 procedure body for a compound procedure has already been analyzed, so there is
 no need to do further analysis.  Instead, we just call the execution procedure
@@ -24002,7 +24003,7 @@ for the body on the extended environment.
         (aprocs (map analyze (operands exp))))
     (lambda (env)
       (execute-application
-       (fproc env) 
+       (fproc env)
        (map (lambda (aproc) (aproc env))
             aprocs)))))
 (define (execute-application proc args)
@@ -24034,7 +24035,7 @@ section to support the special form @code{let}.  (See @ref{Exercise 4.6}.)
 @strong{@anchor{Exercise 4.23}Exercise 4.23:} Alyssa P. Hacker doesn't
 understand why @code{analyze-@/sequence} needs to be so complicated.  All the
 other analysis procedures are straightforward transformations of the
-corresponding evaluation procedures (or @code{eval} clauses) in 
+corresponding evaluation procedures (or @code{eval} clauses) in
 @ref{4.1.1}.  She expected @code{analyze-sequence} to look like this:
 
 @lisp
@@ -24252,7 +24253,7 @@ argument passing, in contrast to @newterm{call-by-name} argument passing.
 evaluation.)  As language designers, we can build our evaluator to memoize, not
 to memoize, or leave this an option for programmers (@ref{Exercise 4.31}).  As
 you might expect from @ref{Chapter 3}, these choices raise issues that become
-both subtle and confusing in the presence of assignments.  (See @ref{Exercise 4.27} 
+both subtle and confusing in the presence of assignments.  (See @ref{Exercise 4.27}
 and @ref{Exercise 4.29}.)  An excellent article by @ref{Clinger (1982)}
 attempts to clarify the multiple dimensions of confusion that arise here.}
 
@@ -24372,7 +24373,7 @@ evaluator:
 
 @noindent
 With these changes made, we can start the evaluator and test it.  The
-successful evaluation of the @code{try} expression discussed in 
+successful evaluation of the @code{try} expression discussed in
 @ref{4.2.1} indicates that the interpreter is performing lazy evaluation:
 
 @lisp
@@ -24441,16 +24442,16 @@ was evaluated) after storing its value.}
 @lisp
 (define (evaluated-thunk? obj)
   (tagged-list? obj 'evaluated-thunk))
-(define (thunk-value evaluated-thunk) 
+(define (thunk-value evaluated-thunk)
   (cadr evaluated-thunk))
 (define (force-it obj)
   (cond ((thunk? obj)
          (let ((result (actual-value (thunk-exp obj)
                                      (thunk-env obj))))
            (set-car! obj 'evaluated-thunk)
-           (set-car! (cdr obj) 
+           (set-car! (cdr obj)
                      result)     ;@r{replace @code{exp} with its value}
-           (set-cdr! (cdr obj) 
+           (set-cdr! (cdr obj)
                      '())        ;@r{forget unneeded @code{env}}
            result))
         ((evaluated-thunk? obj) (thunk-value obj))
@@ -24708,7 +24709,7 @@ applications of ``lazy trees.''}  In fact, even accessing the @code{car} or
 value will be forced only when it is really needed---e.g., for use as the
 argument of a primitive, or to be printed as an answer.
 
-Lazy pairs also help with the problem that arose with streams in 
+Lazy pairs also help with the problem that arose with streams in
 @ref{3.5.4}, where we found that formulating stream models of systems with
 loops may require us to sprinkle our programs with explicit @code{delay}
 operations, beyond the ones supplied by @code{cons-stream}.  With lazy
@@ -24768,7 +24769,7 @@ order to print them.
 In this section, we extend the Scheme evaluator to support a programming
 paradigm called @newterm{nondeterministic computing} by building into the
 evaluator a facility to support automatic search.  This is a much more profound
-change to the language than the introduction of lazy evaluation in 
+change to the language than the introduction of lazy evaluation in
 @ref{Section 4.2}.
 
 Nondeterministic computing, like stream processing, is useful for ``generate
@@ -24804,7 +24805,7 @@ nondeterministic program.@footnote{We assume that we have previously defined a
 procedure @code{prime?} that tests whether numbers are prime.  Even with
 @code{prime?} defined, the @code{prime-sum-pair} procedure may look
 suspiciously like the unhelpful ``pseudo-Lisp'' attempt to define the
-square-root function, which we described at the beginning of 
+square-root function, which we described at the beginning of
 @ref{1.1.7}.  In fact, a square-root procedure along those lines can actually
 be formulated as a nondeterministic program.  By incorporating a search
 mechanism into the evaluator, we are eroding the distinction between purely
@@ -24854,8 +24855,8 @@ The value returned was obtained after the evaluator repeatedly chose elements
 from each of the lists, until a successful choice was made.
 
 @ref{4.3.1} introduces @code{amb} and explains how it supports
-nondeterminism through the evaluator's automatic search mechanism.  
-@ref{4.3.2} presents examples of nondeterministic programs, and 
+nondeterminism through the evaluator's automatic search mechanism.
+@ref{4.3.2} presents examples of nondeterministic programs, and
 @ref{4.3.3} gives the details of how to implement the @code{amb} evaluator by
 modifying the ordinary Scheme evaluator.
 
@@ -24976,13 +24977,13 @@ the first alternative at each choice point.  If a choice results in a failure,
 then the evaluator automagically@footnote{Automagically: ``Automatically, but
 in a way which, for some reason (typically because it is too complicated, or
 too ugly, or perhaps even too trivial), the speaker doesn't feel like
-explaining.''  (@ref{Steele et al. 1983}, @ref{Raymond 1993})@anchor{Footnote 4.47}} 
+explaining.''  (@ref{Steele et al. 1983}, @ref{Raymond 1993})@anchor{Footnote 4.47}}
 @newterm{backtracks} to the most
 recent choice point and tries the next alternative.  If it runs out of
 alternatives at any choice point, the evaluator will back up to the previous
 choice point and resume from there.  This process leads to a search strategy
 known as @newterm{depth-first search} or @newterm{chronological
-backtracking}.@footnote{The integration of 
+backtracking}.@footnote{The integration of
 automatic search strategies into programming languages has had a long and
 checkered history.  The first suggestions that nondeterministic algorithms
 might be elegantly encoded in a programming language with search and automatic
@@ -24996,7 +24997,7 @@ proving, led to the genesis in Edinburgh and Marseille of the elegant language
 Prolog (which we will discuss in @ref{4.4}).  After sufficient
 frustration with automatic search, @ref{McDermott and Sussman (1972)} developed a
 language called Conniver, which included mechanisms for placing the search
-strategy under programmer control.  This proved unwieldy, however, and @ref{Sussman and Stallman 1975} 
+strategy under programmer control.  This proved unwieldy, however, and @ref{Sussman and Stallman 1975}
 found a more tractable approach while investigating methods
 of symbolic analysis for electrical circuits.  They developed a
 non-chronological backtracking scheme that was based on tracing out the logical
@@ -25008,7 +25009,7 @@ methods of Stallman and Sussman, developing a new paradigm for formulating
 search that is now called @newterm{truth maintenance}.  Modern problem-solving
 systems all use some form of truth-maintenance system as a substrate.  See
 @ref{Forbus and deKleer 1993} for a discussion of elegant ways to build
-truth-maintenance systems and applications using truth maintenance.  
+truth-maintenance systems and applications using truth maintenance.
 @ref{Zabih et al. 1987} describes a nondeterministic extension to Scheme
 that is based on @code{amb}; it is similar to the interpreter described in this
 section, but more sophisticated, because it uses dependency-directed
@@ -25504,7 +25505,7 @@ explain the differences in shades of meaning among them.
 @end quotation
 
 @quotation
-@strong{@anchor{Exercise 4.46}Exercise 4.46:} The evaluators in 
+@strong{@anchor{Exercise 4.46}Exercise 4.46:} The evaluators in
 @ref{4.1} and @ref{4.2} do not determine what order operands are evaluated in.
 We will see that the @code{amb} evaluator evaluates them from left to right.
 Explain why our parsing program wouldn't work if the operands were evaluated in
@@ -25571,7 +25572,7 @@ We will construct the @code{amb} evaluator for nondeterministic Scheme by
 modifying the analyzing evaluator of @ref{4.1.7}.@footnote{We chose to
 implement the lazy evaluator in @ref{4.2} as a modification of the
 ordinary metacircular evaluator of @ref{4.1.1}.  In contrast, we will
-base the @code{amb} evaluator on the analyzing evaluator of 
+base the @code{amb} evaluator on the analyzing evaluator of
 @ref{4.1.7}, because the execution procedures in that evaluator provide a
 convenient framework for implementing backtracking.}  As in the analyzing
 evaluator, evaluation of an expression is accomplished by calling an execution
@@ -26119,12 +26120,12 @@ following example:
 
 @quotation
 @strong{@anchor{Exercise 4.53}Exercise 4.53:} With @code{permanent-set!} as
-described in @ref{Exercise 4.51} and @code{if-fail} as in 
+described in @ref{Exercise 4.51} and @code{if-fail} as in
 @ref{Exercise 4.52}, what will be the result of evaluating
 
 @lisp
 (let ((pairs '()))
-  (if-fail 
+  (if-fail
    (let ((p (prime-sum-pair '(1 3 5 8)
                             '(20 35 110))))
      (permanent-set! pairs (cons p pairs))
@@ -26143,7 +26144,7 @@ procedures
 @lisp
 (define (require? exp)
   (tagged-list? exp 'require))
-(define (require-predicate exp) 
+(define (require-predicate exp)
   (cadr exp))
 @end lisp
 
@@ -26215,11 +26216,11 @@ proving.  Early theorem-proving programs could accomplish very little, because
 they exhaustively searched the space of possible proofs.  The major
 breakthrough that made such a search plausible was the discovery in the early
 1960s of the @newterm{unification algorithm} and the @newterm{resolution
-principle} (@ref{Robinson 1965}).  Resolution was used, for example, by 
+principle} (@ref{Robinson 1965}).  Resolution was used, for example, by
 @ref{Green and Raphael (1968)} (see also @ref{Green 1969}) as the basis for a deductive
 question-answering system.  During most of this period, researchers
 concentrated on algorithms that are guaranteed to find a proof if one exists.
-Such algorithms were difficult to control and to direct toward a proof.  
+Such algorithms were difficult to control and to direct toward a proof.
 @ref{Hewitt (1969)} recognized the possibility of merging the control structure of a
 programming language with the operations of a logic-manipulation system,
 leading to the work in automatic search mentioned in @ref{4.3.1}
@@ -26235,7 +26236,7 @@ the French can point to Prolog's genesis at the University of Marseille, while
 the British can highlight the work at the University of Edinburgh.  According
 to people at @acronym{MIT}, logic programming was developed by these groups in
 an attempt to figure out what Hewitt was talking about in his brilliant but
-impenetrable Ph.D. thesis.  For a history of logic programming, see 
+impenetrable Ph.D. thesis.  For a history of logic programming, see
 @ref{Robinson 1983}.}
 
 This approach, when it works, can be a very powerful way to write programs.
@@ -27215,11 +27216,11 @@ candidates for the final match.  With care, we can arrange our data base so
 that some of the work of coarse matching can be done when the data base is
 constructed rather then when we want to select the candidates.  This is called
 @newterm{indexing} the data base.  There is a vast technology built around
-data-base-indexing schemes.  Our implementation, described in 
+data-base-indexing schemes.  Our implementation, described in
 @ref{4.4.4}, contains a simple-minded form of such an optimization.}
 
 In our system, a query takes an input stream of frames and performs the above
-matching operation for every frame in the stream, as indicated in @ref{Figure 4.4}.  
+matching operation for every frame in the stream, as indicated in @ref{Figure 4.4}.
 That is, for each frame in the input stream, the query generates a new
 stream consisting of all extensions to that frame by matches to assertions in
 the data base.  All these streams are then combined to form one huge stream,
@@ -27286,7 +27287,7 @@ trainee''), we first find all entries that match the pattern
 @quotation
 @anchor{Figure 4.5}
 @ifinfo
-@strong{Figure 4.5:} The @code{and} combination of two queries is produced 
+@strong{Figure 4.5:} The @code{and} combination of two queries is produced
 by operating on the stream of frames in series.
 
 @example
@@ -27333,7 +27334,7 @@ extended by the second query.
 @float
 @anchor{Figure 4.6}
 @ifinfo
-@strong{Figure 4.6:} The @code{or} combination of two queries is produced 
+@strong{Figure 4.6:} The @code{or} combination of two queries is produced
 by operating on the stream of frames in parallel and merging the results.
 
 @example
@@ -27366,7 +27367,7 @@ frames     | |    ^          +-------+ |  frames
 @end iftex
 @end float
 
-@ref{Figure 4.6} shows the analogous method for computing the 
+@ref{Figure 4.6} shows the analogous method for computing the
 @code{or} of two
 queries as a parallel combination of the two component queries.  The input
 stream of frames is extended separately by each query.  The two resulting
@@ -27469,8 +27470,8 @@ These equations imply that
 which in turn implies that
 
 @lisp
- a  =  a, 
-?y  =  b, 
+ a  =  a,
+?y  =  b,
  c  =  ?z,
 @end lisp
 
@@ -27870,7 +27871,7 @@ change in the rule, and types it in as
 (rule (outranked-by ?staff-person ?boss)
       (or (supervisor ?staff-person ?boss)
           (and (outranked-by ?middle-manager ?boss)
-               (supervisor ?staff-person 
+               (supervisor ?staff-person
                            ?middle-manager))))
 @end lisp
 
@@ -27931,7 +27932,7 @@ will produce a stream of frames.  He will then pass this stream through a
 mapping function that extracts the value of the designated variable from each
 frame in the stream and feed the resulting stream of values to the accumulation
 function.  Just as Ben completes the implementation and is about to try it out,
-Cy walks by, still puzzling over the @code{wheel} query result in 
+Cy walks by, still puzzling over the @code{wheel} query result in
 @ref{Exercise 4.65}.  When Cy shows Ben the system's response, Ben groans,
 ``Oh, no, my simple accumulation scheme won't work!''
 
@@ -27942,7 +27943,7 @@ situation.
 @quotation
 @strong{@anchor{Exercise 4.67}Exercise 4.67:} Devise a way to install a loop
 detector in the query system so as to avoid the kinds of simple loops
-illustrated in the text and in @ref{Exercise 4.64}.  
+illustrated in the text and in @ref{Exercise 4.64}.
 The general idea is that
 the system should maintain some sort of history of its current chain of
 deductions and should not begin processing a query that it is already working
@@ -28112,9 +28113,9 @@ the query.
 @end lisp
 
 @noindent
-For each frame in the input stream, we use @code{find-assertions} 
+For each frame in the input stream, we use @code{find-assertions}
 (@ref{4.4.4.3}) to match the pattern against all assertions in the data base,
-producing a stream of extended frames, and we use @code{apply-rules} 
+producing a stream of extended frames, and we use @code{apply-rules}
 (@ref{4.4.4.4}) to apply all possible rules, producing another stream of
 extended frames.  These two streams are combined (using
 @code{stream-append-delayed}, @ref{4.4.4.6}) to make a stream of all
@@ -28262,7 +28263,7 @@ because we would need to make many more calls to the matcher.
 
 @lisp
 (define (find-assertions pattern frame)
-  (stream-flatmap 
+  (stream-flatmap
    (lambda (datum) (check-an-assertion datum pattern frame))
    (fetch-assertions pattern frame)))
 @end lisp
@@ -28301,7 +28302,7 @@ and we return the symbol @code{failed}.
         ((equal? pat dat) frame)
         ((var? pat) (extend-if-consistent pat dat frame))
         ((and (pair? pat) (pair? dat))
-         (pattern-match 
+         (pattern-match
           (cdr pat)
           (cdr dat)
           (pattern-match (car pat) (car dat) frame)))
@@ -28372,7 +28373,7 @@ will match @code{?type} against the list @code{(programmer trainee)}.
 @subsubsection Rules and Unification
 @node 4.4.4.4, 4.4.4.5, 4.4.4.3, 4.4.4
 
-@code{Apply-rules} is the rule analog of @code{find-assertions} 
+@code{Apply-rules} is the rule analog of @code{find-assertions}
 (@ref{Section 4.4.4.3}).  It takes as input a pattern and a frame, and it forms a stream
 of extension frames by applying rules from the data base.
 @code{Stream-flatmap} maps @code{apply-a-rule} down the stream of possibly
@@ -28387,7 +28388,7 @@ combines the resulting streams of frames.
 @end lisp
 
 @noindent
-@code{Apply-a-rule} applies rules using the method outlined in 
+@code{Apply-a-rule} applies rules using the method outlined in
 @ref{4.4.2}.  It first augments its argument frame by unifying the rule
 conclusion with the pattern in the given frame.  If this succeeds, it evaluates
 the rule body in this new frame.
@@ -28509,7 +28510,7 @@ and repeatedly substituting @math{1 + y / 2} for @math{y} gives
 
 @end ifinfo
 @tex
-$$ 2 = y = 1 + {y \over 2} = 1 + {1\over2}\left(1 + {y \over 2}\right) = 
+$$ 2 = y = 1 + {y \over 2} = 1 + {1\over2}\left(1 + {y \over 2}\right) =
 	1 + {1\over2} + {y \over 4} = \dots , $$
 @end tex
 @noindent
@@ -28525,7 +28526,7 @@ which leads to
 $$ 2 = 1 + {1\over2} + {1\over4} + {1\over8} + \dots. $$
 @end tex
 @noindent
-However, if we try the same manipulation beginning with the observation that -1 
+However, if we try the same manipulation beginning with the observation that -1
 is the solution to the equation @math{y = 1 + 2y}, we obtain
 @ifinfo
 
@@ -28768,7 +28769,7 @@ The query system uses a few stream operations that were not presented in
 
 @code{Stream-append-delayed} and @code{interleave-delayed} are just like
 @code{stream-@/append} and @code{interleave} (@ref{3.5.3}), except that
-they take a delayed argument (like the @code{integral} procedure in 
+they take a delayed argument (like the @code{integral} procedure in
 @ref{3.5.4}).  This postpones looping in some cases (see @ref{Exercise 4.71}).
 
 @lisp
@@ -28839,7 +28840,7 @@ They are the same as the @code{type-tag} and @code{contents} procedures in
 @end lisp
 
 @noindent
-The following procedures, used by @code{query-driver-loop} (in 
+The following procedures, used by @code{query-driver-loop} (in
 @ref{4.4.4.1}), specify that rules and assertions are added to the data base by
 expressions of the form @code{(assert! @math{\langle}@var{rule-or-assertion}@math{\rangle})}:
 
@@ -28927,8 +28928,8 @@ recognized for data-base indexing, @ref{4.4.4.5}) are just the symbols.
 @end lisp
 
 @noindent
-Unique variables are constructed during rule application (in 
-@ref{Section 4.4.4.4}) by means of the following procedures.  
+Unique variables are constructed during rule application (in
+@ref{Section 4.4.4.4}) by means of the following procedures.
 The unique identifier for
 a rule application is a number, which is incremented each time a rule is
 applied.
@@ -29147,7 +29148,7 @@ number of intermediate frames generated.
 
 @quotation
 @strong{@anchor{Exercise 4.78}Exercise 4.78:} Redesign the query language as a
-nondeterministic program to be implemented using the evaluator of 
+nondeterministic program to be implemented using the evaluator of
 @ref{4.3}, rather than as a stream process.  In this approach, each query will
 produce a single answer (rather than the stream of all answers) and the user
 can type @code{try-again} to see more answers.  You should find that much of
@@ -29745,8 +29746,8 @@ this way:
 
 
 (define (remainder n d)
-  (if (< n d) 
-      n 
+  (if (< n d)
+      n
       (remainder (- n d) d)))
 @end lisp
 
@@ -29890,23 +29891,23 @@ corresponding portions of the machine's controller sequence.
 @strong{Figure 5.7:} Portions of the data paths and controller sequence for a machine with two @acronym{GCD} computations.
 
 @example
-                            ___                                 ___  
-+-----+        +-----+     /   \    +-----+        +-----+     /   \ 
+                            ___                                 ___
++-----+        +-----+     /   \    +-----+        +-----+     /   \
 |  a  |<-(X)---+  b  |--->|  =  |   |  c  |<-(X)---+  d  |--->|  =  |
-+--+--+  a<-b  ++----+     \___/    +--+--+  c<-d  ++----+     \___/ 
-   |            |  ^         ^         |            |  ^         ^   
-   `----.   .---'  |         |         `----.   .---'  |         |   
-        V   V     (X) b<-t   |              V   V     (X) d<-t   |   
-       -------     |        / \            -------     |        / \  
-       \ rem /     |       /_0_\           \ rem /     |       /_0_\ 
-        --+--      |                        --+--      |             
-          |        |                          |        |             
-         (X) t<-r  |                         (X) s<-r  |             
-          |        |                          |        |             
-          V        |                          V        |             
-       +-----+     |                       +-----+     |             
-       |  t  +-----'                       |  s  +-----'             
-       +-----+                             +-----+                   
++--+--+  a<-b  ++----+     \___/    +--+--+  c<-d  ++----+     \___/
+   |            |  ^         ^         |            |  ^         ^
+   `----.   .---'  |         |         `----.   .---'  |         |
+        V   V     (X) b<-t   |              V   V     (X) d<-t   |
+       -------     |        / \            -------     |        / \
+       \ rem /     |       /_0_\           \ rem /     |       /_0_\
+        --+--      |                        --+--      |
+          |        |                          |        |
+         (X) t<-r  |                         (X) s<-r  |
+          |        |                          |        |
+          V        |                          V        |
+       +-----+     |                       +-----+     |
+       |  t  +-----'                       |  s  +-----'
+       +-----+                             +-----+
 @end example
 
 @lisp
@@ -29955,8 +29956,8 @@ as the first.  If we do this, we obtain the controller sequence shown in
 @ref{Figure 5.8}.
 
 @quotation
-@strong{@anchor{Figure 5.8}Figure 5.8:} @math{\downarrow} Portions of the 
-controller sequence for a machine that uses the same data-path components 
+@strong{@anchor{Figure 5.8}Figure 5.8:} @math{\downarrow} Portions of the
+controller sequence for a machine that uses the same data-path components
 for two different @acronym{GCD} computations.
 @lisp
 gcd-1
@@ -29995,7 +29996,7 @@ portion of the resulting controller sequence, which includes only a single copy
 of the @code{gcd} instructions.
 
 @quotation
-@strong{@anchor{Figure 5.9}Figure 5.9:} @math{\downarrow} Using a @code{continue} 
+@strong{@anchor{Figure 5.9}Figure 5.9:} @math{\downarrow} Using a @code{continue}
 register to avoid the duplicate controller sequence in @ref{Figure 5.8}.
 @lisp
 gcd
@@ -30187,7 +30188,7 @@ With the aid of the stack, we can reuse a single copy of the factorial
 machine's data paths for each factorial subproblem.  There is a similar design
 issue in reusing the controller sequence that operates the data paths.  To
 reexecute the factorial computation, the controller cannot simply loop back to
-the beginning, as with an iterative process, because after solving the 
+the beginning, as with an iterative process, because after solving the
 @math{(n - 1)!} subproblem the machine must still multiply the result by @math{n}.  The
 controller must suspend its computation of @math{n!}, solve the @math{(n - 1)!}
 subproblem, then continue its computation of @math{n!}.  This view of the
@@ -30432,8 +30433,8 @@ instructions were introduced in @ref{5.1.1}:
 @lisp
 (assign @math{\langle}@var{register-name}@math{\rangle} (reg @math{\langle}@var{register-name}@math{\rangle}))
 (assign @math{\langle}@var{register-name}@math{\rangle} (const @math{\langle}@var{constant-value}@math{\rangle}))
-(assign @math{\langle}@var{register-name}@math{\rangle} 
-        (op @math{\langle}@var{operation-name}@math{\rangle}) 
+(assign @math{\langle}@var{register-name}@math{\rangle}
+        (op @math{\langle}@var{operation-name}@math{\rangle})
         @math{\langle}@math{input_1}@math{\rangle} @dots{} @math{\langle}@math{input_n}@math{\rangle})
 (perform (op @math{\langle}@var{operation-name}@math{\rangle}) @math{\langle}@math{input_1}@math{\rangle} @dots{} @math{\langle}@math{input_n}@math{\rangle})
 (test (op @math{\langle}@var{operation-name}@math{\rangle}) @math{\langle}@math{input_1}@math{\rangle} @dots{} @math{\langle}@math{input_n}@math{\rangle})
@@ -30458,7 +30459,7 @@ Instructions to use the stack were introduced in @ref{5.1.4}:
 @end lisp
 
 @noindent
-The only kind of @math{\langle}@var{constant-value}@math{\rangle} we have seen 
+The only kind of @math{\langle}@var{constant-value}@math{\rangle} we have seen
 so far is a number, but later we will use strings, symbols, and lists.
 For example,
 @lisp
@@ -30493,8 +30494,8 @@ constructs and returns a model of the machine with the given registers,
 operations, and controller.
 
 @lisp
-(set-register-contents! @math{\langle\kern0.08em}@var{machine-model}@math{\rangle} 
-                        @math{\langle}@var{register-name}@math{\rangle} 
+(set-register-contents! @math{\langle\kern0.08em}@var{machine-model}@math{\rangle}
+                        @math{\langle}@var{register-name}@math{\rangle}
                         @math{\langle}@var{value}@math{\rangle})
 @end lisp
 
@@ -30519,7 +30520,7 @@ the controller sequence and stopping when it reaches the end of the sequence.
 
 @noindent
 As an example of how these procedures are used, we can define
-@code{gcd-@/machine} to be a model of the @acronym{GCD} machine of 
+@code{gcd-@/machine} to be a model of the @acronym{GCD} machine of
 @ref{5.1.1} as follows:
 
 @lisp
@@ -30591,7 +30592,7 @@ controller instructions one by one.
 include the registers, operations, and controller of the particular machine
 being defined.  First it allocates a register in the new machine for each of
 the supplied register names and installs the designated operations in the
-machine.  Then it uses an @newterm{assembler} (described below in 
+machine.  Then it uses an @newterm{assembler} (described below in
 @ref{5.2.2}) to transform the controller list into instructions for the new
 machine and installs these as the machine's instruction sequence.
 @code{Make-machine} returns as its value the modified machine model.
@@ -30742,7 +30743,7 @@ procedure, which implements the basic machine model.
               ((eq? message 'install-instruction-sequence)
                (lambda (seq)
                  (set! the-instruction-sequence seq)))
-              ((eq? message 'allocate-register) 
+              ((eq? message 'allocate-register)
                allocate-register)
               ((eq? message 'get-register)
                lookup-register)
@@ -30888,7 +30889,7 @@ is
           (let ((next-inst (car text)))
             (if (symbol? next-inst)
                 (cons insts
-                      (cons (make-label-entry next-inst insts) 
+                      (cons (make-label-entry next-inst insts)
                             labels))
                 (cons (cons (make-instruction next-inst) insts)
                       labels)))))))
@@ -30910,7 +30911,7 @@ You can consider our use of @code{receive} as demonstrating an elegant way to
 return multiple values, or simply an excuse to show off a programming trick.
 An argument like @code{receive} that is the next procedure to be invoked is
 called a ``continuation.''  Recall that we also used continuations to implement
-the backtracking control structure in the @code{amb} evaluator in 
+the backtracking control structure in the @code{amb} evaluator in
 @ref{4.3.3}.}
 
 @code{Update-insts!} modifies the instruction list, which initially contains
@@ -31001,7 +31002,7 @@ evaluator of @ref{4.1.7}, this dispatches on the type of instruction to
 generate the appropriate execution procedure.
 
 @lisp
-(define (make-execution-procedure 
+(define (make-execution-procedure
          inst labels machine pc flag stack ops)
   (cond ((eq? (car inst) 'assign)
          (make-assign inst machine labels ops pc))
@@ -31131,7 +31132,7 @@ each time the @code{branch} instruction is simulated.
     (if (label-exp? dest)
         (let ((insts
                (lookup-label
-                labels 
+                labels
                 (label-exp-label dest))))
           (lambda ()
             (if (get-contents flag)
@@ -31909,7 +31910,7 @@ Recursive @code{count-leaves} with explicit counter:
           ((not (pair? tree)) (+ n 1))
           (else
            (count-iter (cdr tree)
-                       (count-iter (car tree) 
+                       (count-iter (car tree)
                                    n)))))
   (count-iter tree 0))
 @end lisp
@@ -31917,7 +31918,7 @@ Recursive @code{count-leaves} with explicit counter:
 @end quotation
 
 @quotation
-@strong{@anchor{Exercise 5.22}Exercise 5.22:} @ref{Exercise 3.12} of 
+@strong{@anchor{Exercise 5.22}Exercise 5.22:} @ref{Exercise 3.12} of
 @ref{3.3.1} presented an @code{append} procedure that appends two lists to form
 a new list and an @code{append!} procedure that splices two lists together.
 Design a register machine to implement each of these procedures.  Assume that
@@ -32057,7 +32058,7 @@ the-cdrs |                                    |
                                             | free
 
          +------------------------------------+
-new-cars |                                    | free   
+new-cars |                                    | free
          |            free memory             | memory
 new-cdrs |                                    |
          +------------------------------------+
@@ -32065,8 +32066,8 @@ new-cdrs |                                    |
              Just after garbage collection
 
          +------------------------------------+
-new-cars |                                    | new  
-         |          discarded memory          | free  
+new-cars |                                    | new
+         |          discarded memory          | free
 new-cdrs |                                    | memory
          +------------------------------------+
 
@@ -32269,7 +32270,7 @@ gc-flip
 
 In @ref{5.1} we saw how to transform simple Scheme programs into
 descriptions of register machines.  We will now perform this transformation on
-a more complex program, the metacircular evaluator of 
+a more complex program, the metacircular evaluator of
 @ref{4.1.1}--@ref{4.1.4}, which shows how the behavior of a Scheme interpreter
 can be described in terms of the procedures @code{eval} and @code{apply}.  The
 @newterm{explicit-control evaluator} that we develop in this section shows how
@@ -32278,7 +32279,7 @@ evaluation process can be described in terms of operations on registers and
 stacks.  In addition, the explicit-control evaluator can serve as an
 implementation of a Scheme interpreter, written in a language that is very
 similar to the native machine language of conventional computers.  The
-evaluator can be executed by the register-machine simulator of 
+evaluator can be executed by the register-machine simulator of
 @ref{5.2}.  Alternatively, it can be used as a starting point for building a
 machine-language implementation of a Scheme evaluator, or even a
 special-purpose machine for evaluating Scheme expressions.  @ref{Figure 5.16}
@@ -32323,7 +32324,7 @@ procedures for representing environments and other run-time data given in
 sections @ref{4.1.3} and @ref{4.1.4}.  In order to completely specify an
 evaluator that could be programmed in a low-level machine language or
 implemented in hardware, we would replace these operations by more elementary
-operations, using the list-structure implementation we described in 
+operations, using the list-structure implementation we described in
 @ref{5.3}.
 
 Our Scheme evaluator register machine includes a stack and seven registers:
@@ -32927,7 +32928,7 @@ ev-definition-1
 
 @quotation
 @strong{@anchor{Exercise 5.23}Exercise 5.23:} Extend the evaluator to handle
-derived expressions such as @code{cond}, @code{let}, and so on 
+derived expressions such as @code{cond}, @code{let}, and so on
 (@ref{4.1.2}).  You may ``cheat'' and assume that the syntax transformers such
 as @code{cond->if} are available as machine operations.@footnote{This isn't
 really cheating.  In an actual implementation built from scratch, we would use
@@ -33027,7 +33028,7 @@ undefined variable) interrupts an evaluation.@footnote{We could perform the
 stack initialization only after errors, but doing it in the driver loop will be
 convenient for monitoring the evaluator's performance, as described below.}
 
-If we combine all the code fragments presented in 
+If we combine all the code fragments presented in
 @ref{5.4.1}--@ref{5.4.4}, we can create an evaluator machine model that we can
 run using the register-machine simulator of @ref{5.2}.
 
@@ -33084,7 +33085,7 @@ design but also to monitor the performance of the simulated evaluator.  For
 example, one important factor in performance is how efficiently the evaluator
 uses the stack.  We can observe the number of stack operations required to
 evaluate various expressions by defining the evaluator register machine with
-the version of the simulator that collects statistics on stack use 
+the version of the simulator that collects statistics on stack use
 (@ref{5.2.4}), and adding an instruction at the evaluator's @code{print-result}
 entry point to print the statistics:
 
@@ -33153,7 +33154,7 @@ by two constants.
 @end quotation
 
 @quotation
-@strong{@anchor{Exercise 5.27}Exercise 5.27:} For comparison with @ref{Exercise 5.26}, 
+@strong{@anchor{Exercise 5.27}Exercise 5.27:} For comparison with @ref{Exercise 5.26},
 explore the behavior of the following procedure for computing factorials
 recursively:
 
@@ -33184,7 +33185,7 @@ factorial
 $$\vbox{
 \offinterlineskip
 \halign{
-\strut 	\hfil \quad #\quad \hfil & \vrule 
+\strut 	\hfil \quad #\quad \hfil & \vrule
 	\hfil \quad #\quad \hfil & \vrule
 	\hfil \quad #\quad \hfil \cr
 
@@ -33238,7 +33239,7 @@ well with the time used) grows exponentially with @math{n}.  Hint: Let
 should be able to argue that there is a formula that expresses @math{S(n)} in
 terms of @math{S(n - 1)}, @math{S(n - 2)}, and some fixed ``overhead''
 constant @math{k} that is independent of @math{n}.  Give the formula, and say what
-@math{k} is.  Then show that @math{S(n)} can be expressed as 
+@math{k} is.  Then show that @math{S(n)} can be expressed as
 @math{a\cdot{\rm Fib}(n + 1) + b} and give the values of @math{a} and @math{b}.
 
 @end enumerate
@@ -33495,7 +33496,7 @@ type of expression, it dispatches to a specialized @newterm{code generator}:
         ((begin? exp)
          (compile-sequence
           (begin-actions exp) target linkage))
-        ((cond? exp) 
+        ((cond? exp)
          (compile (cond->if exp) target linkage))
         ((application? exp)
          (compile-application exp target linkage))
@@ -33615,21 +33616,21 @@ produces one of the following four sequences of instructions, depending on how
 $$\vbox{
 \offinterlineskip
 \halign{
-\strut 	\kern0.8em # \kern0.4em \hfil & \vrule 
+\strut 	\kern0.8em # \kern0.4em \hfil & \vrule
 	\kern0.8em # \kern0.4em \hfil & \vrule
 	\kern0.8em # \kern0.4em \hfil & \vrule
 	\kern0.8em # \kern0.4em \hfil \cr
 
-$\langle{seq_1}\rangle$ 			& \hbox{\tt (save} $\langle{reg_1}\rangle${\tt)} & 
+$\langle{seq_1}\rangle$ 			& \hbox{\tt (save} $\langle{reg_1}\rangle${\tt)} &
 \hbox{\tt (save} $\langle{reg_2}\rangle${\tt)} 	& \hbox{\tt (save} $\langle{reg_2}\rangle${\tt)} \cr
 
-$\langle{seq_2}\rangle$ 			& $\langle{seq_1}\rangle$	& 
+$\langle{seq_2}\rangle$ 			& $\langle{seq_1}\rangle$	&
 $\langle{seq_1}\rangle$ 			& \hbox{\tt (save} $\langle{reg_1}\rangle${\tt)} \cr
 
-						& \hbox{\tt (restore} $\langle{reg_1}\rangle${\tt)} & 
+						& \hbox{\tt (restore} $\langle{reg_1}\rangle${\tt)} &
 \hbox{\tt (restore} $\langle{reg_2}\rangle${\tt)} 	& $\langle{seq_1}\rangle$ \cr
 
-						& $\langle{seq_2}\rangle$ & 
+						& $\langle{seq_2}\rangle$ &
 $\langle{seq_2}\rangle$				& \hbox{\tt (restore} $\langle{reg_1}\rangle${\tt)} \cr
 
 						&  &
@@ -33701,7 +33702,7 @@ been initialized, and modifies register @code{val}.  This sequence would
 therefore be constructed as
 
 @lisp
-(make-instruction-sequence 
+(make-instruction-sequence
  '(env continue)
  '(val)
  '((assign val
@@ -33718,7 +33719,7 @@ We sometimes need to construct an instruction sequence with no statements:
 @end lisp
 
 @noindent
-The procedures for combining instruction sequences are shown in 
+The procedures for combining instruction sequences are shown in
 @ref{Section 5.5.4}.
 
 @quotation
@@ -33786,7 +33787,7 @@ is much like quoting it, except that anything in the list that is flagged with
 a comma is evaluated.
 
 For example, if the value of @code{linkage} is the symbol @code{branch25},
-then the expression 
+then the expression
 
 @lisp
 `((goto (label ,linkage)))
@@ -33936,7 +33937,7 @@ has the form
  (test (op false?) (reg val))
  (branch (label false-branch))
 true-branch
- @math{\langle}@emph{compilation of consequent with given target} 
+ @math{\langle}@emph{compilation of consequent with given target}
   @emph{and given linkage or @emph{after-if}}@math{\rangle}
 false-branch
  @math{\langle}@emph{compilation of alternative with given target and linkage}@math{\rangle}
@@ -33983,7 +33984,7 @@ for the false branch to the label at the end of the conditional.
       (let ((p-code (compile (if-predicate exp) 'val 'next))
             (c-code
              (compile
-              (if-consequent exp) target 
+              (if-consequent exp) target
                                   consequent-linkage))
             (a-code
              (compile (if-alternative exp) target linkage)))
@@ -34004,11 +34005,11 @@ for the false branch to the label at the end of the conditional.
 the true and false branches, and @code{continue} is preserved because it could
 be needed by the linkage code in those branches.  The code for the true and
 false branches (which are not executed sequentially) is appended using a
-special combiner @code{parallel-instruction-sequences} described in 
+special combiner @code{parallel-instruction-sequences} described in
 @ref{Section 5.5.4}.
 
 Note that @code{cond} is a derived expression, so all that the compiler needs
-to do handle it is to apply the @code{cond->if} transformer (from 
+to do handle it is to apply the @code{cond->if} transformer (from
 @ref{4.1.2}) and compile the resulting @code{if} expression.
 
 @subsubheading Compiling sequences
@@ -34174,7 +34175,7 @@ linkage in the procedure call.
 (define (compile-application exp target linkage)
   (let ((proc-code (compile (operator exp) 'proc 'next))
         (operand-codes
-         (map (lambda 
+         (map (lambda
                 (operand) (compile operand 'val 'next))
               (operands exp))))
     (preserving '(env continue)
@@ -34277,7 +34278,7 @@ procedures.  The procedure-application code has the following form:
 (test (op primitive-procedure?) (reg proc))
  (branch (label primitive-branch))
 compiled-branch
- @math{\langle}@emph{code to apply compiled procedure with given target} 
+ @math{\langle}@emph{code to apply compiled procedure with given target}
   @emph{and appropriate linkage}@math{\rangle}
 primitive-branch
  (assign @math{\langle}@var{target}@math{\rangle}
@@ -34478,8 +34479,8 @@ compiled procedure.
               (assign ,target (reg val))
               (goto (label ,linkage))))))
         ((and (eq? target 'val) (eq? linkage 'return))
-         (make-instruction-sequence 
-          '(proc continue) 
+         (make-instruction-sequence
+          '(proc continue)
           all-regs
           '((assign val (op compiled-procedure-entry)
                         (reg proc))
@@ -34570,7 +34571,7 @@ needed by @code{seq2} and the registers modified by @code{seq1}.)  Thus,
 
 @noindent
 This procedure uses some simple operations for manipulating sets represented as
-lists, similar to the (unordered) set representation described in 
+lists, similar to the (unordered) set representation described in
 @ref{2.3.3}:
 
 @lisp
@@ -34876,30 +34877,30 @@ build up stack space and the other run in constant stack space.
 @smalllisp
 @r{;; construct the procedure and skip over code for the procedure body}
   (assign val
-          (op make-compiled-procedure) 
-          (label entry2) 
+          (op make-compiled-procedure)
+          (label entry2)
           (reg env))
   (goto (label after-lambda1))
 entry2     @r{; calls to @code{factorial} will enter here}
   (assign env (op compiled-procedure-env) (reg proc))
   (assign env
-          (op extend-environment) 
-          (const (n)) 
-          (reg argl) 
+          (op extend-environment)
+          (const (n))
+          (reg argl)
           (reg env))
 @r{;; begin actual procedure body}
   (save continue)
   (save env)
 @r{;; compute @code{(= n 1)}}
-  (assign proc 
-          (op lookup-variable-value) 
-          (const =) 
+  (assign proc
+          (op lookup-variable-value)
+          (const =)
           (reg env))
   (assign val (const 1))
   (assign argl (op list) (reg val))
-  (assign val 
-          (op lookup-variable-value) 
-          (const n) 
+  (assign val
+          (op lookup-variable-value)
+          (const n)
           (reg env))
   (assign argl (op cons) (reg val) (reg argl))
   (test (op primitive-procedure?) (reg proc))
@@ -34909,9 +34910,9 @@ compiled-branch16
   (assign val (op compiled-procedure-entry) (reg proc))
   (goto (reg val))
 primitive-branch17
-  (assign val 
-          (op apply-primitive-procedure) 
-          (reg proc) 
+  (assign val
+          (op apply-primitive-procedure)
+          (reg proc)
           (reg argl))
 after-call15   @r{; @code{val} now contains result of @code{(= n 1)}}
   (restore env)
@@ -34923,34 +34924,34 @@ true-branch5  @r{; return 1}
   (goto (reg continue))
 false-branch4
 @r{;; compute and return @code{(* (factorial (- n 1)) n)}}
-  (assign proc 
-          (op lookup-variable-value) 
-          (const *) 
+  (assign proc
+          (op lookup-variable-value)
+          (const *)
           (reg env))
   (save continue)
   (save proc)   @r{; save @code{*}} procedure
-  (assign val 
-          (op lookup-variable-value) 
-          (const n) 
+  (assign val
+          (op lookup-variable-value)
+          (const n)
           (reg env))
   (assign argl (op list) (reg val))
   (save argl)   @r{; save partial argument list for @code{*}}
 @r{;; compute @code{(factorial (- n 1))}, which is the other argument for @code{*}}
   (assign proc
-          (op lookup-variable-value) 
-          (const factorial) 
+          (op lookup-variable-value)
+          (const factorial)
           (reg env))
   (save proc)  @r{; save @code{factorial} procedure}
 @r{;; compute @code{(- n 1)}, which is the argument for @code{factorial}}
-  (assign proc 
+  (assign proc
           (op lookup-variable-value)
-          (const -) 
+          (const -)
           (reg env))
   (assign val (const 1))
   (assign argl (op list) (reg val))
-  (assign val 
-          (op lookup-variable-value) 
-          (const n) 
+  (assign val
+          (op lookup-variable-value)
+          (const n)
           (reg env))
   (assign argl (op cons) (reg val) (reg argl))
   (test (op primitive-procedure?) (reg proc))
@@ -34960,9 +34961,9 @@ compiled-branch7
   (assign val (op compiled-procedure-entry) (reg proc))
   (goto (reg val))
 primitive-branch8
-  (assign val 
-          (op apply-primitive-procedure) 
-          (reg proc) 
+  (assign val
+          (op apply-primitive-procedure)
+          (reg proc)
           (reg argl))
 after-call6   @r{; @code{val} now contains result of @code{(- n 1)}}
   (assign argl (op list) (reg val))
@@ -34975,9 +34976,9 @@ compiled-branch10
   (assign val (op compiled-procedure-entry) (reg proc))
   (goto (reg val))
 primitive-branch11
-  (assign val 
-          (op apply-primitive-procedure) 
-          (reg proc) 
+  (assign val
+          (op apply-primitive-procedure)
+          (reg proc)
           (reg argl))
 after-call9      @r{; @code{val} now contains result of @code{(factorial (- n 1))}}
   (restore argl) @r{; restore partial argument list for @code{*}}
@@ -34992,18 +34993,18 @@ compiled-branch13
   (assign val (op compiled-procedure-entry) (reg proc))
   (goto (reg val))
 primitive-branch14
-  (assign val 
-          (op apply-primitive-procedure) 
-          (reg proc) 
+  (assign val
+          (op apply-primitive-procedure)
+          (reg proc)
           (reg argl))
   (goto (reg continue))
 after-call12
 after-if3
 after-lambda1
 @r{;; assign the procedure to the variable @code{factorial}}
-  (perform (op define-variable!) 
-           (const factorial) 
-           (reg val) 
+  (perform (op define-variable!)
+           (const factorial)
+           (reg val)
            (reg env))
   (assign val (const ok))
 @end smalllisp
@@ -35020,39 +35021,39 @@ produce the code shown in @ref{Figure 5.18}?
 @ref{Exercise 5.35}.
 
 @smalllisp
-(assign val 
-        (op make-compiled-procedure) 
-        (label entry16) 
+(assign val
+        (op make-compiled-procedure)
+        (label entry16)
         (reg env))
   (goto (label after-lambda15))
 entry16
   (assign env (op compiled-procedure-env) (reg proc))
   (assign env
-          (op extend-environment) 
-          (const (x)) 
-          (reg argl) 
+          (op extend-environment)
+          (const (x))
+          (reg argl)
           (reg env))
-  (assign proc 
-          (op lookup-variable-value) 
-          (const +) 
+  (assign proc
+          (op lookup-variable-value)
+          (const +)
           (reg env))
   (save continue)
   (save proc)
   (save env)
-  (assign proc 
-          (op lookup-variable-value) 
-          (const g) 
+  (assign proc
+          (op lookup-variable-value)
+          (const g)
           (reg env))
   (save proc)
-  (assign proc 
-          (op lookup-variable-value) 
-          (const +) 
+  (assign proc
+          (op lookup-variable-value)
+          (const +)
           (reg env))
   (assign val (const 2))
   (assign argl (op list) (reg val))
-  (assign val 
-          (op lookup-variable-value) 
-          (const x) 
+  (assign val
+          (op lookup-variable-value)
+          (const x)
           (reg env))
   (assign argl (op cons) (reg val) (reg argl))
   (test (op primitive-procedure?) (reg proc))
@@ -35062,9 +35063,9 @@ compiled-branch18
   (assign val (op compiled-procedure-entry) (reg proc))
   (goto (reg val))
 primitive-branch19
-  (assign val 
-          (op apply-primitive-procedure) 
-          (reg proc) 
+  (assign val
+          (op apply-primitive-procedure)
+          (reg proc)
           (reg argl))
 after-call17
   (assign argl (op list) (reg val))
@@ -35076,16 +35077,16 @@ compiled-branch21
   (assign val (op compiled-procedure-entry) (reg proc))
   (goto (reg val))
 primitive-branch22
-  (assign val 
-          (op apply-primitive-procedure) 
-          (reg proc) 
+  (assign val
+          (op apply-primitive-procedure)
+          (reg proc)
           (reg argl))
 after-call20
   (assign argl (op list) (reg val))
   (restore env)
-  (assign val 
-          (op lookup-variable-value) 
-          (const x) 
+  (assign val
+          (op lookup-variable-value)
+          (const x)
           (reg env))
   (assign argl (op cons) (reg val) (reg argl))
   (restore proc)
@@ -35093,21 +35094,21 @@ after-call20
   (test (op primitive-procedure?) (reg proc))
   (branch (label primitive-branch25))
 compiled-branch24
-  (assign val 
-          (op compiled-procedure-entry) 
+  (assign val
+          (op compiled-procedure-entry)
           (reg proc))
   (goto (reg val))
 primitive-branch25
-  (assign val 
-          (op apply-primitive-procedure) 
-          (reg proc) 
+  (assign val
+          (op apply-primitive-procedure)
+          (reg proc)
           (reg argl))
   (goto (reg continue))
 after-call23
 after-lambda15
-  (perform (op define-variable!) 
-           (const f) 
-           (reg val) 
+  (perform (op define-variable!)
+           (const f)
+           (reg val)
            (reg env))
   (assign val (const ok))
 @end smalllisp
@@ -35385,7 +35386,7 @@ this section.
 that internal definitions for block structure should not be considered ``real''
 @code{define}s.  Rather, a procedure body should be interpreted as if the
 internal variables being defined were installed as ordinary @code{lambda}
-variables initialized to their correct values using @code{set!}.  
+variables initialized to their correct values using @code{set!}.
 @ref{4.1.6} and @ref{Exercise 4.16} showed how to modify the metacircular
 interpreter to accomplish this by scanning out internal definitions.  Modify
 the compiler to perform the same transformation before it compiles a procedure
@@ -35587,7 +35588,7 @@ can examine the stack usage of compiled code:
 
 @noindent
 Compare this example with the evaluation of @code{(factorial 5)} using the
-interpreted version of the same procedure, shown at the end of 
+interpreted version of the same procedure, shown at the end of
 @ref{5.4.4}.  The interpreted version required 144 pushes and a maximum stack
 depth of 28.  This illustrates the optimization that results from our
 compilation strategy.
@@ -35651,7 +35652,7 @@ the compiler, such as checking whether the compilation of a program on the new
 machine, using the compiled compiler, is identical with the compilation of the
 program on the original Lisp system.  Tracking down the source of differences
 is fun but often frustrating, because the results are extremely sensitive to
-minuscule details.}  Or we can compile one of the interpreters of 
+minuscule details.}  Or we can compile one of the interpreters of
 @ref{4.1} to produce an interpreter that runs on the new machine.
 
 @quotation
@@ -35791,7 +35792,7 @@ storage-allocation routines and other run-time support.
 @end quotation
 
 @quotation
-@strong{@anchor{Exercise 5.52}Exercise 5.52:} As a counterpoint to 
+@strong{@anchor{Exercise 5.52}Exercise 5.52:} As a counterpoint to
 @ref{Exercise 5.51}, modify the compiler so that it compiles Scheme procedures
 into sequences of C instructions.  Compile the metacircular evaluator of
 @ref{4.1} to produce a Scheme interpreter written in C.
@@ -36368,20 +36369,20 @@ Kluwer Academic Publishers.
 @sp 0.8
 
 @quotation
-Any inaccuracies in this index may be explained by the fact@* 
-that it has been prepared with the help of a computer. 
+Any inaccuracies in this index may be explained by the fact@*
+that it has been prepared with the help of a computer.
 
----Donald E. Knuth, @cite{Fundamental Algorithms}@* 
-(Volume 1 of @cite{The Art of Computer Programming}) 
+---Donald E. Knuth, @cite{Fundamental Algorithms}@*
+(Volume 1 of @cite{The Art of Computer Programming})
 @end quotation
 
 @sp 1.7
 @end ifinfo
 
-\setindexprenote{\normalsize \begin{quote} Any inaccuracies in this index may be explained by the fact 
-that it has been prepared with the help of a computer. 
+\setindexprenote{\normalsize \begin{quote} Any inaccuracies in this index may be explained by the fact
+that it has been prepared with the help of a computer.
 
----Donald E. Knuth, @cite{Fundamental Algorithms}@* 
+---Donald E. Knuth, @cite{Fundamental Algorithms}@*
 (Volume 1 of @cite{The Art of Computer Programming}) \end{quote}}
 
 @printindex cp
@@ -36389,9 +36390,9 @@ that it has been prepared with the help of a computer.
 @unnumbered Colophon
 @node    Colophon, , Index, Top
 
-\lettrine[lraise=-0.03,loversize=0.08]{O}{n the cover page} is Agostino Ramelli's bookwheel mechanism from 1588. It could be seen as an early hypertext navigation aid. This image of the engraving is hosted by J. E. Johnson of @url{http://newgottland.com/2012/02/09/before-the-ereader-there-was-the-wheelreader/ramelli_bookwheel_1032px/, New Gottland}. 
+\lettrine[lraise=-0.03,loversize=0.08]{O}{n the cover page} is Agostino Ramelli's bookwheel mechanism from 1588. It could be seen as an early hypertext navigation aid. This image of the engraving is hosted by J. E. Johnson of @url{http://newgottland.com/2012/02/09/before-the-ereader-there-was-the-wheelreader/ramelli_bookwheel_1032px/, New Gottland}.
 
-The typefaces are Linux Libertine for body text and Linux Biolinum for headings, both by Philipp H. Poll. Typewriter face is Inconsolata created by Raph Levien and supplemented by Dimosthenis Kaponis and Takashi Tanigawa in the form of Inconsolata LGC. 
+The typefaces are Linux Libertine for body text and Linux Biolinum for headings, both by Philipp H. Poll. Typewriter face is Inconsolata created by Raph Levien and supplemented by Dimosthenis Kaponis and Takashi Tanigawa in the form of Inconsolata LGC.
 
 Graphic design and typography are done by Andres Raba. Texinfo source is converted to LaTeX by a Perl script and compiled to @acronym{PDF} by XeLaTeX. Diagrams are drawn with Inkscape.
 
