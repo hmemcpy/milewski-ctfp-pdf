@@ -273,7 +273,7 @@ Procedures and the Processes They Generate
 Formulating Abstractions with Higher-Order Procedures
 
 * 1-3-1::            Procedures as Arguments
-* 1-3-2::            Constructing Procedures Using @code{Lambda}
+* 1-3-2::            Constructing Procedures Using @code{lambda}
 * 1-3-3::            Procedures as General Methods
 * 1-3-4::            Procedures as Returned Values
 
@@ -388,7 +388,7 @@ Variations on a Scheme -- Nondeterministic Computing
 
 * 4-3-1::            Amb and Search
 * 4-3-2::            Examples of Nondeterministic Programs
-* 4-3-3::            Implementing the @code{Amb} Evaluator
+* 4-3-3::            Implementing the @code{amb} Evaluator
 
 Logic Programming
 
@@ -1396,7 +1396,7 @@ circumference
 @end lisp
 
 @noindent
-@code{Define} is our language's simplest means of abstraction, for it allows us
+@code{define} is our language's simplest means of abstraction, for it allows us
 to use simple names to refer to the results of compound operations, such as the
 @code{circumference} computed above.  In general, computational objects may
 have very complex structures, and it would be extremely inconvenient to have to
@@ -1545,7 +1545,7 @@ which is 3, since the purpose of the @code{define} is precisely to associate
 @code{x} with a value.  (That is, @code{(define x 3)} is not a combination.)
 
 Such exceptions to the general evaluation rule are called @newterm{special
-forms}.  @code{Define} is the only example of a special form that we have seen
+forms}.  @code{define} is the only example of a special form that we have seen
 so far, but we will meet others shortly.  Each special form has its own
 evaluation rule. The various kinds of expressions (each with its associated
 evaluation rule) constitute the syntax of the programming language.  In
@@ -1941,7 +1941,7 @@ undefined.
 The word @newterm{predicate} is used for procedures that return true or false,
 as well as for expressions that evaluate to true or false.  The absolute-value
 procedure @code{abs} makes use of the primitive predicates @code{>}, @code{<},
-and @code{=}.@footnote{@code{Abs} also uses the ``minus'' operator @code{-},
+and @code{=}.@footnote{@code{abs} also uses the ``minus'' operator @code{-},
 which, when used with a single operand, as in @code{(- x)}, indicates
 negation.} These take two numbers as arguments and test whether the first
 number is, respectively, greater than, less than, or equal to the second
@@ -1957,7 +1957,7 @@ Another way to write the absolute-value procedure is
 
 @noindent
 which could be expressed in English as ``If @math{x} is less than zero return
-@math{-x;} otherwise return @math{x}.''  @code{Else} is a special symbol that can be
+@math{-x;} otherwise return @math{x}.''  @code{else} is a special symbol that can be
 used in place of the @math{\langle{p}\rangle} in the final clause of a @code{cond}.  This
 causes the @code{cond} to return as its value the value of the corresponding
 @math{\langle{e}\rangle} whenever all previous clauses have been bypassed.  In fact, any
@@ -2029,7 +2029,7 @@ evaluates to false, and false otherwise.
 
 @noindent
 Notice that @code{and} and @code{or} are special forms, not procedures, because
-the subexpressions are not necessarily all evaluated.  @code{Not} is an
+the subexpressions are not necessarily all evaluated.  @code{not} is an
 ordinary procedure.
 
 As an example of how these are used, the condition that a number @math{x} be in
@@ -2327,7 +2327,7 @@ The @code{sqrt} program also illustrates that the simple procedural language we
 have introduced so far is sufficient for writing any purely numerical program
 that one could write in, say, C or Pascal.  This might seem surprising, since
 we have not included in our language any iterative (looping) constructs that
-direct the computer to do something over and over again.  @code{Sqrt-iter}, on
+direct the computer to do something over and over again.  @code{sqrt-iter}, on
 the other hand, demonstrates how iteration can be accomplished using no special
 construct other than the ordinary ability to call a procedure.@footnote{Readers
 who are worried about the efficiency issues involved in using procedure calls
@@ -2408,7 +2408,7 @@ procedures.)
 @subsection Procedures as Black-Box Abstractions
 @node	1.1.8,  , 1.1.7, 1.1
 
-@code{Sqrt} is our first example of a process defined by a set of mutually
+@code{sqrt} is our first example of a process defined by a set of mutually
 defined procedures.  Notice that the definition of @code{sqrt-iter} is
 @newterm{recursive}; that is, the procedure is defined in terms of itself.  The
 idea of being able to define a procedure in terms of itself may be disturbing;
@@ -2554,7 +2554,7 @@ variable @code{abs}.  It would have changed from free to bound.)  The meaning
 of @code{good-enough?} is not independent of the names of its free variables,
 however.  It surely depends upon the fact (external to this definition) that
 the symbol @code{abs} names a procedure for computing the absolute value of a
-number.  @code{Good-enough?} will compute a different function if we substitute
+number.  @code{good-enough?} will compute a different function if we substitute
 @code{cos} for @code{abs} in its definition.
 
 @subsubheading Internal definitions and block structure
@@ -3265,7 +3265,7 @@ changing a dollar:
 @end lisp
 
 @noindent
-@code{Count-change} generates a tree-recursive process with redundancies
+@code{count-change} generates a tree-recursive process with redundancies
 similar to those in our first implementation of @code{fib}.  (It will take
 quite a while for that 292 to be computed.)  On the other hand, it is not
 obvious how to design a better algorithm for computing the result, and we leave
@@ -3932,7 +3932,7 @@ The Fermat test is performed by choosing at random a number @math{a} between 1 a
 @math{n-1} inclusive and checking whether the remainder modulo @math{n} of the
 @math{n^{\mathrm{th}}} power of @math{a} is equal to @math{a}.  The random number @math{a} is chosen
 using the procedure @code{random}, which we assume is included as a primitive
-in Scheme. @code{Random} returns a nonnegative integer less than its integer
+in Scheme. @code{random} returns a nonnegative integer less than its integer
 input.  Hence, to obtain a random number between 1 and @math{n-1}, we call
 @code{random} with an input of @math{n-1} and add 1 to the result:
 
@@ -4200,7 +4200,7 @@ expressive power of our language.
 
 @menu
 * 1-3-1::            Procedures as Arguments
-* 1-3-2::            Constructing Procedures Using @code{Lambda}
+* 1-3-2::            Constructing Procedures Using @code{lambda}
 * 1-3-3::            Procedures as General Methods
 * 1-3-4::            Procedures as Returned Values
 @end menu
@@ -4511,7 +4511,7 @@ collection of terms, using some general accumulation function:
 (accumulate combiner null-value term a next b)
 @end lisp
 
-@code{Accumulate} takes as arguments the same term and range specifications as
+@code{accumulate} takes as arguments the same term and range specifications as
 @code{sum} and @code{product}, together with a @code{combiner} procedure (of
 two arguments) that specifies how the current term is to be combined with the
 accumulation of the preceding terms and a @code{null-value} that specifies what
@@ -4551,7 +4551,7 @@ prime to @math{n} (i.e., all positive integers @math{i < n} such that
 @end enumerate
 @end quotation
 
-@subsection Constructing Procedures Using @code{Lambda}
+@subsection Constructing Procedures Using @code{lambda}
 @node	1.3.2, 1.3.3, 1.3.1, 1.3
 
 In using @code{sum} as in @ref{1.3.1}, it seems terribly awkward to
@@ -4929,7 +4929,7 @@ other kind of magician.}
 @end lisp
 
 @noindent
-@code{Search} is awkward to use directly, because we can accidentally give it
+@code{search} is awkward to use directly, because we can accidentally give it
 points at which @math{f}'s values do not have the required sign, in which case we
 get a wrong answer.  Instead we will use @code{search} via the following
 procedure, which checks to see which of the endpoints has a negative function
@@ -5229,7 +5229,7 @@ We can express the idea of average damping by means of the following procedure:
 @end lisp
 
 @noindent
-@code{Average-damp} is a procedure that takes as its argument a procedure
+@code{average-damp} is a procedure that takes as its argument a procedure
 @code{f} and returns as its value a procedure (produced by the @code{lambda})
 that, when applied to a number @code{x}, produces the average of @code{x} and
 @code{(f x)}.  For example, applying @code{average-damp} to the @code{square}
@@ -5915,7 +5915,7 @@ parts.  Given a pair, we can extract the parts using the primitive procedures
 ``construct.''  The names @code{car} and @code{cdr} derive from the original
 implementation of Lisp on the IBM 704.  That machine had an addressing scheme
 that allowed one to reference the ``address'' and ``decrement'' parts of a
-memory location.  @code{Car} stands for ``Contents of Address part of
+memory location.  @code{car} stands for ``Contents of Address part of
 Register'' and @code{cdr} (pronounced ``could-er'') stands for ``Contents of
 Decrement part of Register.''} Thus, we can use @code{cons}, @code{car}, and
 @code{cdr} as follows:
@@ -5991,7 +5991,7 @@ We have chosen not to use this style of definition in this book.}
 @noindent
 Also, in order to display the results of our computations, we can print
 rational numbers by printing the numerator, a slash, and the
-denominator:@footnote{@code{Display} is the Scheme primitive for printing data.
+denominator:@footnote{@code{display} is the Scheme primitive for printing data.
 The Scheme primitive @code{newline} starts a new line for printing.  Neither of
 these procedures returns a useful value, so in the uses of @code{print-rat}
 below, we show only what @code{print-rat} prints, not what the interpreter
@@ -6051,7 +6051,7 @@ and @code{mul-rat}) that implement the actual operations.
 @quotation
 @strong{@anchor{Exercise 2.1}Exercise 2.1:} Define a better version of
 @code{make-rat} that handles both positive and negative arguments.
-@code{Make-rat} should normalize the sign so that if the rational number is
+@code{make-rat} should normalize the sign so that if the rational number is
 positive, both the numerator and denominator are positive, and if the rational
 number is negative, only the numerator is negative.
 @end quotation
@@ -6967,7 +6967,7 @@ takes two lists as arguments and combines their elements to make a new list:
 @end lisp
 
 @noindent
-@code{Append} is also implemented using a recursive plan.  To @code{append}
+@code{append} is also implemented using a recursive plan.  To @code{append}
 lists @code{list1} and @code{list2}, do the following:
 
 @itemize @bullet
@@ -7392,21 +7392,21 @@ To implement @code{count-leaves}, recall the recursive plan for computing
 @itemize @bullet
 
 @item
-@code{Length} of a list @code{x} is 1 plus @code{length} of the
+@code{length} of a list @code{x} is 1 plus @code{length} of the
 @code{cdr} of @code{x}.
 
 @item
-@code{Length} of the empty list is 0.
+@code{length} of the empty list is 0.
 
 @end itemize
 
 @noindent
-@code{Count-leaves} is similar.  The value for the empty list is the same:
+@code{count-leaves} is similar.  The value for the empty list is the same:
 
 @itemize @bullet
 
 @item
-@code{Count-leaves} of the empty list is 0.
+@code{count-leaves} of the empty list is 0.
 
 @end itemize
 
@@ -7418,7 +7418,7 @@ need to count.  Thus, the appropriate reduction step is
 @itemize @bullet
 
 @item
-@code{Count-leaves} of a tree @code{x} is @code{count-leaves} of the @code{car}
+@code{count-leaves} of a tree @code{x} is @code{count-leaves} of the @code{car}
 of @code{x} plus @code{count-leaves} of the @code{cdr} of @code{x}.
 
 @end itemize
@@ -7430,7 +7430,7 @@ case:
 @itemize @bullet
 
 @item
-@code{Count-leaves} of a leaf is 1.
+@code{count-leaves} of a leaf is 1.
 
 @end itemize
 
@@ -8449,7 +8449,7 @@ produce not only one solution, but all solutions to the puzzle.
 
 We implement this solution as a procedure @code{queens}, which returns a
 sequence of all solutions to the problem of placing @math{n} queens on an
-@math{n \times n} chessboard.  @code{Queens} has an internal procedure
+@math{n \times n} chessboard.  @code{queens} has an internal procedure
 @code{queen-cols} that returns the sequence of all ways to place queens in the
 first @math{k} columns of the board.
 
@@ -8850,7 +8850,7 @@ copies of a painter's image in a square pattern; they differ only in how they
 orient the copies.  One way to abstract this pattern of painter combination is
 with the following procedure, which takes four one-argument painter operations
 and produces a painter operation that transforms a given painter with those
-four operations and arranges the results in a square.  @code{Tl}, @code{tr},
+four operations and arranges the results in a square.  @code{tl}, @code{tr},
 @code{bl}, and @code{br} are the transformations to apply to the top left copy,
 the top right copy, the bottom left copy, and the bottom right copy,
 respectively.
@@ -8881,7 +8881,7 @@ follows:@footnote{Equivalently, we could write
 @end lisp
 
 @noindent
-and @code{square-limit} can be expressed as@footnote{@code{Rotate180} rotates a
+and @code{square-limit} can be expressed as@footnote{@code{rotate180} rotates a
 painter by 180 degrees (see @ref{Exercise 2.50}).  Instead of @code{rotate180}
 we could say @code{(compose flip-vert flip-horiz)}, using the @code{compose}
 procedure from @ref{Exercise 1.42}.}
@@ -8894,7 +8894,7 @@ procedure from @ref{Exercise 1.42}.}
 @end lisp
 
 @quotation
-@strong{@anchor{Exercise 2.45}Exercise 2.45:} @code{Right-split} and
+@strong{@anchor{Exercise 2.45}Exercise 2.45:} @code{right-split} and
 @code{up-split} can be expressed as instances of a general splitting operation.
 Define a procedure @code{split} with the property that evaluating
 
@@ -8978,7 +8978,7 @@ $$ {\rm Origin(Frame)} + x \cdot {\rm Edge_1(Frame)} + y \cdot {\rm Edge_2(Frame
 For example, (0, 0) is mapped to the origin of the frame, (1, 1) to the vertex
 diagonally opposite the origin, and (0.5, 0.5) to the center of the frame.  We
 can create a frame's coordinate map with the following
-procedure:@footnote{@code{Frame-coord-map} uses the vector operations described
+procedure:@footnote{@code{frame-coord-map} uses the vector operations described
 in @ref{Exercise 2.46} below, which we assume have been implemented using some
 representation for vectors.  Because of data abstraction, it doesn't matter
 what this vector representation is, so long as the vector operations behave
@@ -9068,7 +9068,7 @@ characteristics of the graphics system and the type of image to be drawn.  For
 instance, suppose we have a procedure @code{draw-line} that draws a line on the
 screen between two specified points.  Then we can create painters for line
 drawings, such as the @code{wave} painter in @ref{Figure 2.10}, from lists of
-line segments as follows:@footnote{@code{Segments->painter} uses the
+line segments as follows:@footnote{@code{segments->painter} uses the
 representation for line segments described in @ref{Exercise 2.48} below.  It
 also uses the @code{for-each} procedure described in @ref{Exercise 2.23}.}
 
@@ -9193,7 +9193,7 @@ upper-right quarter of the frame it is given:
 
 @noindent
 Other transformations rotate images counterclockwise by 90
-degrees@footnote{@code{Rotate90} is a pure rotation only for square frames,
+degrees@footnote{@code{rotate90} is a pure rotation only for square frames,
 because it also stretches and shrinks the image to fit into the rotated frame.}
 
 @lisp
@@ -9261,7 +9261,7 @@ rotate painters counterclockwise by 180 degrees and 270 degrees.
 
 @quotation
 @strong{@anchor{Exercise 2.51}Exercise 2.51:} Define the @code{below} operation
-for painters.  @code{Below} takes two painters as arguments.  The resulting
+for painters.  @code{below} takes two painters as arguments.  The resulting
 painter, given a frame, draws with the first painter in the bottom of the frame
 and with the second painter in the top.  Define @code{below} in two different
 ways---first by writing a procedure that is analogous to the @code{beside}
@@ -9934,12 +9934,12 @@ Informally, a set is simply a collection of distinct objects.  To give a more
 precise definition we can employ the method of data abstraction.  That is, we
 define ``set'' by specifying the operations that are to be used on sets.  These
 are @code{union-set}, @code{intersection-set}, @code{element-of-set?}, and
-@code{adjoin-@/set}.  @code{Element-of-set?} is a predicate that determines
-whether a given element is a member of a set.  @code{Adjoin-set} takes an
+@code{adjoin-@/set}.  @code{element-of-set?} is a predicate that determines
+whether a given element is a member of a set.  @code{adjoin-set} takes an
 object and a set as arguments and returns a set that contains the elements of
-the original set and also the adjoined element.  @code{Union-set} computes the
+the original set and also the adjoined element.  @code{union-set} computes the
 union of two sets, which is the set containing each element that appears in
-either argument.  @code{Intersection-set} computes the intersection of two
+either argument.  @code{intersection-set} computes the intersection of two
 sets, which is the set containing only elements that appear in both arguments.
 From the viewpoint of data abstraction, we are free to design any
 representation that implements these operations in a way consistent with the
@@ -10421,7 +10421,7 @@ record.
 Now we represent the data base as a set of records. To locate the record with a
 given key we use a procedure @code{lookup}, which takes as arguments a key and
 a data base and which returns the record that has that key, or false if there
-is no such record.  @code{Lookup} is implemented in almost the same way as
+is no such record.  @code{lookup} is implemented in almost the same way as
 @code{element-of-set?}.  For example, if the set of records is implemented as
 an unordered list, we could use
 
@@ -10803,7 +10803,7 @@ encoded message.
               (encode (cdr message) tree))))
 @end lisp
 
-@code{Encode-symbol} is a procedure, which you must write, that returns the
+@code{encode-symbol} is a procedure, which you must write, that returns the
 list of bits that encodes a given symbol according to a given tree.  You should
 design @code{encode-symbol} so that it signals an error if the symbol is not in
 the tree at all.  Test your procedure by encoding the result you obtained in
@@ -10822,8 +10822,8 @@ algorithm.
   (successive-merge (make-leaf-set pairs)))
 @end lisp
 
-@code{Make-leaf-set} is the procedure given above that transforms the list of
-pairs into an ordered set of leaves.  @code{Successive-merge} is the procedure
+@code{make-leaf-set} is the procedure given above that transforms the list of
+pairs into an ordered set of leaves.  @code{successive-merge} is the procedure
 you must write, using @code{make-code-tree} to successively merge the
 smallest-weight elements of the set until there is only one element left, which
 is the desired Huffman tree.  (This procedure is slightly tricky, but not
@@ -11652,16 +11652,16 @@ no name conflict.
 
 The complex-arithmetic selectors access the table by means of a general
 ``operation'' procedure called @code{apply-generic}, which applies a generic
-operation to some arguments.  @code{Apply-generic} looks in the table under the
+operation to some arguments.  @code{apply-generic} looks in the table under the
 name of the operation and the types of the arguments and applies the resulting
-procedure if one is present:@footnote{@code{Apply-generic} uses the dotted-tail
+procedure if one is present:@footnote{@code{apply-generic} uses the dotted-tail
 notation described in @ref{Exercise 2.20}, because different generic operations
 may take different numbers of arguments.  In @code{apply-generic}, @code{op}
 has as its value the first argument to @code{apply-generic} and @code{args} has
 as its value a list of the remaining arguments.
 
-@code{Apply-generic} also uses the primitive procedure @code{apply}, which
-takes two arguments, a procedure and a list.  @code{Apply} applies the
+@code{apply-generic} also uses the primitive procedure @code{apply}, which
+takes two arguments, a procedure and a list.  @code{apply} applies the
 procedure, using the elements in the list as arguments.  For example,
 
 @lisp
@@ -11957,7 +11957,7 @@ incorporates all the arithmetic packages we have already constructed.
 Notice the
 abstraction barriers.  From the perspective of someone using ``numb@-ers,'' there
 is a single procedure @code{add} that operates on whatever numb@-ers are
-supplied.  @code{Add} is part of a generic interface that allows the separate
+supplied.  @code{add} is part of a generic interface that allows the separate
 or@-di@-na@-ry-@/arithmetic, rational-@/arithmetic, and complex-@/arithmetic
 packages to be
 accessed uniformly by programs that use numbers.  Any individual arithmetic
@@ -13120,9 +13120,9 @@ We can design a @code{div-poly} procedure on the model of @code{add-poly} and
 @code{mul-poly}. The procedure checks to see if the two polys have the same
 variable.  If so, @code{div-poly} strips off the variable and passes the
 problem to @code{div-terms}, which performs the division operation on term
-lists. @code{Div-poly} finally reattaches the variable to the result supplied
+lists. @code{div-poly} finally reattaches the variable to the result supplied
 by @code{div-terms}.  It is convenient to design @code{div-terms} to compute
-both the quotient and the remainder of a division.  @code{Div-terms} can take
+both the quotient and the remainder of a division.  @code{div-terms} can take
 two term lists as arguments and return a list of the quotient term list and the
 remainder term list.
 
@@ -13676,11 +13676,11 @@ This uses the @code{set!} special form, whose syntax is
 
 @noindent
 Here @math{\langle}@var{name}@math{\kern0.04em\rangle} is a symbol and @math{\langle}@var{new-value}@math{\kern0.04em\rangle} is any expression.
-@code{Set!} changes @math{\langle}@var{name}@math{\kern0.04em\rangle} so that its value is the result obtained by
+@code{set!} changes @math{\langle}@var{name}@math{\kern0.04em\rangle} so that its value is the result obtained by
 evaluating @math{\langle}@var{new-value}@math{\kern0.04em\rangle}.  In the case at hand, we are changing
 @code{balance} so that its new value will be the result of subtracting
 @code{amount} from the previous value of @code{balance}.@footnote{The value of
-a @code{set!} expression is implementation-dependent.  @code{Set!} should be
+a @code{set!} expression is implementation-dependent.  @code{set!} should be
 used only for its effect, not for its value.
 
 The name @code{set!} reflects a naming convention used in Scheme: Operations
@@ -13689,7 +13689,7 @@ see in @ref{3.3}) are given names that end with an exclamation point.
 This is similar to the convention of designating predicates by names that end
 with a question mark.}
 
-@code{Withdraw} also uses the @code{begin} special form to cause two
+@code{withdraw} also uses the @code{begin} special form to cause two
 expressions to be evaluated in the case where the @code{if} test is true: first
 decrementing @code{balance} and then returning the value of @code{balance}.  In
 general, evaluating the expression
@@ -13782,7 +13782,7 @@ evaluation in @ref{3.2}.  (See also @ref{Exercise 3.10}.)}
 @end lisp
 
 @noindent
-@code{Make-withdraw} can be used as follows to create two objects @code{W1} and
+@code{make-withdraw} can be used as follows to create two objects @code{W1} and
 @code{W2}:
 
 @lisp
@@ -13837,7 +13837,7 @@ precisely the @newterm{message-passing} style of programming that we saw in
 @ref{2.4.3}, although here we are using it in conjunction with the
 ability to modify local variables.
 
-@code{Make-account} can be used as follows:
+@code{make-account} can be used as follows:
 
 @lisp
 (define acc (make-account 100))
@@ -14012,7 +14012,7 @@ approximation to @math{\pi}.
 The heart of our program is a procedure @code{monte-carlo}, which takes as
 arguments the number of times to try an experiment, together with the
 experiment, represented as a no-argument procedure that will return either true
-or false each time it is run.  @code{Monte-carlo} runs the experiment for the
+or false each time it is run.  @code{monte-carlo} runs the experiment for the
 designated number of trials and returns a number telling the fraction of the
 trials in which the experiment was found to be true.
 
@@ -14193,7 +14193,7 @@ which does not use @code{set!}:
 @end lisp
 
 @noindent
-@code{Make-decrementer} returns a procedure that subtracts its input from a
+@code{make-decrementer} returns a procedure that subtracts its input from a
 designated amount @code{balance}, but there is no accumulated effect over
 successive calls, as with @code{make-simplified-withdraw}:
 
@@ -14477,10 +14477,10 @@ explore the uses of objects with local state in designing simulations.
 created by @code{make-@/account}, with the password modification described in
 @ref{Exercise 3.3}.  Suppose that our banking system requires the ability to
 make joint accounts.  Define a procedure @code{make-@/joint} that accomplishes
-this.  @code{Make-@/joint} should take three arguments.  The first is a
+this.  @code{make-@/joint} should take three arguments.  The first is a
 password-protected account.  The second argument must match the password with
 which the account was defined in order for the @code{make-@/joint} operation to
-proceed.  The third argument is a new password.  @code{Make-@/joint} is to create
+proceed.  The third argument is a new password.  @code{make-@/joint} is to create
 an additional access to the original account using the new password.  For
 example, if @code{peter-@/acc} is a bank account with password
 @code{open-sesame}, then
@@ -15189,7 +15189,7 @@ evaluate the body of the procedure:
 @noindent
 The resulting environment structure is shown in @ref{Figure 3.8}.  The
 expression being evaluated references both @code{amount} and @code{balance}.
-@code{Amount} will be found in the first frame in the environment, while
+@code{amount} will be found in the first frame in the environment, while
 @code{balance} will be found by following the enclosing-environment pointer to
 E1.
 
@@ -15375,7 +15375,7 @@ behave as desired.  @ref{Figure 3.11} shows the point in the evaluation of the
 expression @code{(sqrt 2)} where the internal procedure @code{good-enough?} has
 been called for the first time with @code{guess} equal to 1.
 
-Observe the structure of the environment.  @code{Sqrt} is a symbol in the
+Observe the structure of the environment.  @code{sqrt} is a symbol in the
 global environment that is bound to a procedure object whose associated
 environment is the global environment.  When @code{sqrt} was called, a new
 environment E1 was formed, subordinate to the global environment, in which the
@@ -15399,7 +15399,7 @@ procedure object for @code{good-enough?}.
 @c @quotation
 @anchor{Figure 3.11}
 @ifinfo
-@strong{Figure 3.11:} @code{Sqrt} procedure with internal definitions.
+@strong{Figure 3.11:} @code{sqrt} procedure with internal definitions.
 
 @example
           +--------------------------------------------------+
@@ -15431,7 +15431,7 @@ body: (define good-enough? ...)      | sqrt-iter: ... |      |
 @sp 0.5
 @center @image{fig/chap3/Fig3.11a,107mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 3.11:} @code{Sqrt} procedure with internal definitions.
+@center @strong{Figure 3.11:} @code{sqrt} procedure with internal definitions.
 @sp 0.7
 @end iftex
 @c @end quotation
@@ -15441,7 +15441,7 @@ After the local procedures were defined, the expression @code{(sqrt-iter 1.0)}
 was evaluated, still in environment E1.  So the procedure object bound to
 @code{sqrt-iter} in E1 was called with 1 as an argument.  This created an
 environment E2 in which @code{guess}, the parameter of @code{sqrt-iter}, is
-bound to 1.  @code{Sqrt-iter} in turn called @code{good-enough?} with the value
+bound to 1.  @code{sqrt-iter} in turn called @code{good-enough?} with the value
 of @code{guess} (from E2) as the argument for @code{good-enough?}.  This set up
 another environment, E3, in which @code{guess} (the parameter of
 @code{good-enough?}) is bound to 1.  Although @code{sqrt-iter} and
@@ -15574,9 +15574,9 @@ since these can be defined in terms of @code{cons}, @code{car}, and @code{cdr}.
 To modify list structures we need new operations.
 
 The primitive mutators for pairs are @code{set-car!} and
-@code{set-cdr!}. @code{Set-car!} takes two arguments, the first of which must
+@code{set-cdr!}. @code{set-car!} takes two arguments, the first of which must
 be a pair.  It modifies this pair, replacing the @code{car} pointer by a
-pointer to the second argument of @code{set-car!}.@footnote{@code{Set-car!} and
+pointer to the second argument of @code{set-car!}.@footnote{@code{set-car!} and
 @code{set-cdr!} return implementation-dependent values.  Like @code{set!}, they
 should be used only for their effect.}
 
@@ -15771,13 +15771,13 @@ on the lists of @ref{Figure 3.12} is shown in @ref{Figure 3.15}.  Here the
 f)}.  Also, the list @code{(c d)}, which used to be the @code{cdr} of @code{x},
 is now detached from the structure.
 
-@code{Cons} builds new list structure by creating new pairs, while
+@code{cons} builds new list structure by creating new pairs, while
 @code{set-car!} and @code{set-cdr!} modify existing pairs.  Indeed, we could
 implement @code{cons} in terms of the two mutators, together with a procedure
 @code{get-new-pair}, which returns a new pair that is not part of any existing
 list structure.  We obtain the new pair, set its @code{car} and @code{cdr}
 pointers to the designated objects, and return the new pair as the result of
-the @code{cons}.@footnote{@code{Get-new-pair} is one of the operations that
+the @code{cons}.@footnote{@code{get-new-pair} is one of the operations that
 must be implemented as part of the memory management required by a Lisp
 implementation.  We will discuss this in @ref{5.3.1}.}
 
@@ -15800,7 +15800,7 @@ appending lists was introduced in @ref{2.2.1}:
       (cons (car x) (append (cdr x) y))))
 @end lisp
 
-@code{Append} forms a new list by successively @code{cons}ing the elements of
+@code{append} forms a new list by successively @code{cons}ing the elements of
 @code{x} onto @code{y}.  The procedure @code{append!} is similar to
 @code{append}, but it is a mutator rather than a constructor.  It appends the
 lists by splicing them together, modifying the final pair of @code{x} so that
@@ -15877,7 +15877,7 @@ useful, although obscure:
   (loop x '()))
 @end lisp
 
-@code{Loop} uses the ``temporary'' variable @code{temp} to hold the old value
+@code{loop} uses the ``temporary'' variable @code{temp} to hold the old value
 of the @code{cdr} of @code{x}, since the @code{set-cdr!}  on the next line
 destroys the @code{cdr}.  Explain what @code{mystery} does in general.  Suppose
 @code{v} is defined by @code{(define v (list 'a 'b 'c 'd))}. Draw the
@@ -16567,12 +16567,12 @@ c:  3
 @noindent
 To extract information from a table we use the @code{lookup} procedure, which
 takes a key as argument and returns the associated value (or false if there is
-no value stored under that key).  @code{Lookup} is defined in terms of the
+no value stored under that key).  @code{lookup} is defined in terms of the
 @code{assoc} operation, which expects a key and a list of records as arguments.
-Note that @code{assoc} never sees the dummy record.  @code{Assoc} returns the
+Note that @code{assoc} never sees the dummy record.  @code{assoc} returns the
 record that has the given key as its @code{car}.@footnote{Because @code{assoc}
 uses @code{equal?}, it can recognize keys that are symbols, numbers, or list
-structure.}  @code{Lookup} then checks to see that the resulting record
+structure.}  @code{lookup} then checks to see that the resulting record
 returned by @code{assoc} is not false, and returns the value (the @code{cdr})
 of the record.
 
@@ -16784,7 +16784,7 @@ follows:
 @end lisp
 
 @noindent
-@code{Get} takes as arguments two keys, and @code{put} takes as arguments two
+@code{get} takes as arguments two keys, and @code{put} takes as arguments two
 keys and a value.  Both operations access the same local table, which is
 encapsulated within the object created by the call to @code{make-table}.
 
@@ -16796,7 +16796,7 @@ might have a table with numeric keys in which we don't need an exact match to
 the number we're looking up, but only a number within some tolerance of it.
 Design a table constructor @code{make-table} that takes as an argument a
 @code{same-key?} procedure that will be used to test ``equality'' of keys.
-@code{Make-table} should return a @code{dispatch} procedure that can be used to
+@code{make-table} should return a @code{dispatch} procedure that can be used to
 access appropriate @code{lookup} and @code{insert!} procedures for a local
 table.
 @end quotation
@@ -17868,7 +17868,7 @@ The connectors communicate with the constraints by means of the procedures
 has a value, and @code{inform-about-no-value}, which tells the constraint that
 the connector has lost its value.
 
-@code{Adder} constructs an adder constraint among summand connectors @code{a1}
+@code{adder} constructs an adder constraint among summand connectors @code{a1}
 and @code{a2} and a @code{sum} connector.  An adder is implemented as a
 procedure with local state (the procedure @code{me} below):
 
@@ -17903,7 +17903,7 @@ procedure with local state (the procedure @code{me} below):
 @end lisp
 
 @noindent
-@code{Adder} connects the new adder to the designated connectors and returns it
+@code{adder} connects the new adder to the designated connectors and returns it
 as its value.  The procedure @code{me}, which represents the adder, acts as a
 dispatch to the local procedures.  The following ``syntax interfaces'' (see
 @ref{Footnote 27} in @ref{3.3.4}) are used in conjunction with
@@ -18637,10 +18637,10 @@ to include a procedure called @code{parallel-execute}:
 @end lisp
 
 @noindent
-Each @math{\langle}@math{p}@math{\kern0.08em\rangle} must be a procedure of no arguments.  @code{Parallel-execute}
+Each @math{\langle}@math{p}@math{\kern0.08em\rangle} must be a procedure of no arguments.  @code{parallel-execute}
 creates a separate process for each @math{\langle}@math{p}@math{\kern0.08em\rangle}, which applies @math{\langle}@math{p}@math{\kern0.08em\rangle} (to no
 arguments).  These processes all run
-concurrently.@footnote{@code{Parallel-execute} is not part of standard Scheme,
+concurrently.@footnote{@code{parallel-execute} is not part of standard Scheme,
 but it can be implemented in @acronym{MIT} Scheme.  In our implementation, the
 new concurrent processes also run concurrently with the original Scheme
 process.  Also, in our implementation, the value returned by
@@ -19071,7 +19071,7 @@ mutex, we set the cell contents to false.
 @end lisp
 
 @noindent
-@code{Test-and-set!} tests the cell and returns the result of the test.  In
+@code{test-and-set!} tests the cell and returns the result of the test.  In
 addition, if the test was false, @code{test-and-set!} sets the cell contents to
 true before returning false.  We can express this behavior as the following
 procedure:
@@ -19111,7 +19111,7 @@ time-slicing model, @code{test-and-set!} can be implemented as follows:
 @end smalllisp
 
 @noindent
-@code{Without-interrupts} disables time-slicing interrupts while its procedure
+@code{without-interrupts} disables time-slicing interrupts while its procedure
 ar@-gu@-ment is being executed.}  Alternatively, multiprocessing computers provide
 instructions that support atomic operations directly in
 hardware.@footnote{There are many variants of such instructions---including
@@ -19448,7 +19448,7 @@ discuss this point further at the end of @ref{3.5.4}.  In
 @end lisp
 
 @noindent
-@code{Stream-for-each} is useful for viewing streams:
+@code{stream-for-each} is useful for viewing streams:
 
 @lisp
 (define (display-stream s)
@@ -19483,7 +19483,7 @@ evaluation---in effect, forcing the @code{delay} to fulfill its promise.  We
 will see below how @code{delay} and @code{force} can be implemented, but first
 let us use these to construct streams.
 
-@code{Cons-stream} is a special form defined so that
+@code{cons-stream} is a special form defined so that
 
 @lisp
 (cons-stream @math{\langle}@var{a}@math{\rangle} @math{\langle}@var{b}@math{\rangle})
@@ -19500,7 +19500,7 @@ is equivalent to
 What this means is that we will construct streams using pairs.  However, rather
 than placing the value of the rest of the stream into the @code{cdr} of the
 pair we will put there a promise to compute the rest if it is ever requested.
-@code{Stream-car} and @code{stream-cdr} can now be defined as procedures:
+@code{stream-car} and @code{stream-cdr} can now be defined as procedures:
 
 @lisp
 (define (stream-car stream) (car stream))
@@ -19508,7 +19508,7 @@ pair we will put there a promise to compute the rest if it is ever requested.
 @end lisp
 
 @noindent
-@code{Stream-car} selects the @code{car} of the pair; @code{stream-cdr} selects
+@code{stream-car} selects the @code{car} of the pair; @code{stream-cdr} selects
 the @code{cdr} of the pair and evaluates the delayed expression found there to
 obtain the rest of the stream.@footnote{Although @code{stream-car} and
 @code{stream-cdr} can be defined as procedures, @code{cons-stream} must be a
@@ -19535,7 +19535,7 @@ computation we saw above, reformulated in terms of streams:
 We will see that it does indeed work efficiently.
 
 We begin by calling @code{stream-enumerate-interval} with the arguments 10,000
-and 1,000,000.  @code{Stream-enumerate-interval} is the stream analog of
+and 1,000,000.  @code{stream-enumerate-interval} is the stream analog of
 @code{enumerate-interval} (@ref{2.2.3}):
 
 @lisp
@@ -19578,7 +19578,7 @@ using the stream analog of the @code{filter} procedure (@ref{2.2.3}):
 @end lisp
 
 @noindent
-@code{Stream-filter} tests the @code{stream-car} of the stream (the @code{car}
+@code{stream-filter} tests the @code{stream-car} of the stream (the @code{car}
 of the pair, which is 10,000).  Since this is not prime, @code{stream-filter}
 examines the @code{stream-cdr} of its input stream.  The call to
 @code{stream-cdr} forces evaluation of the delayed
@@ -19590,7 +19590,7 @@ examines the @code{stream-cdr} of its input stream.  The call to
 @end lisp
 
 @noindent
-@code{Stream-filter} now looks at the @code{stream-car} of this stream, 10,001,
+@code{stream-filter} now looks at the @code{stream-car} of this stream, 10,001,
 sees that this is not prime either, forces another @code{stream-cdr}, and so
 on, until @code{stream-@/enumerate-@/interval} yields the prime 10,007, whereupon
 @code{stream-filter}, according to its definition, returns
@@ -19631,7 +19631,7 @@ expression is
 @end lisp
 
 @noindent
-@code{Stream-car} returns 10,009, and the computation is complete.  Only as
+@code{stream-car} returns 10,009, and the computation is complete.  Only as
 many integers were tested for primality as were necessary to find the second
 prime, and the interval was enumerated only as far as was necessary to feed the
 prime filter.
@@ -19647,10 +19647,10 @@ styles.
 @subsubheading Implementing @code{delay} and @code{force}
 
 Although @code{delay} and @code{force} may seem like mysterious operations,
-their implementation is really quite straightforward.  @code{Delay} must
+their implementation is really quite straightforward.  @code{delay} must
 package an expression so that it can be evaluated later on demand, and we can
 accomplish this simply by treating the expression as the body of a procedure.
-@code{Delay} can be a special form such that
+@code{delay} can be a special form such that
 
 @lisp
 (delay @math{\langle}@var{exp}@math{\rangle})
@@ -19664,7 +19664,7 @@ is syntactic sugar for
 @end lisp
 
 @noindent
-@code{Force} simply calls the procedure (of no arguments) produced by
+@code{force} simply calls the procedure (of no arguments) produced by
 @code{delay}, so we can implement @code{force} as a procedure:
 
 @lisp
@@ -19698,7 +19698,7 @@ subsequent evaluations, it simply returns the result.
 @end lisp
 
 @noindent
-@code{Delay} is then defined so that @code{(delay @math{\langle}@var{exp}@math{\rangle})} is equivalent
+@code{delay} is then defined so that @code{(delay @math{\langle}@var{exp}@math{\rangle})} is equivalent
 to
 
 @lisp
@@ -19846,7 +19846,7 @@ numbers:
 @end lisp
 
 @noindent
-@code{Fibs} is a pair whose @code{car} is 0 and whose @code{cdr} is a promise
+@code{fibs} is a pair whose @code{car} is 0 and whose @code{cdr} is a promise
 to evaluate @code{(fibgen 1 1)}.  When we evaluate this delayed @code{(fibgen 1
 1)}, it will produce a pair whose @code{car} is 1 and whose @code{cdr} is a
 promise to evaluate @code{(fibgen 1 2)}, and so on.
@@ -20006,7 +20006,7 @@ shifted by one place:
 @end lisp
 
 @noindent
-@code{Scale-stream} is another useful procedure in formulating such stream
+@code{scale-stream} is another useful procedure in formulating such stream
 definitions.  This multiplies each item in a stream by a given constant:
 
 @lisp
@@ -20189,7 +20189,7 @@ stream computed by the following procedure:
    (expand (remainder (* num radix) den) den radix)))
 @end lisp
 
-(@code{Quotient} is a primitive that returns the integer quotient of two
+(@code{quotient} is a primitive that returns the integer quotient of two
 integers.)  What are the successive elements produced by @code{(expand 1 7
 10)}?  What is produced by @code{(expand 3 8 10)}?
 @end quotation
@@ -20330,7 +20330,7 @@ for a power series @math{S} with constant term 1.  You will need to use
 @quotation
 @strong{@anchor{Exercise 3.62}Exercise 3.62:} Use the results of @ref{Exercise 3.60}
 and @ref{Exercise 3.61} to define a procedure @code{div-series} that
-divides two power series.  @code{Div-series} should work for any two series,
+divides two power series.  @code{div-series} should work for any two series,
 provided that the denominator series begins with a nonzero constant term.  (If
 the denominator has a zero constant term, then @code{div-series} should signal
 an error.)  Show how to use @code{div-series} together with the result of
@@ -21243,7 +21243,7 @@ can begin working to generate the first element of @code{dy}, which will
 produce the next element of @code{y}, and so on.
 
 To take advantage of this idea, we will redefine @code{integral} to expect the
-integrand stream to be a @newterm{delayed argument}.  @code{Integral} will
+integrand stream to be a @newterm{delayed argument}.  @code{integral} will
 @code{force} the integrand to be evaluated only when it is required to generate
 more than the first element of the output stream:
 
@@ -21726,7 +21726,7 @@ successive balances in the account:
 @end lisp
 
 @noindent
-@code{Stream-withdraw} implements a well-defined mathematical function whose
+@code{stream-withdraw} implements a well-defined mathematical function whose
 output is fully determined by its input.  Suppose, however, that the input
 @code{amount-stream} is the stream of successive values typed by the user and
 that the resulting stream of balances is displayed.  Then, from the perspective
@@ -22160,8 +22160,8 @@ procedures: @code{eval} and @code{apply}.
 
 @subsubheading Eval
 
-@code{Eval} takes as arguments an expression and an environment.  It classifies
-the expression and directs its evaluation.  @code{Eval} is structured as a case
+@code{eval} takes as arguments an expression and an environment.  It classifies
+the expression and directs its evaluation.  @code{eval} is structured as a case
 analysis of the syntactic type of the expression to be evaluated.  In order to
 keep the procedure general, we express the determination of the type of an
 expression abstractly, making no commitment to any particular representation
@@ -22182,7 +22182,7 @@ For self-evaluating expressions, such as numbers, @code{eval} returns the
 expression itself.
 
 @item
-@code{Eval} must look up variables in the environment to find their values.
+@code{eval} must look up variables in the environment to find their values.
 
 @end itemize
 
@@ -22268,8 +22268,8 @@ distinguish, without modifying the definition of @code{eval} itself.  (See
 
 @subsubheading Apply
 
-@code{Apply} takes two arguments, a procedure and a list of arguments to which
-the procedure should be applied.  @code{Apply} classifies procedures into two
+@code{apply} takes two arguments, a procedure and a list of arguments to which
+the procedure should be applied.  @code{apply} classifies procedures into two
 kinds: It calls @code{apply-primitive-procedure} to apply primitives; it
 applies compound procedures by sequentially evaluating the expressions that
 make up the body of the procedure.  The environment for the evaluation of the
@@ -22298,7 +22298,7 @@ the definition of @code{apply}:
 
 When @code{eval} processes a procedure application, it uses
 @code{list-of-values} to produce the list of arguments to which the procedure
-is to be applied. @code{List-of-values} takes as an argument the operands of
+is to be applied. @code{list-of-values} takes as an argument the operands of
 the combination.  It evaluates each operand and returns a list of the
 corresponding values:@footnote{We could have simplified the @code{application?}
 clause in @code{eval} by using @code{map} (and stipulating that @code{operands}
@@ -22319,7 +22319,7 @@ procedures.}
 
 @subsubheading Conditionals
 
-@code{Eval-if} evaluates the predicate part of an @code{if} expression in the
+@code{eval-if} evaluates the predicate part of an @code{if} expression in the
 given environment.  If the result is true, @code{eval-if} evaluates the
 consequent, otherwise it evaluates the alternative:
 
@@ -22344,7 +22344,7 @@ the abuse of substance.}
 
 @subsubheading Sequences
 
-@code{Eval-sequence} is used by @code{apply} to evaluate the sequence of
+@code{eval-sequence} is used by @code{apply} to evaluate the sequence of
 expressions in a procedure body and by @code{eval} to evaluate the sequence of
 expressions in a @code{begin} expression.  It takes as arguments a sequence of
 expressions and an environment, and evaluates the expressions in the order in
@@ -22457,7 +22457,7 @@ evaluator as @code{(quote a)}.  See @ref{Exercise 2.55}.}
 (define (text-of-quotation exp) (cadr exp))
 @end lisp
 
-@code{Quoted?} is defined in terms of the procedure @code{tagged-list?}, which
+@code{quoted?} is defined in terms of the procedure @code{tagged-list?}, which
 identifies lists beginning with a designated symbol:
 
 @lisp
@@ -22516,7 +22516,7 @@ The corresponding syntax procedures are the following:
 @end lisp
 
 @item
-@code{Lambda} expressions are lists that begin with the symbol @code{lambda}:
+@code{lambda} expressions are lists that begin with the symbol @code{lambda}:
 
 @lisp
 (define (lambda? exp) (tagged-list? exp 'lambda))
@@ -22561,7 +22561,7 @@ expressions:
 @end lisp
 
 @item
-@code{Begin} packages a sequence of expressions into a single expression.  We
+@code{begin} packages a sequence of expressions into a single expression.  We
 include syntax operations on @code{begin} expressions to extract the actual
 sequence from the @code{begin} expression, as well as selectors that return the
 first expression and the rest of the expressions in the
@@ -22672,7 +22672,7 @@ it false.}
 
 @noindent
 Expressions (such as @code{cond}) that we choose to implement as syntactic
-transformations are called @newterm{derived expressions}.  @code{Let}
+transformations are called @newterm{derived expressions}.  @code{let}
 expressions are also derived expressions (see
 @ref{Exercise 4.6}).@footnote{Practical Lisp systems provide a mechanism that allows a user
 to add new derived expressions and specify their implementation as syntactic
@@ -22764,7 +22764,7 @@ extended syntax.
 @end quotation
 
 @quotation
-@strong{@anchor{Exercise 4.6}Exercise 4.6:} @code{Let} expressions are derived
+@strong{@anchor{Exercise 4.6}Exercise 4.6:} @code{let} expressions are derived
 expressions, because
 
 @lisp
@@ -22790,7 +22790,7 @@ expressions.
 @end quotation
 
 @quotation
-@strong{@anchor{Exercise 4.7}Exercise 4.7:} @code{Let*} is similar to
+@strong{@anchor{Exercise 4.7}Exercise 4.7:} @code{let*} is similar to
 @code{let}, except that the bindings of the @code{let*} variables are performed
 sequentially from left to right, and each binding is made in an environment in
 which all of the preceding bindings are visible.  For example
@@ -22974,7 +22974,7 @@ empty environment is simply the empty list.
 Each frame of an environment is represented as a pair of lists: a list of the
 variables bound in that frame and a list of the associated
 values.@footnote{Frames are not really a data abstraction in the following
-code: @code{Set-variable-value!} and @code{define-variable!} use
+code: @code{set-variable-value!} and @code{define-variable!} use
 @code{set-car!}  to directly modify the values in a frame.  The purpose of the
 frame procedures is to make the environment-manipulation procedures easy to
 read.}
@@ -23157,7 +23157,7 @@ implements that primitive.
 @end lisp
 
 @noindent
-@code{Setup-environment} will get the primitive names and implementation
+@code{setup-environment} will get the primitive names and implementation
 procedures from a list:@footnote{Any procedure defined in the underlying Lisp
 can be used as a primitive for the metacircular evaluator.  The name of a
 primitive installed in the evaluator need not be the same as the name of its
@@ -23183,7 +23183,7 @@ the list of @code{primitive-procedures}.}
 @noindent
 To apply a primitive procedure, we simply apply the implementation procedure to
 the arguments, using the underlying Lisp
-system:@footnote{@code{Apply-in-underlying-scheme} is the @code{apply}
+system:@footnote{@code{apply-in-underlying-scheme} is the @code{apply}
 procedure we have used in earlier chapters.  The metacircular evaluator's
 @code{apply} procedure (@ref{4.1.1}) models the working of this
 primitive.  Having two different things called @code{apply} leads to a
@@ -23698,7 +23698,7 @@ to produce an incorrect answer (as Ben would have it).}
 @quotation
 @strong{@anchor{Exercise 4.20}Exercise 4.20:} Because internal definitions look
 sequential but are actually simultaneous, some people prefer to avoid them
-entirely, and use the special form @code{letrec} instead.  @code{Letrec} looks
+entirely, and use the special form @code{letrec} instead.  @code{letrec} looks
 like @code{let}, so it is not surprising that the variables it binds are bound
 simultaneously and have the same scope as each other.  The sample procedure
 @code{f} above can be written without internal definitions, but with exactly
@@ -23714,7 +23714,7 @@ the same meaning, as
     @math{\langle}@var{rest of body of @code{f}}@math{\rangle}))
 @end lisp
 
-@code{Letrec} expressions, which have the form
+@code{letrec} expressions, which have the form
 
 @lisp
 (letrec ((@math{\langle}@math{var_1}@math{\rangle} @math{\langle}@math{exp_1}@math{\rangle}) @dots{} (@math{\langle}@math{var_n}@math{\rangle} @math{\langle}@math{exp_n}@math{\rangle}))
@@ -23915,7 +23915,7 @@ matches the variable.}
 @end lisp
 
 @noindent
-@code{Analyze-assignment} also must defer actually setting the variable until
+@code{analyze-assignment} also must defer actually setting the variable until
 the execution, when the environment has been supplied.  However, the fact that
 the @code{assignment-value} expression can be analyzed (recursively) during
 analysis is a major gain in efficiency, because the @code{assignment-value}
@@ -23992,7 +23992,7 @@ an execution procedure that calls the operator execution procedure (to obtain
 the actual procedure to be applied) and the operand execution procedures (to
 obtain the actual arguments).  We then pass these to
 @code{execute-application}, which is the analog of @code{apply} in
-@ref{4.1.1}.  @code{Execute-application} differs from @code{apply} in that the
+@ref{4.1.1}.  @code{execute-application} differs from @code{apply} in that the
 procedure body for a compound procedure has already been analyzed, so there is
 no need to do further analysis.  Instead, we just call the execution procedure
 for the body on the extended environment.
@@ -24494,7 +24494,7 @@ count
 @end quotation
 
 @quotation
-@strong{@anchor{Exercise 4.28}Exercise 4.28:} @code{Eval} uses
+@strong{@anchor{Exercise 4.28}Exercise 4.28:} @code{eval} uses
 @code{actual-value} rather than @code{eval} to evaluate the operator before
 passing it to @code{apply}, in order to force the value of the operator.  Give
 an example that demonstrates the need for this forcing.
@@ -24863,7 +24863,7 @@ modifying the ordinary Scheme evaluator.
 @menu
 * 4-3-1::            Amb and Search
 * 4-3-2::            Examples of Nondeterministic Programs
-* 4-3-3::            Implementing the @code{Amb} Evaluator
+* 4-3-3::            Implementing the @code{amb} Evaluator
 @end menu
 
 @subsection Amb and Search
@@ -24894,9 +24894,9 @@ can have six possible values:
 @end lisp
 
 @noindent
-@code{Amb} with a single choice produces an ordinary (single) value.
+@code{amb} with a single choice produces an ordinary (single) value.
 
-@code{Amb} with no choices---the expression @code{(amb)}---is an expression
+@code{amb} with no choices---the expression @code{(amb)}---is an expression
 with no acceptable values.  Operationally, we can think of @code{(amb)} as an
 expression that when evaluated causes the computation to ``fail'': The
 computation aborts and no value is produced.  Using this idea, we can express
@@ -24918,7 +24918,7 @@ procedure used above:
 @end lisp
 
 @noindent
-@code{An-element-of} fails if the list is empty.  Otherwise it ambiguously
+@code{an-element-of} fails if the list is empty.  Otherwise it ambiguously
 returns either the first element of the list or an element chosen from the rest
 of the list.
 
@@ -25141,7 +25141,7 @@ the elements of a list are distinct:
 @end lisp
 
 @noindent
-@code{Member} is like @code{memq} except that it uses @code{equal?} instead
+@code{member} is like @code{memq} except that it uses @code{equal?} instead
 of @code{eq?} to test for equality.}
 
 @lisp
@@ -25559,7 +25559,7 @@ In fact, the grammar is highly recursive in many places, and Alyssa's technique
 for a way to deal with this.}
 @end quotation
 
-@subsection Implementing the @code{Amb} Evaluator
+@subsection Implementing the @code{amb} Evaluator
 @node	4.3.3,  , 4.3.2, 4.3
 
 The evaluation of an ordinary Scheme expression may return a value, may never
@@ -26001,7 +26001,7 @@ that permits the user to try again in evaluating an expression.  The driver
 uses a procedure called @code{internal-loop}, which takes as argument a
 procedure @code{try-again}.  The intent is that calling @code{try-again} should
 go on to the next untried alternative in the nondeterministic evaluation.
-@code{Internal-loop} either calls @code{try-again} in response to the user
+@code{internal-loop} either calls @code{try-again} in response to the user
 typing @code{try-again} at the driver loop, or else starts a new evaluation by
 calling @code{ambeval}.
 
@@ -26092,7 +26092,7 @@ rather than @code{permanent-set!} ?
 @quotation
 @strong{@anchor{Exercise 4.52}Exercise 4.52:} Implement a new construct called
 @code{if-fail} that permits the user to catch the failure of an expression.
-@code{If-fail} takes two expressions.  It evaluates the first expression as
+@code{if-fail} takes two expressions.  It evaluates the first expression as
 usual and returns as usual if the evaluation succeeds.  If the evaluation
 fails, however, the value of the second expression is returned, as in the
 following example:
@@ -26757,7 +26757,7 @@ arguments.  In general,
 will be satisfied by assignments to the pattern variables for which the
 @math{\langle}@var{predicate}@math{\rangle} applied to the instantiated @math{\langle}@math{arg_1}@math{\rangle} @dots{}
 @math{\langle}@math{arg_n}@math{\rangle} is true.  For example, to find all people whose salary is
-greater than $30,000 we could write@footnote{@code{Lisp-value} should be used
+greater than $30,000 we could write@footnote{@code{lisp-value} should be used
 only to perform an operation not provided in the query language.  In
 particular, it should not be used to test equality (since that is what the
 matching in the query language is designed to do) or inequality (since that can
@@ -26809,7 +26809,7 @@ rule:@footnote{Notice that we do not need @code{same} in order to make two
 things be the same: We just use the same pattern variable for each---in effect,
 we have one thing instead of two things in the first place.  For example, see
 @code{?town} in the @code{lives-near} rule and @code{?middle-manager} in the
-@code{wheel} rule below.  @code{Same} is useful when we want to force two
+@code{wheel} rule below.  @code{same} is useful when we want to force two
 things to be different, such as @code{?person-1} and @code{?person-2} in the
 @code{lives-near} rule.  Although using the same pattern variable in two parts
 of a query forces the same value to appear in both places, using different
@@ -27618,7 +27618,7 @@ given pattern.
 Despite the complexity of the underlying matching operations, the system is
 organized much like an evaluator for any language.  The procedure that
 coordinates the matching operations is called @code{qeval}, and it plays a role
-analogous to that of the @code{eval} procedure for Lisp.  @code{Qeval} takes as
+analogous to that of the @code{eval} procedure for Lisp.  @code{qeval} takes as
 inputs a query and a stream of frames.  Its output is a stream of frames,
 corresponding to successful matches to the query pattern, that extend some
 frame in the input stream, as indicated in @ref{Figure 4.4}.  Like @code{eval},
@@ -28038,7 +28038,7 @@ Here, as in the other evaluators in this chapter, we use an abstract syntax for
 the expressions of the query language.  The implementation of the expression
 syntax, including the predicate @code{assertion-to-be-added?} and the selector
 @code{add-assertion-body}, is given in @ref{4.4.4.7}.
-@code{Add-rule-or-assertion!} is defined in @ref{4.4.4.5}.
+@code{add-rule-or-assertion!} is defined in @ref{4.4.4.5}.
 
 Before doing any processing on an input expression, the driver loop transforms
 it syntactically into a form that makes the processing more efficient.  This
@@ -28092,7 +28092,7 @@ processed by @code{simple-query}.
 @end lisp
 
 @noindent
-@code{Type} and @code{contents}, defined in @ref{4.4.4.7}, implement
+@code{type} and @code{contents}, defined in @ref{4.4.4.7}, implement
 the abstract syntax of the special forms.
 
 @subsubheading Simple queries
@@ -28127,8 +28127,8 @@ stream can be extended to produce a match with the given pattern.
 
 @subsubheading Compound queries
 
-@code{And} queries are handled as illustrated in @ref{Figure 4.5} by the
-@code{conjoin} procedure.  @code{Conjoin} takes as inputs the conjuncts and the
+@code{and} queries are handled as illustrated in @ref{Figure 4.5} by the
+@code{conjoin} procedure.  @code{conjoin} takes as inputs the conjuncts and the
 frame stream and returns the stream of extended frames.  First, @code{conjoin}
 processes the stream of frames to find the stream of all possible frame
 extensions that satisfy the first query in the conjunction.  Then, using this
@@ -28154,7 +28154,7 @@ The expression
 sets up @code{qeval} to dispatch to @code{conjoin} when an @code{and} form is
 encountered.
 
-@code{Or} queries are handled similarly, as shown in @ref{Figure 4.6}.  The
+@code{or} queries are handled similarly, as shown in @ref{Figure 4.6}.  The
 output streams for the various disjuncts of the @code{or} are computed
 separately and merged using the @code{interleave-delayed} procedure from
 @ref{4.4.4.6}.  (See @ref{Exercise 4.71} and @ref{Exercise 4.72}.)
@@ -28175,7 +28175,7 @@ given in @ref{4.4.4.7}.
 
 @subsubheading Filters
 
-@code{Not} is handled by the method outlined in @ref{4.4.2}.  We
+@code{not} is handled by the method outlined in @ref{4.4.2}.  We
 attempt to extend each frame in the input stream to satisfy the query being
 negated, and we include a given frame in the output stream only if it cannot be
 extended.
@@ -28194,7 +28194,7 @@ extended.
 @end lisp
 
 @noindent
-@code{Lisp-value} is a filter similar to @code{not}.  Each frame in the stream
+@code{lisp-value} is a filter similar to @code{not}.  Each frame in the stream
 is used to instantiate the variables in the pattern, the indicated predicate is
 applied, and the frames for which the predicate returns false are filtered out
 of the input stream.  An error results if there are unbound pattern variables.
@@ -28216,7 +28216,7 @@ of the input stream.  An error results if there are unbound pattern variables.
 @end lisp
 
 @noindent
-@code{Execute}, which applies the predicate to the arguments, must @code{eval}
+@code{execute}, which applies the predicate to the arguments, must @code{eval}
 the predicate expression to get the procedure to apply.  However, it must not
 evaluate the arguments, since they are already the actual arguments, not
 expressions whose evaluation (in Lisp) will produce the arguments.  Note that
@@ -28232,7 +28232,7 @@ underlying Lisp system.
 @noindent
 The @code{always-true} special form provides for a query that is always
 satisfied.  It ignores its contents (normally empty) and simply passes through
-all the frames in the input stream.  @code{Always-true} is used by the
+all the frames in the input stream.  @code{always-true} is used by the
 @code{rule-body} selector (@ref{4.4.4.7}) to provide bodies for rules
 that were defined without bodies (that is, rules whose conclusions are always
 satisfied).
@@ -28249,7 +28249,7 @@ given in @ref{4.4.4.7}.
 @subsubsection Finding Assertions@* by Pattern Matching
 @node 4.4.4.3, 4.4.4.4, 4.4.4.2, 4.4.4
 
-@code{Find-assertions}, called by @code{simple-query} (@ref{4.4.4.2}),
+@code{find-assertions}, called by @code{simple-query} (@ref{4.4.4.2}),
 takes as input a pattern and a frame.  It returns a stream of frames, each
 extending the given one by a data-base match of the given pattern.  It uses
 @code{fetch-@/assertions} (@ref{4.4.4.5}) to get a stream of all the
@@ -28269,7 +28269,7 @@ because we would need to make many more calls to the matcher.
 @end lisp
 
 @noindent
-@code{Check-an-assertion} takes as arguments a pattern, a data object
+@code{check-an-assertion} takes as arguments a pattern, a data object
 (assertion), and a frame and returns either a one-element stream containing the
 extended frame or @code{the-empty-stream} if the match fails.
 
@@ -28373,10 +28373,10 @@ will match @code{?type} against the list @code{(programmer trainee)}.
 @subsubsection Rules and Unification
 @node 4.4.4.4, 4.4.4.5, 4.4.4.3, 4.4.4
 
-@code{Apply-rules} is the rule analog of @code{find-assertions}
+@code{apply-rules} is the rule analog of @code{find-assertions}
 (@ref{Section 4.4.4.3}).  It takes as input a pattern and a frame, and it forms a stream
 of extension frames by applying rules from the data base.
-@code{Stream-flatmap} maps @code{apply-a-rule} down the stream of possibly
+@code{stream-flatmap} maps @code{apply-a-rule} down the stream of possibly
 applicable rules (selected by @code{fetch-rules}, @ref{Section 4.4.4.5}) and
 combines the resulting streams of frames.
 
@@ -28388,7 +28388,7 @@ combines the resulting streams of frames.
 @end lisp
 
 @noindent
-@code{Apply-a-rule} applies rules using the method outlined in
+@code{apply-a-rule} applies rules using the method outlined in
 @ref{4.4.2}.  It first augments its argument frame by unifying the rule
 conclusion with the pattern in the given frame.  If this succeeds, it evaluates
 the rule body in this new frame.
@@ -28425,7 +28425,7 @@ We generate unique variable names by associating a unique identifier (such as a
 number) with each rule application and combining this identifier with the
 original variable names.  For example, if the rule-application identifier is 7,
 we might change each @code{?x} in the rule to @code{?x-7} and each @code{?y} in
-the rule to @code{?y-7}.  (@code{Make-new-variable} and
+the rule to @code{?y-7}.  (@code{make-new-variable} and
 @code{new-rule-application-id} are included with the syntax procedures in
 @ref{4.4.4.7}.)
 
@@ -28447,7 +28447,7 @@ The unification algorithm is implemented as a procedure that takes as inputs
 two patterns and a frame and returns either the extended frame or the symbol
 @code{failed}.  The unifier is like the pattern matcher except that it is
 symmetrical---variables are allowed on both sides of the match.
-@code{Unify-match} is basically the same as @code{pattern-match}, except that
+@code{unify-match} is basically the same as @code{pattern-match}, except that
 there is extra code (marked ``@code{***}'' below) to handle the case where the
 object on the right side of the match is a variable.
 
@@ -28578,7 +28578,7 @@ of by the @code{equal?}  clause of @code{unify-match}.
 @end lisp
 
 @noindent
-@code{Depends-on?} is a predicate that tests whether an expression proposed to
+@code{depends-on?} is a predicate that tests whether an expression proposed to
 be the value of a pattern variable depends on the variable.  This must be done
 relative to the current frame because the expression may contain occurrences of
 a variable that already has a value that depends on our test variable.  The
@@ -28632,7 +28632,7 @@ instead we call on predicates and selectors that embody our criteria.
 @end lisp
 
 @noindent
-@code{Get-stream} looks up a stream in the table and returns an empty stream if
+@code{get-stream} looks up a stream in the table and returns an empty stream if
 nothing is stored there.
 
 @lisp
@@ -28667,7 +28667,7 @@ the symbol @code{?}.
 @end lisp
 
 @noindent
-@code{Add-rule-or-assertion!} is used by @code{query-driver-loop} to add
+@code{add-rule-or-assertion!} is used by @code{query-driver-loop} to add
 assertions and rules to the data base.  Each item is stored in the index, if
 appropriate, and in a stream of all assertions or rules in the data base.
 
@@ -28767,7 +28767,7 @@ ones in @ref{3.5.2}: @code{(define ones (cons-stream 1 ones))}.
 The query system uses a few stream operations that were not presented in
 @ref{Chapter 3}.
 
-@code{Stream-append-delayed} and @code{interleave-delayed} are just like
+@code{stream-append-delayed} and @code{interleave-delayed} are just like
 @code{stream-@/append} and @code{interleave} (@ref{3.5.3}), except that
 they take a delayed argument (like the @code{integral} procedure in
 @ref{3.5.4}).  This postpones looping in some cases (see @ref{Exercise 4.71}).
@@ -28792,7 +28792,7 @@ they take a delayed argument (like the @code{integral} procedure in
 @end lisp
 
 @noindent
-@code{Stream-flatmap}, which is used throughout the query evaluator to map a
+@code{stream-flatmap}, which is used throughout the query evaluator to map a
 procedure over a stream of frames and combine the resulting streams of frames,
 is the stream analog of the @code{flatmap} procedure introduced for ordinary
 lists in @ref{2.2.3}.  Unlike ordinary @code{flatmap}, however, we
@@ -28823,7 +28823,7 @@ consisting of a single element:
 @subsubsection Query Syntax Procedures
 @node 4.4.4.7, 4.4.4.8, 4.4.4.6, 4.4.4
 
-@code{Type} and @code{contents}, used by @code{qeval} (@ref{4.4.4.2}),
+@code{type} and @code{contents}, used by @code{qeval} (@ref{4.4.4.2}),
 specify that a special form is identified by the symbol in its @code{car}.
 They are the same as the @code{type-tag} and @code{contents} procedures in
 @ref{2.4.2}, except for the error message.
@@ -28878,7 +28878,7 @@ The following three procedures define the syntax of rules:
 @end lisp
 
 @noindent
-@code{Query-driver-loop} (@ref{4.4.4.1}) calls
+@code{query-driver-loop} (@ref{4.4.4.1}) calls
 @code{query-syntax-process} to transform pattern variables in the expression,
 which have the form @code{?symbol}, into the internal format @code{(? symbol)}.
 That is to say, a pattern such as @code{(job ?x ?y)} is actually represented
@@ -28896,7 +28896,7 @@ this way: The reader automatically translates @code{'expression} into
 way; however, for the sake of clarity we have included the transformation
 procedure here explicitly.
 
-@code{Expand-question-mark} and @code{contract-question-mark} use several
+@code{expand-question-mark} and @code{contract-question-mark} use several
 procedures with @code{string} in their names.  These are Scheme primitives.}
 
 @lisp
@@ -29052,7 +29052,7 @@ Does the query system's behavior change if we change it in this way?
 
 @quotation
 @strong{@anchor{Exercise 4.75}Exercise 4.75:} Implement for the query language
-a new special form called @code{unique}.  @code{Unique} should succeed if there
+a new special form called @code{unique}.  @code{unique} should succeed if there
 is precisely one item in the data base satisfying a specified query.  For
 example,
 
@@ -29691,14 +29691,14 @@ Lisp system is dedicated to making reading and printing work.}
 @c @end quotation
 @end float
 
-@code{Read} is like the operations we have been using in that it produces a
+@code{read} is like the operations we have been using in that it produces a
 value that can be stored in a register.  But @code{read} does not take inputs
 from any registers; its value depends on something that happens outside the
 parts of the machine we are designing.  We will allow our machine's operations
 to have such behavior, and thus will draw and notate the use of @code{read}
 just as we do any other operation that computes a value.
 
-@code{Print}, on the other hand, differs from the operations we have been using
+@code{print}, on the other hand, differs from the operations we have been using
 in a fundamental way: It does not produce an output value to be stored in a
 register.  Though it has an effect, this effect is not on a part of the machine
 we are designing.  We will refer to this kind of operation as an
@@ -30216,7 +30216,7 @@ computation is finished and the answer will be found in the @code{val}
 register.  In the controller sequence, @code{n} and @code{continue} are saved
 before each recursive call and restored upon return from the call.  Returning
 from a call is accomplished by branching to the location stored in
-@code{continue}.  @code{Continue} is initialized when the machine starts so
+@code{continue}.  @code{continue} is initialized when the machine starts so
 that the last return will go to @code{fact-done}.  The @code{val} register,
 which holds the result of the factorial computation, is not saved before the
 recursive call, because the old contents of @code{val} is not useful after the
@@ -30588,14 +30588,14 @@ constructed by @code{make-new-machine} is essentially a container for some
 registers and a stack, together with an execution mechanism that processes the
 controller instructions one by one.
 
-@code{Make-machine} then extends this basic model (by sending it messages) to
+@code{make-machine} then extends this basic model (by sending it messages) to
 include the registers, operations, and controller of the particular machine
 being defined.  First it allocates a register in the new machine for each of
 the supplied register names and installs the designated operations in the
 machine.  Then it uses an @newterm{assembler} (described below in
 @ref{5.2.2}) to transform the controller list into instructions for the new
 machine and installs these as the machine's instruction sequence.
-@code{Make-machine} returns as its value the modified machine model.
+@code{make-machine} returns as its value the modified machine model.
 
 @lisp
 (define (make-machine register-names ops controller-text)
@@ -30686,8 +30686,8 @@ table, and the internal procedure @code{lookup-register} looks up registers in
 the table.
 
 The @code{flag} register is used to control branching in the simulated machine.
-@code{Test} instructions set the contents of @code{flag} to the result of the
-test (true or false).  @code{Branch} instructions decide whether or not to
+@code{test} instructions set the contents of @code{flag} to the result of the
+test (true or false).  @code{branch} instructions decide whether or not to
 branch by examining the contents of @code{flag}.
 
 The @code{pc} register determines the sequencing of instructions as the machine
@@ -30697,7 +30697,7 @@ includes a procedure of no arguments, called the @newterm{instruction execution
 procedure}, such that calling this procedure simulates executing the
 instruction.  As the simulation runs, @code{pc} points to the place in the
 instruction sequence beginning with the next instruction to be executed.
-@code{Execute} gets that instruction, executes it by calling the instruction
+@code{execute} gets that instruction, executes it by calling the instruction
 execution procedure, and repeats this cycle until there are no more
 instructions to execute (i.e., until @code{pc} points to the end of the
 instruction sequence).
@@ -30760,14 +30760,14 @@ procedure, which implements the basic machine model.
 
 @noindent
 As part of its operation, each instruction execution procedure modifies
-@code{pc} to indicate the next instruction to be executed.  @code{Branch} and
+@code{pc} to indicate the next instruction to be executed.  @code{branch} and
 @code{goto} instructions change @code{pc} to point to the new destination.  All
 other instructions simply advance @code{pc}, making it point to the next
 instruction in the sequence.  Observe that each call to @code{execute} calls
 @code{execute} again, but this does not produce an infinite loop because
 running the instruction execution procedure changes the contents of @code{pc}.
 
-@code{Make-new-machine} returns a @code{dispatch} procedure that implements
+@code{make-new-machine} returns a @code{dispatch} procedure that implements
 message-passing access to the internal state.  Notice that starting the machine
 is accomplished by setting @code{pc} to the beginning of the instruction
 sequence and calling @code{execute}.
@@ -30825,7 +30825,7 @@ list by inserting the execution procedure for each instruction.
 
 The @code{assemble} procedure is the main entry to the assembler.  It takes the
 controller text and the machine model as arguments and returns the instruction
-sequence to be stored in the model.  @code{Assemble} calls
+sequence to be stored in the model.  @code{assemble} calls
 @code{extract-labels} to build the initial instruction list and label table
 from the supplied controller text.  The second argument to
 @code{extract-labels} is a procedure to be called to process these results:
@@ -30843,9 +30843,9 @@ list.
 @end lisp
 
 @noindent
-@code{Extract-labels} takes as arguments a list @code{text} (the sequence of
+@code{extract-labels} takes as arguments a list @code{text} (the sequence of
 controller instruction expressions) and a @code{receive} procedure.
-@code{Receive} will be called with two values: (1) a list @code{insts} of
+@code{receive} will be called with two values: (1) a list @code{insts} of
 instruction data structures, each containing an instruction from @code{text};
 and (2) a table called @code{labels}, which associates each label from
 @code{text} with the position in the list @code{insts} that the label
@@ -30870,7 +30870,7 @@ designates.
 @end lisp
 
 @noindent
-@code{Extract-labels} works by sequentially scanning the elements of the
+@code{extract-labels} works by sequentially scanning the elements of the
 @code{text} and accumulating the @code{insts} and the @code{labels}.  If an
 element is a symbol (and thus a label) an appropriate entry is added to the
 @code{labels} table.  Otherwise the element is accumulated onto the
@@ -30914,7 +30914,7 @@ called a ``continuation.''  Recall that we also used continuations to implement
 the backtracking control structure in the @code{amb} evaluator in
 @ref{4.3.3}.}
 
-@code{Update-insts!} modifies the instruction list, which initially contains
+@code{update-insts!} modifies the instruction list, which initially contains
 only the text of the instructions, to include the corresponding execution
 procedures:
 
@@ -31032,7 +31032,7 @@ detailed syntax of register-machine expressions from the general execution
 mechanism, as we did for evaluators in @ref{4.1.2}, by using syntax
 procedures to extract and classify the parts of an instruction.
 
-@subsubheading @code{Assign} instructions
+@subsubheading @code{assign} instructions
 
 The @code{make-assign} procedure handles @code{assign} instructions:
 
@@ -31053,7 +31053,7 @@ The @code{make-assign} procedure handles @code{assign} instructions:
 @end lisp
 
 @noindent
-@code{Make-assign} extracts the target register name (the second element of the
+@code{make-assign} extracts the target register name (the second element of the
 instruction) and the value expression (the rest of the list that forms the
 instruction) from the @code{assign} instruction using the selectors
 
@@ -31090,12 +31090,12 @@ to the result obtained by executing @code{value-proc}.  Then it advances the
 @end lisp
 
 @noindent
-@code{Advance-pc} is the normal termination for all instructions except
+@code{advance-pc} is the normal termination for all instructions except
 @code{branch} and @code{goto}.
 
-@subsubheading @code{Test}, @code{branch}, and @code{goto} instructions
+@subsubheading @code{test}, @code{branch}, and @code{goto} instructions
 
-@code{Make-test} handles @code{test} instructions in a similar way.  It
+@code{make-test} handles @code{test} instructions in a similar way.  It
 extracts the expression that specifies the condition to be tested and generates
 an execution procedure for it.  At simulation time, the procedure for the
 condition is called, the result is assigned to the @code{flag} register, and
@@ -31244,7 +31244,7 @@ determined by
 @end lisp
 
 @noindent
-@code{Assign}, @code{perform}, and @code{test} instructions may include the
+@code{assign}, @code{perform}, and @code{test} instructions may include the
 application of a machine operation (specified by an @code{op} expression) to
 some operands (specified by @code{reg} and @code{const} expressions).  The
 following procedure produces an execution procedure for an ``operation
@@ -31791,7 +31791,7 @@ are implemented as
 @end lisp
 
 @noindent
-@code{Cons} is performed by allocating an unused index and storing the
+@code{cons} is performed by allocating an unused index and storing the
 arguments to @code{cons} in @code{the-cars} and @code{the-cdrs} at that indexed
 vector position.  We presume that there is a special register, @code{free},
 that always holds a pair pointer containing the next available index, and that
@@ -32208,7 +32208,7 @@ the broken heart) and return this in @code{new}.  If the pointer in @code{old}
 points at a yet-unmoved pair, then we move the pair to the first free cell in
 new memory (pointed at by @code{free}) and set up the broken heart by storing a
 broken-heart tag and forwarding address at the old location.
-@code{Relocate-old-result-in-new} uses a register @code{oldcr} to hold the
+@code{relocate-old-result-in-new} uses a register @code{oldcr} to hold the
 @code{car} or the @code{cdr} of the object pointed at by
 @code{old}.@footnote{The garbage collector uses the low-level predicate
 @code{pointer-to-pair?} instead of the list-structure @code{pair?}  operation
@@ -32329,7 +32329,7 @@ operations, using the list-structure implementation we described in
 
 Our Scheme evaluator register machine includes a stack and seven registers:
 @code{exp}, @code{env}, @code{val}, @code{continue}, @code{proc}, @code{argl},
-and @code{unev}.  @code{Exp} is used to hold the expression to be evaluated,
+and @code{unev}.  @code{exp} is used to hold the expression to be evaluated,
 and @code{env} contains the environment in which the evaluation is to be
 performed.  At the end of an evaluation, @code{val} contains the value obtained
 by evaluating the expression in the designated environment.  The
@@ -32642,7 +32642,7 @@ To apply a compound procedure, we proceed just as with the metacircular
 evaluator.  We construct a frame that binds the procedure's parameters to the
 arguments, use this frame to extend the environment carried by the procedure,
 and evaluate in this extended environment the sequence of expressions that
-forms the body of the procedure.  @code{Ev-sequence}, described below in
+forms the body of the procedure.  @code{ev-sequence}, described below in
 @ref{5.4.2}, handles the evaluation of the sequence.
 
 @lisp
@@ -32656,7 +32656,7 @@ compound-apply
 @end lisp
 
 @noindent
-@code{Compound-apply} is the only place in the interpreter where the @code{env}
+@code{compound-apply} is the only place in the interpreter where the @code{env}
 register is ever assigned a new value.  Just as in the metacircular evaluator,
 the new environment is constructed from the environment carried by the
 procedure, together with the argument list and the corresponding list of
@@ -32882,7 +32882,7 @@ ev-if-consequent
 Assignments are handled by @code{ev-assignment}, which is reached from
 @code{eval-dispatch} with the assignment expression in @code{exp}.  The code at
 @code{ev-assignment} first evaluates the value part of the expression and then
-installs the new value in the environment.  @code{Set-variable-value!} is
+installs the new value in the environment.  @code{set-variable-value!} is
 assumed to be available as a machine operation.
 
 @lisp
@@ -33476,7 +33476,7 @@ the actual Scheme procedures used with the metacircular evaluator.  For the
 explicit-control evaluator, in contrast, we assumed that equivalent syntax
 operations were available as operations for the register machine.  (Of course,
 when we simulated the register machine in Scheme, we used the actual Scheme
-procedures in our register machine simulation.)}  @code{Compile} performs a
+procedures in our register machine simulation.)}  @code{compile} performs a
 case analysis on the syntactic type of the expression to be compiled.  For each
 type of expression, it dispatches to a specialized @newterm{code generator}:
 
@@ -33506,7 +33506,7 @@ type of expression, it dispatches to a specialized @newterm{code generator}:
 
 @subsubheading Targets and linkages
 
-@code{Compile} and the code generators that it calls take two arguments in
+@code{compile} and the code generators that it calls take two arguments in
 addition to the expression to compile.  There is a @newterm{target}, which
 specifies the register in which the compiled code is to return the value of the
 expression.  There is also a @newterm{linkage descriptor}, which describes how
@@ -33583,7 +33583,7 @@ produces the sequence
 @noindent
 Whenever registers might need to be saved, the compiler's code generators use
 @code{preserving}, which is a more subtle method for combining instruction
-sequences.  @code{Preserving} takes three arguments: a set of registers and two
+sequences.  @code{preserving} takes three arguments: a set of registers and two
 instruction sequences that are to be executed sequentially.  It appends the
 sequences in such a way that the contents of each register in the set is
 preserved over the execution of the first sequence, if this is needed for the
@@ -33651,11 +33651,11 @@ writing each of the individual code generators.  In fact no @code{save} or
 @code{restore} instructions are explicitly produced by the code generators.
 
 In principle, we could represent an instruction sequence simply as a list of
-instructions.  @code{Append-instruction-sequences} could then combine
+instructions.  @code{append-instruction-sequences} could then combine
 instruction sequences by performing an ordinary list @code{append}.  However,
 @code{preserving} would then be a complex operation, because it would have to
 analyze each instruction sequence to determine how the sequence uses its
-registers.  @code{Preserving} would be inefficient as well as complex, because
+registers.  @code{preserving} would be inefficient as well as complex, because
 it would have to analyze each of its instruction sequence arguments, even
 though these sequences might themselves have been constructed by calls to
 @code{preserving}, in which case their parts would have already been analyzed.
@@ -33951,10 +33951,10 @@ and with newly generated labels to mark the true and false branches and the end
 of the conditional.@footnote{We can't just use the labels @code{true-branch},
 @code{false-branch}, and @code{after-if} as shown above, because there might be
 more than one @code{if} in the program.  The compiler uses the procedure
-@code{make-label} to generate labels.  @code{Make-label} takes a symbol as
+@code{make-label} to generate labels.  @code{make-label} takes a symbol as
 argument and returns a new symbol that begins with the given symbol.  For
 example, successive calls to @code{(make-label 'a)} would return @code{a1},
-@code{a2}, and so on.  @code{Make-label} can be implemented similarly to the
+@code{a2}, and so on.  @code{make-label} can be implemented similarly to the
 generation of unique variable names in the query language, as follows:
 
 @lisp
@@ -34001,7 +34001,7 @@ for the false branch to the label at the end of the conditional.
 @end lisp
 
 @noindent
-@code{Env} is preserved around the predicate code because it could be needed by
+@code{env} is preserved around the predicate code because it could be needed by
 the true and false branches, and @code{continue} is preserved because it could
 be needed by the linkage code in those branches.  The code for the true and
 false branches (which are not executed sequentially) is appended using a
@@ -34035,7 +34035,7 @@ linkage at the end of the sequence) are preserved.
 
 @subsubheading Compiling @code{lambda} expressions
 
-@code{Lambda} expressions construct procedures.  The object code for a
+@code{lambda} expressions construct procedures.  The object code for a
 @code{lambda} expression must have the form
 
 @lisp
@@ -34061,7 +34061,7 @@ after-lambda
 @end lisp
 
 @noindent
-@code{Compile-lambda} generates the code for constructing the procedure object
+@code{compile-lambda} generates the code for constructing the procedure object
 followed by the code for the procedure body.  The procedure object will be
 constructed at run time by combining the current environment (the environment
 at the point of definition) with the entry point to the compiled procedure body
@@ -34101,7 +34101,7 @@ procedures, analogous to the structure for compound procedures described in
 \enlargethispage{\baselineskip}
 
 @noindent
-@code{Compile-lambda} uses the special combiner
+@code{compile-lambda} uses the special combiner
 @code{tack-on-instruction-@/sequence} rather than
 @code{append-instruction-sequences} (@ref{5.5.4}) to append the procedure body to the
 @code{lambda} expression code, because the body is not part of the sequence of
@@ -34109,7 +34109,7 @@ instructions that will be executed when the combined sequence is entered;
 rather, it is in the sequence only because that was a convenient place to put
 it.
 
-@code{Compile-lambda-body} constructs the code for the body of the procedure.
+@code{compile-lambda-body} constructs the code for the body of the procedure.
 This code begins with a label for the entry point.  Next come instructions that
 will cause the run-time evaluation environment to switch to the correct
 environment for evaluating the procedure body---namely, the definition
@@ -34168,7 +34168,7 @@ the @code{env} register must be preserved around the evaluation of the operator
 evaluate the operands), and the @code{proc} register must be preserved around
 the construction of the argument list (since evaluating the operands might
 modify @code{proc}, which will be needed for the actual procedure application).
-@code{Continue} must also be preserved throughout, since it is needed for the
+@code{continue} must also be preserved throughout, since it is needed for the
 linkage in the procedure call.
 
 @lisp
@@ -34207,7 +34207,7 @@ argument-list construction is thus as follows:
 @end lisp
 
 @noindent
-@code{Argl} must be preserved around each operand evaluation except the first
+@code{argl} must be preserved around each operand evaluation except the first
 (so that arguments accumulated so far won't be lost), and @code{env} must be
 preserved around each operand evaluation except the last (for use by subsequent
 operand evaluations).
@@ -34443,7 +34443,7 @@ actually more efficient than garbage collection in the first place, but the
 details seem to hinge on fine points of computer architecture.  (See @ref{Appel 1987}
 and @ref{Miller and Rozas 1994} for opposing views on this issue.)}
 
-@code{Compile-proc-appl} generates the above procedure-application code by
+@code{compile-proc-appl} generates the above procedure-application code by
 considering four cases, depending on whether the target for the call is
 @code{val} and whether the linkage is @code{return}.  Observe that the
 instruction sequences are declared to modify all the registers, since executing
@@ -34587,7 +34587,7 @@ lists, similar to the (unordered) set representation described in
 @end lisp
 
 @noindent
-@code{Preserving}, the second major instruction sequence combiner, takes a list
+@code{preserving}, the second major instruction sequence combiner, takes a list
 of registers @code{regs} and two instruction sequences @code{seq1} and
 @code{seq2} that are to be executed sequentially.  It returns an instruction
 sequence whose statements are the statements of @code{seq1} followed by the
@@ -34644,7 +34644,7 @@ modified registers when we tack it onto the other sequence.
 @end lisp
 
 @noindent
-@code{Compile-if} and @code{compile-procedure-call} use a special combiner
+@code{compile-if} and @code{compile-procedure-call} use a special combiner
 called @code{parallel-@/instruction-@/sequences} to append the two alternative
 branches that follow a test.  The two branches will never be executed
 sequentially; for any particular evaluation of the test, one branch or the
@@ -34686,11 +34686,11 @@ placed in the @code{val} register.  We don't care what the compiled code does
 after executing the @code{define}, so our choice of @code{next} as the linkage
 descriptor is arbitrary.
 
-@code{Compile} determines that the expression is a definition, so it calls
+@code{compile} determines that the expression is a definition, so it calls
 @code{compile-@/definition} to compile code to compute the value to be assigned
 (targeted to @code{val}), followed by code to install the definition, followed
 by code to put the value of the @code{define} (which is the symbol @code{ok})
-into the target register, followed finally by the linkage code.  @code{Env} is
+into the target register, followed finally by the linkage code.  @code{env} is
 preserved around the computation of the value, because it is needed in order to
 install the definition.  Because the linkage is @code{next}, there is no
 linkage code in this case.  The skeleton of the compiled code is thus
@@ -34709,7 +34709,7 @@ linkage code in this case.  The skeleton of the compiled code is thus
 @noindent
 The expression that is to be compiled to produce the value for the variable
 @code{factorial} is a @code{lambda} expression whose value is the procedure
-that computes factorials.  @code{Compile} handles this by calling
+that computes factorials.  @code{compile} handles this by calling
 @code{compile-lambda}, which compiles the procedure body, labels it as a new
 entry point, and generates the instruction that will combine the procedure body
 at the new entry point with the run-time environment and assign the result to
@@ -34757,9 +34757,9 @@ this case consists of a single @code{if} expression:
 @end lisp
 
 @noindent
-@code{Compile-if} generates code that first computes the predicate (targeted to
+@code{compile-if} generates code that first computes the predicate (targeted to
 @code{val}), then checks the result and branches around the true branch if the
-predicate is false.  @code{Env} and @code{continue} are preserved around the
+predicate is false.  @code{env} and @code{continue} are preserved around the
 predicate code, since they may be needed for the rest of the @code{if}
 expression.  Since the @code{if} expression is the final expression (and only
 expression) in the sequence making up the procedure body, its target is
@@ -35188,7 +35188,7 @@ family of code generators for the open-coded primitives.
 @item
 The open-coded primitives, unlike the special forms, all need their operands
 evaluated.  Write a code generator @code{spread-@/arguments} for use by all the
-open-coding code generators.  @code{Spread-arguments} should take an operand
+open-coding code generators.  @code{spread-arguments} should take an operand
 list and compile the given operands targeted to successive argument registers.
 Note that an operand may contain a call to an open-coded primitive, so argument
 registers will have to be preserved during operand evaluation.
@@ -35270,7 +35270,7 @@ We can exploit this fact by inventing a new kind of variable-lookup operation,
 @newterm{lexical address} that consists of two numbers: a @newterm{frame
 number}, which specifies how many frames to pass over, and a
 @newterm{displacement number}, which specifies how many variables to pass over
-in that frame.  @code{Lexical-address-lookup} will produce the value of the
+in that frame.  @code{lexical-address-lookup} will produce the value of the
 variable stored at that lexical address relative to the current environment.
 If we add the @code{lexical-address-lookup} operation to our machine, we can
 make the compiler generate code that references variables using this operation,
@@ -35324,7 +35324,7 @@ compile-time environment.
 @code{lexical-address-lookup} that implements the new lookup operation.  It
 should take two arguments---a lexical address and a run-time environment---and
 return the value of the variable stored at the specified lexical address.
-@code{Lexical-address-lookup} should signal an error if the value of the
+@code{lexical-address-lookup} should signal an error if the value of the
 variable is the symbol @code{*unassigned*}.@footnote{This is the modification
 to variable lookup required if we implement the scanning method to eliminate
 internal definitions (@ref{Exercise 5.43}).  We will need to eliminate these
@@ -35346,7 +35346,7 @@ generators, and extend it in @code{compile-lambda-body}.
 environment and returns the lexical address of the variable with respect to
 that environment.  For example, in the program fragment that is shown above,
 the compile-time environment during the compilation of expression @math{\langle}@var{e1}@math{\kern0.08em\rangle} is
-@code{((y z) (a b c d e) (x y))}.  @code{Find-variable} should produce
+@code{((y z) (a b c d e) (x y))}.  @code{find-variable} should produce
 
 @lisp
 (find-variable 'c '((y z) (a b c d e) (x y)))
@@ -35508,7 +35508,7 @@ read-eval-print-loop
 \enlargethispage{\baselineskip}
 
 @noindent
-@code{External-entry} assumes that the machine is started with @code{val}
+@code{external-entry} assumes that the machine is started with @code{val}
 containing the location of an instruction sequence that puts a result into
 @code{val} and ends with @code{(goto (reg continue))}.  Starting at this entry
 point jumps to the location designated by @code{val}, but first assigns
