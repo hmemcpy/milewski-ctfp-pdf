@@ -35789,6 +35789,8 @@ into sequences of C instructions.  Compile the metacircular evaluator of
 @unnumbered References
 @node    References, List of Exercises, Chapter 5, Top
 
+\fontspec[Numbers={OldStyle},StylisticSet=6]{Linux Libertine O}
+
 \phantomsection @anchor{Abelson et al. 1992}
 @b{Abelson}, Harold, Andrew Berlin, Jacob Katzenelson, William McAllister,
 Guillermo Rozas, Gerald Jay Sussman, and Jack Wisdom. 1992.  The Supercomputer
@@ -35800,7 +35802,7 @@ Toolkit: A general framework for special-purpose computing.
 @b{Allen}, John.  1978.  @cite{Anatomy of Lisp}. New York: McGraw-Hill.
 
 \phantomsection @anchor{ANSI 1994}
-@acronym{@b{ANSI}} X3.226-1994. @cite{American National Standard for Information
+@acronym{@b{ANSI}} @acronym{X}3.226-1994. @cite{American National Standard for Information
 Sys\-tems---Programming Language---Common Lisp}.
 
 \phantomsection @anchor{Appel 1987}
@@ -35822,7 +35824,7 @@ allocation.  @cite{Information Processing Letters} 25(4): 275-279.
 @b{Batali}, John, Neil Mayle, Howard Shrobe, Gerald Jay Sussman, and Daniel Weise.
 1982.  The Scheme-81 architecture---System and chip.  In @cite{Proceedings of
 the @acronym{MIT} Conference on Advanced Research in @acronym{VLSI}}, edited by
-Paul Penfield, Jr. Dedham, MA: Artech House.
+Paul Penfield, Jr. Dedham, @acronym{MA}: Artech House.
 
 \phantomsection @anchor{Borning (1977)}
 @b{Borning}, Alan.  1977.  ThingLab---An object-oriented system for building
@@ -35867,7 +35869,7 @@ Intelligence Artificielle, Universit@'e d'Aix Marseille, Luminy.
 
 \phantomsection @anchor{Cormen et al. 1990}
 @b{Cormen}, Thomas, Charles Leiserson, and Ronald Rivest.  1990. @cite{Introduction
-to Algorithms}. Cambridge, MA: @acronym{MIT} Press.
+to Algorithms}. Cambridge, @acronym{MA}: @acronym{MIT} Press.
 
 \phantomsection @anchor{Darlington et al. 1982}
 @b{Darlington}, John, Peter Henderson, and David Turner.  1982.  @cite{Functional
@@ -35933,7 +35935,7 @@ memory computer systems.  @cite{Communications of the @acronym{ACM}}
 
 \phantomsection @anchor{Forbus and deKleer 1993}
 @b{Forbus}, Kenneth D., and Johan deKleer.  1993. @cite{Building Problem
-Solvers}. Cambridge, MA: @acronym{MIT} Press.
+Solvers}. Cambridge, @acronym{MA}: @acronym{MIT} Press.
 
 \phantomsection @anchor{Friedman and Wise (1976)}
 @b{Friedman}, Daniel P., and David S. Wise.  1976.  @acronym{CONS} should not
@@ -35943,7 +35945,7 @@ International Colloquium}, edited by S. Michaelson and R.  Milner, pp. 257-284.
 
 \phantomsection @anchor{Friedman et al. 1992}
 @b{Friedman}, Daniel P., Mitchell Wand, and Christopher T. Haynes. 1992.
-@cite{Essentials of Programming Languages}.  Cambridge, MA: @acronym{MIT}
+@cite{Essentials of Programming Languages}.  Cambridge, @acronym{MA}: @acronym{MIT}
 Press/ McGraw-Hill.
 
 \phantomsection @anchor{Gabriel 1988}
@@ -35952,7 +35954,7 @@ Press/ McGraw-Hill.
 @url{http://www.dreamsongs.com/Files/WhyOfY.pdf, –›}
 
 @b{Goldberg}, Adele, and David Robson.  1983.  @cite{Smalltalk-80: The Language and
-Its Implementation}. Reading, MA: Addison-Wesley.
+Its Implementation}. Reading, @acronym{MA}: Addison-Wesley.
 @url{http://stephane.ducasse.free.fr/FreeBooks/BlueBook/Bluebook.pdf, –›}
 
 \phantomsection @anchor{Gordon et al. 1979}
@@ -35962,7 +35964,7 @@ Springer-Verlag.
 
 \phantomsection @anchor{Gray and Reuter 1993}
 @b{Gray}, Jim, and Andreas Reuter. 1993. @cite{Transaction Processing: Concepts and
-Models}. San Mateo, CA: Morgan-Kaufman.
+Models}. San Mateo, @acronym{CA}: Morgan-Kaufman.
 
 \phantomsection @anchor{Green 1969}
 @b{Green}, Cordell.  1969.  Application of theorem proving to problem solving.  In
@@ -36002,7 +36004,7 @@ Pointers}, 4(3).
 
 \phantomsection @anchor{Hardy 1921}
 @b{Hardy}, Godfrey H.  1921.  Srinivasa Ramanujan.  @cite{Proceedings of the London
-Mathematical Society} XIX(2).
+Mathematical Society} @acronym{XIX}(2).
 
 \phantomsection @anchor{Hardy and Wright 1960}
 @b{Hardy}, Godfrey H., and E. M. Wright.  1960.  @cite{An Introduction to the
@@ -36010,7 +36012,7 @@ Theory of Numbers}.  4th edition.  New York: Oxford University Press.
 @url{https://archive.org/details/AnIntroductionToTheTheoryOfNumbers-4thEd-G.h.HardyE.m.Wright, –›}
 
 \phantomsection @anchor{Havender (1968)}
-@b{Havender}, J. 1968. Avoiding deadlocks in multi-tasking systems. @cite{IBM
+@b{Havender}, J. 1968. Avoiding deadlocks in multi-tasking systems. @cite{@acronym{IBM}
 Systems Journal} 7(2): 74-84.
 
 \phantomsection @anchor{Hearn 1969}
@@ -36053,7 +36055,7 @@ Braid}. New York: Basic Books.
 
 \phantomsection @anchor{Hughes 1990}
 @b{Hughes}, R. J. M.  1990.  Why functional programming matters.  In @cite{Research
-Topics in Functional Programming}, edited by David Turner.  Reading, MA:
+Topics in Functional Programming}, edited by David Turner.  Reading, @acronym{MA}:
 Addison-Wesley, pp. 17-42.
 @url{http://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf, –›}
 
@@ -36075,11 +36077,11 @@ York: Prentice-Hall.
 
 \phantomsection @anchor{Knuth (1973)}
 @b{Knuth}, Donald E.  1973.  @cite{Fundamental Algorithms}. Volume 1 of @cite{The
-Art of Computer Programming}.  2nd edition. Reading, MA: Addison-Wesley.
+Art of Computer Programming}.  2nd edition. Reading, @acronym{MA}: Addison-Wesley.
 
 \phantomsection @anchor{Knuth 1981}
 @b{Knuth}, Donald E.  1981.  @cite{Seminumerical Algorithms}. Volume 2 of @cite{The
-Art of Computer Programming}.  2nd edition. Reading, MA: Addison-Wesley.
+Art of Computer Programming}.  2nd edition. Reading, @acronym{MA}: Addison-Wesley.
 
 \phantomsection @anchor{Kohlbecker 1986}
 @b{Kohlbecker}, Eugene Edmund, Jr. 1986.  Syntactic extensions in the programming
@@ -36089,7 +36091,7 @@ language Lisp.  Ph.D. thesis, Indiana University.
 \phantomsection @anchor{Konopasek and Jayaraman 1984}
 @b{Konopasek}, Milos, and Sundaresan Jayaraman.  1984.  @cite{The TK!Solver Book: A
 Guide to Problem-Solving in Science, Engineering, Business, and
-Education}. Berkeley, CA: Osborne/McGraw-Hill.
+Education}. Berkeley, @acronym{CA}: Osborne/McGraw-Hill.
 
 \phantomsection @anchor{Kowalski (1973; 1979)}
 @b{Kowalski}, Robert.  1973.  Predicate logic as a programming language.  Technical
@@ -36157,7 +36159,7 @@ Languages}.
 
 \phantomsection @anchor{McCarthy et al. 1965}
 @b{McCarthy}, John, P. W. Abrahams, D. J. Edwards, T. P. Hart, and M. I.  Levin.
-1965.  @cite{Lisp 1.5 Programmer's Manual}.  2nd edition.  Cambridge, MA:
+1965.  @cite{Lisp 1.5 Programmer's Manual}.  2nd edition.  Cambridge, @acronym{MA}:
 @acronym{MIT} Press.
 @url{http://www.softwarepreservation.org/projects/LISP/book/LISP%201.5%20Prog@/rammers%20Manual.pdf/view, –›}
 
@@ -36210,14 +36212,14 @@ Technical report 295, @acronym{MIT} Laboratory for Computer Science.
 
 \phantomsection @anchor{Raymond 1993}
 @b{Raymond}, Eric.  1993. @cite{The New Hacker's Dictionary}. 2nd edition.
-Cambridge, MA: @acronym{MIT} Press.
+Cambridge, @acronym{MA}: @acronym{MIT} Press.
 @url{http://www.outpost9.com/reference/jargon/jargon_toc.html, –›}
 
-@b{Raynal}, Michel. 1986. @cite{Algorithms for Mutual Exclusion}.  Cambridge, MA:
+@b{Raynal}, Michel. 1986. @cite{Algorithms for Mutual Exclusion}.  Cambridge, @acronym{MA}:
 @acronym{MIT} Press.
 
 \phantomsection @anchor{Rees and Adams 1982}
-@b{Rees}, Jonathan A., and Norman I. Adams IV. 1982.  T: A dialect of Lisp or,
+@b{Rees}, Jonathan A., and Norman I. Adams @acronym{IV}. 1982.  T: A dialect of Lisp or,
 lambda: The ultimate software tool.  In @cite{Conference Record of the 1982
 @acronym{ACM} Symposium on Lisp and Functional Programming}, pp.  114-122.
 @url{http://people.csail.mit.edu/riastradh/t/adams82t.pdf, –›}
@@ -36228,7 +36230,7 @@ algorithmic language Scheme.  @cite{Lisp Pointers}, 4(3).
 
 \phantomsection @anchor{Rivest et al. (1977)}
 @b{Rivest}, Ronald, Adi Shamir, and Leonard Adleman.  1977.  A method for obtaining
-digital signatures and public-key cryptosystems. Technical memo LCS/TM82,
+digital signatures and public-key cryptosystems. Technical memo @acronym{LCS}/@acronym{TM82},
 @acronym{MIT} Laboratory for Computer Science.
 @url{http://people.csail.mit.edu/rivest/Rsapaper.pdf, –›}
 
@@ -36276,13 +36278,13 @@ Dictionary}. New York: Harper \& Row.
 @url{http://www.dourish.com/goodies/jargon.html, –›}
 
 \phantomsection @anchor{Stoy 1977}
-@b{Stoy}, Joseph E.  1977.  @cite{Denotational Semantics}. Cambridge, MA:
+@b{Stoy}, Joseph E.  1977.  @cite{Denotational Semantics}. Cambridge, @acronym{MA}:
 @acronym{MIT} Press.
 
 \phantomsection @anchor{Sussman and Stallman 1975}
 @b{Sussman}, Gerald Jay, and Richard M. Stallman.  1975.  Heuristic techniques in
 computer-aided circuit analysis.  @cite{@acronym{IEEE} Transactions on Circuits
-and Systems} CAS-22(11): 857-865.
+and Systems} @acronym{CAS}-22(11): 857-865.
 @url{http://dspace.mit.edu/handle/1721.1/5803, –›}
 
 \phantomsection @anchor{Sussman and Steele 1980}
@@ -36297,7 +36299,7 @@ system.  @cite{Science} 257: 256-262.
 
 \phantomsection @anchor{Sussman et al. (1971)}
 @b{Sussman}, Gerald Jay, Terry Winograd, and Eugene Charniak.  1971.  Microplanner
-reference manual.  Memo 203A, @acronym{MIT} Artificial Intelligence Laboratory.
+reference manual.  Memo 203@acronym{A}, @acronym{MIT} Artificial Intelligence Laboratory.
 @url{http://dspace.mit.edu/handle/1721.1/6184, –›}
 
 \phantomsection @anchor{Sutherland (1963)}
@@ -36331,13 +36333,13 @@ in Computer Science, volume 123. New York: Springer-Verlag, pp.  334-348.
 @cite{@acronym{IEEE} Transactions on Software Engineering} 5(3): 237-247.
 
 @b{Winograd}, Terry.  1971.  Procedures as a representation for data in a computer
-program for understanding natural language.  Technical report AI TR-17,
+program for understanding natural language.  Technical report @acronym{AI TR}-17,
 @acronym{MIT} Artificial Intelligence Laboratory.
 @url{http://dspace.mit.edu/handle/1721.1/7095, –›}
 
 \phantomsection @anchor{Winston 1992}
 @b{Winston}, Patrick. 1992. @cite{Artificial Intelligence}.  3rd edition.  Reading,
-MA: Addison-Wesley.
+@acronym{MA}: Addison-Wesley.
 
 \phantomsection @anchor{Zabih et al. 1987}
 @b{Zabih}, Ramin, David McAllester, and David Chapman.  1987.  Non-deterministic
@@ -36351,8 +36353,10 @@ Ph.D. dissertation, Department of Electrical Engineering and Computer Science,
 @acronym{MIT}.
 
 \phantomsection @anchor{Zippel 1993}
-@b{Zippel}, Richard.  1993.  @cite{Effective Polynomial Computation}.  Boston, MA:
+@b{Zippel}, Richard.  1993.  @cite{Effective Polynomial Computation}.  Boston, @acronym{MA}:
 Kluwer Academic Publishers.
+
+\fontspec[Numbers={Lining}]{Linux Libertine O}
 
 @unnumbered List of Exercises
 @node    List of Exercises, List of Figures, References, Top
@@ -36394,9 +36398,9 @@ that it has been prepared with the help of a computer.
 @unnumbered Colophon
 @node    Colophon, , Index, Top
 
-\lettrine[lraise=-0.03,loversize=0.08]{O}{n the cover page} is Agostino Ramelli's bookwheel mechanism from 1588. It could be seen as an early hypertext navigation aid. This image of the engraving is hosted by J. E. Johnson of @url{http://newgottland.com/2012/02/09/before-the-ereader-there-was-the-wheelreader/ramelli_bookwheel_1032px/, New Gottland}. 
+\lettrine[lraise=-0.03,loversize=0.08]{O}{n the cover page} is Agostino Ramelli's bookwheel mechanism from 1588. It could be seen as an early hypertext navigation aid. This image of the engraving is hosted by J. E. Johnson of @url{http://newgottland.com/2012/02/09/before-the-ereader-there-was-the-wheelreader/ramelli_bookwheel_1032px/, New Gottland}.
 
-The typefaces are Linux Libertine for body text and Linux Biolinum for headings, both by Philipp H. Poll. Typewriter face is Inconsolata created by Raph Levien and supplemented by Dimosthenis Kaponis and Takashi Tanigawa in the form of Inconsolata LGC. 
+The typefaces are Linux Libertine for body text and Linux Biolinum for headings, both by Philipp H. Poll. Typewriter face is Inconsolata created by Raph Levien and supplemented by Dimosthenis Kaponis and Takashi Tanigawa in the form of Inconsolata @acronym{LGC}.
 
 Graphic design and typography are done by Andres Raba. Texinfo source is converted to LaTeX by a Perl script and compiled to @acronym{PDF} by XeLaTeX. Diagrams are drawn with Inkscape.
 
