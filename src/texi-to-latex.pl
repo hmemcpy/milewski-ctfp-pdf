@@ -7,7 +7,7 @@
 #  other Texinfo files, needs to be extended for       #
 #  general utility.                                    #
 #                                                      #
-#  Copyleft 2013 Andres Raba,                          #
+#  Copyleft 2013, 2015 Andres Raba,                    #
 #  GNU General Public License, version 3.              #
 #                                                      #
 #  Disclaimer: No warranty. Author is not responsible  #
@@ -32,6 +32,9 @@ my $preamble = swallow('preamble.tex');
 
 # Postamble containing \end{document} etc.
 my $postamble = swallow('postamble.tex');
+
+# Hashmap for variables assigned with @set
+my %values = ();
 
 
 # Regular expressions for parsing Texinfo source
@@ -99,6 +102,27 @@ sub bounce { # just bounce back the given string
   my $str = shift;
   return sub {
     return $str;
+  }
+}
+
+sub setvalue { # write value to %values
+  return sub {
+    my $arg = shift;
+    my ($variable, $value) = $arg =~ /(\w+)[ \t]+(\w.*)/;
+    if ($variable and $value) {
+      $values{$variable} = $value;
+    } else {
+      print "Warning: incomplete '\@set' command. ";
+      print "Expected: '\@set <variable> <value>'.\n";
+    }
+    return '';
+  }
+}
+
+sub value { # retrieve value from %values
+  return sub {
+    my $variable = shift;
+    return $values{$variable};
   }
 }
 
@@ -317,7 +341,7 @@ my %syntax = (
   '@t'              => [ $braces,   glue('texttt') ],
   '@titlefont'      => [ $void,     bounce('% ') ],
   '@url'            => [ $braces,   url() ],
-  '@value'          => [ $void,     bounce('') ],
+  '@value'          => [ $braces,   value() ],
   '@var'            => [ $braces,   glue('var') ],
   '@w'              => [ $braces,   glue('mbox') ],
 
@@ -349,7 +373,7 @@ my %syntax = (
   '@setfilename'    => [ $void,     bounce('%') ],
   '@setshortcontentsaftertitlepage' => [ $empty, bounce('') ],
   '@settitle'       => [ $void,     bounce('%') ],
-  '@set'            => [ $void,     bounce('%') ],
+  '@set'            => [ $line,     setvalue() ],
   '@sp'             => [ $line,     glue('vspace', 'em') ],
   '@subsection'     => [ $line,     glue('subsection') ],
   '@subsubheading'  => [ $line,     glue('subsubsection*') ],
