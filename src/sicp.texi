@@ -476,9 +476,9 @@ also much more accessible to people running on modest computers, such as
 donated '386-based PCs.  A 386 can, in theory, run Linux, Emacs, and a Scheme
 interpreter simultaneously, but most 386s probably can't also run both Netscape
 and the necessary X Window System without prematurely introducing budding young
-underfunded hackers to the concept of @newterm{thrashing}.  UTF can also fit
+underfunded hackers to the concept of @newterm{thrashing}.  @acronym{UTF} can also fit
 uncompressed on a 1.44@acronym{MB} floppy diskette, which may come in handy for
-installing UTF on PCs that do not have Internet or LAN access.
+installing @acronym{UTF} on PCs that do not have Internet or @acronym{LAN} access.
 
 The Texinfo conversion has been a straight transliteration, to the extent
 possible.  Like the @TeX{}-to-@acronym{HTML} conversion, this was not without
@@ -5912,7 +5912,7 @@ arguments and returns a compound data object that contains the two arguments as
 parts.  Given a pair, we can extract the parts using the primitive procedures
 @code{car} and @code{cdr}.@footnote{The name @code{cons} stands for
 ``construct.''  The names @code{car} and @code{cdr} derive from the original
-implementation of Lisp on the IBM 704.  That machine had an addressing scheme
+implementation of Lisp on the @acronym{IBM 704}.  That machine had an addressing scheme
 that allowed one to reference the ``address'' and ``decrement'' parts of a
 memory location.  @code{car} stands for ``Contents of Address part of
 Register'' and @code{cdr} (pronounced ``could-er'') stands for ``Contents of
@@ -6245,7 +6245,7 @@ rational-number representation was stated in terms of facts about integers
 objects in terms of previously defined types of data objects.  Assertions about
 data objects can therefore be checked by reducing them to assertions about
 previously defined data objects.  Another approach, introduced by Zilles at
-@acronym{MIT}, by Goguen, Thatcher, Wagner, and Wright at IBM
+@acronym{MIT}, by Goguen, Thatcher, Wagner, and Wright at @acronym{IBM}
 (see @ref{Thatcher et al. 1978}),
 and by Guttag at Toronto (see @ref{Guttag 1977}), is called
 @newterm{algebraic specification}.  It regards the ``procedures'' as elements
@@ -10399,7 +10399,7 @@ A typical data-management system spends a large amount of time accessing or
 modifying the data in the records and therefore requires an efficient method
 for accessing records.  This is done by identifying a part of each record to
 serve as an identifying @newterm{key}.  A key can be anything that uniquely
-identifies the record.  For a personnel file, it might be an employee's ID
+identifies the record.  For a personnel file, it might be an employee's @acronym{ID}
 number.  For an accounting system, it might be a transaction number.  Whatever
 the key is, when we define the record as a data structure we should include a
 @code{key} selector procedure that retrieves the key associated with a given
@@ -10473,7 +10473,7 @@ is encoded as the string of 54 bits
 @end example
 
 @noindent
-Codes such as ASCII and the A-through-H code above are known as
+Codes such as @acronym{ASCII} and the A-through-H code above are known as
 @newterm{fixed-length} codes, because they represent each symbol in the message
 with the same number of bits.  It is sometimes advantageous to use
 @newterm{variable-length} codes, in which different symbols may be represented
@@ -19213,7 +19213,7 @@ to execute as they please, but establishes certain synchronization points
 (``barriers'') through which no process can proceed until all the processes
 have reached the barrier.  Modern processors provide machine instructions that
 permit programmers to establish synchronization points at places where
-consistency is required.  The @acronym{PowerPC}, for example, includes for
+consistency is required.  The PowerPC, for example, includes for
 this purpose two instructions called @acronym{SYNC} and @acronym{EIEIO}
 (Enforced In-order Execution of Input/Output).}
 
@@ -24945,9 +24945,9 @@ might object that this is a hopelessly inefficient mechanism.  It might require
 millions of processors to solve some easily stated problem this way, and most
 of the time most of those processors would be idle.  This objection should be
 taken in the context of history.  Memory used to be considered just such an
-expensive commodity.  In 1964 a megabyte of RAM cost about $400,000.  Now every
-personal computer has many megabytes of RAM, and most of the time most of that
-RAM is unused.  It is hard to underestimate the cost of mass-produced
+expensive commodity.  In 1964 a megabyte of @acronym{RAM} cost about $400,000.  Now every
+personal computer has many megabytes of @acronym{RAM}, and most of the time most of that
+@acronym{RAM} is unused.  It is hard to underestimate the cost of mass-produced
 electronics.}
 
 On the other hand, if we have a machine that can execute only one process (or a
@@ -31972,7 +31972,7 @@ working memory and free memory, we can continue processing; new pairs will be
 allocated in the new working memory (which was the old free memory).  When this
 is full, we can copy the useful pairs into the new free memory (which was the
 old working memory).@footnote{This idea was invented and first implemented by
-Minsky, as part of the implementation of Lisp for the PDP-1 at the
+Minsky, as part of the implementation of Lisp for the @acronym{PDP-1} at the
 @acronym{MIT} Research Laboratory of Electronics.  It was further developed by
 @ref{Fenichel and Yochelson (1969)} for use in the Lisp implementation for the
 Multics time-sharing system.  Later, @ref{Baker (1978)} developed a ``real-time''
@@ -35961,7 +35961,7 @@ Its Implementation}. Reading, @acronym{MA}: Addison-Wesley.
 
 \phantomsection @anchor{Gordon et al. 1979}
 @b{Gordon}, Michael, Robin Milner, and Christopher Wadsworth.  1979.
-@cite{Edinburgh LCF}. Lecture Notes in Computer Science, volume 78. New York:
+@cite{Edinburgh @acronym{LCF}}. Lecture Notes in Computer Science, volume 78. New York:
 Springer-Verlag.
 
 \phantomsection @anchor{Gray and Reuter 1993}
