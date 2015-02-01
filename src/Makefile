@@ -15,16 +15,13 @@ exercises.tex figures.tex: ex-fig-ref.pl
 	./ex-fig-ref.pl -e > exercises.tex; \
 	./ex-fig-ref.pl -f > figures.tex
 
-coverpage.pdf: coverpage.svg
-	inkscape -f $< -C -A $@
-
 %.pdf: %.svg
-	inkscape -f $< -D -A $@
+	inkscape -f $< -C -A $@
 
 clean:
 	latexmk -CA
 
 clean-all: clean
-	${RM} ${FIG} sicp.tex exercises.tex figures.tex
+	${RM} ${FIG} sicp.tex exercises.tex figures.tex coverpage.pdf
 
 .PHONY: all clean clean-all
