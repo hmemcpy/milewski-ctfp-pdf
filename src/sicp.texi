@@ -3727,7 +3727,7 @@ GCD(206,40) = GCD(40,6)
 @end example
 
 @noindent
-reduces @acronym{GCD}(206, 40) to @acronym{GCD}(2, 0), which is 2.  It is
+reduces @acronym{GCD(206, 40)} to @acronym{GCD(2, 0)}, which is 2.  It is
 possible to show that starting with any two positive integers and performing
 repeated reductions will always eventually produce a pair where the second
 number is 0.  Then the @acronym{GCD} is the other number in the pair.  This
