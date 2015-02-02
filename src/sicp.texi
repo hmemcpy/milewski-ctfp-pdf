@@ -4545,7 +4545,7 @@ the sum of the squares of the prime numbers in the interval @math{a} to @math{b}
 @item
 the product of all the positive integers less than @math{n} that are relatively
 prime to @math{n} (i.e., all positive integers @math{i < n} such that
-@math{{\rm GCD}(i, n) = 1}).
+@math{\textsc{gcd}(i, n) = 1}).
 
 @end enumerate
 @end quotation
