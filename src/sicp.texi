@@ -1,3 +1,79 @@
+@comment
+@comment             **********************************************************
+@setfilename         sicp
+@settitle            Structure and Interpretation of Computer Programs, 2e
+@comment             Unofficial Texinfo Format
+@comment
+@set utfversion      2.andresraba5.4
+@set utfversiondate  February 3, 2015
+@comment
+@comment             This file is licensed under a Creative Commons
+@comment             Attribution-NonCommercial-ShareAlike 3.0 Unported License
+@comment             (http://creativecommons.org/licenses/by-nc-sa/3.0/).
+@comment
+@comment             This is a Texinfo file with embedded LaTeX commands.
+@comment             To compile it to PDF, enter `make' in current directory.
+@comment             For more information about this file, see the text under
+@comment             `@node UTF' below.
+@comment
+@comment             Various versions of sicp.texi and preformatted sicp.info
+@comment             can be found at the following Web pages:
+@comment
+@comment                 http://www.neilvandyke.org/sicp-texi/
+@comment                 http://sicpebook.wordpress.com/
+@comment                 [add your own here]
+@comment
+@comment             **********************************************************
+
+@comment HISTORY:
+@comment
+@comment * Version 1 (April, 2001) by Lytha Ayth.
+@comment
+@comment * Version 2 (April 20, 2001) by Lytha Ayth.
+@comment
+@comment * Version 2.nwv1 (March 11, 2002) by Neil W. Van Dyke.
+@comment   Cosmetic change to heading in Info format, and comment changes.
+@comment
+@comment * Version 2.neilvandyke1 (February 10, 2003) by Neil W. Van Dyke
+@comment   Correction to Exercise 1.39 formula, spotted by Steve VanDevender.
+@comment   Added URL of Abelson and Sussman video lectures.
+@comment
+@comment * Version 2.neilvandyke2 (unreleased)
+@comment
+@comment * Version 2.neilvandyke3 (April 20, 2006) by Neil W. Van Dyke
+@comment   Pedro Kr@"oger patch to add missing Lisp example.
+@comment
+@comment * Version 2.neilvandyke4 (January 10, 2007) by Neil W. Van Dyke
+@comment   Brad Walker patch to add @code{@@dircategory} and @code{@@direntry}.
+@comment
+@comment * Version 2.andresraba1 (May 23, 2011) by Andres Raba.
+@comment   Mathematics typeset in TeX, figures redrawn in vector graphics,
+@comment   typeface changed, cross-references improved, hyperlinks added,
+@comment   known errors and typos corrected.
+@comment
+@comment * Version 2.andresraba2 (November 21, 2011) by Andres Raba.
+@comment   Minor change to the appearance of diagrams. Adjusted page layout.
+@comment   Fixed some typos. License changed from CC BY-NC to CC BY-SA.
+@comment
+@comment * Version 2.andresraba3 (November 22, 2012) by Andres Raba.
+@comment   Improved layout and pagination. Included list of figures.
+@comment   Added punctuation to displayed math. Updated citation links.
+@comment
+@comment * (Version 2.andresraba4 is the pocket version, described in
+@comment   sicp-pocket.texi.)
+@comment
+@comment * Version 2.andresraba5 (September 20, 2013) by Andres Raba.
+@comment   Texinfo source is converted to LaTeX. Pages are redesigned.
+@comment
+@comment * (Versions 2.andresraba5.{1..3} with minor fixes and additions.)
+@comment
+@comment * Version 2.andresraba5.4 (February 3, 2015) by Andres Raba.
+@comment   Added noncommercial clause to the license. Fixed broken links
+@comment   and added more fulltext links to References. Brian Wignall
+@comment   decapitalized function names at the beginning of sentences.
+@comment
+
+
 \frontmatter
 
 \includepdf[scale=0.92]{coverpage.pdf}
@@ -50,7 +126,7 @@ Montreal, Toronto
 
 @sp 1.26
 @noindent
-Unofficial Texinfo Format @url{http://sicpebook.wordpress.com, 2.andresraba5.3} (April 6, 2014),@*
+Unofficial Texinfo Format @url{http://sicpebook.wordpress.com, @value{utfversion}} (@value{utfversiondate}),@*
 based on @url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10, 2007).
 
 \end{small}
@@ -58,73 +134,6 @@ based on @url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10
 \pagebreak
 
 \tableofcontents
-
-@comment             **********************************************************
-@setfilename         sicp
-@settitle            Structure and Interpretation of Computer Programs, 2e
-@comment             Unofficial Texinfo Format
-@comment
-@set utfversion      2.andresraba5.3
-@set utfversiondate  April 6, 2014
-@comment
-@comment             This file is licensed under a Creative Commons
-@comment             Attribution-ShareAlike 3.0 Unported License
-@comment             http://creativecommons.org/licenses/by-sa/3.0/
-@comment
-@comment             This is a Texinfo file.  To convert it to Info hypertext
-@comment             format, you will need the `makeinfo' program from the GNU
-@comment             Texinfo package.  To produce a PDF, use `texi2pdf'.
-@comment             For more information about this file,
-@comment             see the text under `@node UTF' below.
-@comment
-@comment             Various versions of sicp.texi and preformatted sicp.info
-@comment             can be found at the following Web pages:
-@comment
-@comment                 http://www.neilvandyke.org/sicp-texi/
-@comment                 http://sicpebook.wordpress.com/
-@comment                 [add your own here]
-@comment
-@comment             **********************************************************
-
-@comment HISTORY:
-@comment
-@comment * Version 1 (April, 2001) by Lytha Ayth.
-@comment
-@comment * Version 2 (April 20, 2001) by Lytha Ayth.
-@comment
-@comment * Version 2.nwv1 (March 11, 2002) by Neil W. Van Dyke.
-@comment   Cosmetic change to heading in Info format, and comment changes.
-@comment
-@comment * Version 2.neilvandyke1 (February 10, 2003) by Neil W. Van Dyke
-@comment   Correction to Exercise 1.39 formula, spotted by Steve VanDevender.
-@comment   Added URL of Abelson and Sussman video lectures.
-@comment
-@comment * Version 2.neilvandyke2 (unreleased)
-@comment
-@comment * Version 2.neilvandyke3 (April 20, 2006) by Neil W. Van Dyke
-@comment   Pedro Kr@"oger patch to add missing Lisp example.
-@comment
-@comment * Version 2.neilvandyke4 (January 10, 2007) by Neil W. Van Dyke
-@comment   Brad Walker patch to add @code{@@dircategory} and @code{@@direntry}.
-@comment
-@comment * Version 2.andresraba1 (May 23, 2011) by Andres Raba.
-@comment   Mathematics typeset in TeX, figures redrawn in vector graphics,
-@comment   typeface changed, cross-references improved, hyperlinks added,
-@comment   known errors and typos corrected.
-@comment
-@comment * Version 2.andresraba2 (November 21, 2011) by Andres Raba.
-@comment   Minor change to the appearance of diagrams. Adjusted page layout.
-@comment   Fixed some typos. License changed from CC BY-NC to CC BY-SA.
-@comment
-@comment * Version 2.andresraba3 (November 22, 2012) by Andres Raba.
-@comment   Improved layout and pagination. Included list of figures.
-@comment   Added punctuation to displayed math. Updated citation links.
-
-@comment * (Version 2.andresraba4 is a pocket version, described in
-@comment   sicp-pocket.texi.)
-
-@comment * Version 2.andresraba5 (September 20, 2013) by Andres Raba.
-@comment   Texinfo source is converted to LaTeX. Pages are redesigned.
 
 @dircategory The Algorithmic Language Scheme
 @direntry
@@ -136,78 +145,20 @@ based on @url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10
 @dfn{\term\}
 @end macro
 
-@c @setchapternewpage odd
 @setshortcontentsaftertitlepage
 
 @titlepage
 @titlefont{Structure and Interpretation}
-@sp 0.5
 @title  of Computer Programs
-@sp 0.2
 @subtitle Second Edition
 @subtitle Unofficial Texinfo Format @value{utfversion}
 @author Harold Abelson and Gerald Jay Sussman
-@sp 0.2
 @author with Julie Sussman
-@sp 0.2
 @author foreword by Alan J. Perlis
-@sp 0.4
-
-@page
-@vskip 0pt plus 1filll
-@noindent
-@copyright{} 1996 by The Massachusetts Institute of Technology
-
-@sp 0.5
-@noindent
-Structure and Interpretation of Computer Programs@*
-second edition
-
-@sp 0.5
-@noindent
-Harold Abelson and Gerald Jay Sussman@*
-with Julie Sussman, foreword by Alan J. Perlis
-
-@sp 0.7
-@noindent
-@image{fig/icons/cc, 6mm,,,.pdf}
-@image{fig/icons/by, 6mm,,,.pdf}
-@image{fig/icons/sa, 6mm,,,.pdf}
-
-@noindent
-This work is licensed under a Creative Commons@*
-Attribution-ShareAlike 3.0 Unported License
-(@url{http://creativecommons.org/licenses/by-sa/3.0/, CC BY-SA 3.0}).@*
-Based on a work at @url{http://mitpress.mit.edu/sicp/, mitpress.mit.edu}.
-
-@sp 0.5
-@noindent
-The @acronym{MIT} Press@*
-Cambridge, Massachusetts@*
-London, England
-
-@sp 0.5
-@noindent
-McGraw-Hill Book Company@*
-New York, St. Louis, San Francisco,@*
-Montreal, Toronto
-
-@sp 0.5
-@noindent
-This book is one of a series of texts written by faculty of the Electrical@*
-Engineering and Computer Science Department at the Massachusetts@* Institute of
-Technology.  It was edited and produced by The @acronym{MIT} Press@* under a
-joint production-distribution arrangement with the@* McGraw-Hill Book Company.
-
-@sp 0.5
-@noindent
-Unofficial Texinfo Format @url{http://sicpebook.wordpress.com, @value{utfversion}} (@value{utfversiondate}),@*
-based on @url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10, 2007).
-
 @end titlepage
+
 @everyheading @| @| @thispage
 
-@c to suppress the black boxes after overfull lines:
 @finalout
 
 @node Top, UTF, (dir), (dir)
@@ -10446,7 +10397,7 @@ ordered by the numerical values of the keys.
 This section provides practice in the use of list structure and data
 abstraction to manipulate sets and trees.  The application is to methods for
 representing data as sequences of ones and zeros (bits).  For example, the
-ASCII standard code used to represent text in computers encodes each character
+@acronym{ASCII} standard code used to represent text in computers encodes each character
 as a sequence of seven bits.  Using seven bits allows us to distinguish @math{2^7},
 or 128, possible different characters.  In general, if we want to distinguish
 @math{n} different symbols, we will need to use @math{\log_2\!n} bits per
@@ -19776,7 +19727,7 @@ expressions
 What is the value of @code{sum} after each of the above expressions is
 evaluated?  What is the printed response to evaluating the @code{stream-ref}
 and @code{display-stream} expressions?  Would these responses differ if we had
-implemented @code{(delay @math{\langle}@var{exp}@math{\rangle})} simply as 
+implemented @code{(delay @math{\langle}@var{exp}@math{\rangle})} simply as
 @code{(lambda () @math{\langle}@var{exp}@math{\rangle})}
 without using the optimization provided by @code{memo-proc}?  Explain.
 @end quotation
