@@ -24291,13 +24291,13 @@ the procedure.
   (cond ((primitive-procedure? procedure)
          (apply-primitive-procedure
           procedure
-          (list-of-arg-values arguments env)))   ;@r{changed}
+          (list-of-arg-values arguments env)))   @r{; changed}
         ((compound-procedure? procedure)
          (eval-sequence
           (procedure-body procedure)
           (extend-environment
            (procedure-parameters procedure)
-           (list-of-delayed-args arguments env)  ;@r{changed}
+           (list-of-delayed-args arguments env)  @r{; changed}
            (procedure-environment procedure))))
         (else (error "Unknown procedure type: APPLY"
                      procedure))))
@@ -24438,9 +24438,9 @@ was evaluated) after storing its value.}
                                      (thunk-env obj))))
            (set-car! obj 'evaluated-thunk)
            (set-car! (cdr obj)
-                     result)     ;@r{replace @code{exp} with its value}
+                     result)     @r{; replace @code{exp} with its value}
            (set-cdr! (cdr obj)
-                     '())        ;@r{forget unneeded @code{env}}
+                     '())        @r{; forget unneeded @code{env}}
            result))
         ((evaluated-thunk? obj) (thunk-value obj))
         (else obj)))
@@ -25922,13 +25922,13 @@ arguments:
       (succeed '() fail)
       ((car aprocs)
        env
-       ;;@r{success continuation for this @code{aproc}}
+       @r{;; success continuation for this @code{aproc}}
        (lambda (arg fail2)
          (get-args
           (cdr aprocs)
           env
-          ;;@r{success continuation for}
-          ;;@r{recursive call to @code{get-args}}
+          @r{;; success continuation for}
+          @r{;; recursive call to @code{get-args}}
           (lambda (args fail3)
             (succeed (cons arg args) fail3))
           fail2))
@@ -26021,12 +26021,12 @@ successful evaluations.
             (ambeval
              input
              the-global-environment
-             ;; @r{@code{ambeval} success}
+             @r{;; @code{ambeval} success}
              (lambda (val next-alternative)
                (announce-output output-prompt)
                (user-print val)
                (internal-loop next-alternative))
-             ;; @r{@code{ambeval} failure}
+             @r{;; @code{ambeval} failure}
              (lambda ()
                (announce-output
                 ";;; There are no more values of")
@@ -35721,7 +35721,7 @@ initialize it:
 
 @lisp
  (assign compapp (label compound-apply))
- (branch (label external-entry)) @r{;branches if @code{flag} is set}
+ (branch (label external-entry)) @r{; branches if @code{flag} is set}
 read-eval-print-loop @dots{}
 @end lisp
 
