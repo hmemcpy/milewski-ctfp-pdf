@@ -14837,6 +14837,8 @@ in @ref{Figure 3.4}.)  The other two subexpressions are evaluated by applying
 the primitive operations @code{+} and @code{*} to evaluate the two combinations
 @code{(+ a 1)} and @code{(* a 2)} to obtain 6 and 10, respectively.
 
+\enlargethispage{\baselineskip}
+
 Now we apply the procedure object @code{sum-of-squares} to the arguments 6 and
 10.  This results in a new environment E2 in which the formal parameters
 @code{x} and @code{y} are bound to the arguments.  Within E2 we evaluate the
@@ -15225,8 +15227,6 @@ env      | W1: --+                        |                |
 @end iftex
 @c @end quotation
 @end float
-
-\enlargethispage{\baselineskip}
 
 This produces the environment structure of @ref{Figure 3.10}, which shows that
 @code{W2} is a procedure object, that is, a pair with some code and an
