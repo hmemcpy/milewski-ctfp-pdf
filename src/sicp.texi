@@ -8020,7 +8020,7 @@ would evaluate
 
 @quotation
 @strong{@anchor{Exercise 2.36}Exercise 2.36:} The procedure @code{accumulate-n}
-is similar to @code{accumu-@/late} except that it takes as its third argument a
+is similar to @code{accumulate} except that it takes as its third argument a
 sequence of sequences, which are all assumed to have the same number of
 elements.  It applies the designated accumulation procedure to combine all the
 first elements of the sequences, all the second elements of the sequences, and
