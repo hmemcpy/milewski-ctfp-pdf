@@ -88,19 +88,21 @@
 }
 
 % Document colors 
-\definecolor{SchemeLight}  {HTML} {686868}
-\definecolor{SchemeSteel}  {HTML} {888888}
-\definecolor{SchemeDark}   {HTML} {262626}
-\definecolor{SchemeBlue}   {HTML} {4172A3}
-\definecolor{SchemeGreen}  {HTML} {487818}
-\definecolor{SchemeBrown}  {HTML} {A07040}
-\definecolor{SchemeRed}    {HTML} {AD4D3A}
-\definecolor{SchemeViolet} {HTML} {7040A0}
-\definecolor{DropCapGray}  {HTML} {B8B8B8}
-\definecolor{ChapterGray}  {HTML} {C8C8C8}
+\definecolor{SchemeLight}   {HTML} {686868}
+\definecolor{SchemeSteel}   {HTML} {888888}
+\definecolor{SchemeDark}    {HTML} {262626}
+\definecolor{SchemeBlue}    {HTML} {4172A3}
+\definecolor{SchemeGreen}   {HTML} {487818}
+\definecolor{SchemeBrown}   {HTML} {A07040}
+\definecolor{SchemeRed}     {HTML} {AD4D3A}
+\definecolor{SchemeViolet}  {HTML} {7040A0}
+\definecolor{DropCapGray}   {HTML} {B8B8B8}
+\definecolor{ChapterGray}   {HTML} {C8C8C8}
+\definecolor{ChapterViolet} {HTML} {AEAECE}
+\definecolor{DropCapViolet} {HTML} {9090C0}
 
 \usepackage{lettrine}  % adds commands that make drop capitals
-\renewcommand{\LettrineFontHook}{\rmfamily\bfseries\color{DropCapGray}}
+\renewcommand{\LettrineFontHook}{\rmfamily\mdseries\color{DropCapViolet}}
 \renewcommand{\DefaultLraise}{0.00}
 \renewcommand{\DefaultLoversize}{0.02}
 \renewcommand{\DefaultLhang}{0.12}
@@ -209,22 +211,23 @@
 
 \titleformat{\chapter}[display]
   {\color{SchemeDark}\normalfont\sffamily\bfseries\LARGE}
-  {\filright \color{ChapterGray}\fontsize{6em}{0em}\selectfont
+  {\filright \color{ChapterViolet}\sffamily\mdseries
+    \fontsize{6em}{0em}\selectfont
     \oldstylenums{\thechapter}}
   {1em}
   {\filright}
-  
+
 \titleformat{\section}
 {\color{SchemeDark}\normalfont\Large\sffamily\bfseries}
-{\color{SchemeSteel}\thesection}{0.8em}{}
+{\color{DropCapViolet}\thesection}{0.8em}{}
 
 \titleformat{\subsection}
 {\color{SchemeDark}\normalfont\large\sffamily\bfseries}
-{\color{SchemeSteel}\thesubsection}{0.8em}{}
+{\color{DropCapViolet}\thesubsection}{0.8em}{}
 
 \titleformat{\subsubsection}
 {\color{black}\normalfont\normalsize\sffamily\bfseries}
-{\color{SchemeSteel}\thesubsubsection}{0.8em}{}
+{\color{DropCapViolet}\thesubsubsection}{0.8em}{}
 
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}

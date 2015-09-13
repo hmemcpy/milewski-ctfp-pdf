@@ -838,7 +838,7 @@ include Alonzo Church, Barkley Rosser, Stephen Kleene, and Haskell Curry.
 @unnumbered Acknowledgments
 @node       Acknowledgments, Chapter 1, Preface 1e, Top
 
-\lettrine[findent=0pt]{W}{e would like to thank} the many people who have helped us develop this book and
+\lettrine[findent=1pt]{W}{e would like to thank} the many people who have helped us develop this book and
 this curriculum.
 
 Our subject is a clear intellectual descendant of ``6.231,'' a wonderful
@@ -967,7 +967,7 @@ and thus all its general ideas are made.
 @c @sp 1.0
 
 @noindent
-\lettrine[findent=0pt]{W}{e are about to study} the idea of a @newterm{computational process}.
+\lettrine[findent=1pt]{W}{e are about to study} the idea of a @newterm{computational process}.
 Computational processes are abstract beings that inhabit computers.  As they
 evolve, processes manipulate other abstract things called @newterm{data}.  The
 evolution of a process is directed by a pattern of rules called a
@@ -5553,7 +5553,7 @@ having to look at the things they stand for.
 @c @sp 1.0
 
 @noindent
-\lettrine[findent=0pt]{W}{e concentrated in} @ref{Chapter 1} on computational processes and on the role
+\lettrine[findent=1pt]{W}{e concentrated in} @ref{Chapter 1} on computational processes and on the role
 of procedures in program design.  We saw how to use primitive data (numbers)
 and primitive operations (arithmetic operations), how to combine procedures to
 form compound procedures through composition, conditionals, and the use of
@@ -29150,7 +29150,7 @@ the clock are caused by a single weight.
 @c @sp 1.0
 
 @noindent
-\lettrine[findent=0pt]{W}{e began this book} by studying processes and by describing processes in terms
+\lettrine[findent=1pt]{W}{e began this book} by studying processes and by describing processes in terms
 of procedures written in Lisp.  To explain the meanings of these procedures, we
 used a succession of models of evaluation: the substitution model of
 @ref{Chapter 1}, the environment model of @ref{Chapter 3}, and the metacircular
