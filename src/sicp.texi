@@ -84,6 +84,7 @@
 \thispagestyle{empty}
 
 \begin{small}
+\begin{center}
 
 @noindent
 @copyright{}1996 by The Massachusetts Institute of Technology
@@ -128,6 +129,7 @@ Montreal, Toronto
 Unofficial Texinfo Format @url{http://sicpebook.wordpress.com, @value{utfversion}} (@value{utfversiondate}),@*
 based on @url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10, 2007).
 
+\end{center}
 \end{small}
 
 \pagebreak
@@ -36352,7 +36354,7 @@ that it has been prepared with the help of a computer.
 
 \lettrine[lraise=-0.03,loversize=0.08]{O}{n the cover page} is Agostino Ramelli's bookwheel mechanism from 1588. It could be seen as an early hypertext navigation aid. This image of the engraving is hosted by J. E. Johnson of @url{http://newgottland.com/2012/02/09/before-the-ereader-there-was-the-wheelreader/ramelli_bookwheel_1032px/, New Gottland}.
 
-The typefaces are Linux Libertine for body text and Linux Biolinum for headings, both by Philipp H. Poll. Typewriter face is Inconsolata created by Raph Levien and supplemented by Dimosthenis Kaponis and Takashi Tanigawa in the form of Inconsolata @acronym{LGC}.
+The typefaces are Linux Libertine for body text and Linux Biolinum for headings, both by Philipp H. Poll. Typewriter face is Inconsolata created by Raph Levien and supplemented by Dimosthenis Kaponis and Takashi Tanigawa in the form of Inconsolata @acronym{LGC}. The cover page typeface is Alegreya, designed by Juan Pablo del Peral.
 
 Graphic design and typography are done by Andres Raba. Texinfo source is converted to LaTeX by a Perl script and compiled to @acronym{PDF} by XeLaTeX. Diagrams are drawn with Inkscape.
 
