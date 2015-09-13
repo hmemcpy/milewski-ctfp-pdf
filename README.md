@@ -58,7 +58,7 @@ Acknowledgements
 License
 -------
 
-The files `sicp.texi, sicp.pdf,` and diagrams in directory `src/fig` are licensed under Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License ([cc by-nc-sa](http://creativecommons.org/licenses/by-nc-sa/3.0/)).
+The files `sicp.texi, sicp.pdf,` and diagrams in directory `src/fig` are licensed under Creative Commons Attribution-ShareAlike 4.0 International License ([cc by-sa](http://creativecommons.org/licenses/by-sa/4.0/)).
           
 The script files `ex-fig-ref.pl, survey.rb,` and `texi-to-latex.pl` are licensed under GNU General Public License version 3 (for details, see src/LICENSE).
 

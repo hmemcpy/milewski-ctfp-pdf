@@ -8,8 +8,8 @@
 @set utfversiondate  February 3, 2015
 @comment
 @comment             This file is licensed under a Creative Commons
-@comment             Attribution-NonCommercial-ShareAlike 3.0 Unported License
-@comment             (http://creativecommons.org/licenses/by-nc-sa/3.0/).
+@comment             Attribution-ShareAlike 4.0 International License
+@comment             (http://creativecommons.org/licenses/by-sa/4.0/).
 @comment
 @comment             This is a Texinfo file with embedded LaTeX commands.
 @comment             To compile it to PDF, enter `make' in current directory.
@@ -102,14 +102,13 @@ with Julie Sussman, foreword by Alan J. Perlis
 @noindent
 @image{fig/icons/cc, 3mm,,,.pdf}
 @image{fig/icons/by, 3mm,,,.pdf}
-@image{fig/icons/nc, 3mm,,,.pdf}
 @image{fig/icons/sa, 3mm,,,.pdf}
 
 @sp 0.4
 @noindent
 This work is licensed under a Creative Commons@*
-Attribution-NonCommercial-ShareAlike 3.0 Unported License@*
-(@url{http://creativecommons.org/licenses/by-nc-sa/3.0/, @acronym{CC BY-NC-SA 3.0}}).
+Attribution-ShareAlike 4.0 International License@*
+(@url{http://creativecommons.org/licenses/by-sa/4.0/, @acronym{CC BY-SA 4.0}}).
 Based on a work at @url{http://mitpress.mit.edu/sicp/, mitpress.mit.edu}.
 
 @sp 1.26

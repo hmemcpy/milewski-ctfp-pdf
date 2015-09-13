@@ -2,8 +2,8 @@
     LICENSING TERMS
  
  1. sicp.texi, sicp.pdf, and diagrams in directory 'fig' are licensed
-    under Creative Commons Attribution-NonCommercial-ShareAlike 3.0
-    Unported License (http://creativecommons.org/licenses/by-nc-sa/3.0/).
+    under Creative Commons Attribution-ShareAlike 4.0 International License
+    (http://creativecommons.org/licenses/by-sa/4.0/).
  
  2. The script files ex-fig-ref.pl, survey.rb, and texi-to-latex.pl
     are under GNU GPL v.3:
