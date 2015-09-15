@@ -35762,7 +35762,7 @@ Sys\-tems---Programming Language---Common Lisp}.
 \phantomsection @anchor{Appel 1987}
 @b{Appel}, Andrew W.  1987.  Garbage collection can be faster than stack
 allocation.  @cite{Information Processing Letters} 25(4): 275-279.
-@url{http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.39.8219, –›}
+@url{https://www.cs.princeton.edu/~appel/papers/45.ps, –›}
 
 \phantomsection @anchor{Backus 1978}
 @b{Backus}, John.  1978.  Can programming be liberated from the von Neumann style?
@@ -36060,7 +36060,7 @@ North-Holland.
 \phantomsection @anchor{Lamport (1978)}
 @b{Lamport}, Leslie. 1978.  Time, clocks, and the ordering of events in a
 distributed system.  @cite{Communications of the @acronym{ACM}} 21(7): 558-565.
-@url{http://www.stanford.edu/class/cs240/readings/lamport.pdf, –›}
+@url{http://research.microsoft.com/en-us/um/people/lamport/pubs/time-clocks.pdf, –›}
 
 \phantomsection @anchor{Lampson et al. 1981}
 @b{Lampson}, Butler, J. J. Horning, R.  London, J. G. Mitchell, and G. K.  Popek.
@@ -36259,7 +36259,7 @@ reference manual.  Memo 203@acronym{A}, @acronym{MIT} Artificial Intelligence La
 \phantomsection @anchor{Sutherland (1963)}
 @b{Sutherland}, Ivan E.  1963.  @acronym{SKETCHPAD}: A man-machine graphical
 communication system.  Technical report 296, @acronym{MIT} Lincoln Laboratory.
-@url{http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.10.4290, –›}
+@url{https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-574.pdf, –›}
 
 \phantomsection @anchor{Teitelman 1974}
 @b{Teitelman}, Warren.  1974.  Interlisp reference manual.  Technical report, Xerox
@@ -36280,7 +36280,7 @@ in Computer Science, volume 123. New York: Springer-Verlag, pp.  334-348.
 \phantomsection @anchor{Wand 1980}
 @b{Wand}, Mitchell.  1980.  Continuation-based program transformation strategies.
 @cite{Journal of the @acronym{ACM}} 27(1): 164-180.
-@url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.83.8567, –›}
+@url{http://www.diku.dk/OLD/undervisning/2005e/224/papers/Wand80.pdf, –›}
 
 \phantomsection @anchor{Waters (1979)}
 @b{Waters}, Richard C.  1979.  A method for analyzing loop programs.
