@@ -10892,7 +10892,8 @@ access parts of a complex number independent of how the number is represented.
 The resulting complex-number system, as shown in @ref{Figure 2.19}, contains
 two different kinds of abstraction barriers.  The ``horizontal'' abstraction
 barriers play the same role as the ones in @ref{Figure 2.1}.
-They isolate``higher-level'' operations from ``lower-level''
+They isolate ``higher-level'' operations from 
+``lower-level''
 rep@-re@-sen@-ta@-tions.  In addition, there is a ``vertical'' barrier that
 gives us the ability to separately design and install alternative
 representations.
