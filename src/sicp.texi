@@ -5778,16 +5778,16 @@ available as procedures:
 @itemize @bullet
 
 @item
-@math{\hbox{\tt(make-rat}\;\langle{n}\kern0.08em\rangle\;\langle{d}\kern0.06em\rangle\hbox{\tt)}} returns the rational number whose numerator is the integer @math{\langle{n}\kern0.08em\rangle} and whose denominator is the integer
+@math{\hbox{\tt(make-rat}\;\langle{n}\rangle\;\langle{d}\kern0.06em\rangle\hbox{\tt)}} returns the rational number whose numerator is the integer @math{\langle{n}\rangle} and whose denominator is the integer
 @math{\langle{d}\kern0.06em\rangle}.
 
 @item
-@math{\hbox{\tt(numer}\;\;\langle{x}\kern0.08em\rangle\hbox{\tt)}} returns the numerator of the rational number
-@math{\langle{x}\kern0.08em\rangle}.
+@math{\hbox{\tt(numer}\;\;\langle{x}\rangle\hbox{\tt)}} returns the numerator of the rational number
+@math{\langle{x}\rangle}.
 
 @item
-@math{\hbox{\tt(denom}\;\;\langle{x}\kern0.08em\rangle\hbox{\tt)}} returns the denominator of the rational number
-@math{\langle{x}\kern0.08em\rangle}.
+@math{\hbox{\tt(denom}\;\;\langle{x}\rangle\hbox{\tt)}} returns the denominator of the rational number
+@math{\langle{x}\rangle}.
 
 @end itemize
 
@@ -18581,8 +18581,8 @@ to include a procedure called @code{parallel-execute}:
 @end lisp
 
 @noindent
-Each @math{\langle}@math{p}@math{\kern0.08em\rangle} must be a procedure of no arguments.  @code{parallel-execute}
-creates a separate process for each @math{\langle}@math{p}@math{\kern0.08em\rangle}, which applies @math{\langle}@math{p}@math{\kern0.08em\rangle} (to no
+Each @math{\langle p \rangle} must be a procedure of no arguments.  @code{parallel-execute}
+creates a separate process for each @math{\langle p \rangle}, which applies @math{\langle p \rangle} (to no
 arguments).  These processes all run
 concurrently.@footnote{@code{parallel-execute} is not part of standard Scheme,
 but it can be implemented in @acronym{MIT} Scheme.  In our implementation, the
