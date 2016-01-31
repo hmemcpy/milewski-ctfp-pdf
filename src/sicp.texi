@@ -1861,10 +1861,10 @@ stands for ``conditional''), and it is used as follows:
 The general form of a conditional expression is
 
 @lisp
-(cond (@math{\langle{p_1}\kern0.08em\rangle} @math{\langle{e_1}\kern0.08em\rangle})
-      (@math{\langle{p_2}\kern0.08em\rangle} @math{\langle{e_2}\kern0.08em\rangle})
+(cond (@math{\langle}@var{p}@math{_1\rangle} @math{\langle}@var{e}@math{_1\rangle})
+      (@math{\langle}@var{p}@math{_2\rangle} @math{\langle}@var{e}@math{_2\rangle})
       @dots{}
-      (@math{\langle{p_n}\kern0.08em\rangle} @math{\langle{e_n}\kern0.08em\rangle}))
+      (@math{\langle}@var{p}@math{_n\rangle} @math{\langle}@var{e}@math{_n\rangle}))
 @end lisp
 
 @noindent
@@ -1872,7 +1872,7 @@ consisting of the symbol @code{cond} followed by parenthesized pairs of
 expressions
 
 @lisp
-(@math{\langle{p}\kern0.08em\rangle} @math{\langle{e}\kern0.08em\rangle})
+(@math{\langle}@var{p}@math{\rangle} @math{\langle}@var{e}@math{\rangle})
 @end lisp
 
 @noindent
@@ -6749,17 +6749,17 @@ just to lists.}  The above sequence could be produced by @code{(list 1 2 3 4)}.
 In general,
 
 @lisp
-(list @math{\langle}@math{a_1}@math{\rangle} @math{\langle}@math{a_2}@math{\rangle} @dots{} @math{\langle}@math{a_n}@math{\rangle})
+(list @math{\langle}@var{a}@math{_1\rangle} @math{\langle}@var{a}@math{_2\rangle} @dots{} @math{\langle}@var{a}@math{_n\rangle})
 @end lisp
 
 @noindent
 is equivalent to
 
 @lisp
-(cons @math{\langle}@math{a_1}@math{\rangle}
-      (cons @math{\langle}@math{a_2}@math{\rangle}
+(cons @math{\langle}@var{a}@math{_1\rangle}
+      (cons @math{\langle}@var{a}@math{_2\rangle}
             (cons @dots{}
-                  (cons @math{\langle}@math{a_n}@math{\rangle}
+                  (cons @math{\langle}@var{a}@math{_n\rangle}
                         nil)@dots{})))
 @end lisp
 
@@ -18577,7 +18577,7 @@ To make the above mechanism more concrete, suppose that we have extended Scheme
 to include a procedure called @code{parallel-execute}:
 
 @lisp
-(parallel-execute @math{\langle p_1 \rangle} @math{\langle p_2 \rangle} @dots{} @math{\langle p_k \rangle})
+(parallel-execute @math{\langle}@var{p}@math{_1\rangle} @math{\langle}@var{p}@math{_2\rangle} @dots{} @math{\langle}@var{p}@math{_k\rangle})
 @end lisp
 
 @noindent
@@ -24820,7 +24820,7 @@ programming was first described in 1961 by John McCarthy (see @ref{McCarthy 1963
 The expression
 
 @lisp
-(amb @math{\langle}@math{e_1}@math{\rangle} @math{\langle}@math{e_2}@math{\rangle} @dots{} @math{\langle}@math{e_n}@math{\rangle})
+(amb @math{\langle}@var{e}@math{_1\rangle} @math{\langle}@var{e}@math{_2\rangle} @dots{} @math{\langle}@var{e}@math{_n\rangle})
 @end lisp
 
 @noindent
