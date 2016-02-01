@@ -1861,10 +1861,10 @@ stands for ``conditional''), and it is used as follows:
 The general form of a conditional expression is
 
 @lisp
-(cond (@math{\langle}@var{p}@math{_1\rangle} @math{\langle}@var{e}@math{_1\rangle})
-      (@math{\langle}@var{p}@math{_2\rangle} @math{\langle}@var{e}@math{_2\rangle})
+(cond (@math{\langle}@var{p}@math{_{\mono{1}}\rangle} @math{\langle}@var{e}@math{_{\mono{1}}\rangle})
+      (@math{\langle}@var{p}@math{_{\mono{2}}\rangle} @math{\langle}@var{e}@math{_{\mono{2}}\rangle})
       @dots{}
-      (@math{\langle}@var{p}@math{_n\rangle} @math{\langle}@var{e}@math{_n\rangle}))
+      (@math{\langle}@var{p}@math{_{\monoit{n}}\rangle} @math{\langle}@var{e}@math{_{\monoit{n}}\rangle}))
 @end lisp
 
 @noindent
@@ -1941,15 +1941,15 @@ form of an @code{if} expression is
 
 @noindent
 To evaluate an @code{if} expression, the interpreter starts by evaluating the
-@math{\langle}@var{predicate}@math{\kern0.08em\rangle} part of the expression.  If the @math{\langle}@var{predicate}@math{\kern0.08em\rangle} evaluates
-to a true value, the interpreter then evaluates the @math{\langle}@var{consequent}@math{\kern0.08em\rangle} and
-returns its value.  Otherwise it evaluates the @math{\langle}@var{alternative}@math{\kern0.08em\rangle} and returns
+@math{\langle}@var{predicate}@math{\kern0.04em\rangle} part of the expression.  If the @math{\langle}@var{predicate}@math{\kern0.04em\rangle} evaluates
+to a true value, the interpreter then evaluates the @math{\langle}@var{consequent}@math{\kern0.04em\rangle} and
+returns its value.  Otherwise it evaluates the @math{\langle}@var{alternative}@math{\kern0.04em\rangle} and returns
 its value.@footnote{A minor difference between @code{if} and @code{cond} is
-that the @math{\langle{e}\kern0.08em\rangle} part of each @code{cond} clause may be a sequence of
-expressions.  If the corresponding @math{\langle{p}\kern0.08em\rangle} is found to be true, the
-expressions @math{\langle{e}\kern0.08em\rangle} are evaluated in sequence and the value of the final
+that the @math{\langle{e}\rangle} part of each @code{cond} clause may be a sequence of
+expressions.  If the corresponding @math{\langle{p}\rangle} is found to be true, the
+expressions @math{\langle{e}\rangle} are evaluated in sequence and the value of the final
 expression in the sequence is returned as the value of the @code{cond}.  In an
-@code{if} expression, however, the @math{\langle}@var{consequent}@math{\kern0.08em\rangle} and @math{\langle}@var{alternative}@math{\kern0.08em\rangle}
+@code{if} expression, however, the @math{\langle}@var{consequent}@math{\kern0.04em\rangle} and @math{\langle}@var{alternative}@math{\kern0.04em\rangle}
 must be single expressions.}
 
 In addition to primitive predicates such as @code{<}, @code{=}, and @code{>},
@@ -4694,10 +4694,10 @@ be written as
 The general form of a @code{let} expression is
 
 @lisp
-(let ((@math{\langle}@var{var}@math{_1\rangle} @math{\langle}@var{exp}@math{_1\rangle})
-      (@math{\langle}@var{var}@math{_2\rangle} @math{\langle}@var{exp}@math{_2\rangle})
+(let ((@math{\langle}@var{var}@math{_{\mono{1}}\rangle} @math{\langle}@var{exp}@math{_{\mono{1}}\rangle})
+      (@math{\langle}@var{var}@math{_{\mono{2}}\rangle} @math{\langle}@var{exp}@math{_{\mono{2}}\rangle})
       @dots{}
-      (@math{\langle}@var{var}@math{_n\rangle} @math{\langle}@var{exp}@math{_n\rangle}))
+      (@math{\langle}@var{var}@math{_{\monoit{n}}\rangle} @math{\langle}@var{exp}@math{_{\monoit{n}}\rangle}))
    @math{\langle}@var{body}@math{\rangle})
 @end lisp
 
@@ -4705,10 +4705,10 @@ The general form of a @code{let} expression is
 which can be thought of as saying
 
 @lisp
-@w{let} @math{\langle}@var{var}@math{_1\rangle} @w{have the value} @math{\langle}@var{exp}@math{_1\rangle} @w{and}
-    @math{\langle}@var{var}@math{_2\rangle} @w{have the value} @math{\langle}@var{exp}@math{_2\rangle} @w{and}
+@w{let} @math{\langle}@var{var}@math{_{\mono{1}}\rangle} @w{have the value} @math{\langle}@var{exp}@math{_{\mono{1}}\rangle} @w{and}
+    @math{\langle}@var{var}@math{_{\mono{2}}\rangle} @w{have the value} @math{\langle}@var{exp}@math{_{\mono{2}}\rangle} @w{and}
     @dots{}
-    @math{\langle}@var{var}@math{_n\rangle} @w{have the value} @math{\langle}@var{exp}@math{_n\rangle}
+    @math{\langle}@var{var}@math{_{\monoit{n}}\rangle} @w{have the value} @math{\langle}@var{exp}@math{_{\monoit{n}}\rangle}
 @w{in}  @math{\langle}@var{body}@math{\rangle}
 @end lisp
 
@@ -4720,11 +4720,11 @@ names bound as local variables.  The way this happens is that the @code{let}
 expression is interpreted as an alternate syntax for
 
 @lisp
-((lambda (@math{\langle}@var{var}@math{_1\rangle} @dots{} @math{\langle}@var{var}@math{_n\rangle})
+((lambda (@math{\langle}@var{var}@math{_{\mono{1}}\rangle} @dots{} @math{\langle}@var{var}@math{_{\monoit{n}}\rangle})
     @math{\langle}@var{body}@math{\rangle})
- @math{\langle}@var{exp}@math{_1\rangle}
+ @math{\langle}@var{exp}@math{_{\mono{1}}\rangle}
  @dots{}
- @math{\langle}@var{exp}@math{_n\rangle})
+ @math{\langle}@var{exp}@math{_{\monoit{n}}\rangle})
 @end lisp
 
 @noindent
@@ -6749,17 +6749,17 @@ just to lists.}  The above sequence could be produced by @code{(list 1 2 3 4)}.
 In general,
 
 @lisp
-(list @math{\langle}@var{a}@math{_1\rangle} @math{\langle}@var{a}@math{_2\rangle} @dots{} @math{\langle}@var{a}@math{_n\rangle})
+(list @math{\langle}@var{a}@math{_{\mono{1}}\rangle} @math{\langle}@var{a}@math{_{\mono{2}}\rangle} @dots{} @math{\langle}@var{a}@math{_{\monoit{n}}\rangle})
 @end lisp
 
 @noindent
 is equivalent to
 
 @lisp
-(cons @math{\langle}@var{a}@math{_1\rangle}
-      (cons @math{\langle}@var{a}@math{_2\rangle}
+(cons @math{\langle}@var{a}@math{_{\mono{1}}\rangle}
+      (cons @math{\langle}@var{a}@math{_{\mono{2}}\rangle}
             (cons @dots{}
-                  (cons @math{\langle}@var{a}@math{_n\rangle}
+                  (cons @math{\langle}@var{a}@math{_{\monoit{n}}\rangle}
                         nil)@dots{})))
 @end lisp
 
@@ -13639,7 +13639,7 @@ decrementing @code{balance} and then returning the value of @code{balance}.  In
 general, evaluating the expression
 
 @lisp
-(begin @math{\langle}@var{exp}@math{_1\rangle} @math{\langle}@var{exp}@math{_2\rangle} @dots{} @math{\langle}@var{exp}@math{_k\rangle})
+(begin @math{\langle}@var{exp}@math{_{\mono{1}}\rangle} @math{\langle}@var{exp}@math{_{\mono{2}}\rangle} @dots{} @math{\langle}@var{exp}@math{_{\monoit{k}}\rangle})
 @end lisp
 
 @noindent
@@ -18577,7 +18577,7 @@ To make the above mechanism more concrete, suppose that we have extended Scheme
 to include a procedure called @code{parallel-execute}:
 
 @lisp
-(parallel-execute @math{\langle}@var{p}@math{_1\rangle} @math{\langle}@var{p}@math{_2\rangle} @dots{} @math{\langle}@var{p}@math{_k\rangle})
+(parallel-execute @math{\langle}@var{p}@math{_{\mono{1}}\rangle} @math{\langle}@var{p}@math{_{\mono{2}}\rangle} @dots{} @math{\langle}@var{p}@math{_{\monoit{k}}\rangle})
 @end lisp
 
 @noindent
@@ -22433,7 +22433,7 @@ Definitions have the form
 or the form
 
 @lisp
-(define (@math{\langle}@var{var}@math{\rangle} @math{\langle}@var{parameter}@math{_1\rangle} @dots{} @math{\langle}@var{parameter}@math{_n\rangle})
+(define (@math{\langle}@var{var}@math{\rangle} @math{\langle}@var{parameter}@math{_{\mono{1}}\rangle} @dots{} @math{\langle}@var{parameter}@math{_{\monoit{n}}\rangle})
   @math{\langle}@var{body}@math{\rangle})
 @end lisp
 
@@ -22441,7 +22441,7 @@ The latter form (standard procedure definition) is syntactic sugar for
 
 @lisp
 (define @math{\langle}@var{var}@math{\rangle}
-  (lambda (@math{\langle}@var{parameter}@math{_1\rangle} @dots{} @math{\langle}@var{parameter}@math{_n\rangle})
+  (lambda (@math{\langle}@var{parameter}@math{_{\mono{1}}\rangle} @dots{} @math{\langle}@var{parameter}@math{_{\monoit{n}}\rangle})
     @math{\langle}@var{body}@math{\rangle}))
 @end lisp
 
@@ -22713,7 +22713,7 @@ extended syntax.
 expressions, because
 
 @lisp
-(let ((@math{\langle}@var{var}@math{_1\rangle} @math{\langle}@var{exp}@math{_1\rangle}) @dots{} (@math{\langle}@var{var}@math{_n\rangle} @math{\langle}@var{exp}@math{_n\rangle}))
+(let ((@math{\langle}@var{var}@math{_{\mono{1}}\rangle} @math{\langle}@var{exp}@math{_{\mono{1}}\rangle}) @dots{} (@math{\langle}@var{var}@math{_{\monoit{n}}\rangle} @math{\langle}@var{exp}@math{_{\monoit{n}}\rangle}))
   @math{\langle}@var{body}@math{\rangle})
 @end lisp
 
@@ -22721,11 +22721,11 @@ expressions, because
 is equivalent to
 
 @lisp
-((lambda (@math{\langle}@var{var}@math{_1\rangle} @dots{} @math{\langle}@var{var}@math{_n\rangle})
+((lambda (@math{\langle}@var{var}@math{_{\mono{1}}\rangle} @dots{} @math{\langle}@var{var}@math{_{\monoit{n}}\rangle})
    @math{\langle}@var{body}@math{\rangle})
- @math{\langle}@var{exp}@math{_1\rangle}
+ @math{\langle}@var{exp}@math{_{\mono{1}}\rangle}
  @dots{}
- @math{\langle}@var{exp}@math{_n\rangle})
+ @math{\langle}@var{exp}@math{_{\monoit{n}}\rangle})
 @end lisp
 
 Implement a syntactic transformation @code{let->combination} that reduces
@@ -23662,7 +23662,7 @@ the same meaning, as
 @code{letrec} expressions, which have the form
 
 @lisp
-(letrec ((@math{\langle}@var{var}@math{_1\rangle} @math{\langle}@var{exp}@math{_1\rangle}) @dots{} (@math{\langle}@var{var}@math{_n\rangle} @math{\langle}@var{exp}@math{_n\rangle}))
+(letrec ((@math{\langle}@var{var}@math{_{\mono{1}}\rangle} @math{\langle}@var{exp}@math{_{\mono{1}}\rangle}) @dots{} (@math{\langle}@var{var}@math{_{\monoit{n}}\rangle} @math{\langle}@var{exp}@math{_{\monoit{n}}\rangle}))
   @math{\langle}@var{body}@math{\rangle})
 @end lisp
 
@@ -24820,7 +24820,7 @@ programming was first described in 1961 by John McCarthy (see @ref{McCarthy 1963
 The expression
 
 @lisp
-(amb @math{\langle}@var{e}@math{_1\rangle} @math{\langle}@var{e}@math{_2\rangle} @dots{} @math{\langle}@var{e}@math{_n\rangle})
+(amb @math{\langle}@var{e}@math{_{\mono{1}}\rangle} @math{\langle}@var{e}@math{_{\mono{2}}\rangle} @dots{} @math{\langle}@var{e}@math{_{\monoit{n}}\rangle})
 @end lisp
 
 @noindent
@@ -26623,7 +26623,7 @@ The resulting output is
 In general,
 
 @lisp
-(and @math{\langle}@var{query}@math{_1\rangle} @math{\langle}@var{query}@math{_2\rangle} @dots{} @math{\langle}@var{query}@math{_n\rangle})
+(and @math{\langle}@var{query}@math{_{\mono{1}}\rangle} @math{\langle}@var{query}@math{_{\mono{2}}\rangle} @dots{} @math{\langle}@var{query}@math{_{\monoit{n}}\rangle})
 @end lisp
 
 @noindent
@@ -26660,7 +26660,7 @@ will find all employees supervised by Ben Bitdiddle or Alyssa P.  Hacker:
 In general,
 
 @lisp
-(or @math{\langle}@var{query}@math{_1\rangle} @math{\langle}@var{query}@math{_2\rangle} @dots{} @math{\langle}@var{query}@math{_n\rangle})
+(or @math{\langle}@var{query}@math{_{\mono{1}}\rangle} @math{\langle}@var{query}@math{_{\mono{2}}\rangle} @dots{} @math{\langle}@var{query}@math{_{\monoit{n}}\rangle})
 @end lisp
 
 @noindent
@@ -26679,7 +26679,7 @@ finds all people supervised by Ben Bitdiddle who are not computer programmers.
 In general,
 
 @lisp
-(not @math{\langle}@var{query}@math{_1\rangle})
+(not @math{\langle}@var{query}@math{_{\mono{1}}\rangle})
 @end lisp
 
 @noindent
@@ -26695,7 +26695,7 @@ predicate to be applied to the rest of the (instantiated) elements as
 arguments.  In general,
 
 @lisp
-(lisp-value @math{\langle}@var{predicate}@math{\rangle} @math{\langle}@var{arg}@math{_1\rangle} @dots{} @math{\langle}@var{arg}@math{_n\rangle})
+(lisp-value @math{\langle}@var{predicate}@math{\rangle} @math{\langle}@var{arg}@math{_{\mono{1}}\rangle} @dots{} @math{\langle}@var{arg}@math{_{\monoit{n}}\rangle})
 @end lisp
 
 @noindent
@@ -30380,9 +30380,9 @@ instructions were introduced in @ref{5.1.1}:
 (assign @math{\langle}@var{register-name}@math{\rangle} (const @math{\langle}@var{constant-value}@math{\rangle}))
 (assign @math{\langle}@var{register-name}@math{\rangle}
         (op @math{\langle}@var{operation-name}@math{\rangle})
-        @math{\langle}@var{input}@math{_1\rangle} @dots{} @math{\langle}@var{input}@math{_n\rangle})
-(perform (op @math{\langle}@var{operation-name}@math{\rangle}) @math{\langle}@var{input}@math{_1\rangle} @dots{} @math{\langle}@var{input}@math{_n\rangle})
-(test (op @math{\langle}@var{operation-name}@math{\rangle}) @math{\langle}@var{input}@math{_1\rangle} @dots{} @math{\langle}@var{input}@math{_n\rangle})
+        @math{\langle}@var{input}@math{_{\mono{1}}\rangle} @dots{} @math{\langle}@var{input}@math{_{\monoit{n}}\rangle})
+(perform (op @math{\langle}@var{operation-name}@math{\rangle}) @math{\langle}@var{input}@math{_{\mono{1}}\rangle} @dots{} @math{\langle}@var{input}@math{_{\monoit{n}}\rangle})
+(test (op @math{\langle}@var{operation-name}@math{\rangle}) @math{\langle}@var{input}@math{_{\mono{1}}\rangle} @dots{} @math{\langle}@var{input}@math{_{\monoit{n}}\rangle})
 (branch (label @math{\langle}@var{label-name}@math{\rangle}))
 (goto (label @math{\langle}@var{label-name}@math{\rangle}))
 @end lisp
@@ -31705,24 +31705,24 @@ vector, or adding two numbers) use only the index portion of the typed pointer.
 For example, we can make a register machine support the instructions
 
 @lisp
-(assign @math{\langle}@var{reg}@math{_1\rangle} (op car) (reg @math{\langle}@var{reg}@math{_2\rangle}))
-(assign @math{\langle}@var{reg}@math{_1\rangle} (op cdr) (reg @math{\langle}@var{reg}@math{_2\rangle}))
+(assign @math{\langle}@var{reg}@math{_{\mono{1}}\rangle} (op car) (reg @math{\langle}@var{reg}@math{_{\mono{2}}\rangle}))
+(assign @math{\langle}@var{reg}@math{_{\mono{1}}\rangle} (op cdr) (reg @math{\langle}@var{reg}@math{_{\mono{2}}\rangle}))
 @end lisp
 
 @noindent
 if we implement these, respectively, as
 
 @lisp
-(assign @math{\langle}@var{reg}@math{_1\rangle} (op vector-ref) (reg the-cars) (reg @math{\langle}@var{reg}@math{_2\rangle}))
-(assign @math{\langle}@var{reg}@math{_1\rangle} (op vector-ref) (reg the-cdrs) (reg @math{\langle}@var{reg}@math{_2\rangle}))
+(assign @math{\langle}@var{reg}@math{_{\mono{1}}\rangle} (op vector-ref) (reg the-cars) (reg @math{\langle}@var{reg}@math{_{\mono{2}}\rangle}))
+(assign @math{\langle}@var{reg}@math{_{\mono{1}}\rangle} (op vector-ref) (reg the-cdrs) (reg @math{\langle}@var{reg}@math{_{\mono{2}}\rangle}))
 @end lisp
 
 @noindent
 The instructions
 
 @lisp
-(perform (op set-car!) (reg @math{\langle}@var{reg}@math{_1\rangle}) (reg @math{\langle}@var{reg}@math{_2\rangle}))
-(perform (op set-cdr!) (reg @math{\langle}@var{reg}@math{_1\rangle}) (reg @math{\langle}@var{reg}@math{_2\rangle}))
+(perform (op set-car!) (reg @math{\langle}@var{reg}@math{_{\mono{1}}\rangle}) (reg @math{\langle}@var{reg}@math{_{\mono{2}}\rangle}))
+(perform (op set-cdr!) (reg @math{\langle}@var{reg}@math{_{\mono{1}}\rangle}) (reg @math{\langle}@var{reg}@math{_{\mono{2}}\rangle}))
 @end lisp
 
 @noindent
@@ -31730,9 +31730,9 @@ are implemented as
 
 @lisp
 (perform
- (op vector-set!) (reg the-cars) (reg @math{\langle}@var{reg}@math{_1\rangle}) (reg @math{\langle}@var{reg}@math{_2\rangle}))
+ (op vector-set!) (reg the-cars) (reg @math{\langle}@var{reg}@math{_{\mono{1}}\rangle}) (reg @math{\langle}@var{reg}@math{_{\mono{2}}\rangle}))
 (perform
- (op vector-set!) (reg the-cdrs) (reg @math{\langle}@var{reg}@math{_1\rangle}) (reg @math{\langle}@var{reg}@math{_2\rangle}))
+ (op vector-set!) (reg the-cdrs) (reg @math{\langle}@var{reg}@math{_{\mono{1}}\rangle}) (reg @math{\langle}@var{reg}@math{_{\mono{2}}\rangle}))
 @end lisp
 
 @noindent
@@ -31748,7 +31748,7 @@ pointer) because we are using a compacting garbage collector, as we will see in
 @ref{5.3.2}.}  For example, the instruction
 
 @lisp
-(assign @math{\langle}@var{reg}@math{_1\rangle} (op cons) (reg @math{\langle}@var{reg}@math{_2\rangle}) (reg @math{\langle}@var{reg}@math{_3\rangle}))
+(assign @math{\langle}@var{reg}@math{_{\mono{1}}\rangle} (op cons) (reg @math{\langle}@var{reg}@math{_{\mono{2}}\rangle}) (reg @math{\langle}@var{reg}@math{_{\mono{3}}\rangle}))
 @end lisp
 
 @noindent
@@ -31760,10 +31760,10 @@ essentially the implementation of @code{cons} in terms of @code{set-car!} and
 
 @lisp
 (perform
- (op vector-set!) (reg the-cars) (reg free) (reg @math{\langle}@var{reg}@math{_2\rangle}))
+ (op vector-set!) (reg the-cars) (reg free) (reg @math{\langle}@var{reg}@math{_{\mono{2}}\rangle}))
 (perform
- (op vector-set!) (reg the-cdrs) (reg free) (reg @math{\langle}@var{reg}@math{_3\rangle}))
-(assign @math{\langle}@var{reg}@math{_1\rangle} (reg free))
+ (op vector-set!) (reg the-cdrs) (reg free) (reg @math{\langle}@var{reg}@math{_{\mono{3}}\rangle}))
+(assign @math{\langle}@var{reg}@math{_{\mono{1}}\rangle} (reg free))
 (assign free (op +) (reg free) (const 1))
 @end lisp
 
@@ -31771,7 +31771,7 @@ essentially the implementation of @code{cons} in terms of @code{set-car!} and
 The @code{eq?} operation
 
 @lisp
-(op eq?) (reg @math{\langle}@var{reg}@math{_1\rangle}) (reg @math{\langle}@var{reg}@math{_2\rangle})
+(op eq?) (reg @math{\langle}@var{reg}@math{_{\mono{1}}\rangle}) (reg @math{\langle}@var{reg}@math{_{\mono{2}}\rangle})
 @end lisp
 
 @noindent
@@ -33514,15 +33514,15 @@ returns the combined sequence.  That is, if @math{\langle}@var{seq}@math{_1\rang
 sequences of instructions, then evaluating
 
 @lisp
-(append-instruction-sequences @math{\langle}@var{seq}@math{_1\rangle} @math{\langle}@var{seq}@math{_2\rangle})
+(append-instruction-sequences @math{\langle}@var{seq}@math{_{\mono{1}}\rangle} @math{\langle}@var{seq}@math{_{\mono{2}}\rangle})
 @end lisp
 
 @noindent
 produces the sequence
 
 @lisp
-@math{\langle}@var{seq}@math{_1\rangle}
-@math{\langle}@var{seq}@math{_2\rangle}
+@math{\langle}@var{seq}@math{_{\mono{1}}\rangle}
+@math{\langle}@var{seq}@math{_{\mono{2}}\rangle}
 @end lisp
 
 @noindent
@@ -33540,7 +33540,7 @@ Otherwise, @code{preserving} simply returns the appended instruction sequences.
 Thus, for example,
 
 @lisp
-(preserving (list @math{\langle}@var{reg}@math{_1\rangle} @math{\langle}@var{reg}@math{_2\rangle}) @math{\langle}@var{seg}@math{_1\rangle} @math{\langle}@var{seg}@math{_2\rangle})
+(preserving (list @math{\langle}@var{reg}@math{_{\mono{1}}\rangle} @math{\langle}@var{reg}@math{_{\mono{2}}\rangle}) @math{\langle}@var{seg}@math{_{\mono{1}}\rangle} @math{\langle}@var{seg}@math{_{\mono{2}}\rangle})
 @end lisp
 
 @noindent
