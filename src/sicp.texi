@@ -35773,7 +35773,7 @@ allocation.  @cite{Information Processing Letters} 25(4): 275-279.
 \phantomsection @anchor{Backus 1978}
 @b{Backus}, John.  1978.  Can programming be liberated from the von Neumann style?
 @cite{Communications of the @acronym{ACM}} 21(8): 613-641.
-@url{http://www.stanford.edu/class/cs242/readings/backus.pdf, –›}
+@url{http://worrydream.com/refs/Backus-CanProgrammingBeLiberated.pdf, –›}
 
 \phantomsection @anchor{Baker (1978)}
 @b{Baker}, Henry G., Jr.  1978.  List processing in real time on a serial computer.
@@ -36173,7 +36173,7 @@ Technical report 295, @acronym{MIT} Laboratory for Computer Science.
 \phantomsection @anchor{Raymond 1993}
 @b{Raymond}, Eric.  1993. @cite{The New Hacker's Dictionary}. 2nd edition.
 Cambridge, @acronym{MA}: @acronym{MIT} Press.
-@url{http://www.outpost9.com/reference/jargon/jargon_toc.html, –›}
+@url{http://www.catb.org/jargon/, –›}
 
 @b{Raynal}, Michel. 1986. @cite{Algorithms for Mutual Exclusion}.  Cambridge, @acronym{MA}:
 @acronym{MIT} Press.
