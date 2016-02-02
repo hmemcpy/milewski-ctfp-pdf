@@ -4,8 +4,8 @@
 @settitle            Structure and Interpretation of Computer Programs, 2e
 @comment             Unofficial Texinfo Format
 @comment
-@set utfversion      2.andresraba5.5
-@set utfversiondate  September 15, 2015
+@set utfversion      2.andresraba5.6
+@set utfversiondate  February 2, 2016
 @comment
 @comment             This file is licensed under a Creative Commons
 @comment             Attribution-ShareAlike 4.0 International License
@@ -75,6 +75,10 @@
 @comment * Version 2.andresraba5.5 (September 15, 2015) by Andres Raba.
 @comment   Updated license to CC BY-SA 4.0. Redesigned title page.
 @comment   Tinted chapter and section numbers. Fixed broken links.
+@comment
+@comment * Version 2.andresraba5.6 (February 2, 2016) by Andres Raba.
+@comment   Improved microtypography in code listings. Removed manual
+@comment   word breaks. Fixed broken links.
 @comment
 
 
