@@ -15,14 +15,14 @@
 \usepackage[no-math]{fontspec} %-----------------------%  This exact order
 \defaultfontfeatures{%                                 %  of declarations
   Scale=MatchLowercase, % needed here ...              %  is important for
-}                                                      %  single quotes not 
-\setmonofont{Inconsolata LGC}                          %  to turn out curly 
+}                                                      %  single quotes not
+\setmonofont{Inconsolata LGC}                          %  to turn out curly
                                                        %  ("typographic")
 \defaultfontfeatures{%                                 %  in verbatim blocks
   Scale=MatchLowercase, % ... and here again           %  of Scheme code.
   Mapping=tex-text,                                    %  Now the quote is
   SmallCapsFeatures={LetterSpace=2.5,WordSpace=1.05},  %  upright and safely
-}                                                      %  copy-pasteable to 
+}                                                      %  copy-pasteable to
 \setmainfont{Linux Libertine O}                        %  the REPL without
 \setsansfont{Linux Biolinum O} %-----------------------%  giving errors.
 
@@ -31,11 +31,11 @@
 \setotherlanguages{greek}
 
 % To be able to use '\-/' in place of '-' inside \code{}
-% so that long function names containing hyphens 
+% so that long function names containing hyphens
 % can be broken up after the hyphen:
-\usepackage[shortcuts]{extdash} 
+\usepackage[shortcuts]{extdash}
 
-% So that file names with multiple dots don't confuse 
+% So that file names with multiple dots don't confuse
 % graphicx package when using \includegraphics command:
 \usepackage[multidot]{grffile}
 \usepackage{graphicx}
@@ -45,16 +45,16 @@
 
 % To use Libertine letters and numbers,
 % but tx-style operators in math environment:
-\usepackage[libertine]{newtxmath} 
+\usepackage[libertine]{newtxmath}
 
-% Workaround to fix mismatched left and right math delimiters. Taken from: 
+% Workaround to fix mismatched left and right math delimiters. Taken from:
 % http://tex.stackexchange.com/questions/63410/parentheses-differ-xelatex-fontspec-newtxmath-libertine
 \DeclareSymbolFont{parenthesis}{T1}{fxl}{m}{n}
 \DeclareMathDelimiter{(}{\mathopen}{parenthesis}{"28}{largesymbols}{"00}
 \DeclareMathDelimiter{)}{\mathclose}{parenthesis}{"29}{largesymbols}{"01}
-\DeclareMathDelimiter{[}{\mathopen}{parenthesis}{"5B}{largesymbols}{"02} 
-\DeclareMathDelimiter{]}{\mathclose}{parenthesis}{"5D}{largesymbols}{"03} 
-\DeclareMathDelimiter{\lbrace}{\mathopen}{parenthesis}{"7B}{largesymbols}{"08} 
+\DeclareMathDelimiter{[}{\mathopen}{parenthesis}{"5B}{largesymbols}{"02}
+\DeclareMathDelimiter{]}{\mathclose}{parenthesis}{"5D}{largesymbols}{"03}
+\DeclareMathDelimiter{\lbrace}{\mathopen}{parenthesis}{"7B}{largesymbols}{"08}
 \DeclareMathDelimiter{\rbrace}{\mathclose}{parenthesis}{"7D}{largesymbols}{"09}
 
 \usepackage{fancyvrb}
@@ -72,11 +72,11 @@
             hcentering,       % if you get "Too many unprocessed floats" error
 ]{geometry}
 
-\usepackage{titlesec}  % to change the appearance of section titles 
+\usepackage{titlesec}  % to change the appearance of section titles
 \usepackage{listings}  % for syntax highlighted code listings
 \usepackage{verbatim}  % for simple verbatim and comment environments
 \usepackage{enumerate} % allows customized labels in enumerations
-\usepackage{hyperref}  % makes cross references and URLs clickable 
+\usepackage{hyperref}  % makes cross references and URLs clickable
 \definecolor{LinkRed}{HTML}{80171F}
 \hypersetup{
   pdfauthor={Harold Abelson, Gerald Jay Sussman, Julie Sussman},
@@ -87,7 +87,7 @@
   urlcolor=LinkRed,
 }
 
-% Document colors 
+% Document colors
 \definecolor{SchemeLight}   {HTML} {686868}
 \definecolor{SchemeSteel}   {HTML} {888888}
 \definecolor{SchemeDark}    {HTML} {262626}
@@ -131,7 +131,7 @@
     emph={'lambda, 'define, 'if, 'else, 'cond, 'and, 'or, 'case,%
       'let, 'let*, 'letrec, 'begin, 'do, 'delay, 'set!, '=>, 'quote,%
       'quasiquote, 'unquote, 'unquote-splicing, 'define-syntax, 'let-syntax,%
-      'letrec-syntax, 'syntax-rules}, 
+      'letrec-syntax, 'syntax-rules},
     emphstyle=\color{SchemeDark},
     % Paint error red:
     emph={[2]error},emphstyle=[2]\color{SchemeRed},%
@@ -182,7 +182,7 @@
     stringstyle=\color{SchemeGreen},
     commentstyle=\color{SchemeLight}\itshape,
 }
-  
+
 \newcommand{\acronym}[1]{\textsc{\fontspec[Numbers={OldStyle}]{Linux Libertine O}\MakeLowercase{#1}}}
 \newcommand{\uppersc}[1]{{\fontspec[Letters=UppercaseSmallCaps]{Linux Libertine O}#1}}
 \newcommand{\newterm}[1]{\index{#1}\emph{#1}}
@@ -244,4 +244,3 @@
 \begin{document}
 
 \VerbatimFootnotes
-
