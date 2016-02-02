@@ -33571,23 +33571,29 @@ $$\vbox{
 	\kern0.8em # \kern0.4em \hfil & \vrule
 	\kern0.8em # \kern0.4em \hfil \cr
 
-$\langle{seq_1}\rangle$ 			& \hbox{\tt (save} $\langle{reg_1}\rangle${\tt)} &
-\hbox{\tt (save} $\langle{reg_2}\rangle${\tt)} 	& \hbox{\tt (save} $\langle{reg_2}\rangle${\tt)} \cr
+  $\langle{\mathit{seq}_1}\rangle$
+& \hbox{\tt (save} $\langle{\mathit{reg}_1}\rangle${\tt)}
+& \hbox{\tt (save} $\langle{\mathit{reg}_2}\rangle${\tt)}
+& \hbox{\tt (save} $\langle{\mathit{reg}_2}\rangle${\tt)} \cr
 
-$\langle{seq_2}\rangle$ 			& $\langle{seq_1}\rangle$	&
-$\langle{seq_1}\rangle$ 			& \hbox{\tt (save} $\langle{reg_1}\rangle${\tt)} \cr
+  $\langle{\mathit{seq}_2}\rangle$
+& $\langle{\mathit{seq}_1}\rangle$
+& $\langle{\mathit{seq}_1}\rangle$
+& \hbox{\tt (save} $\langle{\mathit{reg}_1}\rangle${\tt)} \cr
 
-						& \hbox{\tt (restore} $\langle{reg_1}\rangle${\tt)} &
-\hbox{\tt (restore} $\langle{reg_2}\rangle${\tt)} 	& $\langle{seq_1}\rangle$ \cr
+& \hbox{\tt (restore} $\langle{\mathit{reg}_1}\rangle${\tt)}
+& \hbox{\tt (restore} $\langle{\mathit{reg}_2}\rangle${\tt)}
+& $\langle{\mathit{seq}_1}\rangle$ \cr
 
-						& $\langle{seq_2}\rangle$ &
-$\langle{seq_2}\rangle$				& \hbox{\tt (restore} $\langle{reg_1}\rangle${\tt)} \cr
+& $\langle{\mathit{seq}_2}\rangle$
+& $\langle{\mathit{seq}_2}\rangle$
+& \hbox{\tt (restore} $\langle{\mathit{reg}_1}\rangle${\tt)} \cr
 
-						&  &
-			      			& \hbox{\tt (restore} $\langle{reg_2}\rangle${\tt)} \cr
+&  &
+& \hbox{\tt (restore} $\langle{\mathit{reg}_2}\rangle${\tt)} \cr
 
-						&  &
-			      			& $\langle{seq_2}\rangle$ \cr
+&  &
+& $\langle{\mathit{seq}_2}\rangle$ \cr
 }
 }$$
 @end tex
