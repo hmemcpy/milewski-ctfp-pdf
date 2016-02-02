@@ -7010,7 +7010,7 @@ follows:
 @end lisp
 
 Define the procedures @code{first-denomination},
-@code{except-first-de- nomination}, and @code{no-more?} in terms of primitive
+@code{except-first-denomination}, and @code{no-more?} in terms of primitive
 operations on list structures.  Does the order of the list @code{coin-values}
 affect the answer produced by @code{cc}?  Why or why not?
 @end quotation
@@ -16750,7 +16750,7 @@ table.
 two-dimensional tables, show how to implement a table in which values are
 stored under an arbitrary number of keys and different values may be stored
 under different numbers of keys.  The @code{lookup} and @code{insert!}
-proce- dures should take as input a list of keys used to access the table.
+procedures should take as input a list of keys used to access the table.
 @end quotation
 
 @quotation
@@ -23387,7 +23387,7 @@ expression, by making @code{eval} available for use in programs.  Many Lisp
 dialects provide a primitive @code{eval} procedure that takes as arguments an
 expression and an environment and evaluates the expression relative to the
 environment.@footnote{Warning: This @code{eval} primitive is not identical to
-the @code{eval} procedure we imple- mented in @ref{Section 4.1.1}, because it
+the @code{eval} procedure we implemented in @ref{Section 4.1.1}, because it
 uses @emph{actual} Scheme environments rather than the sample environment
 structures we built in @ref{Section 4.1.3}.  These actual environments cannot
 be manipulated by the user as ordinary lists; they must be accessed via
@@ -31917,14 +31917,14 @@ Any memory cell that is not so accessible may be recycled.
 There are many ways to perform garbage collection.  The method we shall examine
 here is called @newterm{stop-and-copy}.  The basic idea is to divide memory
 into two halves: ``working memory'' and ``free memory.''  When @code{cons}
-constructs pairs, it allocates these in working memory.  When work- ing memory is
-full, we perform garbage collection by locating all the use- ful pairs in working
+constructs pairs, it allocates these in working memory.  When working memory is
+full, we perform garbage collection by locating all the useful pairs in working
 memory and copying these into consecutive locations in free memory.  (The
 useful pairs are located by tracing all the @code{car} and @code{cdr} pointers,
 starting with the machine registers.)  Since we do not copy the garbage, there
 will presumably be additional free memory that we can use to allocate new
 pairs.  In addition, nothing in the working memory is needed, since all the
-useful pairs in it have been copied.  Thus, if we inter- change the roles of
+useful pairs in it have been copied.  Thus, if we interchange the roles of
 working memory and free memory, we can continue processing; new pairs will be
 allocated in the new working memory (which was the old free memory).  When this
 is full, we can copy the useful pairs into the new free memory (which was the
@@ -35655,9 +35655,9 @@ tree-recursive Fibonacci procedure
 
 @noindent
 compared to the effectiveness of using the special-purpose Fibonacci machine of
-@ref{Figure 5.12}.  (For measurement of the inter- preted performance, see
+@ref{Figure 5.12}.  (For measurement of the interpreted performance, see
 @ref{Exercise 5.29}.)  For Fibonacci, the time resource used is not linear in
-@math{n;} hence the ratios of stack oper- ations will not approach a limiting value
+@math{n;} hence the ratios of stack operations will not approach a limiting value
 that is independent of @math{n}.
 @end quotation
 
