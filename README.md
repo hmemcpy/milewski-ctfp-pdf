@@ -54,6 +54,7 @@ Acknowledgements
 * Narumi Katoh
 * tfgit
 * Brian Wignall
+* dine2014
 
 License
 -------
