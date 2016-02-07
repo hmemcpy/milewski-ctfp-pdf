@@ -126,6 +126,13 @@ sub value { # retrieve value from %values
   }
 }
 
+sub caption { # just expose the argument inside @caption{}
+  return sub {
+    my $arg = shift;
+    return transform($arg, "caption");
+  }
+}
+
 sub glue { # glue the tag on embraced arg
   my $tag = shift;
   my $unit = (shift or ''); # mainly to handle @sp
@@ -263,7 +270,7 @@ sub figure { # scrape the arg for figure components
     if ($arg =~ m/(\@image.+)/) {
       $image = transform($1);
     }
-    substr($arg, $+[0]) =~ m/(\@strong.+)/;
+    substr($arg, $+[0]) =~ m/(\@caption.+)/;
     my $caption = transform($1);
     # Handle short captions differently:
     if (length($caption) < 69 or substr($caption, -6) eq '@short') { 
@@ -325,6 +332,7 @@ my %syntax = (
   '@acronym'        => [ $braces,   glue('acronym') ],
   '@anchor'         => [ $braces,   glue('label') ],
   '@b'              => [ $braces,   glue('textbf') ],
+  '@caption'        => [ $braces,   caption() ],
   '@cite'           => [ $braces,   glue('textit') ],
   '@code'           => [ $braces,   glue('code') ],
   '@dfn'            => [ $void,     bounce('% ') ],

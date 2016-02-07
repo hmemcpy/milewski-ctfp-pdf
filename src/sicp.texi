@@ -1460,7 +1460,7 @@ general kind of process known as @newterm{tree accumulation}.
 @sp 0.2
 @center @image{fig/chap1/Fig1.1g,31mm,,,.pdf}
 @sp 0.4
-@strong{Figure 1.1:} Tree representation, showing the value of each subcombination.
+@caption{@strong{Figure 1.1:} Tree representation, showing the value of each subcombination.}
 @sp 0.7
 @end iftex
 @end quotation
@@ -2405,7 +2405,7 @@ problem into subproblems.
 @sp 0.5
 @center @image{fig/chap1/Fig1.2,44mm,,,.pdf}
 @sp 0.5
-@center @strong{Figure 1.2:} Procedural decomposition of the @code{sqrt} program.
+@center @caption{@strong{Figure 1.2:} Procedural decomposition of the @code{sqrt} program.}
 @sp 0.7
 @end iftex
 @end quotation
@@ -2726,7 +2726,7 @@ procedure in action computing 6!, as shown in @ref{Figure 1.3}.
 @sp 0.4
 @center @image{fig/chap1/Fig1.3c,82mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 1.3:} A linear recursive process for computing 6!.
+@center @caption{@strong{Figure 1.3:} A linear recursive process for computing 6!.}
 @sp 1.0
 @end iftex
 @end quotation
@@ -2773,7 +2773,7 @@ exceeds @math{n}.
 @sp 0.4
 @center @image{fig/chap1/Fig1.4c,36mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 1.4:} A linear iterative process for computing 6!.
+@center @caption{@strong{Figure 1.4:} A linear iterative process for computing 6!.}
 @sp 1.0
 @end iftex
 @end quotation
@@ -3067,7 +3067,7 @@ V     /  . \   . 1  .  . 1  .  . 0  .  . 1  .  . 0  ..
 @sp 0.3
 @center @image{fig/chap1/Fig1.5c,90mm,,,.pdf}
 @sp 0.5
-@strong{Figure 1.5:} The tree-recursive process generated in computing @code{(fib 5)}.
+@caption{@strong{Figure 1.5:} The tree-recursive process generated in computing @code{(fib 5)}.}
 @sp 0.0
 @end iftex
 @end quotation
@@ -6057,7 +6057,7 @@ manipulating the data.
 @sp 0.5
 @center @image{fig/chap2/Fig2.1c,91mm,,,.pdf}
 @sp 0.5
-@center @strong{Figure 2.1:} Data-abstraction barriers in the rational-number package.
+@center @caption{@strong{Figure 2.1:} Data-abstraction barriers in the rational-number package.}
 @sp 0.6
 @end iftex
 @end float
@@ -6607,7 +6607,7 @@ numbers 1, 2, 3, and 4.
 @sp 0.3
 @center @image{fig/chap2/Fig2.2c,34mm,,,.pdf}
 @sp 0.6
-@center @strong{Figure 2.2:} Box-and-pointer representation of @code{(cons 1 2)}.
+@center @caption{@strong{Figure 2.2:} Box-and-pointer representation of @code{(cons 1 2)}.}
 @sp 1
 @end iftex
 @end quotation
@@ -6643,7 +6643,7 @@ numbers 1, 2, 3, and 4.
 @sp 0.3
 @center @image{fig/chap2/Fig2.3c,96mm,,,.pdf}
 @sp 0.6
-@center @strong{Figure 2.3:} Two ways to combine 1, 2, 3, and 4 using pairs.
+@center @caption{@strong{Figure 2.3:} Two ways to combine 1, 2, 3, and 4 using pairs.}
 @sp 0.7
 @end iftex
 @end quotation
@@ -6738,7 +6738,7 @@ nested @code{cons} operations:
 @sp 0.2
 @center @image{fig/chap2/Fig2.4c,76mm,,,.pdf}
 @sp 0.5
-@center @strong{Figure 2.4:} The sequence 1, 2, 3, 4 represented as a chain of pairs.
+@center @caption{@strong{Figure 2.4:} The sequence 1, 2, 3, 4 represented as a chain of pairs.}
 @sp 0.8
 @end iftex
 @end quotation
@@ -7287,7 +7287,7 @@ this structure in terms of pairs.
 @sp 0.2
 @center @image{fig/chap2/Fig2.5c,91mm,,,.pdf}
 @sp 0.5
-@center @strong{Figure 2.5:} Structure formed by @code{(cons (list 1 2) (list 3 4))}.
+@center @caption{@strong{Figure 2.5:} Structure formed by @code{(cons (list 1 2) (list 3 4))}.}
 @sp 0.7
 @end iftex
 @end quotation
@@ -7317,7 +7317,7 @@ shows @w{the structure} in @ref{Figure 2.5} viewed as a tree.
 @sp 0.2
 @center @image{fig/chap2/Fig2.6a,22mm,,,.pdf}
 @sp 0.5
-@center @strong{Figure 2.6:} The list structure in @ref{Figure 2.5} viewed as a tree.
+@center @caption{@strong{Figure 2.6:} The list structure in @ref{Figure 2.5} viewed as a tree.}
 @sp 0.0
 @end iftex
 @end quotation
@@ -7727,7 +7727,7 @@ the commonality between the two programs.
 @c 187mm
 @sp 0.4
 @quotation
-@strong{Figure 2.7:} The signal-flow plans for the procedures @code{sum-@/odd-@/squares} (top) and @code{even-fibs} (bottom) reveal the commonality between the two programs.
+@caption{@strong{Figure 2.7:} The signal-flow plans for the procedures @code{sum-@/odd-@/squares} (top) and @code{even-fibs} (bottom) reveal the commonality between the two programs.}
 @end quotation
 @sp 0.7
 @end iftex
@@ -8389,7 +8389,7 @@ produce not only one solution, but all solutions to the puzzle.
 @sp 0.0
 @center @image{fig/chap2/Fig2.8c,48mm,,,.pdf}      @c 73mm
 @sp 0.3
-@center @strong{Figure 2.8:} A solution to the eight-queens puzzle.
+@center @caption{@strong{Figure 2.8:} A solution to the eight-queens puzzle.}
 @sp 0.0
 @end iftex
 @end float
@@ -8491,7 +8491,7 @@ framework here.
 @sp 0.2
 @center @image{fig/chap2/Fig2.9-bigger,111mm,48mm,,.png}
 @sp 0.6
-@center @strong{Figure 2.9:} Designs generated with the picture language.
+@center @caption{@strong{Figure 2.9:} Designs generated with the picture language.}
 @sp 0.6
 @end iftex
 @end float
@@ -8510,7 +8510,7 @@ lines, are not part of the images.
 @sp 0.5
 @center @image{fig/chap2/Fig2.10,50mm,,,.pdf}
 @sp 0.6
-@strong{Figure 2.10:} Images produced by the @code{wave} painter, with respect to four different frames.  The frames, shown with dotted lines, are not part of the images.
+@caption{@strong{Figure 2.10:} Images produced by the @code{wave} painter, with respect to four different frames.  The frames, shown with dotted lines, are not part of the images.}
 @sp 0.0
 @end iftex
 @end quotation
@@ -8595,7 +8595,7 @@ permission of the @acronym{MIT} Museum).
 @sp 0.2
 @center @image{fig/chap2/Fig2.11,48mm,,,.pdf}
 @sp 0.4
-@strong{Figure 2.11:} Images of William Barton Rogers, founder and first president of @acronym{MIT}, painted with respect to the same four frames as in @ref{Figure 2.10} (original image from Wikimedia Commons).
+@caption{@strong{Figure 2.11:} Images of William Barton Rogers, founder and first president of @acronym{MIT}, painted with respect to the same four frames as in @ref{Figure 2.10} (original image from Wikimedia Commons).}
 @sp 0.8
 @end iftex
 @end quotation
@@ -8638,7 +8638,7 @@ from the @code{wave} painter of @ref{Figure 2.10}.
 @sp 0.3
 @center @image{fig/chap2/Fig2.12,50mm,,,.pdf}
 @sp 0.4
-@strong{Figure 2.12:} Creating a complex figure, starting from the @code{wave} painter of @ref{Figure 2.10}.
+@caption{@strong{Figure 2.12:} Creating a complex figure, starting from the @code{wave} painter of @ref{Figure 2.10}.}
 @sp 0.7
 @end iftex
 @end quotation
@@ -8702,7 +8702,7 @@ and define @code{wave4} as an instance of this pattern:
 @sp 0.7
 @center @image{fig/chap2/Fig2.13a,111mm,,,.pdf}
 @sp 0.5
-@center @strong{Figure 2.13:} Recursive plans for @code{right-split} and @code{corner-split}. @short
+@center @caption{@strong{Figure 2.13:} Recursive plans for @code{right-split} and @code{corner-split}. }@short
 @sp 0.7
 @end iftex
 @end float
@@ -8778,7 +8778,7 @@ pattern called @code{square-limit}, whose application to @code{wave} and
 @sp 0.2
 @center @image{fig/chap2/Fig2.14b,91mm,,,.pdf}
 @sp 0.4
-@strong{Figure 2.14:} The recursive operations @code{right-split} and @code{corner-@/split} applied to the painters @code{wave} and @code{rogers}.  Combining four @code{corner-split} figures produces symmetric @code{square-limit} designs as shown in @ref{Figure 2.9}.
+@caption{@strong{Figure 2.14:} The recursive operations @code{right-split} and @code{corner-@/split} applied to the painters @code{wave} and @code{rogers}.  Combining four @code{corner-split} figures produces symmetric @code{square-limit} designs as shown in @ref{Figure 2.9}.}
 @sp 0.0
 @end iftex
 @end quotation
@@ -8900,7 +8900,7 @@ vector    \    __--        edge1
 @sp 0.2
 @center @image{fig/chap2/Fig2.15a,51mm,,,.pdf}
 @sp 0.2
-@strong{Figure 2.15:} A frame is described by three vectors --- an origin and two edges.
+@caption{@strong{Figure 2.15:} A frame is described by three vectors --- an origin and two edges.}
 @sp 0.6
 @end iftex
 @end quotation
@@ -10116,7 +10116,7 @@ elements in the right subtree be larger.
 @center @image{fig/chap2/Fig2.16b,70mm,,,.pdf}
 @sp 0.2
 @quotation
-@strong{Figure 2.16:} Various binary trees that represent the set @math{\{1, 3, 5, 7, 9, 11\}}.
+@caption{@strong{Figure 2.16:} Various binary trees that represent the set @math{\{1, 3, 5, 7, 9, 11\}}.}
 @end quotation
 @sp 0.5
 @end iftex
@@ -10243,7 +10243,7 @@ devoted to this problem.  See @ref{Cormen et al. 1990}.}
 @sp -1.0
 @center @image{fig/chap2/Fig2.17a,40mm,,,.pdf}
 @sp 0.2
-@strong{Figure 2.17:} Unbalanced tree produced by adjoining 1 through 7 in sequence.
+@caption{@strong{Figure 2.17:} Unbalanced tree produced by adjoining 1 through 7 in sequence.}
 @sp 0.0
 @end iftex
 @end quotation
@@ -10515,7 +10515,7 @@ other letters each with relative frequency 1.
 @sp 1.0
 @center @image{fig/chap2/Fig2.18a,81mm,,,.pdf}
 @sp 1.0
-@center @strong{Figure 2.18:} A Huffman encoding tree.
+@center @caption{@strong{Figure 2.18:} A Huffman encoding tree.}
 @sp 1.0
 @end iftex
 @end quotation
@@ -10927,7 +10927,7 @@ representations.
 @sp 0.0
 @center @image{fig/chap2/Fig2.19a,108mm,,,.pdf}
 @sp 0.5
-@center @strong{Figure 2.19:} Data-abstraction barriers in the complex-number system.
+@center @caption{@strong{Figure 2.19:} Data-abstraction barriers in the complex-number system.}
 @sp 0.8
 @end iftex
 @end float
@@ -11018,7 +11018,7 @@ Imaginary-part(z_1 + z_2) = Imaginary-part(z_1) + Imaginary-part(z_2)
 @sp 0.2
 @center @image{fig/chap2/Fig2.20,79mm,,,.pdf}
 @sp 0.4
-@center @strong{Figure 2.20:} Complex numbers as points in the plane.
+@center @caption{@strong{Figure 2.20:} Complex numbers as points in the plane.}
 @sp 0.9
 @end iftex
 @end quotation
@@ -11390,7 +11390,7 @@ interface.
 @sp 0.3
 @center @image{fig/chap2/Fig2.21a,108mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 2.21:} Structure of the generic complex-arithmetic system. @short
+@center @caption{@strong{Figure 2.21:} Structure of the generic complex-arithmetic system. }@short
 @sp 0.8
 @end iftex
 @end float
@@ -11489,7 +11489,7 @@ angle      | angle-polar     | angle-rectangular
 @sp 0.3
 @center @image{fig/chap2/Fig2.22,102mm,,,.pdf}
 @sp 0.5
-@center @strong{Figure 2.22:} Table of operations for the complex-number system. @short
+@center @caption{@strong{Figure 2.22:} Table of operations for the complex-number system. }@short
 @sp 0.8
 @end iftex
 @end float
@@ -11895,7 +11895,7 @@ incorporates all the arithmetic packages we have already constructed.
 @sp 0.2
 @center @image{fig/chap2/Fig2.23a,111mm,,,.pdf}
 @sp 0.5
-@center @strong{Figure 2.23:} Generic arithmetic system.
+@center @caption{@strong{Figure 2.23:} Generic arithmetic system.}
 @sp 0.8
 @end iftex
 @end quotation
@@ -12116,7 +12116,7 @@ package is stripped off (by applying @code{contents}) and the next level of tag
 @sp 0.4
 @center @image{fig/chap2/Fig2.24c,64mm,,,.pdf}
 @sp 0.6
-@center @strong{Figure 2.24:} Representation of @math{3 + 4i} in rectangular form.
+@center @caption{@strong{Figure 2.24:} Representation of @math{3 + 4i} in rectangular form.}
 @sp 0.6
 @end iftex
 @end quotation
@@ -12381,7 +12381,7 @@ integer
 @sp 0.2
 @center @image{fig/chap2/Fig2.25,11mm,,,.pdf}
 @sp 0.6
-@center @strong{Figure 2.25:} A tower of types.
+@center @caption{@strong{Figure 2.25:} A tower of types.}
 @sp 0.0
 @end iftex
 @end quotation
@@ -12455,7 +12455,7 @@ triangle      right          |       \    |
 @sp 0.1
 @center @image{fig/chap2/Fig2.26e,96mm,,,.pdf}
 @sp 0.6
-@center @strong{Figure 2.26:} Relations among types of geometric figures.
+@center @caption{@strong{Figure 2.26:} Relations among types of geometric figures.}
 @sp 0.8
 @end iftex
 @end quotation
@@ -14535,7 +14535,7 @@ frame II is said to @newterm{shadow} the binding of @code{x} to 3 in frame I.
 @sp 0.0
 @center @image{fig/chap3/Fig3.1,48mm,,,.pdf}
 @sp 0.4
-@center @strong{Figure 3.1:} A simple environment structure.
+@center @caption{@strong{Figure 3.1:} A simple environment structure.}
 @sp 0.7
 @end iftex
 @end quotation
@@ -14665,7 +14665,7 @@ env        | square: --+          |
 @sp 0.2
 @center @image{fig/chap3/Fig3.2b,49mm,,,.pdf}
 @sp 0.5
-@strong{Figure 3.2:} Environment structure produced by evaluating @* @code{(define (square x) (* x x))} in the global environment.
+@caption{@strong{Figure 3.2:} Environment structure produced by evaluating @* @code{(define (square x) (* x x))} in the global environment.}
 @sp 0.8
 @end iftex
 @end quotation
@@ -14719,7 +14719,7 @@ env       | square: --+                        |
 @sp 0.3
 @center @image{fig/chap3/Fig3.3b,78mm,,,.pdf}
 @sp 0.5
-@strong{Figure 3.3:} Environment created by evaluating @code{(square 5)} in the global environment.
+@caption{@strong{Figure 3.3:} Environment created by evaluating @code{(square 5)} in the global environment.}
 @sp 0.7
 @end iftex
 @end quotation
@@ -14822,7 +14822,7 @@ env       | f: --+                                     |
 @sp 0.3
 @center @image{fig/chap3/Fig3.4a,106mm,,,.pdf}
 @sp 0.5
-@center @strong{Figure 3.4:} Procedure objects in the global frame.
+@center @caption{@strong{Figure 3.4:} Procedure objects in the global frame.}
 @sp 0.7
 @end iftex
 @c @end quotation
@@ -14888,7 +14888,7 @@ env       +-----------------------------------------------------+
 @sp 0.3
 @center @image{fig/chap3/Fig3.5a,100mm,,,.pdf}
 @sp 0.5
-@strong{Figure 3.5:} Environments created by evaluating @code{(f 5)} using the procedures in @ref{Figure 3.4}.
+@caption{@strong{Figure 3.5:} Environments created by evaluating @code{(f 5)} using the procedures in @ref{Figure 3.4}.}
 @sp 0.9
 @end iftex
 @c @end quotation
@@ -15010,7 +15010,7 @@ env       +------------------|--------+
 @sp 0.2
 @center @image{fig/chap3/Fig3.6b,91mm,,,.pdf}
 @sp 0.5
-@center @strong{Figure 3.6:} Result of defining @code{make-withdraw} in the global environment.
+@center @caption{@strong{Figure 3.6:} Result of defining @code{make-withdraw} in the global environment.}
 @sp 0.8
 @end iftex
 @end float
@@ -15048,7 +15048,7 @@ global -->|                                       |       |
 @sp 0.4
 @center @image{fig/chap3/Fig3.7a,100mm,,,.pdf}
 @sp 0.6
-@center @strong{Figure 3.7:} Result of evaluating @code{(define W1 (make-withdraw 100))}. @short
+@center @caption{@strong{Figure 3.7:} Result of evaluating @code{(define W1 (make-withdraw 100))}. }@short
 @sp 0.9
 @end iftex
 @c @end quotation
@@ -15107,7 +15107,7 @@ env       | W1: --+                                           |
 @sp 0.1
 @center @image{fig/chap3/Fig3.8c,99mm,,,.pdf}
 @sp 0.2
-@center @strong{Figure 3.8:} Environments created by applying the procedure object @code{W1}. @short
+@center @caption{@strong{Figure 3.8:} Environments created by applying the procedure object @code{W1}. }@short
 @sp 0.7
 @end iftex
 @c @end quotation
@@ -15174,7 +15174,7 @@ env        | W1: --+                            |
 @sp 1.0
 @center @image{fig/chap3/Fig3.9a,96mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 3.9:} Environments after the call to @code{W1}.
+@center @caption{@strong{Figure 3.9:} Environments after the call to @code{W1}.}
 @sp 1.0
 @end iftex
 @end quotation
@@ -15232,7 +15232,7 @@ env      | W1: --+                        |                |
 @sp 1.0
 @center @image{fig/chap3/Fig3.10a,108mm,,,.pdf}
 @sp 0.7
-@strong{Figure 3.10:} Using @code{(define W2 (make-withdraw 100))} to create a second object.
+@caption{@strong{Figure 3.10:} Using @code{(define W2 (make-withdraw 100))} to create a second object.}
 @sp 1.0
 @end iftex
 @c @end quotation
@@ -15379,7 +15379,7 @@ body: (define good-enough? ...)      | sqrt-iter: ... |      |
 @sp 0.5
 @center @image{fig/chap3/Fig3.11a,107mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 3.11:} @code{sqrt} procedure with internal definitions.
+@center @caption{@strong{Figure 3.11:} @code{sqrt} procedure with internal definitions.}
 @sp 0.7
 @end iftex
 @c @end quotation
@@ -15581,7 +15581,7 @@ x -->| * | *-+---->| * | *-+---->| * | / |
 @sp 0.7
 @center @image{fig/chap3/Fig3.12b,72mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 3.12:} Lists @code{x}: @code{((a b) c d)} and @code{y}: @code{(e f)}.
+@center @caption{@strong{Figure 3.12:} Lists @code{x}: @code{((a b) c d)} and @code{y}: @code{(e f)}.}
 @sp 0.7
 @end iftex
 @end quotation
@@ -15623,7 +15623,7 @@ x -->| * | *-+---->| * | *-+---->| * | / |
 @sp 0.0
 @center @image{fig/chap3/Fig3.13b,72mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 3.13:} Effect of @code{(set-car! x y)} on the lists in @ref{Figure 3.12}. @short
+@center @caption{@strong{Figure 3.13:} Effect of @code{(set-car! x y)} on the lists in @ref{Figure 3.12}. }@short
 @sp 0.7
 @end iftex
 @end quotation
@@ -15663,7 +15663,7 @@ z -->| * | *-+-+   +---+         +---+
 @sp 0.7
 @center @image{fig/chap3/Fig3.14b,72mm,,,.pdf}
 @sp 0.7
-@strong{Figure 3.14:} Effect of @code{(define z (cons y (cdr x)))} on the lists in @ref{Figure 3.12}.
+@caption{@strong{Figure 3.14:} Effect of @code{(define z (cons y (cdr x)))} on the lists in @ref{Figure 3.12}.}
 @sp 0.0
 @end iftex
 @end quotation
@@ -15705,7 +15705,7 @@ x -->| * | * |     | * | *-+---->| * | / |
 @sp 0.0
 @center @image{fig/chap3/Fig3.15b,72mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 3.15:} Effect of @code{(set-cdr! x y)} on the lists in @ref{Figure 3.12}. @short
+@center @caption{@strong{Figure 3.15:} Effect of @code{(set-cdr! x y)} on the lists in @ref{Figure 3.12}. }@short
 @sp 0.7
 @end iftex
 @end quotation
@@ -15896,7 +15896,7 @@ z1 -->| * | * |
 @sp 0.5
 @center @image{fig/chap3/Fig3.16b,46mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 3.16:} The list @code{z1} formed by @code{(cons x x)}.
+@center @caption{@strong{Figure 3.16:} The list @code{z1} formed by @code{(cons x x)}.}
 @sp 0.7
 @end iftex
 @end quotation
@@ -15928,7 +15928,7 @@ z2 -->| * | *-+---->| * | *-+---->| * | / |
 @sp 0.1
 @center @image{fig/chap3/Fig3.17b,71mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 3.17:} The list @code{z2} formed by @code{(cons (list 'a 'b) (list 'a 'b))}.
+@center @caption{@strong{Figure 3.17:} The list @code{z2} formed by @code{(cons (list 'a 'b) (list 'a 'b))}.}
 @sp 1.0
 @end iftex
 @end float
@@ -16148,7 +16148,7 @@ Operation                Resulting Queue
 @sp 0.2
 @center @image{fig/chap3/Fig3.18a,70mm,,,.pdf}
 @sp 0.5
-@center @strong{Figure 3.18:} Queue operations.
+@center @caption{@strong{Figure 3.18:} Queue operations.}
 @sp 0.9
 @end iftex
 @end quotation
@@ -16243,7 +16243,7 @@ representation.
 @sp 0.1
 @center @image{fig/chap3/Fig3.19b,69mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 3.19:} Implementation of a queue as a list with front and rear pointers.
+@center @caption{@strong{Figure 3.19:} Implementation of a queue as a list with front and rear pointers.}
 @sp 0.9
 @end iftex
 @end float
@@ -16314,7 +16314,7 @@ pair indicated by the front pointer:
 @sp 0.3
 @center @image{fig/chap3/Fig3.20b,88mm,,,.pdf}
 @sp 0.7
-@strong{Figure 3.20:} Result of using @code{(insert-queue! q 'd)} on the queue of @ref{Figure 3.19}.
+@caption{@strong{Figure 3.20:} Result of using @code{(insert-queue! q 'd)} on the queue of @ref{Figure 3.19}.}
 @sp 0.8
 @end iftex
 @end quotation
@@ -16367,7 +16367,7 @@ also set the rear pointer to the new pair.
 @sp 0.3
 @center @image{fig/chap3/Fig3.21b,88mm,,,.pdf}
 @sp 0.6
-@strong{Figure 3.21:} Result of using @code{(delete-queue!  q)} on the queue of @ref{Figure 3.20}.
+@caption{@strong{Figure 3.21:} Result of using @code{(delete-queue!  q)} on the queue of @ref{Figure 3.20}.}
 @sp 0.8
 @end iftex
 @end quotation
@@ -16489,7 +16489,7 @@ see how to build tables as mutable list structures.
 @sp 0.3
 @center @image{fig/chap3/Fig3.22c,81mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 3.22:} A table represented as a headed list.
+@center @caption{@strong{Figure 3.22:} A table represented as a headed list.}
 @sp 0.9
 @end iftex
 @end quotation
@@ -16646,7 +16646,7 @@ table
 @sp 0.3
 @center @image{fig/chap3/Fig3.23a,103mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 3.23:} A two-dimensional table.
+@center @caption{@strong{Figure 3.23:} A two-dimensional table.}
 @sp 0.9
 @end iftex
 @c @end quotation
@@ -16876,7 +16876,7 @@ Inverter    And-gate     Or-gate
 @sp 0.4
 @center @image{fig/chap3/Fig3.24b,74mm,,,.pdf}
 @sp 0.6
-@center @strong{Figure 3.24:} Primitive functions in the digital logic simulator. @short
+@center @caption{@strong{Figure 3.24:} Primitive functions in the digital logic simulator. }@short
 @sp 0.7
 @end iftex
 @end quotation
@@ -16918,7 +16918,7 @@ B -----*------|___/                        |
 @sp 0.7
 @center @image{fig/chap3/Fig3.25c,72mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 3.25:} A half-adder circuit.
+@center @caption{@strong{Figure 3.25:} A half-adder circuit.}
 @sp 1.2
 @end iftex
 @end quotation
@@ -17016,7 +17016,7 @@ C -----+       +---------------/___/   |
 @sp 0.1
 @center @image{fig/chap3/Fig3.26a,74mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 3.26:} A full-adder circuit.
+@center @caption{@strong{Figure 3.26:} A full-adder circuit.}
 @sp 1.2
 @end iftex
 @end quotation
@@ -17164,7 +17164,7 @@ C ------+   |     +-----+   |     +-----+   |     :  ------+   |
 @sp 0.1
 @center @image{fig/chap3/Fig3.27a,96mm,,,.pdf}
 @sp 0.6
-@center @strong{Figure 3.27:} A ripple-carry adder for @math{n}-bit numbers.
+@center @caption{@strong{Figure 3.27:} A ripple-carry adder for @math{n}-bit numbers.}
 @sp 0.3
 @end iftex
 @end quotation
@@ -17645,7 +17645,7 @@ C -----+ m1      |  u  |      m1 +-------+ a1      |
 @sp 0.1
 @center @image{fig/chap3/Fig3.28,87mm,,,.pdf}
 @sp 0.4
-@center @strong{Figure 3.28:} The relation @math{9C = 5(F - 32)} expressed as a constraint network.
+@center @caption{@strong{Figure 3.28:} The relation @math{9C = 5(F - 32)} expressed as a constraint network.}
 @sp 0.7
 @end iftex
 @end float
@@ -18357,7 +18357,7 @@ time
 @center @image{fig/chap3/Fig3.29b,109mm,,,.pdf}
 @sp 0.8
 @noindent
-@strong{Figure 3.29:} Timing diagram showing how interleaving the order of events in two banking withdrawals can lead to an incorrect final balance.
+@caption{@strong{Figure 3.29:} Timing diagram showing how interleaving the order of events in two banking withdrawals can lead to an incorrect final balance.}
 @sp 1.2
 @end iftex
 @end float
@@ -18461,7 +18461,7 @@ time
 @sp 0.3
 @center @image{fig/chap3/Fig3.30b,94mm,,,.pdf}
 @sp 0.7
-@strong{Figure 3.30:} Concurrent deposits and withdrawals from a joint @w{account} in Bank1 and a private account in Bank2.
+@caption{@strong{Figure 3.30:} Concurrent deposits and withdrawals from a joint @w{account} in Bank1 and a private account in Bank2.}
 @sp 1.0
 @end iftex
 @end quotation
@@ -19884,7 +19884,7 @@ infinite, because the sieve contains a sieve within it.
 @sp 0.1
 @center @image{fig/chap3/Fig3.31,111mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 3.31:} The prime sieve viewed as a signal-processing system.
+@center @caption{@strong{Figure 3.31:} The prime sieve viewed as a signal-processing system.}
 @sp 0.8
 @end iftex
 @c @end quotation
@@ -20947,7 +20947,7 @@ input  |           |      |\__    +-->|   \_  integral
 @sp 0.2
 @center @image{fig/chap3/Fig3.32,102mm,,,.pdf}
 @sp 0.5
-@strong{Figure 3.32:} The @code{integral} procedure viewed as a signal-processing system.
+@caption{@strong{Figure 3.32:} The @code{integral} procedure viewed as a signal-processing system.}
 @sp 0.8
 @end iftex
 @c @end quotation
@@ -20996,7 +20996,7 @@ accompanying signal-flow diagram.
 @sp 0.1
 @center @image{fig/chap3/Fig3.33,94mm,,,.pdf}
 @sp 0.6
-@center @strong{Figure 3.33:} An RC circuit and the associated signal-flow diagram. @short
+@center @caption{@strong{Figure 3.33:} An RC circuit and the associated signal-flow diagram. }@short
 @sp 0.9
 @end iftex
 @end float
@@ -21149,7 +21149,7 @@ would outlaw loops.
 @sp 0.2
 @center @image{fig/chap3/Fig3.34,67mm,,,.pdf}
 @sp 0.5
-@strong{Figure 3.34:} An ``analog computer circuit'' that solves the equation @math{dy / dt = f(y)}.
+@caption{@strong{Figure 3.34:} An ``analog computer circuit'' that solves the equation @math{dy / dt = f(y)}.}
 @sp 0.9
 @end iftex
 @end quotation
@@ -21289,7 +21289,7 @@ expects the @code{integrand} as a delayed argument and hence can be used in the
 @sp 0.0
 @center @image{fig/chap3/Fig3.35a,91mm,,,.pdf}
 @sp 0.3
-@strong{Figure 3.35:} Signal-flow diagram for the solution to a second-order linear differential equation.
+@caption{@strong{Figure 3.35:} Signal-flow diagram for the solution to a second-order linear differential equation.}
 @sp 0.8
 @end iftex
 @end quotation
@@ -21352,7 +21352,7 @@ v_C -+- C                     _)  v_L
 @sp 0.0
 @center @image{fig/chap3/Fig3.36,60mm,,,.pdf}
 @sp 0.5
-@center @strong{Figure 3.36:} A series RLC circuit.
+@center @caption{@strong{Figure 3.36:} A series RLC circuit.}
 @sp 0.9
 @end iftex
 @end quotation
@@ -21458,7 +21458,7 @@ shown in @ref{Figure 3.37}.
 @sp 0.0
 @center @image{fig/chap3/Fig3.37a,68mm,,,.pdf}
 @sp 0.8
-@strong{Figure 3.37:} A signal-flow diagram for the solution to a series RLC circuit.
+@caption{@strong{Figure 3.37:} A signal-flow diagram for the solution to a series RLC circuit.}
 @sp 0.8
 @end iftex
 @end quotation
@@ -21756,7 +21756,7 @@ Paul's requests    |  merge  |---->| bank    |---->
 @sp 0.2
 @center @image{fig/chap3/Fig3.38,88mm,,,.pdf}
 @sp 0.6
-@strong{Figure 3.38:} A joint bank account, modeled by merging two streams of transaction requests.
+@caption{@strong{Figure 3.38:} A joint bank account, modeled by merging two streams of transaction requests.}
 @sp 1.2
 @end iftex
 @end quotation
@@ -22085,7 +22085,7 @@ Arguments   |  8     Eval          `888888888888888888) | Environment
 @sp 0.3
 @center @image{fig/chap4/Fig4.1,100mm,,,.pdf}
 @sp 0.5
-@strong{Figure 4.1:} The @code{eval}-@code{apply} cycle exposes the essence of a computer language.
+@caption{@strong{Figure 4.1:} The @code{eval}-@code{apply} cycle exposes the essence of a computer language.}
 @sp 0.7
 @end iftex
 @c @end quotation
@@ -23296,7 +23296,7 @@ the evaluator will be able to compute factorials.
 @sp 0.1
 @center @image{fig/chap4/Fig4.2,84mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 4.2:} The factorial program, viewed as an abstract machine.
+@center @caption{@strong{Figure 4.2:} The factorial program, viewed as an abstract machine.}
 @sp 0.9
 @end iftex
 @end quotation
@@ -23367,7 +23367,7 @@ explores some of these ideas (@ref{Hofstadter 1979}).}
 @sp 0.3
 @center @image{fig/chap4/Fig4.3,69mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 4.3:} The evaluator emulating a factorial machine.
+@center @caption{@strong{Figure 4.3:} The evaluator emulating a factorial machine.}
 @sp 0.9
 @end iftex
 @end quotation
@@ -27206,7 +27206,7 @@ is finally printed.
 @sp 0.1
 @center @image{fig/chap4/Fig4.4,102mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 4.4:} A query processes a stream of frames.
+@center @caption{@strong{Figure 4.4:} A query processes a stream of frames.}
 @sp 0.8
 @end iftex
 @c @end quotation
@@ -27258,7 +27258,7 @@ by operating on the stream of frames in series.
 @sp 0.0
 @center @image{fig/chap4/Fig4.5,93mm,,,.pdf}
 @sp 0.4
-@strong{Figure 4.5:} The @code{and} combination of two queries is produced by operating on the stream of frames in series.
+@caption{@strong{Figure 4.5:} The @code{and} combination of two queries is produced by operating on the stream of frames in series.}
 @sp 0.8
 @end iftex
 @end quotation
@@ -27311,7 +27311,7 @@ frames     | |    ^          +-------+ |  frames
 @sp 0.5
 @center @image{fig/chap4/Fig4.6,107mm,,,.pdf}
 @sp 0.4
-@strong{Figure 4.6:} The @code{or} combination of two queries is produced by operating on the stream of frames in parallel and merging the results.
+@caption{@strong{Figure 4.6:} The @code{or} combination of two queries is produced by operating on the stream of frames in parallel and merging the results.}
 @sp 0.4
 @end iftex
 @end float
@@ -29304,7 +29304,7 @@ represented in a data-path diagram by a triangle containing the constant).
 @sp 0.1
 @center @image{fig/chap5/Fig5.1a,58mm,,,.pdf}
 @sp 0.6
-@center @strong{Figure 5.1:} Data paths for a @acronym{GCD} machine.
+@center @caption{@strong{Figure 5.1:} Data paths for a @acronym{GCD} machine.}
 @sp 0.8
 @end iftex
 @end quotation
@@ -29361,7 +29361,7 @@ electrical components.
 @sp 0.5
 @center @image{fig/chap5/Fig5.2,41mm,,,.pdf}
 @sp 0.6
-@center @strong{Figure 5.2:} Controller for a @acronym{GCD} machine.
+@center @caption{@strong{Figure 5.2:} Controller for a @acronym{GCD} machine.}
 @sp 0.7
 @end iftex
 @end quotation
@@ -29634,7 +29634,7 @@ Lisp system is dedicated to making reading and printing work.}
 @sp 0.1
 @center @image{fig/chap5/Fig5.4b,107mm,,,.pdf}
 @sp 0.6
-@center @strong{Figure 5.4:} A @acronym{GCD} machine that reads inputs and prints results. @short
+@center @caption{@strong{Figure 5.4:} A @acronym{GCD} machine that reads inputs and prints results. }@short
 @sp 0.7
 @end iftex
 @c @end quotation
@@ -29754,7 +29754,7 @@ this way:
 @sp 1.0
 @center @image{fig/chap5/Fig5.5a,67mm,,,.pdf}
 @sp 1.0
-@strong{Figure 5.5:} Data paths and controller for the elaborated @acronym{GCD} machine.
+@caption{@strong{Figure 5.5:} Data paths and controller for the elaborated @acronym{GCD} machine.}
 @sp 1.0
 @end iftex
 @end quotation
@@ -29885,7 +29885,7 @@ after-gcd-2
 @center @image{fig/chap5/Fig5.7b,105mm,,,.pdf}
 @sp 0.7
 @noindent
-@strong{Figure 5.7:} Portions of the data paths and controller sequence for a @w{machine} with two @acronym{GCD} computations.
+@caption{@strong{Figure 5.7:} Portions of the data paths and controller sequence for a @w{machine} with two @acronym{GCD} computations.}
 @sp 0.3
 @end iftex
 @c @end quotation
@@ -30237,7 +30237,7 @@ subcomputation, is needed.
 @sp 0.1
 @center @image{fig/chap5/Fig5.11a,106mm,,,.pdf}
 @sp 0.6
-@center @strong{Figure 5.11:} A recursive factorial machine.
+@center @caption{@strong{Figure 5.11:} A recursive factorial machine.}
 @sp 0.0
 @end iftex
 @c @end quotation
@@ -31673,7 +31673,7 @@ the-cdrs |    | p2 | p4 |    | e0 | p7 |    | e0 |    | ...
 @sp 0.2
 @center @image{fig/chap5/Fig5.14a,91mm,,,.pdf}
 @sp 0.6
-@strong{Figure 5.14:} Box-and-pointer and memory-vector representations of the list @code{((1 2) 3 4)}.
+@caption{@strong{Figure 5.14:} Box-and-pointer and memory-vector representations of the list @code{((1 2) 3 4)}.}
 @sp 0.9
 @end iftex
 @end quotation
@@ -32034,7 +32034,7 @@ the-cdrs |                  |                 | memory
 @sp 0.4
 @center @image{fig/chap5/Fig5.15a,91mm,,,.pdf}
 @sp 0.6
-@center @strong{Figure 5.15:} Reconfiguration of memory by the garbage-collection process.
+@center @caption{@strong{Figure 5.15:} Reconfiguration of memory by the garbage-collection process.}
 @sp 0.0
 @end iftex
 @end float
@@ -32252,7 +32252,7 @@ on the chip and the method by which it was designed.}
 @sp 0.3
 @center @image{fig/chap5/chip,91mm,,,.jpg}
 @sp 0.6
-@strong{Figure 5.16:} A silicon-chip implementation of an evaluator for Scheme.
+@caption{@strong{Figure 5.16:} A silicon-chip implementation of an evaluator for Scheme.}
 @sp 0.6
 @end iftex
 @end quotation
