@@ -1845,10 +1845,12 @@ actions in the different cases according to the rule
 
 @end ifinfo
 @tex
+$$
  |x| = \left\{ \begin{array}{r@{\quad \mathrm{if} \quad}l}
         x  &  x > 0, \\
 	0  &  x = 0, \\
   \!\! -x  &  x < 0. \end{array} \right.
+$$
 @end tex
 This construct is called a @newterm{case analysis}, and there is a special form
 in Lisp for notating such a case analysis.  It is called @code{cond} (which
@@ -3094,10 +3096,12 @@ b <- a
 
 @end ifinfo
 @tex
+$$
 \begin{array}{l@{\;\;\gets\;\;}l}
   a & a + b, \\
   b & a.
 \end{array}
+$$
 @end tex
 @noindent
 It is not hard to show that, after applying this transformation @math{n} times,
@@ -3247,11 +3251,13 @@ linearly with the input.  See @ref{Exercise 3.27}.}
 @strong{@anchor{Exercise 1.11}Exercise 1.11:} A function @math{f} is defined by
 the rule that
 @tex
+$$
 f(n) =
 \begin{cases}
 \;\; n \quad \text{if \; \( n < 3 \),} \\
 \;\; f(n-1) + 2\kern-0.08em f(n-2) + 3\kern-0.08em f(n-3) \quad \text{if \; \( n \ge 3 \).}
 \end{cases}
+$$
 @end tex
 Write a procedure that computes @math{f} by means of a recursive process.  Write a procedure that
 computes @math{f} by means of an iterative process.
@@ -3426,12 +3432,12 @@ b^0 = 1
 
 @end ifinfo
 @tex
-% $$\eqalign{b^n &= b\cdot b^{n-1}, \cr
-% b^0 &= 1, \cr} $$
+$$
 \begin{array}{l@{{}={}}l}
   b^n & b\cdot b^{n-1}, \\
   b^0 & 1,
 \end{array}
+$$
 @end tex
 which translates readily into the procedure
 
@@ -3484,14 +3490,13 @@ b^8 = b^4 * b^4
 
 @end ifinfo
 @tex
-% $$\eqalign{	b^2 &= b\cdot b, \cr
-%		b^4 &= b^2\cdot b^2, \cr
-%		b^8 &= b^4\cdot b^4. \cr} $$
+$$
 \begin{array}{l@{{}={}}l}
   b^2 & b\cdot b, \\
   b^4 & b^2\cdot b^2, \\
   b^8 & b^4\cdot b^4.
 \end{array}
+$$
 @end tex
 This method works fine for exponents that are powers of 2.  We can also take
 advantage of successive squaring in computing exponentials in general if we use
@@ -3505,12 +3510,12 @@ b^n = b * b^(n - 1)  if n is odd
 
 @end ifinfo
 @tex
-% $$\eqalign{b^n &= (b^{n / 2})^2 \qquad \;\, {\rm if\;} n {\rm\; is\; even}, \cr
-% b^n &= b\cdot b^{n-1} \qquad {\rm if\;} n {\rm\; is\; odd}. \cr} $$
+$$
 \begin{array}{l@{{}={}}lr@{\ n\ }l}
   b^n & (b^{n / 2})^2  \;\; & \mbox{if\,} & \mbox{\,is\, even}, \\
   b^n & b\cdot b^{n-1} \;\; & \mbox{if\,} & \mbox{\,is\, odd}.
 \end{array}
+$$
 @end tex
 We can express this method as a procedure:
 
@@ -4641,14 +4646,13 @@ f(x,y) = xa^2 + yb + ab
 
 @end ifinfo
 @tex
-% $$\eqalign{	a 	&= 1 + xy, \cr
-% 		b 	&= 1 - y,  \cr
-% 		f(x,y) 	&= xa^2 + yb + ab. \cr}$$
+$$
 \begin{array}{r@{{}={}}l}
   a 	  &  1 + xy, \\
   b 	  &  1 - y,  \\
   f(x,y)  &  xa^2 + yb + ab.
 \end{array}
+$$
 @end tex
 In writing a procedure to compute @math{f}, we would like to include as local
 variables not only @math{x} and @math{y} but also the names of intermediate
@@ -8065,10 +8069,7 @@ matrix).  For example, the matrix
 
 @end ifinfo
 @tex
-% $$
-% \left(\matrix{	1 & 2 & 3 & 4 \cr
-% 		4 & 5 & 6 & 6 \cr
-% 		6 & 7 & 8 & 9 \cr }\right) $$
+$$
 \left(
 \begin{array}{cccc}
   1 & 2 & 3 & 4 \\
@@ -8076,6 +8077,7 @@ matrix).  For example, the matrix
   6 & 7 & 8 & 9
 \end{array}
 \right)
+$$
 @end tex
 @noindent
 is represented as the sequence @code{((1 2 3 4) (4 5 6 6) (6 7 8 9))}.  With
@@ -8102,6 +8104,7 @@ any book on matrix algebra) are the following:
 
 @end ifinfo
 @tex
+$$
 \begin{array}{rl}
 	\hbox{\tt (dot-product v w)} 		& {\rm returns\;the\;sum\;} \Sigma_i v_i w_i; \\
 	\hbox{\tt (matrix-*-vector m v)} 	& {\rm returns\;the\;vector\;} \hbox{\bf t},  \\
@@ -8111,6 +8114,7 @@ any book on matrix algebra) are the following:
 	\hbox{\tt (transpose m)} 		& {\rm returns\;the\;matrix\;} \hbox{\bf n},  \\
 		& {\rm where\;} n_{i\!j} = m_{\kern-0.1em ji}.
 \end{array}
+$$
 @end tex
 We can define the dot product as@footnote{This definition uses the extended
 version of @code{map} described in @ref{Footnote 12}.}
@@ -8974,17 +8978,13 @@ subtraction, and multiplying a vector by a scalar:
 @end example
 @end ifinfo
 @tex
-% $$
-% \eqalign{
-% 	(x_1, y_1) + (x_2, y_2) 	&= (x_1 + x_2, y_1 + y_2), \cr
-% 	(x_1, y_1) - (x_2, y_2) 	&= (x_1 - x_2, y_1 - y_2), \cr
-% 	s \cdot (x, y) 			&= (sx, sy). \cr }
-% $$
+$$
 \begin{array}{r@{{}={}}l}
 	(x_1, y_1) + (x_2, y_2) 	& (x_1 + x_2, y_1 + y_2), \\
 	(x_1, y_1) - (x_2, y_2) 	& (x_1 - x_2, y_1 - y_2), \\
 	s \cdot (x, y) 			& (sx, sy).
 \end{array}
+$$
 @end tex
 @end quotation
 
@@ -9554,17 +9554,25 @@ d(uv)     / dv \     / du \
 
 @end ifinfo
 @tex
+$$
 {{\it dc} \over {\it dx}} 		= 0,
 	\quad {\rm for\ } c\ {\rm a\ constant\ or\ a\ variable\ different\ from\ } x,
+$$
 @end tex
 @tex
+$$
 {{\it dx} \over {\it dx}} 		= 1,
+$$
 @end tex
 @tex
+$$
 {{\it d\,(u + v\,)} \over {\it dx}} 	= {{\it du} \over {\it dx}} + {{\it dv} \over {\it dx}},
+$$
 @end tex
 @tex
+$$
 {{\it d\,(uv\,)} \over {\it dx}} 	= u {{\it dv} \over {\it dx}} + v {{\it du} \over {\it dx}}.
+$$
 @end tex
 @noindent
 Observe that the latter two rules are recursive in nature.  That is, to obtain
@@ -10979,18 +10987,14 @@ Imaginary-part(z_1 + z_2) = Imaginary-part(z_1) + Imaginary-part(z_2)
 
 @end ifinfo
 @tex
-% $$ \eqalign{
-% \hbox{Real-part} (z_1 + z_2)\; 		&=
-% 	\hbox{ Real-part} (z_1)\; + \hbox{ Real-part} (z_2), \cr
-% \hbox{Imaginary-part} (z_1 + z_2)\; 	&=
-% 	\hbox{ Imaginary-part} (z_1)\; + \hbox{ Imaginary-part} (z_2). \cr
-% } $$
+$$
 \begin{array}{r@{{}={}}l}
   \hbox{Real-part} (z_1 + z_2)\; 	&
 	\hbox{ Real-part} (z_1)\; + \hbox{ Real-part} (z_2), \\
   \hbox{Imaginary-part} (z_1 + z_2)\; 	&
 	\hbox{ Imaginary-part} (z_1)\; + \hbox{ Imaginary-part} (z_2).
 \end{array}
+$$
 @end tex
 
 @float
@@ -11039,18 +11043,14 @@ Angle(z_1 * z_2) = Angle(z_1) + Angle(z_2)
 
 @end ifinfo
 @tex
-% $$ \eqalign{
-% 	\hbox{Magnitude} (z_1 \cdot z_2)\; 	&=
-% 		\hbox{ Magnitude} (z_1)\; \cdot \hbox{ Magnitude} (z_2), \cr
-% 	\hbox{Angle} (z_1 \cdot z_2)\; 		&=
-% 		\hbox{ Angle} (z_1)\; + \hbox{ Angle} (z_2). \cr
-% } $$
+$$
 \begin{array}{r@{{}={}}l}
 	\hbox{Magnitude} (z_1 \cdot z_2)\; 	&
 		\hbox{ Magnitude} (z_1)\; \cdot \hbox{ Magnitude} (z_2), \\
 	\hbox{Angle} (z_1 \cdot z_2)\; 		&
 		\hbox{ Angle} (z_1)\; + \hbox{ Angle} (z_2).
 \end{array}
+$$
 @end tex
 
 @noindent
@@ -11138,14 +11138,12 @@ y = r sin A     A = arctan(y,x)
 
 @end ifinfo
 @tex
-% $$ \eqalign{
-% 	x = r \cos A, \qquad 	& r = \sqrt{x^2 + y^2}, \cr
-% 	y = r \sin A, \qquad 	& A = \arctan(y, x), \cr
-% } $$
+$$
 \begin{array}{r@{{}={}}lr@{{}={}}l}
 	x & r \cos A, \qquad 	& r & \sqrt{x^2 + y^2}, \\
 	y & r \sin A, \qquad 	& A & \arctan(y, x),
 \end{array}
+$$
 @end tex
 @noindent
 which relate the real and imaginary parts @math{(x, y)} to the magnitude and
@@ -13273,16 +13271,13 @@ P_3 : 13x + 5
 
 @end ifinfo
 @tex
-% $$ \eqalign{
-% 	P_1 	&: \quad x^2 - 2x + 1, \cr
-% 	P_2 	&: \quad 11x^2 + 7, \cr
-% 	P_3 	&: \quad 13x + 5. \cr
-% } $$
+$$
 \begin{array}{l@{{}:}l}
 	P_1 	& \quad x^2 - 2x + 1, \\
 	P_2 	& \quad 11x^2 + 7, \\
 	P_3 	& \quad 13x + 5.
 \end{array}
+$$
 @end tex
 Now define @math{Q_1} to be the product of @math{P_1} and @math{P_2} and @math{Q_2} to be
 the product of @math{P_1} and @math{P_3}, and use @code{greatest-common-divisor}
@@ -20165,13 +20160,19 @@ sin x = x - ----- + ------------- - ...
 
 @end ifinfo
 @tex
+$$
 e^x = 1 + x + \displaystyle\frac{x^2}{2} + \displaystyle\frac{x^3}{3 \cdot 2} + \displaystyle\frac{x^4}{4 \cdot 3 \cdot 2} + \dots,
+$$
 @end tex
 @tex
+$$
 \cos x = 1 - \displaystyle\frac{x^2}{2} + \displaystyle\frac{x^4}{4 \cdot 3 \cdot 2} - \dots,
+$$
 @end tex
 @tex
+$$
 \sin x = x - \displaystyle\frac{x^3}{3 \cdot 2} + \displaystyle\frac{x^5}{5 \cdot 4 \cdot 3 \cdot 2} - \dots
+$$
 @end tex
 @noindent
 represented as infinite streams.  We will represent the series @math{a_0 +
@@ -20256,18 +20257,14 @@ constant term.  Then we can solve for @math{X} as follows:
 
 @end ifinfo
 @tex
-% $$ \eqalign{
-% 	        S \cdot X 	&= 1, \cr
-% 	(1 + S_R) \cdot X 	&= 1, \cr
-% 	  X + S_R \cdot X 	&= 1, \cr
-% 	            	X 	&= 1 - S_R \cdot X. \cr
-% } $$
+$$
 \begin{array}{r@{{}={}}l}
 	        S \cdot X 	& 1, \\
 	(1 + S_R) \cdot X 	& 1, \\
 	  X + S_R \cdot X 	& 1, \\
 	            	X 	& 1 - S_R \cdot X.
 \end{array}
+$$
 @end tex
 In other words, @math{X} is the power series whose constant term is 1 and whose
 higher-order terms are given by the negative of @math{S_R} times @math{X}.  Use
