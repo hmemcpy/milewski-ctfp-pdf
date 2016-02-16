@@ -9,7 +9,7 @@ sicp.pdf: sicp.tex exercises.tex figures.tex coverpage.pdf ${FIG}
 	latexmk -pdflatex="xelatex %O %S" -pdf -dvi- -ps- $<; \
 	mv sicp.pdf ..
 
-sicp.tex: sicp.texi preamble.tex postamble.tex 
+sicp.tex: sicp.texi preamble.tex postamble.tex texi-to-latex.pl
 	./texi-to-latex.pl $<
 
 exercises.tex figures.tex: ex-fig-ref.pl
