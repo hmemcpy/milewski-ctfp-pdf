@@ -198,8 +198,7 @@ sub inlinemath { #
 sub displaymath { # 
   return sub {
     my $arg = shift;
-    $arg =~ s/\$\$//g; # get rid of superfluous '$$'
-    return "\\begin\{displaymath\}$arg\\end\{displaymath\}";
+    return $arg;
   }
 }
 
