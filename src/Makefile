@@ -7,7 +7,7 @@ DIR := $(shell pwd)
 all: sicp.pdf
 
 sicp.pdf: sicp.tex exercises.tex figures.tex coverpage.pdf ${FIG}
-	latexmk -pdflatex="xelatex %O %S" -pdf -dvi- -ps- $<; \
+	latexmk -shell-escape -pdflatex="xelatex %O %S" -pdf -dvi- -ps- $<; \
 	mv sicp.pdf ../ctfp.pdf
 
 sicp.tex: sicp.texi preamble.tex postamble.tex texi-to-latex.pl

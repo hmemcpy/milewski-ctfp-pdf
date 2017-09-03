@@ -44,9 +44,6 @@
 \begin{small}
 \begin{center}
 
-@noindent
-@copyright{}2014 by Bartosz Milewski
-
 @sp 1.26
 @noindent
 Category Theory for Programmers@*
@@ -123,15 +120,15 @@ from object A to object B, and another arrow from object B to object C, then the
 @subsubheading Arrows as Functions
 
 Is this already too much abstract nonsense? Do not despair. Let’s talk concretes. Think of arrows, which are also called morphisms,
-as functions. You have a function f that takes an argument of type A and returns a B. You have another function g that takes a B and
-returns a C. You can compose them by passing the result of f to g. You have just defined a new function that takes an A and returns a C.
+as functions. You have a function @code{f} that takes an argument of type A and returns a B. You have another function @code{g} that takes a B and
+returns a C. You can compose them by passing the result of @code{f} to @code{g}. You have just defined a new function that takes an A and returns a C.
 
 In math, such composition is denoted by a small circle between functions: @math{g \circ f}. Notice the right to left order of composition. For some
 people this is confusing. You may be familiar with the pipe notation in Unix, as in:
 
-@lisp
+\begin{minted}{sh}
 lsof | grep Chrome
-@end lisp
+\end{minted}
 
 @noindent Or the chevron @code{>>} in F\#, which both go from left to right. But in mathematics and in Haskell functions compose right to left. It helps if you read @math{g \circ f} as “g after f.”
 
