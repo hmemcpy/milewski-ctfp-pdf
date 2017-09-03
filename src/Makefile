@@ -2,6 +2,7 @@
 # Added to by Andres Raba, 2013-2015.
 
 FIG := $(patsubst %.svg,%.pdf,$(wildcard fig/*/*.svg))
+DIR := $(shell pwd)
 
 all: sicp.pdf
 
@@ -17,7 +18,7 @@ exercises.tex figures.tex: ex-fig-ref.pl
 	./ex-fig-ref.pl -f > figures.tex
 
 %.pdf: %.svg
-	inkscape -f $< -C -A $@
+	inkscape -f ${DIR}/$< -C -A ${DIR}/$@
 
 clean:
 	latexmk -CA
