@@ -1,5 +1,5 @@
-# Contributed by holomorph, 2013.
-# Added to by Andres Raba, 2013-2015.
+# Igal Tabachnik, 2007.
+# Based on work by Andres Raba et al., 2013-2015.
 
 FIG := $(patsubst %.svg,%.pdf,$(wildcard fig/*/*.svg))
 DIR := $(shell pwd)
@@ -8,7 +8,7 @@ all: sicp.pdf
 
 sicp.pdf: sicp.tex exercises.tex figures.tex coverpage.pdf ${FIG}
 	latexmk -pdflatex="xelatex %O %S" -pdf -dvi- -ps- $<; \
-	mv sicp.pdf ..
+	mv sicp.pdf ../ctfp.pdf
 
 sicp.tex: sicp.texi preamble.tex postamble.tex texi-to-latex.pl
 	./texi-to-latex.pl $<
@@ -24,6 +24,6 @@ clean:
 	latexmk -CA
 
 clean-all: clean
-	${RM} ${FIG} sicp.tex exercises.tex figures.tex coverpage.pdf
+	${RM} ${FIG} sicp.tex exercises.tex figures.tex coverpage.pdf sicp.fls
 
 .PHONY: all clean clean-all
