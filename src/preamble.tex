@@ -30,6 +30,7 @@
 \usepackage{polyglossia}
 \setdefaultlanguage[variant=american]{english}
 \setotherlanguages{greek}
+\usemintedstyle{emacs}
 
 % To be able to use '\-/' in place of '-' inside \code{}
 % so that long function names containing hyphens
@@ -40,7 +41,7 @@
 % graphicx package when using \includegraphics command:
 \usepackage[multidot]{grffile}
 \usepackage{graphicx}
-\usepackage{caption}
+\usepackage{caption, wrapfig, framed}
 
 \usepackage[usenames,dvipsnames,x11names]{xcolor}
 \usepackage{amsmath}
@@ -195,6 +196,11 @@
 \newcommand{\dark}{\color{SchemeDark}}
 \newcommand{\mono}[1]{\hbox{\ttfamily\scriptsize #1}}
 \newcommand{\monoit}[1]{\hbox{\ttfamily\itshape\scriptsize #1}}
+
+\makeatletter
+\newcommand\urlfootnote@[1]{\footnote{\url@{#1}}}
+\DeclareRobustCommand{\urlfootnote}{\hyper@normalise\urlfootnote@}
+\makeatother
 
 \newenvironment{example}%
   {\verbatim\small}%

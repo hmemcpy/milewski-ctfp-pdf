@@ -142,9 +142,10 @@ to catch up with the changing world. All this activity is in preparation for a d
 heating water, it will eventually start boiling. We are now in the position of a frog that must decide if it should continue swimming in increasingly hot water,
 or start looking for some alternatives.
 
-@sp 1.0
-@center @image{fig/frog,90mm,,,.jpg}
-@sp 1.0
+\begin{figure}
+\centering
+        \fbox{\includegraphics[width=90mm]{fig/frog}}
+\end{figure}
 
 One of the forces that are driving the big change is the multicore revolution. The prevailing programming paradigm, object oriented programming, doesn’t
 buy you anything in the realm of concurrency and parallelism, and instead encourages dangerous and buggy design. Data hiding, the basic premise of object
@@ -159,9 +160,9 @@ start getting hairy. It’s not that side effects are inherently bad -- it’s t
 Side effects don’t scale, and imperative programming is all about side effects.
 
 Changes in hardware and the growing complexity of software are forcing us to rethink the foundations of programming. Just like the builders of Europe’s great gothic
-cathedrals we’ve been honing our craft to the limits of material and structure. There is an unfinished gothic cathedral in Beauvais, France, that stands witness to
-this deeply human struggle with limitations. It was intended to beat all previous records of height and lightness, but it suffered a series of collapses.
-Ad hoc measures like iron rods and wooden supports keep it from disintegrating, but obviously a lot of things went wrong. From a modern perspective, it’s a miracle
+cathedrals we’ve been honing our craft to the limits of material and structure. There is an unfinished gothic cathedral in Beauvais \urlfootnote{https://en.wikipedia.org/wiki/Beauvais_Cathedral},
+France, that stands witness to this deeply human struggle with limitations. It was intended to beat all previous records of height and lightness, but it suffered a
+series of collapses. Ad hoc measures like iron rods and wooden supports keep it from disintegrating, but obviously a lot of things went wrong. From a modern perspective, it’s a miracle
 that so many gothic structures had been successfully completed without the help of modern material science, computer modelling, finite element analysis, and general
 math and physics. I hope future generations will be as admiring of the programming skills we’ve been displaying in building complex operating systems, web servers,
 and the internet infrastructure. And, frankly, they should, because we’ve done all this based on very flimsy theoretical foundations. We have to fix those foundations
@@ -188,10 +189,18 @@ from object A to object B, and another arrow from object B to object C, then the
 
 @subsubheading Arrows as Functions
 
-Is this already too much abstract nonsense? Do not despair. Let's talk concretes. Think of arrows, which are also called morphisms,
+Is this already too much abstract nonsense? Do not despair. Let's talk concretes. Think of arrows, which are also called @newterm{morphisms},
 as functions. You have a function @code{f} that takes an argument of type A and returns a B. You have another function @code{g} that takes a B and
 returns a C. You can compose them by passing the result of @code{f} to @code{g}. You have just defined a new function that takes an A and returns a C.
 
+\begin{figure}
+\centering
+        \includegraphics[width=\textwidth]{fig/chap1/fig1.1.jpg}
+    \captionsetup{labelformat=empty,font=scriptsize}
+    \caption{In a category, if there is an arrow going from A to B and an arrow going from B to C then there must also be a direct arrow from A to C that is their composition. This diagram is not a full category because it’s missing identity morphisms (see later).}
+\end{figure}
+
+@sp 1.0
 In math, such composition is denoted by a small circle between functions: @math{g \circ f}. Notice the right to left order of composition. For some
 people this is confusing. You may be familiar with the pipe notation in Unix, as in:
 
@@ -200,5 +209,206 @@ lsof | grep Chrome
 \end{minted}
 
 @noindent Or the chevron @code{>>} in F\#, which both go from left to right. But in mathematics and in Haskell functions compose right to left. It helps if you read @math{g \circ f} as “g after f.”
+
+\pagebreak
+Let’s make this even more explicit by writing some C code. We have one function @code{f} that takes an argument of type @code{A} and returns a value of type @code{B}:
+
+\mint{c}|B f(A a);|
+
+@noindent
+and another:
+
+\mint{c}|C g(B b);|
+
+@noindent
+Their composition is:
+
+\begin{minted}{c}
+C g_after_f(A a)
+{
+    return g(f(a));
+}
+\end{minted}
+
+@noindent
+Here, again, you see right-to-left composition: @code{g(f(a));} this time in C.
+
+@sp 1.0
+@noindent
+I wish I could tell you that there is a template in the C++ Standard Library that takes two functions and returns their composition, but there isn’t one. So let’s try some
+Haskell for a change. Here’s the declaration of a function from @code{A} to @code{B}:
+
+\mint{haskell}|f :: A -> B|
+
+@noindent
+Similarly:
+
+\mint{haskell}|g :: B -> C|
+
+@noindent
+Their composition is:
+
+@comment todo fix the higlighting
+\mint{text}|g . f|
+
+@noindent
+Once you see how simple things are in Haskell, the inability to express straightforward functional concepts in C++ is a little embarrassing. In fact, Haskell will
+let you use Unicode characters so you can write composition as:
+
+\mint{text}|g ◦ f|
+
+@noindent
+You can even use Unicode double colons and arrows:
+
+\mint{text}|f ∷ A → B|
+
+So here’s the first Haskell lesson: Double colon means "has the type of\textellipsis." A function type is created by inserting an arrow between two types. You compose two functions
+by inserting a period between them (or a Unicode circle).
+
+@subsubheading Properties of Composition
+
+There are two extremely important properties that the composition in any category must satisfy.
+
+@sp 1.0
+
+@enumerate 1
+
+@item 
+Composition is associative. If you have three morphisms, @code{f}, @code{g}, and @code{h}, that can be composed (that is, their objects match end-to-end), you don’t need parentheses
+to compose them. In math notation this is expressed as:
+
+\mint{text}|h◦(g◦f) = (h◦g)◦f = h◦g◦f|
+
+@noindent
+In (pseudo) Haskell:
+
+\begin{minted}{haskell}
+f :: A -> B
+g :: B -> C
+h :: C -> D
+h . (g . f) == (h . g) . f == h . g . f
+\end{minted}
+
+@noindent
+(I said "pseudo," because equality is not defined for functions.)
+
+@sp 1.0
+@noindent
+Associativity is pretty obvious when dealing with functions, but it may be not as obvious in other categories.
+
+@sp 1.0
+@item 
+For every object A there is an arrow which is a unit of composition. This arrow loops from the object to itself. Being a unit of composition means that,
+when composed with any arrow that either starts at A or ends at A, respectively, it gives back the same arrow. The unit arrow for object @code{A} is
+called @code{id\textsubscript{A}} (@newterm{identity} on A). In math notation, if @code{f} goes from @code{A} to @code{B} then
+
+@sp 1.0
+@noindent @code{f◦id\textsubscript{A} = f}
+
+@sp 1.0
+@noindent and
+
+@sp 1.0
+@noindent @code{id\textsubscript{B}◦f = f}
+@sp 1.0
+
+@end enumerate
+
+@noindent
+When dealing with functions, the identity arrow is implemented as the identity function that just returns back its argument. The implementation is the same for every type,
+which means this function is universally polymorphic. In C++ we could define it as a template:
+
+\mint{c++}|template<class T> T id(T x) { return x; }|
+
+@noindent
+Of course, in C++ nothing is that simple, because you have to take into account not only what you’re passing but also how (that is, by value, by reference, by const reference,
+by move, and so on).
+
+In Haskell, the identity function is part of the standard library (called Prelude). Here’s its declaration and definition:
+
+\begin{minted}{haskell}
+id :: a -> a
+id x = x
+\end{minted}
+
+@noindent
+As you can see, polymorphic functions in Haskell are a piece of cake. In the declaration, you just replace the type with a type variable. Here’s the trick: names of concrete
+types always start with a capital letter, names of type variables start with a lowercase letter. So here a stands for all types.
+
+Haskell function definitions consist of the name of the function followed by formal parameters — here just one, @code{x}. The body of the function follows the equal sign.
+This terseness is often shocking to newcomers but you will quickly see that it makes perfect sense. Function definition and function call are the bread and butter of functional
+programming so their syntax is reduced to the bare minimum. Not only are there no parentheses around the argument list but there are no commas between arguments (you’ll see that
+later, when we define functions of multiple arguments).
+
+The body of a function is always an expression -- there are no statements in functions. The result of a function is this expression -- here, just @code{x}.
+
+This concludes our second Haskell lesson.
+
+\pagebreak
+@noindent
+The identity conditions can be written (again, in pseudo-Haskell) as:
+
+\begin{minted}{text}
+f . id == f
+id . f == f
+\end{minted}
+
+@noindent
+You might be asking yourself the question: Why would anyone bother with the identity function -- a function that does nothing? Then again, why do we bother with the number zero?
+Zero is a symbol for nothing. Ancient Romans had a number system without a zero and they were able to build excellent roads and aqueducts, some of which survive to this day.
+
+Neutral values like zero or id are extremely useful when working with symbolic variables. That’s why Romans were not very good at algebra, whereas the Arabs and the Persians,
+who were familiar with the concept of zero, were. So the identity function becomes very handy as an argument to, or a return from, a higher-order function. Higher order functions
+are what make symbolic manipulation of functions possible. They are the algebra of functions.
+
+To summarize: A category consists of objects and arrows (morphisms). Arrows can be composed, and the composition is associative. Every object has an identity arrow that serves as
+a unit under composition.
+
+@subsubheading Composition is the Essence of Programming
+
+Functional programmers have a peculiar way of approaching problems. They start by asking very Zen-like questions. For instance, when designing an interactive program, they would ask:
+What is interaction? When implementing Conway’s Game of Life, they would probably ponder about the meaning of life. In this spirit, I’m going to ask: What is programming? At the most
+basic level, programming is about telling the computer what to do. “Take the contents of memory address x and add it to the contents of the register EAX.” But even when we program in
+assembly, the instructions we give the computer are an expression of something more meaningful. We are solving a non-trivial problem (if it were trivial, we wouldn’t need the help of
+the computer). And how do we solve problems? We decompose bigger problems into smaller problems. If the smaller problems are still too big, we decompose them further, and so on.
+Finally, we write code that solves all the small problems. And then comes the essence of programming: we compose those pieces of code to create solutions to larger problems.
+Decomposition wouldn’t make sense if we weren’t able to put the pieces back together.
+
+This process of hierarchical decomposition and recomposition is not imposed on us by computers. It reflects the limitations of the human mind. Our brains can only deal with a small
+number of concepts at a time. One of the most cited papers in psychology, @emph{The Magical Number Seven, Plus or Minus Two}\urlfootnote{http://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two}, postulated that we can only keep @math{7 \pm 2} “chunks” of information
+in our minds. The details of our understanding of the human short-term memory might be changing, but we know for sure that it’s limited. The bottom line is that we are unable to deal
+with the soup of objects or the spaghetti of code. We need structure not because well-structured programs are pleasant to look at, but because otherwise our brains can’t process them
+efficiently. We often describe some piece of code as elegant or beautiful, but what we really mean is that it’s easy to process by our limited human minds. Elegant code creates chunks
+that are just the right size and come in just the right number for our mental digestive system to assimilate them.
+
+So what are the right chunks for the composition of programs? Their surface area has to increase slower than their volume. (I like this analogy because of the intuition that the surface
+area of a geometric object grows with the square of its size -- slower than the volume, which grows with the cube of its size.) The surface area is the information we need in order to
+compose chunks. The volume is the information we need in order to implement them. The idea is that, once a chunk is implemented, we can forget about the details of its implementation
+and concentrate on how it interacts with other chunks. In object-oriented programming, the surface is the class declaration of the object, or its abstract interface. In functional programming,
+it’s the declaration of a function. (I’m simplifying things a bit, but that’s the gist of it.)
+
+Category theory is extreme in the sense that it actively discourages us from looking inside the objects. An object in category theory is an abstract nebulous entity. All you can ever know
+about it is how it relates to other object -- how it connects with them using arrows. This is how internet search engines rank web sites by analyzing incoming and outgoing links (except when
+they cheat). In object-oriented programming, an idealized object is only visible through its abstract interface (pure surface, no volume), with methods playing the role of arrows. The moment
+you have to dig into the implementation of the object in order to understand how to compose it with other objects, you’ve lost the advantages of your programming paradigm.
+
+@subsubheading Challenges
+
+@enumerate 1
+
+@item Implement, as best as you can, the identity function in your favorite language (or the second favorite, if your favorite language happens to be Haskell).
+@item Implement the composition function in your favorite language. It takes two functions as arguments and returns a function that is their composition.
+@item Write a program that tries to test that your composition function respects identity.
+@item Is the world-wide web a category in any sense? Are links morphisms?
+@item Is Facebook a category, with people as objects and friendships as morphisms?
+@item When is a directed graph a category?
+
+@end enumerate
+
+@chapter Types and Functions
+@node    Types and Functions, Categories Great and Small, Top
+
+@noindent
+\lettrine[lhang=0.17]{T}{he category of types and functions} plays an important role in programming, so let’s talk about what types are and why we need them.
 
 @bye
