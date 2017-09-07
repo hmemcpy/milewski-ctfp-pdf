@@ -1,15 +1,13 @@
-SICP
+Category Theory for Programmers
 ====
 
-<img src="http://sicpebook.files.wordpress.com/2013/09/dreamsmile3.png"
- alt="Par dreaming and smiling" align="right" />
+**Note**: this is a work in progress!
 
-<b>Direct link: [sicp.pdf](https://github.com/sarabander/sicp-pdf/raw/master/sicp.pdf)</b>
+<b>Direct link: [category-theory-for-programmers.pdf](https://github.com/hmemcpy/milewski-ctfp-pdf/raw/master/ctfp.pdf)</b>
 
-This is a PDF version of "Structure and Interpretation of Computer Programs" by Harold Abelson, Gerald Jay Sussman, and Julie Sussman. It is a further development of the [Unofficial Texinfo Format](http://www.neilvandyke.org/sicp-texi/) (UTF), which was originally derived from the [HTML version](http://mitpress.mit.edu/sicp/) at The MIT Press.
+This is an *unofficial* PDF version of "Category Theory for Programmers" by Bartosz Milewski, converted from his [blogpost series](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/). 
 
-Biggest change in this revision (2.andresraba5) is the conversion to LaTeX, which opens the door to design and customization possibilities that the massive CTAN archive enables. Also, the latest typesetting engine XeTeX can be used, along with the Unicode and OpenType goodness it brings.
-
+PDF source and the tools to create it are based on the work by Andres Raba et al., available here: https://github.com/sarabander/sicp-pdf.
 
 Source
 ------
