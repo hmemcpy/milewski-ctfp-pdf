@@ -10,7 +10,7 @@ This is an *unofficial* PDF version of "Category Theory for Programmers" by Bart
 Acknowledgements
 ----------------
 
-PDF source and the tools to create it are based on the work by Andres Raba et al., available here: https://github.com/sarabander/sicp-pdf.
+PDF source and the tools to create it are based on the work by Andres Raba et al., available here: https://github.com/sarabander/sicp-pdf.  
 The book content is taken, with permission, from Bartosz Milewski's blogpost series, and adapted to the Texinfo/LaTeX format.
 
 Thanks to the following people for contributing corrections/conversions:
