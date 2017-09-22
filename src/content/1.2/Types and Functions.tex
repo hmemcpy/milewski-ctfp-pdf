@@ -1,13 +1,4 @@
-\begin{quote}
-This is part of the book Category Theory for Programmers. The previous
-instalment was
-\href{https://bartoszmilewski.com/2014/11/04/category-the-essence-of-composition/}{Category:
-The Essence of Composition}. See the
-\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
-of Contents}.
-\end{quote}
-
-The category of types and functions plays an important role in
+\lettrine[lhang=0.17]{T}{he category of types and functions} plays an important role in
 programming, so let's talk about what types are and why we need them.
 
 \subsection{Who Needs Types?}\label{who-needs-types}
@@ -18,7 +9,10 @@ a thought experiment. Imagine millions of monkeys at computer keyboards
 happily hitting random keys, producing programs, compiling, and running
 them.
 
-\includegraphics[width=2.68750in]{images/img_1329.jpg}
+\begin{figure}
+  \centering
+      \fbox{\includegraphics[width=60mm]{images/img_1329.jpg}}
+\end{figure}
 
 With machine language, any combination of bytes produced by monkeys
 would be accepted and run. But with higher level languages, we do
@@ -114,9 +108,7 @@ synonym for a list of \texttt{Char}, is an example of an infinite set.
 
 When we declare \texttt{x} to be an \texttt{Integer}:
 
-\begin{verbatim}
-x :: Integer
-\end{verbatim}
+\mint{haskell}|x :: Integer|
 
 we are saying that it's an element of the set of integers.
 \texttt{Integer} in Haskell is an infinite set, and it can be used to do
@@ -154,12 +146,10 @@ undecidable --- the famous halting problem. That's why computer
 scientists came up with a brilliant idea, or a major hack, depending on
 your point of view, to extend every type by one more special value
 called the \emph{bottom} and denoted by \texttt{\_\textbar{}\_}, or
-Unicode ⊥. This ``value'' corresponds to a non-terminating computation.
+Unicode \ensuremath{\bot}. This ``value'' corresponds to a non-terminating computation.
 So a function declared as:
 
-\begin{verbatim}
-f :: Bool -> Bool
-\end{verbatim}
+\mint{haskell}|f :: Bool -> Bool|
 
 may return \texttt{True}, \texttt{False}, or \texttt{\_\textbar{}\_};
 the latter meaning that it would never terminate.
@@ -169,20 +159,22 @@ is convenient to treat every runtime error as a bottom, and even allow
 functions to return the bottom explicitly. The latter is usually done
 using the expression \texttt{undefined}, as in:
 
-\begin{verbatim}
-f :: Bool -> Bool f x = undefined
-\end{verbatim}
+\begin{minted}{haskell}
+f :: Bool -> Bool
+f x = undefined
+\end{minted}
 
 This definition type checks because \texttt{undefined} evaluates to
 bottom, which is a member of any type, including \texttt{Bool}. You can
 even write:
 
-\begin{verbatim}
-f :: Bool -> Bool f = undefined
-\end{verbatim}
+\begin{minted}{haskell}
+f :: Bool -> Bool
+f = undefined
+\end{minted}
 
 (without the \texttt{x}) because the bottom is also a member of the type
-\texttt{Bool-\textgreater{}Bool}.
+\texttt{Bool->Bool}.
 
 Functions that may return bottom are called partial, as opposed to total
 functions, which return valid results for every possible argument.
@@ -193,7 +185,10 @@ the theoretical point of view, this is the source of never-ending
 complications, so at this point I will use my butcher's knife and
 terminate this line of reasoning. From the pragmatic point of view, it's
 okay to ignore non-terminating functions and bottoms, and treat
-\textbf{Hask} as bona fide \textbf{Set} (see Bibliography at the end).
+\textbf{Hask} as bona fide \textbf{Set}\footnote{Nils Anders Danielsson,
+John Hughes, Patrik Jansson, Jeremy Gibbons, @url{http://www.cs.ox.ac.uk/jeremy.gibbons/publications/fast+loose.pdf,
+Fast and Loose Reasoning is Morally Correct}. This paper provides justification for ignoring bottoms in most contexts.}.
+
 
 \subsection{Why Do We Need a Mathematical
 Model?}\label{why-do-we-need-a-mathematical-model}
@@ -245,18 +240,22 @@ usually quite simple, if not trivial.
 Consider the definition of a factorial function in Haskell, which is a
 language quite amenable to denotational semantics:
 
-\begin{verbatim}
-fact n = product [1..n]
-\end{verbatim}
+\mint{haskell}|fact n = product [1..n]|
 
-The expression \texttt{{[}1..n{]}} is a list of integers from 1 to n.
+The expression \texttt{{[}1..n{]}} is a list of integers from \texttt{1} to \texttt{n}.
 The function \texttt{product} multiplies all elements of a list. That's
 just like a definition of factorial taken from a math text. Compare this
 with C:
 
-\begin{verbatim}
-int fact(int n) { int i; int result = 1; for (i = 2; i <= n; ++i) result *= i; return result; }
-\end{verbatim}
+\begin{minted}{c}
+int fact(int n) {
+    int i;
+    int result = 1;
+    for (i = 2; i <= n; ++i)
+        result *= i;
+    return result;
+}
+\end{minted}
 
 Need I say more?
 
@@ -327,9 +326,7 @@ return, there are no restrictions whatsoever. It can return any type
 it's a function that's polymorphic in the return type. Haskellers have a
 name for it:
 
-\begin{verbatim}
-absurd :: Void -> a
-\end{verbatim}
+\mint{haskell}|absurd :: Void -> a|
 
 (Remember, \texttt{a} is a type variable that can stand for any type.)
 The name is not coincidental. There is deeper interpretation of types
@@ -345,9 +342,7 @@ Think of functions from and to this type. A function from \texttt{void}
 can always be called. If it's a pure function, it will always return the
 same result. Here's an example of such a function:
 
-\begin{verbatim}
-int f44() { return 44; }
-\end{verbatim}
+\mint{c}|int f44() { return 44; }|
 
 You might think of this function as taking ``nothing'', but as we've
 just seen, a function that takes ``nothing'' can never be called because
@@ -361,9 +356,10 @@ because of the Haskell's love of terseness, the same symbol \texttt{()}
 is used for the type, the constructor, and the only value corresponding
 to a singleton set. So here's this function in Haskell:
 
-\begin{verbatim}
-f44 :: () -> Integer f44 () = 44
-\end{verbatim}
+\begin{minted}{haskell}
+f44 :: () -> Integer
+f44 () = 44
+\end{minted}
 
 The first line declares that \texttt{f44} takes the type \texttt{()},
 pronounced ``unit,'' into the type \texttt{Integer}. The second line
@@ -371,9 +367,7 @@ defines \texttt{f44} by pattern matching the only constructor for unit,
 namely \texttt{()}, and producing the number 44. You call this function
 by providing the unit value \texttt{()}:
 
-\begin{verbatim}
-f44 ()
-\end{verbatim}
+\mint{haskell}|f44 ()|
 
 Notice that every function of unit is equivalent to picking a single
 element from the target type (here, picking the \texttt{Integer} 44). In
@@ -394,18 +388,20 @@ element of A to the single element of that singleton set. For every A
 there is exactly one such function. Here's this function for
 \texttt{Integer}:
 
-\begin{verbatim}
-fInt :: Integer -> () fInt x = ()
-\end{verbatim}
+\begin{minted}{haskell}
+fInt :: Integer -> ()
+fInt x = ()
+\end{minted}
 
 You give it any integer, and it gives you back a unit. In the spirit of
 terseness, Haskell lets you use the wildcard pattern, the underscore,
 for an argument that is discarded. This way you don't have to invent a
 name for it. So the above can be rewritten as:
 
-\begin{verbatim}
-fInt :: Integer -> () fInt _ = ()
-\end{verbatim}
+\begin{minted}{haskell}
+fInt :: Integer -> ()
+fInt _ = ()
+\end{minted}
 
 Notice that the implementation of this function not only doesn't depend
 on the value passed to it, but it doesn't even depend on the type of the
@@ -417,35 +413,40 @@ such functions with one equation using a type parameter instead of a
 concrete type. What should we call a polymorphic function from any type
 to unit type? Of course we'll call it \texttt{unit}:
 
-\begin{verbatim}
-unit :: a -> () unit _ = ()
-\end{verbatim}
+\begin{minted}{haskell}
+unit :: a -> ()
+unit _ = ()
+\end{minted}
 
 In C++ you would write this function as:
 
-\begin{verbatim}
-template<class T> void unit(T) {}
-\end{verbatim}
+\begin{minted}{c++}
+template<class T>
+void unit(T) {}
+\end{minted}
 
 Next in the typology of types is a two-element set. In C++ it's called
 \texttt{bool} and in Haskell, predictably, \texttt{Bool}. The difference
 is that in C++ \texttt{bool} is a built-in type, whereas in Haskell it
 can be defined as follows:
 
-\begin{verbatim}
+\begin{minted}{haskell}
 data Bool = True | False
-\end{verbatim}
+\end{minted}
 
 (The way to read this definition is that \texttt{Bool} is either
 \texttt{True} or \texttt{False}.) In principle, one should also be able
 to define a Boolean type in C++ as an enumeration:
 
-\begin{verbatim}
-enum bool { true, false };
-\end{verbatim}
+\begin{minted}{c++}
+enum bool { 
+    true,
+    false
+};
+\end{minted}
 
 but C++ \texttt{enum} is secretly an integer. The C++11
-``\texttt{enum\ class}'' could have been used instead, but then you
+``\texttt{enum class}'' could have been used instead, but then you
 would have to qualify its values with the class name, as in
 \texttt{bool::true} and \texttt{bool::false}, not to mention having to
 include the appropriate header in every file that uses it.
@@ -465,7 +466,6 @@ have the form \texttt{ctype::is(alpha,\ c)},
 \subsection{Challenges}\label{challenges}
 
 \begin{enumerate}
-\tightlist
 \item
   Define a higher-order function (or a function object) \texttt{memoize}
   in your favorite language. This function takes a pure function
@@ -494,17 +494,25 @@ have the form \texttt{ctype::is(alpha,\ c)},
   \item
     The factorial function from the example in the text.
   \item
-\begin{verbatim}
+\begin{minted}{c++}
 std::getchar()
-\end{verbatim}
+\end{minted}
   \item
-\begin{verbatim}
-bool f() { std::cout << "Hello!" << std::endl; return true; }
-\end{verbatim}
+\begin{minted}{c++}
+bool f() { 
+    std::cout << "Hello!" << std::endl;
+    return true;
+}
+\end{minted}
   \item
-\begin{verbatim}
-int f(int x) { static int y = 0; y += x; return y; }
-\end{verbatim}
+\begin{minted}{c++}
+int f(int x)
+{
+    static int y = 0;
+    y += x;
+    return y;
+}
+\end{minted}
   \end{enumerate}
 \item
   How many different functions are there from \texttt{Bool} to
@@ -515,10 +523,3 @@ int f(int x) { static int y = 0; y += x; return y; }
   corresponding to all possible functions between these types. Label the
   arrows with the names of the functions.
 \end{enumerate}
-
-\subsection{Bibliography}\label{bibliography}
-
-Next:
-\href{https://bartoszmilewski.com/2014/12/05/categories-great-and-small/}{Categories
-Great and Small}\\
-\href{https://twitter.com/BartoszMilewski}{Follow @BartoszMilewski}
