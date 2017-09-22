@@ -49,6 +49,8 @@
 % To use Libertine letters and numbers,
 % but tx-style operators in math environment:
 \usepackage[libertine]{newtxmath}
+% Needed to display additional math unicode symbols (like double-colon)
+\usepackage{unicode-math}
 
 % Workaround to fix mismatched left and right math delimiters. Taken from:
 % http://tex.stackexchange.com/questions/63410/parentheses-differ-xelatex-fontspec-newtxmath-libertine
@@ -90,6 +92,16 @@
   linkcolor=LinkRed,
   urlcolor=LinkRed,
 }
+\usepackage{subfiles}
+\makeatletter
+\let\org@subfile\subfile
+\renewcommand*{\subfile}[1]{%
+  \filename@parse{#1}% LaTeX's file name parser
+  \expandafter
+  \graphicspath\expandafter{\expandafter{\filename@area}}%
+  \org@subfile{"#1"}%
+}
+\makeatother
 
 % Document colors
 \definecolor{SchemeLight}   {HTML} {686868}
