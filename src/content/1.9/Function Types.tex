@@ -1,0 +1,740 @@
+\begin{quote}
+This is part 9 of Categories for Programmers. Previously:
+\href{https://bartoszmilewski.com/2015/02/03/functoriality/}{Functoriality}.
+See the
+\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
+of Contents}.
+\end{quote}
+
+So far I've been glossing over the meaning of function types. A function
+type is different from other types.
+
+Take \texttt{Integer}, for instance: It's just a set of integers.
+\texttt{Bool} is a two element set. But a function type
+\texttt{a-\textgreater{}b} is more than that: it's a set of morphisms
+between objects \texttt{a} and \texttt{b}. A set of morphisms between
+two objects in any category is called a hom-set. It just so happens that
+in the category \textbf{Set} every hom-set is itself an object in the
+same category ---because it is, after all, a \emph{set}.
+
+\hypertarget{attachment_4241}{}
+\includegraphics[width=2.79167in]{images/set-hom-set.jpg}
+
+Hom-set in Set is just a set
+
+The same is not true of other categories where hom-sets are external to
+a category. They are even called \emph{external} hom-sets.
+
+\hypertarget{attachment_4242}{}
+\includegraphics[width=2.65625in]{images/hom-set.jpg}
+
+Hom-set in category C is an external set
+
+It's the self-referential nature of the category \textbf{Set} that makes
+function types special. But there is a way, at least in some categories,
+to construct objects that represent hom-sets. Such objects are called
+\emph{internal} hom-sets.
+
+\subsection{Universal Construction}\label{universal-construction}
+
+Let's forget for a moment that function types are sets and try to
+construct a function type, or more generally, an internal hom-set, from
+scratch. As usual, we'll take our cues from the \textbf{Set} category,
+but carefully avoid using any properties of sets, so that the
+construction will automatically work for other categories.
+
+A function type may be considered a composite type because of its
+relationship to the argument type and the result type. We've already
+seen the constructions of composite types --- those that involved
+relationships between objects. We used universal constructions to define
+a
+\href{https://bartoszmilewski.com/2015/01/07/products-and-coproducts/}{product
+type and a coproduct types}. We can use the same trick to define a
+function type. We will need a pattern that involves three objects: the
+function type that we are constructing, the argument type, and the
+result type.
+
+The obvious pattern that connects these three types is called
+\emph{function application} or \emph{evaluation}. Given a candidate for
+a function type, let's call it \texttt{z} (notice that, if we are not in
+the category \textbf{Set}, this is just an object like any other
+object), and the argument type \texttt{a} (an object), the application
+maps this pair to the result type \texttt{b} (an object). We have three
+objects, two of them fixed (the ones representing the argument type and
+the result type).
+
+We also have the application, which is a mapping. How do we incorporate
+this mapping into our pattern? If we were allowed to look inside
+objects, we could pair a function \texttt{f} (an element of \texttt{z})
+with an argument \texttt{x} (an element of \texttt{a}) and map it to
+\texttt{f\ x} (the application of \texttt{f} to \texttt{x}, which is an
+element of \texttt{b}).
+
+\hypertarget{attachment_4243}{}
+\includegraphics[width=3.12500in]{images/functionset.jpg}
+
+In Set we can pick a function f from a set of functions z and we can
+pick an argument x from the set (type) a. We get an element f x in the
+set (type) b.
+
+But instead of dealing with individual pairs \texttt{(f,\ x)}, we can as
+well talk about the whole \emph{product} of the function type \texttt{z}
+and the argument type \texttt{a}. The product \texttt{z×a} is an object,
+and we can pick, as our application morphism, an arrow \texttt{g} from
+that object to \texttt{b}. In \textbf{Set}, \texttt{g} would be the
+function that maps every pair \texttt{(f,\ x)} to \texttt{f\ x}.
+
+So that's the pattern: a product of two objects \texttt{z} and
+\texttt{a} connected to another object \texttt{b} by a morphism
+\texttt{g}.
+
+\hypertarget{attachment_4244}{}
+\includegraphics[width=3.12500in]{images/functionpattern.jpg}
+
+A pattern of objects and morphisms that is the starting point of the
+universal construction
+
+Is this pattern specific enough to single out the function type using a
+universal construction? Not in every category. But in the categories of
+interest to us it is. And another question: Would it be possible to
+define a function object without first defining a product? There are
+categories in which there is no product, or there isn't a product for
+all pairs of objects. The answer is no: there is no function type, if
+there is no product type. We'll come back to this later when we talk
+about exponentials.
+
+Let's review the universal construction. We start with a pattern of
+objects and morphisms. That's our imprecise query, and it usually yields
+lots and lots of hits. In particular, in \textbf{Set}, pretty much
+everything is connected to everything. We can take any object
+\texttt{z}, form its product with \texttt{a}, and there's going to be a
+function from it to \texttt{b} (except when \texttt{b} is an empty set).
+
+That's when we apply our secret weapon: ranking. This is usually done by
+requiring that there be a unique mapping between candidate objects --- a
+mapping that somehow factorizes our construction. In our case, we'll
+decree that \texttt{z} together with the morphism \texttt{g} from
+\texttt{z×a} to \texttt{b} is \emph{better} than some other
+\texttt{z\&apos;} with its own application \texttt{g\&apos;}, if and
+only if there is a unique mapping \texttt{h} from \texttt{z\&apos;} to
+\texttt{z} such that the application of \texttt{g\&apos;} factors
+through the application of \texttt{g}. (Hint: Read this sentence while
+looking at the picture.)
+
+\hypertarget{attachment_4245}{}
+\includegraphics[width=3.12500in]{images/functionranking.jpg}
+
+Establishing a ranking between candidates for the function object
+
+Now here's the tricky part, and the main reason I postponed this
+particular universal construction till now. Given the morphism
+\texttt{h\ ::\ z\&apos;-\textgreater{}\ z}, we want to close the diagram
+that has both \texttt{z\&apos;} and \texttt{z} crossed with \texttt{a}.
+What we really need, given the mapping \texttt{h} from \texttt{z\&apos;}
+to \texttt{z}, is a mapping from \texttt{z\&apos;×a} to \texttt{z×a}.
+And now, after discussing the
+\href{https://bartoszmilewski.com/2015/02/03/functoriality/}{functoriality
+of the product}, we know how to do it. Because the product itself is a
+functor (more precisely an endo-bi-functor), it's possible to lift pairs
+of morphisms. In other words, we can define not only products of objects
+but also products of morphisms.
+
+Since we are not touching the second component of the product
+\texttt{z\&apos;×a}, we will lift the pair of morphisms
+\texttt{(h,\ id)}, where \texttt{id} is an identity on \texttt{a}.
+
+So, here's how we can factor one application, \texttt{g}, out of another
+application \texttt{g\&apos;}:
+
+\begin{verbatim}
+g&apos; = g ∘ (h × id)
+\end{verbatim}
+
+The key here is the action of the product on morphisms.
+
+The third part of the universal construction is selecting the object
+that is universally the best. Let's call this object \texttt{a⇒b} (think
+of this as a symbolic name for one object, not to be confused with a
+Haskell typeclass constraint --- I'll discuss different ways of naming
+it later). This object comes with its own application --- a morphism
+from \texttt{(a⇒b)×a} to \texttt{b} --- which we will call
+\texttt{eval}. The object \texttt{a⇒b} is the best if any other
+candidate for a function object can be uniquely mapped to it in such a
+way that its application morphism \texttt{g} factorizes through
+\texttt{eval}. This object is better than any other object according to
+our ranking.
+
+\hypertarget{attachment_4246}{}
+\includegraphics[width=3.12500in]{images/universalfunctionobject.jpg}
+
+The definition of the universal function object. This is the same
+diagram as above, but now the object \texttt{a⇒b} is \emph{universal}.
+
+Formally:
+
+\begin{longtable}[]{@{}l@{}}
+\toprule
+\begin{minipage}[t]{0.97\columnwidth}\raggedright\strut
+A \textbf{function object} from \texttt{a} to \texttt{b} is an object
+\texttt{a⇒b} together with the morphism
+
+\begin{verbatim}
+eval :: ((a⇒b) × a) -> b
+\end{verbatim}
+
+such that for any other object \texttt{z} with a morphism
+
+\begin{verbatim}
+g :: z × a -> b
+\end{verbatim}
+
+there is a unique morphism
+
+\begin{verbatim}
+h :: z -> (a⇒b)
+\end{verbatim}
+
+that factors \texttt{g} through \texttt{eval}:
+
+\begin{verbatim}
+g = eval ∘ (h × id)
+\end{verbatim}
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Of course, there is no guarantee that such an object \texttt{a⇒b} exists
+for any pair of objects \texttt{a} and \texttt{b} in a given category.
+But it always does in \textbf{Set}. Moreover, in \textbf{Set}, this
+object is isomorphic to the hom-set \emph{Set(a, b)}.
+
+This is why, in Haskell, we interpret the function type
+\texttt{a-\textgreater{}b} as the categorical function object
+\texttt{a⇒b}.
+
+\subsection{Currying}\label{currying}
+
+Let's have a second look at all the candidates for the function object.
+This time, however, let's think of the morphism \texttt{g} as a function
+of two variables, \texttt{z} and \texttt{a}.
+
+\begin{verbatim}
+g :: z × a -> b
+\end{verbatim}
+
+Being a morphism from a product comes as close as it gets to being a
+function of two variables. In particular, in \textbf{Set}, \texttt{g} is
+a function from pairs of values, one from the set \texttt{z} and one
+from the set \texttt{a}.
+
+On the other hand, the universal property tells us that for each such
+\texttt{g} there is a unique morphism \texttt{h} that maps \texttt{z} to
+a function object \texttt{a⇒b}.
+
+\begin{verbatim}
+h :: z -> (a⇒b)
+\end{verbatim}
+
+In \textbf{Set}, this just means that \texttt{h} is a function that
+takes one variable of type \texttt{z} and returns a function from
+\texttt{a} to \texttt{b}. That makes \texttt{h} a higher order function.
+Therefore the universal construction establishes a one-to-one
+correspondence between functions of two variables and functions of one
+variable returning functions. This correspondence is called
+\emph{currying}, and \texttt{h} is called the curried version of
+\texttt{g}.
+
+This correspondence is one-to-one, because given any \texttt{g} there is
+a unique \texttt{h}, and given any \texttt{h} you can always recreate
+the two-argument function \texttt{g} using the formula:
+
+\begin{verbatim}
+g = eval ∘ (h × id)
+\end{verbatim}
+
+The function \texttt{g} can be called the \emph{uncurried} version of
+\texttt{h}.
+
+Currying is essentially built into the syntax of Haskell. A function
+returning a function:
+
+\begin{verbatim}
+a -> (b -> c)
+\end{verbatim}
+
+is often thought of as a function of two variables. That's how we read
+the un-parenthesized signature:
+
+\begin{verbatim}
+a -> b -> c
+\end{verbatim}
+
+This interpretation is apparent in the way we define multi-argument
+functions. For instance:
+
+\begin{verbatim}
+catstr :: String -> String -> String
+catstr s s’ = s ++ s’
+\end{verbatim}
+
+The same function can be written as a one-argument function returning a
+function --- a lambda:
+
+\begin{verbatim}
+catstr’ s = \s’ -> s ++ s’
+\end{verbatim}
+
+These two definitions are equivalent, and either can be partially
+applied to just one argument, producing a one-argument function, as in:
+
+\begin{verbatim}
+greet :: String -> String
+greet = catstr “Hello “
+\end{verbatim}
+
+Strictly speaking, a function of two variables is one that takes a pair
+(a product type):
+
+\begin{verbatim}
+(a, b) -> c
+\end{verbatim}
+
+It's trivial to convert between the two representations, and the two
+(higher-order) functions that do it are called, unsurprisingly,
+\texttt{curry} and \texttt{uncurry}:
+
+\begin{verbatim}
+curry :: ((a, b)->c) -> (a->b->c)
+curry f a b = f (a, b)
+\end{verbatim}
+
+and
+
+\begin{verbatim}
+uncurry :: (a->b->c) -> ((a, b)->c)
+uncurry f (a, b) = f a b
+\end{verbatim}
+
+Notice that \texttt{curry} is the \emph{factorizer} for the universal
+construction of the function object. This is especially apparent if it's
+rewritten in this form:
+
+\begin{verbatim}
+factorizer :: ((a, b)->c) -> (a->(b->c))
+factorizer g = \a -> (\b -> g (a, b))
+\end{verbatim}
+
+(As a reminder: A factorizer produces the factorizing function from a
+candidate.)
+
+In non-functional languages, like C++, currying is possible but
+nontrivial. You can think of multi-argument functions in C++ as
+corresponding to Haskell functions taking tuples (although, to confuse
+things even more, in C++ you can define functions that take an explicit
+\texttt{std::tuple}, as well as variadic functions, and functions taking
+initializer lists).
+
+You can partially apply a C++ function using the template
+\texttt{std::bind}. For instance, given a function of two strings:
+
+\begin{verbatim}
+std::string catstr(std::string s1, std::string s2) { return s1 + s2;
+}
+\end{verbatim}
+
+you can define a function of one string:
+
+\begin{verbatim}
+using namespace std::placeholders; auto greet = std::bind(catstr, "Hello ", _1);
+std::cout << greet("Haskell Curry");
+\end{verbatim}
+
+Scala, which is more functional than C++ or Java, falls somewhere in
+between. If you anticipate that the function you're defining will be
+partially applied, you define it with multiple argument lists:
+
+\begin{verbatim}
+def catstr(s1: String)(s2: String) = s1 + s2
+\end{verbatim}
+
+Of course that requires some amount of foresight or prescience on the
+part of a library writer.
+
+\subsection{Exponentials}\label{exponentials}
+
+In mathematical literature, the function object, or the internal
+hom-object between two objects \texttt{a} and \texttt{b}, is often
+called the \emph{exponential} and denoted by \texttt{ba}. Notice that
+the argument type is in the exponent. This notation might seem strange
+at first, but it makes perfect sense if you think of the relationship
+between functions and products. We've already seen that we have to use
+the product in the universal construction of the internal hom-object,
+but the connection goes deeper than that.
+
+This is best seen when you consider functions between finite types ---
+types that have a finite number of values, like \texttt{Bool},
+\texttt{Char}, or even \texttt{Int} or \texttt{Double}. Such functions,
+at least in principle, can be fully memoized or turned into data
+structures to be looked up. And this is the essence of the equivalence
+between functions, which are morphisms, and function types, which are
+objects.
+
+For instance a (pure) function from \texttt{Bool} is completely
+specified by a pair of values: one corresponding to \texttt{False}, and
+one corresponding to \texttt{True}. The set of all possible functions
+from \texttt{Bool} to, say, \texttt{Int} is the set of all pairs of
+\texttt{Int}s. This is the same as the product \texttt{Int\ ×\ Int} or,
+being a little creative with notation, \texttt{Int2}.
+
+For another example, let's look at the C++ type \texttt{char}, which
+contains 256 values (Haskell \texttt{Char} is larger, because Haskell
+uses Unicode). There are several functions in the \texttt{} part of the
+C++ Standard Library that are usually implemented using lookups.
+Functions like \texttt{isupper} or \texttt{isspace} are implemented
+using tables, which are equivalent to tuples of 256 Boolean values. A
+tuple is a product type, so we are dealing with products of 256
+Booleans: \texttt{bool\ ×\ bool\ ×\ bool\ ×\ ...\ ×\ bool}. We know from
+arithmetics that an iterated product defines a power. If you
+``multiply'' \texttt{bool} by itself 256 (or \texttt{char}) times, you
+get \texttt{bool} to the power of \texttt{char}, or \texttt{boolchar}.
+
+How many values are there in the type defined as 256-tuples of
+\texttt{bool}? Exactly 2\textsuperscript{256}. This is also the number
+of different functions from \texttt{char} to \texttt{bool}, each
+function corresponding to a unique 256-tuple. You can similarly
+calculate that the number of functions from \texttt{bool} to
+\texttt{char} is 256\textsuperscript{2}, and so on. The exponential
+notation for function types makes perfect sense in these cases.
+
+We probably wouldn't want to fully memoize a function from \texttt{int}
+or \texttt{double}. But the equivalence between functions and data
+types, if not always practical, is there. There are also infinite types,
+for instance lists, strings, or trees. Eager memoization of functions
+from those types would require infinite storage. But Haskell is a lazy
+language, so the boundary between lazily evaluated (infinite) data
+structures and functions is fuzzy. This function vs. data duality
+explains the identification of Haskell's function type with the
+categorical exponential object --- which corresponds more to our idea of
+\emph{data}.
+
+\subsection{Cartesian Closed
+Categories}\label{cartesian-closed-categories}
+
+Although I will continue using the category of sets as a model for types
+and functions, it's worth mentioning that there is a larger family of
+categories that can be used for that purpose. These categories are
+called \emph{cartesian closed}, and \textbf{Set} is just one example of
+such a category.
+
+A cartesian closed category must contain:
+
+\begin{enumerate}
+\tightlist
+\item
+  The terminal object,
+\item
+  A product of any pair of objects, and
+\item
+  An exponential for any pair of objects.
+\end{enumerate}
+
+If you consider an exponential as an iterated product (possibly
+infinitely many times), then you can think of a cartesian closed
+category as one supporting products of an arbitrary arity. In
+particular, the terminal object can be thought of as a product of zero
+objects --- or the zero-th power of an object.
+
+What's interesting about cartesian closed categories from the
+perspective of computer science is that they provide models for the
+simply typed lambda calculus, which forms the basis of all typed
+programming languages.
+
+The terminal object and the product have their duals: the initial object
+and the coproduct. A cartesian closed category that also supports those
+two, and in which product can be distributed over coproduct
+
+\begin{verbatim}
+a × (b + c) = a × b + a × c
+(b + c) × a = b × a + c × a
+\end{verbatim}
+
+is called a \emph{bicartesian closed} category. We'll see in the next
+section that bicartesian closed categories, of which \textbf{Set} is a
+prime example, have some interesting properties.
+
+\subsection{Exponentials and Algebraic Data
+Types}\label{exponentials-and-algebraic-data-types}
+
+The interpretation of function types as exponentials fits very well into
+the scheme of algebraic data types. It turns out that all the basic
+identities from high-school algebra relating numbers zero and one, sums,
+products, and exponentials hold pretty much unchanged in any bicartesian
+closed category theory for, respectively, initial and final objects,
+coproducts, products, and exponentials. We don't have the tools yet to
+prove them (such as adjunctions or the Yoneda lemma), but I'll list them
+here nevertheless as a source of valuable intuitions.
+
+\subsubsection{Zeroth Power}\label{zeroth-power}
+
+\begin{verbatim}
+a0 = 1
+\end{verbatim}
+
+In the categorical interpretation, we replace 0 with the initial object,
+1 with the final object, and equality with isomorphism. The exponential
+is the internal hom-object. This particular exponential represents the
+set of morphisms going from the initial object to an arbitrary object
+\texttt{a}. By the definition of the initial object, there is exactly
+one such morphism, so the hom-set \emph{C(0, a)} is a singleton set. A
+singleton set is the terminal object in \textbf{Set}, so this identity
+trivially works in \textbf{Set}. What we are saying is that it works in
+any bicartesian closed category.
+
+In Haskell, we replace 0 with \texttt{Void}; 1 with the unit type
+\texttt{()}; and the exponential with function type. The claim is that
+the set of functions from \texttt{Void} to any type \texttt{a} is
+equivalent to the unit type --- which is a singleton. In other words,
+there is only one function \texttt{Void-\textgreater{}a}. We've seen
+this function before: it's called \texttt{absurd}.
+
+This is a little bit tricky, for two reasons. One is that in Haskell we
+don't really have uninhabited types --- every type contains the ``result
+of a never ending calculation,'' or the bottom. The second reason is
+that all implementations of \texttt{absurd} are equivalent because, no
+matter what they do, nobody can ever execute them. There is no value
+that can be passed to \texttt{absurd}. (And if you manage to pass it a
+never ending calculation, it will never return!)
+
+\subsubsection{Powers of One}\label{powers-of-one}
+
+\begin{verbatim}
+1a = 1
+\end{verbatim}
+
+This identity, when interpreted in \textbf{Set}, restates the definition
+of the terminal object: There is a unique morphism from any object to
+the terminal object. In general, the internal hom-object from \texttt{a}
+to the terminal object is isomorphic to the terminal object itself.
+
+In Haskell, there is only one function from any type \texttt{a} to unit.
+We've seen this function before --- it's called \texttt{unit}. You can
+also think of it as the function \texttt{const} partially applied to
+\texttt{()}.
+
+\subsubsection{First Power}\label{first-power}
+
+\begin{verbatim}
+a1 = a
+\end{verbatim}
+
+This is a restatement of the observation that morphisms from the
+terminal object can be used to pick ``elements'' of the object
+\texttt{a}. The set of such morphisms is isomorphic to the object
+itself. In \textbf{Set}, and in Haskell, the isomorphism is between
+elements of the set \texttt{a} and functions that pick those elements,
+\texttt{()-\textgreater{}a}.
+
+\subsubsection{Exponentials of Sums}\label{exponentials-of-sums}
+
+\begin{verbatim}
+ab+c = ab × ac
+\end{verbatim}
+
+Categorically, this says that the exponential from a coproduct of two
+objects is isomorphic to a product of two exponentials. In Haskell, this
+algebraic identity has a very practical, interpretation. It tells us
+that a function from a sum of two types is equivalent to a pair of
+functions from individual types. This is just the case analysis that we
+use when defining functions on sums. Instead of writing one function
+definition with a \texttt{case} statement, we usually split it into two
+(or more) functions dealing with each type constructor separately. For
+instance, take a function from the sum type
+\texttt{(Either\ Int\ Double)}:
+
+\begin{verbatim}
+f :: Either Int Double -> String
+\end{verbatim}
+
+It may be defined as a pair of functions from, respectively,
+\texttt{Int} and \texttt{Double}:
+
+\begin{verbatim}
+f (Left n) = if n < 0 then "Negative int" else "Positive int"
+f (Right x) = if x < 0.0 then "Negative double" else "Positive double"
+\end{verbatim}
+
+Here, \texttt{n} is an \texttt{Int} and \texttt{x} is a \texttt{Double}.
+
+\subsubsection{Exponentials of
+Exponentials}\label{exponentials-of-exponentials}
+
+\begin{verbatim}
+(ab)c = ab×c
+\end{verbatim}
+
+This is just a way of expressing currying purely in terms of exponential
+objects. A function returning a function is equivalent to a function
+from a product (a two-argument function).
+
+\subsubsection{Exponentials over
+Products}\label{exponentials-over-products}
+
+\begin{verbatim}
+(a × b)c = ac × bc
+\end{verbatim}
+
+In Haskell: A function returning a pair is equivalent to a pair of
+functions, each producing one element of the pair.
+
+It's pretty incredible how those simple high-school algebraic identities
+can be lifted to category theory and have practical application in
+functional programming.
+
+\subsection{Curry-Howard Isomorphism}\label{curry-howard-isomorphism}
+
+I have already mentioned the correspondence between logic and algebraic
+data types. The \texttt{Void} type and the unit type \texttt{()}
+correspond to false and true. Product types and sum types correspond to
+logical conjunction ∧ (AND) and disjunction ⋁ (OR). In this scheme, the
+function type we have just defined corresponds to logical implication ⇒.
+In other words, the type \texttt{a-\textgreater{}b} can be read as ``if
+a then b.''
+
+According to the Curry-Howard isomorphism, every type can be interpreted
+as a proposition --- a statement or a judgment that may be true or
+false. Such a proposition is considered true if the type is inhabited
+and false if it isn't. In particular, a logical implication is true if
+the function type corresponding to it is inhabited, which means that
+there exists a function of that type. An implementation of a function is
+therefore a proof of a theorem. Writing programs is equivalent to
+proving theorems. Let's see a few examples.
+
+Let's take the function \texttt{eval} we have introduced in the
+definition of the function object. Its signature is:
+
+\begin{verbatim}
+eval :: ((a -> b), a) -> b
+\end{verbatim}
+
+It takes a pair consisting of a function and its argument and produces a
+result of the appropriate type. It's the Haskell implementation of the
+morphism:
+
+\begin{verbatim}
+eval :: (a⇒b) × a -> b
+\end{verbatim}
+
+which defines the function type \texttt{a⇒b} (or the exponential object
+\texttt{ba}). Let's translate this signature to a logical predicate
+using the Curry-Howard isomorphism:
+
+\begin{verbatim}
+((a ⇒ b) ∧ a) ⇒ b
+\end{verbatim}
+
+Here's how you can read this statement: If it's true that \texttt{b}
+follows from \texttt{a}, and \texttt{a} is true, then \texttt{b} must be
+true. This makes perfect intuitive sense and has been known since
+antiquity as \emph{modus ponens}. We can prove this theorem by
+implementing the function:
+
+\begin{verbatim}
+eval :: ((a -> b), a) -> b
+eval (f, x) = f x
+\end{verbatim}
+
+If you give me a pair consisting of a function \texttt{f} taking
+\texttt{a} and returning \texttt{b}, and a concrete value \texttt{x} of
+type \texttt{a}, I can produce a concrete value of type \texttt{b} by
+simply applying the function \texttt{f} to \texttt{x}. By implementing
+this function I have just shown that the type
+\texttt{((a\ -\textgreater{}\ b),\ a)\ -\textgreater{}\ b} is inhabited.
+Therefore \emph{modus ponens} is true in our logic.
+
+How about a predicate that is blatantly false? For instance: if
+\texttt{a} or \texttt{b} is true then \texttt{a} must be true.
+
+\begin{verbatim}
+a ⋁ b ⇒ a
+\end{verbatim}
+
+This is obviously wrong because you can chose an \texttt{a} that is
+false and a \texttt{b} that is true, and that's a counter-example.
+
+Mapping this predicate into a function signature using the Curry-Howard
+isomorphism, we get:
+
+\begin{verbatim}
+Either a b -> a
+\end{verbatim}
+
+Try as you may, you can't implement this function --- you can't produce
+a value of type \texttt{a} if you are called with the \texttt{Right}
+value. (Remember, we are talking about \emph{pure} functions.)
+
+Finally, we come to the meaning of the \texttt{absurd} function:
+
+\begin{verbatim}
+absurd :: Void -> a
+\end{verbatim}
+
+Considering that \texttt{Void} translates into false, we get:
+
+\begin{verbatim}
+ false ⇒ a
+\end{verbatim}
+
+Anything follows from falsehood (\emph{ex falso quodlibet}). Here's one
+possible proof (implementation) of this statement (function) in Haskell:
+
+\begin{verbatim}
+absurd (Void a) = absurd a
+\end{verbatim}
+
+where \texttt{Void} is defined as:
+
+\begin{verbatim}
+newtype Void = Void Void
+\end{verbatim}
+
+As always, the type \texttt{Void} is tricky. This definition makes it
+impossible to construct a value because in order to construct one, you
+would need to provide one. Therefore, the function \texttt{absurd} can
+never be called.
+
+These are all interesting examples, but is there a practical side to
+Curry-Howard isomorphism? Probably not in everyday programming. But
+there are programming languages like Agda or Coq, which take advantage
+of the Curry-Howard isomorphism to prove theorems.
+
+Computers are not only helping mathematicians do their work --- they are
+revolutionizing the very foundations of mathematics. The latest hot
+research topic in that area is called Homotopy Type Theory, and is an
+outgrowth of type theory. It's full of Booleans, integers, products and
+coproducts, function types, and so on. And, as if to dispel any doubts,
+the theory is being formulated in Coq and Agda. Computers are
+revolutionizing the world in more than one way.
+
+\subsection{Bibliography}\label{bibliography}
+
+\begin{enumerate}
+\tightlist
+\item
+  Ralph Hinze, Daniel W. H. James,
+  \href{http://www.cs.ox.ac.uk/ralf.hinze/publications/WGP10.pdf}{Reason
+  Isomorphically!}. This paper contains proofs of all those high-school
+  algebraic identities in category theory that I mentioned in this
+  chapter.
+\end{enumerate}
+
+Next:
+\href{https://bartoszmilewski.com/2015/04/07/natural-transformations/}{Natural
+Transformations}.
+
+\subsection{Acknowledgments}\label{acknowledgments}
+
+I'd like to thank Gershom Bazerman for checking my math and logic, and
+André van Meulebrouck, who has been volunteering his editing help
+throughout this series of posts.\\
+\href{https://twitter.com/BartoszMilewski}{Follow @BartoszMilewski}

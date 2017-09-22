@@ -1,0 +1,644 @@
+\begin{quote}
+This is part 22 of Categories for Programmers. Previously:
+\href{https://bartoszmilewski.com/2016/11/30/monads-and-effects/}{Monads
+and Effects}. See the
+\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
+of Contents}.
+\end{quote}
+
+If you mention monads to a programmer, you'll probably end up talking
+about effects. To a mathematician, monads are about algebras. We'll talk
+about algebras later --- they play an important role in programming ---
+but first I'd like to give you a little intuition about their relation
+to monads. For now, it's a bit of a hand-waving argument, but bear with
+me.
+
+Algebra is about creating, manipulating, and evaluating expressions.
+Expressions are built using operators. Consider this simple expression:
+
+\begin{verbatim}
+x2 + 2 x + 1
+\end{verbatim}
+
+This expression is formed using variables like \texttt{x}, and constants
+like 1 or 2, bound together with operators like plus or times. As
+programmers, we often think of expressions as trees.
+
+\includegraphics[width=1.82292in]{images/exptree.png}
+
+Trees are containers so, more generally, an expression is a container
+for storing variables. In category theory, we represent containers as
+endofunctors. If we assign the type \texttt{a} to the variable
+\texttt{x}, our expression will have the type \texttt{m\ a}, where
+\texttt{m} is an endofunctor that builds expression trees. (Nontrivial
+branching expressions are usually created using recursively defined
+endofunctors.)
+
+What's the most common operation that can be performed on an expression?
+It's substitution: replacing variables with expressions. For instance,
+in our example, we could replace \texttt{x} with \texttt{y\ -\ 1} to
+get:
+
+\begin{verbatim}
+(y - 1)2 + 2 (y - 1) + 1
+\end{verbatim}
+
+Here's what happened: We took an expression of type \texttt{m\ a} and
+applied a transformation of type \texttt{a\ -\textgreater{}\ m\ b}
+(\texttt{b} represents the type of \texttt{y}). The result is an
+expression of type \texttt{m\ b}. Let me spell it out:
+
+\begin{verbatim}
+m a -> (a -> m b) -> m b
+\end{verbatim}
+
+Yes, that's the signature of monadic bind.
+
+That was a bit of motivation. Now let's get to the math of the monad.
+Mathematicians use different notation than programmers. They prefer to
+use the letter \texttt{T} for the endofunctor, and Greek letters: μ for
+\texttt{join} and η for \texttt{return}. Both \texttt{join} and
+\texttt{return} are polymorphic functions, so we can guess that they
+correspond to natural transformations.
+
+Therefore, in category theory, a monad is defined as an endofunctor
+\texttt{T} equipped with a pair of natural transformations μ and η.
+
+μ is a natural transformation from the square of the functor \texttt{T2}
+back to \texttt{T}. The square is simply the functor composed with
+itself, \texttt{T\ ∘\ T} (we can only do this kind of squaring for
+endofunctors).
+
+\begin{verbatim}
+μ :: T2 -> T
+\end{verbatim}
+
+The component of this natural transformation at an object \texttt{a} is
+the morphism:
+
+\begin{verbatim}
+μa :: T (T a) -> T a
+\end{verbatim}
+
+which, in \emph{Hask}, translates directly to our definition of
+\texttt{join}.
+
+η is a natural transformation between the identity functor \texttt{I}
+and \texttt{T}:
+
+\begin{verbatim}
+η :: I -> T
+\end{verbatim}
+
+Considering that the action of \texttt{I} on the object \texttt{a} is
+just \texttt{a}, the component of η is given by the morphism:
+
+\begin{verbatim}
+ηa :: a -> T a
+\end{verbatim}
+
+which translates directly to our definition of \texttt{return}.
+
+These natural transformations must satisfy some additional laws. One way
+of looking at it is that these laws let us define a Kleisli category for
+the endofunctor \texttt{T}. Remember that a Kleisli arrow between
+\texttt{a} and \texttt{b} is defined as a morphism
+\texttt{a\ -\textgreater{}\ T\ b}. The composition of two such arrows
+(I'll write it as a circle with the subscript \texttt{T}) can be
+implemented using μ:
+
+\begin{verbatim}
+g ∘T f = μc ∘ (T g) ∘ f
+\end{verbatim}
+
+where
+
+\begin{verbatim}
+f :: a -> T b g :: b -> T c
+\end{verbatim}
+
+Here \texttt{T}, being a functor, can be applied to the morphism
+\texttt{g}. It might be easier to recognize this formula in Haskell
+notation:
+
+\begin{verbatim}
+f >=> g = join . fmap g . f
+\end{verbatim}
+
+or, in components:
+
+\begin{verbatim}
+(f >=> g) a = join (fmap g (f a))
+\end{verbatim}
+
+In terms of the algebraic interpretation, we are just composing two
+successive substitutions.
+
+For Kleisli arrows to form a category we want their composition to be
+associative, and η\textsubscript{a} to be the identity Kleisli arrow at
+\texttt{a}. This requirement can be translated to monadic laws for μ and
+η. But there is another way of deriving these laws that makes them look
+more like monoid laws. In fact \texttt{μ} is often called
+multiplication, and \texttt{η} unit.
+
+Roughly speaking, the associativity law states that the two ways of
+reducing the cube of \texttt{T}, \texttt{T3}, down to \texttt{T} must
+give the same result. Two unit laws (left and right) state that when
+\texttt{η} is applied to \texttt{T} and then reduced by \texttt{μ}, we
+get back \texttt{T}.
+
+Things are a little tricky because we are composing natural
+transformations and functors. So a little refresher on horizontal
+composition is in order. For instance, \texttt{T3} can be seen as a
+composition of \texttt{T} after \texttt{T2}. We can apply to it the
+horizontal composition of two natural transformations:
+
+\begin{verbatim}
+IT ∘ μ
+\end{verbatim}
+
+\includegraphics[width=2.58333in]{images/assoc1.png}
+
+and get \texttt{T∘T}; which can be further reduced to \texttt{T} by
+applying \texttt{μ}. \texttt{IT} is the identity natural transformation
+from \texttt{T} to \texttt{T}. You will often see the notation for this
+type of horizontal composition \texttt{IT\ ∘\ μ} shortened to
+\texttt{T∘μ}. This notation is unambiguous because it makes no sense to
+compose a functor with a natural transformation, therefore \texttt{T}
+must mean \texttt{IT} in this context.
+
+We can also draw the diagram in the (endo-) functor category
+\texttt{{[}C,\ C{]}}:
+
+\includegraphics[width=1.73958in]{images/assoc2.png}
+
+Alternatively, we can treat \texttt{T3} as the composition of
+\texttt{T2∘T} and apply \texttt{μ∘T} to it. The result is also
+\texttt{T∘T} which, again, can be reduced to \texttt{T} using μ. We
+require that the two paths produce the same result.
+
+\includegraphics[width=2.16667in]{images/assoc.png}
+
+Similarly, we can apply the horizontal composition \texttt{η∘T} to the
+composition of the identity functor \texttt{I} after \texttt{T} to
+obtain \texttt{T2}, which can then be reduced using \texttt{μ}. The
+result should be the same as if we applied the identity natural
+transformation directly to \texttt{T}. And, by analogy, the same should
+be true for \texttt{T∘η}.
+
+\includegraphics[width=3.12500in]{images/unitlawcomp-1.png}
+
+You can convince yourself that these laws guarantee that the composition
+of Kleisli arrows indeed satisfies the laws of a category.
+
+The similarities between a monad and a monoid are striking. We have
+multiplication μ, unit η, associativity, and unit laws. But our
+definition of a monoid is too narrow to describe a monad as a monoid. So
+let's generalize the notion of a monoid.
+
+\subsection{Monoidal Categories}\label{monoidal-categories}
+
+Let's go back to the conventional definition of a monoid. It's a set
+with a binary operation and a special element called unit. In Haskell,
+this can be expressed as a typeclass:
+
+\begin{verbatim}
+class Monoid m where mappend :: m -> m -> m mempty :: m
+\end{verbatim}
+
+The binary operation \texttt{mappend} must be associative and unital
+(i.e., multiplication by the unit \texttt{mempty} is a no-op).
+
+Notice that, in Haskell, the definition of \texttt{mappend} is curried.
+It can be interpreted as mapping every element of \texttt{m} to a
+function:
+
+\begin{verbatim}
+mappend :: m -> (m -> m)
+\end{verbatim}
+
+It's this interpretation that gives rise to the definition of a monoid
+as a single-object category where endomorphisms
+\texttt{(m\ -\textgreater{}\ m)} represent the elements of the monoid.
+But because currying is built into Haskell, we could as well have
+started with a different definition of multiplication:
+
+\begin{verbatim}
+mu :: (m, m) -> m
+\end{verbatim}
+
+Here, the cartesian product \texttt{(m,\ m)} becomes the source of pairs
+to be multiplied.
+
+This definition suggests a different path to generalization: replacing
+the cartesian product with categorical product. We could start with a
+category where products are globally defined, pick an object \texttt{m}
+there, and define multiplication as a morphism:
+
+\begin{verbatim}
+μ :: m × m -> m
+\end{verbatim}
+
+We have one problem though: In an arbitrary category we can't peek
+inside an object, so how do we pick the unit element? There is a trick
+to it. Remember how element selection is equivalent to a function from
+the singleton set? In Haskell, we could replace the definition of
+\texttt{mempty} with a function:
+
+\begin{verbatim}
+eta :: () -> m
+\end{verbatim}
+
+The singleton is the terminal object in \textbf{Set}, so it's natural to
+generalize this definition to any category that has a terminal object
+\texttt{t}:
+
+\begin{verbatim}
+η :: t -> m
+\end{verbatim}
+
+This lets us pick the unit ``element'' without having to talk about
+elements.
+
+Unlike in our previous definition of a monoid as a single-object
+category, monoidal laws here are not automatically satisfied --- we have
+to impose them. But in order to formulate them we have to establish the
+monoidal structure of the underlying categorical product itself. Let's
+recall how monoidal structure works in Haskell first.
+
+We start with associativity. In Haskell, the corresponding equational
+law is:
+
+\begin{verbatim}
+mu x (mu y z) = mu (mu x y) z
+\end{verbatim}
+
+Before we can generalize it to other categories, we have to rewrite it
+as an equality of functions (morphisms). We have to abstract it away
+from its action on individual variables --- in other words, we have to
+use point-free notation. Knowning that the cartesian product is a
+bifunctor, we can write the left hand side as:
+
+\begin{verbatim}
+(mu . bimap id mu)(x, (y, z))
+\end{verbatim}
+
+and the right hand side as:
+
+\begin{verbatim}
+(mu . bimap mu id)((x, y), z)
+\end{verbatim}
+
+This is almost what we want. Unfortunately, the cartesian product is not
+strictly associative --- \texttt{(x,\ (y,\ z))} is not the same as
+\texttt{((x,\ y),\ z)} --- so we can't just write point-free:
+
+\begin{verbatim}
+mu . bimap id mu = mu . bimap mu id
+\end{verbatim}
+
+On the other hand, the two nestings of pairs are isomorphic. There is an
+invertible function called the associator that converts between them:
+
+\begin{verbatim}
+alpha :: ((a, b), c) -> (a, (b, c)) alpha ((x, y), z) = (x, (y, z))
+\end{verbatim}
+
+With the help of the associator, we can write the point-free
+associativity law for \texttt{mu}:
+
+\begin{verbatim}
+mu . bimap id mu . alpha = mu . bimap mu id
+\end{verbatim}
+
+We can apply a similar trick to unit laws which, in the new notation,
+take the form:
+
+\begin{verbatim}
+mu (eta (), x) = x mu (x, eta ()) = x
+\end{verbatim}
+
+They can be rewritten as:
+
+\begin{verbatim}
+(mu . bimap eta id) ((), x) = lambda ((), x) (mu . bimap id eta) (x, ()) = rho (x, ())
+\end{verbatim}
+
+The isomorphisms \texttt{lambda} and \texttt{rho} are called the left
+and right unitor, respectively. They witness the fact that the unit
+\texttt{()} is the identity of the cartesian product up to isomorphism:
+
+\begin{verbatim}
+lambda :: ((), a) -> a lambda ((), x) = x
+\end{verbatim}
+
+\begin{verbatim}
+rho :: (a, ()) -> a rho (x, ()) = x
+\end{verbatim}
+
+The point-free versions of the unit laws are therefore:
+
+\begin{verbatim}
+mu . bimap id eta = lambda mu . bimap eta id = rho
+\end{verbatim}
+
+We have formulated point-free monoidal laws for \texttt{mu} and
+\texttt{eta} using the fact that the underlying cartesian product itself
+acts like a monoidal multiplication in the category of types. Keep in
+mind though that the associativity and unit laws for the cartesian
+product are valid only up to isomorphism.
+
+It turns out that these laws can be generalized to any category with
+products and a terminal object. Categorical products are indeed
+associative up to isomorphism and the terminal object is the unit, also
+up to isomorphism. The associator and the two unitors are natural
+isomorphisms. The laws can be represented by commuting diagrams.
+
+\includegraphics[width=3.12500in]{images/assocmon.png}
+
+Notice that, because the product is a bifunctor, it can lift a pair of
+morphisms --- in Haskell this was done using \texttt{bimap}.
+
+We could stop here and say that we can define a monoid on top of any
+category with categorical products and a terminal object. As long as we
+can pick an object \texttt{m} and two morphisms μ and η that satisfy
+monoidal laws, we have a monoid. But we can do better than that. We
+don't need a full-blown categorical product to formulate the laws for μ
+and η. Recall that a product is defined through a universal construction
+that uses projections. We haven't used any projections in our
+formulation of monoidal laws.
+
+A bifunctor that behaves like a product without being a product is
+called a tensor product, often denoted by the infix operator ⊗. A
+definition of a tensor product in general is a bit tricky, but we won't
+worry about it. We'll just list its properties --- the most important
+being associativity up to isomorphism.
+
+Similarly, we don't need the object \texttt{t} to be terminal. We never
+used its terminal property --- namely, the existence of a unique
+morphism from any object to it. What we require is that it works well in
+concert with the tensor product. Which means that we want it to be the
+unit of the tensor product, again, up to isomorphism. Let's put it all
+together:
+
+A monoidal category is a category \emph{C} equipped with a bifunctor
+called the tensor product:
+
+\begin{verbatim}
+⊗ :: C × C -> C
+\end{verbatim}
+
+and a distinct object \texttt{i} called the unit object, together with
+three natural isomorphisms called, respectively, the associator and the
+left and right unitors:
+
+\begin{verbatim}
+αa b c :: (a ⊗ b) ⊗ c -> a ⊗ (b ⊗ c) λa :: i ⊗ a -> a ρa :: a ⊗ i -> a
+\end{verbatim}
+
+(There is also a coherence condition for simplifying a quadruple tensor
+product.)
+
+What's important is that a tensor product describes many familiar
+bifunctors. In particular, it works for a product, a coproduct and, as
+we'll see shortly, for the composition of endofunctors (and also for
+some more esoteric products like Day convolution). Monoidal categories
+will play an essential role in the formulation of enriched categories.
+
+\subsection{Monoid in a Monoidal
+Category}\label{monoid-in-a-monoidal-category}
+
+We are now ready to define a monoid in a more general setting of a
+monoidal category. We start by picking an object \texttt{m}. Using the
+tensor product we can form powers of \texttt{m}. The square of
+\texttt{m} is \texttt{m\ ⊗\ m}. There are two ways of forming the cube
+of \texttt{m}, but they are isomorphic through the associator. Similarly
+for higher powers of \texttt{m} (that's where we need the coherence
+conditions). To form a monoid we need to pick two morphisms:
+
+\begin{verbatim}
+μ :: m ⊗ m -> m η :: i -> m
+\end{verbatim}
+
+where \texttt{i} is the unit object for our tensor product.
+
+\includegraphics[width=3.12500in]{images/monoid-1.jpg}
+
+These morphisms have to satisfy associativity and unit laws, which can
+be expressed in terms of the following commuting diagrams:
+
+\includegraphics[width=3.12500in]{images/assoctensor.jpg}
+
+\includegraphics[width=3.12500in]{images/unitmon.jpg}
+
+Notice that it's essential that the tensor product be a bifunctor
+because we need to lift pairs of morphisms to form products such as
+\texttt{μ\ ⊗\ id} or \texttt{η\ ⊗\ id}. These diagrams are just a
+straightforward generalization of our previous results for categorical
+products.
+
+\subsection{Monads as Monoids}\label{monads-as-monoids}
+
+Monoidal structures pop up in unexpected places. One such place is the
+functor category. If you squint a little, you might be able to see
+functor composition as a form of multiplication. The problem is that not
+any two functors can be composed --- the target category of one has to
+be the source category of the other. That's just the usual rule of
+composition of morphisms --- and, as we know, functors are indeed
+morphisms in the category \textbf{Cat}. But just like endomorphisms
+(morphisms that loop back to the same object) are always composable, so
+are endofunctors. For any given category \emph{C}, endofunctors from
+\emph{C} to \emph{C} form the functor category \texttt{{[}C,\ C{]}}. Its
+objects are endofunctors, and morphisms are natural transformations
+between them. We can take any two objects from this category, say
+endofunctors \texttt{F} and \texttt{G}, and produce a third object
+\texttt{F\ ∘\ G} --- an endofunctor that's their composition.
+
+Is endofunctor composition a good candidate for a tensor product? First,
+we have to establish that it's a bifunctor. Can it be used to lift a
+pair of morphisms --- here, natural transformations? The signature of
+the analog of \texttt{bimap} for the tensor product would look something
+like this:
+
+\begin{verbatim}
+bimap :: (a -> b) -> (c -> d) -> (a ⊗ c -> b ⊗ d)
+\end{verbatim}
+
+If you replace objects by endofunctors, arrows by natural
+transformations, and tensor products by composition, you get:
+
+\begin{verbatim}
+(F -> F&apos;) -> (G -> G&apos;) -> (F ∘ G -> F&apos; ∘ G&apos;)
+\end{verbatim}
+
+which you may recognize as the special case of horizontal composition.
+
+\includegraphics[width=2.65625in]{images/horizcomp.png}
+
+We also have at our disposal the identity endofunctor \texttt{I}, which
+can serve as the identity for endofunctor composition --- our new tensor
+product. Moreover, functor composition is associative. In fact
+associativity and unit laws are strict --- there's no need for the
+associator or the two unitors. So endofunctors form a strict monoidal
+category with functor composition as tensor product.
+
+What's a monoid in this category? It's an object --- that is an
+endofunctor \texttt{T}; and two morphisms --- that is natural
+transformations:
+
+\begin{verbatim}
+μ :: T ∘ T -> T η :: I -> T
+\end{verbatim}
+
+Not only that, here are the monoid laws:
+
+\includegraphics[width=1.90625in]{images/assoc.png}
+
+\includegraphics[width=2.86458in]{images/unitlawcomp.png}
+
+They are exactly the monad laws we've seen before. Now you understand
+the famous quote from Saunders Mac Lane:
+
+All told, monad is just a monoid in the category of endofunctors.
+
+You might have seen it emblazoned on some t-shirts at functional
+programming conferences.
+
+\subsection{Monads from Adjunctions}\label{monads-from-adjunctions}
+
+An
+\href{https://bartoszmilewski.com/2016/04/18/adjunctions/}{adjunction},
+\texttt{L\ ⊣\ R}, is a pair of functors going back and forth between two
+categories \emph{C} and \emph{D}. There are two ways of composing them
+giving rise to two endofunctors, \texttt{R\ ∘\ L} and \texttt{L\ ∘\ R}.
+As per an adjunction, these endofunctors are related to identity
+functors through two natural transformations called unit and counit:
+
+\begin{verbatim}
+η :: ID -> R ∘ L ε :: L ∘ R -> IC
+\end{verbatim}
+
+Immediately we see that the unit of an adjunction looks just like the
+unit of a monad. It turns out that the endofunctor \texttt{R\ ∘\ L} is
+indeed a monad. All we need is to define the appropriate μ to go with
+the η. That's a natural transformation between the square of our
+endofunctor and the endofunctor itself or, in terms of the adjoint
+functors:
+
+\begin{verbatim}
+R ∘ L ∘ R ∘ L -> R ∘ L
+\end{verbatim}
+
+And, indeed, we can use the counit to collapse the \texttt{L\ ∘\ R} in
+the middle. The exact formula for μ is given by the horizontal
+composition:
+
+\begin{verbatim}
+μ = R ∘ ε ∘ L
+\end{verbatim}
+
+Monadic laws follow from the identities satisfied by the unit and counit
+of the adjunction and the interchange law.
+
+We don't see a lot of monads derived from adjunctions in Haskell,
+because an adjunction usually involves two categories. However, the
+definitions of an exponential, or a function object, is an exception.
+Here are the two endofunctors that form this adjunction:
+
+\begin{verbatim}
+L z = z × s R b = s ⇒ b
+\end{verbatim}
+
+You may recognize their composition as the familiar state monad:
+
+\begin{verbatim}
+R (L z) = s ⇒ (z × s)
+\end{verbatim}
+
+We've seen this monad before in Haskell:
+
+\begin{verbatim}
+newtype State s a = State (s -> (a, s))
+\end{verbatim}
+
+Let's also translate the adjunction to Haskell. The left functor is the
+product functor:
+
+\begin{verbatim}
+newtype Prod s a = Prod (a, s)
+\end{verbatim}
+
+and the right functor is the reader functor:
+
+\begin{verbatim}
+newtype Reader s a = Reader (s -> a)
+\end{verbatim}
+
+They form the adjunction:
+
+\begin{verbatim}
+instance Adjunction (Prod s) (Reader s) where counit (Prod (Reader f, s)) = f s unit a = Reader (\s -> Prod (a, s))
+\end{verbatim}
+
+You can easily convince yourself that the composition of the reader
+functor after the product functor is indeed equivalent to the state
+functor:
+
+\begin{verbatim}
+newtype State s a = State (s -> (a, s))
+\end{verbatim}
+
+As expected, the \texttt{unit} of the adjunction is equivalent to the
+\texttt{return} function of the state monad. The \texttt{counit} acts by
+evaluating a function acting on its argument. This is recognizable as
+the uncurried version of the function \texttt{runState}:
+
+\begin{verbatim}
+runState :: State s a -> s -> (a, s) runState (State f) s = f s
+\end{verbatim}
+
+(uncurried, because in \texttt{counit} it acts on a pair).
+
+We can now define \texttt{join} for the state monad as a component of
+the natural transformation μ. For that we need a horizontal composition
+of three natural transformations:
+
+\begin{verbatim}
+μ = R ∘ ε ∘ L
+\end{verbatim}
+
+In other words, we need to sneak the counit ε across one level of the
+reader functor. We can't just call \texttt{fmap} directly, because the
+compiler would pick the one for the \texttt{State} functor, rather than
+the \texttt{Reader} functor. But recall that \texttt{fmap} for the
+reader functor is just left function composition. So we'll use function
+composition directly.
+
+We have to first peel off the data constructor \texttt{State} to expose
+the function inside the \texttt{State} functor. This is done using
+\texttt{runState}:
+
+\begin{verbatim}
+ssa :: State s (State s a) runState ssa :: s -> (State s a, s)
+\end{verbatim}
+
+Then we left-compose it with the counit, which is defined by
+\texttt{uncurry\ runState}. Finally, we clothe it back in the
+\texttt{State} data constructor:
+
+\begin{verbatim}
+join :: State s (State s a) -> State s a join ssa = State (uncurry runState . runState ssa)
+\end{verbatim}
+
+This is indeed the implementation of \texttt{join} for the
+\texttt{State} monad.
+
+It turns out that not only every adjunction gives rise to a monad, but
+the converse is also true: every monad can be factorized into a
+composition of two adjoint functors. Such factorization is not unique
+though.
+
+We'll talk about the other endofunctor \texttt{L\ ∘\ R} in the next
+section.
+
+Next: \href{https://bartoszmilewski.com/2017/01/02/comonads/}{Comonads}.

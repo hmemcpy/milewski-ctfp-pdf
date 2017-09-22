@@ -1,0 +1,550 @@
+\begin{quote}
+This is part 23 of Categories for Programmers. Previously:
+\href{https://bartoszmilewski.com/2016/12/27/monads-categorically/}{Monads
+Categorically}. See the
+\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
+of Contents}.
+\end{quote}
+
+Now that we have covered monads, we can reap the benefits of duality and
+get comonads for free simply by reversing the arrows and working in the
+opposite category.
+
+Recall that, at the most basic level, monads are about composing Kleisli
+arrows:
+
+\begin{verbatim}
+a -> m b
+\end{verbatim}
+
+where \texttt{m} is a functor that is a monad. If we use the letter
+\texttt{w} (upside down \texttt{m}) for the comonad, we can define
+co-Kleisli arrows as morphism of the type:
+
+\begin{verbatim}
+w a -> b
+\end{verbatim}
+
+The analog of the fish operator for co-Kleisli arrows is defined as:
+
+\begin{verbatim}
+(=>=) :: (w a -> b) -> (w b -> c) -> (w a -> c)
+\end{verbatim}
+
+For co-Kleisli arrows to form a category we also have to have an
+identity co-Kleisli arrow, which is called \texttt{extract}:
+
+\begin{verbatim}
+extract :: w a -> a
+\end{verbatim}
+
+This is the dual of \texttt{return}. We also have to impose the laws of
+associativity as well as left- and right-identity. Putting it all
+together, we could define a comonad in Haskell as:
+
+\begin{verbatim}
+class Functor w => Comonad w where (=>=) :: (w a -> b) -> (w b -> c) -> (w a -> c) extract :: w a -> a
+\end{verbatim}
+
+In practice, we use slightly different primitives, as we'll see shortly.
+
+The question is, what's the use for comonads in programming?
+
+\subsection{Programming with Comonads}\label{programming-with-comonads}
+
+Let's compare the monad with the comonad. A monad provides a way of
+putting a value in a container using \texttt{return}. It doesn't give
+you access to a value or values stored inside. Of course, data
+structures that implement monads might provide access to their contents,
+but that's considered a bonus. There is no common interface for
+extracting values from a monad. And we've seen the example of the
+\texttt{IO} monad that prides itself in never exposing its contents.
+
+A comonad, on the other hand, provides the means of extracting a single
+value from it. It does not give the means to insert values. So if you
+want to think of a comonad as a container, it always comes pre-filled
+with contents, and it lets you peek at it.
+
+Just as a Kleisli arrow takes a value and produces some embellished
+result --- it embellishes it with context --- a co-Kleisli arrow takes a
+value together with a whole context and produces a result. It's an
+embodiment of \emph{contextual computation}.
+
+\subsection{The Product Comonad}\label{the-product-comonad}
+
+Remember the reader monad? We introduced it to tackle the problem of
+implementing computations that need access to some read-only environment
+\texttt{e}. Such computations can be represented as pure functions of
+the form:
+
+\begin{verbatim}
+(a, e) -> b
+\end{verbatim}
+
+We used currying to turn them into Kleisli arrows:
+
+\begin{verbatim}
+a -> (e -> b)
+\end{verbatim}
+
+But notice that these functions already have the form of co-Kleisli
+arrows. Let's massage their arguments into the more convenient functor
+form:
+
+\begin{verbatim}
+data Product e a = P e a deriving Functor
+\end{verbatim}
+
+We can easily define the composition operator by making the same
+environment available to the arrows that we are composing:
+
+\begin{verbatim}
+(=>=) :: (Product e a -> b) -> (Product e b -> c) -> (Product e a -> c) f =>= g = \(P e a) -> let b = f (P e a) c = g (P e b) in c
+\end{verbatim}
+
+The implementation of \texttt{extract} simply ignores the environment:
+
+\begin{verbatim}
+extract (P e a) = a
+\end{verbatim}
+
+Not surprisingly, the product comonad can be used to perform exactly the
+same computations as the reader monad. In a way, the comonadic
+implementation of the environment is more natural --- it follows the
+spirit of ``computation in context.'' On the other hand, monads come
+with the convenient syntactic sugar of the \texttt{do} notation.
+
+The connection between the reader monad and the product comonad goes
+deeper, having to do with the fact that the reader functor is the right
+adjoint of the product functor. In general, though, comonads cover
+different notions of computation than monads. We'll see more examples
+later.
+
+It's easy to generalize the \texttt{Product} comonad to arbitrary
+product types including tuples and records.
+
+\subsection{Dissecting the
+Composition}\label{dissecting-the-composition}
+
+Continuing the process of dualization, we could go ahead and dualize
+monadic bind and join. Alternatively, we can repeat the process we used
+with monads, where we studied the anatomy of the fish operator. This
+approach seems more enlightening.
+
+The starting point is the realization that the composition operator must
+produce a co-Kleisli arrow that takes \texttt{w\ a} and produces a
+\texttt{c}. The only way to produce a \texttt{c} is to apply the second
+function to an argument of the type \texttt{w\ b}:
+
+\begin{verbatim}
+(=>=) :: (w a -> b) -> (w b -> c) -> (w a -> c) f =>= g = g ... 
+\end{verbatim}
+
+But how can we produce a value of type \texttt{w\ b} that could be fed
+to \texttt{g}? We have at our disposal the argument of type
+\texttt{w\ a} and the function \texttt{f\ ::\ w\ a\ -\textgreater{}\ b}.
+The solution is to define the dual of bind, which is called extend:
+
+\begin{verbatim}
+extend :: (w a -> b) -> w a -> w b
+\end{verbatim}
+
+Using \texttt{extend} we can implement composition:
+
+\begin{verbatim}
+f =>= g = g . extend f
+\end{verbatim}
+
+Can we next dissect \texttt{extend}? You might be tempted to say, why
+not just apply the function \texttt{w\ a\ -\textgreater{}\ b} to the
+argument \texttt{w\ a}, but then you quickly realize that you'd have no
+way of converting the resulting \texttt{b} to \texttt{w\ b}. Remember,
+the comonad provides no means of lifting values. At this point, in the
+analogous construction for monads, we used \texttt{fmap}. The only way
+we could use \texttt{fmap} here would be if we had something of the type
+\texttt{w\ (w\ a)} at our disposal. If we coud only turn \texttt{w\ a}
+into \texttt{w\ (w\ a)}. And, conveniently, that would be exactly the
+dual of \texttt{join}. We call it \texttt{duplicate}:
+
+\begin{verbatim}
+duplicate :: w a -> w (w a)
+\end{verbatim}
+
+So, just like with the definitions of the monad, we have three
+equivalent definitions of the comonad: using co-Kleisli arrows,
+\texttt{extend}, or \texttt{duplicate}. Here's the Haskell definition
+taken directly from \texttt{Control.Comonad} library:
+
+\begin{verbatim}
+class Functor w => Comonad w where extract :: w a -> a duplicate :: w a -> w (w a) duplicate = extend id extend :: (w a -> b) -> w a -> w b extend f = fmap f . duplicate
+\end{verbatim}
+
+Provided are the default implementations of \texttt{extend} in terms of
+\texttt{duplicate} and vice versa, so you only need to override one of
+them.
+
+The intuition behind these functions is based on the idea that, in
+general, a comonad can be thought of as a container filled with values
+of type \texttt{a} (the product comonad was a special case of just one
+value). There is a notion of the ``current'' value, one that's easily
+accessible through \texttt{extract}. A co-Kleisli arrow performs some
+computation that is focused on the current value, but it has access to
+all the surrounding values. Think of the Conway's game of life. Each
+cell contains a value (usually just \texttt{True} or \texttt{False}). A
+comonad corresponding to the game of life would be a grid of cells
+focused on the ``current'' cell.
+
+So what does \texttt{duplicate} do? It takes a comonadic container
+\texttt{w\ a} and produces a container of containers \texttt{w\ (w\ a)}.
+The idea is that each of these containers is focused on a different
+\texttt{a} inside \texttt{w\ a}. In the game of life, you would get a
+grid of grids, each cell of the outer grid containing an inner grid
+that's focused on a different cell.
+
+Now look at \texttt{extend}. It takes a co-Kleisli arrow and a comonadic
+container \texttt{w\ a} filled with \texttt{a}s. It applies the
+computation to all of these \texttt{a}s, replacing them with
+\texttt{b}s. The result is a comonadic container filled with
+\texttt{b}s. \texttt{extend} does it by shifting the focus from one
+\texttt{a} to another and applying the co-Kleisli arrow to each of them
+in turn. In the game of life, the co-Kleisli arrow would calculate the
+new state of the current cell. To do that, it would look at its context
+--- presumably its nearest neighbors. The default implementation of
+\texttt{extend} illustrates this process. First we call
+\texttt{duplicate} to produce all possible foci and then we apply
+\texttt{f} to each of them.
+
+\subsection{The Stream Comonad}\label{the-stream-comonad}
+
+This process of shifting the focus from one element of the container to
+another is best illustrated with the example of an infinite stream. Such
+a stream is just like a list, except that it doesn't have the empty
+constructor:
+
+\begin{verbatim}
+data Stream a = Cons a (Stream a)
+\end{verbatim}
+
+It's trivially a \texttt{Functor}:
+
+\begin{verbatim}
+instance Functor Stream where fmap f (Cons a as) = Cons (f a) (fmap f as)
+\end{verbatim}
+
+The focus of a stream is its first element, so here's the implementation
+of \texttt{extract}:
+
+\begin{verbatim}
+extract (Cons a _) = a
+\end{verbatim}
+
+\texttt{duplicate} produces a stream of streams, each focused on a
+different element.
+
+\begin{verbatim}
+duplicate (Cons a as) = Cons (Cons a as) (duplicate as)
+\end{verbatim}
+
+The first element is the original stream, the second element is the tail
+of the original stream, the third element is its tail, and so on, ad
+infinitum.
+
+Here's the complete instance:
+
+\begin{verbatim}
+instance Comonad Stream where extract (Cons a _) = a duplicate (Cons a as) = Cons (Cons a as) (duplicate as)
+\end{verbatim}
+
+This is a very functional way of looking at streams. In an imperative
+language, we would probably start with a method \texttt{advance} that
+shifts the stream by one position. Here, \texttt{duplicate} produces all
+shifted streams in one fell swoop. Haskell's laziness makes this
+possible and even desirable. Of course, to make a \texttt{Stream}
+practical, we would also implement the analog of \texttt{advance}:
+
+\begin{verbatim}
+tail :: Stream a -> Stream a tail (Cons a as) = as
+\end{verbatim}
+
+but it's never part of the comonadic interface.
+
+If you had any experience with digital signal processing, you'll see
+immediately that a co-Kleisli arrow for a stream is just a digital
+filter, and \texttt{extend} produces a filtered stream.
+
+As a simple example, let's implement the moving average filter. Here's a
+function that sums \texttt{n} elements of a stream:
+
+\begin{verbatim}
+sumS :: Num a => Int -> Stream a -> a sumS n (Cons a as) = if n <= 0 then 0 else a + sumS (n - 1) as
+\end{verbatim}
+
+Here's the function that calculates the average of the first \texttt{n}
+elements of the stream:
+
+\begin{verbatim}
+average :: Fractional a => Int -> Stream a -> a average n stm = (sumS n stm) / (fromIntegral n)
+\end{verbatim}
+
+Partially applied \texttt{average\ n} is a co-Kleisli arrow, so we can
+\texttt{extend} it over the whole stream:
+
+\begin{verbatim}
+movingAvg :: Fractional a => Int -> Stream a -> Stream a movingAvg n = extend (average n)
+\end{verbatim}
+
+The result is the stream of running averages.
+
+A stream is an example of a unidirectional, one-dimensional comonad. It
+can be easily made bidirectional or extended to two or more dimensions.
+
+\subsection{Comonad Categorically}\label{comonad-categorically}
+
+Defining a comonad in category theory is a straightforward exercise in
+duality. As with the monad, we start with an endofunctor \texttt{T}. The
+two natural transformations, η and μ, that define the monad are simply
+reversed for the comonad:
+
+\begin{verbatim}
+ε :: T -> I δ :: T -> T2
+\end{verbatim}
+
+The components of these transformations correspond to \texttt{extract}
+and \texttt{duplicate}. Comonad laws are the mirror image of monad laws.
+No big surprise here.
+
+Then there is the derivation of the monad from an adjunction. Duality
+reverses an adjunction: the left adjoint becomes the right adjoint and
+vice versa. And, since the composition \texttt{R\ ∘\ L} defines a monad,
+\texttt{L\ ∘\ R} must define a comonad. The counit of the adjunction:
+
+\begin{verbatim}
+ε :: L ∘ R -> I
+\end{verbatim}
+
+is indeed the same ε that we see in the definition of the comonad ---
+or, in components, as Haskell's \texttt{extract}. We can also use the
+unit of the adjunction:
+
+\begin{verbatim}
+η :: I -> R ∘ L
+\end{verbatim}
+
+to insert an \texttt{R\ ∘\ L} in the middle of \texttt{L\ ∘\ R} and
+produce \texttt{L\ ∘\ R\ ∘\ L\ ∘\ R}. Making \texttt{T2} from \texttt{T}
+defines the δ, and that completes the definition of the comonad.
+
+We've also seen that the monad is a monoid. The dual of this statement
+would require the use of a comonoid, so what's a comonoid? The original
+definition of a monoid as a single-object category doesn't dualize to
+anything interesting. When you reverse the direction of all
+endomorphisms, you get another monoid. Recall, however, that in our
+approach to a monad, we used a more general definition of a monoid as an
+object in a monoidal category. The construction was based on two
+morphisms:
+
+\begin{verbatim}
+μ :: m ⊗ m -> m η :: i -> m
+\end{verbatim}
+
+The reversal of these morphisms produces a comonoid in a monoidal
+category:
+
+\begin{verbatim}
+δ :: m -> m ⊗ m ε :: m -> i
+\end{verbatim}
+
+One can write a definition of a comonoid in Haskell:
+
+\begin{verbatim}
+class Comonoid m where split :: m -> (m, m) destroy :: m -> ()
+\end{verbatim}
+
+but it is rather trivial. Obviously \texttt{destroy} ignores its
+argument.
+
+\begin{verbatim}
+destroy _ = ()
+\end{verbatim}
+
+\texttt{split} is just a pair of functions:
+
+\begin{verbatim}
+split x = (f x, g x)
+\end{verbatim}
+
+Now consider comonoid laws that are dual to the monoid unit laws.
+
+\begin{verbatim}
+lambda . bimap destroy id . split = id rho . bimap id destroy . split = id
+\end{verbatim}
+
+Here, \texttt{lambda} and \texttt{rho} are the left and right unitors,
+respectively (see the definition of
+\href{https://bartoszmilewski.com/2016/12/27/monads-categorically/}{monoidal
+categories}). Plugging in the definitions, we get:
+
+\begin{verbatim}
+lambda (bimap destroy id (split x)) = lambda (bimap destroy id (f x, g x)) = lambda ((), g x) = g x
+\end{verbatim}
+
+which proves that \texttt{g\ =\ id}. Similarly, the second law expands
+to \texttt{f\ =\ id}. In conclusion:
+
+\begin{verbatim}
+split x = (x, x)
+\end{verbatim}
+
+which shows that in Haskell (and, in general, in the category
+\textbf{Set}) every object is a trivial comonoid.
+
+Fortunately there are other more interesting monoidal categories in
+which to define comonoids. One of them is the category of endofunctors.
+And it turns out that, just like the monad is a monoid in the category
+of endofunctors,
+
+The comonad is a comonoid in the category of endofunctors.
+
+\subsection{The Store Comonad}\label{the-store-comonad}
+
+Another important example of a comonad is the dual of the state monad.
+It's called the costate comonad or, alternatively, the store comonad.
+
+We've seen before that the state monad is generated by the adjunction
+that defines the exponentials:
+
+\begin{verbatim}
+L z = z × s R a = s ⇒ a
+\end{verbatim}
+
+We'll use the same adjunction to define the costate comonad. A comonad
+is defined by the composition \texttt{L\ ∘\ R}:
+
+\begin{verbatim}
+L (R a) = (s ⇒ a) × s
+\end{verbatim}
+
+Translating this to Haskell, we start with the adjunction between the
+\texttt{Prod} functor on the left and the \texttt{Reader} functor or the
+right. Composing \texttt{Prod} after \texttt{Reader} is equivalent to
+the following definition:
+
+\begin{verbatim}
+data Store s a = Store (s -> a) s
+\end{verbatim}
+
+The counit of the adjunction taken at the object \texttt{a} is the
+morphism:
+
+\begin{verbatim}
+εa :: ((s ⇒ a) × s) -> a
+\end{verbatim}
+
+or, in Haskell notation:
+
+\begin{verbatim}
+counit (Prod (Reader f, s)) = f s
+\end{verbatim}
+
+This becomes our \texttt{extract}:
+
+\begin{verbatim}
+extract (Store f s) = f s
+\end{verbatim}
+
+The unit of the adjunction:
+
+\begin{verbatim}
+unit a = Reader (\s -> Prod (a, s))
+\end{verbatim}
+
+can be rewritten as partially applied data constructor:
+
+\begin{verbatim}
+Store f :: s -> Store f s
+\end{verbatim}
+
+We construct δ, or \texttt{duplicate}, as the horizontal composition:
+
+\begin{verbatim}
+δ :: L ∘ R -> L ∘ R ∘ L ∘ R δ = L ∘ η ∘ R
+\end{verbatim}
+
+We have to sneak η through the leftmost \texttt{L}, which is the
+\texttt{Prod} functor. It means acting with η, or \texttt{Store\ f}, on
+the left component of the pair (that's what \texttt{fmap} for
+\texttt{Prod} would do). We get:
+
+\begin{verbatim}
+duplicate (Store f s) = Store (Store f) s
+\end{verbatim}
+
+(Remember that, in the formula for δ, \texttt{L} and \texttt{R} stand
+for identity natural transformations whose components are identity
+morphisms.)
+
+Here's the complete definition of the \texttt{Store} comonad:
+
+\begin{verbatim}
+instance Comonad (Store s) where extract (Store f s) = f s duplicate (Store f s) = Store (Store f) s
+\end{verbatim}
+
+You may think of the \texttt{Reader} part of \texttt{Store} as a
+generalized container of \texttt{a}s that are keyed using elements of
+the type \texttt{s}. For instance, if \texttt{s} is \texttt{Int},
+\texttt{Reader\ Int\ a} is an infinite bidirectional stream of
+\texttt{a}s. \texttt{Store} pairs this container with a value of the key
+type. For instance, \texttt{Reader\ Int\ a} is paired with an
+\texttt{Int}. In this case, \texttt{extract} uses this integer to index
+into the infinite stream. You may think of the second component of
+\texttt{Store} as the current position.
+
+Continuing with this example, \texttt{duplicate} creates a new infinite
+stream indexed by an \texttt{Int}. This stream contains streams as its
+elements. In particular, at the current position, it contains the
+original stream. But if you use some other \texttt{Int} (positive or
+negative) as the key, you'd obtain a shifted stream positioned at that
+new index.
+
+In general, you can convince yourself that when \texttt{extract} acts on
+the \texttt{duplicate}d \texttt{Store} it produces the original
+\texttt{Store} (in fact, the identity law for the comonad states that
+\texttt{extract\ .\ duplicate\ =\ id}).
+
+The \texttt{Store} comonad plays an important role as the theoretical
+basis for the \texttt{Lens} library. Conceptually, the
+\texttt{Store\ s\ a} comonad encapsulates the idea of ``focusing'' (like
+a lens) on a particular substructure of the date type \texttt{a} using
+the type \texttt{s} as an index. In particular, a function of the type:
+
+\begin{verbatim}
+a -> Store s a
+\end{verbatim}
+
+is equivalent to a pair of functions:
+
+\begin{verbatim}
+set :: a -> s -> a get :: a -> s
+\end{verbatim}
+
+If \texttt{a} is a product type, \texttt{set} could be implemented as
+setting the field of type \texttt{s} inside of \texttt{a} while
+returning the modified version of \texttt{a}. Similarly, \texttt{get}
+could be implemented to read the value of the \texttt{s} field from
+\texttt{a}. We'll explore these ideas more in the next section.
+
+\subsection{Challenges}\label{challenges}
+
+\begin{enumerate}
+\tightlist
+\item
+  Implement the Conway's Game of Life using the \texttt{Store} comonad.
+  Hint: What type do you pick for \texttt{s}?
+\end{enumerate}
+
+\subsection{Acknowledgments}\label{acknowledgments}
+
+I'm grateful to Edward Kmett for reading the draft of this post and
+pointing out flaws in my reasoning.
+
+Next: F-Algebras.
