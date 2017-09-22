@@ -34,7 +34,7 @@
 
 \frontmatter
 
-@comment \includepdf[scale=0.92]{coverpage.pdf}
+\includepdf[scale=0.92]{coverpage.pdf}
 
 \pagebreak
 

@@ -1,6 +1,9 @@
 Category Theory for Programmers
 ====
 
+<img src="https://github.com/hmemcpy/milewski-ctfp-pdf/raw/master/src/commutative_diagram.png"
+ alt="Category Theory for Programmers" width=256 align="right" />
+
 **Note**: this is a work in progress!
 
 <b>Direct link: [category-theory-for-programmers.pdf](https://github.com/hmemcpy/milewski-ctfp-pdf/raw/master/ctfp.pdf)</b>
