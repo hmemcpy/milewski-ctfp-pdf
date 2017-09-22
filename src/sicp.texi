@@ -96,8 +96,13 @@ based on the work at @url{https://github.com/sarabander/sicp-pdf}.
 \subfile{content/1.2/Types and Functions}
 
 @chapter Categories Great and Small
-@node    Categories Great and Small, Kleisli categories, Top
+@node    Categories Great and Small, Kleisli Categories, Top
 
 \subfile{content/1.3/Categories Great and Small}
+
+@chapter Kleisli Categories
+@node    Kleisli Categories, Products and Coproducts, Top
+
+\subfile{content/1.4/Kleisli Categories}
 
 @bye
