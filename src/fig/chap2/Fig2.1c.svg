@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="357.53149"
+   height="231.32076"
+   id="svg4113"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   style="display:inline"
+   sodipodi:docname="Fig2.1c.svg">
+  <defs
+     id="defs4115" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="228.42026"
+     inkscape:cy="120.33463"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer3"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1004"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     fit-margin-top="1"
+     fit-margin-left="1"
+     fit-margin-right="1"
+     fit-margin-bottom="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid6964"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       originx="-53.734252px"
+       originy="-774.945px" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata_2.1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>SICP Figure 2.1</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
+        <dc:description>Based on the diagram in Abelson, Sussman &amp; Sussman's &quot;Structure and Interpretation of Computer Programs&quot;, 2nd ed.</dc:description>
+        <dc:source>http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_fig_2.1</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Andres Raba</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:date>2012-11-17</dc:date>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>rational</rdf:li>
+            <rdf:li>number</rdf:li>
+            <rdf:li>package</rdf:li>
+            <rdf:li>data</rdf:li>
+            <rdf:li>structure</rdf:li>
+            <rdf:li>abstraction</rdf:li>
+            <rdf:li>barrier</rdf:li>
+            <rdf:li>level</rdf:li>
+            <rdf:li>constructor</rdf:li>
+            <rdf:li>selector</rdf:li>
+            <rdf:li>pair</rdf:li>
+            <rdf:li>add-rat</rdf:li>
+            <rdf:li>sub-rat</rdf:li>
+            <rdf:li>make-rat</rdf:li>
+            <rdf:li>numer</rdf:li>
+            <rdf:li>denom</rdf:li>
+            <rdf:li>cons</rdf:li>
+            <rdf:li>car</rdf:li>
+            <rdf:li>cdr</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="Boxes"
+     style="display:inline"
+     transform="translate(-53.734252,-46.096435)">
+    <rect
+       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.53149605;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
+       id="rect4103"
+       width="255"
+       height="25"
+       x="105"
+       y="47.362183"
+       rx="3.5433071"
+       ry="3.5433071" />
+    <rect
+       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.53149605;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
+       id="rect4103-6"
+       width="165"
+       height="25"
+       x="150"
+       y="107.36218"
+       rx="3.5433071"
+       ry="3.5433071" />
+    <rect
+       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.53149605;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
+       id="rect4103-5"
+       width="175"
+       height="25"
+       x="145"
+       y="167.36218"
+       rx="3.5433071"
+       ry="3.5433071" />
+    <rect
+       style="fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.53149605;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
+       id="rect4103-69"
+       width="125"
+       height="25"
+       x="170"
+       y="227.36218"
+       rx="3.5433071"
+       ry="3.5433071" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Text"
+     style="display:inline"
+     transform="translate(-53.734252,-46.096435)">
+    <text
+       xml:space="preserve"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
+       x="232.42857"
+       y="63.451469"
+       id="text6868"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6870"
+         x="232.42857"
+         y="63.451469"
+         style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Inconsolata LGC;-inkscape-font-specification:Inconsolata LGC">Programs that use rational numbers</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
+       x="232"
+       y="93.362183"
+       id="text6872"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6874"
+         x="232"
+         y="93.362183"
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O">Rational numbers in problem domain</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
+       x="233"
+       y="123.36218"
+       id="text6876"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6878"
+         x="233"
+         y="123.36218"
+         style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Inconsolata LGC;-inkscape-font-specification:Inconsolata LGC">add-rat  sub-rat  ...</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
+       x="232"
+       y="153.36218"
+       id="text6880"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6882"
+         x="232"
+         y="153.36218"
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O">Rational numbers as numerators and denominators</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
+       x="232"
+       y="183.36218"
+       id="text6884"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6886"
+         x="232"
+         y="183.36218"
+         style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Inconsolata LGC;-inkscape-font-specification:Inconsolata LGC">make-rat  numer  denom</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
+       x="232"
+       y="213.36218"
+       id="text6888"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6890"
+         x="232"
+         y="213.36218"
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O">Rational numbers as pairs</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
+       x="232"
+       y="243.36218"
+       id="text6892"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6894"
+         x="232"
+         y="243.36218"
+         style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Inconsolata LGC;-inkscape-font-specification:Inconsolata LGC">cons  car  cdr</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O"
+       x="232"
+       y="273.36218"
+       id="text6896"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6898"
+         x="232"
+         y="273.36218"
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Linux Biolinum O;-inkscape-font-specification:Linux Biolinum O">However pairs are implemented</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Barriers"
+     style="display:inline"
+     transform="translate(-53.734252,-46.096435)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.53149605;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 360,59.823931 50,0"
+       id="path4105"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.53149605;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       d="m 55,59.897896 50,0"
+       id="path4105-9"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.53149605;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       d="m 315,119.89789 95,0"
+       id="path4105-0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.53149605;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       d="m 55,119.89789 95,0"
+       id="path4105-9-9"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.53149605;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       d="m 320,179.89789 90,0"
+       id="path4105-3"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.53149605;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       d="m 55,179.89789 90,0"
+       id="path4105-9-7"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.53149605;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       d="m 295,239.89789 115,0"
+       id="path4105-7"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.53149605;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       d="m 55,239.89789 115,0"
+       id="path4105-9-2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>
