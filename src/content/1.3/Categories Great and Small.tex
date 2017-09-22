@@ -1,13 +1,4 @@
-\begin{quote}
-In the previous instalment of Category Theory for Programmers we talked
-about the
-\href{https://bartoszmilewski.com/2014/11/24/types-and-functions/}{category
-of types and functions}. If you're new to the series, here's the
-\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
-of Contents}.
-\end{quote}
-
-You can get real appreciation for categories by studying a variety of
+\lettrine[lhang=0.17]{Y}{ou can get real appreciation} for categories by studying a variety of
 examples. Categories come in all shapes and sizes and often pop up in
 unexpected places. We'll start with something really simple.
 
@@ -49,14 +40,14 @@ And now for something completely different! A category where a morphism
 is a relation between objects: the relation of being less than or equal.
 Let's check if it indeed is a category. Do we have identity morphisms?
 Every object is less than or equal to itself: check! Do we have
-composition? If a \textless{}= b and b \textless{}= c then a
-\textless{}= c: check! Is composition associative? Check! A set with a
+composition? If \texttt{a <= b} and \texttt{b <= c} then \texttt{a
+<= c}: check! Is composition associative? Check! A set with a
 relation like this is called a \emph{preorder}, so a preorder is indeed
 a category.
 
 You can also have a stronger relation, that satisfies an additional
-condition that, if a \textless{}= b and b \textless{}= a then a must be
-the same as b. That's called a \emph{partial order}.
+condition that, if \texttt{a <= b} and \texttt{b <= a} then \texttt{a} must be
+the same as \texttt{b}. That's called a \emph{partial order}.
 
 Finally, you can impose the condition that any two objects are in a
 relation with each other, one way or another; and that gives you a
@@ -68,9 +59,9 @@ any object b. Another name for such a category is ``thin.'' A preorder
 is a thin category.
 
 A set of morphisms from object a to object b in a category C is called a
-\emph{hom-set} and is written as C(a, b) (or, sometimes,
-Hom\textsubscript{C}(a, b)). So every hom-set in a preorder is either
-empty or a singleton. That includes the hom-set C(a, a), the set of
+\emph{hom-set} and is written as \texttt{C(a, b)} (or, sometimes,
+\texttt{Hom\textsubscript{C}(a, b)}). So every hom-set in a preorder is either
+empty or a singleton. That includes the hom-set \texttt{C(a, a)}, the set of
 morphisms from a to a, which must be a singleton, containing only the
 identity, in any preorder. You may, however, have cycles in a preorder.
 Cycles are forbidden in a partial order.
@@ -114,8 +105,8 @@ and
 a + 0 = a
 \end{verbatim}
 
-The second equation is redundant, because addition is commutative (a + b
-= b + a), but commutativity is not part of the definition of a monoid.
+The second equation is redundant, because addition is commutative \texttt{(a + b
+= b + a)}, but commutativity is not part of the definition of a monoid.
 For instance, string concatenation is not commutative and yet it forms a
 monoid. The neutral element for string concatenation, by the way, is an
 empty string, which can be attached to either side of a string without
@@ -125,19 +116,21 @@ In Haskell we can define a type class for monoids --- a type for which
 there is a neutral element called \texttt{mempty} and a binary operation
 called \texttt{mappend}:
 
-\begin{verbatim}
-class Monoid m where mempty :: m mappend :: m -> m -> m
-\end{verbatim}
+\begin{minted}{haskell}
+class Monoid m where
+    mempty  :: m
+    mappend :: m -> m -> m
+\end{minted}
 
 The type signature for a two-argument function,
-\texttt{m-\textgreater{}m-\textgreater{}m}, might look strange at first,
+\texttt{m->m->m}, might look strange at first,
 but it will make perfect sense after we talk about currying. You may
 interpret a signature with multiple arrows in two basic ways: as a
 function of multiple arguments, with the rightmost type being the return
 type; or as a function of one argument (the leftmost one), returning a
 function. The latter interpretation may be emphasized by adding
 parentheses (which are redundant, because the arrow is
-right-associative), as in: \texttt{m-\textgreater{}(m-\textgreater{}m)}.
+right-associative), as in: \texttt{m->(m->m)}.
 We'll come back to this interpretation in a moment.
 
 Notice that, in Haskell, there is no way to express the monoidal
@@ -154,9 +147,11 @@ be a monoid by providing the implementation of \texttt{mempty} and
 \texttt{mappend} (this is, in fact, done for you in the standard
 Prelude):
 
-\begin{verbatim}
-instance Monoid String where mempty = "" mappend = (++)
-\end{verbatim}
+\begin{minted}{haskell}
+instance Monoid String where
+    mempty = ""
+    mappend = (++)
+\end{minted}
 
 Here, we have reused the list concatenation operator \texttt{(++)},
 because a \texttt{String} is just a list of characters.
@@ -165,15 +160,15 @@ A word about Haskell syntax: Any infix operator can be turned into a
 two-argument function by surrounding it with parentheses. Given two
 strings, you can concatenate them by inserting \texttt{++} between them:
 
-\begin{verbatim}
+\begin{minted}{haskell}
 "Hello " ++ "world!"
-\end{verbatim}
+\end{minted}
 
 or by passing them as two arguments to the parenthesized \texttt{(++)}:
 
-\begin{verbatim}
+\begin{minted}{haskell}
 (++) "Hello " "world!"
-\end{verbatim}
+\end{minted}
 
 Notice that arguments to a function are not separated by commas or
 surrounded by parentheses. (This is probably the hardest thing to get
@@ -182,16 +177,16 @@ used to when learning Haskell.)
 It's worth emphasizing that Haskell lets you express equality of
 functions, as in:
 
-\begin{verbatim}
+\begin{minted}{haskell}
 mappend = (++)
-\end{verbatim}
+\end{minted}
 
 Conceptually, this is different than expressing the equality of values
 produced by functions, as in:
 
-\begin{verbatim}
+\begin{minted}{haskell}
 mappend s1 s2 = (++) s1 s2
-\end{verbatim}
+\end{minted}
 
 The former translates into equality of morphisms in the category
 \textbf{Hask} (or \textbf{Set}, if we ignore bottoms, which is the name
@@ -209,9 +204,20 @@ so this might be a little confusing to the beginner.)
 The closest one can get to declaring a monoid in C++ would be to use the
 (proposed) syntax for concepts.
 
-\begin{verbatim}
-template<class T> T mempty = delete; template<class T> T mappend(T, T) = delete; template<class M> concept bool Monoid = requires (M m) { { mempty<M> } -> M; { mappend(m, m); } -> M; };
-\end{verbatim}
+\begin{minted}{c++}
+template<class T>
+  T mempty = delete;
+  
+template<class T>
+  T mappend(T, T) = delete;
+  
+template<class M> 
+  concept bool Monoid = requires (M m) { 
+    { mempty<M> } -> M; 
+    { mappend(m, m); } -> M;
+  };
+\end{minted}
+
 
 The first definition uses a value template (also proposed). A
 polymorphic value is a family of values --- a different value for every
@@ -228,9 +234,14 @@ type) that tests whether there exist appropriate definitions of
 An instantiation of the Monoid concept can be accomplished by providing
 appropriate specializations and overloads:
 
-\begin{verbatim}
-template<> std::string mempty<std::string> = {""}; std::string mappend(std::string s1, std::string s2) { return s1 + s2; }
-\end{verbatim}
+\begin{minted}{c++}
+template<>
+std::string mempty<std::string> = {""};
+
+std::string mappend(std::string s1, std::string s2) { 
+    return s1 + s2;
+}
+\end{minted}
 
 \subsection{Monoid as Category}\label{monoid-as-category}
 
@@ -263,7 +274,7 @@ corresponding to the identity function.
 
 An astute reader might have noticed that the mapping from integers to
 adders follows from the second interpretation of the type signature of
-\texttt{mappend} as \texttt{m-\textgreater{}(m-\textgreater{}m)}. It
+\texttt{mappend} as \texttt{m->(m->m)}. It
 tells us that \texttt{mappend} maps an element of a monoid set to a
 function acting on that set.
 
@@ -274,7 +285,11 @@ the name monoid comes from Greek \emph{mono}, which means single. Every
 monoid can be described as a single object category with a set of
 morphisms that follow appropriate rules of composition.
 
-\includegraphics[width=2.45833in]{images/monoid.jpg}
+
+\begin{figure}
+  \centering
+      \fbox{\includegraphics[width=2.45833in]{images/monoid.jpg}}
+\end{figure}
 
 String concatenation is an interesting case, because we have a choice of
 defining right appenders and left appenders (or \emph{prependers}, if
@@ -287,11 +302,11 @@ You might ask the question whether every categorical monoid --- a
 one-object category --- defines a unique set-with-binary-operator
 monoid. It turns out that we can always extract a set from a
 single-object category. This set is the set of morphisms --- the adders
-in our example. In other words, we have the hom-set M(m, m) of the
-single object m in the category M. We can easily define a binary
+in our example. In other words, we have the hom-set \texttt{M(m, m)} of the
+single object \texttt{m} in the category \texttt{M}. We can easily define a binary
 operator in this set: The monoidal product of two set-elements is the
 element corresponding to the composition of the corresponding morphisms.
-If you give me two elements of M(m, m) corresponding to \texttt{f} and
+If you give me two elements of \texttt{M(m, m)} corresponding to \texttt{f} and
 \texttt{g}, their product will correspond to the composition
 \texttt{g∘f}. The composition always exists, because the source and the
 target for these morphisms are the same object. And it's associative by
@@ -299,10 +314,12 @@ the rules of category. The identity morphism is the neutral element of
 this product. So we can always recover a set monoid from a category
 monoid. For all intents and purposes they are one and the same.
 
-\hypertarget{attachment_3681}{}
-\includegraphics[width=3.12500in]{images/monoidhomset.jpg}
-
-Monoid hom-set seen as morphisms and as points in a set
+\begin{figure}
+  \centering
+          \includegraphics[width=3.12500in]{images/monoidhomset.jpg}
+      \captionsetup{labelformat=empty,font=scriptsize}
+      \caption{Monoid hom-set seen as morphisms and as points in a set.}
+\end{figure}
 
 There is just one little nit for mathematicians to pick: morphisms don't
 have to form a set. In the world of categories there are things larger
@@ -314,7 +331,7 @@ A lot of interesting phenomena in category theory have their root in the
 fact that elements of a hom-set can be seen both as morphisms, which
 follow the rules of composition, and as points in a set. Here,
 composition of morphisms in M translates into monoidal product in the
-set M(m, m).
+set \texttt{M(m, m)}.
 
 \subsection{Acknowledgments}\label{acknowledgments}
 
@@ -324,12 +341,10 @@ according to his and Bjarne Stroustrup's latest proposal.
 \subsection{Challenges}\label{challenges}
 
 \begin{enumerate}
-\tightlist
 \item
   Generate a free category from:
 
   \begin{enumerate}
-  \tightlist
   \item
     A graph with one node and no edges
   \item
@@ -345,7 +360,6 @@ according to his and Bjarne Stroustrup's latest proposal.
   What kind of order is this?
 
   \begin{enumerate}
-  \tightlist
   \item
     A set of sets with the inclusion relation: A is included in B if
     every element of A is also an element of B.
@@ -364,11 +378,3 @@ according to his and Bjarne Stroustrup's latest proposal.
 \item
   Represent addition modulo 3 as a monoid category.
 \end{enumerate}
-
-Next: A programming example of pure functions that do logging using
-\href{https://bartoszmilewski.com/2014/12/23/kleisli-categories/}{Kleisli
-categories}.
-
-\href{https://twitter.com/BartoszMilewski}{Follow @BartoszMilewski}
-
-{43.318809} {11.330757}
