@@ -1,0 +1,731 @@
+\begin{quote}
+This is part 30 of Categories for Programmers. Previously:
+{Topoi}\href{https://bartoszmilewski.com/2017/07/22/topoi/}{. See
+the}\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
+of Contents}\href{https://bartoszmilewski.com/2017/07/22/topoi/}{.}
+\end{quote}
+
+Nowadays you can't talk about functional programming without mentioning
+monads. But there is an alternative universe in which, by chance,
+Eugenio Moggi turned his attention to Lawvere theories rather than
+monads. Let's explore that universe.
+
+\subsection{Universal Algebra}\label{universal-algebra}
+
+There are many ways of describing algebras at various levels of
+abstraction. We try to find a general language to describe things like
+monoids, groups, or rings. At the simplest level, all these
+constructions define \emph{operations} on elements of a set, plus some
+\emph{laws} that must be satisfied by these operations. For instance, a
+monoid can be defined in terms of a binary operation that is
+associative. We also have a unit element and unit laws. But with a
+little bit of imagination we can turn the unit element to a nullary
+operation --- an operation that takes no arguments and returns a special
+element of the set. If we want to talk about groups, we add a unary
+operator that takes an element and returns its inverse. There are
+corresponding left and right inverse laws to go with it. A ring defines
+two binary operators plus some more laws. And so on.
+
+The big picture is that an algebra is defined by a set of n-ary
+operations for various values of n, and a set of equational identities.
+These identities are all universally quantified. The associativity
+equation must be satisfied for all possible combinations of three
+elements, and so on.
+
+Incidentally, this eliminates fields from consideration, for the simple
+reason that zero (unit with respect to addition) has no inverse with
+respect to multiplication. The inverse law for a field can't be
+universally quantified.
+
+This definition of a universal algebra can be extended to categories
+other than \textbf{Set}, if we replace operations (functions) with
+morphisms. Instead of a set, we select an object \texttt{a} (called a
+generic object). A unary operation is just an endomorphism of
+\texttt{a}. But what about other arities (\emph{arity} is the number of
+arguments for a given operation)? A binary operation (arity 2) can be
+defined as a morphism from the product \texttt{a×a} back to \texttt{a}.
+A general n-ary operation is a morphism from the n-th power of
+\texttt{a} to \texttt{a}:
+
+\begin{verbatim}
+αn :: an -> a
+\end{verbatim}
+
+A nullary operation is a morphism from the terminal object (the zeroth
+power of \texttt{a}). So all we need in order to define any algebra is a
+category whose objects are powers of one special object \texttt{a}. The
+specific algebra is encoded in the hom-sets of this category. This is a
+Lawvere theory in a nutshell.
+
+The derivation of Lawvere theories goes through many steps, so here's
+the roadmap:
+
+\begin{enumerate}
+\tightlist
+\item
+  Category of finite sets \textbf{FinSet}.
+\item
+  Its skeleton \textbf{F}.
+\item
+  Its opposite \textbf{F}\textsuperscript{op}.
+\item
+  Lawvere theory \textbf{L}: an object in the category \textbf{Law}.
+\item
+  Model \texttt{M} of a Lawvere category: an object in the category
+  \texttt{Mod(Law,\ Set)}.
+\end{enumerate}
+
+\includegraphics[width=5.31250in]{images/lawvere1.png}
+
+\subsection{Lavwere Theories}\label{lavwere-theories}
+
+All Lawvere theories share a common backbone. All objects in a Lawvere
+theory are generated from just one object using products (really, just
+powers). But how do we define these products in a general category? It
+turns out that we can define products using a mapping from a simpler
+category. In fact this simpler category may define coproducts instead of
+products, and we'll use a \emph{contravariant} functor to embed them in
+our target category. A contravariant functor turns coproducts into
+products and injections to projections.
+
+The natural choice for the backbone of a Lawvere category is the
+category of finite sets, \textbf{FinSet}. It contains the empty set
+\texttt{0}, a singleton set \texttt{1}, a two-element set \texttt{2},
+and so on. All objects in this category can be generated from the
+singleton set using coproducts (treating the empty set as a special case
+of a nullary coproduct). For instance, a two-element set is a sum of two
+singletons, \texttt{2\ =\ 1\ +\ 1}, as expressed in Haskell:
+
+\begin{verbatim}
+type Two = Either () ()
+\end{verbatim}
+
+However, even though it's natural to think that there's only one empty
+set, there may be many distinct singleton sets. In particular, the set
+\texttt{1\ +\ 0} is different from the set \texttt{0\ +\ 1}, and
+different from \texttt{1} --- even though they are all isomorphic. The
+coproduct in the category of sets is not associative. We can remedy that
+situation by building a category that identifies all isomorphic sets.
+Such a category is called a \emph{skeleton}. In other words, the
+backbone of any Lawvere theory is the skeleton \textbf{F} of
+\textbf{FinSet}. The objects in this category can be identified with
+natural numbers (including zero) that correspond to the element count in
+\textbf{FinSet}. Coproduct plays the role of addition. Morphisms in
+\textbf{F} correspond to functions between finite sets. For instance,
+there is a unique morphism from \texttt{0} to \texttt{n} (empty set
+being the initial object), no morphisms from \texttt{n} to \texttt{0}
+(except \texttt{0-\textgreater{}0}), n morphisms from \texttt{1} to
+\texttt{n} (the injections), one morphism from \texttt{n} to \texttt{1},
+and so on. Here, \texttt{n} denotes an object in \textbf{F}
+corresponding to all n-element sets in \textbf{FinSet} that have been
+identified through isomorphims.
+
+Using the category \textbf{F} we can formally define a \emph{Lawvere
+theory} as a category \textbf{L} equipped with a special functor
+
+\begin{verbatim}
+IL :: Fop -> L
+\end{verbatim}
+
+This functor must be a bijection on objects and it must preserve finite
+products (products in \textbf{F}\textsuperscript{op} are the same as
+coproducts in \textbf{F}):
+
+\begin{verbatim}
+IL (m × n) = IL m × IL n
+\end{verbatim}
+
+You may sometimes see this functor characterized as identity-on-objects,
+which means that the objects in \textbf{F} and \textbf{L} are the same.
+We will therefore use the same names for them --- we'll denote them by
+natural numbers. Keep in mind though that objects in \textbf{F} are not
+the same as sets (they are classes of isomorphic sets).
+
+The hom-sets in \textbf{L} are, in general, richer than those in
+\textbf{F}\textsuperscript{op}. They may contain morphisms other than
+the ones corresponding to functions in \textbf{FinSet} (the latter are
+sometimes called \emph{basic product operations}). Equational laws of a
+Lawvere theory are encoded in those morphisms.
+
+The key observation is that the singleton set \texttt{1} in \textbf{F}
+is mapped to some object that we also call \texttt{1} in \textbf{L}, and
+all the other objects in \textbf{L} are automatically powers of this
+object. For instance, the two-element set \texttt{2} in \textbf{F} is
+the coproduct \texttt{1+1}, so it must be mapped to a product
+\texttt{1×1} (or \texttt{12}) in \textbf{L}. In this sense, the category
+\textbf{F} behaves like the logarithm of \textbf{L}.
+
+Among morphisms in \textbf{L} we have those transferred by the functor
+\texttt{IL} from \textbf{F}. They play structural role in \textbf{L}. In
+particular coproduct injections \texttt{ik} become product projections
+\texttt{pk}. A useful intuition is to imagine the projection:
+
+\begin{verbatim}
+pk :: 1n -> 1
+\end{verbatim}
+
+as the prototype for a function of n variables that ignores all but the
+k'th variable. Conversely, constant morphisms \texttt{n-\textgreater{}1}
+in \textbf{F} become diagonal morphisms \texttt{1-\textgreater{}1n} in
+\textbf{L}. They correspond to duplication of variables.
+
+The interesting morphisms in \textbf{L} are the ones that define n-ary
+operations other than projections. It's those morphisms that distinguish
+one Lawvere theory from another. These are the multiplications, the
+additions, the selections of unit elements, and so on, that define the
+algebra. But to make \textbf{L} a full category, we also need compound
+operations \texttt{n-\textgreater{}m} (or, equivalently,
+\texttt{1n\ -\textgreater{}\ 1m}). Because of the simple structure of
+the category, they turn out to be products of simpler morphisms of the
+type \texttt{n-\textgreater{}1}. This is a generalization of the
+statement that a function that returns a product is a product of
+functions (or, as we've seen earlier, that the hom-functor is
+continuous).
+
+\hypertarget{attachment_9070}{}
+\includegraphics[width=5.31250in]{images/lawvere1.png}
+
+Lawvere theory L is based on \textbf{F}\textsuperscript{op}, from which
+it inherits the ``boring'' morphisms that define the products. It adds
+the ``interesting'' morphisms that describe the n-ary operations (dotted
+arrows).
+
+Lavwere theories form a category \textbf{Law}, in which morphisms are
+functors that preserve finite products and commute with the functors
+\texttt{I}. Given two such theories, \texttt{(L,\ IL)} and
+\texttt{(L\&apos;,\ I\&apos;L\&apos;)}, a morphism between them is a
+functor \texttt{F\ ::\ L\ -\textgreater{}\ L\&apos;} such that:
+
+\begin{verbatim}
+F (m × n) = F m × F n F ∘ IL = I&apos;L&apos;
+\end{verbatim}
+
+Morphisms between Lawvere theories encapsulate the idea of the
+interpretation of one theory inside another. For instance, group
+multiplication may be interpreted as monoid multiplication if we ignore
+inverses.
+
+The simplest trivial example of a Lawvere category is
+\textbf{F}\textsuperscript{op} itself (corresponding to the choice of
+the identity functor for \texttt{IL}). This Lawvere theory that has no
+operations or laws happens to be the initial object in \textbf{Law}.
+
+At this point it would be very helpful to present a non-trivial example
+of a Lawvere theory, but it would be hard to explain it without first
+understanding what models are.
+
+\subsection{Models of Lawvere
+Theories}\label{models-of-lawvere-theories}
+
+The key to understand Lawvere theories is to realize that one such
+theory generalizes a lot of individual algebras that share the same
+structure. For instance, the Lawvere theory of monoids describes the
+essence of being a monoid. It must be valid for all monoids. A
+particular monoid becomes a model of such a theory. A model is defined
+as a functor from the Lawvere theory \textbf{L} to the category of sets
+\textbf{Set}. (There are generalizations of Lawvere theories that use
+other categories for models but here I'll just concentrate on
+\textbf{Set}.) Since the structure of \textbf{L} depends heavily on
+products, we require that such a functor preserve finite products. A
+model of \textbf{L}, also called the algebra over the Lawvere theory
+\textbf{L}, is therefore defined by a functor:
+
+\begin{verbatim}
+M :: L -> Set M (a × b) ≅ M a × M b
+\end{verbatim}
+
+Notice that we require the preservation of products only \emph{up to
+isomorphism}. This is very important, because strict preservation of
+products would eliminate most interesting theories.
+
+The preservation of products by models means that the image of
+\texttt{M} in \textbf{Set} is a sequence of sets generated by powers of
+the set \texttt{M\ 1} --- the image of the object \texttt{1} from
+\textbf{L}. Let's call this set \texttt{a}. (This set is sometimes
+called a \emph{sort}, and such algebra is called single-sorted. There
+exist generalizations of Lawvere theories to multi-sorted algebras.) In
+particular, binary operations from \textbf{L} are mapped to functions:
+
+\begin{verbatim}
+a × a -> a
+\end{verbatim}
+
+As with any functor, it's possible that multiple morphisms in \textbf{L}
+are collapsed to the same function in \textbf{Set}.
+
+Incidentally, the fact that all laws are universally quantified
+equalities means that every Lawvere theory has a trivial model: a
+constant functor mapping all objects to a single set, and all morphisms
+to the identity function on it.
+
+A general morphism in \textbf{L} of the form
+\texttt{m\ -\textgreater{}\ n} is mapped to a function:
+
+\begin{verbatim}
+am -> an
+\end{verbatim}
+
+If we have two different models, \texttt{M} and \texttt{N}, a natural
+transformation between them is a family of functions indexed by
+\texttt{n}:
+
+\begin{verbatim}
+μn :: M n -> N n
+\end{verbatim}
+
+or, equivalently:
+
+\begin{verbatim}
+μn :: an -> bn
+\end{verbatim}
+
+where \texttt{b\ =\ N\ 1}.
+
+Notice that the naturality condition guarantees the preservation of
+n-ary operations:
+
+\begin{verbatim}
+N f ∘ μn = μ1 ∘ M f
+\end{verbatim}
+
+where \texttt{f\ ::\ n\ -\textgreater{}\ 1} is an n-ary operation in
+\textbf{L}.
+
+The functors that define models form a category of models,
+\texttt{Mod(L,\ Set)}, with natural transformations as morphisms.
+
+Consider a model for the trivial Lawvere category
+\textbf{F}\textsuperscript{op}. Such model is completely determined by
+its value at \texttt{1}, \texttt{M\ 1}. Since \texttt{M\ 1} can be any
+set, there are as many of these models as there are sets in
+\textbf{Set}. Moreover, every morphism in \texttt{Mod(Fop,\ Set)} (a
+natural transformation between functors \texttt{M} and \texttt{N}) is
+uniquely determined by its component at \texttt{M\ 1}. Conversely, every
+function \texttt{M\ 1\ -\textgreater{}\ N\ 1} induces a natural
+transformation between the two models \texttt{M} and \texttt{N}.
+Therefore \texttt{Mod(Fop,\ Set)} is equivalent to \textbf{Set}.
+
+\subsection{The Theory of Monoids}\label{the-theory-of-monoids}
+
+The simplest nontrivial example of a Lawvere theory describes the
+structure of monoids. It is a single theory that distills the structure
+of all possible monoids, in the sense that the models of this theory
+span the whole category \textbf{Mon} of monoids. We've already seen a
+\href{https://bartoszmilewski.com/2015/07/21/free-monoids/}{universal
+construction}, which showed that every monoid can be obtained from an
+appropriate free monoid by identifying a subset of morphisms. So a
+single free monoid already generalizes a whole lot of monoids. There
+are, however, infinitely many free monoids. The Lawvere theory for
+monoids \textbf{L\textsubscript{Mon}} combines all of them in one
+elegant construction.
+
+Every monoid must have a unit, so we have to have a special morphism
+\texttt{η} in \textbf{L\textsubscript{Mon}} that goes from \texttt{0} to
+\texttt{1}. Notice that there can be no corresponding morphism in
+\textbf{F}. Such morphism would go in the opposite direction, from
+\texttt{1} to \texttt{0} which, in \textbf{FinSet}, would be a function
+from the singleton set to the empty set. No such function exists.
+
+Next, consider morphisms \texttt{2-\textgreater{}1}, members of
+\texttt{LMon(2,\ 1)}, which must contain prototypes of all binary
+operations. When constructing models in \texttt{Mod(LMon,\ Set)}, these
+morphisms will be mapped to functions from the cartesian product
+\texttt{M\ 1\ ×\ M\ 1} to \texttt{M\ 1}. In other words, functions of
+two arguments.
+
+The question is: how many functions of two arguments can one implement
+using only the monoidal operator. Let's call the two arguments
+\texttt{a} and \texttt{b}. There is one function that ignores both
+arguments and returns the monoidal unit. Then there are two projections
+that return \texttt{a} and \texttt{b}, respectively. They are followed
+by functions that return \texttt{ab}, \texttt{ba}, \texttt{aa},
+\texttt{bb}, \texttt{aab}, and so on\ldots{} In fact there are as many
+such functions of two arguments as there are elements in the free monoid
+with generators \texttt{a} and \texttt{b}. Notice that
+\texttt{LMon(2,\ 1)} must contain all those morphisms because one of the
+models is the free monoid. In a free monoid they correspond to distinct
+functions. Other models may collapse multiple morphisms in
+\texttt{LMon(2,\ 1)} down to a single function, but not the free monoid.
+
+If we denote the free monoid with n generators \texttt{n*}, we may
+identify the hom-set \texttt{L(2,\ 1)} with the hom-set
+\texttt{Mon(1*,\ 2*)} in \textbf{Mon}, the category of monoids. In
+general, we pick \texttt{LMon(m,\ n)} to be \texttt{Mon(n*,\ m*)}. In
+other words, the category \texttt{LMon} is the opposite of the category
+of free monoids.
+
+The category of \emph{models} of the Lawvere theory for monoids,
+\texttt{Mod(LMon,\ Set)}, is equivalent to the category of all monoids,
+\textbf{Mon}.
+
+\subsection{Lawvere Theories and
+Monads}\label{lawvere-theories-and-monads}
+
+As you may remember, algebraic theories can be described using monads
+--- in particular
+\href{https://bartoszmilewski.com/2017/03/14/algebras-for-monads/}{algebras
+for monads}. It should be no surprise then that there is a connection
+between Lawvere theories and monads.
+
+First, let's see how a Lawvere theory induces a monad. It does it
+through an
+\href{https://bartoszmilewski.com/2016/06/15/freeforgetful-adjunctions/}{adjunction}
+between a forgetful functor and a free functor. The forgetful functor
+\texttt{U} assigns a set to each model. This set is given by evaluating
+the functor M from \texttt{Mod(L,\ Set)} at the object \texttt{1} in
+\textbf{L}.
+
+Another way of deriving \texttt{U} is by exploiting the fact that
+\textbf{F}\textsuperscript{op} is the initial object in \textbf{Law}. It
+meanst that, for any Lawvere theory \textbf{L}, there is a unique
+functor \texttt{Fop\ -\textgreater{}\ L}. This functor induces the
+opposite functor on models (since models are functors \emph{from}
+theories to sets):
+
+\begin{verbatim}
+Mod(L, Set) -> Mod(Fop, Set)
+\end{verbatim}
+
+But, as we discussed, the category of models of
+\textbf{F}\textsubscript{op} is equivalent to \textbf{Set}, so we get
+the forgetful functor:
+
+\begin{verbatim}
+U :: Mod(L, Set) -> Set
+\end{verbatim}
+
+It can be shown that so defined \texttt{U} always has a left adjoint,
+the free functor \texttt{F}.
+
+This is easily seen for finite sets. The free functor \texttt{F}
+produces free algebras. A free algebra is a particular model in
+\texttt{Mod(L,\ Set)} that is generated from a finite set of generators
+\texttt{n}. We can implement \texttt{F} as the representable functor:
+
+\begin{verbatim}
+L(n, -) :: L -> Set
+\end{verbatim}
+
+To show that it's indeed free, all we have to do is to prove that it's a
+left adjoint to the forgetful functor:
+
+\begin{verbatim}
+Mod(L(n, -), M) ≅ Set(n, U(M))
+\end{verbatim}
+
+Let's simplify the right hand side:
+
+\begin{verbatim}
+Set(n, U(M)) ≅ Set(n, M 1) ≅ (M 1)n ≅ M n
+\end{verbatim}
+
+(I used the fact that a set of morphisms is isomorphic to the
+exponential which, in this case, is just the iterated product.) The
+adjunction is the result of the Yoneda lemma:
+
+\begin{verbatim}
+[L, Set](L(n, -), M) ≅ M n
+\end{verbatim}
+
+Together, the forgetful and the free functor define a
+\href{https://bartoszmilewski.com/2016/12/27/monads-categorically/}{monad}
+\texttt{T\ =\ U∘F} on \textbf{Set}. Thus every Lawvere theory generates
+a monad.
+
+It turns out that the category of
+\href{https://bartoszmilewski.com/2017/03/14/algebras-for-monads/}{algebras
+for this monad} is equivalent to the category of models.
+
+You may recall that monad algebras define ways to evaluate expressions
+that are formed using monads. A Lawvere theory defines n-ary operations
+that can be used to generate expressions. Models provide means to
+evaluate these expressions.
+
+The connection between monads and Lawvere theories doesn't go both ways,
+though. Only finitary monads lead to Lawvere thories. A finitary monad
+is based on a finitary functor. A finitary functor on \textbf{Set} is
+fully determined by its action on finite sets. Its action on an
+arbitrary set \texttt{a} can be evaluated using the following coend:
+
+\begin{verbatim}
+F a = ∫ n an × (F n)
+\end{verbatim}
+
+Since the coend generalizes a coproduct, or a sum, this formula is a
+generalization of a power series expansion. Or we can use the intuition
+that a functor is a generalized container. In that case a finitary
+container of \texttt{a}s can be described as a sum of shapes and
+contents. Here, \texttt{F\ n} is a set of shapes for storing n elements,
+and the contents is an n-tuple of elements, itself an element of
+\texttt{an}. For instance, a list (as a functor) is finitary, with one
+shape for every arity. A tree has more shapes per arity, and so on.
+
+First off, all monads that are generated from Lawvere theories are
+finitary and they can be expressed as coends:
+
+\begin{verbatim}
+TL a = ∫ n an × L(n, 1)
+\end{verbatim}
+
+Conversely, given any finitary monad \texttt{T} on \textbf{Set}, we can
+construct a Lawvere theory. We start by constructing a Kleisli category
+for \texttt{T}. As you may remember, a morphism in a Kleisli category
+from \texttt{a} to \texttt{b} is given by a morphism in the underlying
+category:
+
+\begin{verbatim}
+a -> T b
+\end{verbatim}
+
+When restricted to finite sets, this becomes:
+
+\begin{verbatim}
+m -> T n
+\end{verbatim}
+
+The category opposite to this Kleisli category,
+\textbf{Kl}\textsubscript{T}\textsuperscript{op}, restricted to finite
+sets, is the Lawvere theory in question. In particular, the hom-set
+\texttt{L(n,\ 1)} that describes n-ary operations in \textbf{L} is given
+by the hom-set \texttt{KlT(1,\ n)}.
+
+It turns out that most monads that we encounter in programming are
+finitary, with the notable exception of the continuation monad. It is
+possible to to extend the notion of Lawvere theory beyond finitary
+operations.
+
+\subsection{Monads as Coends}\label{monads-as-coends}
+
+Let's explore the coend formula in more detail.
+
+\begin{verbatim}
+TL a = ∫ n an × L(n, 1)
+\end{verbatim}
+
+To begin with, this coend is taken over a profunctor \texttt{P} in
+\textbf{F} defined as:
+
+\begin{verbatim}
+P n m = an × L(m, 1)
+\end{verbatim}
+
+This profunctor is contravariant in the first argument, \texttt{n}.
+Consider how it lifts morphisms. A morphism in \textbf{FinSet} is a
+mapping of finite sets \texttt{f\ ::\ m\ -\textgreater{}\ n}. Such a
+mapping describes a selection of m elements from an n-element set
+(repetitions are allowed). It can be lifted to the mapping of powers of
+\texttt{a}, namely (notice the direction):
+
+\begin{verbatim}
+an -> am
+\end{verbatim}
+
+The lifting simply selects m elements from a tuple of n elements
+\texttt{(a1,\ a2,...an)} (possibly with repetitions).
+
+\includegraphics[width=3.12500in]{images/liftpower.png}
+
+For instance, let's take \texttt{fk\ ::\ 1\ -\textgreater{}\ n} --- a
+selection of the \texttt{k}th element from an n-element set. It lifts to
+a function that takes a n-tuple of elements of \texttt{a} and returns
+the \texttt{k}th one.
+
+Or let's take \texttt{f\ ::\ m\ -\textgreater{}\ 1} --- a constant
+function that maps all m elements to one. Its lifting is a function that
+takes a single element of \texttt{a} and duplicates it m times:
+
+\begin{verbatim}
+λx -> (x, x, ... x)
+\end{verbatim}
+
+You might notice that it's not immediately obvious that the profunctor
+in question is covariant in the second argument. The hom-functor
+\texttt{L(m,\ 1)} is actually contravariant in \texttt{m}. However, we
+are taking the coend not in the category \textbf{L} but in the category
+\textbf{F}. The coend variable \texttt{n} goes over finite sets (or the
+skeletons of such). The category \textbf{L} contains the opposite of
+\textbf{F}, so a morphism \texttt{m\ -\textgreater{}\ n} in \textbf{F}
+is a member of \texttt{L(n,\ m)} in \textbf{L} (the embedding is given
+by the functor \texttt{IL}).
+
+Let's check the functoriality of \texttt{L(m,\ 1)} as a functor from
+\textbf{F} to \textbf{Set}. We want to lift a function
+\texttt{f\ ::\ m\ -\textgreater{}\ n}, so our goal is to implement a
+function from \texttt{L(m,\ 1)} to \texttt{L(n,\ 1)}. Corresponding to
+the function \texttt{f} there is a morphism in \textbf{L} from
+\texttt{n} to \texttt{m} (notice the direction). Precomposing this
+morphism with \texttt{L(m,\ 1)} gives us a subset of
+\texttt{L(n,\ 1)}.\\
+\includegraphics[width=3.12500in]{images/liftl.png}\\
+Notice that, by lifting a function \texttt{1-\textgreater{}n} we can go
+from \texttt{L(1,\ 1)} to \texttt{L(n,\ 1)}. We'll use this fact later
+on.
+
+The product of a contravariant functor \texttt{an} and a covariant
+functor \texttt{L(m,\ 1)} is a profunctor
+\texttt{Fop×F-\textgreater{}Set}. Remember that a coend can be defined
+as a coproduct (disjoint sum) of all the diagonal members of a
+profunctor, in which some elements are identified. The identifications
+correspond to cowedge conditions.
+
+Here, the coend starts as the disjoint sum of sets
+\texttt{an\ ×\ L(n,\ 1)} over all \texttt{n}s. The identifications can
+be generated by expressing the
+\href{https://bartoszmilewski.com/2017/03/29/ends-and-coends/}{coend as
+a coequilizer}. We start with an off-diagonal term
+\texttt{an\ ×\ L(m,\ 1)}. To get to the diagonal, we can apply a
+morphism \texttt{f\ ::\ m\ -\textgreater{}\ n} either to the first or
+the second component of the product. The two results are then
+identified.
+
+\includegraphics[width=3.12500in]{images/equalize1.png}
+
+I have shown before that the lifting of
+\texttt{f\ ::\ 1\ -\textgreater{}\ n} results in these two
+transformations:
+
+\begin{verbatim}
+an -> a
+\end{verbatim}
+
+and:
+
+\begin{verbatim}
+L(1, 1) -> L(n, 1)
+\end{verbatim}
+
+Therefore, starting from \texttt{an\ ×\ L(1,\ 1)} we can reach both:
+
+\begin{verbatim}
+a × L(1, 1)
+\end{verbatim}
+
+when we lift \texttt{\textless{}f,\ id\textgreater{}} and:
+
+\begin{verbatim}
+an × L(n, 1)
+\end{verbatim}
+
+when we lift \texttt{\textless{}id,\ f\textgreater{}}. This doesn't
+mean, however, that all elements of \texttt{an\ ×\ L(n,\ 1)} can be
+identified with \texttt{a\ ×\ L(1,\ 1)}. That's because not all elements
+of \texttt{L(n,\ 1)} can be reached from \texttt{L(1,\ 1)}. Remember
+that we can only lift morphisms from \textbf{F}. A non-trivial n-ary
+operation in \textbf{L} cannot be constructed by lifting a morphism
+\texttt{f\ ::\ 1\ -\textgreater{}\ n}.
+
+In other words, we can only identify all addends in the coend formula
+for which \texttt{L(n,\ 1)} can be reached from \texttt{L(1,\ 1)}
+through the application of basic morphisms. They are all equivalent to
+\texttt{a\ ×\ L(1,\ 1)}. Basic morphisms are the ones that are images of
+morphisms in \textbf{F}.
+
+Let's see how this works in the simplest case of the Lawvere theory, the
+\textbf{F}\textsuperscript{op} itself. In such a theory, every
+\texttt{L(n,\ 1)} can be reached from \texttt{L(1,\ 1)}. This is because
+\texttt{L(1,\ 1)} is a singleton containing just the identity morphism,
+and \texttt{L(n,\ 1)} only contains morphisms corresponding to
+injections \texttt{1-\textgreater{}n} in \textbf{F}, which \emph{are}
+basic morphisms. Therefore all the addends in the coproduct are
+equivalent and we get:
+
+\begin{verbatim}
+T a = a × L(1, 1) = a
+\end{verbatim}
+
+which is the identity monad.
+
+\subsection{Lawvere Theory of Side
+Effects}\label{lawvere-theory-of-side-effects}
+
+Since there is such a strong connection between monads and Lawvere
+theories, it's natural to ask the question if Lawvere theories could be
+used in programming as an alternative to monads. The major problem with
+monads is that they don't compose nicely. There is no generic recipe for
+building monad transformers. Lawvere theories have an advantage in this
+area: they can be composed using coproducts and tensor products. On the
+other hand, only finitary monads can be easily converted to Lawvere
+theories. The outlier here is the continuation monad. There is ongoing
+research in this area (see bibliography).
+
+To give you a taste of how a Lawvere theory can be used to describe side
+effects, I'll discuss the simple case of exceptions that are
+traditionally implemented using the \texttt{Maybe} monad.
+
+The \texttt{Maybe} monad is generated by the Lawvere theory with a
+single nullary operation \texttt{0-\textgreater{}1}. A model of this
+theory is a functor that maps \texttt{1} to some set \texttt{a}, and
+maps the nullary operation to a function:
+
+\begin{verbatim}
+raise :: () -> a
+\end{verbatim}
+
+We can recover the \texttt{Maybe} monad using the coend formula. Let's
+consider what the addition of the nullary operation does to the hom-sets
+\texttt{L(n,\ 1)}. Besides creating a new \texttt{L(0,\ 1)} (which is
+absent from \textbf{F}\textsuperscript{op}), it also adds new morphisms
+to \texttt{L(n,\ 1)}. These are the results of composing morphism of the
+type \texttt{n-\textgreater{}0} with our \texttt{0-\textgreater{}1}.
+Such contributions are all identified with \texttt{a0\ ×\ L(0,\ 1)} in
+the coend formula, because they can be obtained from:
+
+\begin{verbatim}
+an × L(0, 1)
+\end{verbatim}
+
+by lifting \texttt{0-\textgreater{}n} in two different ways.
+
+\includegraphics[width=3.12500in]{images/equalize2.png}
+
+The coend reduces to:
+
+\begin{verbatim}
+TL a = a0 + a1
+\end{verbatim}
+
+or, using Haskell notation:
+
+\begin{verbatim}
+type Maybe a = Either () a
+\end{verbatim}
+
+which is equivalent to:
+
+\begin{verbatim}
+data Maybe a = Nothing | Just a
+\end{verbatim}
+
+Notice that this Lawvere theory only supports the raising of exceptions,
+not their handling.
+
+Next:
+\href{https://bartoszmilewski.com/2017/09/06/monads-monoids-and-categories/}{Monads,
+Monoids, and Categories}.
+
+\subsection{Challenges}\label{challenges}
+
+\begin{enumerate}
+\tightlist
+\item
+  Enumarate all morphisms between 2 and 3 in \textbf{F} (the skeleton of
+  \textbf{FinSet}).
+\item
+  Show that the category of models for the Lawvere theory of monoids is
+  equivalent to the category of monad algebras for the list monad.
+\item
+  The Lawvere theory of monoids generates the list monad. Show that its
+  binary operations can be generated using the corresponding Kleisli
+  arrows.
+\item
+  \textbf{FinSet} is a subcategory of \textbf{Set} and there is a
+  functor that embeds it in \textbf{Set}. Any functor on \textbf{Set}
+  can be restricted to \textbf{FinSet}. Show that a finitary functor is
+  the left Kan extension of its own restriction.
+\end{enumerate}
+
+\subsection{Acknowledgments}\label{acknowledgments}
+
+I'm grateful to Gershom Bazerman for many useful comments.
+
+\subsection{Further Reading}\label{further-reading}

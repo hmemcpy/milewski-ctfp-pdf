@@ -1,0 +1,714 @@
+\begin{quote}
+This is part 12 of Categories for Programmers. Previously:
+\href{https://bartoszmilewski.com/2015/04/15/category-theory-and-declarative-programming/}{Declarative
+Programming}. See the
+\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
+of Contents}.
+\end{quote}
+
+It seems like in category theory everything is related to everything and
+everything can be viewed from many angles. Take for instance the
+universal construction of the
+\href{https://bartoszmilewski.com/2015/01/07/products-and-coproducts/}{product}.
+Now that we know more about
+\href{https://bartoszmilewski.com/2015/01/20/functors/}{functors} and
+\href{https://bartoszmilewski.com/2015/04/07/natural-transformations/}{natural
+transformations}, can we simplify and, possibly, generalize it? Let us
+try.
+
+\includegraphics[width=1.56250in]{images/productpattern.jpg}
+
+The construction of a product starts with the selection of two objects
+\texttt{a} and \texttt{b}, whose product we want to construct. But what
+does it mean to \emph{select objects}? Can we rephrase this action in
+more categorical terms? Two objects form a pattern --- a very simple
+pattern. We can abstract this pattern into a category --- a very simple
+category, but a category nevertheless. It's a category that we'll call
+\textbf{2}. It contains just two objects, 1 and 2, and no morphisms
+other than the two obligatory identities. Now we can rephrase the
+selection of two objects in \emph{C} as the act of defining a functor D
+from the category \textbf{2} to \emph{C}. A functor maps objects to
+objects, so its image is just two objects (or it could be one, if the
+functor collapses objects, which is fine too). It also maps morphisms
+--- in this case it simply maps identity morphisms to identity
+morphisms.
+
+\includegraphics[width=3.12500in]{images/two.jpg}
+
+What's great about this approach is that it builds on categorical
+notions, eschewing the imprecise descriptions like ``selecting
+objects,'' taken straight from the hunter-gatherer lexicon of our
+ancestors. And, incidentally, it is also easily generalized, because
+nothing can stop us from using categories more complex than \textbf{2}
+to define our patterns.
+
+But let's continue. The next step in the definition of a product is the
+selection of the candidate object \texttt{c}. Here again, we could
+rephrase the selection in terms of a functor from a singleton category.
+And indeed, if we were using Kan extensions, that would be the right
+thing to do. But since we are not ready for Kan extensions yet, there is
+another trick we can use: a constant functor Δ from the same category
+\textbf{2} to \emph{C}. The selection of \texttt{c} in \emph{C} can be
+done with Δ\textsubscript{c}. Remember, Δ\textsubscript{c} maps all
+objects into \texttt{c} and all morphisms into \texttt{idc}.
+
+\includegraphics[width=3.12500in]{images/twodelta.jpg}
+
+Now we have two functors, Δ\textsubscript{c} and D going between
+\textbf{2} and \emph{C} so it's only natural to ask about natural
+transformations between them. Since there are only two objects in
+\textbf{2}, a natural transformation will have two components. Object 1
+in \textbf{2} is mapped to \texttt{c} by Δ\textsubscript{c} and to
+\texttt{a} by D. So the component of a natural transformation between
+Δ\textsubscript{c} and D at 1 is a morphism from \texttt{c} to
+\texttt{a}. We can call it \texttt{p}. Similarly, the second component
+is a morphism \texttt{q} from \texttt{c} to \texttt{b} --- the image of
+the object 2 in \textbf{2} under D. But these are exactly like the two
+projections we used in our original definition of the product. So
+instead of talking about selecting objects and projections, we can just
+talk about picking functors and natural transformations. It so happens
+that in this simple case the naturality condition for our transformation
+is trivially satisfied, because there are no morphisms (other than the
+identities) in \textbf{2}.
+
+\includegraphics[width=3.12500in]{images/productcone.jpg}
+
+A generalization of this construction to categories other than
+\textbf{2} --- ones that, for instance, contain non-trivial morphisms
+--- will impose naturality conditions on the transformation between
+Δ\textsubscript{c} and D. We call such transformation a \emph{cone},
+because the image of Δ is the apex of a cone/pyramid whose sides are
+formed by the components of the natural transformation. The image of D
+forms the base of the cone.
+
+In general, to build a cone, we start with a category \emph{I} that
+defines the pattern. It's a small, often finite category. We pick a
+functor D from \emph{I} to \emph{C} and call it (or its image) a
+\emph{diagram}. We pick some \texttt{c} in \emph{C} as the apex of our
+cone. We use it to define the constant functor Δ\textsubscript{c} from
+\emph{I} to \emph{C}. A natural transformation from Δ\textsubscript{c}
+to D is then our cone. For a finite \emph{I} it's just a bunch of
+morphisms connecting \texttt{c} to the diagram: the image of \emph{I}
+under D.
+
+\includegraphics[width=3.12500in]{images/cone.jpg}
+
+Naturality requires that all triangles (the walls of the pyramid) in
+this diagram commute. Indeed, take any morphism \texttt{f} in \emph{I}.
+The functor D maps it to a morphism \texttt{D\ f} in \emph{C}, a
+morphism that forms the base of some triangle. The constant functor
+Δ\textsubscript{c} maps \texttt{f} to the identity morphism on
+\texttt{c}. Δ squishes the two ends of the morphism into one object, and
+the naturality square becomes a commuting triangle. The two arms of this
+triangle are the components of the natural transformation.
+
+\includegraphics[width=3.12500in]{images/conenaturality.jpg}
+
+So that's one cone. What we are interested in is the \emph{universal
+cone} --- just like we picked a universal object for our definition of a
+product.
+
+There are many ways to go about it. For instance, we may define a
+\emph{category of cones} based on a given functor D. Objects in that
+category are cones. Not every object \texttt{c} in \emph{C}~can be an
+apex of a cone, though, because there may be no natural transformation
+between Δ\textsubscript{c} and D.
+
+To make it a category, we also have to define morphisms between cones.
+These would be fully determined by morphisms between their apexes. But
+not just any morphism will do. Remember that, in our construction of the
+product, we imposed the condition that the morphisms between candidate
+objects (the apexes) must be common factors for the projections. For
+instance:
+
+\begin{verbatim}
+p&apos; = p . m q&apos; = q . m
+\end{verbatim}
+
+\includegraphics[width=2.13542in]{images/productranking.jpg}
+
+This condition translates, in the general case, to the condition that
+the triangles whose one side is the factorizing morphism all commute.
+
+\hypertarget{attachment_4487}{}
+\includegraphics[width=2.48958in]{images/conecommutativity.jpg}
+
+The commuting triangle connecting two cones, with the factorizing
+morphism \texttt{h}~ (here, the lower cone is the universal one, with
+\texttt{Lim\ D} as its apex).
+
+We'll take those factorizing morphisms as the morphisms in our category
+of cones. It's easy to check that those morphisms indeed compose, and
+that the identity morphism is a factorizing morphism as well. Cones
+therefore form a category.
+
+Now we can define the universal cone as the \emph{terminal object} in
+the category of cones. The definition of the terminal object states that
+there is a unique morphism from any other object to that object. In our
+case it means that there is a unique factorizing morphism from the apex
+of any other cone to the apex of the universal cone. We call this
+universal cone the \emph{limit} of the diagram D, \texttt{Lim\ D} (in
+the literature, you'll often see a left arrow pointing towards \emph{I}
+under the \texttt{Lim} sign). Often, as a shorthand, we call the apex of
+this cone the limit (or the limit object).
+
+The intuition is that the limit embodies the properties of the whole
+diagram in a single object. For instance, the limit of our two-object
+diagram is the product of two objects. The product (together with the
+two projections) contains the information about both objects. And being
+universal means that it has no extraneous junk.
+
+\subsection{Limit as a Natural
+Isomorphism}\label{limit-as-a-natural-isomorphism}
+
+There is still something unsatisfying about this definition of a limit.
+I mean, it's workable, but we still have this commutativity condition
+for the triangles that are linking any two cones. It would be so much
+more elegant if we could replace it with some naturality condition. But
+how?
+
+We are no longer dealing with one cone but with a whole collection (in
+fact, a category) of cones. If the limit exists (and --- let's make it
+clear --- there's no guarantee of that), one of those cones is the
+universal cone. For every other cone we have a unique factorizing
+morphism that maps its apex, let's call it \texttt{c}, to the apex of
+the universal cone, which we named \texttt{Lim\ D}. (In fact, I can skip
+the word ``other,'' because the identity morphism maps the universal
+cone to itself and it trivially factorizes through itself.) Let me
+repeat the important part: given any cone, there is a unique morphism of
+a special kind. We have a mapping of cones to special morphisms, and
+it's a one-to-one mapping.
+
+This special morphism is a member of the hom-set \texttt{C(c,\ Lim\ D)}.
+The other members of this hom-set are less fortunate, in the sense that
+they don't factorize the mapping of cones. What we want is to be able to
+pick, for each \texttt{c}, one morphism from the set
+\texttt{C(c,\ Lim\ D)} --- a morphism that satisfies the particular
+commutativity condition. Does that sound like defining a natural
+transformation? It most certainly does!
+
+But what are the functors that are related by this transformation?
+
+One functor is the mapping of \texttt{c} to the set
+\texttt{C(c,\ Lim\ D)}. It's a functor from \emph{C} to \textbf{Set} ---
+it maps objects to sets. In fact it's a contravariant functor. Here's
+how we define its action on morphisms: Let's take a morphism \texttt{f}
+from \texttt{c\&apos;} to \texttt{c}:
+
+\begin{verbatim}
+f :: c&apos; -> c
+\end{verbatim}
+
+Our functor maps \texttt{c\&apos;} to the set
+\texttt{C(c\&apos;,\ Lim\ D)}. To define the action of this functor on
+\texttt{f} (in other words, to lift \texttt{f}), we have to define the
+corresponding mapping between \texttt{C(c,\ Lim\ D)} and
+\texttt{C(c\&apos;,\ Lim\ D)}. So let's pick one element \texttt{u} of
+\texttt{C(c,\ Lim\ D)} and see if we can map it to some element of
+\texttt{C(c\&apos;,\ Lim\ D)}. An element of a hom-set is a morphism, so
+we have:
+
+\begin{verbatim}
+u :: c -> Lim D
+\end{verbatim}
+
+We can precompose \texttt{u} with \texttt{f} to get:
+
+\begin{verbatim}
+u . f :: c&apos; -> Lim D
+\end{verbatim}
+
+And that's an element of \texttt{C(c\&apos;,\ Lim\ D)}--- so indeed, we
+have found a mapping of morphisms:
+
+\begin{verbatim}
+contramap :: (c&apos; -> c) -> (c -> Lim D) -> (c&apos; -> Lim D) contramap f u = u . f
+\end{verbatim}
+
+Notice the inversion in the order of \texttt{c} and \texttt{c\&apos;}
+characteristic of a \emph{contravariant} functor.
+
+\includegraphics[width=2.59375in]{images/homsetmapping.jpg}
+
+To define a natural transformation, we need another functor that's also
+a mapping from \emph{C} to \textbf{Set}. But this time we'll consider a
+set of cones. Cones are just natural transformations, so we are looking
+at the set of natural transformations \texttt{Nat(Δc,\ D)}. The mapping
+from \texttt{c} to this particular set of natural transformations is a
+(contravariant) functor. How can we show that? Again, let's define its
+action on a morphism:
+
+\begin{verbatim}
+f :: c&apos; -> c
+\end{verbatim}
+
+The lifting of \texttt{f} should be a mapping of natural transformations
+between two functors that go from \emph{I} to \emph{C}:
+
+\begin{verbatim}
+Nat(Δc, D) -> Nat(Δc&apos;, D)
+\end{verbatim}
+
+How do we map natural transformations? Every natural transformation is a
+selection of morphisms --- its components --- one morphism per element
+of \emph{I}. A component of some α (a member of \texttt{Nat(Δc,\ D)}) at
+\texttt{a} (an object in \emph{I}) is a morphism:
+
+\begin{verbatim}
+αa :: Δca -> D a
+\end{verbatim}
+
+or, using the definition of the constant functor Δ,
+
+\begin{verbatim}
+αa :: c -> D a
+\end{verbatim}
+
+Given \texttt{f} and α, we have to construct a β, a member of
+\texttt{Nat(Δc\&apos;,\ D)}. Its component at \texttt{a} should be a
+morphism:
+
+\begin{verbatim}
+βa :: c&apos; -> D a
+\end{verbatim}
+
+We can easily get the latter from the former by precomposing it with
+\texttt{f}:
+
+\begin{verbatim}
+βa = αa . f
+\end{verbatim}
+
+It's relatively easy to show that those components indeed add up to a
+natural transformation.\\
+\includegraphics[width=3.12500in]{images/natmapping.jpg}
+
+Given our morphism \texttt{f}, we have thus built a mapping between two
+natural transformations, component-wise. This mapping defines
+\texttt{contramap} for the functor:
+
+\begin{verbatim}
+c -> Nat(Δc, D)
+\end{verbatim}
+
+What I have just done is to show you that we have two (contravariant)
+functors from \emph{C} to \textbf{Set}. I haven't made any assumptions
+--- these functors always exist.
+
+Incidentally, the first of these functors plays an important role in
+category theory, and we'll see it again when we talk about Yoneda's
+lemma. There is a name for contravariant functors from any category
+\emph{C} to \textbf{Set}: they are called ``presheaves.'' This one is
+called a \emph{representable presheaf}. The second functor is also a
+presheaf.
+
+Now that we have two functors, we can talk about natural transformations
+between them. So without further ado, here's the conclusion: A functor
+\texttt{D} from \emph{I} to \emph{C} has a limit \texttt{Lim\ D} if and
+only if there is a natural isomorphism between the two functors I have
+just defined:
+
+\begin{verbatim}
+C(c, Lim D) ≃ Nat(Δc, D)
+\end{verbatim}
+
+Let me remind you what a natural isomorphism is. It's a natural
+transformation whose every component is an isomorphism, that is to say
+an invertible morphism.
+
+I'm not going to go through the proof of this statement. The procedure
+is pretty straightforward if not tedious. When dealing with natural
+transformations, you usually focus on components, which are morphisms.
+In this case, since the target of both functors is \textbf{Set}, the
+components of the natural isomorphism will be functions. These are
+higher order functions, because they go from the hom-set to the set of
+natural transformations. Again, you can analyze a function by
+considering what it does to its argument: here the argument will be a
+morphism --- a member of \texttt{C(c,\ Lim\ D)} --- and the result will
+be a natural transformation --- a member of \texttt{Nat(Δc,\ D)}, or
+what we have called a cone. This natural transformation, in turn, has
+its own components, which are morphisms. So it's morphisms all the way
+down, and if you can keep track of them, you can prove the statement.
+
+The most important result is that the naturality condition for this
+isomorphism is exactly the commutativity condition for the mapping of
+cones.
+
+As a preview of coming attractions, let me mention that the set
+\texttt{Nat(Δc,\ D)} can be thought of as a hom-set in the functor
+category; so our natural isomorphism relates two hom-sets, which points
+at an even more general relationship called an adjunction.
+
+\subsection{Examples of Limits}\label{examples-of-limits}
+
+We've seen that the categorical product is a limit of a diagram
+generated by a simple category we called \textbf{2}.
+
+There is an even simpler example of a limit: the terminal object. The
+first impulse would be to think of a singleton category as leading to a
+terminal object, but the truth is even starker than that: the terminal
+object is a limit generated by an empty category. A functor from an
+empty category selects no object, so a cone shrinks to just the apex.
+The universal cone is the lone apex that has a unique morphism coming to
+it from any other apex. You will recognize this as the definition of the
+terminal object.
+
+The next interesting limit is called the \emph{equalizer}. It's a limit
+generated by a two-element category with two parallel morphisms going
+between them (and, as always, the identity morphisms). This category
+selects a diagram in \emph{C} consisting of two objects, \texttt{a} and
+\texttt{b}, and two morphisms:
+
+\begin{verbatim}
+f :: a -> b g :: a -> b
+\end{verbatim}
+
+To build a cone over this diagram, we have to add the apex, \texttt{c}
+and two projections:
+
+\begin{verbatim}
+p :: c -> a q :: c -> b
+\end{verbatim}
+
+\includegraphics[width=2.27083in]{images/equalizercone.jpg}
+
+We have two triangles that must commute:
+
+\begin{verbatim}
+q = f . p q = g . p
+\end{verbatim}
+
+This tells us that \texttt{q} is uniquely determined by one of these
+equations, say, \texttt{q\ =\ f\ .\ p}, and we can omit it from the
+picture. So we are left with just one condition:
+
+\begin{verbatim}
+f . p = g . p
+\end{verbatim}
+
+The way to think about it is that, if we restrict our attention to
+\textbf{Set}, the image of the function \texttt{p} selects a subset of
+\texttt{a}. When restricted to this subset, the functions \texttt{f} and
+\texttt{g} are equal.
+
+For instance, take \texttt{a} to be the two-dimensional plane
+parameterized by coordinates \texttt{x} and \texttt{y}. Take \texttt{b}
+to be the real line, and take:
+
+\begin{verbatim}
+f (x, y) = 2 * y + x g (x, y) = y - x
+\end{verbatim}
+
+The equalizer for these two functions is the set of real numbers (the
+apex, \texttt{c}) and the function:
+
+\begin{verbatim}
+p t = (t, (-2) * t)
+\end{verbatim}
+
+Notice that \texttt{(p\ t)} defines a straight line in the
+two-dimensional plane. Along this line, the two functions are equal.
+
+Of course, there are other sets \texttt{c\&apos;} and functions
+\texttt{p\&apos;} that may lead to the equality:
+
+\begin{verbatim}
+f . p&apos; = g . p&apos;
+\end{verbatim}
+
+but they all uniquely factor out through \texttt{p}. For instance, we
+can take the singleton set \texttt{()} as \texttt{c\&apos;} and the
+function:
+
+\begin{verbatim}
+p&apos;() = (0, 0)
+\end{verbatim}
+
+It's a good cone, because \texttt{f\ (0,\ 0)\ =\ g\ (0,\ 0)}. But it's
+not universal, because of the unique factorization through \texttt{h}:
+
+\begin{verbatim}
+p&apos; = p . h
+\end{verbatim}
+
+with
+
+\begin{verbatim}
+h () = 0
+\end{verbatim}
+
+\includegraphics[width=2.19792in]{images/equilizerlimit.jpg}\\
+An equalizer can thus be used to solve equations of the type
+\texttt{f\ x\ =\ g\ x}. But it's much more general, because it's defined
+in terms of objects and morphisms rather than algebraically.
+
+An even more general idea of solving an equation is embodied in another
+limit --- the pullback. Here, we still have two morphisms that we want
+to equate, but this time their domains are different. We start with a
+three-object category of the shape:
+\texttt{1-\textgreater{}2\textless{}-3}. The diagram corresponding to
+this category consists of three objects, \texttt{a}, \texttt{b}, and
+\texttt{c}, and two morphisms:
+
+\begin{verbatim}
+f :: a -> b g :: c -> b
+\end{verbatim}
+
+This diagram is often called a \emph{cospan}.
+
+A cone built on top of this diagram consists of the apex, \texttt{d},
+and three morphisms:
+
+\begin{verbatim}
+p :: d -> a q :: d -> c r :: d -> b
+\end{verbatim}
+
+\includegraphics[width=2.47917in]{images/pullbackcone.jpg}
+
+Commutativity conditions tell us that \texttt{r} is completely
+determined by the other morphisms, and can be omitted from the picture.
+So we are only left with the following condition:
+
+\begin{verbatim}
+g . q = f . p
+\end{verbatim}
+
+A pullback is a universal cone of this shape.
+
+\includegraphics[width=2.12500in]{images/pullbacklimit.jpg}
+
+Again, if you narrow your focus down to sets, you can think of the
+object \texttt{d} as consisting of pairs of elements from \texttt{a} and
+\texttt{c} for which \texttt{f} acting on the first component is equal
+to \texttt{g} acting on the second component. If this is still too
+general, consider the special case in which \texttt{g} is a constant
+function, say \texttt{g\ \_\ =\ 1.23} (assuming that \texttt{b} is a set
+of real numbers). Then you are really solving the equation:
+
+\begin{verbatim}
+f x = 1.23
+\end{verbatim}
+
+In this case, the choice of \texttt{c} is irrelevant (as long as it's
+not an empty set), so we can take it to be a singleton set. The set
+\texttt{a} could, for instance, be the set of three-dimensional vectors,
+and \texttt{f} the vector length. Then the pullback is the set of pairs
+\texttt{(v,\ ())}, where \texttt{v} is a vector of length 1.23 (a
+solution to the equation \texttt{sqrt\ (x2+y2+z2)\ =\ 1.23}), and
+\texttt{()} is the dummy element of the singleton set.
+
+But pullbacks have more general applications, also in programming. For
+instance, consider C++ classes as a category in which morphism are
+arrows that connect subclasses to superclasses. We'll consider
+inheritance a transitive property, so if C inherits from B and B
+inherits from A then we'll say that C inherits from A (after all, you
+can pass a pointer to C where a pointer to A is expected). Also, we'll
+assume that C inherits from C, so we have the identity arrow for every
+class. This way subclassing is aligned with subtyping. C++ also supports
+multiple inheritance, so you can construct a diamond inheritance diagram
+with two classes B and C inheriting from A, and a fourth class D
+multiply inheriting from B and C. Normally, D would get two copies of A,
+which is rarely desirable; but you can use virtual inheritance to have
+just one copy of A in D.
+
+What would it mean to have D be a pullback in this diagram? It would
+mean that any class E that multiply inherits from B and C is also a
+subclass of D. This is not directly expressible in C++, where subtyping
+is nominal (the C++ compiler wouldn't infer this kind of class
+relationship --- it would require ``duck typing''). But we could go
+outside of the subtyping relationship and instead ask whether a cast
+from E to D would be safe or not. This cast would be safe if D were the
+bare-bone combination of B and C, with no additional data and no
+overriding of methods. And, of course, there would be no pullback if
+there is a name conflict between some methods of B and C.
+
+\includegraphics[width=1.61458in]{images/classes.jpg}
+
+There's also a more advanced use of a pullback in type inference. There
+is often a need to \emph{unify} types of two expressions. For instance,
+suppose that the compiler wants to infer the type of a function:
+
+\begin{verbatim}
+twice f x = f (f x)
+\end{verbatim}
+
+It will assign preliminary types to all variables and sub-expressions.
+In particular, it will assign:
+
+\begin{verbatim}
+f :: t0 x :: t1 f x :: t2 f (f x) :: t3
+\end{verbatim}
+
+from which it will deduce that:
+
+\begin{verbatim}
+twice :: t0 -> t1 -> t3
+\end{verbatim}
+
+It will also come up with a set of constraints resulting from the rules
+of function application:
+
+\begin{verbatim}
+t0 = t1 -> t2 -- because f is applied to x t0 = t2 -> t3 -- because f is applied to (f x)
+\end{verbatim}
+
+These constraints have to be unified by finding a set of types (or type
+variables) that, when substituted for the unknown types in both
+expressions, produce the same type. One such substitution is:
+
+\begin{verbatim}
+t1 = t2 = t3 = Int twice :: (Int -> Int) -> Int -> Int
+\end{verbatim}
+
+but, obviously, it's not the most general one. The most general
+substitution is obtained using a pullback. I won't go into the details,
+because they are beyond the scope of this book, but you can convince
+yourself that the result should be:
+
+\begin{verbatim}
+twice :: (t -> t) -> t -> t
+\end{verbatim}
+
+with \texttt{t} a free type variable.
+
+\subsection{Colimits}\label{colimits}
+
+Just like all constructions in category theory, limits have their dual
+image in opposite categories. When you invert the direction of all
+arrows in a cone, you get a co-cone, and the universal one of those is
+called a colimit. Notice that the inversion also affects the factorizing
+morphism, which now flows from the universal co-cone to any other
+co-cone.
+
+\hypertarget{attachment_4494}{}
+\includegraphics{images/colimit.jpg}
+
+Cocone with a factorizing morphism \texttt{h} connecting two apexes.
+
+A typical example of a colimit is a coproduct, which corresponds to the
+diagram generated by \textbf{2}, the category we've used in the
+definition of the product.
+
+\includegraphics[width=1.56250in]{images/coproductranking.jpg}
+
+Both the product and the coproduct embody the essence of a pair of
+objects, each in a different way.
+
+Just like the terminal object was a limit, so the initial object is a
+colimit corresponding to the diagram based on an empty category.
+
+The dual of the pullback is called the \emph{pushout}. It's based on a
+diagram called a span, generated by the category
+\texttt{1\textless{}-2-\textgreater{}3}.
+
+\subsection{Continuity}\label{continuity}
+
+I said previously that functors come close to the idea of continuous
+mappings of categories, in the sense that they never break existing
+connections (morphisms). The actual definition of a \emph{continuous
+functor} \texttt{F} from a category \emph{C} to \emph{C'} includes the
+requirement that the functor preserve limits. Every diagram \texttt{D}
+in \emph{C} can be mapped to a diagram \texttt{F\ ∘\ D} in \emph{C'} by
+simply composing two functors. The continuity condition for \texttt{F}
+states that, if the diagram \texttt{D} has a limit \texttt{Lim\ D}, then
+the diagram \texttt{F\ ∘\ D} also has a limit, and it is equal to
+\texttt{F\ (Lim\ D)}.
+
+\includegraphics[width=3.12500in]{images/continuity.jpg}
+
+Notice that, because functors map morphisms to morphisms, and
+compositions to compositions, an image of a cone is always a cone. A
+commuting triangle is always mapped to a commuting triangle (functors
+preserve composition). The same is true for the factorizing morphisms:
+the image of a factorizing morphism is also a factorizing morphism. So
+every functor is \emph{almost} continuous. What may go wrong is the
+uniqueness condition. The factorizing morphism in \emph{C'} might not be
+unique. There may also be other ``better cones'' in \emph{C'} that were
+not available in \emph{C}.
+
+A hom-functor is an example of a continuous functor. Recall that the
+hom-functor, \texttt{C(a,\ b)}, is contravariant in the first variable
+and covariant in the second. In other words, it's a functor:
+
+\begin{verbatim}
+Cop × C -> Set
+\end{verbatim}
+
+When its second argument is fixed, the hom-set functor (which becomes
+the representable presheaf) maps colimits in \emph{C} to limits in
+\textbf{Set}; and when its first argument is fixed, it maps limits to
+limits.
+
+In Haskell, a hom-functor is the mapping of any two types to a function
+type, so it's just a parameterized function type. When we fix the second
+parameter, let's say to \texttt{String}, we get the contravariant
+functor:
+
+\begin{verbatim}
+newtype ToString a = ToString (a -> String) instance Contravariant ToString where contramap f (ToString g) = ToString (g . f)
+\end{verbatim}
+
+Continuity means that when \texttt{ToString} is applied to a colimit,
+for instance a coproduct \texttt{Either\ b\ c}, it will produce a limit;
+in this case a product of two function types:
+
+\begin{verbatim}
+ToString (Either b c) ~ (b -> String, c -> String)
+\end{verbatim}
+
+Indeed, any function of \texttt{Either\ b\ c} is implemented as a case
+statement with the two cases being serviced by a pair of functions.
+
+Similarly, when we fix the first argument of the hom-set, we get the
+familiar reader functor. Its continuity means that, for instance, any
+function returning a product is equivalent to a product of functions; in
+particular:
+
+\begin{verbatim}
+r -> (a, b) ~ (r -> a, r -> b)
+\end{verbatim}
+
+I know what you're thinking: You don't need category theory to figure
+these things out. And you're right! Still, I find it amazing that such
+results can be derived from first principles with no recourse to bits
+and bytes, processor architectures, compiler technologies, or even
+lambda calculus.
+
+If you're curious where the names ``limit'' and ``continuity'' come
+from, they are a generalization of the corresponding notions from
+calculus. In calculus limits and continuity are defined in terms of open
+neighborhoods. Open sets, which define topology, form a category (a
+poset).
+
+\subsection{Challenges}\label{challenges}
+
+\begin{enumerate}
+\tightlist
+\item
+  How would you describe a pushout in the category of C++ classes?
+\item
+  Show that the limit of the identity functor
+  \texttt{Id\ ::\ C\ -\textgreater{}\ C} is the initial object.
+\item
+  Subsets of a given set form a category. A morphism in that category is
+  defined to be an arrow connecting two sets if the first is the subset
+  of the second. What is a pullback of two sets in such a category?
+  What's a pushout? What are the initial and terminal objects?
+\item
+  Can you guess what a coequalizer is?
+\item
+  Show that, in a category with a terminal object, a pullback towards
+  the terminal object is a product.
+\item
+  Similarly, show that a pushout from an initial object (if one exists)
+  is the coproduct.
+\end{enumerate}
+
+Next: \href{https://bartoszmilewski.com/2015/07/21/free-monoids/}{Free
+Monoids}.
+
+\subsection{Acknowledgments}\label{acknowledgments}
+
+I'd like to thank Gershom Bazerman for checking my math and logic, and
+André van Meulebrouck, who has been volunteering his editing help.\\
+\href{https://twitter.com/BartoszMilewski}{Follow @BartoszMilewski}

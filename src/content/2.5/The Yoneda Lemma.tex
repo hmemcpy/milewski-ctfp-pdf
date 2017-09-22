@@ -1,0 +1,407 @@
+\begin{quote}
+This is part 15 of Categories for Programmers. Previously:
+\href{https://bartoszmilewski.com/2015/07/29/representable-functors/}{Representable
+Functors}. See the
+\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
+of Contents}.
+\end{quote}
+
+Most constructions in category theory are generalizations of results
+from other more specific areas of mathematics. Things like products,
+coproducts, monoids, exponentials, etc., have been known long before
+category theory. They might have been known under different names in
+different branches of mathematics. A cartesian product in set theory, a
+meet in order theory, a conjunction in logic --- they are all specific
+examples of the abstract idea of a categorical product.
+
+The Yoneda lemma stands out in this respect as a sweeping statement
+about categories in general with little or no precedent in other
+branches of mathematics. Some say that its closest analog is Cayley's
+theorem in group theory (every group is isomorphic to a permutation
+group of some set).
+
+The setting for the Yoneda lemma is an arbitrary category \emph{C}
+together with a functor \texttt{F} from \emph{C} to \textbf{Set}. We've
+seen in the previous section that some \textbf{Set}-valued functors are
+representable, that is isomorphic to a hom-functor. The Yoneda lemma
+tells us that all \textbf{Set}-valued functors can be obtained from
+hom-functors through natural transformations, and it explicitly
+enumerates all such transformations.
+
+When I talked about natural transformations, I mentioned that the
+naturality condition can be quite restrictive. When you define a
+component of a natural transformation at one object, naturality may be
+strong enough to ``transport'' this component to another object that is
+connected to it through a morphism. The more arrows between objects in
+the source and the target categories there are, the more constraints you
+have for transporting the components of natural transformations.
+\textbf{Set} happens to be a very arrow-rich category.
+
+The Yoneda lemma tells us that a natural transformation between a
+hom-functor and any other functor \texttt{F} is completely determined by
+specifying the value of its single component at just one point! The rest
+of the natural transformation just follows from naturality conditions.
+
+So let's review the naturality condition between the two functors
+involved in the Yoneda lemma. The first functor is the hom-functor. It
+maps any object \texttt{x} in \emph{C} to the set of morphisms
+\texttt{C(a,\ x)} --- for \texttt{a} a fixed object in \emph{C}. We've
+also seen that it maps any morphism \texttt{f} from \texttt{x} to
+\texttt{y} to \texttt{C(a,\ f)}.
+
+The second functor is an arbitrary \textbf{Set}-valued functor
+\texttt{F}.
+
+Let's call the natural transformation between these two functors
+\texttt{α}. Because we are operating in \textbf{Set}, the components of
+the natural transformation, like \texttt{αx} or \texttt{αy}, are just
+regular functions between sets:
+
+\begin{verbatim}
+αx :: C(a, x) -> F x αy :: C(a, y) -> F y
+\end{verbatim}
+
+\includegraphics[width=2.73958in]{images/yoneda1.png}
+
+And because these are just functions, we can look at their values at
+specific points. But what's a point in the set \texttt{C(a,\ x)}? Here's
+the key observation: Every point in the set \texttt{C(a,\ x)} is also a
+morphism \texttt{h} from \texttt{a} to \texttt{x}.
+
+So the naturality square for \texttt{α}:
+
+\begin{verbatim}
+αy ∘ C(a, f) = F f ∘ αx
+\end{verbatim}
+
+becomes, point-wise, when acting on \texttt{h}:
+
+\begin{verbatim}
+αy (C(a, f) h) = (F f) (αx h)
+\end{verbatim}
+
+You might recall from the previous section that the action of the
+hom-functor \texttt{C(a,-)} on a morphism \texttt{f} was defined as
+precomposition:
+
+\begin{verbatim}
+C(a, f) h = f ∘ h
+\end{verbatim}
+
+which leads to:
+
+\begin{verbatim}
+αy (f ∘ h) = (F f) (αx h)
+\end{verbatim}
+
+Just how strong this condition is can be seen by specializing it to the
+case of \texttt{x} equal to \texttt{a}.
+
+\includegraphics[width=3.12500in]{images/yoneda2.png}
+
+In that case \texttt{h} becomes a morphism from \texttt{a} to
+\texttt{a}. We know that there is at least one such morphism,
+\texttt{h\ =\ ida}. Let's plug it in:
+
+\begin{verbatim}
+αy f = (F f) (αa ida)
+\end{verbatim}
+
+Notice what has just happened: The left hand side is the action of
+\texttt{αy} on an arbitrary element \texttt{f} of \texttt{C(a,\ y)}. And
+it is totally determined by the single value of \texttt{αa} at
+\texttt{ida}. We can pick any such value and it will generate a natural
+transformation. Since the values of \texttt{αa} are in the set
+\texttt{F\ a}, any point in \texttt{F\ a} will define some \texttt{α}.
+
+Conversely, given any natural transformation \texttt{α} from
+\texttt{C(a,\ -)} to \texttt{F}, you can evaluate it at \texttt{ida} to
+get a point in \texttt{F\ a}.
+
+We have just proven the Yoneda lemma:
+
+There is a one-to-one correspondence between natural transformations
+from \texttt{C(a,\ -)} to \texttt{F} and elements of \texttt{F\ a}.
+
+in other words,
+
+\begin{verbatim}
+Nat(C(a, -), F) ≅ F a
+\end{verbatim}
+
+Or, if we use the notation \texttt{{[}C,\ Set{]}} for the functor
+category between \emph{C} and \textbf{Set}, the set of natural
+transformation is just a hom-set in that category, and we can write:
+
+\begin{verbatim}
+[C, Set](C(a, -), F) ≅ F a
+\end{verbatim}
+
+I'll explain later how this correspondence is in fact a natural
+isomorphism.
+
+Now let's try to get some intuition about this result. The most amazing
+thing is that the whole natural transformation crystallizes from just
+one nucleation site: the value we assign to it at \texttt{ida}. It
+spreads from that point following the naturality condition. It floods
+the image of \emph{C} in \textbf{Set}. So let's first consider what the
+image of \emph{C} is under \texttt{C(a,\ -)}.
+
+Let's start with the image of \texttt{a} itself. Under the hom-functor
+\texttt{C(a,\ -)}, \texttt{a} is mapped to the set \texttt{C(a,\ a)}.
+Under the functor \texttt{F}, on the other hand, it is mapped to the set
+\texttt{F\ a}. The component of the natural transformation \texttt{αa}
+is some function from \texttt{C(a,\ a)} to \texttt{F\ a}. Let's focus on
+just one point in the set \texttt{C(a,\ a)}, the point corresponding to
+the morphism \texttt{ida}. To emphasize the fact that it's just a point
+in a set, let's call it \texttt{p}. The component \texttt{αa} should map
+\texttt{p} to some point \texttt{q} in \texttt{F\ a}. I'll show you that
+any choice of \texttt{q} leads to a unique natural transformation.
+
+\includegraphics{images/yoneda3.png}
+
+The first claim is that the choice of one point \texttt{q} uniquely
+determines the rest of the function \texttt{αa}. Indeed, let's pick any
+other point, \texttt{p\&apos;} in \texttt{C(a,\ a)}, corresponding to
+some morphism \texttt{g} from \texttt{a} to \texttt{a}. And here's where
+the magic of the Yoneda lemma happens: \texttt{g} can be viewed as a
+point \texttt{p\&apos;} in the set \texttt{C(a,\ a)}. At the same time,
+it selects two \emph{functions} between sets. Indeed, under the
+hom-functor, the morphism \texttt{g} is mapped to a function
+\texttt{C(a,\ g)}; and under \texttt{F} it's mapped to \texttt{F\ g}.
+
+\includegraphics{images/yoneda4.png}
+
+Now let's consider the action of \texttt{C(a,\ g)} on our original
+\texttt{p} which, as you remember, corresponds to \texttt{ida}. It is
+defined as precomposition, \texttt{g∘ida}, which is equal to \texttt{g},
+which corresponds to our point \texttt{p\&apos;}. So the morphism
+\texttt{g} is mapped to a function that, when acting on \texttt{p}
+produces \texttt{p\&apos;}, which is \texttt{g}. We have come full
+circle!
+
+Now consider the action of \texttt{F\ g} on \texttt{q}. It is some
+\texttt{q\&apos;}, a point in \texttt{F\ a}. To complete the naturality
+square, \texttt{p\&apos;} must be mapped to \texttt{q\&apos;} under
+\texttt{αa}. We picked an arbitrary \texttt{p\&apos;} (an arbitrary
+\texttt{g}) and derived its mapping under \texttt{αa}. The function
+\texttt{αa} is thus completely determined.
+
+The second claim is that \texttt{αx} is uniquely determined for any
+object \texttt{x} in \emph{C} that is connected to \texttt{a}. The
+reasoning is analogous, except that now we have two more sets,
+\texttt{C(a,\ x)} and \texttt{F\ x}, and the morphism \texttt{g} from
+\texttt{a} to \texttt{x} is mapped, under the hom-functor, to:
+
+\begin{verbatim}
+C(a, g) :: C(a, a) -> C(a, x)
+\end{verbatim}
+
+and under \texttt{F} to:
+
+\begin{verbatim}
+F g :: F a -> F x
+\end{verbatim}
+
+Again, \texttt{C(a,\ g)} acting on our \texttt{p} is given by the
+precomposition: \texttt{g\ ∘\ ida}, which corresponds to a point
+\texttt{p\&apos;} in \texttt{C(a,\ x)}. Naturality determines the value
+of \texttt{αx} acting on \texttt{p\&apos;} to be:
+
+\begin{verbatim}
+q&apos; = (F g) q
+\end{verbatim}
+
+Since \texttt{p\&apos;} was arbitrary, the whole function \texttt{αx} is
+thus determined.
+
+\includegraphics{images/yoneda5.png}
+
+What if there are objects in \emph{C} that have no connection to
+\texttt{a}? They are all mapped under \texttt{C(a,\ -)} to a single set
+--- the empty set. Recall that the empty set is the initial object in
+the category of sets. It means that there is a unique function from this
+set to any other set. We called this function \texttt{absurd}. So here,
+again, we have no choice for the component of the natural
+transformation: it can only be \texttt{absurd}.
+
+One way of understanding the Yoneda lemma is to realize that natural
+transformations between \textbf{Set}-valued functors are just families
+of functions, and functions are in general lossy. A function may
+collapse information and it may cover only parts of its codomain. The
+only functions that are not lossy are the ones that are invertible ---
+the isomorphisms. It follows then that the best structure-preserving
+\textbf{Set}-valued functors are the representable ones. They are either
+the hom-functors or~the functors that are naturally isomorphic to
+hom-functors. Any other functor \texttt{F} is obtained from a
+hom-functor through a lossy transformation. Such a transformation may
+not only lose information, but it may also cover only a small part of
+the image of the functor \texttt{F} in \textbf{Set}.
+
+\subsection{Yoneda in Haskell}\label{yoneda-in-haskell}
+
+We have already encountered the hom-functor in Haskell under the guise
+of the reader functor:
+
+\begin{verbatim}
+type Reader a x = a -> x
+\end{verbatim}
+
+The reader maps morphisms (here, functions) by precomposition:
+
+\begin{verbatim}
+instance Functor (Reader a) where fmap f h = f . h
+\end{verbatim}
+
+The Yoneda lemma tells us that the reader functor can be naturally
+mapped to any other functor.
+
+A natural transformation is a polymorphic function. So given a functor
+\texttt{F}, we have a mapping to it from the reader functor:
+
+\begin{verbatim}
+alpha :: forall x . (a -> x) -> F x
+\end{verbatim}
+
+As usual, \texttt{forall} is optional, but I like to write it explicitly
+to emphasize parametric polymorphism of natural transformations.
+
+The Yoneda lemma tells us that these natural transformations are in
+one-to-one correspondence with the elements of \texttt{F\ a}:
+
+\begin{verbatim}
+forall x . (a -> x) -> F x ≅ F a
+\end{verbatim}
+
+The right hand side of this identity is what we would normally consider
+a data structure. Remember the interpretation of functors as generalized
+containers? \texttt{F\ a} is a container of \texttt{a}. But the left
+hand side is a polymorphic function that takes a function as an
+argument. The Yoneda lemma tells us that the two representations are
+equivalent --- they contain the same information.
+
+Another way of saying this is: Give me a polymorphic function of the
+type:
+
+\begin{verbatim}
+alpha :: forall x . (a -> x) -> F x
+\end{verbatim}
+
+and I'll produce a container of \texttt{a}. The trick is the one we used
+in the proof of the Yoneda lemma: we call this function with \texttt{id}
+to get an element of \texttt{F\ a}:
+
+\begin{verbatim}
+alpha id :: F a
+\end{verbatim}
+
+The converse is also true: Given a value of the type \texttt{F\ a}:
+
+\begin{verbatim}
+fa :: F a
+\end{verbatim}
+
+one can define a polymorphic function:
+
+\begin{verbatim}
+alpha h = fmap h fa
+\end{verbatim}
+
+of the correct type. You can easily go back and forth between the two
+representations.
+
+The advantage of having multiple representations is that one might be
+easier to compose than the other, or that one might be more efficient in
+some applications than the other.
+
+The simplest illustration of this principle is the code transformation
+that is often used in compiler construction: the continuation passing
+style or CPS. It's the simplest application of the Yoneda lemma to the
+identity functor. Replacing \texttt{F} with identity produces:
+
+\begin{verbatim}
+forall r . (a -> r) -> r ≅ a
+\end{verbatim}
+
+The interpretation of this formula is that any type \texttt{a} can be
+replaced by a function that takes a ``handler'' for \texttt{a}. A
+handler is a function accepting \texttt{a} and performing the rest of
+the computation --- the continuation. (The type \texttt{r} usually
+encapsulates some kind of status code.)
+
+This style of programming is very common in UIs, in asynchronous
+systems, and in concurrent programming. The drawback of CPS is that it
+involves inversion of control. The code is split between producers and
+consumers (handlers), and is not easily composable. Anybody who's done
+any amount of nontrivial web programming is familiar with the nightmare
+of spaghetti code from interacting stateful handlers. As we'll see
+later, judicious use of functors and monads can restore some
+compositional properties of CPS.
+
+\subsection{Co-Yoneda}\label{co-yoneda}
+
+As usual, we get a bonus construction by inverting the direction of
+arrows. The Yoneda lemma can be applied to the opposite category
+\emph{C}\textsuperscript{op} to give us a mapping between contravariant
+functors.
+
+Equivalently, we can derive the co-Yoneda lemma by fixing the target
+object of our hom-functors instead of the source. We get the
+contravariant hom-functor from \emph{C} to \textbf{Set}:
+\texttt{C(-,\ a)}. The contravariant version of the Yoneda lemma
+establishes one-to-one correspondence between natural transformations
+from this functor to any other contravariant functor \texttt{F} and the
+elements of the set \texttt{F\ a}:
+
+\begin{verbatim}
+Nat(C(-, a), F) ≅ F a
+\end{verbatim}
+
+Here's the Haskell version of the co-Yoneda lemma:
+
+\begin{verbatim}
+forall x . (x -> a) -> F x ≅ F a
+\end{verbatim}
+
+Notice that in some literature it's the contravariant version that's
+called the Yoneda lemma.
+
+\subsection{Challenges}\label{challenges}
+
+\begin{enumerate}
+\item
+  Show that the two functions \texttt{phi} and \texttt{psi} that form
+  the Yoneda isomorphism in Haskell are inverses of each other.
+
+\begin{verbatim}
+phi :: (forall x . (a -> x) -> F x) -> F a phi alpha = alpha id
+\end{verbatim}
+
+\begin{verbatim}
+psi :: F a -> (forall x . (a -> x) -> F x) psi fa h = fmap h fa
+\end{verbatim}
+\item
+  A discrete category is one that has objects but no morphisms other
+  than identity morphisms. How does the Yoneda lemma work for functors
+  from such a category?
+\item
+  A list of units \texttt{{[}(){]}} contains no other information but
+  its length. So, as a data type, it can be considered an encoding of
+  integers. An empty list encodes zero, a singleton \texttt{{[}(){]}} (a
+  value, not a type) encodes one, and so on. Construct another
+  representation of this data type using the Yoneda lemma for the list
+  functor.
+\end{enumerate}
+
+\subsection{Bibliography}\label{bibliography}
+
+Next:
+\href{https://bartoszmilewski.com/2015/10/28/yoneda-embedding/}{Yoneda
+Embedding}.
+
+\subsection{Acknowledgments}\label{acknowledgments}
+
+I'd like to thank Gershom Bazerman for checking my math and logic, and
+André van Meulebrouck, who has been volunteering his editing help
+throughout this series of posts.\\
+\href{https://twitter.com/BartoszMilewski}{Follow @BartoszMilewski}
