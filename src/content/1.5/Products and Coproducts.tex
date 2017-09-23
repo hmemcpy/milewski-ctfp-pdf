@@ -1,11 +1,3 @@
-\begin{quote}
-Categories for Programmers. In the
-\href{https://bartoszmilewski.com/2014/12/23/kleisli-categories/}{previous
-installment} we discussed how to add logging to pure functions. See the
-\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
-of Contents}.
-\end{quote}
-
 The Ancient Greek playwright Euripides once said: ``Every man is like
 the company he is wont to keep.'' We are defined by our relationships.
 Nowhere is this more true than in category theory. If we want to single
@@ -50,10 +42,15 @@ arrow between any two objects: there is only one way of being less-than
 or equal-to another object. Which leads us to this definition of the
 initial object:
 
+\begin{quote}
 The \textbf{initial object} is the object that has one and only one
 morphism going to any object in the category.
+\end{quote}
 
-\includegraphics[width=2.96875in]{images/initial.jpg}
+\begin{figure}
+  \centering
+  \fbox{\includegraphics[width=60mm]{images/initial.jpg}}
+\end{figure}
 
 However, even that doesn't guarantee the uniqueness of the initial
 object (if one exists). But it guarantees the next best thing:
@@ -89,11 +86,17 @@ than object \emph{b} if there is a morphism going from \emph{b} to
 object that's more terminal than any other object in the category.
 Again, we will insist on uniqueness:
 
+\begin{quote}
 The \textbf{terminal object} is the object with one and only one
 morphism coming to it from any object in the category.
+\end{quote}
 
-\includegraphics[width=3.12500in]{images/final.jpg}
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=60mm]{images/final.jpg}}
+\end{figure}
 
+\noindent
 And again, the terminal object is unique, up to isomorphism, which I
 will show shortly. But first let's look at some examples. In a poset,
 the terminal object, if it exists, is the biggest object. In the
@@ -105,7 +108,8 @@ one value --- implicit in C++ and explicit in Haskell, denoted by
 function from any type to the unit type:
 
 \begin{verbatim}
-unit :: a -> () unit _ = ()
+unit :: a -> ()
+unit _ = ()
 \end{verbatim}
 
 so all the conditions for the terminal object are satisfied.
@@ -116,14 +120,16 @@ that have incoming morphisms from every set. For instance, there is a
 Boolean-valued function (a predicate) defined for every type:
 
 \begin{verbatim}
-yes :: a -> Bool yes _ = True
+yes :: a -> Bool
+yes _ = True
 \end{verbatim}
 
 But \texttt{Bool} is not a terminal object. There is at least one more
 \texttt{Bool}-valued function from every type:
 
 \begin{verbatim}
-no :: a -> Bool no _ = False
+no :: a -> Bool
+no _ = False
 \end{verbatim}
 
 Insisting on uniqueness gives us just the right precision to narrow down
@@ -138,11 +144,11 @@ we can define the \emph{opposite category} C\textsuperscript{op} just by
 reversing all the arrows. The opposite category automatically satisfies
 all the requirements of a category, as long as we simultaneously
 redefine composition. If original morphisms
-\texttt{f::a-\textgreater{}b} and \texttt{g::b-\textgreater{}c} composed
-to \texttt{h::a-\textgreater{}c} with \texttt{h=g∘f}, then the reversed
-morphisms \texttt{fop::b-\textgreater{}a} and
-\texttt{gop::c-\textgreater{}b} will compose to
-\texttt{hop::c-\textgreater{}a} with \texttt{hop=fop∘gop}. And reversing
+\texttt{f::a->b} and \texttt{g::b->c} composed
+to \texttt{h::a->c} with \texttt{h=g◦f}, then the reversed
+morphisms \texttt{f\textsuperscript{op}::b->a} and
+\texttt{g\textsuperscript{op}::c->b} will compose to
+\texttt{h\textsuperscript{op}::c->a} with \texttt{h\textsuperscript{op}=f\textsuperscript{op}◦g\textsuperscript{op}}. And reversing
 the identity arrows is a (pun alert!) no-op.
 
 Duality is a very important property of categories because it doubles
@@ -188,7 +194,8 @@ identity morphism. These are actually two equations because there are
 two ways of composing two morphisms:
 
 \begin{verbatim}
-f . g = id g . f = id
+f . g = id
+g . f = id
 \end{verbatim}
 
 When I said that the initial (terminal) object was unique up to
@@ -201,10 +208,12 @@ i\textsubscript{2} is initial, there is a unique morphism \emph{g} from
 i\textsubscript{2} to i\textsubscript{1}. What's the composition of
 these two morphisms?
 
-\hypertarget{attachment_3837}{}
-\includegraphics[width=1.56250in]{images/uniqueness.jpg}
-
-All morphisms in this diagram are unique
+\begin{figure}
+  \centering
+          \includegraphics[width=1.56250in]{images/uniqueness.jpg}
+      \captionsetup{labelformat=empty,font=scriptsize}
+      \caption{All morphisms in this diagram are unique.}
+\end{figure}
 
 The composition \emph{g∘f} must be a morphism from i\textsubscript{1} to
 i\textsubscript{1}. But i\textsubscript{1} is initial so there can only
@@ -239,28 +248,34 @@ are called \texttt{fst} and \texttt{snd} and they pick, respectively,
 the first and the second component of a pair:
 
 \begin{verbatim}
-fst :: (a, b) -> a fst (x, y) = x
+fst :: (a, b) -> a
+fst (x, y) = x
 \end{verbatim}
 
 \begin{verbatim}
-snd :: (a, b) -> b snd (x, y) = y
+snd :: (a, b) -> b
+snd (x, y) = y
 \end{verbatim}
 
 Here, the functions are defined by pattern matching their arguments: the
-pattern that matches any pair is \texttt{(x,\ y)}, and it extracts its
+pattern that matches any pair is \texttt{(x, y)}, and it extracts its
 components into variables \texttt{x} and \texttt{y}.
 
 These definitions can be simplified even further with the use of
 wildcards:
 
 \begin{verbatim}
-fst (x, _) = x snd (_, y) = y
+fst (x, _) = x
+snd (_, y) = y
 \end{verbatim}
 
 In C++, we would use template functions, for instance:
 
 \begin{verbatim}
-template<class A, class B> A fst(pair<A, B> const & p) { return p.first; }
+template<class A, class B> A
+fst(pair<A, B> const & p) {
+    return p.first;
+}
 \end{verbatim}
 
 Equipped with this seemingly very limited knowledge, let's try to define
@@ -271,16 +286,25 @@ lead us to the construction of a product of two sets, \emph{a} and
 respectively:
 
 \begin{verbatim}
-p :: c -> a q :: c -> b
+p :: c -> a
+q :: c -> b
 \end{verbatim}
 
-\includegraphics[width=1.56250in]{images/productpattern.jpg}
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=1.56250in]{images/productpattern.jpg}}
+\end{figure}
 
+\noindent
 All \emph{c}s that fit this pattern will be considered candidates for
 the product. There may be lots of them.
 
-\includegraphics[width=1.56250in]{images/productcandidates.jpg}
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=1.56250in]{images/productcandidates.jpg}}
+\end{figure}
 
+\noindent
 For instance, let's pick, as our constituents, two Haskell types,
 \texttt{Int} and \texttt{Bool}, and get a sampling of candidates for
 their product.
@@ -290,19 +314,29 @@ the product of \texttt{Int} and \texttt{Bool}? Yes, it can --- and here
 are its projections:
 
 \begin{verbatim}
-p :: Int -> Int p x = x q :: Int -> Bool q _ = True
+p :: Int -> Int
+p x = x
+
+q :: Int -> Bool
+q _ = True
 \end{verbatim}
 
+\noindent
 That's pretty lame, but it matches the criteria.
 
-Here's another one: \texttt{(Int,\ Int,\ Bool)}. It's a tuple of three
+Here's another one: \texttt{(Int, Int, Bool)}. It's a tuple of three
 elements, or a triple. Here are two morphisms that make it a legitimate
 candidate (we are using pattern matching on triples):
 
 \begin{verbatim}
-p :: (Int, Int, Bool) -> Int p (x, _, _) = x q :: (Int, Int, Bool) -> Bool q (_, _, b) = b
+p :: (Int, Int, Bool) -> Int
+p (x, _, _) = x
+
+q :: (Int, Int, Bool) -> Bool
+q (_, _, b) = b
 \end{verbatim}
 
+\noindent
 You may have noticed that while our first candidate was too small --- it
 only covered the \texttt{Int} dimension of the product; the second was
 too big --- it spuriously duplicated the \texttt{Int} dimension.
@@ -320,11 +354,16 @@ projections of \emph{c'}. What it means is that the projections
 using \emph{m}:
 
 \begin{verbatim}
-p’ = p . m q’ = q . m
+p' = p . m
+q' = q . m
 \end{verbatim}
 
-\includegraphics[width=1.56250in]{images/productranking.jpg}
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=1.56250in]{images/productranking.jpg}}
+\end{figure}
 
+\noindent
 Another way of looking at these equation is that \emph{m}
 \emph{factorizes} \emph{p'} and \emph{q'}. Just pretend that these
 equations are in natural numbers, and the dot is multiplication:
@@ -335,34 +374,44 @@ Just to build some intuitions, let me show you that the pair
 and \texttt{snd} is indeed \emph{better} than the two candidates I
 presented before.
 
-\includegraphics[width=2.20833in]{images/not-a-product.jpg}
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=2.20833in]{images/not-a-product.jpg}}
+\end{figure}
 
+\noindent
 The mapping \texttt{m} for the first candidate is:
 
 \begin{verbatim}
-m :: Int -> (Int, Bool) m x = (x, True)
+m :: Int -> (Int, Bool)
+m x = (x, True)
 \end{verbatim}
 
+\noindent
 Indeed, the two projections, \texttt{p} and \texttt{q} can be
 reconstructed as:
 
 \begin{verbatim}
-p x = fst (m x) = x q x = snd (m x) = True
+p x = fst (m x) = x
+q x = snd (m x) = True
 \end{verbatim}
 
+\noindent
 The \texttt{m} for the second example is similarly uniquely determined:
 
 \begin{verbatim}
 m (x, _, b) = (x, b)
 \end{verbatim}
 
+\noindent
 We were able to show that \texttt{(Int,\ Bool)} is better than either of
 the two candidates. Let's see why the opposite is not true. Could we
-find some \texttt{m\&apos;} that would help us reconstruct \texttt{fst}
+find some \texttt{m'} that would help us reconstruct \texttt{fst}
 and \texttt{snd} from \texttt{p} and \texttt{q}?
 
 \begin{verbatim}
-fst = p . m’ snd = q . m’
+fst = p . m'
+snd = q . m'
 \end{verbatim}
 
 In our first example, \texttt{q} always returned \texttt{True} and we
@@ -376,27 +425,30 @@ to factorize \texttt{fst} and \texttt{snd}. Because both \texttt{p} and
 can put anything in it. We can have:
 
 \begin{verbatim}
-m’ (x, b) = (x, x, b)
+m' (x, b) = (x, x, b)
 \end{verbatim}
 
+\noindent
 or
 
 \begin{verbatim}
-m’ (x, b) = (x, 42, b)
+m' (x, b) = (x, 42, b)
 \end{verbatim}
 
+\noindent
 and so on.
 
 Putting it all together, given any type \texttt{c} with two projections
 \texttt{p} and \texttt{q}, there is a unique \texttt{m} from \texttt{c}
-to the cartesian product \texttt{(a,\ b)} that factorizes them. In fact,
+to the cartesian product \texttt{(a, b)} that factorizes them. In fact,
 it just combines \texttt{p} and \texttt{q} into a pair.
 
 \begin{verbatim}
-m :: c -> (a, b) m x = (p x, q x)
+m :: c -> (a, b)
+m x = (p x, q x)
 \end{verbatim}
 
-That makes the cartesian product \texttt{(a,\ b)} our best match, which
+That makes the cartesian product \texttt{(a, b)} our best match, which
 means that this universal construction works in the category of sets. It
 picks the product of any two sets.
 
@@ -404,17 +456,20 @@ Now let's forget about sets and define a product of two objects in any
 category using the same universal construction. Such product doesn't
 always exist, but when it does, it is unique up to a unique isomorphism.
 
+\begin{quote}
 A \textbf{product} of two objects \emph{a} and \emph{b} is the object
 \emph{c} equipped with two projections such that for any other object
 \emph{c'} equipped with two projections there is a unique morphism
 \emph{m} from \emph{c'} to \emph{c} that factorizes those projections.
+\end{quote}
 
 A (higher order) function that produces the factorizing function
 \texttt{m} from two candidates is sometimes called the
 \emph{factorizer}. In our case, it would be the function:
 
 \begin{verbatim}
-factorizer :: (c -> a) -> (c -> b) -> (c -> (a, b)) factorizer p q = \x -> (p x, q x)
+factorizer :: (c -> a) -> (c -> b) -> (c -> (a, b))
+factorizer p q = \x -> (p x, q x)
 \end{verbatim}
 
 \subsection{Coproduct}\label{coproduct}
@@ -426,31 +481,44 @@ pattern, we end up with an object \emph{c} equipped with two
 and \emph{b} to \emph{c}.
 
 \begin{verbatim}
-i :: a -> c j :: b -> c
+i :: a -> c
+j :: b -> c
 \end{verbatim}
 
-\includegraphics[width=1.56250in]{images/coproductpattern.jpg}
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=1.56250in]{images/coproductpattern.jpg}}
+\end{figure}
 
+\noindent
 The ranking is also inverted: object \emph{c} is ``better'' than object
 \emph{c'} that is equipped with the injections \emph{i'} and \emph{j'}
 if there is a morphism \emph{m} from \emph{c} to \emph{c'} that
 factorizes the injections:
 
 \begin{verbatim}
-i&apos; = m . i j&apos; = m . j
+i' = m . i
+j' = m . j
 \end{verbatim}
 
-\includegraphics[width=1.56250in]{images/coproductranking.jpg}
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=1.56250in]{images/coproductranking.jpg}}
+\end{figure}
 
+\noindent
 The ``best'' such object, one with a unique morphism connecting it to
 any other pattern, is called a coproduct and, if it exists, is unique up
 to unique isomorphism.
 
+\begin{quote}
 A \textbf{coproduct} of two objects \emph{a} and \emph{b} is the object
 \emph{c} equipped with two injections such that for any other object
 \emph{c'} equipped with two injections there is a unique morphism
 \emph{m} from \emph{c} to \emph{c'} that factorizes those injections.
+\end{quote}
 
+\noindent
 In the category of sets, the coproduct is the \emph{disjoint union} of
 two sets. An element of the disjoint union of \emph{a} and \emph{b} is
 either an element of \emph{a} or an element of \emph{b}. If the two sets
@@ -463,21 +531,31 @@ types: it's a tagged union of two types. C++ supports unions, but they
 are not tagged. It means that in your program you have to somehow keep
 track which member of the union is valid. To create a tagged union, you
 have to define a tag --- an enumeration --- and combine it with the
-union. For instance, a tagged union of an \texttt{int} and a
-\texttt{char\ const\ *} could be implemented as:
+union. For instance, a tagged union of an \texttt{int} and a\\
+\texttt{char const *} could be implemented as:
 
 \begin{verbatim}
-struct Contact { enum { isPhone, isEmail } tag; union { int phoneNum; char const * emailAddr; }; };
+struct Contact { 
+    enum { isPhone, isEmail } tag;
+    union { int phoneNum; char const * emailAddr; };
+};
 \end{verbatim}
 
+\noindent
 The two injections can either be implemented as constructors or as
 functions. For instance, here's the first injection as a function
 \texttt{PhoneNum}:
 
 \begin{verbatim}
-Contact PhoneNum(int n) { Contact c; c.tag = isPhone; c.phoneNum = n; return c; }
+Contact PhoneNum(int n) { 
+    Contact c;
+    c.tag = isPhone;
+    c.phoneNum = n;
+    return c;
+}
 \end{verbatim}
 
+\noindent
 It injects an integer into \texttt{Contact}.
 
 A tagged union is also called a \emph{variant}, and there is a very
@@ -492,15 +570,18 @@ example translates into the declaration:
 data Contact = PhoneNum Int | EmailAddr String
 \end{verbatim}
 
+\noindent
 Here, \texttt{PhoneNum} and \texttt{EmailAddr} serve both as
 constructors (injections), and as tags for pattern matching (more about
 this later). For instance, this is how you would construct a contact
 using a phone number:
 
 \begin{verbatim}
-helpdesk :: Contact; helpdesk = PhoneNum 2222222
+helpdesk :: Contact;
+helpdesk = PhoneNum 2222222
 \end{verbatim}
 
+\noindent
 Unlike the canonical implementation of the product that is built into
 Haskell as the primitive pair, the canonical implementation of the
 coproduct is a data type called \texttt{Either}, which is defined in the
@@ -510,6 +591,7 @@ standard Prelude as:
 Either a b = Left a | Right b
 \end{verbatim}
 
+\noindent
 It is parameterized by two types, \texttt{a} and \texttt{b} and has two
 constructors: \texttt{Left} that takes a value of type \texttt{a}, and
 \texttt{Right} that takes a value of type \texttt{b}.
@@ -520,7 +602,9 @@ injections \texttt{i} and \texttt{j}, the factorizer for \texttt{Either}
 produces the factoring function:
 
 \begin{verbatim}
-factorizer :: (a -> c) -> (b -> c) -> Either a b -> c factorizer i j (Left a) = i a factorizer i j (Right b) = j b
+factorizer :: (a -> c) -> (b -> c) -> Either a b -> c
+factorizer i j (Left a)  = i a
+factorizer i j (Right b) = j b
 \end{verbatim}
 
 \subsection{Asymmetry}\label{asymmetry}
@@ -560,20 +644,22 @@ morphism selects an element from the product set --- it selects a
 concrete pair. It also factorizes the two projections:
 
 \begin{verbatim}
-p = fst . m q = snd . m
+p = fst . m
+q = snd . m
 \end{verbatim}
 
 When acting on the singleton value \texttt{()}, the only element of the
 singleton set, these two equations become:
 
 \begin{verbatim}
-p () = fst (m ()) q () = snd (m ())
+p () = fst (m ())
+q () = snd (m ())
 \end{verbatim}
 
-Since \texttt{m\ ()} is the element of the product picked by \texttt{m},
+Since \texttt{m ()} is the element of the product picked by \texttt{m},
 these equations tell use that the element picked by \texttt{p} from the
-first set, \texttt{p\ ()}, is the first component of the pair picked by
-\texttt{m}. Similarly, \texttt{q\ ()} is equal to the second component.
+first set, \texttt{p ()}, is the first component of the pair picked by
+\texttt{m}. Similarly, \texttt{q ()} is equal to the second component.
 This is in total agreement with our understanding that elements of the
 product are pairs of elements from the constituent sets.
 
@@ -621,6 +707,7 @@ isomorphism is the same as a bijection.
 \subsection{Challenges}\label{challenges}
 
 \begin{enumerate}
+  \tightlist
 \item
   Show that the terminal object is unique up to unique isomorphism.
 \item
@@ -636,7 +723,8 @@ isomorphism is the same as a bijection.
   equipped with two injections:
 
 \begin{verbatim}
-int i(int n) { return n; } int j(bool b) { return b? 0: 1; }
+int i(int n) { return n; }
+int j(bool b) { return b? 0: 1; }
 \end{verbatim}
 
   Hint: Define a function
@@ -654,17 +742,18 @@ int m(Either const & e);
   Still continuing: What about these injections?
 
 \begin{verbatim}
-int i(int n) { if (n < 0) return n; return n + 2; } int j(bool b) { return b? 0: 1; }
+int i(int n) { 
+    if (n < 0) return n;
+    return n + 2;
+}
+
+int j(bool b) { return b? 0: 1; }
 \end{verbatim}
 \item
   Come up with an inferior candidate for a coproduct of \texttt{int} and
   \texttt{bool} that cannot be better than \texttt{Either} because it
   allows multiple acceptable morphisms from it to \texttt{Either}.
 \end{enumerate}
-
-Next:
-\href{https://bartoszmilewski.com/2015/01/13/simple-algebraic-data-types/}{Simple
-Algebraic Data Types}.
 
 \subsection{Bibliography}\label{bibliography}
 
@@ -680,5 +769,3 @@ Algebraic Data Types}.
 
 I'm grateful to Gershom Bazerman for reviewing this post before
 publication and for stimulating discussions.
-
-\href{https://twitter.com/BartoszMilewski}{Follow @BartoszMilewski}
