@@ -11,7 +11,7 @@ it's interesting to see which type constructors (which correspond to
 mappings between objects in a category) can be extended to functors
 (which include mappings between morphisms).
 
-\subsection{Bifunctors}\label{bifunctors}
+\section{Bifunctors}\label{bifunctors}
 
 Since functors are morphisms in \newterm{Cat} (the category of categories),
 a lot of intuitions about morphisms --- and functions in particular ---
@@ -107,7 +107,7 @@ and \code{second} and accepting the default for \code{bimap} (of
 course, you may implement all three of them, but then it's up to you to
 make sure they are related to each other in this manner).
 
-\subsection{Product and Coproduct
+\section{Product and Coproduct
 Bifunctors}\label{product-and-coproduct-bifunctors}
 
 An important example of a bifunctor is the categorical product --- a
@@ -162,7 +162,7 @@ morphisms. We are now one step closer to the full definition of a
 monoidal category (we still need to learn about naturality, before we
 can get there).
 
-\subsection{Functorial Algebraic Data
+\section{Functorial Algebraic Data
 Types}\label{functorial-algebraic-data-types}
 
 We've seen several examples of parameterized data types that turned out
@@ -327,7 +327,7 @@ own typeclasses, but that's a bit more advanced. The idea though is the
 same: You provide the behavior for the basic building blocks and sums
 and products, and let the compiler figure out the rest.
 
-\subsection{Functors in C++}\label{functors-in-c}
+\section{Functors in C++}\label{functors-in-c}
 
 If you are a C++ programmer, you obviously are on your own as far as
 implementing functors goes. However, you should be able to recognize
@@ -397,7 +397,7 @@ instance Functor Tree where fmap f (Leaf a) = Leaf (f a) fmap f (Node t t&apos;)
 
 This implementation can also be automatically derived by the compiler.
 
-\subsection{The Writer Functor}\label{the-writer-functor}
+\section{The Writer Functor}\label{the-writer-functor}
 
 I promised that I would come back to the
 \href{https://bartoszmilewski.com/2014/12/23/kleisli-categories/}{Kleisli
@@ -472,7 +472,7 @@ the way Haskell implements polymorphic functions. It's called
 an implementation of \code{fmap} for a given type constructor, one
 that preserves identity, then it must be unique.
 
-\subsection{Covariant and Contravariant
+\section{Covariant and Contravariant
 Functors}\label{covariant-and-contravariant-functors}
 
 Now that we've reviewed the writer functor, let's go back to the reader
@@ -591,7 +591,7 @@ With it, we get:
 contramap = flip (.)
 \end{verbatim}
 
-\subsection{Profunctors}\label{profunctors}
+\section{Profunctors}\label{profunctors}
 
 We've seen that the function-arrow operator is contravariant in its
 first argument and covariant in the second. Is there a name for such a
@@ -633,7 +633,7 @@ instance Profunctor (->) where dimap ab cd bc = cd . bc . ab lmap = flip (.) rma
 Profunctors have their application in the Haskell lens library. We'll
 see them again when we talk about ends and coends.
 
-\subsection{Challenges}\label{challenges}
+\section{Challenges}\label{challenges}
 
 \begin{enumerate}
 \item
@@ -704,7 +704,7 @@ Next:
 \href{https://bartoszmilewski.com/2015/03/13/function-types/}{Function
 Types}.
 
-\subsection{Acknowledgment}\label{acknowledgment}
+\section{Acknowledgment}\label{acknowledgment}
 
 As usual, big thanks go to Gershom Bazerman for reviewing this
 article.\\

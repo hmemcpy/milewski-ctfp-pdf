@@ -84,7 +84,7 @@ But, importantly, we are free to replace the trivial category \textbf{1}
 with an arbitrary category \emph{A}, and the definition of the right Kan
 extension remains valid.
 
-\subsection{Right Kan Extension}\label{right-kan-extension}
+\section{Right Kan Extension}\label{right-kan-extension}
 
 The right Kan extension of the functor \code{D::I-\textgreater{}C}
 along the functor \code{K::I-\textgreater{}A} is a functor
@@ -148,7 +148,7 @@ is not injective on objects or not faithful on hom-sets, as in the
 example of the limit. In that case, the Kan extension tries its best to
 extrapolate the lost information.
 
-\subsection{Kan Extension as
+\section{Kan Extension as
 Adjunction}\label{kan-extension-as-adjunction}
 
 Now suppose that the right Kan extension exists for any \code{D} (and
@@ -226,7 +226,7 @@ The adjunction formula is an important result because, as we'll see
 soon, we can calculate Kan extensions using ends (coends), thus giving
 us practical means of finding right (and left) adjoints.
 
-\subsection{Left Kan Extension}\label{left-kan-extension}
+\section{Left Kan Extension}\label{left-kan-extension}
 
 There is a dual construction that gives us the left Kan extension. To
 build some intuition, we'll can start with the definition of a colimit
@@ -308,7 +308,7 @@ Combining the two results, we get:
 RanKIC ⊣ K ⊣ LanKIC
 \end{verbatim}
 
-\subsection{Kan Extensions as Ends}\label{kan-extensions-as-ends}
+\section{Kan Extensions as Ends}\label{kan-extensions-as-ends}
 
 The real power of Kan extensions comes from the fact that they can be
 calculated using ends (and coends). For simplicity, we'll restrict our
@@ -441,7 +441,7 @@ hand side of the adjunction we set out to prove:
 These kinds of calculations using ends, coends, and the Yoneda lemma are
 pretty typical for the ``calculus'' of ends.
 
-\subsection{Kan Extensions in Haskell}\label{kan-extensions-in-haskell}
+\section{Kan Extensions in Haskell}\label{kan-extensions-in-haskell}
 
 The end/coend formulas for Kan extensions can be easily translated to
 Haskell. Let's start with the right extension:
@@ -551,7 +551,7 @@ repackaged the container using the natural transformation between the
 identity functor and the pair functor, and (3) called the function
 \code{f}.
 
-\subsection{Free Functor}\label{free-functor}
+\section{Free Functor}\label{free-functor}
 
 An interesting application of Kan extensions is the construction of a
 free functor. It's the solution to the following practical problem:

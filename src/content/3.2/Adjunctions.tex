@@ -31,7 +31,7 @@ swap :: (a,b) -> (b,a) swap (a,b) = (b,a)
 
 \code{swap} happens to be its own inverse.
 
-\subsection{Adjunction and Unit/Counit
+\section{Adjunction and Unit/Counit
 Pair}\label{adjunction-and-unitcounit-pair}
 
 When we talk about categories being isomorphic, we express this in terms
@@ -241,7 +241,7 @@ and \code{u} is a function, here on type constructors). Conversely,
 I'll explain in a moment why, in Haskell, we can impose the condition
 that the right adjoint \code{u} be a \newterm{representable} functor.
 
-\subsection{Adjunctions and Hom-Sets}\label{adjunctions-and-hom-sets}
+\section{Adjunctions and Hom-Sets}\label{adjunctions-and-hom-sets}
 
 There is an equivalent definition of the adjunction in terms of natural
 isomorphisms of hom-sets. This definition ties nicely with universal
@@ -429,7 +429,7 @@ C(L (), -) ≅ R
 
 which shows that \code{R} is indeed representable.
 
-\subsection{Product from Adjunction}\label{product-from-adjunction}
+\section{Product from Adjunction}\label{product-from-adjunction}
 
 We have previously introduced several concepts using universal
 constructions. Many of those concepts, when defined globally, are easier
@@ -607,7 +607,7 @@ for instance:
 (,) Int Bool ~ (Int, Bool)
 \end{verbatim}
 
-\subsection{Exponential from
+\section{Exponential from
 Adjunction}\label{exponential-from-adjunction}
 
 The exponential \code{ba}, or the function object \code{a⇒b}, can be
@@ -670,7 +670,7 @@ unique object, up to isomorphism. That's why we have ``the'' product and
 ``the'' exponential. This property translates to adjunctions as well: if
 a functor has an adjoint, this adjoint is unique up to isomorphism.
 
-\subsection{Challenges}\label{challenges}
+\section{Challenges}\label{challenges}
 
 \begin{enumerate}
 \item
@@ -700,7 +700,7 @@ Next:
 \href{https://bartoszmilewski.com/2016/06/15/freeforgetful-adjunctions/}{Free/Forgetful
 Adjunctions}.
 
-\subsection{Acknowledgments}\label{acknowledgments}
+\section{Acknowledgments}\label{acknowledgments}
 
 I'd like to thank Edward Kmett and Gershom Bazerman for checking my math
 and logic, and André van Meulebrouck, who has been volunteering his

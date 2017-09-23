@@ -82,7 +82,7 @@ called the \code{do} notation for monadic composition. We'll see its
 use later. But first, let me explain why we need monadic composition in
 the first place.
 
-\subsection{The Kleisli Category}\label{the-kleisli-category}
+\section{The Kleisli Category}\label{the-kleisli-category}
 
 We have previously arrived at the
 \href{https://bartoszmilewski.com/2014/12/23/kleisli-categories/}{writer
@@ -180,7 +180,7 @@ tell :: w -> Writer w () tell s = Writer ((), s)
 
 We'll use it later as a building block for other monadic functions.
 
-\subsection{Fish Anatomy}\label{fish-anatomy}
+\section{Fish Anatomy}\label{fish-anatomy}
 
 When implementing the fish operator for different monads you quickly
 realize that a lot of code is repeated and can be easily factored out.
@@ -265,7 +265,7 @@ For completeness, here's \code{join} for the \code{Writer} monad:
 join :: Monoid w => Writer w (Writer w a) -> Writer w a join (Writer ((Writer (a, w&apos;)), w)) = Writer (a, w `mappend` w&apos;)
 \end{verbatim}
 
-\subsection{\texorpdfstring{The \code{do}
+\section{\texorpdfstring{The \code{do}
 Notation}{The do Notation}}\label{the-do-notation}
 
 One way of writing code using monads is to work with Kleisli arrows ---

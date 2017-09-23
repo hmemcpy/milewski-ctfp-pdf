@@ -2,7 +2,7 @@
 examples. Categories come in all shapes and sizes and often pop up in
 unexpected places. We'll start with something really simple.
 
-\subsection{No Objects}\label{no-objects}
+\section{No Objects}\label{no-objects}
 
 The most trivial category is one with zero objects and, consequently,
 zero morphisms. It's a very sad category by itself, but it may be
@@ -10,7 +10,7 @@ important in the context of other categories, for instance, in the
 category of all categories (yes, there is one). If you think that an
 empty set makes sense, then why not an empty category?
 
-\subsection{Simple Graphs}\label{simple-graphs}
+\section{Simple Graphs}\label{simple-graphs}
 
 You can build categories just by connecting objects with arrows. You can
 imagine starting with any directed graph and making it into a category
@@ -34,7 +34,7 @@ given structure by extending it with a minimum number of items to
 satisfy its laws (here, the laws of a category). We'll see more examples
 of it in the future.
 
-\subsection{Orders}\label{orders}
+\section{Orders}\label{orders}
 
 And now for something completely different! A category where a morphism
 is a relation between objects: the relation of being less than or equal.
@@ -71,7 +71,7 @@ and total orders because of sorting. Sorting algorithms, such as
 quicksort, bubble sort, merge sort, etc., can only work correctly on
 total orders. Partial orders can be sorted using topological sort.
 
-\subsection{Monoid as Set}\label{monoid-as-set}
+\section{Monoid as Set}\label{monoid-as-set}
 
 Monoid is an embarrassingly simple but amazingly powerful concept. It's
 the concept behind basic arithmetics: Both addition and multiplication
@@ -243,7 +243,7 @@ std::string mappend(std::string s1, std::string s2) {
 }
 \end{minted}
 
-\subsection{Monoid as Category}\label{monoid-as-category}
+\section{Monoid as Category}\label{monoid-as-category}
 
 That was the ``familiar'' definition of the monoid in terms of elements
 of a set. But as you know, in category theory we try to get away from
@@ -333,12 +333,12 @@ follow the rules of composition, and as points in a set. Here,
 composition of morphisms in M translates into monoidal product in the
 set \code{M(m, m)}.
 
-\subsection{Acknowledgments}\label{acknowledgments}
+\section{Acknowledgments}\label{acknowledgments}
 
 I'd like to thank Andrew Sutton for rewriting my C++ monoid concept code
 according to his and Bjarne Stroustrup's latest proposal.
 
-\subsection{Challenges}\label{challenges}
+\section{Challenges}\label{challenges}
 
 \begin{enumerate}
 \item

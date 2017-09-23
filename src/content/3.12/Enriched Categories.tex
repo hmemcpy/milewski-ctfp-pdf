@@ -42,7 +42,7 @@ enriched categories, and that's because a very useful online source of
 categorical knowledge, the \href{https://ncatlab.org/}{nLab}, is written
 mostly in terms of enriched categories.
 
-\subsection{Why Monoidal Category?}\label{why-monoidal-category}
+\section{Why Monoidal Category?}\label{why-monoidal-category}
 
 When constructing an enriched category we have to keep in mind that we
 should be able to recover the usual definitions when we replace the
@@ -81,7 +81,7 @@ tensor product.
 As you can see, objects taken from some monoidal category \emph{V} are
 good candidates for hom-set replacement.
 
-\subsection{Monoidal Category}\label{monoidal-category}
+\section{Monoidal Category}\label{monoidal-category}
 
 We've talked about monoidal categories before, but it's worth restating
 the definition. A monoidal category defines a tensor product that is a
@@ -166,7 +166,7 @@ example of a category that is not biclosed is the category of
 endofunctors in \textbf{Set}, with functor composition serving as tensor
 product. That's the category we used to define monads.
 
-\subsection{Enriched Category}\label{enriched-category}
+\section{Enriched Category}\label{enriched-category}
 
 A category \emph{C} enriched over a monoidal category \emph{V} replaces
 hom-sets with hom-objects. To every pair of objects \code{a} and
@@ -207,7 +207,7 @@ Unit laws are likewise expressed in terms of unitors:
 
 \includegraphics[width=4.65625in]{images/leftid.jpg}
 
-\subsection{Preorders}\label{preorders}
+\section{Preorders}\label{preorders}
 
 A preorder is defined as a thin category, one in which every hom-set is
 either empty or a singleton. We interpret a non-empty set
@@ -245,7 +245,7 @@ There is only one morphism going from 1, and that's the identity
 preorder. So both transitivity and reflexivity are automatically
 enforced, if we implement a preorder as an enriched category.
 
-\subsection{Metric Spaces}\label{metric-spaces}
+\section{Metric Spaces}\label{metric-spaces}
 
 An interesting example is due to
 \href{http://www.tac.mta.ca/tac/reprints/articles/1/tr1.pdf}{William
@@ -306,7 +306,7 @@ to \code{c}. But that's just the standard triangle inequality. Check!
 By re-casting the metric space in terms of an enriched category, we get
 the triangle inequality and the zero self-distance ``for free.''
 
-\subsection{Enriched Functors}\label{enriched-functors}
+\section{Enriched Functors}\label{enriched-functors}
 
 The definition of a functor involves the mapping of morphisms. In the
 enriched setting, we don't have the notion of individual morphisms, so
@@ -336,7 +336,7 @@ morphisms in \emph{V} that ``select'' the identity:
 
 \includegraphics[width=4.04167in]{images/functorid.jpg}
 
-\subsection{Self Enrichment}\label{self-enrichment}
+\section{Self Enrichment}\label{self-enrichment}
 
 A closed symmetric monoidal category may be self-enriched by replacing
 hom-sets with internal homs (see the definition above). To make this
@@ -426,7 +426,7 @@ equivalent. Now we also know that, through self-enrichment, we can use
 the exponential set as the hom-object and express composition in terms
 of cartesian products of exponential objects.
 
-\subsection{Relation to 2-Categories}\label{relation-to-2-categories}
+\section{Relation to 2-Categories}\label{relation-to-2-categories}
 
 I talked about 2-categories in the context of \textbf{Cat}, the category
 of (small) categories. The morphisms between categories are functors,

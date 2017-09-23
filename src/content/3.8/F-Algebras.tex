@@ -154,7 +154,7 @@ can be evaluated using the evaluator of the algebra. So far we've only
 seen very simple expressions. We are often interested in more elaborate
 expressions that can be defined using recursion.
 
-\subsection{Recursion}\label{recursion}
+\section{Recursion}\label{recursion}
 
 One way to generate arbitrary expression trees is to replace the
 variable \code{a} inside the functor definition with recursion. For
@@ -254,7 +254,7 @@ unFix :: Fix f -> f (Fix f) unFix (Fix x) = x
 The two functions are the inverse of each other. We'll use these
 functions later.
 
-\subsection{Category of F-Algebras}\label{category-of-f-algebras}
+\section{Category of F-Algebras}\label{category-of-f-algebras}
 
 Here's the oldest trick in the book: Whenever you come up with a way of
 constructing some new objects, see if they form a category. Not
@@ -388,7 +388,7 @@ data Nat = Zero | Succ Nat
 A natural number is either zero or a successor of another number. This
 is known as the Peano representation for natural numbers.
 
-\subsection{Catamorphisms}\label{catamorphisms}
+\section{Catamorphisms}\label{catamorphisms}
 
 Let's rewrite the initiality condition using Haskell notation. We call
 the initial algebra \code{Fix\ f}. Its evaluator is the contructor
@@ -459,7 +459,7 @@ In general, an algebra for \code{NatF} defines a recurrence relation:
 the value of the current element in terms of the previous element. A
 catamorphism then evaluates the n-th element of that sequence.
 
-\subsection{Folds}\label{folds}
+\section{Folds}\label{folds}
 
 A list of \code{e} is the initial algebra of the following functor:
 
@@ -517,7 +517,7 @@ sum = foldr (\e s -> e + s) 0.0
 As you can see, \code{foldr} is just a convenient specialization of a
 catamorphism to lists.
 
-\subsection{Coalgebras}\label{coalgebras}
+\section{Coalgebras}\label{coalgebras}
 
 As usual, we have a dual construction of an F-coagebra, where the
 direction of the morphism is reversed:
@@ -655,7 +655,7 @@ We've seen before that \code{Store\ s} is also a comonad. It turns out
 that a well-behaved lens corresponds to a coalgebra that is compatible
 with the comonad structure. We'll talk about this in the next section.
 
-\subsection{Challenges}\label{challenges}
+\section{Challenges}\label{challenges}
 
 \begin{enumerate}
 \tightlist

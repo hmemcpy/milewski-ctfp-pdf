@@ -35,7 +35,7 @@ function types special. But there is a way, at least in some categories,
 to construct objects that represent hom-sets. Such objects are called
 \newterm{internal} hom-sets.
 
-\subsection{Universal Construction}\label{universal-construction}
+\section{Universal Construction}\label{universal-construction}
 
 Let's forget for a moment that function types are sets and try to
 construct a function type, or more generally, an internal hom-set, from
@@ -213,7 +213,7 @@ This is why, in Haskell, we interpret the function type
 \code{a-\textgreater{}b} as the categorical function object
 \code{a⇒b}.
 
-\subsection{Currying}\label{currying}
+\section{Currying}\label{currying}
 
 Let's have a second look at all the candidates for the function object.
 This time, however, let's think of the morphism \code{g} as a function
@@ -361,7 +361,7 @@ def catstr(s1: String)(s2: String) = s1 + s2
 Of course that requires some amount of foresight or prescience on the
 part of a library writer.
 
-\subsection{Exponentials}\label{exponentials}
+\section{Exponentials}\label{exponentials}
 
 In mathematical literature, the function object, or the internal
 hom-object between two objects \code{a} and \code{b}, is often
@@ -418,7 +418,7 @@ explains the identification of Haskell's function type with the
 categorical exponential object --- which corresponds more to our idea of
 \emph{data}.
 
-\subsection{Cartesian Closed
+\section{Cartesian Closed
 Categories}\label{cartesian-closed-categories}
 
 Although I will continue using the category of sets as a model for types
@@ -463,7 +463,7 @@ is called a \newterm{bicartesian closed} category. We'll see in the next
 section that bicartesian closed categories, of which \textbf{Set} is a
 prime example, have some interesting properties.
 
-\subsection{Exponentials and Algebraic Data
+\section{Exponentials and Algebraic Data
 Types}\label{exponentials-and-algebraic-data-types}
 
 The interpretation of function types as exponentials fits very well into
@@ -591,7 +591,7 @@ It's pretty incredible how those simple high-school algebraic identities
 can be lifted to category theory and have practical application in
 functional programming.
 
-\subsection{Curry-Howard Isomorphism}\label{curry-howard-isomorphism}
+\section{Curry-Howard Isomorphism}\label{curry-howard-isomorphism}
 
 I have already mentioned the correspondence between logic and algebraic
 data types. The \code{Void} type and the unit type \code{()}
@@ -716,7 +716,7 @@ coproducts, function types, and so on. And, as if to dispel any doubts,
 the theory is being formulated in Coq and Agda. Computers are
 revolutionizing the world in more than one way.
 
-\subsection{Bibliography}\label{bibliography}
+\section{Bibliography}\label{bibliography}
 
 \begin{enumerate}
 \tightlist
@@ -732,7 +732,7 @@ Next:
 \href{https://bartoszmilewski.com/2015/04/07/natural-transformations/}{Natural
 Transformations}.
 
-\subsection{Acknowledgments}\label{acknowledgments}
+\section{Acknowledgments}\label{acknowledgments}
 
 I'd like to thank Gershom Bazerman for checking my math and logic, and
 André van Meulebrouck, who has been volunteering his editing help

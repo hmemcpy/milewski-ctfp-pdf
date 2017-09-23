@@ -88,7 +88,7 @@ from \code{p\ a\ a} to \code{p\ a\ b}:
 dimap id f paa :: p a b
 \end{verbatim}
 
-\subsection{Dinatural Transformations}\label{dinatural-transformations}
+\section{Dinatural Transformations}\label{dinatural-transformations}
 
 Since profunctors are functors, we can define natural transformations
 between them in the standard way. In many cases, though, it's enough to
@@ -123,7 +123,7 @@ Notice that a component of a natural transformation \code{α} in
 indexed by one object, since it only maps diagonal elements of the
 respective profunctors.
 
-\subsection{Ends}\label{ends}
+\section{Ends}\label{ends}
 
 We are now ready to advance from ``algebra'' to what could be considered
 the ``calculus'' of category theory. The calculus of ends (and coends)
@@ -251,7 +251,7 @@ Ends can also be defined for target categories other than \textbf{Set},
 but here we'll only consider \textbf{Set}-valued profunctors and their
 ends.
 
-\subsection{Ends as Equalizers}\label{ends-as-equalizers}
+\section{Ends as Equalizers}\label{ends-as-equalizers}
 
 The commutation condition in the definition of the end can be written
 using an equalizer. First, let's define two functions (I'm using Haskell
@@ -290,7 +290,7 @@ that the equalizer picks the largest subset on which two functions are
 equal. In this case it picks the subset of the product of all diagonal
 elements for which the wedge diagrams commute.
 
-\subsection{Natural Transformations as
+\section{Natural Transformations as
 Ends}\label{natural-transformations-as-ends}
 
 The most important example of an end is the set of natural
@@ -344,7 +344,7 @@ idb ∘ τb ∘ F f
 Their equality, demanded by the wedge condition, is nothing but the
 naturality condition for \code{τ}.
 
-\subsection{Coends}\label{coends}
+\section{Coends}\label{coends}
 
 As expected, the dual to an end is called a coend. It is constructed
 from a dual to a wedge called a cowedge (pronounced co-wedge, not
@@ -474,7 +474,7 @@ statement, with a tuple of handlers, one for every type present in the
 sum. Here, the sum type is replaced by a coend, and a family of handlers
 becomes an end, or a polymorphic function.
 
-\subsection{Ninja Yoneda Lemma}\label{ninja-yoneda-lemma}
+\section{Ninja Yoneda Lemma}\label{ninja-yoneda-lemma}
 
 The set of natural transformations that appears in the Yoneda lemma may
 be encoded using an end, resulting in the following formulation:
@@ -548,7 +548,7 @@ isomorphism:
 ∫ z C(a, z) × F z ≅ F a
 \end{verbatim}
 
-\subsection{Profunctor Composition}\label{profunctor-composition}
+\section{Profunctor Composition}\label{profunctor-composition}
 
 Let's explore further the idea that a profunctor describes a relation
 --- more precisely, a proof-relevant relation, meaning that the set

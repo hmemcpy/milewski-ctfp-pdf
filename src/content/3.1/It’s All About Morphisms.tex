@@ -14,7 +14,7 @@ hom-sets. Also, you'll see that adjunctions provide a more general
 language to describe a lot of constructions we've studied before, so it
 might help to review them too.
 
-\subsection{Functors}\label{functors}
+\section{Functors}\label{functors}
 
 To begin with, you should really think of functors as mappings of
 morphisms --- the view that's emphasized in the Haskell definition of
@@ -27,7 +27,7 @@ be composed. So if we want the composition of morphisms to be mapped to
 the composition of \newterm{lifted} morphisms, the mapping of their
 endpoints is pretty much determined.
 
-\subsection{Commuting Diagrams}\label{commuting-diagrams}
+\section{Commuting Diagrams}\label{commuting-diagrams}
 
 A lot of properties of morphisms are expressed in terms of commuting
 diagrams. If a particular morphism can be described as a composition of
@@ -52,7 +52,7 @@ the mapping of functors. This way commutativity is reduced to the role
 of the assembly language for the higher level language of natural
 transformations.
 
-\subsection{Natural Transformations}\label{natural-transformations}
+\section{Natural Transformations}\label{natural-transformations}
 
 In general, natural transformations are very convenient whenever we need
 a mapping from morphisms to commuting squares. Two opposing sides of a
@@ -109,7 +109,7 @@ that defines the diagram in \emph{C}. Both functors \code{F} and
 happens that this particular natural transformation between \code{F}
 and \code{G} is an \newterm{isomorphism}.
 
-\subsection{Natural Isomorphisms}\label{natural-isomorphisms}
+\section{Natural Isomorphisms}\label{natural-isomorphisms}
 
 A natural isomorphism --- which is a natural transformation whose every
 component is reversible --- is category theory's way of saying that
@@ -118,7 +118,7 @@ be an isomorphism between objects --- a morphism that has the inverse.
 If you visualize functor images as sheets, a natural isomorphism is a
 one-to-one invertible mapping between those sheets.
 
-\subsection{Hom-Sets}\label{hom-sets}
+\section{Hom-Sets}\label{hom-sets}
 
 But what are morphisms? They do have more structure than objects: unlike
 objects, morphisms have two ends. But if you fix the source and the
@@ -154,7 +154,7 @@ h&apos; ∘ F f ≠ h&apos; ∘ F g
 
 where \code{h\&apos;} is not in the image of \code{F}.
 
-\subsection{Hom-Set Isomorphisms}\label{hom-set-isomorphisms}
+\section{Hom-Set Isomorphisms}\label{hom-set-isomorphisms}
 
 A lot of categorical constructions rely on isomorphisms between
 hom-sets. But since hom-sets are just sets, a plain isomorphism between
@@ -196,7 +196,7 @@ This is no coincidence --- we'll see next that these are just different
 examples of adjunctions, which are defined as natural isomorphisms of
 hom-sets.
 
-\subsection{Asymmetry of Hom-Sets}\label{asymmetry-of-hom-sets}
+\section{Asymmetry of Hom-Sets}\label{asymmetry-of-hom-sets}
 
 There is one more observation that will help us understand adjunctions.
 Hom-sets are, in general, not symmetric. A hom-set \code{C(a,\ b)} is
@@ -219,7 +219,7 @@ generalization of a preoder.
 A preorder is a thin category --- all hom-sets are either singletons or
 empty. We can visualize a general category as a ``thick'' preorder.
 
-\subsection{Challenges}\label{challenges}
+\section{Challenges}\label{challenges}
 
 \begin{enumerate}
 \tightlist
@@ -238,7 +238,7 @@ empty. We can visualize a general category as a ``thick'' preorder.
 Next:
 \href{https://bartoszmilewski.com/2016/04/18/adjunctions/}{Adjunctions}.
 
-\subsection{Acknowledgments}\label{acknowledgments}
+\section{Acknowledgments}\label{acknowledgments}
 
 I'd like to thank Gershom Bazerman for checking my math and logic, and
 André van Meulebrouck, who has been volunteering his editing help

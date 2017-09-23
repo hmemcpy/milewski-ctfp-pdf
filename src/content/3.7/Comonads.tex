@@ -50,7 +50,7 @@ In practice, we use slightly different primitives, as we'll see shortly.
 
 The question is, what's the use for comonads in programming?
 
-\subsection{Programming with Comonads}\label{programming-with-comonads}
+\section{Programming with Comonads}\label{programming-with-comonads}
 
 Let's compare the monad with the comonad. A monad provides a way of
 putting a value in a container using \code{return}. It doesn't give
@@ -70,7 +70,7 @@ result --- it embellishes it with context --- a co-Kleisli arrow takes a
 value together with a whole context and produces a result. It's an
 embodiment of \newterm{contextual computation}.
 
-\subsection{The Product Comonad}\label{the-product-comonad}
+\section{The Product Comonad}\label{the-product-comonad}
 
 Remember the reader monad? We introduced it to tackle the problem of
 implementing computations that need access to some read-only environment
@@ -123,7 +123,7 @@ later.
 It's easy to generalize the \code{Product} comonad to arbitrary
 product types including tuples and records.
 
-\subsection{Dissecting the
+\section{Dissecting the
 Composition}\label{dissecting-the-composition}
 
 Continuing the process of dualization, we could go ahead and dualize
@@ -214,7 +214,7 @@ new state of the current cell. To do that, it would look at its context
 \code{duplicate} to produce all possible foci and then we apply
 \code{f} to each of them.
 
-\subsection{The Stream Comonad}\label{the-stream-comonad}
+\section{The Stream Comonad}\label{the-stream-comonad}
 
 This process of shifting the focus from one element of the container to
 another is best illustrated with the example of an infinite stream. Such
@@ -298,7 +298,7 @@ The result is the stream of running averages.
 A stream is an example of a unidirectional, one-dimensional comonad. It
 can be easily made bidirectional or extended to two or more dimensions.
 
-\subsection{Comonad Categorically}\label{comonad-categorically}
+\section{Comonad Categorically}\label{comonad-categorically}
 
 Defining a comonad in category theory is a straightforward exercise in
 duality. As with the monad, we start with an endofunctor \code{T}. The
@@ -405,7 +405,7 @@ of endofunctors,
 
 The comonad is a comonoid in the category of endofunctors.
 
-\subsection{The Store Comonad}\label{the-store-comonad}
+\section{The Store Comonad}\label{the-store-comonad}
 
 Another important example of a comonad is the dual of the state monad.
 It's called the costate comonad or, alternatively, the store comonad.
@@ -533,7 +533,7 @@ returning the modified version of \code{a}. Similarly, \code{get}
 could be implemented to read the value of the \code{s} field from
 \code{a}. We'll explore these ideas more in the next section.
 
-\subsection{Challenges}\label{challenges}
+\section{Challenges}\label{challenges}
 
 \begin{enumerate}
 \tightlist
@@ -542,7 +542,7 @@ could be implemented to read the value of the \code{s} field from
   Hint: What type do you pick for \code{s}?
 \end{enumerate}
 
-\subsection{Acknowledgments}\label{acknowledgments}
+\section{Acknowledgments}\label{acknowledgments}
 
 I'm grateful to Edward Kmett for reading the draft of this post and
 pointing out flaws in my reasoning.

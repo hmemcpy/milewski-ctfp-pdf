@@ -21,7 +21,7 @@ hits, you refine your query. That increases its \emph{precision}.
 Finally, the search engine will rank the hits and, hopefully, the one
 result that you're interested in will be at the top of the list.
 
-\subsection{Initial Object}\label{initial-object}
+\section{Initial Object}\label{initial-object}
 
 The simplest shape is a single object. Obviously, there are as many
 instances of this shape as there are objects in a given category. That's
@@ -77,7 +77,7 @@ absurd :: Void -> a
 It's this family of morphisms that makes \code{Void} the initial
 object in the category of types.
 
-\subsection{Terminal Object}\label{terminal-object}
+\section{Terminal Object}\label{terminal-object}
 
 Let's continue with the single-object pattern, but let's change the way
 we rank the objects. We'll say that object \emph{a} is ``more terminal''
@@ -135,7 +135,7 @@ no _ = False
 Insisting on uniqueness gives us just the right precision to narrow down
 the definition of the terminal object to just one type.
 
-\subsection{Duality}\label{duality}
+\section{Duality}\label{duality}
 
 You can't help but to notice the symmetry between the way we defined the
 initial object and the terminal object. The only difference between the
@@ -163,7 +163,7 @@ the arrows twice gets us back to the original state.
 It follows then that a terminal object is the initial object in the
 opposite category.
 
-\subsection{Isomorphisms}\label{isomorphisms}
+\section{Isomorphisms}\label{isomorphisms}
 
 As programmers, we are well aware that defining equality is a nontrivial
 task. What does it mean for two objects to be equal? Do they have to
@@ -235,7 +235,7 @@ there could be more than one isomorphism between two objects, but that's
 not the case here. This ``uniqueness up to unique isomorphism'' is the
 important property of all universal constructions.
 
-\subsection{Products}\label{products}
+\section{Products}\label{products}
 
 The next universal construction is that of a product. We know what a
 cartesian product of two sets is: it's a set of pairs. But what's the
@@ -472,7 +472,7 @@ factorizer :: (c -> a) -> (c -> b) -> (c -> (a, b))
 factorizer p q = \x -> (p x, q x)
 \end{verbatim}
 
-\subsection{Coproduct}\label{coproduct}
+\section{Coproduct}\label{coproduct}
 
 Like every construction in category theory, the product has a dual,
 which is called the coproduct. When we reverse the arrows in the product
@@ -607,7 +607,7 @@ factorizer i j (Left a)  = i a
 factorizer i j (Right b) = j b
 \end{verbatim}
 
-\subsection{Asymmetry}\label{asymmetry}
+\section{Asymmetry}\label{asymmetry}
 
 We've seen two set of dual definitions: The definition of a terminal
 object can be obtained from the definition of the initial object by
@@ -704,7 +704,7 @@ collapsing. They are called \newterm{bijections} and they are truly
 symmetric, because they are invertible. In the category of sets, an
 isomorphism is the same as a bijection.
 
-\subsection{Challenges}\label{challenges}
+\section{Challenges}\label{challenges}
 
 \begin{enumerate}
   \tightlist
@@ -755,7 +755,7 @@ int j(bool b) { return b? 0: 1; }
   allows multiple acceptable morphisms from it to \code{Either}.
 \end{enumerate}
 
-\subsection{Bibliography}\label{bibliography}
+\section{Bibliography}\label{bibliography}
 
 \begin{enumerate}
 \tightlist
@@ -765,7 +765,7 @@ int j(bool b) { return b? 0: 1; }
   Coproducts} video.
 \end{enumerate}
 
-\subsection{Acknowledments}\label{acknowledments}
+\section{Acknowledments}\label{acknowledments}
 
 I'm grateful to Gershom Bazerman for reviewing this post before
 publication and for stimulating discussions.

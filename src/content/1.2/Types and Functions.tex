@@ -1,7 +1,7 @@
 \lettrine[lhang=0.17]{T}{he category of types and functions} plays an important role in
 programming, so let's talk about what types are and why we need them.
 
-\subsection{Who Needs Types?}\label{who-needs-types}
+\section{Who Needs Types?}\label{who-needs-types}
 
 There seems to be some controversy about the advantages of static vs.
 dynamic and strong vs. weak typing. Let me illustrate these choices with
@@ -35,7 +35,7 @@ The analog of a type checker would go even further by making sure that,
 once Romeo is declared a human being, he doesn't sprout leaves or trap
 photons in his powerful gravitational field.
 
-\subsection{Types Are About
+\section{Types Are About
 Composability}\label{types-are-about-composability}
 
 Category theory is about composing arrows. But not any two arrows can be
@@ -95,7 +95,7 @@ sites. Unit testing may catch some of the mismatches, but testing is
 almost always a probabilistic rather than a deterministic process.
 Testing is a poor substitute for proof.
 
-\subsection{What Are Types?}\label{what-are-types}
+\section{What Are Types?}\label{what-are-types}
 
 The simplest intuition for types is that they are sets of values. The
 type \code{Bool} (remember, concrete types start with a capital letter
@@ -189,7 +189,7 @@ okay to ignore non-terminating functions and bottoms, and treat
 John Hughes, Patrik Jansson, Jeremy Gibbons, \href{http://www.cs.ox.ac.uk/jeremy.gibbons/publications/fast+loose.pdf}{
 Fast and Loose Reasoning is Morally Correct}. This paper provides justification for ignoring bottoms in most contexts.}
 
-\subsection{Why Do We Need a Mathematical
+\section{Why Do We Need a Mathematical
 Model?}\label{why-do-we-need-a-mathematical-model}
 
 As a programmer you are intimately familiar with the syntax and grammar
@@ -239,14 +239,15 @@ usually quite simple, if not trivial.
 Consider the definition of a factorial function in Haskell, which is a
 language quite amenable to denotational semantics:
 
-\mint{haskell}|fact n = product [1..n]|
-
+\begin{verbatim}
+fact n = product [1..n]
+\end{verbatim}
 The expression \code{{[}1..n{]}} is a list of integers from \code{1} to \code{n}.
 The function \code{product} multiplies all elements of a list. That's
 just like a definition of factorial taken from a math text. Compare this
 with C:
 
-\begin{minted}{c}
+\begin{verbatim}
 int fact(int n) {
     int i;
     int result = 1;
@@ -254,8 +255,7 @@ int fact(int n) {
         result *= i;
     return result;
 }
-\end{minted}
-
+\end{verbatim}
 Need I say more?
 
 Okay, I'll be the first to admit that this was a cheap shot! A factorial
@@ -283,7 +283,7 @@ even when writing web applications for the health system, you may
 appreciate the thought that functions and algorithms from the Haskell
 standard library come with proofs of correctness.
 
-\subsection{Pure and Dirty Functions}\label{pure-and-dirty-functions}
+\section{Pure and Dirty Functions}\label{pure-and-dirty-functions}
 
 The things we call functions in C++ or any other imperative language,
 are not the same things mathematicians call functions. A mathematical
@@ -311,7 +311,7 @@ about side effects separately. Later we'll see how monads let us model
 all kinds of effects using only pure functions. So we really don't lose
 anything by restricting ourselves to mathematical functions.
 
-\subsection{Examples of Types}\label{examples-of-types}
+\section{Examples of Types}\label{examples-of-types}
 
 Once you realize that types are sets, you can think of some rather
 exotic types. For instance, what's the type corresponding to an empty
@@ -325,8 +325,9 @@ return, there are no restrictions whatsoever. It can return any type
 it's a function that's polymorphic in the return type. Haskellers have a
 name for it:
 
-\mint{haskell}|absurd :: Void -> a|
-
+\begin{verbatim}
+absurd :: Void -> a
+\end{verbatim}
 (Remember, \code{a} is a type variable that can stand for any type.)
 The name is not coincidental. There is deeper interpretation of types
 and functions in terms of logic called the Curry-Howard isomorphism. The
@@ -341,8 +342,9 @@ Think of functions from and to this type. A function from \code{void}
 can always be called. If it's a pure function, it will always return the
 same result. Here's an example of such a function:
 
-\mint{c}|int f44() { return 44; }|
-
+\begin{verbatim}
+int f44() { return 44; }
+\end{verbatim}
 You might think of this function as taking ``nothing'', but as we've
 just seen, a function that takes ``nothing'' can never be called because
 there is no value representing ``nothing.'' So what does this function
@@ -355,19 +357,19 @@ because of the Haskell's love of terseness, the same symbol \code{()}
 is used for the type, the constructor, and the only value corresponding
 to a singleton set. So here's this function in Haskell:
 
-\begin{minted}{haskell}
+\begin{verbatim}
 f44 :: () -> Integer
 f44 () = 44
-\end{minted}
-
+\end{verbatim}
 The first line declares that \code{f44} takes the type \code{()},
 pronounced ``unit,'' into the type \code{Integer}. The second line
 defines \code{f44} by pattern matching the only constructor for unit,
 namely \code{()}, and producing the number 44. You call this function
 by providing the unit value \code{()}:
 
-\mint{haskell}|f44 ()|
-
+\begin{verbatim}
+f44 ()
+\end{verbatim}
 Notice that every function of unit is equivalent to picking a single
 element from the target type (here, picking the \code{Integer} 44). In
 fact you could think of \code{f44} as a different representation for
@@ -387,21 +389,19 @@ element of A to the single element of that singleton set. For every A
 there is exactly one such function. Here's this function for
 \code{Integer}:
 
-\begin{minted}{haskell}
+\begin{verbatim}
 fInt :: Integer -> ()
 fInt x = ()
-\end{minted}
-
+\end{verbatim}
 You give it any integer, and it gives you back a unit. In the spirit of
 terseness, Haskell lets you use the wildcard pattern, the underscore,
 for an argument that is discarded. This way you don't have to invent a
 name for it. So the above can be rewritten as:
 
-\begin{minted}{haskell}
+\begin{verbatim}
 fInt :: Integer -> ()
 fInt _ = ()
-\end{minted}
-
+\end{verbatim}
 Notice that the implementation of this function not only doesn't depend
 on the value passed to it, but it doesn't even depend on the type of the
 argument.
@@ -412,38 +412,34 @@ such functions with one equation using a type parameter instead of a
 concrete type. What should we call a polymorphic function from any type
 to unit type? Of course we'll call it \code{unit}:
 
-\begin{minted}{haskell}
+\begin{verbatim}
 unit :: a -> ()
 unit _ = ()
-\end{minted}
-
+\end{verbatim}
 In C++ you would write this function as:
 
-\begin{minted}{c++}
+\begin{verbatim}
 template<class T>
 void unit(T) {}
-\end{minted}
-
+\end{verbatim}
 Next in the typology of types is a two-element set. In C++ it's called
 \code{bool} and in Haskell, predictably, \code{Bool}. The difference
 is that in C++ \code{bool} is a built-in type, whereas in Haskell it
 can be defined as follows:
 
-\begin{minted}{haskell}
+\begin{verbatim}
 data Bool = True | False
-\end{minted}
-
+\end{verbatim}
 (The way to read this definition is that \code{Bool} is either
 \code{True} or \code{False}.) In principle, one should also be able
 to define a Boolean type in C++ as an enumeration:
 
-\begin{minted}{c++}
+\begin{verbatim}
 enum bool { 
     true,
     false
 };
-\end{minted}
-
+\end{verbatim}
 but C++ \code{enum} is secretly an integer. The C++11
 ``\code{enum class}'' could have been used instead, but then you
 would have to qualify its values with the class name, as in
@@ -462,7 +458,7 @@ Boolean. The actual predicates are defined in \code{std::ctype} and
 have the form \code{ctype::is(alpha,\ c)},
 \code{ctype::is(digit,\ c)}, etc.
 
-\subsection{Challenges}\label{challenges}
+\section{Challenges}\label{challenges}
 
 \begin{enumerate}
 \tightlist
@@ -495,25 +491,25 @@ have the form \code{ctype::is(alpha,\ c)},
   \item
     The factorial function from the example in the text.
   \item
-\begin{minted}{c++}
+\begin{verbatim}
 std::getchar()
-\end{minted}
+\end{verbatim}
   \item
-\begin{minted}{c++}
+\begin{verbatim}
 bool f() { 
     std::cout << "Hello!" << std::endl;
     return true;
 }
-\end{minted}
+\end{verbatim}
   \item
-\begin{minted}{c++}
+\begin{verbatim}
 int f(int x)
 {
     static int y = 0;
     y += x;
     return y;
 }
-\end{minted}
+\end{verbatim}
   \end{enumerate}
 \item
   How many different functions are there from \code{Bool} to

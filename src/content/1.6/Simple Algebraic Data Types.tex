@@ -12,7 +12,7 @@ large subset of composite types.
 Let's have a closer look at product and sum types as they appear in
 programming.
 
-\subsection{Product Types}\label{product-types}
+\section{Product Types}\label{product-types}
 
 The canonical implementation of a product of two types in a programming
 language is a pair. In Haskell, a pair is a primitive type constructor;
@@ -192,7 +192,7 @@ and error prone --- keeping track of which component represents what.
 It's often preferable to give names to components. A product type with
 named fields is called a record in Haskell, and a \code{struct} in C.
 
-\subsection{Records}\label{records}
+\section{Records}\label{records}
 
 Let's have a look at a simple example. We want to describe chemical
 elements by combining two strings, name and symbol; and an integer, the
@@ -264,7 +264,7 @@ startsWithSymbol e = symbol e `isPrefixOf` name e
 The parentheses could be omitted in this case, because an infix operator
 has lower precedence than a function call.
 
-\subsection{Sum Types}\label{sum-types}
+\section{Sum Types}\label{sum-types}
 
 Just as the product in the category of sets gives rise to product types,
 the coproduct gives rise to sum types. The canonical implementation of a
@@ -457,7 +457,7 @@ You will rarely see \code{union} used as a sum type in C++ because of
 severe limitations on what can go into a union. You can't even put a
 \code{std::string} into a union because it has a copy constructor.
 
-\subsection{Algebra of Types}\label{algebra-of-types}
+\section{Algebra of Types}\label{algebra-of-types}
 
 Taken separately, product and sum types can be used to define a variety
 of useful data structures, but the real strength comes from combining
@@ -649,7 +649,7 @@ This analogy goes deeper, and is the basis of the Curry-Howard
 isomorphism between logic and type theory. We'll come back to it when we
 talk about function types.
 
-\subsection{Challenges}\label{challenges}
+\section{Challenges}\label{challenges}
 
 \begin{enumerate}
 \tightlist
@@ -700,7 +700,7 @@ circ (Rect d h) = 2.0 * (d + h)
   according to our translation table.
 \end{enumerate}
 
-\subsection{Acknowledments}\label{acknowledments}
+\section{Acknowledments}\label{acknowledments}
 
 Thanks go to Gershom Bazerman for reviewing this post and helpful
 comments.

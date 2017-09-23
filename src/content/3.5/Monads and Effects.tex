@@ -15,7 +15,7 @@ problem that would otherwise be solved using impure functions (e.g., by
 accessing and modifying some global state) was solved with pure
 functions.
 
-\subsection{The Problem}\label{the-problem}
+\section{The Problem}\label{the-problem}
 
 Here is a short list of similar problems, copied from
 \href{https://core.ac.uk/download/pdf/21173011.pdf}{Eugenio Moggi's
@@ -67,7 +67,7 @@ The next section is heavy on Haskell examples. Feel free to skim or even
 skip it if you're eager to get back to category theory or if you're
 already familiar with Haskell's implementation of monads.
 
-\subsection{The Solution}\label{the-solution}
+\section{The Solution}\label{the-solution}
 
 First, let's analyze the way we used the \code{Writer} monad. We
 started with a pure function that performed a certain task --- given
@@ -596,7 +596,7 @@ the action that prints ``World!'' receives, as input, the Universe in
 which ``Hello '' is already on the screen. It outputs a new Universe,
 with ``Hello World!'' on the screen.
 
-\subsection{Conclusion}\label{conclusion}
+\section{Conclusion}\label{conclusion}
 
 Of course I have just scratched the surface of monadic programming.
 Monads not only accomplish, with pure functions, what normally is done

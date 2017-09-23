@@ -238,7 +238,7 @@ hom-functor through a lossy transformation. Such a transformation may
 not only lose information, but it may also cover only a small part of
 the image of the functor \code{F} in \textbf{Set}.
 
-\subsection{Yoneda in Haskell}\label{yoneda-in-haskell}
+\section{Yoneda in Haskell}\label{yoneda-in-haskell}
 
 We have already encountered the hom-functor in Haskell under the guise
 of the reader functor:
@@ -338,7 +338,7 @@ of spaghetti code from interacting stateful handlers. As we'll see
 later, judicious use of functors and monads can restore some
 compositional properties of CPS.
 
-\subsection{Co-Yoneda}\label{co-yoneda}
+\section{Co-Yoneda}\label{co-yoneda}
 
 As usual, we get a bonus construction by inverting the direction of
 arrows. The Yoneda lemma can be applied to the opposite category
@@ -366,7 +366,7 @@ forall x . (x -> a) -> F x ≅ F a
 Notice that in some literature it's the contravariant version that's
 called the Yoneda lemma.
 
-\subsection{Challenges}\label{challenges}
+\section{Challenges}\label{challenges}
 
 \begin{enumerate}
 \item
@@ -393,13 +393,13 @@ psi :: F a -> (forall x . (a -> x) -> F x) psi fa h = fmap h fa
   functor.
 \end{enumerate}
 
-\subsection{Bibliography}\label{bibliography}
+\section{Bibliography}\label{bibliography}
 
 Next:
 \href{https://bartoszmilewski.com/2015/10/28/yoneda-embedding/}{Yoneda
 Embedding}.
 
-\subsection{Acknowledgments}\label{acknowledgments}
+\section{Acknowledgments}\label{acknowledgments}
 
 I'd like to thank Gershom Bazerman for checking my math and logic, and
 André van Meulebrouck, who has been volunteering his editing help

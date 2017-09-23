@@ -169,7 +169,7 @@ composition} itself. But composition is the essence of category theory,
 so before we write more code, let's analyze the problem from the
 categorical point of view.
 
-\subsection{The Writer Category}\label{the-writer-category}
+\section{The Writer Category}\label{the-writer-category}
 
 The idea of embellishing the return types of a bunch of functions in
 order to piggyback some additional functionality turns out to be very
@@ -319,7 +319,7 @@ writer should be able to identify the bare minimum of constraints that
 make the library work --- here the logging library's only requirement is
 that the log have monoidal properties.
 
-\subsection{Writer in Haskell}\label{writer-in-haskell}
+\section{Writer in Haskell}\label{writer-in-haskell}
 
 The same thing in Haskell is a little more terse, and we also get a lot
 more help from the compiler. Let's start by defining the \code{Writer}
@@ -420,7 +420,7 @@ process :: String -> Writer [String]
 process = upCase >=> toWords
 \end{minted}
 
-\subsection{Kleisli Categories}\label{kleisli-categories}
+\section{Kleisli Categories}\label{kleisli-categories}
 
 You might have guessed that I haven't invented this category on the
 spot. It's an example of the so called Kleisli category --- a category
@@ -449,7 +449,7 @@ freedom which makes it possible to give simple denotational semantics to
 programs that in imperative languages are traditionally implemented
 using side effects.
 
-\subsection{Challenge}\label{challenge}
+\section{Challenge}\label{challenge}
 
 A function that is not defined for all possible values of its argument
 is called a partial function. It's not really a function in the
@@ -496,7 +496,7 @@ Here's the challenge:
   whenever possible.
 \end{enumerate}
 
-\subsection{Acknowledgments}\label{acknowledgments}
+\section{Acknowledgments}\label{acknowledgments}
 
 I'm grateful to Eric Niebler for reading the draft and providing the
 clever implementation of \code{compose} that uses advanced features of

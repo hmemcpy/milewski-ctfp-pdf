@@ -109,7 +109,7 @@ lists, and then fold the resulting list. Again, if we interpret
 binary operation is associative. These conditions are certainly
 fulfilled when \code{(a,\ f,\ z)} is a monoid.
 
-\subsection{T-algebras}\label{t-algebras}
+\section{T-algebras}\label{t-algebras}
 
 Since mathematicians prefer to call their monads \code{T}, they call
 algebras compatible with them T-algebras. T-algebras for a given monad T
@@ -255,7 +255,7 @@ doesn't change anything, since the action of \code{UT} on morphisms is
 trivial. So, indeed, the \code{μ} obtained from the adjunction is the
 same as the \code{μ} of the original monad \code{T}.
 
-\subsection{The Kleisli Category}\label{the-kleisli-category}
+\section{The Kleisli Category}\label{the-kleisli-category}
 
 We've seen the Kleisli category before. It's a category constructed from
 another category \emph{C} and a monad \code{T}. We'll call this
@@ -366,7 +366,7 @@ in the same monad \code{T} on \emph{C}. The Kleisli adjunction we've
 just seen is the initial object in this category, and the
 Eilenberg-Moore adjunction is the terminal object.
 
-\subsection{Coalgebras for Comonads}\label{coalgebras-for-comonads}
+\section{Coalgebras for Comonads}\label{coalgebras-for-comonads}
 
 Analogous constructions can be done for any
 \href{https://bartoszmilewski.com/2017/01/02/comonads/}{comonad}
@@ -403,7 +403,7 @@ adjunction reproduces the original comonad as the composite
 Similarly, we can construct a co-Kleisli category with co-Kleisli arrows
 and regenerate the comonad from the corresponding adjunction.
 
-\subsection{Lenses}\label{lenses}
+\section{Lenses}\label{lenses}
 
 Let's go back to our discussion of lenses. A lens can be written as a
 coalgebra:
@@ -514,7 +514,7 @@ gives \code{s} back.
 In other words, a well-behaved lens is indeed a comonad coalgebra for
 the \code{Store} functor.
 
-\subsection{Challenges}\label{challenges}
+\section{Challenges}\label{challenges}
 
 \begin{enumerate}
 \item
@@ -531,7 +531,7 @@ UW ⊣ FW
   Prove that the above adjunction reproduces the original comonad.
 \end{enumerate}
 
-\subsection{Acknowledgment}\label{acknowledgment}
+\section{Acknowledgment}\label{acknowledgment}
 
 I'd like to thank Gershom Bazerman for helpful comments.
 
