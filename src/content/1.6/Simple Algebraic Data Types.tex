@@ -1,12 +1,4 @@
-\begin{quote}
-Categories for Programmers. Previously
-\href{https://bartoszmilewski.com/2015/01/07/products-and-coproducts/}{Products
-and Coproducts}. See the
-\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
-of Contents}.
-\end{quote}
-
-We've seen two basic ways of combining types: using a product and a
+\lettrine[lhang=0.17]{W}{e've seen two basic} ways of combining types: using a product and a
 coproduct. It turns out that a lot of data structures in everyday
 programming can be built using just these two mechanisms. This fact has
 important practical consequences. Many properties of data structures are
@@ -27,8 +19,12 @@ language is a pair. In Haskell, a pair is a primitive type constructor;
 in C++ it's a relatively complex template defined in the Standard
 Library.
 
-\includegraphics[width=1.56250in]{images/pair.jpg}
+\begin{figure}
+  \centering
+  \fbox{\includegraphics[width=1.56250in]{images/pair.jpg}}
+\end{figure}
 
+\noindent
 Pairs are not strictly commutative: a pair \texttt{(Int,\ Bool)} cannot
 be substituted for a pair \texttt{(Bool,\ Int)}, even though they carry
 the same information. They are, however, commutative up to isomorphism
@@ -36,9 +32,11 @@ the same information. They are, however, commutative up to isomorphism
 its own inverse):
 
 \begin{verbatim}
-swap :: (a, b) -> (b, a) swap (x, y) = (y, x)
+swap :: (a, b) -> (b, a)
+swap (x, y) = (y, x)
 \end{verbatim}
 
+\noindent
 You can think of the two pairs as simply using a different format for
 storing the same data. It's just like big endian vs. little endian.
 
@@ -53,26 +51,32 @@ can do it in two ways:
 ((a, b), c)
 \end{verbatim}
 
+\noindent
 or
 
 \begin{verbatim}
 (a, (b, c))
 \end{verbatim}
 
+\noindent
 These types are different --- you can't pass one to a function that
 expects the other --- but their elements are in one-to-one
 correspondence. There is a function that maps one to another:
 
 \begin{verbatim}
-alpha :: ((a, b), c) -> (a, (b, c)) alpha ((x, y), z) = (x, (y, z))
+alpha :: ((a, b), c) -> (a, (b, c))
+alpha ((x, y), z) = (x, (y, z))
 \end{verbatim}
 
+\noindent
 and this function is invertible:
 
 \begin{verbatim}
-alpha_inv :: (a, (b, c)) -> ((a, b), c) alpha_inv (x, (y, z)) = ((x, y), z)
+alpha_inv :: (a, (b, c)) -> ((a, b), c)
+alpha_inv (x, (y, z)) = ((x, y), z)
 \end{verbatim}
 
+\noindent
 so it's an isomorphism. These are just different ways of repackaging the
 same data.
 
@@ -97,16 +101,20 @@ doesn't add any information. The type:
 (a, ())
 \end{verbatim}
 
+\noindent
 is isomorphic to \texttt{a}. Here's the isomorphism:
 
 \begin{verbatim}
-rho :: (a, ()) -> a rho (x, ()) = x
+rho :: (a, ()) -> a
+rho (x, ()) = x
 \end{verbatim}
 
 \begin{verbatim}
-rho_inv :: a -> (a, ()) rho_inv x = (x, ())
+rho_inv :: a -> (a, ())
+rho_inv x = (x, ())
 \end{verbatim}
 
+\noindent
 These observations can be formalized by saying that \textbf{Set} (the
 category of sets) is a \emph{monoidal category}. It's a category that's
 also a monoid, in the sense that you can multiply objects (here, take
@@ -131,9 +139,11 @@ instance, let's define a value \texttt{stmt} as a pair of
 \texttt{String} and \texttt{Bool}:
 
 \begin{verbatim}
-stmt :: Pair String Bool stmt = P "This statements is" False
+stmt :: Pair String Bool
+stmt = P "This statements is" False
 \end{verbatim}
 
+\noindent
 The first line is the type declaration. It uses the type constructor
 \texttt{Pair}, with \texttt{String} and \texttt{Bool} replacing
 \texttt{a} and the \texttt{b} in the generic definition of
@@ -149,6 +159,7 @@ Haskell, you will often see the same name used for both, as in:
 data Pair a b = Pair a b
 \end{verbatim}
 
+\noindent
 And if you squint hard enough, you may even view the built-in pair type
 as a variation on this kind of declaration, where the name \texttt{Pair}
 is replaced with the binary operator \texttt{(,)}. In fact you can use
@@ -159,6 +170,7 @@ using prefix notation:
 stmt = (,) "This statement is" False
 \end{verbatim}
 
+\noindent
 Similarly, you can use \texttt{(,,)} to create triples, and so on.
 
 Instead of using generic pairs or tuples, you can also define specific
@@ -168,6 +180,7 @@ named product types, as in:
 data Stmt = Stmt String Bool
 \end{verbatim}
 
+\noindent
 which is just a product of \texttt{String} and \texttt{Bool}, but it's
 given its own name and constructor. The advantage of this style of
 declaration is that you may define many types that have the same content
@@ -179,7 +192,7 @@ and error prone --- keeping track of which component represents what.
 It's often preferable to give names to components. A product type with
 named fields is called a record in Haskell, and a \texttt{struct} in C.
 
-\subsubsection{Records}\label{records}
+\subsection{Records}\label{records}
 
 Let's have a look at a simple example. We want to describe chemical
 elements by combining two strings, name and symbol; and an integer, the
@@ -190,29 +203,39 @@ function that checks if the symbol of the element is the prefix of its
 name (as in \textbf{He} being the prefix of \textbf{Helium}):
 
 \begin{verbatim}
-startsWithSymbol :: (String, String, Int) -> Bool startsWithSymbol (name, symbol, _) = isPrefixOf symbol name
+startsWithSymbol :: (String, String, Int) -> Bool
+startsWithSymbol (name, symbol, _) = isPrefixOf symbol name
 \end{verbatim}
 
+\noindent
 This code is error prone, and is hard to read and maintain. It's much
 better to define a record:
 
 \begin{verbatim}
-data Element = Element { name :: String , symbol :: String , atomicNumber :: Int }
+data Element = Element { name :: String 
+                       , symbol :: String 
+                       , atomicNumber :: Int }
 \end{verbatim}
 
+\noindent
 The two representations are isomorphic, as witnessed by these two
 conversion functions, which are the inverse of each other:
 
 \begin{verbatim}
-tupleToElem :: (String, String, Int) -> Element tupleToElem (n, s, a) = Element { name = n , symbol = s , atomicNumber = a }
+tupleToElem :: (String, String, Int) -> Element
+tupleToElem (n, s, a) = Element { name = n 
+                                , symbol = s 
+                                , atomicNumber = a }
 \end{verbatim}
 
 \begin{verbatim}
-elemToTuple :: Element -> (String, String, Int) elemToTuple e = (name e, symbol e, atomicNumber e)
+elemToTuple :: Element -> (String, String, Int)
+elemToTuple e = (name e, symbol e, atomicNumber e)
 \end{verbatim}
 
+\noindent
 Notice that the names of record fields also serve as functions to access
-these fields. For instance, \texttt{atomicNumber\ e} retrieves the
+these fields. For instance, \texttt{atomicNumber e} retrieves the
 \texttt{atomicNumber} field from \texttt{e}. We use
 \texttt{atomicNumber} as a function of the type:
 
@@ -224,9 +247,11 @@ With the record syntax for \texttt{Element}, our function
 \texttt{startsWithSymbol} becomes more readable:
 
 \begin{verbatim}
-startsWithSymbol :: Element -> Bool startsWithSymbol e = isPrefixOf (symbol e) (name e)
+startsWithSymbol :: Element -> Bool
+startsWithSymbol e = isPrefixOf (symbol e) (name e)
 \end{verbatim}
 
+\noindent
 We could even use the Haskell trick of turning the function
 \texttt{isPrefixOf} into an infix operator by surrounding it with
 backquotes, and make it read almost like a sentence:
@@ -235,6 +260,7 @@ backquotes, and make it read almost like a sentence:
 startsWithSymbol e = symbol e `isPrefixOf` name e
 \end{verbatim}
 
+\noindent
 The parentheses could be omitted in this case, because an infix operator
 has lower precedence than a function call.
 
@@ -248,6 +274,7 @@ sum type in Haskell is:
 data Either a b = Left a | Right b
 \end{verbatim}
 
+\noindent
 And like pairs, \texttt{Either}s are commutative (up to isomorphism),
 can be nested, and the nesting order is irrelevant (up to isomorphism).
 So we can, for instance, define a sum equivalent of a triple:
@@ -256,6 +283,7 @@ So we can, for instance, define a sum equivalent of a triple:
 data OneOfThree a b c = Sinistral a | Medial b | Dextral c
 \end{verbatim}
 
+\noindent
 and so on.
 
 It turns out that \textbf{Set} is also a (symmetric) monoidal category
@@ -271,6 +299,7 @@ doesn't change its content. For instance:
 Either a Void
 \end{verbatim}
 
+\noindent
 is isomorphic to \texttt{a}. That's because there is no way to construct
 a \texttt{Right} version of this type --- there isn't a value of type
 \texttt{Void}. The only inhabitants of \texttt{Either\ a\ Void} are
@@ -290,18 +319,21 @@ sum type:
 data Color = Red | Green | Blue
 \end{verbatim}
 
+\noindent
 is the C++:
 
 \begin{verbatim}
 enum { Red, Green, Blue };
 \end{verbatim}
 
+\noindent
 An even simpler sum type:
 
 \begin{verbatim}
 data Bool = True | False
 \end{verbatim}
 
+\noindent
 is the primitive \texttt{bool} in C++.
 
 Simple sum types that encode the presence or absence of a value are
@@ -314,6 +346,7 @@ kind of optionality, if deliberate, is expressed in Haskell using the
 data Maybe a = Nothing | Just a
 \end{verbatim}
 
+\noindent
 The \texttt{Maybe} type is a sum of two types. You can see this if you
 separate the two constructors into individual types. The first one would
 look like this:
@@ -322,6 +355,7 @@ look like this:
 data NothingType = Nothing
 \end{verbatim}
 
+\noindent
 It's an enumeration with one value called \texttt{Nothing}. In other
 words, it's a singleton, which is equivalent to the unit type
 \texttt{()}. The second part:
@@ -330,6 +364,7 @@ words, it's a singleton, which is equivalent to the unit type
 data JustType a = Just a
 \end{verbatim}
 
+\noindent
 is just an encapsulation of the type \texttt{a}. We could have encoded
 \texttt{Maybe} as:
 
@@ -337,6 +372,7 @@ is just an encapsulation of the type \texttt{a}. We could have encoded
 data Maybe a = Either () a
 \end{verbatim}
 
+\noindent
 More complex sum types are often faked in C++ using pointers. A pointer
 can be either null, or point to a value of specific type. For instance,
 a Haskell list type, which can be defined as a (recursive) sum type:
@@ -345,13 +381,23 @@ a Haskell list type, which can be defined as a (recursive) sum type:
 List a = Nil | Cons a (List a)
 \end{verbatim}
 
+\noindent
 can be translated to C++ using the null pointer trick to implement the
 empty list:
 
 \begin{verbatim}
-template<class A> class List { Node<A> * _head; public: List() : _head(nullptr) {} // Nil List(A a, List<A> l) // Cons : _head(new Node<A>(a, l)) {} };
+template<class A>
+class List { 
+    Node<A> * _head;
+public:
+    List() : _head(nullptr) {} // Nil
+    List(A a, List<A> l)       // Cons
+      : _head(new Node<A>(a, l))
+    {}
+};
 \end{verbatim}
 
+\noindent
 Notice that the two Haskell constructors \texttt{Nil} and \texttt{Cons}
 are translated into two overloaded \texttt{List} constructors with
 analogous arguments (none, for \texttt{Nil}; and a value and a list for
@@ -364,7 +410,7 @@ The main difference, though, between Haskell and C++ types is that
 Haskell data structures are immutable. If you create an object using one
 particular constructor, the object will forever remember which
 constructor was used and what arguments were passed to it. So a
-\texttt{Maybe} object that was created as \texttt{Just\ "energy"} will
+\texttt{Maybe} object that was created as \texttt{Just "energy"} will
 never turn into \texttt{Nothing}. Similarly, an empty list will forever
 be empty, and a list of three elements will always have the same three
 elements.
@@ -382,9 +428,12 @@ constructors. One matches the empty \texttt{Nil} list, and the other a
 simple function on \texttt{List}s:
 
 \begin{verbatim}
-maybeTail :: List a -> Maybe (List a) maybeTail Nil = Nothing maybeTail (Cons _ t) = Just t
+maybeTail :: List a -> Maybe (List a)
+maybeTail Nil = Nothing
+maybeTail (Cons _ t) = Just t
 \end{verbatim}
 
+\noindent
 The first part of the definition of \texttt{maybeTail} uses the
 \texttt{Nil} constructor as pattern and returns \texttt{Nothing}. The
 second part uses the \texttt{Cons} constructor as pattern. It replaces
@@ -431,7 +480,7 @@ To create a pair you need two values. Although you can easily come up
 with an integer, there is no value of type \texttt{Void}. Therefore, for
 any type \texttt{a}, the type \texttt{(a,\ Void)} is uninhabited --- has
 no values --- and is therefore equivalent to \texttt{Void}. In other
-words, \texttt{a*0\ =\ 0}.
+words, \texttt{a*0 = 0}.
 
 Another thing that links addition and multiplication is the distributive
 property:
@@ -440,6 +489,7 @@ property:
 a * (b + c) = a * b + a * c
 \end{verbatim}
 
+\noindent
 Does it also hold for product and sum types? Yes, it does --- up to
 isomorphisms, as usual. The left hand side corresponds to the type:
 
@@ -447,38 +497,52 @@ isomorphisms, as usual. The left hand side corresponds to the type:
 (a, Either b c)
 \end{verbatim}
 
+\noindent
 and the right hand side corresponds to the type:
 
 \begin{verbatim}
 Either (a, b) (a, c)
 \end{verbatim}
 
+\noindent
 Here's the function that converts them one way:
 
 \begin{verbatim}
-prodToSum :: (a, Either b c) -> Either (a, b) (a, c) prodToSum (x, e) = case e of Left y -> Left (x, y) Right z -> Right (x, z)
+prodToSum :: (a, Either b c) -> Either (a, b) (a, c)
+prodToSum (x, e) = 
+    case e of
+      Left  y -> Left  (x, y)
+      Right z -> Right (x, z)
 \end{verbatim}
 
+\noindent
 and here's one that goes the other way:
 
 \begin{verbatim}
-sumToProd :: Either (a, b) (a, c) -> (a, Either b c) sumToProd e = case e of Left (x, y) -> (x, Left y) Right (x, z) -> (x, Right z)
+sumToProd :: Either (a, b) (a, c) -> (a, Either b c)
+sumToProd e =
+    case e of
+      Left  (x, y) -> (x, Left  y)
+      Right (x, z) -> (x, Right z)
 \end{verbatim}
 
+\noindent
 The \texttt{case\ of} statement is used for pattern matching inside
 functions. Each pattern is followed by an arrow and the expression to be
 evaluated when the pattern matches. For instance, if you call
 \texttt{prodToSum} with the value:
 
 \begin{verbatim}
-prod1 :: (Int, Either String Float) prod1 = (2, Left "Hi!")
+prod1 :: (Int, Either String Float)
+prod1 = (2, Left "Hi!")
 \end{verbatim}
 
-the \texttt{e} in \texttt{case\ e\ of} will be equal to
-\texttt{Left\ "Hi!"}. It will match the pattern \texttt{Left\ y},
+\noindent
+the \texttt{e} in \texttt{case e of} will be equal to
+\texttt{Left "Hi!"}. It will match the pattern \texttt{Left y},
 substituting \texttt{"Hi!"} for \texttt{y}. Since the \texttt{x} has
-already been matched to \texttt{2}, the result of the \texttt{case\ of}
-clause, and the whole function, will be \texttt{Left\ (2,\ "Hi!")}, as
+already been matched to \texttt{2}, the result of the \texttt{case of}
+clause, and the whole function, will be \texttt{Left (2, "Hi!")}, as
 expected.
 
 I'm not going to prove that these two functions are the inverse of each
@@ -502,16 +566,17 @@ Numbers & Types\tabularnewline
 0 & \texttt{Void}\tabularnewline
 1 & \texttt{()}\tabularnewline
 a + b &
-\texttt{Either\ a\ b\ =\ Left\ a\ \textbar{}\ Right\ b}\tabularnewline
-a * b & \texttt{(a,\ b)\ } or
-\texttt{\ Pair\ a\ b\ =\ Pair\ a\ b}\tabularnewline
+\texttt{Either a b = Left a | Right b}\tabularnewline
+a * b & \texttt{(a, b)} or 
+\texttt{Pair a b = Pair a b}\tabularnewline
 2 = 1 + 1 &
-\texttt{data\ Bool\ =\ True\ \textbar{}\ False}\tabularnewline
+\texttt{data Bool = True | False}\tabularnewline
 1 + a &
-\texttt{data\ Maybe\ =\ Nothing\ \textbar{}\ Just\ a}\tabularnewline
+\texttt{data Maybe = Nothing | Just a}\tabularnewline
 \bottomrule
 \end{longtable}
 
+\noindent
 The list type is quite interesting, because it's defined as a solution
 to an equation. The type we are defining appears on both sides of the
 equation:
@@ -520,6 +585,7 @@ equation:
 List a = Nil | Cons a (List a)
 \end{verbatim}
 
+\noindent
 If we do our usual substitutions, and also replace \texttt{List\ a} with
 \texttt{x}, we get the equation:
 
@@ -527,16 +593,22 @@ If we do our usual substitutions, and also replace \texttt{List\ a} with
 x = 1 + a * x
 \end{verbatim}
 
+\noindent
 We can't solve it using traditional algebraic methods because we can't
 subtract or divide types. But we can try a series of substitutions,
 where we keep replacing \texttt{x} on the right hand side with
-\texttt{(1\ +\ a*x)}, and use the distributive property. This leads to
+\texttt{(1 + a*x)}, and use the distributive property. This leads to
 the following series:
 
 \begin{verbatim}
-x = 1 + a*x x = 1 + a*(1 + a*x) = 1 + a + a*a*x x = 1 + a + a*a*(1 + a*x) = 1 + a + a*a + a*a*a*x ... x = 1 + a + a*a + a*a*a + a*a*a*a...
+x = 1 + a*x
+x = 1 + a*(1 + a*x) = 1 + a + a*a*x
+x = 1 + a + a*a*(1 + a*x) = 1 + a + a*a + a*a*a*x
+...
+x = 1 + a + a*a + a*a*a + a*a*a*a...
 \end{verbatim}
 
+\noindent
 We end up with an infinite sum of products (tuples), which can be
 interpreted as: A list is either empty, \texttt{1}; or a singleton,
 \texttt{a}; or a pair, \texttt{a*a}; or a triple, \texttt{a*a*a};
@@ -567,11 +639,12 @@ Logic & Types\tabularnewline
 false & \texttt{Void}\tabularnewline
 true & \texttt{()}\tabularnewline
 a \textbar{}\textbar{} b &
-\texttt{Either\ a\ b\ =\ Left\ a\ \textbar{}\ Right\ b}\tabularnewline
-a \&\& b & \texttt{(a,\ b)}\tabularnewline
+\texttt{Either a b = Left a | Right b}\tabularnewline
+a \&\& b & \texttt{(a, b)}\tabularnewline
 \bottomrule
 \end{longtable}
 
+\noindent
 This analogy goes deeper, and is the basis of the Curry-Howard
 isomorphism between logic and type theory. We'll come back to it when we
 talk about function types.
@@ -579,21 +652,25 @@ talk about function types.
 \subsection{Challenges}\label{challenges}
 
 \begin{enumerate}
+\tightlist
 \item
-  Show the isomorphism between \texttt{Maybe\ a} and
-  \texttt{Either\ ()\ a}.
+  Show the isomorphism between \texttt{Maybe a} and
+  \texttt{Either () a}.
 \item
   Here's a sum type defined in Haskell:
 
 \begin{verbatim}
-data Shape = Circle Float | Rect Float Float
+data Shape = Circle Float 
+           | Rect Float Float
 \end{verbatim}
 
   When we want to define a function like \texttt{area} that acts on a
   \texttt{Shape}, we do it by pattern matching on the two constructors:
 
 \begin{verbatim}
-area :: Shape -> Float area (Circle r) = pi * r * r area (Rect d h) = d * h
+area :: Shape -> Float
+area (Circle r) = pi * r * r
+area (Rect d h) = d * h
 \end{verbatim}
 
   Implement \texttt{Shape} in C++ or Java as an interface and create two
@@ -605,7 +682,9 @@ area :: Shape -> Float area (Circle r) = pi * r * r area (Rect d h) = d * h
   We can do it without touching the definition of \texttt{Shape}:
 
 \begin{verbatim}
-circ :: Shape -> Float circ (Circle r) = 2.0 * pi * r circ (Rect d h) = 2.0 * (d + h)
+circ :: Shape -> Float
+circ (Circle r) = 2.0 * pi * r
+circ (Rect d h) = 2.0 * (d + h)
 \end{verbatim}
 
   Add \texttt{circ} to your C++ or Java implementation. What parts of
@@ -621,11 +700,7 @@ circ :: Shape -> Float circ (Circle r) = 2.0 * pi * r circ (Rect d h) = 2.0 * (d
   according to our translation table.
 \end{enumerate}
 
-\href{https://twitter.com/BartoszMilewski}{Follow @BartoszMilewski}
-
-Next: \href{https://bartoszmilewski.com/2015/01/20/functors/}{Functors}.
-
-\subsubsection{Acknowledments}\label{acknowledments}
+\subsection{Acknowledments}\label{acknowledments}
 
 Thanks go to Gershom Bazerman for reviewing this post and helpful
 comments.

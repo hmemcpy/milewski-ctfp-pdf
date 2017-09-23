@@ -102,4 +102,7 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \chapter{Products and Coproducts}
 \subfile{content/1.5/Products and Coproducts}
 
+\chapter{Simple Algebraic Data Types}
+\subfile{content/1.6/Simple Algebraic Data Types}
+
 @bye
