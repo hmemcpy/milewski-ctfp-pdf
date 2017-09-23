@@ -9,13 +9,13 @@ of Contents}.
 So far I've been glossing over the meaning of function types. A function
 type is different from other types.
 
-Take \texttt{Integer}, for instance: It's just a set of integers.
-\texttt{Bool} is a two element set. But a function type
-\texttt{a-\textgreater{}b} is more than that: it's a set of morphisms
-between objects \texttt{a} and \texttt{b}. A set of morphisms between
+Take \code{Integer}, for instance: It's just a set of integers.
+\code{Bool} is a two element set. But a function type
+\code{a-\textgreater{}b} is more than that: it's a set of morphisms
+between objects \code{a} and \code{b}. A set of morphisms between
 two objects in any category is called a hom-set. It just so happens that
 in the category \textbf{Set} every hom-set is itself an object in the
-same category ---because it is, after all, a \emph{set}.
+same category ---because it is, after all, a \newterm{set}.
 
 \hypertarget{attachment_4241}{}
 \includegraphics[width=2.79167in]{images/set-hom-set.jpg}
@@ -23,7 +23,7 @@ same category ---because it is, after all, a \emph{set}.
 Hom-set in Set is just a set
 
 The same is not true of other categories where hom-sets are external to
-a category. They are even called \emph{external} hom-sets.
+a category. They are even called \newterm{external} hom-sets.
 
 \hypertarget{attachment_4242}{}
 \includegraphics[width=2.65625in]{images/hom-set.jpg}
@@ -33,7 +33,7 @@ Hom-set in category C is an external set
 It's the self-referential nature of the category \textbf{Set} that makes
 function types special. But there is a way, at least in some categories,
 to construct objects that represent hom-sets. Such objects are called
-\emph{internal} hom-sets.
+\newterm{internal} hom-sets.
 
 \subsection{Universal Construction}\label{universal-construction}
 
@@ -55,20 +55,20 @@ function type that we are constructing, the argument type, and the
 result type.
 
 The obvious pattern that connects these three types is called
-\emph{function application} or \emph{evaluation}. Given a candidate for
-a function type, let's call it \texttt{z} (notice that, if we are not in
+\newterm{function application} or \newterm{evaluation}. Given a candidate for
+a function type, let's call it \code{z} (notice that, if we are not in
 the category \textbf{Set}, this is just an object like any other
-object), and the argument type \texttt{a} (an object), the application
-maps this pair to the result type \texttt{b} (an object). We have three
+object), and the argument type \code{a} (an object), the application
+maps this pair to the result type \code{b} (an object). We have three
 objects, two of them fixed (the ones representing the argument type and
 the result type).
 
 We also have the application, which is a mapping. How do we incorporate
 this mapping into our pattern? If we were allowed to look inside
-objects, we could pair a function \texttt{f} (an element of \texttt{z})
-with an argument \texttt{x} (an element of \texttt{a}) and map it to
-\texttt{f\ x} (the application of \texttt{f} to \texttt{x}, which is an
-element of \texttt{b}).
+objects, we could pair a function \code{f} (an element of \code{z})
+with an argument \code{x} (an element of \code{a}) and map it to
+\code{f\ x} (the application of \code{f} to \code{x}, which is an
+element of \code{b}).
 
 \hypertarget{attachment_4243}{}
 \includegraphics[width=3.12500in]{images/functionset.jpg}
@@ -77,16 +77,16 @@ In Set we can pick a function f from a set of functions z and we can
 pick an argument x from the set (type) a. We get an element f x in the
 set (type) b.
 
-But instead of dealing with individual pairs \texttt{(f,\ x)}, we can as
-well talk about the whole \emph{product} of the function type \texttt{z}
-and the argument type \texttt{a}. The product \texttt{z×a} is an object,
-and we can pick, as our application morphism, an arrow \texttt{g} from
-that object to \texttt{b}. In \textbf{Set}, \texttt{g} would be the
-function that maps every pair \texttt{(f,\ x)} to \texttt{f\ x}.
+But instead of dealing with individual pairs \code{(f,\ x)}, we can as
+well talk about the whole \newterm{product} of the function type \code{z}
+and the argument type \code{a}. The product \code{z×a} is an object,
+and we can pick, as our application morphism, an arrow \code{g} from
+that object to \code{b}. In \textbf{Set}, \code{g} would be the
+function that maps every pair \code{(f,\ x)} to \code{f\ x}.
 
-So that's the pattern: a product of two objects \texttt{z} and
-\texttt{a} connected to another object \texttt{b} by a morphism
-\texttt{g}.
+So that's the pattern: a product of two objects \code{z} and
+\code{a} connected to another object \code{b} by a morphism
+\code{g}.
 
 \hypertarget{attachment_4244}{}
 \includegraphics[width=3.12500in]{images/functionpattern.jpg}
@@ -107,18 +107,18 @@ Let's review the universal construction. We start with a pattern of
 objects and morphisms. That's our imprecise query, and it usually yields
 lots and lots of hits. In particular, in \textbf{Set}, pretty much
 everything is connected to everything. We can take any object
-\texttt{z}, form its product with \texttt{a}, and there's going to be a
-function from it to \texttt{b} (except when \texttt{b} is an empty set).
+\code{z}, form its product with \code{a}, and there's going to be a
+function from it to \code{b} (except when \code{b} is an empty set).
 
 That's when we apply our secret weapon: ranking. This is usually done by
 requiring that there be a unique mapping between candidate objects --- a
 mapping that somehow factorizes our construction. In our case, we'll
-decree that \texttt{z} together with the morphism \texttt{g} from
-\texttt{z×a} to \texttt{b} is \emph{better} than some other
-\texttt{z\&apos;} with its own application \texttt{g\&apos;}, if and
-only if there is a unique mapping \texttt{h} from \texttt{z\&apos;} to
-\texttt{z} such that the application of \texttt{g\&apos;} factors
-through the application of \texttt{g}. (Hint: Read this sentence while
+decree that \code{z} together with the morphism \code{g} from
+\code{z×a} to \code{b} is \newterm{better} than some other
+\code{z\&apos;} with its own application \code{g\&apos;}, if and
+only if there is a unique mapping \code{h} from \code{z\&apos;} to
+\code{z} such that the application of \code{g\&apos;} factors
+through the application of \code{g}. (Hint: Read this sentence while
 looking at the picture.)
 
 \hypertarget{attachment_4245}{}
@@ -128,10 +128,10 @@ Establishing a ranking between candidates for the function object
 
 Now here's the tricky part, and the main reason I postponed this
 particular universal construction till now. Given the morphism
-\texttt{h\ ::\ z\&apos;-\textgreater{}\ z}, we want to close the diagram
-that has both \texttt{z\&apos;} and \texttt{z} crossed with \texttt{a}.
-What we really need, given the mapping \texttt{h} from \texttt{z\&apos;}
-to \texttt{z}, is a mapping from \texttt{z\&apos;×a} to \texttt{z×a}.
+\code{h\ ::\ z\&apos;-\textgreater{}\ z}, we want to close the diagram
+that has both \code{z\&apos;} and \code{z} crossed with \code{a}.
+What we really need, given the mapping \code{h} from \code{z\&apos;}
+to \code{z}, is a mapping from \code{z\&apos;×a} to \code{z×a}.
 And now, after discussing the
 \href{https://bartoszmilewski.com/2015/02/03/functoriality/}{functoriality
 of the product}, we know how to do it. Because the product itself is a
@@ -140,11 +140,11 @@ of morphisms. In other words, we can define not only products of objects
 but also products of morphisms.
 
 Since we are not touching the second component of the product
-\texttt{z\&apos;×a}, we will lift the pair of morphisms
-\texttt{(h,\ id)}, where \texttt{id} is an identity on \texttt{a}.
+\code{z\&apos;×a}, we will lift the pair of morphisms
+\code{(h,\ id)}, where \code{id} is an identity on \code{a}.
 
-So, here's how we can factor one application, \texttt{g}, out of another
-application \texttt{g\&apos;}:
+So, here's how we can factor one application, \code{g}, out of another
+application \code{g\&apos;}:
 
 \begin{verbatim}
 g&apos; = g ∘ (h × id)
@@ -153,36 +153,36 @@ g&apos; = g ∘ (h × id)
 The key here is the action of the product on morphisms.
 
 The third part of the universal construction is selecting the object
-that is universally the best. Let's call this object \texttt{a⇒b} (think
+that is universally the best. Let's call this object \code{a⇒b} (think
 of this as a symbolic name for one object, not to be confused with a
 Haskell typeclass constraint --- I'll discuss different ways of naming
 it later). This object comes with its own application --- a morphism
-from \texttt{(a⇒b)×a} to \texttt{b} --- which we will call
-\texttt{eval}. The object \texttt{a⇒b} is the best if any other
+from \code{(a⇒b)×a} to \code{b} --- which we will call
+\code{eval}. The object \code{a⇒b} is the best if any other
 candidate for a function object can be uniquely mapped to it in such a
-way that its application morphism \texttt{g} factorizes through
-\texttt{eval}. This object is better than any other object according to
+way that its application morphism \code{g} factorizes through
+\code{eval}. This object is better than any other object according to
 our ranking.
 
 \hypertarget{attachment_4246}{}
 \includegraphics[width=3.12500in]{images/universalfunctionobject.jpg}
 
 The definition of the universal function object. This is the same
-diagram as above, but now the object \texttt{a⇒b} is \emph{universal}.
+diagram as above, but now the object \code{a⇒b} is \newterm{universal}.
 
 Formally:
 
 \begin{longtable}[]{@{}l@{}}
 \toprule
 \begin{minipage}[t]{0.97\columnwidth}\raggedright\strut
-A \textbf{function object} from \texttt{a} to \texttt{b} is an object
-\texttt{a⇒b} together with the morphism
+A \textbf{function object} from \code{a} to \code{b} is an object
+\code{a⇒b} together with the morphism
 
 \begin{verbatim}
 eval :: ((a⇒b) × a) -> b
 \end{verbatim}
 
-such that for any other object \texttt{z} with a morphism
+such that for any other object \code{z} with a morphism
 
 \begin{verbatim}
 g :: z × a -> b
@@ -194,7 +194,7 @@ there is a unique morphism
 h :: z -> (a⇒b)
 \end{verbatim}
 
-that factors \texttt{g} through \texttt{eval}:
+that factors \code{g} through \code{eval}:
 
 \begin{verbatim}
 g = eval ∘ (h × id)
@@ -204,57 +204,57 @@ g = eval ∘ (h × id)
 \bottomrule
 \end{longtable}
 
-Of course, there is no guarantee that such an object \texttt{a⇒b} exists
-for any pair of objects \texttt{a} and \texttt{b} in a given category.
+Of course, there is no guarantee that such an object \code{a⇒b} exists
+for any pair of objects \code{a} and \code{b} in a given category.
 But it always does in \textbf{Set}. Moreover, in \textbf{Set}, this
 object is isomorphic to the hom-set \emph{Set(a, b)}.
 
 This is why, in Haskell, we interpret the function type
-\texttt{a-\textgreater{}b} as the categorical function object
-\texttt{a⇒b}.
+\code{a-\textgreater{}b} as the categorical function object
+\code{a⇒b}.
 
 \subsection{Currying}\label{currying}
 
 Let's have a second look at all the candidates for the function object.
-This time, however, let's think of the morphism \texttt{g} as a function
-of two variables, \texttt{z} and \texttt{a}.
+This time, however, let's think of the morphism \code{g} as a function
+of two variables, \code{z} and \code{a}.
 
 \begin{verbatim}
 g :: z × a -> b
 \end{verbatim}
 
 Being a morphism from a product comes as close as it gets to being a
-function of two variables. In particular, in \textbf{Set}, \texttt{g} is
-a function from pairs of values, one from the set \texttt{z} and one
-from the set \texttt{a}.
+function of two variables. In particular, in \textbf{Set}, \code{g} is
+a function from pairs of values, one from the set \code{z} and one
+from the set \code{a}.
 
 On the other hand, the universal property tells us that for each such
-\texttt{g} there is a unique morphism \texttt{h} that maps \texttt{z} to
-a function object \texttt{a⇒b}.
+\code{g} there is a unique morphism \code{h} that maps \code{z} to
+a function object \code{a⇒b}.
 
 \begin{verbatim}
 h :: z -> (a⇒b)
 \end{verbatim}
 
-In \textbf{Set}, this just means that \texttt{h} is a function that
-takes one variable of type \texttt{z} and returns a function from
-\texttt{a} to \texttt{b}. That makes \texttt{h} a higher order function.
+In \textbf{Set}, this just means that \code{h} is a function that
+takes one variable of type \code{z} and returns a function from
+\code{a} to \code{b}. That makes \code{h} a higher order function.
 Therefore the universal construction establishes a one-to-one
 correspondence between functions of two variables and functions of one
 variable returning functions. This correspondence is called
-\emph{currying}, and \texttt{h} is called the curried version of
-\texttt{g}.
+\newterm{currying}, and \code{h} is called the curried version of
+\code{g}.
 
-This correspondence is one-to-one, because given any \texttt{g} there is
-a unique \texttt{h}, and given any \texttt{h} you can always recreate
-the two-argument function \texttt{g} using the formula:
+This correspondence is one-to-one, because given any \code{g} there is
+a unique \code{h}, and given any \code{h} you can always recreate
+the two-argument function \code{g} using the formula:
 
 \begin{verbatim}
 g = eval ∘ (h × id)
 \end{verbatim}
 
-The function \texttt{g} can be called the \emph{uncurried} version of
-\texttt{h}.
+The function \code{g} can be called the \newterm{uncurried} version of
+\code{h}.
 
 Currying is essentially built into the syntax of Haskell. A function
 returning a function:
@@ -302,7 +302,7 @@ Strictly speaking, a function of two variables is one that takes a pair
 
 It's trivial to convert between the two representations, and the two
 (higher-order) functions that do it are called, unsurprisingly,
-\texttt{curry} and \texttt{uncurry}:
+\code{curry} and \code{uncurry}:
 
 \begin{verbatim}
 curry :: ((a, b)->c) -> (a->b->c)
@@ -316,7 +316,7 @@ uncurry :: (a->b->c) -> ((a, b)->c)
 uncurry f (a, b) = f a b
 \end{verbatim}
 
-Notice that \texttt{curry} is the \emph{factorizer} for the universal
+Notice that \code{curry} is the \newterm{factorizer} for the universal
 construction of the function object. This is especially apparent if it's
 rewritten in this form:
 
@@ -332,11 +332,11 @@ In non-functional languages, like C++, currying is possible but
 nontrivial. You can think of multi-argument functions in C++ as
 corresponding to Haskell functions taking tuples (although, to confuse
 things even more, in C++ you can define functions that take an explicit
-\texttt{std::tuple}, as well as variadic functions, and functions taking
+\code{std::tuple}, as well as variadic functions, and functions taking
 initializer lists).
 
 You can partially apply a C++ function using the template
-\texttt{std::bind}. For instance, given a function of two strings:
+\code{std::bind}. For instance, given a function of two strings:
 
 \begin{verbatim}
 std::string catstr(std::string s1, std::string s2) { return s1 + s2;
@@ -364,8 +364,8 @@ part of a library writer.
 \subsection{Exponentials}\label{exponentials}
 
 In mathematical literature, the function object, or the internal
-hom-object between two objects \texttt{a} and \texttt{b}, is often
-called the \emph{exponential} and denoted by \texttt{ba}. Notice that
+hom-object between two objects \code{a} and \code{b}, is often
+called the \newterm{exponential} and denoted by \code{ba}. Notice that
 the argument type is in the exponent. This notation might seem strange
 at first, but it makes perfect sense if you think of the relationship
 between functions and products. We've already seen that we have to use
@@ -373,42 +373,42 @@ the product in the universal construction of the internal hom-object,
 but the connection goes deeper than that.
 
 This is best seen when you consider functions between finite types ---
-types that have a finite number of values, like \texttt{Bool},
-\texttt{Char}, or even \texttt{Int} or \texttt{Double}. Such functions,
+types that have a finite number of values, like \code{Bool},
+\code{Char}, or even \code{Int} or \code{Double}. Such functions,
 at least in principle, can be fully memoized or turned into data
 structures to be looked up. And this is the essence of the equivalence
 between functions, which are morphisms, and function types, which are
 objects.
 
-For instance a (pure) function from \texttt{Bool} is completely
-specified by a pair of values: one corresponding to \texttt{False}, and
-one corresponding to \texttt{True}. The set of all possible functions
-from \texttt{Bool} to, say, \texttt{Int} is the set of all pairs of
-\texttt{Int}s. This is the same as the product \texttt{Int\ ×\ Int} or,
-being a little creative with notation, \texttt{Int2}.
+For instance a (pure) function from \code{Bool} is completely
+specified by a pair of values: one corresponding to \code{False}, and
+one corresponding to \code{True}. The set of all possible functions
+from \code{Bool} to, say, \code{Int} is the set of all pairs of
+\code{Int}s. This is the same as the product \code{Int\ ×\ Int} or,
+being a little creative with notation, \code{Int2}.
 
-For another example, let's look at the C++ type \texttt{char}, which
-contains 256 values (Haskell \texttt{Char} is larger, because Haskell
-uses Unicode). There are several functions in the \texttt{} part of the
+For another example, let's look at the C++ type \code{char}, which
+contains 256 values (Haskell \code{Char} is larger, because Haskell
+uses Unicode). There are several functions in the \code{} part of the
 C++ Standard Library that are usually implemented using lookups.
-Functions like \texttt{isupper} or \texttt{isspace} are implemented
+Functions like \code{isupper} or \code{isspace} are implemented
 using tables, which are equivalent to tuples of 256 Boolean values. A
 tuple is a product type, so we are dealing with products of 256
-Booleans: \texttt{bool\ ×\ bool\ ×\ bool\ ×\ ...\ ×\ bool}. We know from
+Booleans: \code{bool\ ×\ bool\ ×\ bool\ ×\ ...\ ×\ bool}. We know from
 arithmetics that an iterated product defines a power. If you
-``multiply'' \texttt{bool} by itself 256 (or \texttt{char}) times, you
-get \texttt{bool} to the power of \texttt{char}, or \texttt{boolchar}.
+``multiply'' \code{bool} by itself 256 (or \code{char}) times, you
+get \code{bool} to the power of \code{char}, or \code{boolchar}.
 
 How many values are there in the type defined as 256-tuples of
-\texttt{bool}? Exactly 2\textsuperscript{256}. This is also the number
-of different functions from \texttt{char} to \texttt{bool}, each
+\code{bool}? Exactly 2\textsuperscript{256}. This is also the number
+of different functions from \code{char} to \code{bool}, each
 function corresponding to a unique 256-tuple. You can similarly
-calculate that the number of functions from \texttt{bool} to
-\texttt{char} is 256\textsuperscript{2}, and so on. The exponential
+calculate that the number of functions from \code{bool} to
+\code{char} is 256\textsuperscript{2}, and so on. The exponential
 notation for function types makes perfect sense in these cases.
 
-We probably wouldn't want to fully memoize a function from \texttt{int}
-or \texttt{double}. But the equivalence between functions and data
+We probably wouldn't want to fully memoize a function from \code{int}
+or \code{double}. But the equivalence between functions and data
 types, if not always practical, is there. There are also infinite types,
 for instance lists, strings, or trees. Eager memoization of functions
 from those types would require infinite storage. But Haskell is a lazy
@@ -424,7 +424,7 @@ Categories}\label{cartesian-closed-categories}
 Although I will continue using the category of sets as a model for types
 and functions, it's worth mentioning that there is a larger family of
 categories that can be used for that purpose. These categories are
-called \emph{cartesian closed}, and \textbf{Set} is just one example of
+called \newterm{cartesian closed}, and \textbf{Set} is just one example of
 such a category.
 
 A cartesian closed category must contain:
@@ -459,7 +459,7 @@ a × (b + c) = a × b + a × c
 (b + c) × a = b × a + c × a
 \end{verbatim}
 
-is called a \emph{bicartesian closed} category. We'll see in the next
+is called a \newterm{bicartesian closed} category. We'll see in the next
 section that bicartesian closed categories, of which \textbf{Set} is a
 prime example, have some interesting properties.
 
@@ -485,25 +485,25 @@ In the categorical interpretation, we replace 0 with the initial object,
 1 with the final object, and equality with isomorphism. The exponential
 is the internal hom-object. This particular exponential represents the
 set of morphisms going from the initial object to an arbitrary object
-\texttt{a}. By the definition of the initial object, there is exactly
+\code{a}. By the definition of the initial object, there is exactly
 one such morphism, so the hom-set \emph{C(0, a)} is a singleton set. A
 singleton set is the terminal object in \textbf{Set}, so this identity
 trivially works in \textbf{Set}. What we are saying is that it works in
 any bicartesian closed category.
 
-In Haskell, we replace 0 with \texttt{Void}; 1 with the unit type
-\texttt{()}; and the exponential with function type. The claim is that
-the set of functions from \texttt{Void} to any type \texttt{a} is
+In Haskell, we replace 0 with \code{Void}; 1 with the unit type
+\code{()}; and the exponential with function type. The claim is that
+the set of functions from \code{Void} to any type \code{a} is
 equivalent to the unit type --- which is a singleton. In other words,
-there is only one function \texttt{Void-\textgreater{}a}. We've seen
-this function before: it's called \texttt{absurd}.
+there is only one function \code{Void-\textgreater{}a}. We've seen
+this function before: it's called \code{absurd}.
 
 This is a little bit tricky, for two reasons. One is that in Haskell we
 don't really have uninhabited types --- every type contains the ``result
 of a never ending calculation,'' or the bottom. The second reason is
-that all implementations of \texttt{absurd} are equivalent because, no
+that all implementations of \code{absurd} are equivalent because, no
 matter what they do, nobody can ever execute them. There is no value
-that can be passed to \texttt{absurd}. (And if you manage to pass it a
+that can be passed to \code{absurd}. (And if you manage to pass it a
 never ending calculation, it will never return!)
 
 \subsubsection{Powers of One}\label{powers-of-one}
@@ -514,13 +514,13 @@ never ending calculation, it will never return!)
 
 This identity, when interpreted in \textbf{Set}, restates the definition
 of the terminal object: There is a unique morphism from any object to
-the terminal object. In general, the internal hom-object from \texttt{a}
+the terminal object. In general, the internal hom-object from \code{a}
 to the terminal object is isomorphic to the terminal object itself.
 
-In Haskell, there is only one function from any type \texttt{a} to unit.
-We've seen this function before --- it's called \texttt{unit}. You can
-also think of it as the function \texttt{const} partially applied to
-\texttt{()}.
+In Haskell, there is only one function from any type \code{a} to unit.
+We've seen this function before --- it's called \code{unit}. You can
+also think of it as the function \code{const} partially applied to
+\code{()}.
 
 \subsubsection{First Power}\label{first-power}
 
@@ -530,10 +530,10 @@ a1 = a
 
 This is a restatement of the observation that morphisms from the
 terminal object can be used to pick ``elements'' of the object
-\texttt{a}. The set of such morphisms is isomorphic to the object
+\code{a}. The set of such morphisms is isomorphic to the object
 itself. In \textbf{Set}, and in Haskell, the isomorphism is between
-elements of the set \texttt{a} and functions that pick those elements,
-\texttt{()-\textgreater{}a}.
+elements of the set \code{a} and functions that pick those elements,
+\code{()-\textgreater{}a}.
 
 \subsubsection{Exponentials of Sums}\label{exponentials-of-sums}
 
@@ -547,24 +547,24 @@ algebraic identity has a very practical, interpretation. It tells us
 that a function from a sum of two types is equivalent to a pair of
 functions from individual types. This is just the case analysis that we
 use when defining functions on sums. Instead of writing one function
-definition with a \texttt{case} statement, we usually split it into two
+definition with a \code{case} statement, we usually split it into two
 (or more) functions dealing with each type constructor separately. For
 instance, take a function from the sum type
-\texttt{(Either\ Int\ Double)}:
+\code{(Either\ Int\ Double)}:
 
 \begin{verbatim}
 f :: Either Int Double -> String
 \end{verbatim}
 
 It may be defined as a pair of functions from, respectively,
-\texttt{Int} and \texttt{Double}:
+\code{Int} and \code{Double}:
 
 \begin{verbatim}
 f (Left n) = if n < 0 then "Negative int" else "Positive int"
 f (Right x) = if x < 0.0 then "Negative double" else "Positive double"
 \end{verbatim}
 
-Here, \texttt{n} is an \texttt{Int} and \texttt{x} is a \texttt{Double}.
+Here, \code{n} is an \code{Int} and \code{x} is a \code{Double}.
 
 \subsubsection{Exponentials of
 Exponentials}\label{exponentials-of-exponentials}
@@ -594,11 +594,11 @@ functional programming.
 \subsection{Curry-Howard Isomorphism}\label{curry-howard-isomorphism}
 
 I have already mentioned the correspondence between logic and algebraic
-data types. The \texttt{Void} type and the unit type \texttt{()}
+data types. The \code{Void} type and the unit type \code{()}
 correspond to false and true. Product types and sum types correspond to
 logical conjunction ∧ (AND) and disjunction ⋁ (OR). In this scheme, the
 function type we have just defined corresponds to logical implication ⇒.
-In other words, the type \texttt{a-\textgreater{}b} can be read as ``if
+In other words, the type \code{a-\textgreater{}b} can be read as ``if
 a then b.''
 
 According to the Curry-Howard isomorphism, every type can be interpreted
@@ -610,7 +610,7 @@ there exists a function of that type. An implementation of a function is
 therefore a proof of a theorem. Writing programs is equivalent to
 proving theorems. Let's see a few examples.
 
-Let's take the function \texttt{eval} we have introduced in the
+Let's take the function \code{eval} we have introduced in the
 definition of the function object. Its signature is:
 
 \begin{verbatim}
@@ -625,18 +625,18 @@ morphism:
 eval :: (a⇒b) × a -> b
 \end{verbatim}
 
-which defines the function type \texttt{a⇒b} (or the exponential object
-\texttt{ba}). Let's translate this signature to a logical predicate
+which defines the function type \code{a⇒b} (or the exponential object
+\code{ba}). Let's translate this signature to a logical predicate
 using the Curry-Howard isomorphism:
 
 \begin{verbatim}
 ((a ⇒ b) ∧ a) ⇒ b
 \end{verbatim}
 
-Here's how you can read this statement: If it's true that \texttt{b}
-follows from \texttt{a}, and \texttt{a} is true, then \texttt{b} must be
+Here's how you can read this statement: If it's true that \code{b}
+follows from \code{a}, and \code{a} is true, then \code{b} must be
 true. This makes perfect intuitive sense and has been known since
-antiquity as \emph{modus ponens}. We can prove this theorem by
+antiquity as \newterm{modus ponens}. We can prove this theorem by
 implementing the function:
 
 \begin{verbatim}
@@ -644,23 +644,23 @@ eval :: ((a -> b), a) -> b
 eval (f, x) = f x
 \end{verbatim}
 
-If you give me a pair consisting of a function \texttt{f} taking
-\texttt{a} and returning \texttt{b}, and a concrete value \texttt{x} of
-type \texttt{a}, I can produce a concrete value of type \texttt{b} by
-simply applying the function \texttt{f} to \texttt{x}. By implementing
+If you give me a pair consisting of a function \code{f} taking
+\code{a} and returning \code{b}, and a concrete value \code{x} of
+type \code{a}, I can produce a concrete value of type \code{b} by
+simply applying the function \code{f} to \code{x}. By implementing
 this function I have just shown that the type
-\texttt{((a\ -\textgreater{}\ b),\ a)\ -\textgreater{}\ b} is inhabited.
-Therefore \emph{modus ponens} is true in our logic.
+\code{((a\ -\textgreater{}\ b),\ a)\ -\textgreater{}\ b} is inhabited.
+Therefore \newterm{modus ponens} is true in our logic.
 
 How about a predicate that is blatantly false? For instance: if
-\texttt{a} or \texttt{b} is true then \texttt{a} must be true.
+\code{a} or \code{b} is true then \code{a} must be true.
 
 \begin{verbatim}
 a ⋁ b ⇒ a
 \end{verbatim}
 
-This is obviously wrong because you can chose an \texttt{a} that is
-false and a \texttt{b} that is true, and that's a counter-example.
+This is obviously wrong because you can chose an \code{a} that is
+false and a \code{b} that is true, and that's a counter-example.
 
 Mapping this predicate into a function signature using the Curry-Howard
 isomorphism, we get:
@@ -670,16 +670,16 @@ Either a b -> a
 \end{verbatim}
 
 Try as you may, you can't implement this function --- you can't produce
-a value of type \texttt{a} if you are called with the \texttt{Right}
-value. (Remember, we are talking about \emph{pure} functions.)
+a value of type \code{a} if you are called with the \code{Right}
+value. (Remember, we are talking about \newterm{pure} functions.)
 
-Finally, we come to the meaning of the \texttt{absurd} function:
+Finally, we come to the meaning of the \code{absurd} function:
 
 \begin{verbatim}
 absurd :: Void -> a
 \end{verbatim}
 
-Considering that \texttt{Void} translates into false, we get:
+Considering that \code{Void} translates into false, we get:
 
 \begin{verbatim}
  false ⇒ a
@@ -692,15 +692,15 @@ possible proof (implementation) of this statement (function) in Haskell:
 absurd (Void a) = absurd a
 \end{verbatim}
 
-where \texttt{Void} is defined as:
+where \code{Void} is defined as:
 
 \begin{verbatim}
 newtype Void = Void Void
 \end{verbatim}
 
-As always, the type \texttt{Void} is tricky. This definition makes it
+As always, the type \code{Void} is tricky. This definition makes it
 impossible to construct a value because in order to construct one, you
-would need to provide one. Therefore, the function \texttt{absurd} can
+would need to provide one. Therefore, the function \code{absurd} can
 never be called.
 
 These are all interesting examples, but is there a practical side to

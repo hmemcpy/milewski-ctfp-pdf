@@ -1,25 +1,25 @@
 \lettrine[lhang=0.17]{A}{category} is an embarrassingly simple concept.
-A category consists of \emph{objects} and \emph{arrows} that go between them. That's
+A category consists of \newterm{objects} and \newterm{arrows} that go between them. That's
 why categories are so easy to represent pictorially. An object can be
 drawn as a circle or a point, and an arrow\ldots{} is an arrow. (Just
 for variety, I will occasionally draw objects as piggies and arrows as
-fireworks.) But the essence of a category is \emph{composition}. Or, if you
+fireworks.) But the essence of a category is \newterm{composition}. Or, if you
 prefer, the essence of composition is a category. Arrows compose, so
 if you have an arrow from object A to object B, and another arrow from
 object B to object C, then there must be an arrow --- their composition
 --- that goes from A to C.
 
 \begin{figure}
-  \centering
-          \includegraphics[width=\textwidth]{images/img_1330.jpg}
-      \captionsetup{labelformat=empty,font=scriptsize}
-      \caption{In a category, if there is an arrow going from A to B and an arrow going from B to C then there must also be a direct arrow from A to C that is their composition. This diagram is not a full category because it’s missing identity morphisms (see later).}
+\centering
+\includegraphics[width=\textwidth]{images/img_1330.jpg}
+\captionsetup{labelformat=empty,font=scriptsize}
+\caption{In a category, if there is an arrow going from A to B and an arrow going from B to C then there must also be a direct arrow from A to C that is their composition. This diagram is not a full category because it’s missing identity morphisms (see later).}
 \end{figure}
 
 \subsection{Arrows as Functions}\label{arrows-as-functions}
 
 Is this already too much abstract nonsense? Do not despair. Let's talk
-concretes. Think of arrows, which are also called \emph{morphisms}, as
+concretes. Think of arrows, which are also called \newterm{morphisms}, as
 functions. You have a function \code{f} that takes an argument of type A and
 returns a B. You have another function \code{g} that takes a B and returns a C.
 You can compose them by passing the result of \code{f} to \code{g}. You have just
@@ -33,31 +33,31 @@ Unix, as in:
 \begin{verbatim}
 lsof | grep Chrome
 \end{verbatim}
-
-or the chevron \texttt{\textgreater{}\textgreater{}} in F\#, which both
+or the chevron \code{>>} in F\#, which both
 go from left to right. But in mathematics and in Haskell functions
-compose right to left. It helps if you read \texttt{g◦f} as ``g \emph{after} f.''
+compose right to left. It helps if you read \code{g◦f} as ``g \emph{after} f.''
 
 Let's make this even more explicit by writing some C code. We have one
-function \texttt{f} that takes an argument of type \texttt{A} and
-returns a value of type \texttt{B}:
+function \code{f} that takes an argument of type \code{A} and
+returns a value of type \code{B}:
 
-\mint{c}|B f(A a);|
-
+\begin{verbatim}
+B f(A a);
+\end{verbatim}
 and another:
 
-\mint{c}|C g(B b);|
-
+\begin{verbatim}
+C g(B b);
+\end{verbatim}
 Their composition is:
 
-\begin{minted}{c}
+\begin{verbatim}
 C g_after_f(A a)
 {
     return g(f(a));
 }
-\end{minted}
-
-Here, again, you see right-to-left composition: \texttt{g(f(a))}; this
+\end{verbatim}
+Here, again, you see right-to-left composition: \code{g(f(a))}; this
 time in C.
 
 I wish I could tell you that there is a template in the C++ Standard
@@ -65,29 +65,32 @@ Library that takes two functions and returns their composition, but
 there isn't one. So let's try some Haskell for a change. Here's the
 declaration of a function from A to B:
 
-\mint{haskell}|f :: A -> B|
-
+\begin{verbatim}
+f :: A -> B
+\end{verbatim}
 Similarly:
 
-\mint{haskell}|g :: B -> C|
-
+\begin{verbatim}
+g :: B -> C
+\end{verbatim}
 Their composition is:
 
-\mint{text}|g . f|
-
+\begin{verbatim}
+g . f
+\end{verbatim}
 Once you see how simple things are in Haskell, the inability to express
 straightforward functional concepts in C++ is a little embarrassing. In
 fact, Haskell will let you use Unicode characters so you can write
 composition as:
 
-\mint{text}|g ◦ f|
-
+\begin{verbatim}
+g ◦ f
+\end{verbatim}
 You can even use Unicode double colons and arrows:
 
 \begin{minted}[escapeinside=||,mathescape=true]{text}
 f |\ensuremath{\Colon}| A → B
 \end{minted}
-
 So here's the first Haskell lesson: Double colon means ``has the type
 of\ldots{}'' A function type is created by inserting an arrow between
 two types. You compose two functions by inserting a period between them
@@ -105,17 +108,17 @@ that can be composed (that is, their objects match end-to-end), you
 don't need parentheses to compose them. In math notation this is
 expressed as:
 
-\mint{text}|h◦(g◦f) = (h◦g)◦f = h◦g◦f|
-
+\begin{verbatim}
+h◦(g◦f) = (h◦g)◦f = h◦g◦f
+\end{verbatim}
 In (pseudo) Haskell:
 
-\begin{minted}{haskell}
+\begin{verbatim}
 f :: A -> B
 g :: B -> C
 h :: C -> D
 h . (g . f) == (h . g) . f == h . g . f
-\end{minted}
-
+\end{verbatim}
 (I said ``pseudo,'' because equality is not defined for functions.)
 
 Associativity is pretty obvious when dealing with functions, but it may
@@ -126,23 +129,23 @@ For every object A there is an arrow which is a unit of composition.
 This arrow loops from the object to itself. Being a unit of composition
 means that, when composed with any arrow that either starts at A or ends
 at A, respectively, it gives back the same arrow. The unit arrow for
-object A is called \texttt{id\textsubscript{A}} (\emph{identity} on A). In math
-notation, if \texttt{f} goes from A to B then
+object A is called \code{id\textsubscript{A}} (\newterm{identity} on A). In math
+notation, if \code{f} goes from A to B then
 
-\texttt{f◦id\textsubscript{A} = f}
+\code{f◦id\textsubscript{A} = f}
 
 and
 
-\texttt{id\textsubscript{B}◦f = f}
+\code{id\textsubscript{B}◦f = f}
 \end{enumerate}
-
 When dealing with functions, the identity arrow is implemented as the
 identity function that just returns back its argument. The
 implementation is the same for every type, which means this function is
 universally polymorphic. In C++ we could define it as a template:
 
-\mint{c++}|template<class T> T id(T x) { return x; }|
-
+\begin{verbatim}
+template<class T> T id(T x) { return x; }
+\end{verbatim}
 Of course, in C++ nothing is that simple, because you have to take into
 account not only what you're passing but also how (that is, by value, by
 reference, by const reference, by move, and so on).
@@ -150,19 +153,18 @@ reference, by const reference, by move, and so on).
 In Haskell, the identity function is part of the standard library
 (called Prelude). Here's its declaration and definition:
 
-\begin{minted}{haskell}
+\begin{verbatim}
 id :: a -> a
 id x = x
-\end{minted}
-
+\end{verbatim}
 As you can see, polymorphic functions in Haskell are a piece of cake. In
 the declaration, you just replace the type with a type variable. Here's
 the trick: names of concrete types always start with a capital letter,
 names of type variables start with a lowercase letter. So here
-\texttt{a} stands for all types.
+\code{a} stands for all types.
 
 Haskell function definitions consist of the name of the function
-followed by formal parameters --- here just one, \texttt{x}. The body of
+followed by formal parameters --- here just one, \code{x}. The body of
 the function follows the equal sign. This terseness is often shocking to
 newcomers but you will quickly see that it makes perfect sense. Function
 definition and function call are the bread and butter of functional
@@ -173,24 +175,23 @@ multiple arguments).
 
 The body of a function is always an expression --- there are no
 statements in functions. The result of a function is this expression ---
-here, just \texttt{x}.
+here, just \code{x}.
 
 This concludes our second Haskell lesson.
 
 The identity conditions can be written (again, in pseudo-Haskell) as:
 
-\begin{minted}{text}
+\begin{verbatim}
 f . id == f
 id . f == f
-\end{minted}
-
+\end{verbatim}
 You might be asking yourself the question: Why would anyone bother with
 the identity function --- a function that does nothing? Then again, why
 do we bother with the number zero? Zero is a symbol for nothing. Ancient
 Romans had a number system without a zero and they were able to build
 excellent roads and aqueducts, some of which survive to this day.
 
-Neutral values like zero or \texttt{id} are extremely useful when
+Neutral values like zero or \code{id} are extremely useful when
 working with symbolic variables. That's why Romans were not very good at
 algebra, whereas the Arabs and the Persians, who were familiar with the
 concept of zero, were. So the identity function becomes very handy as an

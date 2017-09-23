@@ -9,14 +9,14 @@ of Contents}.
 So far we've been mostly working with a single category or a pair of
 categories. In some cases that was a little too constraining. For
 instance, when defining a limit in a category \emph{C}, we introduced an
-index category \texttt{I} as the template for the pattern that would
+index category \code{I} as the template for the pattern that would
 form the basis for our cones. It would have made sense to introduce
 another category, a trivial one, to serve as a template for the apex of
-the cone. Instead we used the constant functor \texttt{Δc} from
-\texttt{I} to \texttt{C}.
+the cone. Instead we used the constant functor \code{Δc} from
+\code{I} to \code{C}.
 
 It's time to fix this awkwardness. Let's define a limit using three
-categories. Let's start with the functor \texttt{D} from the index
+categories. Let's start with the functor \code{D} from the index
 category \emph{I} to \emph{C}. This is the functor that selects the base
 of the cone --- the diagram functor.
 
@@ -24,60 +24,60 @@ of the cone --- the diagram functor.
 
 The new addition is the category \textbf{1} that contains a single
 object (and a single identity morphism). There is only one possible
-functor \texttt{K} from \emph{I} to this category. It maps all objects
+functor \code{K} from \emph{I} to this category. It maps all objects
 to the only object in \textbf{1}, and all morphisms to the identity
-morphism. Any functor \texttt{F} from \textbf{1} to \emph{C} picks a
+morphism. Any functor \code{F} from \textbf{1} to \emph{C} picks a
 potential apex for our cone.
 
 \includegraphics[width=3.12500in]{images/kan15.jpg}
 
-A cone is a natural transformation \texttt{ε} from \texttt{F\ ∘\ K} to
-\texttt{D}. Notice that \texttt{F\ ∘\ K} does exactly the same thing as
-our original \texttt{Δc}. The following diagram shows this
+A cone is a natural transformation \code{ε} from \code{F\ ∘\ K} to
+\code{D}. Notice that \code{F\ ∘\ K} does exactly the same thing as
+our original \code{Δc}. The following diagram shows this
 transformation.
 
 \includegraphics[width=2.31250in]{images/kan3-e1492120491591.jpg}
 
 We can now define a universal property that picks the ``best'' such
-functor \texttt{F}. This \texttt{F} will map \textbf{1} to the object
-that is the limit of \texttt{D} in \emph{C}, and the natural
-transformation \texttt{ε} from \texttt{F\ ∘\ K} to \texttt{D} will
+functor \code{F}. This \code{F} will map \textbf{1} to the object
+that is the limit of \code{D} in \emph{C}, and the natural
+transformation \code{ε} from \code{F\ ∘\ K} to \code{D} will
 provide the corresponding projections. This universal functor is called
-the right Kan extension of \texttt{D} along \texttt{K} and is denoted by
-\texttt{RanKD}.
+the right Kan extension of \code{D} along \code{K} and is denoted by
+\code{RanKD}.
 
 Let's formulate the universal property. Suppose we have another cone ---
-that is another functor \texttt{F\&apos;} together with a natural
-transformation \texttt{ε\&apos;} from \texttt{F\&apos;\ ∘\ K} to
-\texttt{D}.
+that is another functor \code{F\&apos;} together with a natural
+transformation \code{ε\&apos;} from \code{F\&apos;\ ∘\ K} to
+\code{D}.
 
 \includegraphics[width=2.36458in]{images/kan31-e1492120512209.jpg}
 
-If the Kan extension \texttt{F\ =\ RanKD} exists, there must be a unique
-natural transformation \texttt{σ} from \texttt{F\&apos;} to it, such
-that \texttt{ε\&apos;} factorizes through \texttt{ε}, that is:
+If the Kan extension \code{F\ =\ RanKD} exists, there must be a unique
+natural transformation \code{σ} from \code{F\&apos;} to it, such
+that \code{ε\&apos;} factorizes through \code{ε}, that is:
 
 \begin{verbatim}
 ε&apos; = ε . (σ ∘ K)
 \end{verbatim}
 
-Here, \texttt{σ\ ∘\ K} is the horizontal composition of two natural
+Here, \code{σ\ ∘\ K} is the horizontal composition of two natural
 transformations (one of them being the identity natural transformation
-on \texttt{K}). This transformation is then vertically composed with
-\texttt{ε}.
+on \code{K}). This transformation is then vertically composed with
+\code{ε}.
 
 \includegraphics[width=2.46875in]{images/kan5.jpg}
 
-In components, when acting on an object \texttt{i} in \emph{I}, we get:
+In components, when acting on an object \code{i} in \emph{I}, we get:
 
 \begin{verbatim}
 ε&apos;i = εi ∘ σ K i
 \end{verbatim}
 
-In our case, \texttt{σ} has only one component corresponding to the
+In our case, \code{σ} has only one component corresponding to the
 single object of \textbf{1}. So, indeed, this is the unique morphism
-from the apex of the cone defined by \texttt{F\&apos;} to the apex of
-the universal cone defined by \texttt{RanKD}. The commuting conditions
+from the apex of the cone defined by \code{F\&apos;} to the apex of
+the universal cone defined by \code{RanKD}. The commuting conditions
 are exactly the ones required by the definition of a limit.
 
 But, importantly, we are free to replace the trivial category \textbf{1}
@@ -86,16 +86,16 @@ extension remains valid.
 
 \subsection{Right Kan Extension}\label{right-kan-extension}
 
-The right Kan extension of the functor \texttt{D::I-\textgreater{}C}
-along the functor \texttt{K::I-\textgreater{}A} is a functor
-\texttt{F::A-\textgreater{}C} (denoted \texttt{RanKD}) together with a
+The right Kan extension of the functor \code{D::I-\textgreater{}C}
+along the functor \code{K::I-\textgreater{}A} is a functor
+\code{F::A-\textgreater{}C} (denoted \code{RanKD}) together with a
 natural transformation
 
 \begin{verbatim}
 ε :: F ∘ K -> D
 \end{verbatim}
 
-such that for any other functor \texttt{F\&apos;::A-\textgreater{}C} and
+such that for any other functor \code{F\&apos;::A-\textgreater{}C} and
 a natural transformation
 
 \begin{verbatim}
@@ -108,7 +108,7 @@ there is a unique natural transformation
 σ :: F&apos; -> F
 \end{verbatim}
 
-that factorizes \texttt{ε\&apos;}:
+that factorizes \code{ε\&apos;}:
 
 \begin{verbatim}
 ε&apos; = ε . (σ ∘ K)
@@ -120,8 +120,8 @@ This is quite a mouthful, but it can be visualized in this nice diagram:
 
 An interesting way of looking at this is to notice that, in a sense, the
 Kan extension acts like the inverse of ``functor multiplication.'' Some
-authors go as far as use the notation \texttt{D/K} for \texttt{RanKD}.
-Indeed, in this notation, the definition of \texttt{ε}, which is also
+authors go as far as use the notation \code{D/K} for \code{RanKD}.
+Indeed, in this notation, the definition of \code{ε}, which is also
 called the counit of the right Kan extension, looks like simple
 cancellation:
 
@@ -130,20 +130,20 @@ cancellation:
 \end{verbatim}
 
 There is another interpretation of Kan extensions. Consider that the
-functor \texttt{K} embeds the category \emph{I} inside \emph{A}. In the
+functor \code{K} embeds the category \emph{I} inside \emph{A}. In the
 simplest case \emph{I} could just be a subcategory of \emph{A}. We have
-a functor \texttt{D} that maps \emph{I} to \emph{C}. Can we extend
-\texttt{D} to a functor \texttt{F} that is defined on the whole of
+a functor \code{D} that maps \emph{I} to \emph{C}. Can we extend
+\code{D} to a functor \code{F} that is defined on the whole of
 \emph{A}? Ideally, such an extension would make the composition
-\texttt{F\ ∘\ K} be isomorphic to \texttt{D}. In other words, \texttt{F}
-would be extending the domain of \texttt{D} to \texttt{A}. But a
+\code{F\ ∘\ K} be isomorphic to \code{D}. In other words, \code{F}
+would be extending the domain of \code{D} to \code{A}. But a
 full-blown isomorphism is usually too much to ask, and we can do with
-just half of it, namely a one-way natural transformation \texttt{ε} from
-\texttt{F\ ∘\ K} to \texttt{D}. (The left Kan extension picks the other
+just half of it, namely a one-way natural transformation \code{ε} from
+\code{F\ ∘\ K} to \code{D}. (The left Kan extension picks the other
 direction.)
 
 \includegraphics[width=3.12500in]{images/kan6.jpg}\\
-Of course, the embedding picture breaks down when the functor \texttt{K}
+Of course, the embedding picture breaks down when the functor \code{K}
 is not injective on objects or not faithful on hom-sets, as in the
 example of the limit. In that case, the Kan extension tries its best to
 extrapolate the lost information.
@@ -151,33 +151,33 @@ extrapolate the lost information.
 \subsection{Kan Extension as
 Adjunction}\label{kan-extension-as-adjunction}
 
-Now suppose that the right Kan extension exists for any \texttt{D} (and
-a fixed \texttt{K}). In that case \texttt{RanK\ -} (with the dash
-replacing \texttt{D}) is a functor from the functor category
-\texttt{{[}I,\ C{]}} to the functor category \texttt{{[}A,\ C{]}}. It
+Now suppose that the right Kan extension exists for any \code{D} (and
+a fixed \code{K}). In that case \code{RanK\ -} (with the dash
+replacing \code{D}) is a functor from the functor category
+\code{{[}I,\ C{]}} to the functor category \code{{[}A,\ C{]}}. It
 turns out that this functor is the right adjoint to the precomposition
-functor \texttt{-∘K}. The latter maps functors in \texttt{{[}A,\ C{]}}
-to functors in \texttt{{[}I,\ C{]}}. The adjunction is:
+functor \code{-∘K}. The latter maps functors in \code{{[}A,\ C{]}}
+to functors in \code{{[}I,\ C{]}}. The adjunction is:
 
 \begin{verbatim}
 [I, C](F&apos; ∘ K, D) ≅ [A, C](F&apos;, RanKD)
 \end{verbatim}
 
 It is just a restatement of the fact that to every natural
-transformation we called \texttt{ε\&apos;} corresponds a unique natural
-transformation we called \texttt{σ}.
+transformation we called \code{ε\&apos;} corresponds a unique natural
+transformation we called \code{σ}.
 
 \includegraphics[width=3.12500in]{images/kan92.jpg}
 
 Furthermore, if we chose the category \emph{I} to be the same as
-\emph{C}, we can substitute the identity functor \texttt{IC} for
-\texttt{D}. We get the following identity:
+\emph{C}, we can substitute the identity functor \code{IC} for
+\code{D}. We get the following identity:
 
 \begin{verbatim}
 [C, C](F&apos; ∘ K, IC) ≅ [A, C](F&apos;, RanKIC)
 \end{verbatim}
 
-We can now chose \texttt{F\&apos;} to be the same as \texttt{RanKIC}. In
+We can now chose \code{F\&apos;} to be the same as \code{RanKIC}. In
 that case the right hand side contains the identity natural
 transformation and, corresponding to it, the left hand side gives us the
 following natural transformation:
@@ -193,12 +193,12 @@ RanKIC ⊣ K
 \end{verbatim}
 
 Indeed, the right Kan extension of the identity functor along a functor
-\texttt{K} can be used to calculate the left adjoint of \texttt{K}. For
+\code{K} can be used to calculate the left adjoint of \code{K}. For
 that, one more condition is necessary: the right Kan extension must be
-preserved by the functor \texttt{K}. The preservation of the extension
+preserved by the functor \code{K}. The preservation of the extension
 means that, if we calculate the Kan extension of the functor precomposed
-with \texttt{K}, we should get the same result as precomposing the
-original Kan extesion with \texttt{K}. In our case, this condition
+with \code{K}, we should get the same result as precomposing the
+original Kan extesion with \code{K}. In our case, this condition
 simplifies to:
 
 \begin{verbatim}
@@ -219,7 +219,7 @@ an inverse. The preservation condition becomes:
 K ∘ I/K ≅ K/K
 \end{verbatim}
 
-The right Kan extension of a functor along itself, \texttt{K/K}, is
+The right Kan extension of a functor along itself, \code{K/K}, is
 called a codensity monad.
 
 The adjunction formula is an important result because, as we'll see
@@ -231,18 +231,18 @@ us practical means of finding right (and left) adjoints.
 There is a dual construction that gives us the left Kan extension. To
 build some intuition, we'll can start with the definition of a colimit
 and restructure it to use the singleton category \textbf{1}. We build a
-cocone by using the functor \texttt{D::I-\textgreater{}C} to form its
-base, and the functor \texttt{F::1-\textgreater{}C} to select its apex.
+cocone by using the functor \code{D::I-\textgreater{}C} to form its
+base, and the functor \code{F::1-\textgreater{}C} to select its apex.
 
 \includegraphics[width=1.90625in]{images/kan81.jpg}
 
 The sides of the cocone, the injections, are components of a natural
-transformation \texttt{η} from \texttt{D} to \texttt{F\ ∘\ K}.
+transformation \code{η} from \code{D} to \code{F\ ∘\ K}.
 
 \includegraphics[width=2.33333in]{images/kan10a.jpg}
 
 The colimit is the universal cocone. So for any other functor
-\texttt{F\&apos;} and a natural transformation
+\code{F\&apos;} and a natural transformation
 
 \begin{verbatim}
 η&apos; :: D -> F&apos;∘ K
@@ -250,8 +250,8 @@ The colimit is the universal cocone. So for any other functor
 
 \includegraphics[width=2.40625in]{images/kan10b.jpg}
 
-there is a unique natural transformation \texttt{σ} from \texttt{F} to
-\texttt{F\&apos;}
+there is a unique natural transformation \code{σ} from \code{F} to
+\code{F\&apos;}
 
 \includegraphics[width=2.08333in]{images/kan14.jpg}
 
@@ -266,7 +266,7 @@ This is illustrated in the following diagram:\\
 
 Replacing the singleton category \textbf{1} with \emph{A}, this
 definition naturally generalized to the definition of the left Kan
-extension, denoted by \texttt{LanKD}.\\
+extension, denoted by \code{LanKD}.\\
 \includegraphics[width=2.06250in]{images/kan12.jpg}\\
 The natural transformation:
 
@@ -291,12 +291,12 @@ in terms of the adjunction:
 
 In other words, the left Kan extension is the left adjoint, and the
 right Kan extension is the right adjoint of the postcomposition with
-\texttt{K}.
+\code{K}.
 
 Just like the right Kan extension of the identity functor could be used
-to calculate the left adjoint of \texttt{K}, the left Kan extension of
-the identity functor turns out to be the right adjoint of \texttt{K}
-(with \texttt{η} being the unit of~ the adjunction):
+to calculate the left adjoint of \code{K}, the left Kan extension of
+the identity functor turns out to be the right adjoint of \code{K}
+(with \code{η} being the unit of~ the adjunction):
 
 \begin{verbatim}
 K ⊣ LanKIC
@@ -317,15 +317,15 @@ attention to the case where the target category \emph{C} is
 
 Let's revisit the idea that a Kan extension can be used to extend the
 action of a functor outside of its original domain. Suppose that
-\texttt{K} embeds \emph{I} inside \emph{A}. Functor \texttt{D} maps
+\code{K} embeds \emph{I} inside \emph{A}. Functor \code{D} maps
 \emph{I} to \textbf{Set}. We could just say that for any object
-\texttt{a} in the image of \texttt{K}, that is \texttt{a\ =\ K\ i}, the
-extended functor maps \texttt{a} to \texttt{D\ i}. The problem is, what
+\code{a} in the image of \code{K}, that is \code{a\ =\ K\ i}, the
+extended functor maps \code{a} to \code{D\ i}. The problem is, what
 to do with those objects in \emph{A} that are outside of the image of
-\texttt{K}? The idea is that every such object is potentially connected
-through lots of morphisms to every object in the image of \texttt{K}. A
+\code{K}? The idea is that every such object is potentially connected
+through lots of morphisms to every object in the image of \code{K}. A
 functor must preserve these morphisms. The totality of morphisms from an
-object \texttt{a} to the image of \texttt{K} is characterized by the
+object \code{a} to the image of \code{K} is characterized by the
 hom-functor:
 
 \begin{verbatim}
@@ -345,7 +345,7 @@ The right Kan extension is the right adjoint of functor composition:
 [I, Set](F&apos; ∘ K, D) ≅ [A, Set](F&apos;, RanKD)
 \end{verbatim}
 
-Let's see what happens when we replace \texttt{F\&apos;} with the hom
+Let's see what happens when we replace \code{F\&apos;} with the hom
 functor:
 
 \begin{verbatim}
@@ -457,37 +457,37 @@ function types:
 newtype Ran k d a = Ran (forall i. (a -> k i) -> d i)
 \end{verbatim}
 
-Looking at this definition, it's clear that \texttt{Ran} must contain a
-value of type \texttt{a} to which the function can be applied, and a
-natural transformation between the two functors \texttt{k} and
-\texttt{d}. For instance, suppose that \texttt{k} is the tree functor,
-and \texttt{d} is the list functor, and you were given a
-\texttt{Ran\ Tree\ {[}{]}\ String}. If you pass it a function:
+Looking at this definition, it's clear that \code{Ran} must contain a
+value of type \code{a} to which the function can be applied, and a
+natural transformation between the two functors \code{k} and
+\code{d}. For instance, suppose that \code{k} is the tree functor,
+and \code{d} is the list functor, and you were given a
+\code{Ran\ Tree\ {[}{]}\ String}. If you pass it a function:
 
 \begin{verbatim}
 f :: String -> Tree Int
 \end{verbatim}
 
-you'll get back a list of \texttt{Int}, and so on. The right Kan
+you'll get back a list of \code{Int}, and so on. The right Kan
 extension will use your function to produce a tree and then repackage it
 into a list. For instance, you may pass it a parser that generates a
 parsing tree from a string, and you'll get a list that corresponds to
 the depth-first traversal of this tree.
 
 The right Kan extension can be used to calculate the left adjoint of a
-given functor by replacing the functor \texttt{d} with the identity
-functor. This leads to the left adjoint of a functor \texttt{k} being
+given functor by replacing the functor \code{d} with the identity
+functor. This leads to the left adjoint of a functor \code{k} being
 represented by the set of polymorphic functions of the type:
 
 \begin{verbatim}
 forall i. (a -> k i) -> i
 \end{verbatim}
 
-Suppose that \texttt{k} is the forgetful functor from the category of
+Suppose that \code{k} is the forgetful functor from the category of
 monoids. The universal quantifier then goes over all monoids. Of course,
 in Haskell we cannot express monoidal laws, but the following is a
 decent approximation of the resulting free functor (the forgetful
-functor \texttt{k} is an identity on objects):
+functor \code{k} is an identity on objects):
 
 \begin{verbatim}
 type Lst a = forall i. Monoid i => (a -> i) -> i
@@ -519,15 +519,15 @@ data Lan k d a = forall i. Lan (k i -> a) (d i)
 \end{verbatim}
 
 The interpretation of this data structure is that it contains a function
-that takes a container of some unspecified \texttt{i}s and produces an
-\texttt{a}. It also has a container of those \texttt{i}s. Since you have
-no idea what \texttt{i}s are, the only thing you can do with this data
-structure is to retrieve the container of \texttt{i}s, repack it into
-the container defined by the functor \texttt{k} using a natural
-transformation, and call the function to obtain the \texttt{a}. For
-instance, if \texttt{d} is a tree, and \texttt{k} is a list, you can
+that takes a container of some unspecified \code{i}s and produces an
+\code{a}. It also has a container of those \code{i}s. Since you have
+no idea what \code{i}s are, the only thing you can do with this data
+structure is to retrieve the container of \code{i}s, repack it into
+the container defined by the functor \code{k} using a natural
+transformation, and call the function to obtain the \code{a}. For
+instance, if \code{d} is a tree, and \code{k} is a list, you can
 serialize the tree, call the function with the resulting list, and
-obtain an \texttt{a}.
+obtain an \code{a}.
 
 The left Kan extension can be used to calculate the right adjoint of a
 functor. We know that the right adjoint of the product functor is the
@@ -545,11 +545,11 @@ toExp :: (a -> b) -> Exp a b toExp f = Lan (f . fst) (I ()) fromExp :: Exp a b -
 \end{verbatim}
 
 Notice that, as described earlier in the general case, we performed the
-following steps: (1) retrieved the container of \texttt{x} (here, it's
-just a trivial identity container), and the function \texttt{f}, (2)
+following steps: (1) retrieved the container of \code{x} (here, it's
+just a trivial identity container), and the function \code{f}, (2)
 repackaged the container using the natural transformation between the
 identity functor and the pair functor, and (3) called the function
-\texttt{f}.
+\code{f}.
 
 \subsection{Free Functor}\label{free-functor}
 
@@ -564,19 +564,19 @@ The key observation is that a type constructor can be described as a
 functor whose domain is a discrete category. A discrete category has no
 morphisms other than the identity morphisms. Given a category \emph{C},
 we can always construct a discrete category \emph{\textbar{}C\textbar{}}
-by simply discarding all non-identity morphisms. A functor \texttt{F}
+by simply discarding all non-identity morphisms. A functor \code{F}
 from \emph{\textbar{}C\textbar{}} to \emph{C} is then a simple mapping
 of objects, or what we call a type constructor in Haskell. There is also
-a canonical functor \texttt{J} that injects \emph{\textbar{}C\textbar{}}
+a canonical functor \code{J} that injects \emph{\textbar{}C\textbar{}}
 into \emph{C}: it's an identity on objects (and on identity morphisms).
-The left Kan extension of \texttt{F} along \texttt{J}, if it exists, is
+The left Kan extension of \code{F} along \code{J}, if it exists, is
 then a functor for \emph{C} to \emph{C}:
 
 \begin{verbatim}
 LanJ F a = ∫i C(J i, a) × F i
 \end{verbatim}
 
-It's called a free functor based on \texttt{F}.
+It's called a free functor based on \code{F}.
 
 In Haskell, we would write it as:
 
@@ -584,7 +584,7 @@ In Haskell, we would write it as:
 data FreeF f a = forall i. FMap (i -> a) (f i)
 \end{verbatim}
 
-Indeed, for any type constructor \texttt{f}, \texttt{FreeF\ f} is a
+Indeed, for any type constructor \code{f}, \code{FreeF\ f} is a
 functor:
 
 \begin{verbatim}

@@ -25,10 +25,10 @@ Library.
 \end{figure}
 
 \noindent
-Pairs are not strictly commutative: a pair \texttt{(Int,\ Bool)} cannot
-be substituted for a pair \texttt{(Bool,\ Int)}, even though they carry
+Pairs are not strictly commutative: a pair \code{(Int,\ Bool)} cannot
+be substituted for a pair \code{(Bool,\ Int)}, even though they carry
 the same information. They are, however, commutative up to isomorphism
---- the isomorphism being given by the \texttt{swap} function (which is
+--- the isomorphism being given by the \code{swap} function (which is
 its own inverse):
 
 \begin{verbatim}
@@ -44,7 +44,7 @@ You can combine an arbitrary number of types into a product by nesting
 pairs inside pairs, but there is an easier way: nested pairs are
 equivalent to tuples. It's the consequence of the fact that different
 ways of nesting pairs are isomorphic. If you want to combine three types
-in a product, \texttt{a}, \texttt{b}, and \texttt{c}, in this order, you
+in a product, \code{a}, \code{b}, and \code{c}, in this order, you
 can do it in two ways:
 
 \begin{verbatim}
@@ -92,9 +92,9 @@ Except that, in the monoid case, the two ways of composing products were
 equal, whereas here they are only equal ``up to isomorphism.''
 
 If we can live with isomorphisms, and don't insist on strict equality,
-we can go even further and show that the unit type, \texttt{()}, is the
+we can go even further and show that the unit type, \code{()}, is the
 unit of the product the same way 1 is the unit of multiplication.
-Indeed, the pairing of a value of some type \texttt{a} with a unit
+Indeed, the pairing of a value of some type \code{a} with a unit
 doesn't add any information. The type:
 
 \begin{verbatim}
@@ -102,7 +102,7 @@ doesn't add any information. The type:
 \end{verbatim}
 
 \noindent
-is isomorphic to \texttt{a}. Here's the isomorphism:
+is isomorphic to \code{a}. Here's the isomorphism:
 
 \begin{verbatim}
 rho :: (a, ()) -> a
@@ -116,7 +116,7 @@ rho_inv x = (x, ())
 
 \noindent
 These observations can be formalized by saying that \textbf{Set} (the
-category of sets) is a \emph{monoidal category}. It's a category that's
+category of sets) is a \newterm{monoidal category}. It's a category that's
 also a monoid, in the sense that you can multiply objects (here, take
 their cartesian product). I'll talk more about monoidal categories, and
 give the full definition in the future.
@@ -130,13 +130,13 @@ can be defined alternatively as:
 data Pair a b = P a b
 \end{verbatim}
 
-Here, \texttt{Pair\ a\ b} is the name of the type paremeterized by two
-other types, \texttt{a} and \texttt{b}; and \texttt{P} is the name of
+Here, \code{Pair\ a\ b} is the name of the type paremeterized by two
+other types, \code{a} and \code{b}; and \code{P} is the name of
 the data constructor. You define a pair type by passing two types to the
-\texttt{Pair} type constructor. You construct a pair value by passing
-two values of appropriate types to the constructor \texttt{P}. For
-instance, let's define a value \texttt{stmt} as a pair of
-\texttt{String} and \texttt{Bool}:
+\code{Pair} type constructor. You construct a pair value by passing
+two values of appropriate types to the constructor \code{P}. For
+instance, let's define a value \code{stmt} as a pair of
+\code{String} and \code{Bool}:
 
 \begin{verbatim}
 stmt :: Pair String Bool
@@ -145,11 +145,11 @@ stmt = P "This statements is" False
 
 \noindent
 The first line is the type declaration. It uses the type constructor
-\texttt{Pair}, with \texttt{String} and \texttt{Bool} replacing
-\texttt{a} and the \texttt{b} in the generic definition of
-\texttt{Pair}. The second line defines the actual value by passing a
+\code{Pair}, with \code{String} and \code{Bool} replacing
+\code{a} and the \code{b} in the generic definition of
+\code{Pair}. The second line defines the actual value by passing a
 concrete string and a concrete Boolean to the data constructor
-\texttt{P}. Type constructors are used to construct types; data
+\code{P}. Type constructors are used to construct types; data
 constructors, to construct values.
 
 Since the name spaces for type and data constructors are separate in
@@ -161,9 +161,9 @@ data Pair a b = Pair a b
 
 \noindent
 And if you squint hard enough, you may even view the built-in pair type
-as a variation on this kind of declaration, where the name \texttt{Pair}
-is replaced with the binary operator \texttt{(,)}. In fact you can use
-\texttt{(,)} just like any other named constructor and create pairs
+as a variation on this kind of declaration, where the name \code{Pair}
+is replaced with the binary operator \code{(,)}. In fact you can use
+\code{(,)} just like any other named constructor and create pairs
 using prefix notation:
 
 \begin{verbatim}
@@ -171,7 +171,7 @@ stmt = (,) "This statement is" False
 \end{verbatim}
 
 \noindent
-Similarly, you can use \texttt{(,,)} to create triples, and so on.
+Similarly, you can use \code{(,,)} to create triples, and so on.
 
 Instead of using generic pairs or tuples, you can also define specific
 named product types, as in:
@@ -181,7 +181,7 @@ data Stmt = Stmt String Bool
 \end{verbatim}
 
 \noindent
-which is just a product of \texttt{String} and \texttt{Bool}, but it's
+which is just a product of \code{String} and \code{Bool}, but it's
 given its own name and constructor. The advantage of this style of
 declaration is that you may define many types that have the same content
 but different meaning and functionality, and which cannot be substituted
@@ -190,14 +190,14 @@ for each other.
 Programming with tuples and multi-argument constructors can get messy
 and error prone --- keeping track of which component represents what.
 It's often preferable to give names to components. A product type with
-named fields is called a record in Haskell, and a \texttt{struct} in C.
+named fields is called a record in Haskell, and a \code{struct} in C.
 
 \subsection{Records}\label{records}
 
 Let's have a look at a simple example. We want to describe chemical
 elements by combining two strings, name and symbol; and an integer, the
 atomic number; into one data structure. We can use a tuple
-\texttt{(String,\ String,\ Int)} and remember which component represents
+\code{(String,\ String,\ Int)} and remember which component represents
 what. We would extract components by pattern matching, as in this
 function that checks if the symbol of the element is the prefix of its
 name (as in \textbf{He} being the prefix of \textbf{Helium}):
@@ -235,16 +235,16 @@ elemToTuple e = (name e, symbol e, atomicNumber e)
 
 \noindent
 Notice that the names of record fields also serve as functions to access
-these fields. For instance, \texttt{atomicNumber e} retrieves the
-\texttt{atomicNumber} field from \texttt{e}. We use
-\texttt{atomicNumber} as a function of the type:
+these fields. For instance, \code{atomicNumber e} retrieves the
+\code{atomicNumber} field from \code{e}. We use
+\code{atomicNumber} as a function of the type:
 
 \begin{verbatim}
 atomicNumber :: Element -> Int
 \end{verbatim}
 
-With the record syntax for \texttt{Element}, our function
-\texttt{startsWithSymbol} becomes more readable:
+With the record syntax for \code{Element}, our function
+\code{startsWithSymbol} becomes more readable:
 
 \begin{verbatim}
 startsWithSymbol :: Element -> Bool
@@ -253,7 +253,7 @@ startsWithSymbol e = isPrefixOf (symbol e) (name e)
 
 \noindent
 We could even use the Haskell trick of turning the function
-\texttt{isPrefixOf} into an infix operator by surrounding it with
+\code{isPrefixOf} into an infix operator by surrounding it with
 backquotes, and make it read almost like a sentence:
 
 \begin{verbatim}
@@ -275,7 +275,7 @@ data Either a b = Left a | Right b
 \end{verbatim}
 
 \noindent
-And like pairs, \texttt{Either}s are commutative (up to isomorphism),
+And like pairs, \code{Either}s are commutative (up to isomorphism),
 can be nested, and the nesting order is irrelevant (up to isomorphism).
 So we can, for instance, define a sum equivalent of a triple:
 
@@ -289,10 +289,10 @@ and so on.
 It turns out that \textbf{Set} is also a (symmetric) monoidal category
 with respect to coproduct. The role of the binary operation is played by
 the disjoint sum, and the role of the unit element is played by the
-initial object. In terms of types, we have \texttt{Either} as the
-monoidal operator and \texttt{Void}, the uninhabited type, as its
-neutral element. You can think of \texttt{Either} as plus, and
-\texttt{Void} as zero. Indeed, adding \texttt{Void} to a sum type
+initial object. In terms of types, we have \code{Either} as the
+monoidal operator and \code{Void}, the uninhabited type, as its
+neutral element. You can think of \code{Either} as plus, and
+\code{Void} as zero. Indeed, adding \code{Void} to a sum type
 doesn't change its content. For instance:
 
 \begin{verbatim}
@@ -300,19 +300,19 @@ Either a Void
 \end{verbatim}
 
 \noindent
-is isomorphic to \texttt{a}. That's because there is no way to construct
-a \texttt{Right} version of this type --- there isn't a value of type
-\texttt{Void}. The only inhabitants of \texttt{Either\ a\ Void} are
-constructed using the \texttt{Left} constructors and they simply
-encapsulate a value of type \texttt{a}. So, symbolically,
-\texttt{a\ +\ 0\ =\ a}.
+is isomorphic to \code{a}. That's because there is no way to construct
+a \code{Right} version of this type --- there isn't a value of type
+\code{Void}. The only inhabitants of \code{Either\ a\ Void} are
+constructed using the \code{Left} constructors and they simply
+encapsulate a value of type \code{a}. So, symbolically,
+\code{a\ +\ 0\ =\ a}.
 
 Sum types are pretty common in Haskell, but their C++ equivalents,
 unions or variants, are much less common. There are several reasons for
 that.
 
 First of all, the simplest sum types are just enumerations and are
-implemented using \texttt{enum} in C++. The equivalent of the Haskell
+implemented using \code{enum} in C++. The equivalent of the Haskell
 sum type:
 
 \begin{verbatim}
@@ -334,20 +334,20 @@ data Bool = True | False
 \end{verbatim}
 
 \noindent
-is the primitive \texttt{bool} in C++.
+is the primitive \code{bool} in C++.
 
 Simple sum types that encode the presence or absence of a value are
 variously implemented in C++ using special tricks and ``impossible''
 values, like empty strings, negative numbers, null pointers, etc. This
 kind of optionality, if deliberate, is expressed in Haskell using the
-\texttt{Maybe} type:
+\code{Maybe} type:
 
 \begin{verbatim}
 data Maybe a = Nothing | Just a
 \end{verbatim}
 
 \noindent
-The \texttt{Maybe} type is a sum of two types. You can see this if you
+The \code{Maybe} type is a sum of two types. You can see this if you
 separate the two constructors into individual types. The first one would
 look like this:
 
@@ -356,17 +356,17 @@ data NothingType = Nothing
 \end{verbatim}
 
 \noindent
-It's an enumeration with one value called \texttt{Nothing}. In other
+It's an enumeration with one value called \code{Nothing}. In other
 words, it's a singleton, which is equivalent to the unit type
-\texttt{()}. The second part:
+\code{()}. The second part:
 
 \begin{verbatim}
 data JustType a = Just a
 \end{verbatim}
 
 \noindent
-is just an encapsulation of the type \texttt{a}. We could have encoded
-\texttt{Maybe} as:
+is just an encapsulation of the type \code{a}. We could have encoded
+\code{Maybe} as:
 
 \begin{verbatim}
 data Maybe a = Either () a
@@ -398,20 +398,20 @@ public:
 \end{verbatim}
 
 \noindent
-Notice that the two Haskell constructors \texttt{Nil} and \texttt{Cons}
-are translated into two overloaded \texttt{List} constructors with
-analogous arguments (none, for \texttt{Nil}; and a value and a list for
-\texttt{Cons}). The \texttt{List} class doesn't need a tag to
+Notice that the two Haskell constructors \code{Nil} and \code{Cons}
+are translated into two overloaded \code{List} constructors with
+analogous arguments (none, for \code{Nil}; and a value and a list for
+\code{Cons}). The \code{List} class doesn't need a tag to
 distinguish between the two components of the sum type. Instead it uses
-the special \texttt{nullptr} value for \texttt{\_head} to encode
-\texttt{Nil}.
+the special \code{nullptr} value for \code{\_head} to encode
+\code{Nil}.
 
 The main difference, though, between Haskell and C++ types is that
 Haskell data structures are immutable. If you create an object using one
 particular constructor, the object will forever remember which
 constructor was used and what arguments were passed to it. So a
-\texttt{Maybe} object that was created as \texttt{Just "energy"} will
-never turn into \texttt{Nothing}. Similarly, an empty list will forever
+\code{Maybe} object that was created as \code{Just "energy"} will
+never turn into \code{Nothing}. Similarly, an empty list will forever
 be empty, and a list of three elements will always have the same three
 elements.
 
@@ -421,11 +421,11 @@ its construction. This deconstruction is done with pattern matching and
 it reuses constructors as patterns. Constructor arguments, if any, are
 replaced with variables (or other patterns).
 
-The \texttt{List} data type has two constructors, so the deconstruction
-of an arbitrary \texttt{List} uses two patterns corresponding to those
-constructors. One matches the empty \texttt{Nil} list, and the other a
-\texttt{Cons}-constructed list. For instance, here's the definition of a
-simple function on \texttt{List}s:
+The \code{List} data type has two constructors, so the deconstruction
+of an arbitrary \code{List} uses two patterns corresponding to those
+constructors. One matches the empty \code{Nil} list, and the other a
+\code{Cons}-constructed list. For instance, here's the definition of a
+simple function on \code{List}s:
 
 \begin{verbatim}
 maybeTail :: List a -> Maybe (List a)
@@ -434,16 +434,16 @@ maybeTail (Cons _ t) = Just t
 \end{verbatim}
 
 \noindent
-The first part of the definition of \texttt{maybeTail} uses the
-\texttt{Nil} constructor as pattern and returns \texttt{Nothing}. The
-second part uses the \texttt{Cons} constructor as pattern. It replaces
+The first part of the definition of \code{maybeTail} uses the
+\code{Nil} constructor as pattern and returns \code{Nothing}. The
+second part uses the \code{Cons} constructor as pattern. It replaces
 the first constructor argument with a wildcard, because we are not
-interested in it. The second argument to \texttt{Cons} is bound to the
-variable \texttt{t} (I will call these things variables even though,
+interested in it. The second argument to \code{Cons} is bound to the
+variable \code{t} (I will call these things variables even though,
 strictly speaking, they never vary: once bound to an expression, a
-variable never changes). The return value is \texttt{Just\ t}. Now,
-depending on how your \texttt{List} was created, it will match one of
-the clauses. If it was created using \texttt{Cons}, the two arguments
+variable never changes). The return value is \code{Just\ t}. Now,
+depending on how your \code{List} was created, it will match one of
+the clauses. If it was created using \code{Cons}, the two arguments
 that were passed to it will be retrieved (and the first discarded).
 
 Even more elaborate sum types are implemented in C++ using polymorphic
@@ -453,9 +453,9 @@ tag. What in Haskell would be done by pattern matching on the
 constructor, and by calling specialized code, in C++ is accomplished by
 dispatching a call to a virtual function based on the vtable pointer.
 
-You will rarely see \texttt{union} used as a sum type in C++ because of
+You will rarely see \code{union} used as a sum type in C++ because of
 severe limitations on what can go into a union. You can't even put a
-\texttt{std::string} into a union because it has a copy constructor.
+\code{std::string} into a union because it has a copy constructor.
 
 \subsection{Algebra of Types}\label{algebra-of-types}
 
@@ -465,22 +465,22 @@ the two. Once again we are invoking the power of composition.
 
 Let's summarize what we've discovered so far. We've seen two commutative
 monoidal structures underlying the type system: We have the sum types
-with \texttt{Void} as the neutral element, and the product types with
-the unit type, \texttt{()}, as the neutral element. We'd like to think
+with \code{Void} as the neutral element, and the product types with
+the unit type, \code{()}, as the neutral element. We'd like to think
 of them as analogous to addition and multiplication. In this analogy,
-\texttt{Void} would correspond to zero, and unit, \texttt{()}, to one.
+\code{Void} would correspond to zero, and unit, \code{()}, to one.
 
 Let's see how far we can stretch this analogy. For instance, does
 multiplication by zero give zero? In other words, is a product type with
-one component being \texttt{Void} isomorphic to \texttt{Void}? For
-example, is it possible to create a pair of, say \texttt{Int} and
-\texttt{Void}?
+one component being \code{Void} isomorphic to \code{Void}? For
+example, is it possible to create a pair of, say \code{Int} and
+\code{Void}?
 
 To create a pair you need two values. Although you can easily come up
-with an integer, there is no value of type \texttt{Void}. Therefore, for
-any type \texttt{a}, the type \texttt{(a,\ Void)} is uninhabited --- has
-no values --- and is therefore equivalent to \texttt{Void}. In other
-words, \texttt{a*0 = 0}.
+with an integer, there is no value of type \code{Void}. Therefore, for
+any type \code{a}, the type \code{(a,\ Void)} is uninhabited --- has
+no values --- and is therefore equivalent to \code{Void}. In other
+words, \code{a*0 = 0}.
 
 Another thing that links addition and multiplication is the distributive
 property:
@@ -527,10 +527,10 @@ sumToProd e =
 \end{verbatim}
 
 \noindent
-The \texttt{case\ of} statement is used for pattern matching inside
+The \code{case\ of} statement is used for pattern matching inside
 functions. Each pattern is followed by an arrow and the expression to be
 evaluated when the pattern matches. For instance, if you call
-\texttt{prodToSum} with the value:
+\code{prodToSum} with the value:
 
 \begin{verbatim}
 prod1 :: (Int, Either String Float)
@@ -538,11 +538,11 @@ prod1 = (2, Left "Hi!")
 \end{verbatim}
 
 \noindent
-the \texttt{e} in \texttt{case e of} will be equal to
-\texttt{Left "Hi!"}. It will match the pattern \texttt{Left y},
-substituting \texttt{"Hi!"} for \texttt{y}. Since the \texttt{x} has
-already been matched to \texttt{2}, the result of the \texttt{case of}
-clause, and the whole function, will be \texttt{Left (2, "Hi!")}, as
+the \code{e} in \code{case e of} will be equal to
+\code{Left "Hi!"}. It will match the pattern \code{Left y},
+substituting \code{"Hi!"} for \code{y}. Since the \code{x} has
+already been matched to \code{2}, the result of the \code{case of}
+clause, and the whole function, will be \code{Left (2, "Hi!")}, as
 expected.
 
 I'm not going to prove that these two functions are the inverse of each
@@ -551,9 +551,9 @@ re-packing the contents of the two data structures. It's the same data,
 only different format.
 
 Mathematicians have a name for such two intertwined monoids: it's called
-a \emph{semiring}. It's not a full \emph{ring}, because we can't define
+a \newterm{semiring}. It's not a full \newterm{ring}, because we can't define
 subtraction of types. That's why a semiring is sometimes called a
-\emph{rig}, which is a pun on ``ring without an \emph{n}'' (negative).
+\newterm{rig}, which is a pun on ``ring without an \emph{n}'' (negative).
 But barring that, we can get a lot of mileage from translating
 statements about, say, natural numbers, which form a rig, to statements
 about types. Here's a translation table with some entries of interest:
@@ -563,16 +563,16 @@ about types. Here's a translation table with some entries of interest:
 Numbers & Types\tabularnewline
 \midrule
 \endhead
-0 & \texttt{Void}\tabularnewline
-1 & \texttt{()}\tabularnewline
+0 & \code{Void}\tabularnewline
+1 & \code{()}\tabularnewline
 a + b &
-\texttt{Either a b = Left a | Right b}\tabularnewline
-a * b & \texttt{(a, b)} or 
-\texttt{Pair a b = Pair a b}\tabularnewline
+\code{Either a b = Left a | Right b}\tabularnewline
+a * b & \code{(a, b)} or 
+\code{Pair a b = Pair a b}\tabularnewline
 2 = 1 + 1 &
-\texttt{data Bool = True | False}\tabularnewline
+\code{data Bool = True | False}\tabularnewline
 1 + a &
-\texttt{data Maybe = Nothing | Just a}\tabularnewline
+\code{data Maybe = Nothing | Just a}\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -586,8 +586,8 @@ List a = Nil | Cons a (List a)
 \end{verbatim}
 
 \noindent
-If we do our usual substitutions, and also replace \texttt{List\ a} with
-\texttt{x}, we get the equation:
+If we do our usual substitutions, and also replace \code{List\ a} with
+\code{x}, we get the equation:
 
 \begin{verbatim}
 x = 1 + a * x
@@ -596,8 +596,8 @@ x = 1 + a * x
 \noindent
 We can't solve it using traditional algebraic methods because we can't
 subtract or divide types. But we can try a series of substitutions,
-where we keep replacing \texttt{x} on the right hand side with
-\texttt{(1 + a*x)}, and use the distributive property. This leads to
+where we keep replacing \code{x} on the right hand side with
+\code{(1 + a*x)}, and use the distributive property. This leads to
 the following series:
 
 \begin{verbatim}
@@ -610,10 +610,10 @@ x = 1 + a + a*a + a*a*a + a*a*a*a...
 
 \noindent
 We end up with an infinite sum of products (tuples), which can be
-interpreted as: A list is either empty, \texttt{1}; or a singleton,
-\texttt{a}; or a pair, \texttt{a*a}; or a triple, \texttt{a*a*a};
+interpreted as: A list is either empty, \code{1}; or a singleton,
+\code{a}; or a pair, \code{a*a}; or a triple, \code{a*a*a};
 etc\ldots{} Well, that's exactly what a list is --- a string of
-\texttt{a}s!
+\code{a}s!
 
 There's much more to lists than that, and we'll come back to them and
 other recursive data structures after we learn about functors and fixed
@@ -623,11 +623,11 @@ Solving equations with symbolic variables --- that's algebra! It's what
 gives these types their name: algebraic data types.
 
 Finally, I should mention one very important interpretation of the
-algebra of types. Notice that a product of two types \texttt{a} and
-\texttt{b} must contain both a value of type \texttt{a} \emph{and} a
-value of type \texttt{b}, which means both types must be inhabited. A
+algebra of types. Notice that a product of two types \code{a} and
+\code{b} must contain both a value of type \code{a} \emph{and} a
+value of type \code{b}, which means both types must be inhabited. A
 sum of two types, on the other hand, contains either a value of type
-\texttt{a} \emph{or} a value of type \texttt{b}, so it's enough if one
+\code{a} \emph{or} a value of type \code{b}, so it's enough if one
 of them is inhabited. Logical \emph{and} and \emph{or} also form a
 semiring, and it too can be mapped into type theory:
 
@@ -636,11 +636,11 @@ semiring, and it too can be mapped into type theory:
 Logic & Types\tabularnewline
 \midrule
 \endhead
-false & \texttt{Void}\tabularnewline
-true & \texttt{()}\tabularnewline
+false & \code{Void}\tabularnewline
+true & \code{()}\tabularnewline
 a \textbar{}\textbar{} b &
-\texttt{Either a b = Left a | Right b}\tabularnewline
-a \&\& b & \texttt{(a, b)}\tabularnewline
+\code{Either a b = Left a | Right b}\tabularnewline
+a \&\& b & \code{(a, b)}\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -654,8 +654,8 @@ talk about function types.
 \begin{enumerate}
 \tightlist
 \item
-  Show the isomorphism between \texttt{Maybe a} and
-  \texttt{Either () a}.
+  Show the isomorphism between \code{Maybe a} and
+  \code{Either () a}.
 \item
   Here's a sum type defined in Haskell:
 
@@ -664,8 +664,8 @@ data Shape = Circle Float
            | Rect Float Float
 \end{verbatim}
 
-  When we want to define a function like \texttt{area} that acts on a
-  \texttt{Shape}, we do it by pattern matching on the two constructors:
+  When we want to define a function like \code{area} that acts on a
+  \code{Shape}, we do it by pattern matching on the two constructors:
 
 \begin{verbatim}
 area :: Shape -> Float
@@ -673,13 +673,13 @@ area (Circle r) = pi * r * r
 area (Rect d h) = d * h
 \end{verbatim}
 
-  Implement \texttt{Shape} in C++ or Java as an interface and create two
-  classes: \texttt{Circle} and \texttt{Rect}. Implement \texttt{area} as
+  Implement \code{Shape} in C++ or Java as an interface and create two
+  classes: \code{Circle} and \code{Rect}. Implement \code{area} as
   a virtual function.
 \item
   Continuing with the previous example: We can easily add a new function
-  \texttt{circ} that calculates the circumference of a \texttt{Shape}.
-  We can do it without touching the definition of \texttt{Shape}:
+  \code{circ} that calculates the circumference of a \code{Shape}.
+  We can do it without touching the definition of \code{Shape}:
 
 \begin{verbatim}
 circ :: Shape -> Float
@@ -687,16 +687,16 @@ circ (Circle r) = 2.0 * pi * r
 circ (Rect d h) = 2.0 * (d + h)
 \end{verbatim}
 
-  Add \texttt{circ} to your C++ or Java implementation. What parts of
+  Add \code{circ} to your C++ or Java implementation. What parts of
   the original code did you have to touch?
 \item
-  Continuing further: Add a new shape, \texttt{Square}, to
-  \texttt{Shape} and make all the necessary updates. What code did you
+  Continuing further: Add a new shape, \code{Square}, to
+  \code{Shape} and make all the necessary updates. What code did you
   have to touch in Haskell vs. C++ or Java? (Even if you're not a
   Haskell programmer, the modifications should be pretty obvious.)
 \item
-  Show that \texttt{a\ +\ a\ =\ 2\ *\ a} holds for types (up to
-  isomorphism). Remember that \texttt{2} corresponds to \texttt{Bool},
+  Show that \code{a\ +\ a\ =\ 2\ *\ a} holds for types (up to
+  isomorphism). Remember that \code{2} corresponds to \code{Bool},
   according to our translation table.
 \end{enumerate}
 

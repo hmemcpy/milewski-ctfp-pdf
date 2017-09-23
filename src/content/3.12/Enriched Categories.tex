@@ -6,7 +6,7 @@ Extensions}. See the
 of Contents}.
 \end{quote}
 
-A category is \emph{small} if its objects form a set. But we know that
+A category is \newterm{small} if its objects form a set. But we know that
 there are things larger than sets. Famously, a set of all sets cannot be
 formed within the standard set theory (the Zermelo-Fraenkel theory,
 optionally augmented with the Axiom of Choice). So a category of all
@@ -14,15 +14,15 @@ sets must be large. There are mathematical tricks like Grothendieck
 universes that can be used to define collections that go beyond sets.
 These tricks let us talk about large categories.
 
-A category is \emph{locally small} if morphisms between any two objects
+A category is \newterm{locally small} if morphisms between any two objects
 form a set. If they don't form a set, we have to rethink a few
 definitions. In particular, what does it mean to compose morphisms if we
 can't even pick them from a set? The solution is to bootstrap ourselves
 by replacing hom-sets, which are objects in \textbf{Set}, with
-\emph{objects} from some other category \emph{V}. The difference is
+\newterm{objects} from some other category \emph{V}. The difference is
 that, in general, objects don't have elements, so we are no longer
 allowed to talk about individual morphisms. We have to define all
-properties of an \emph{enriched} category in terms of operations that
+properties of an \newterm{enriched} category in terms of operations that
 can be performed on hom-objects as a whole. In order to do that, the
 category that provides hom-objects must have additional structure --- it
 must be a monoidal category. If we call this monoidal category \emph{V},
@@ -52,8 +52,8 @@ keep reformulating them in a point-free manner --- that is, without
 naming elements of sets.
 
 Let's start with the definition of composition. Normally, it takes a
-pair of morphisms, one from \texttt{C(b,\ c)} and one from
-\texttt{C(a,\ b)} and maps it to a morphism from \texttt{C(a,\ c)}. In
+pair of morphisms, one from \code{C(b,\ c)} and one from
+\code{C(a,\ b)} and maps it to a morphism from \code{C(a,\ c)}. In
 other words it's a mapping:
 
 \begin{verbatim}
@@ -75,7 +75,7 @@ ja :: 1 -> C(a, a)
 \end{verbatim}
 
 Again, we could replace the singleton set with the terminal object, but
-we can go even further by replacing it with the unit \texttt{i} of the
+we can go even further by replacing it with the unit \code{i} of the
 tensor product.
 
 As you can see, objects taken from some monoidal category \emph{V} are
@@ -101,7 +101,7 @@ associator. Its components are:
 
 It must be natural in all three arguments.
 
-A monoidal category must also define a special unit object \texttt{i}
+A monoidal category must also define a special unit object \code{i}
 that serves as the unit of the tensor product; again, up to natural
 isomorphism. The two isomorphisms are called, respectively, the left and
 the right unitor, and their components are:
@@ -116,7 +116,7 @@ The associator and the unitors must satisfy coherence conditions:
 
 \includegraphics[width=4.23958in]{images/idcoherence.jpg}
 
-A monoidal category is called \emph{symmetric} if there is a natural
+A monoidal category is called \newterm{symmetric} if there is a natural
 isomorphism with components:
 
 \begin{verbatim}
@@ -145,7 +145,7 @@ V(a ⊗ b, c) ~ V(a, [b, c])
 
 Following
 \href{http://www.tac.mta.ca/tac/reprints/articles/10/tr10.pdf}{G. M.
-Kelly}, I'm using the notation \texttt{{[}b,\ c{]}} for the internal
+Kelly}, I'm using the notation \code{{[}b,\ c{]}} for the internal
 hom. The counit of this adjunction is the natural transformation whose
 components are called evaluation morphisms:
 
@@ -154,7 +154,7 @@ components are called evaluation morphisms:
 \end{verbatim}
 
 Notice that, if the tensor product is not symmetric, we may define
-another internal hom, denoted by \texttt{{[}{[}a,\ c{]}{]}}, using the
+another internal hom, denoted by \code{{[}{[}a,\ c{]}{]}}, using the
 following adjunction:
 
 \begin{verbatim}
@@ -169,8 +169,8 @@ product. That's the category we used to define monads.
 \subsection{Enriched Category}\label{enriched-category}
 
 A category \emph{C} enriched over a monoidal category \emph{V} replaces
-hom-sets with hom-objects. To every pair of objects \texttt{a} and
-\texttt{b} in \emph{C} we associate an object \texttt{C(a,\ b)} in
+hom-sets with hom-objects. To every pair of objects \code{a} and
+\code{b} in \emph{C} we associate an object \code{C(a,\ b)} in
 \emph{V}. We use the same notation for hom-objects as we used for
 hom-sets, with the understanding that they don't contain morphisms. On
 the other hand, \emph{V} is a regular (non-enriched) category with
@@ -192,7 +192,7 @@ Similarly, identity morphisms are replaced by a family of morphisms in
 ja :: i -> C(a, a)
 \end{verbatim}
 
-where \texttt{i} is the tensor unit in \emph{V}.
+where \code{i} is the tensor unit in \emph{V}.
 
 \includegraphics[width=2.64583in]{images/id.jpg}
 
@@ -211,37 +211,37 @@ Unit laws are likewise expressed in terms of unitors:
 
 A preorder is defined as a thin category, one in which every hom-set is
 either empty or a singleton. We interpret a non-empty set
-\texttt{C(a,\ b)} as the proof that \texttt{a} is less than or equal to
-\texttt{b}. Such a category can be interpreted as enriched over a very
+\code{C(a,\ b)} as the proof that \code{a} is less than or equal to
+\code{b}. Such a category can be interpreted as enriched over a very
 simple monoidal category that contains just two objects, 0 and 1
 (sometimes called False and True). Besides the mandatory identity
 morphisms, this category has a single morphism going from 0 to 1, let's
-call it \texttt{0-\textgreater{}1}. A simple monoidal structure can be
+call it \code{0-\textgreater{}1}. A simple monoidal structure can be
 established in it, with the tensor product modeling the simple
-arithmetic of 0 and 1 (i.e., the only non-zero product is \texttt{1⊗1}).
+arithmetic of 0 and 1 (i.e., the only non-zero product is \code{1⊗1}).
 The identity object in this category is 1. This is a strict monoidal
 category, that is, the associator and the unitors are identity
 morphisms.
 
 Since in a preorder the-hom set is either empty or a singleton, we can
 easily replace it with a hom-object from our tiny category. The enriched
-preorder \emph{C} has a hom-object \texttt{C(a,\ b)} for any pair of
-objects \texttt{a} and \texttt{b}. If \texttt{a} is less than or equal
-to \texttt{b}, this object is 1; otherwise it's 0.
+preorder \emph{C} has a hom-object \code{C(a,\ b)} for any pair of
+objects \code{a} and \code{b}. If \code{a} is less than or equal
+to \code{b}, this object is 1; otherwise it's 0.
 
 Let's have a look at composition. The tensor product of any two objects
 is 0, unless both of them are 1, in which case it's 1. If it's 0, then
 we have two options for the composition morphism: it could be either
-\texttt{id0} or \texttt{0-\textgreater{}1}. But if it's 1, then the only
-option is \texttt{id1}. Translating this back to relations, this says
-that if \texttt{a\ \textless{}=\ b} and \texttt{b\ \textless{}=\ c} then
-\texttt{a\ \textless{}=\ c}, which is exactly the transitivity law we
+\code{id0} or \code{0-\textgreater{}1}. But if it's 1, then the only
+option is \code{id1}. Translating this back to relations, this says
+that if \code{a\ \textless{}=\ b} and \code{b\ \textless{}=\ c} then
+\code{a\ \textless{}=\ c}, which is exactly the transitivity law we
 need.
 
-What about the identity? It's a morphism from 1 to \texttt{C(a,\ a)}.
+What about the identity? It's a morphism from 1 to \code{C(a,\ a)}.
 There is only one morphism going from 1, and that's the identity
-\texttt{id1}, so \texttt{C(a,\ a)} must be 1. It means that
-\texttt{a\ \textless{}=\ a}, which is the reflexivity law for a
+\code{id1}, so \code{C(a,\ a)} must be 1. It means that
+\code{a\ \textless{}=\ a}, which is the reflexivity law for a
 preorder. So both transitivity and reflexivity are automatically
 enforced, if we implement a preorder as an enriched category.
 
@@ -270,38 +270,38 @@ distances are not morphisms but hom-objects. How can a hom-object be a
 number? Only if we can construct a monoidal category \emph{V} in which
 these numbers are objects. Non-negative real numbers (plus infinity)
 form a total order, so they can be treated as a thin category. A
-morphism between two such numbers \texttt{x} and \texttt{y} exists if
-and only if \texttt{x\ \textgreater{}=\ y} (note: this is the opposite
+morphism between two such numbers \code{x} and \code{y} exists if
+and only if \code{x\ \textgreater{}=\ y} (note: this is the opposite
 direction to the one traditionally used in the definition of a
 preorder). The monoidal structure is given by addition, with zero
 serving as the unit object. In other words, the tensor product of two
 numbers is their sum.
 
 A metric space is a category enriched over such monoidal category. A
-hom-object \texttt{C(a,\ b)} from object \texttt{a} to \texttt{b} is a
+hom-object \code{C(a,\ b)} from object \code{a} to \code{b} is a
 non-negative (possibly infinite) number that we will call the distance
-from \texttt{a} to \texttt{b}. Let's see what we get for identity and
+from \code{a} to \code{b}. Let's see what we get for identity and
 composition in such a category.
 
 By our definitions, a morphism from the tensorial unit, which is the
-number zero, to a hom-object \texttt{C(a,\ a)} is the relation:
+number zero, to a hom-object \code{C(a,\ a)} is the relation:
 
 \begin{verbatim}
 0 >= C(a, a)
 \end{verbatim}
 
-Since \texttt{C(a,\ a)} is a non-negative number, this condition tells
-us that the distance from \texttt{a} to \texttt{a} is always zero.
+Since \code{C(a,\ a)} is a non-negative number, this condition tells
+us that the distance from \code{a} to \code{a} is always zero.
 Check!
 
 Now let's talk about composition. We start with the tensor product of
-two abutting hom-objects, \texttt{C(b,\ c)⊗C(a,\ b)}. We have defined
+two abutting hom-objects, \code{C(b,\ c)⊗C(a,\ b)}. We have defined
 the tensor product as the sum of the two distances. Composition is a
-morphism in \emph{V} from this product to \texttt{C(a,\ c)}. A morphism
+morphism in \emph{V} from this product to \code{C(a,\ c)}. A morphism
 in \emph{V} is defined as the greater-or-equal relation. In other words,
-the sum of distances from \texttt{a} to \texttt{b} and from \texttt{b}
-to \texttt{c} is greater than or equal to the distance from \texttt{a}
-to \texttt{c}. But that's just the standard triangle inequality. Check!
+the sum of distances from \code{a} to \code{b} and from \code{b}
+to \code{c} is greater than or equal to the distance from \code{a}
+to \code{c}. But that's just the standard triangle inequality. Check!
 
 By re-casting the metric space in terms of an enriched category, we get
 the triangle inequality and the zero self-distance ``for free.''
@@ -317,7 +317,7 @@ categories when they are enriched over the same monoidal category
 \emph{V}. We can then use morphisms in \emph{V} to map the hom-objects
 between two enriched categories.
 
-An \emph{enriched functor} \texttt{F} between two categories \emph{C}
+An \newterm{enriched functor} \code{F} between two categories \emph{C}
 and \emph{D}, besides mapping objects to objects, also assigns, to every
 pair of objects in \emph{C}, a morphism in \emph{V}:
 
@@ -363,24 +363,24 @@ V(([b, c] ⊗ [a, b]) ⊗ a, c)
 \end{verbatim}
 
 I just used the adjunction that defined the internal hom
-\texttt{{[}a,\ c{]}}. If we can build a morphism in this new set, the
+\code{{[}a,\ c{]}}. If we can build a morphism in this new set, the
 adjunction will point us at the morphism in the original set, which we
 can then use as composition. We construct this morphism by composing
 several morphisms that are at our disposal. To begin with, we can use
-the associator \texttt{α{[}b,\ c{]}\ {[}a,\ b{]}\ a} to reassociate the
+the associator \code{α{[}b,\ c{]}\ {[}a,\ b{]}\ a} to reassociate the
 expression on the left:
 
 \begin{verbatim}
 ([b, c] ⊗ [a, b]) ⊗ a -> [b, c] ⊗ ([a, b] ⊗ a)
 \end{verbatim}
 
-We can follow it with the co-unit of the adjunction \texttt{εa\ b}:
+We can follow it with the co-unit of the adjunction \code{εa\ b}:
 
 \begin{verbatim}
 [b, c] ⊗ ([a, b] ⊗ a) -> [b, c] ⊗ b
 \end{verbatim}
 
-And use the counit \texttt{εb\ c} again to get to \texttt{c}. We have
+And use the counit \code{εb\ c} again to get to \code{c}. We have
 thus constructed a morphism:
 
 \begin{verbatim}
@@ -413,8 +413,8 @@ which is isomorphic, through adjunction, to:
  V(i ⊗ a, a)
 \end{verbatim}
 
-We know that this hom-set contains the left identity \texttt{λa}. We can
-define \texttt{ja} as its image under the adjunction.
+We know that this hom-set contains the left identity \code{λa}. We can
+define \code{ja} as its image under the adjunction.
 
 A practical example of self-enrichment is the category \textbf{Set} that
 serves as the prototype for types in programming languages. We've seen
@@ -437,7 +437,7 @@ morphisms, 1-cells; and morphisms between morphisms, 2-cells. In
 2-cells are natural transformations.
 
 But notice that functors between two categories form a category too; so,
-in \textbf{Cat}, we really have a \emph{hom-category} rather than a
+in \textbf{Cat}, we really have a \newterm{hom-category} rather than a
 hom-set. It turns out that, just like \textbf{Set} can be treated as a
 category enriched over \textbf{Set}, \textbf{Cat} can be treated as a
 category enriched over \textbf{Cat}. Even more generally, just like

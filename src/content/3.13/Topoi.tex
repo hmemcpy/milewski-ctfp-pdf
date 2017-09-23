@@ -13,9 +13,9 @@ functional reactive programming with its continuous time, the extention
 of Haskell's type system with dependent types, or the exploration on
 homotopy type theory in programming.
 
-So far I've been casually identifying types with \emph{sets} of values.
+So far I've been casually identifying types with \newterm{sets} of values.
 This is not strictly correct, because such approach doesn't take into
-account the fact that, in programming, we \emph{compute} values, and the
+account the fact that, in programming, we \newterm{compute} values, and the
 computation is a process that takes time and, in extreme cases, might
 not terminate. Divergent computations are part of every Turing-complete
 language.
@@ -34,15 +34,15 @@ you guessed it, through set theory. In particular, the notion of a
 subset is central to topology. Not surprisingly, category theorists
 generalized this idea to categories other than \textbf{Set}. The type of
 category that has just the right properties to serve as a replacement
-for set theory is called a \emph{topos} (plural: topoi), and it
+for set theory is called a \newterm{topos} (plural: topoi), and it
 provides, among other things, a generalized notion of a subset.
 
 \subsection{Subobject Classifier}\label{subobject-classifier}
 
 Let's start by trying to express the idea of a subset using functions
-rather than elements. Any function \texttt{f} from some set \texttt{a}
-to \texttt{b} defines a subset of \texttt{b}--that of the image of
-\texttt{a} under \texttt{f}. But there are many functions that define
+rather than elements. Any function \code{f} from some set \code{a}
+to \code{b} defines a subset of \code{b}--that of the image of
+\code{a} under \code{f}. But there are many functions that define
 the same subset. We need to be more specific. To begin with, we might
 focus on functions that are injective --- ones that don't smush multiple
 elements into one. Injective functions ``inject'' one set into another.
@@ -50,10 +50,10 @@ For finite sets, you may visualize injective functions as parallel
 arrows connecting elements of one set to elements of another. Of course,
 the first set cannot be larger than the second set, or the arrows would
 necessarily converge. There is still some ambiguity left: there may be
-another set \texttt{a\&apos;} and another injective function
-\texttt{f\&apos;} from that set to \texttt{b} that picks the same
+another set \code{a\&apos;} and another injective function
+\code{f\&apos;} from that set to \code{b} that picks the same
 subset. But you can easily convince yourself that such a set would have
-to be isomorphic to \texttt{a}. We can use this fact to define a subset
+to be isomorphic to \code{a}. We can use this fact to define a subset
 as a family of injective functions that are related by isomorphisms of
 their domains. More precisely, we say that two injective functions:
 
@@ -73,14 +73,14 @@ such that:
 f = f&apos; . h
 \end{verbatim}
 
-Such a family of equivalent injections defines a subset of \texttt{b}.
+Such a family of equivalent injections defines a subset of \code{b}.
 
 \includegraphics[width=2.29167in]{images/subsetinjection.jpg}
 
 This definition can be lifted to an arbitrary category if we replace
 injective functions with monomorphism. Just to remind you, a
-monomorphism \texttt{m} from \texttt{a} to \texttt{b} is defined by its
-universal property. For any object \texttt{c} and any pair of morphisms:
+monomorphism \code{m} from \code{a} to \code{b} is defined by its
+universal property. For any object \code{c} and any pair of morphisms:
 
 \begin{verbatim}
 g :: c -> a g&apos;:: c -> a
@@ -92,30 +92,30 @@ such that:
 m . g = m . g&apos;
 \end{verbatim}
 
-it must be that \texttt{g\ =\ g\&apos;}.
+it must be that \code{g\ =\ g\&apos;}.
 
 \includegraphics[width=3.12500in]{images/monomorphism.jpg}
 
 On sets, this definition is easier to understand if we consider what it
-would mean for a function \texttt{m} \emph{not} to be a monomorphism. It
-would map two different elements of \texttt{a} to a single element of
-\texttt{b}. We could then find two functions \texttt{g} and
-\texttt{g\&apos;} that differ only at those two elements. The
-postcomposition with \texttt{m} would then mask this difference.
+would mean for a function \code{m} \emph{not} to be a monomorphism. It
+would map two different elements of \code{a} to a single element of
+\code{b}. We could then find two functions \code{g} and
+\code{g\&apos;} that differ only at those two elements. The
+postcomposition with \code{m} would then mask this difference.
 
 \includegraphics[width=3.12500in]{images/notmono.jpg}
 
 There is another way of defining a subset: using a single function
-called the characteristic function. It's a function \texttt{χ} from the
-set \texttt{b} to a two-element set \texttt{Ω}. One element of this set
+called the characteristic function. It's a function \code{χ} from the
+set \code{b} to a two-element set \code{Ω}. One element of this set
 is designated as ``true'' and the other as ``false.'' This function
-assigns ``true'' to those elements of \texttt{b} that are members of the
+assigns ``true'' to those elements of \code{b} that are members of the
 subset, and ``false'' to those that aren't.
 
 It remains to specify what it means to designate an element of
-\texttt{Ω} as ``true.'' We can use the standard trick: use a function
-from a singleton set to \texttt{Ω}. We'll call this function
-\texttt{true}:
+\code{Ω} as ``true.'' We can use the standard trick: use a function
+from a singleton set to \code{Ω}. We'll call this function
+\code{true}:
 
 \begin{verbatim}
 true :: 1 -> Ω
@@ -125,20 +125,20 @@ true :: 1 -> Ω
 
 These definitions can be combined in such a way that they not only
 define what a subobject is, but also define the special object
-\texttt{Ω} without talking about elements. The idea is that we want the
-morphism \texttt{true} to represent a ``generic'' subobject. In
+\code{Ω} without talking about elements. The idea is that we want the
+morphism \code{true} to represent a ``generic'' subobject. In
 \textbf{Set}, it picks a single-element subset from a two-element set
-\texttt{Ω}. This is as generic as it gets. It's clearly a proper subset,
-because \texttt{Ω} has one more element that's \emph{not} in that
+\code{Ω}. This is as generic as it gets. It's clearly a proper subset,
+because \code{Ω} has one more element that's \emph{not} in that
 subset.
 
-In a more general setting, we define \texttt{true} to be a monomorphism
-from the terminal object to the \emph{classifying object} \texttt{Ω}.
+In a more general setting, we define \code{true} to be a monomorphism
+from the terminal object to the \emph{classifying object} \code{Ω}.
 But we have to define the classifying object. We need a universal
 property that links this object to the characteristic function. It turns
-out that, in \textbf{Set}, the pullback of \texttt{true} along the
-characteristic function \texttt{χ} defines both the subset \texttt{a}
-and the injective function that embeds it in \texttt{b}. Here's the
+out that, in \textbf{Set}, the pullback of \code{true} along the
+characteristic function \code{χ} defines both the subset \code{a}
+and the injective function that embeds it in \code{b}. Here's the
 pullback diagram:
 
 \includegraphics[width=2.41667in]{images/pullback.jpg}
@@ -149,57 +149,57 @@ Let's analyze this diagram. The pullback equation is:
 true . unit = χ . f
 \end{verbatim}
 
-The function \texttt{true\ .\ unit} maps every element of \texttt{a} to
-``true.'' Therefore \texttt{f} must map all elements of \texttt{a} to
-those elements of \texttt{b} for which \texttt{χ} is ``true.'' These
+The function \code{true\ .\ unit} maps every element of \code{a} to
+``true.'' Therefore \code{f} must map all elements of \code{a} to
+those elements of \code{b} for which \code{χ} is ``true.'' These
 are, by definition, the elements of the subset that is specified by the
-characteristic function \texttt{χ}. So the image of \texttt{f} is indeed
+characteristic function \code{χ}. So the image of \code{f} is indeed
 the subset in question. The universality of the pullback guarantees that
-\texttt{f} is injective.
+\code{f} is injective.
 
 This pullback diagram can be used to define the classifying object in
 categories other than \textbf{Set}. Such a category must have a terminal
-object, which will let us define the monomorphism \texttt{true}. It must
+object, which will let us define the monomorphism \code{true}. It must
 also have pullbacks --- the actual requirement is that it must have all
 finite limits (a pullback is an example of a finite limit). Under those
-assumptions, we define the classifying object \texttt{Ω} by the property
-that, for every monomorphism \texttt{f} there is a unique morphism
-\texttt{χ} that completes the pullback diagram.
+assumptions, we define the classifying object \code{Ω} by the property
+that, for every monomorphism \code{f} there is a unique morphism
+\code{χ} that completes the pullback diagram.
 
 Let's analyze the last statement. When we construct a pullback, we are
-given three objects \texttt{Ω}, \texttt{b} and \texttt{1}; and two
-morphisms, \texttt{true} and \texttt{χ}. The existence of a pullback
-means that we can find the best such object \texttt{a}, equipped with
-two morphisms \texttt{f} and \texttt{unit} (the latter is uniquely
+given three objects \code{Ω}, \code{b} and \code{1}; and two
+morphisms, \code{true} and \code{χ}. The existence of a pullback
+means that we can find the best such object \code{a}, equipped with
+two morphisms \code{f} and \code{unit} (the latter is uniquely
 determined by the definition of the terminal object), that make the
 diagram commute.
 
 Here we are solving a different system of equations. We are solving for
-\texttt{Ω} and \texttt{true} while varying both \texttt{a} \emph{and}
-\texttt{b}. For a given \texttt{a} and \texttt{b} there may or may not
-be a monomorphism \texttt{f::a-\textgreater{}b}. But if there is one, we
-want it to be a pullback of some \texttt{χ}. Moreover, we want this
-\texttt{χ} to be uniquely determined by \texttt{f}.
+\code{Ω} and \code{true} while varying both \code{a} \emph{and}
+\code{b}. For a given \code{a} and \code{b} there may or may not
+be a monomorphism \code{f::a-\textgreater{}b}. But if there is one, we
+want it to be a pullback of some \code{χ}. Moreover, we want this
+\code{χ} to be uniquely determined by \code{f}.
 
 We can't say that there is a one-to-one correspondence between
-monomorphisms \texttt{f} and characteristic functions \texttt{χ},
+monomorphisms \code{f} and characteristic functions \code{χ},
 because a pullback is only unique up to isomorphism. But remember our
 earlier definition of a subset as a family of equivalent injections. We
-can generalize it by defining a subobject of \texttt{b} as a family of
-equivalent monomorphisms to \texttt{b}. This family of monomorphisms is
+can generalize it by defining a subobject of \code{b} as a family of
+equivalent monomorphisms to \code{b}. This family of monomorphisms is
 in one-to-one corrpespondence with the family of equivalent pullbacks of
 our diagram.
 
-We can thus define a set of subobjects of \texttt{b}, \texttt{Sub(b)},
+We can thus define a set of subobjects of \code{b}, \code{Sub(b)},
 as a family of monomorphisms, and see that it is isomorphic to the set
-of morphisms from \texttt{b} to \texttt{Ω}:
+of morphisms from \code{b} to \code{Ω}:
 
 \begin{verbatim}
 Sub(b) ≅ C(b, Ω)
 \end{verbatim}
 
 This happens to be a natural isomorphism of two functors. In other
-words, \texttt{Sub(-)} is a representable (contravariant) functor whose
+words, \code{Sub(-)} is a representable (contravariant) functor whose
 representation is the object Ω.
 
 \subsection{Topos}\label{topos}
@@ -214,7 +214,7 @@ A topos is a category that:
 \item
   Has limits for all finite diagrams,
 \item
-  Has a subobject classifier \texttt{Ω}.
+  Has a subobject classifier \code{Ω}.
 \end{enumerate}
 
 This set of properties makes a topos a shoe-in for \textbf{Set} in most
@@ -230,11 +230,11 @@ this is true are called Boolean.
 \subsection{Topoi and Logic}\label{topoi-and-logic}
 
 In set theory, a characteristic function may be interpreted as defining
-a property of the elements of a set --- a \emph{predicate} that is true
-for some elements and false for others. The predicate \texttt{isEven}
+a property of the elements of a set --- a \newterm{predicate} that is true
+for some elements and false for others. The predicate \code{isEven}
 selects a subset of even numbers from the set of natural numbers. In a
 topos, we can generalize the idea of a predicate to be a morphism from
-object \texttt{a} to \texttt{Ω}. This is why \texttt{Ω} is sometimes
+object \code{a} to \code{Ω}. This is why \code{Ω} is sometimes
 called the truth object.
 
 Predicates are the building blocks of logic. A topos contains all the
@@ -267,6 +267,6 @@ Theories}.
 \begin{enumerate}
 \tightlist
 \item
-  Show that the function \texttt{f} that is the pullback of
-  \texttt{true} along the characteristic function must be injective.
+  Show that the function \code{f} that is the pullback of
+  \code{true} along the characteristic function must be injective.
 \end{enumerate}

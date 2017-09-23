@@ -16,7 +16,7 @@ morphisms between any two objects in a category form a set. We even
 called it a hom-set. To be fair, there is a branch of category theory
 where morphisms don't form sets. Instead they are objects in another
 category. Those categories that use hom-objects rather than hom-sets,
-are called \emph{enriched} categories. In what follows, though, we'll
+are called \newterm{enriched} categories. In what follows, though, we'll
 stick to categories with good old-fashioned hom-sets.
 
 A set is the closest thing to a featureless blob you can get outside of
@@ -57,11 +57,11 @@ Every category comes equipped with a canonical family of mappings to
 \textbf{Set}. Those mappings are in fact functors, so they preserve the
 structure of the category. Let's build one such mapping.
 
-Let's fix one object \texttt{a} in \emph{C} and pick another object
-\texttt{x} also in \emph{C}. The hom-set \texttt{C(a,\ x)} is a set, an
-object in \textbf{Set}. When we vary \texttt{x}, keeping \texttt{a}
-fixed, \texttt{C(a,\ x)} will also vary in \textbf{Set}. Thus we have a
-mapping from \texttt{x} to \textbf{Set}.\\
+Let's fix one object \code{a} in \emph{C} and pick another object
+\code{x} also in \emph{C}. The hom-set \code{C(a,\ x)} is a set, an
+object in \textbf{Set}. When we vary \code{x}, keeping \code{a}
+fixed, \code{C(a,\ x)} will also vary in \textbf{Set}. Thus we have a
+mapping from \code{x} to \textbf{Set}.\\
 \includegraphics[width=3.12500in]{images/hom-set.jpg}
 
 If we want to stress the fact that we are considering the hom-set as a
@@ -74,11 +74,11 @@ C(a, -)
 with the dash serving as the placeholder for the argument.
 
 This mapping of objects is easily extended to the mapping of morphisms.
-Let's take a morphism \texttt{f} in \emph{C} between two arbitrary
-objects \texttt{x} and \texttt{y}. The object \texttt{x} is mapped to
-the set \texttt{C(a,\ x)}, and the object \texttt{y} is mapped to
-\texttt{C(a,\ y)}, under the mapping we have just defined. If this
-mapping is to be a functor, \texttt{f} must be mapped to a function
+Let's take a morphism \code{f} in \emph{C} between two arbitrary
+objects \code{x} and \code{y}. The object \code{x} is mapped to
+the set \code{C(a,\ x)}, and the object \code{y} is mapped to
+\code{C(a,\ y)}, under the mapping we have just defined. If this
+mapping is to be a functor, \code{f} must be mapped to a function
 between the two sets:
 
 \begin{verbatim}
@@ -87,28 +87,28 @@ C(a, x) -> C(a, y)
 
 Let's define this function point-wise, that is for each argument
 separately. For the argument we should pick an arbitrary element of
-\texttt{C(a,\ x)} --- let's call it \texttt{h}. Morphisms are
+\code{C(a,\ x)} --- let's call it \code{h}. Morphisms are
 composable, if they match end to end. It so happens that the target of
-\texttt{h} matches the source of \texttt{f}, so their composition:
+\code{h} matches the source of \code{f}, so their composition:
 
 \begin{verbatim}
 f ∘ h :: a -> y
 \end{verbatim}
 
-is a morphism going from \texttt{a} to \texttt{y}. It is therefore a
-member of \texttt{C(a,\ y)}.
+is a morphism going from \code{a} to \code{y}. It is therefore a
+member of \code{C(a,\ y)}.
 
 \includegraphics[width=3.12500in]{images/hom-functor.jpg}
 
-We have just found our function from \texttt{C(a,\ x)} to
-\texttt{C(a,\ y)}, which can serve as the image of \texttt{f}. If there
+We have just found our function from \code{C(a,\ x)} to
+\code{C(a,\ y)}, which can serve as the image of \code{f}. If there
 is no danger of confusion, we'll write this lifted function as:
 
 \begin{verbatim}
 C(a, f)
 \end{verbatim}
 
-and its action on a morphism \texttt{h} as:
+and its action on a morphism \code{h} as:
 
 \begin{verbatim}
 C(a, f) h = f ∘ h
@@ -116,7 +116,7 @@ C(a, f) h = f ∘ h
 
 Since this construction works in any category, it must also work in the
 category of Haskell types. In Haskell, the hom-functor is better known
-as the \texttt{Reader} functor:
+as the \code{Reader} functor:
 
 \begin{verbatim}
 type Reader a x = a -> x
@@ -136,11 +136,11 @@ C(-, a)
 
 is also a functor. It is, but instead of being covariant, it's
 contravariant. That's because the same kind of matching of morphisms end
-to end results in postcomposition by \texttt{f}; rather than
-precomposition, as was the case with \texttt{C(a,\ -)}.
+to end results in postcomposition by \code{f}; rather than
+precomposition, as was the case with \code{C(a,\ -)}.
 
 We have already seen this contravariant functor in Haskell. We called it
-\texttt{Op}:
+\code{Op}:
 
 \begin{verbatim}
 type Op a x = x -> a
@@ -151,7 +151,7 @@ instance Contravariant (Op a) where contramap f h = h . f
 \end{verbatim}
 
 Finally, if we let both objects vary, we get a profunctor
-\texttt{C(-,\ =)}, which is contravariant in the first argument and
+\code{C(-,\ =)}, which is contravariant in the first argument and
 covariant in the second (to underline the fact that the two arguments
 may vary independently, we use a double dash as the second placeholder).
 We have seen this profunctor before, when we talked about functoriality:
@@ -171,20 +171,20 @@ C(-, =) :: Cop × C -> Set
 
 \subsection{Representable Functors}\label{representable-functors}
 
-We've seen that, for every choice of an object \texttt{a} in \emph{C},
+We've seen that, for every choice of an object \code{a} in \emph{C},
 we get a functor from \emph{C} to \textbf{Set}. This kind of
 structure-preserving mapping to \textbf{Set} is often called a
-\emph{representation}. We are representing objects and morphisms of
+\newterm{representation}. We are representing objects and morphisms of
 \emph{C} as sets and functions in \textbf{Set}.
 
-The functor \texttt{C(a,\ -)} itself is sometimes called representable.
-More generally, any functor \texttt{F} that is naturally isomorphic to
-the hom-functor, for some choice of \texttt{a}, is called
-\emph{representable}. Such functor must necessarily be
-\textbf{Set}-valued, since \texttt{C(a,\ -)} is.
+The functor \code{C(a,\ -)} itself is sometimes called representable.
+More generally, any functor \code{F} that is naturally isomorphic to
+the hom-functor, for some choice of \code{a}, is called
+\newterm{representable}. Such functor must necessarily be
+\textbf{Set}-valued, since \code{C(a,\ -)} is.
 
 I said before that we often think of isomorphic sets as identical. More
-generally, we think of isomorphic \emph{objects} in a category as
+generally, we think of isomorphic \newterm{objects} in a category as
 identical. That's because objects have no structure other than their
 relation to other objects (and themselves) through morphisms.
 
@@ -205,13 +205,13 @@ as identical, if there is an invertible natural transformation between
 them.
 
 Let's analyze the definition of the representable functor from this
-perspective. For \texttt{F} to be representable we require that: There
-be an object \texttt{a} in \emph{C}; one natural transformation α from
-\texttt{C(a,\ -)} to \texttt{F}; another natural transformation, β, in
+perspective. For \code{F} to be representable we require that: There
+be an object \code{a} in \emph{C}; one natural transformation α from
+\code{C(a,\ -)} to \code{F}; another natural transformation, β, in
 the opposite direction; and that their composition be the identity
 natural transformation.
 
-Let's look at the component of α at some object \texttt{x}. It's a
+Let's look at the component of α at some object \code{x}. It's a
 function in \textbf{Set}:
 
 \begin{verbatim}
@@ -219,7 +219,7 @@ function in \textbf{Set}:
 \end{verbatim}
 
 The naturality condition for this transformation tells us that, for any
-morphism \texttt{f} from \texttt{x} to \texttt{y}, the following diagram
+morphism \code{f} from \code{x} to \code{y}, the following diagram
 commutes:
 
 \begin{verbatim}
@@ -233,7 +233,7 @@ functions:
 alpha :: forall x. (a -> x) -> F x
 \end{verbatim}
 
-with the optional \texttt{forall} quantifier. The naturality condition
+with the optional \code{forall} quantifier. The naturality condition
 
 \begin{verbatim}
 fmap f . alpha = alpha . fmap f
@@ -241,17 +241,17 @@ fmap f . alpha = alpha . fmap f
 
 is automatically satisfied due to parametricity (it's one of those
 theorems for free I mentioned earlier), with the understanding that
-\texttt{fmap} on the left is defined by the functor \texttt{F}, whereas
+\code{fmap} on the left is defined by the functor \code{F}, whereas
 the one on the right is defined by the reader functor. Since
-\texttt{fmap} for reader is just function precomposition, we can be even
-more explicit. Acting on \texttt{h}, an element of \texttt{C(a,\ x)},
+\code{fmap} for reader is just function precomposition, we can be even
+more explicit. Acting on \code{h}, an element of \code{C(a,\ x)},
 the naturality condition simplifies to:
 
 \begin{verbatim}
 fmap f (alpha h) = alpha (f . h)
 \end{verbatim}
 
-The other transformation, \texttt{beta}, goes the opposite way:
+The other transformation, \code{beta}, goes the opposite way:
 
 \begin{verbatim}
 beta :: forall x. F x -> (a -> x)
@@ -263,12 +263,12 @@ It must respect naturality conditions, and it must be the inverse of α:
 α ∘ β = id = β ∘ α
 \end{verbatim}
 
-We will see later that a natural transformation from \texttt{C(a,\ -)}
+We will see later that a natural transformation from \code{C(a,\ -)}
 to any \textbf{Set}-valued functor always exists (Yoneda's lemma) but it
 is not necessarily invertible.
 
 Let me give you an example in Haskell with the list functor and
-\texttt{Int} as \texttt{a}. Here's a natural transformation that does
+\code{Int} as \code{a}. Here's a natural transformation that does
 the job:
 
 \begin{verbatim}
@@ -276,47 +276,47 @@ alpha :: forall x. (Int -> x) -> [x] alpha h = map h [12]
 \end{verbatim}
 
 I have arbitrarily picked the number 12 and created a singleton list
-with it. I can then \texttt{fmap} the function \texttt{h} over this list
-and get a list of the type returned by \texttt{h}. (There are actually
+with it. I can then \code{fmap} the function \code{h} over this list
+and get a list of the type returned by \code{h}. (There are actually
 as many such transformations as there are list of integers.)
 
 The naturality condition is equivalent to the composability of
-\texttt{map} (the list version of \texttt{fmap}):
+\code{map} (the list version of \code{fmap}):
 
 \begin{verbatim}
 map f (map h [12]) = map (f . h) [12]
 \end{verbatim}
 
 But if we tried to find the inverse transformation, we would have to go
-from a list of arbitrary type \texttt{x} to a function returning
-\texttt{x}:
+from a list of arbitrary type \code{x} to a function returning
+\code{x}:
 
 \begin{verbatim}
 beta :: forall x. [x] -> (Int -> x)
 \end{verbatim}
 
-You might think of retrieving an \texttt{x} from the list, e.g., using
-\texttt{head}, but that won't work for an empty list. Notice that there
-is no choice for the type \texttt{a} (in place of \texttt{Int}) that
+You might think of retrieving an \code{x} from the list, e.g., using
+\code{head}, but that won't work for an empty list. Notice that there
+is no choice for the type \code{a} (in place of \code{Int}) that
 would work here. So the list functor is not representable.
 
 Remember when we talked about Haskell (endo-) functors being a little
 like containers? In the same vein we can think of representable functors
 as containers for storing memoized results of function calls (the
 members of hom-sets in Haskell are just functions). The representing
-object, the type \texttt{a} in \texttt{C(a,\ -)}, is thought of as the
+object, the type \code{a} in \code{C(a,\ -)}, is thought of as the
 key type, with which we can access the tabulated values of a function.
-The transformation we called α is called \texttt{tabulate}, and its
-inverse, β, is called \texttt{index}. Here's a (slightly simplified)
-\texttt{Representable} class definition:
+The transformation we called α is called \code{tabulate}, and its
+inverse, β, is called \code{index}. Here's a (slightly simplified)
+\code{Representable} class definition:
 
 \begin{verbatim}
 class Representable f where type Rep f :: * tabulate :: (Rep f -> x) -> f x index :: f x -> Rep f -> x
 \end{verbatim}
 
-Notice that the representing type, our \texttt{a}, which is called
-\texttt{Rep\ f} here, is part of the definition of
-\texttt{Representable}. The star just means that \texttt{Rep\ f} is a
+Notice that the representing type, our \code{a}, which is called
+\code{Rep\ f} here, is part of the definition of
+\code{Representable}. The star just means that \code{Rep\ f} is a
 type (as opposed to a type constructor, or other more exotic kinds).
 
 Infinite lists, or streams, which cannot be empty, are representable.
@@ -326,13 +326,13 @@ data Stream x = Cons x (Stream x)
 \end{verbatim}
 
 You can think of them as memoized values of a function taking an
-\texttt{Integer} as an argument. (Strictly speaking, I should be using
+\code{Integer} as an argument. (Strictly speaking, I should be using
 non-negative natural numbers, but I didn't want to complicate the code.)
 
-To \texttt{tabulate} such a function, you create an infinite stream of
+To \code{tabulate} such a function, you create an infinite stream of
 values. Of course, this is only possible because Haskell is lazy. The
 values are evaluated on demand. You access the memoized values using
-\texttt{index}:
+\code{index}:
 
 \begin{verbatim}
 instance Representable Stream where type Rep Stream = Integer tabulate f = Cons (f 0) (tabulate (f . (+1))) index (Cons b bs) n = if n == 0 then b else index bs (n - 1)
@@ -342,15 +342,15 @@ It's interesting that you can implement a single memoization scheme to
 cover a whole family of functions with arbitrary return types.
 
 Representability for contravariant functors is similarly defined, except
-that we keep the second argument of \texttt{C(-,\ a)} fixed. Or,
+that we keep the second argument of \code{C(-,\ a)} fixed. Or,
 equivalently, we may consider functors from \emph{C}\textsuperscript{op}
-to \textbf{Set}, because \texttt{Cop(a,\ -)} is the same as
-\texttt{C(-,\ a)}.
+to \textbf{Set}, because \code{Cop(a,\ -)} is the same as
+\code{C(-,\ a)}.
 
 There is an interesting twist to representability. Remember that
 hom-sets can internally be treated as exponential objects, in cartesian
-closed categories. The hom-set \texttt{C(a,\ x)} is equivalent to
-\texttt{xa}, and for a representable functor \texttt{F} we can write:
+closed categories. The hom-set \code{C(a,\ x)} is equivalent to
+\code{xa}, and for a representable functor \code{F} we can write:
 
 \begin{verbatim}
 -a = F
@@ -389,14 +389,14 @@ explore alternative implementations that have practical value.
   Show that the hom-functors map identity morphisms in \emph{C} to
   corresponding identity functions in \textbf{Set}.
 \item
-  Show that \texttt{Maybe} is not representable.
+  Show that \code{Maybe} is not representable.
 \item
-  Is the \texttt{Reader} functor representable?
+  Is the \code{Reader} functor representable?
 \item
-  Using \texttt{Stream} representation, memoize a function that squares
+  Using \code{Stream} representation, memoize a function that squares
   its argument.
 \item
-  Show that \texttt{tabulate} and \texttt{index} for \texttt{Stream} are
+  Show that \code{tabulate} and \code{index} for \code{Stream} are
   indeed the inverse of each other. (Hint: use induction.)
 \item
   The functor:
@@ -406,7 +406,7 @@ Pair a = Pair a a
 \end{verbatim}
 
   is representable. Can you guess the type that represents it? Implement
-  \texttt{tabulate} and \texttt{index}.
+  \code{tabulate} and \code{index}.
 \end{enumerate}
 
 \subsection{Bibliography}\label{bibliography}

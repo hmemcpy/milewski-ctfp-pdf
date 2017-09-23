@@ -15,7 +15,7 @@ bool negate(bool b) {
 \end{minted}
 
 You know that this is not a pure function, because its memoized version
-would fail to produce a log. This function has \emph{side effects}.
+would fail to produce a log. This function has \newterm{side effects}.
 
 In modern programming, we try to stay away from global mutable state as
 much as possible --- if only because of the complications of
@@ -57,7 +57,7 @@ inconvenient.
 
 Is there a way to do the same thing less intrusively? Is there a way to
 separate concerns? In this simple example, the main purpose of the
-function \texttt{negate} is to turn one Boolean into another. The
+function \code{negate} is to turn one Boolean into another. The
 logging is secondary. Granted, the message that is logged is specific to
 the function, but the task of aggregating the messages into one
 continuous log is a separate concern. We still want the function to
@@ -95,7 +95,7 @@ vector<string> toWords(string s) {
 }
 \end{minted}
 
-The actual work is done in the auxiliary function \texttt{words}:
+The actual work is done in the auxiliary function \code{words}:
 
 \begin{minted}{c++}
 vector<string> words(string s) {
@@ -116,14 +116,14 @@ vector<string> words(string s) {
   \fbox{\includegraphics[width=1.83333in]{images/piggyback.jpg}}}%
 \end{wrapfigure}
 
-We want to modify the functions \texttt{toUpper} and \texttt{toWords} so
+We want to modify the functions \code{toUpper} and \code{toWords} so
 that they piggyback a message string on top of their regular return
 values.
 
 We will ``embellish'' the return values of these functions. Let's do it
-in a generic way by defining a template \texttt{Writer} that
+in a generic way by defining a template \code{Writer} that
 encapsulates a pair whose first component is a value of arbitrary type
-\texttt{A} and the second component is a string:
+\code{A} and the second component is a string:
 
 \begin{minted}{c++}
 template<class A>
@@ -164,7 +164,7 @@ messages, which are then, externally, concatenated into a larger log.
 Now imagine a whole program written in this style. It's a nightmare of
 repetitive, error-prone code. But we are programmers. We know how to
 deal with repetitive code: we abstract it! This is, however, not your
-run of the mill abstraction --- we have to abstract \emph{function
+run of the mill abstraction --- we have to abstract \newterm{function
 composition} itself. But composition is the essence of category theory,
 so before we write more code, let's analyze the problem from the
 categorical point of view.
@@ -178,10 +178,10 @@ regular category of types and functions. We'll leave the types as
 objects, but redefine our morphisms to be the embellished functions.
 
 For instance, suppose that we want to embellish the function
-\texttt{isEven} that goes from \texttt{int} to \texttt{bool}. We turn it
+\code{isEven} that goes from \code{int} to \code{bool}. We turn it
 into a morphism that is represented by an embellished function. The
 important point is that this morphism is still considered an arrow
-between the objects \texttt{int} and \texttt{bool}, even though the
+between the objects \code{int} and \code{bool}, even though the
 embellished function returns a pair:
 
 \begin{minted}{c++}
@@ -191,9 +191,9 @@ pair<bool, string> isEven(int n) {
 \end{minted}
 
 By the laws of a category, we should be able to compose this morphism
-with another morphism that goes from the object \texttt{bool} to
+with another morphism that goes from the object \code{bool} to
 whatever. In particular, we should be able to compose it with our
-earlier \texttt{negate}:
+earlier \code{negate}:
 
 \begin{minted}{c++}
 pair<bool, string> negate(bool b) {
@@ -251,7 +251,7 @@ function<Writer<C>(A)> compose(function<Writer<B>(A)> m1,
 \end{minted}
 
 Now we can go back to our earlier example and implement the composition
-of \texttt{toUpper} and \texttt{toWords} using this new template:
+of \code{toUpper} and \code{toWords} using this new template:
 
 \begin{minted}{c++}
 Writer<vector<string>> process(string s) { 
@@ -260,7 +260,7 @@ Writer<vector<string>> process(string s) {
 \end{minted}
 
 There is still a lot of noise with the passing of types to the
-\texttt{compose} template. This can be avoided as long as you have a
+\code{compose} template. This can be avoided as long as you have a
 C++14-compliant compiler that supports generalized lambda functions with
 return type deduction (credit for this code goes to Eric Niebler):
 
@@ -274,7 +274,7 @@ auto const compose = [](auto m1, auto m2) {
 };
 \end{minted}
 
-In this new definition, the implementation of \texttt{process}
+In this new definition, the implementation of \code{process}
 simplifies to:
 
 \begin{minted}{c++}
@@ -312,8 +312,8 @@ concatenation is also associative.
 
 An astute reader may notice that it would be easy to generalize this
 construction to any monoid, not just the string monoid. We would use
-\texttt{mappend} inside \texttt{compose} and \texttt{mempty} inside
-\texttt{identity} (in place of \texttt{+} and \texttt{""}). There really
+\code{mappend} inside \code{compose} and \code{mempty} inside
+\code{identity} (in place of \code{+} and \code{""}). There really
 is no reason to limit ourselves to logging just strings. A good library
 writer should be able to identify the bare minimum of constraints that
 make the library work --- here the logging library's only requirement is
@@ -322,21 +322,21 @@ that the log have monoidal properties.
 \subsection{Writer in Haskell}\label{writer-in-haskell}
 
 The same thing in Haskell is a little more terse, and we also get a lot
-more help from the compiler. Let's start by defining the \texttt{Writer}
+more help from the compiler. Let's start by defining the \code{Writer}
 type:
 
 \begin{minted}{haskell}
 type Writer a = (a, String)
 \end{minted}
 
-Here I'm just defining a type alias, an equivalent of a \texttt{typedef}
-(or \texttt{using}) in C++. The type \texttt{Writer} is parameterized by
-a type variable \texttt{a} and is equivalent to a pair of \texttt{a} and
-\texttt{String}. The syntax for pairs is minimal: just two items in
+Here I'm just defining a type alias, an equivalent of a \code{typedef}
+(or \code{using}) in C++. The type \code{Writer} is parameterized by
+a type variable \code{a} and is equivalent to a pair of \code{a} and
+\code{String}. The syntax for pairs is minimal: just two items in
 parentheses, separated by a comma.
 
 Our morphisms are functions from an arbitrary type to some
-\texttt{Writer} type:
+\code{Writer} type:
 
 \begin{minted}{haskell}
 a -> Writer b
@@ -351,12 +351,12 @@ called the ``fish'':
 
 It's a function of two arguments, each being a function on its own, and
 returning a function. The first argument is of the type
-\texttt{(a->Writer b)}, the second is
-\texttt{(b->Writer c)}, and the result is
-\texttt{(a->Writer c)}.
+\code{(a->Writer b)}, the second is
+\code{(b->Writer c)}, and the result is
+\code{(a->Writer c)}.
 
 Here's the definition of this infix operator --- the two arguments
-\texttt{m1} and \texttt{m2} appearing on either side of the fishy
+\code{m1} and \code{m2} appearing on either side of the fishy
 symbol:
 
 \begin{minted}{haskell}
@@ -366,28 +366,28 @@ m1 >=> m2 = \x ->
     in (z, s1 ++ s2)
 \end{minted}
 
-The result is a lambda function of one argument \texttt{x}. The lambda
+The result is a lambda function of one argument \code{x}. The lambda
 is written as a backslash --- think of it as the Greek letter λ with an
 amputated leg.
 
-The \texttt{let} expression lets you declare auxiliary variables. Here
-the result of the call to \texttt{m1} is pattern matched to a pair of
-variables \texttt{(y, s1)}; and the result of the call to \texttt{m2},
-with the argument \texttt{y} from the first pattern, is matched to
-\texttt{(z, s2)}.
+The \code{let} expression lets you declare auxiliary variables. Here
+the result of the call to \code{m1} is pattern matched to a pair of
+variables \code{(y, s1)}; and the result of the call to \code{m2},
+with the argument \code{y} from the first pattern, is matched to
+\code{(z, s2)}.
 
 It is common in Haskell to pattern match pairs, rather than use
 accessors, as we did in C++. Other than that there is a pretty
 straightforward correspondence between the two implementations.
 
-The overall value of the \texttt{let} expression is specified in its
-\texttt{in} clause: here it's a pair whose first component is \texttt{z}
+The overall value of the \code{let} expression is specified in its
+\code{in} clause: here it's a pair whose first component is \code{z}
 and the second component is the concatenation of two strings,
-\texttt{s1++s2}.
+\code{s1++s2}.
 
 I will also define the identity morphism for our category, but for
 reasons that will become clear much later, I will call it
-\texttt{return}.
+\code{return}.
 
 \begin{minted}{haskell}
 return :: a -> Writer a
@@ -395,7 +395,7 @@ return x = (x, "")
 \end{minted}
 
 For completeness, let's have the Haskell versions of the embellished
-functions \texttt{upCase} and \texttt{toWords}:
+functions \code{upCase} and \code{toWords}:
 
 \begin{minted}{haskell}
 upCase :: String -> Writer String
@@ -407,9 +407,9 @@ toWords :: String -> Writer [String]
 toWords s = (words s, "toWords ")
 \end{minted}
 
-The function \texttt{map} corresponds to the C++ \texttt{transform}. It
-applies the character function \texttt{toUpper} to the string
-\texttt{s}. The auxiliary function \texttt{words} is defined in the
+The function \code{map} corresponds to the C++ \code{transform}. It
+applies the character function \code{toUpper} to the string
+\code{s}. The auxiliary function \code{words} is defined in the
 standard Prelude library.
 
 Finally, the composition of the two functions is accomplished with the
@@ -435,7 +435,7 @@ as well as the identity morphisms with respect to that composition.
 to the notion of an endofunctor in a category.)
 
 The particular monad that I used as the basis of the category in this
-post is called the \emph{writer monad} and it's used for logging or
+post is called the \newterm{writer monad} and it's used for logging or
 tracing the execution of functions. It's also an example of a more
 general mechanism for embedding effects in pure computations. You've
 seen previously that we could model programming-language types and
@@ -455,7 +455,7 @@ A function that is not defined for all possible values of its argument
 is called a partial function. It's not really a function in the
 mathematical sense, so it doesn't fit the standard categorical mold. It
 can, however, be represented by a function that returns an embellished
-type \texttt{optional}:
+type \code{optional}:
 
 \begin{minted}{c++}
 template<class A> class optional {
@@ -470,7 +470,7 @@ public:
 \end{minted}
 
 As an example, here's the implementation of the embellished function
-\texttt{safe\_root}:
+\code{safe\_root}:
 
 \begin{minted}{c++}
 optional<double> safe_root(double x) {
@@ -487,19 +487,19 @@ Here's the challenge:
   Construct the Kleisli category for partial functions (define
   composition and identity).
 \item
-  Implement the embellished function \texttt{safe\_reciprocal} that
+  Implement the embellished function \code{safe\_reciprocal} that
   returns a valid reciprocal of its argument, if it's different from
   zero.
 \item
-  Compose \texttt{safe\_root} and \texttt{safe\_reciprocal} to implement\\
-  \texttt{safe\_root\_reciprocal} that calculates \texttt{sqrt(1/x)}
+  Compose \code{safe\_root} and \code{safe\_reciprocal} to implement\\
+  \code{safe\_root\_reciprocal} that calculates \code{sqrt(1/x)}
   whenever possible.
 \end{enumerate}
 
 \subsection{Acknowledgments}\label{acknowledgments}
 
 I'm grateful to Eric Niebler for reading the draft and providing the
-clever implementation of \texttt{compose} that uses advanced features of
+clever implementation of \code{compose} that uses advanced features of
 C++14 to drive type inference. I was able to cut the whole section of
 old fashioned template magic that did the same thing using type traits.
 Good riddance! I'm also grateful to Gershom Bazerman for useful comments

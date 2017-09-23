@@ -15,24 +15,24 @@ the computer what to do, or by telling it how to do it. One is called
 declarative and the other imperative.
 
 You can see this even at the most basic level. Composition itself may be
-defined declaratively; as in, \texttt{h} is a composite of \texttt{g}
-after \texttt{f}:
+defined declaratively; as in, \code{h} is a composite of \code{g}
+after \code{f}:
 
 \begin{verbatim}
 h = g . f
 \end{verbatim}
 
-or imperatively; as in, call \texttt{f} first, remember the result of
-that call, then call \texttt{g} with the result:
+or imperatively; as in, call \code{f} first, remember the result of
+that call, then call \code{g} with the result:
 
 \begin{verbatim}
 h x = let y = f x in g y
 \end{verbatim}
 
 The imperative version of a program is usually described as a sequence
-of actions ordered in time. In particular, the call to \texttt{g} cannot
-happen before the execution of \texttt{f} completes. At least, that's
-the conceptual picture --- in a lazy language, with \emph{call-by-need}
+of actions ordered in time. In particular, the call to \code{g} cannot
+happen before the execution of \code{f} completes. At least, that's
+the conceptual picture --- in a lazy language, with \newterm{call-by-need}
 argument passing, the actual execution may proceed differently.
 
 In fact, depending on the cleverness of the compiler, there may be
@@ -108,7 +108,7 @@ of refraction:
 sin θ1 / sin θ2 = v1 / v2
 \end{verbatim}
 
-where \texttt{v1} is the speed of light in the air and \texttt{v2} is
+where \code{v1} is the speed of light in the air and \code{v2} is
 the speed of light in the water.
 
 \includegraphics[width=2.33333in]{images/snell.jpg}
@@ -164,7 +164,7 @@ program. From a program's perspective there's no difference between the
 list of digits of π, a list of pseudo-random numbers, or a list of mouse
 positions coming through computer hardware. In each case, if you want to
 get the nth item, you have to first go through the first n-1 items. When
-applied to temporal events, we call this property \emph{causality}.
+applied to temporal events, we call this property \newterm{causality}.
 
 So what does it have to do with category theory? I will argue that
 category theory encourages a global approach and therefore supports

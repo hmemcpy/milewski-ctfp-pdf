@@ -9,7 +9,7 @@ of Contents}.
 Now that we know what the monad is for --- it lets us compose
 embellished functions --- the really interesting question is why
 embellished functions are so important in functional programming. We've
-already seen one example, the \texttt{Writer} monad, where embellishment
+already seen one example, the \code{Writer} monad, where embellishment
 let us create and accumulate a log across multiple function calls. A
 problem that would otherwise be solved using impure functions (e.g., by
 accessing and modifying some global state) was solved with pure
@@ -69,7 +69,7 @@ already familiar with Haskell's implementation of monads.
 
 \subsection{The Solution}\label{the-solution}
 
-First, let's analyze the way we used the \texttt{Writer} monad. We
+First, let's analyze the way we used the \code{Writer} monad. We
 started with a pure function that performed a certain task --- given
 arguments, it produced a certain output. We replaced this function with
 another function that embellished the original output by pairing it with
@@ -90,11 +90,11 @@ identify the embellishment that applies to each problem in turn.
 
 We modify the return type of every function that may not terminate by
 turning it into a ``lifted'' type --- a type that contains all values of
-the original type plus the special ``bottom'' value \texttt{⊥}. For
-instance, the \texttt{Bool} type, as a set, would contain two elements:
-\texttt{True} and \texttt{False}. The lifted \texttt{Bool} contains
-three elements. Functions that return the lifted \texttt{Bool} may
-produce \texttt{True} or \texttt{False}, or execute forever.
+the original type plus the special ``bottom'' value \code{⊥}. For
+instance, the \code{Bool} type, as a set, would contain two elements:
+\code{True} and \code{False}. The lifted \code{Bool} contains
+three elements. Functions that return the lifted \code{Bool} may
+produce \code{True} or \code{False}, or execute forever.
 
 The funny thing is that, in a lazy language like Haskell, a never-ending
 function may actually return a value, and this value may be passed to
@@ -122,25 +122,25 @@ number generator to pick the n-th element of the list. Laziness even
 allows you to return an infinite list of results.
 
 In the list monad --- Haskell's implementation of nondeterministic
-computations --- \texttt{join} is implemented as \texttt{concat}.
-Remember that \texttt{join} is supposed to flatten a container of
-containers --- \texttt{concat} concatenates a list of lists into a
-single list. \texttt{return} creates a singleton list:
+computations --- \code{join} is implemented as \code{concat}.
+Remember that \code{join} is supposed to flatten a container of
+containers --- \code{concat} concatenates a list of lists into a
+single list. \code{return} creates a singleton list:
 
 \begin{verbatim}
 instance Monad [] where join = concat return x = [x]
 \end{verbatim}
 
 The bind operator for the list monad is given by the general formula:
-\texttt{fmap} followed by \texttt{join} which, in this case gives:
+\code{fmap} followed by \code{join} which, in this case gives:
 
 \begin{verbatim}
 as >>= k = concat (fmap k as)
 \end{verbatim}
 
-Here, the function \texttt{k}, which itself produces a list, is applied
-to every element of the list \texttt{as}. The result is a list of lists,
-which is flattened using \texttt{concat}.
+Here, the function \code{k}, which itself produces a list, is applied
+to every element of the list \code{as}. The result is a list of lists,
+which is flattened using \code{concat}.
 
 From the programmer's point of view, working with a list is easier than,
 for instance, calling a non-deterministic function in a loop, or
@@ -161,8 +161,8 @@ non-deterministic, the applications of the list monad are much wider.
 That's because stitching together computations that produce lists is a
 perfect functional substitute for iterative constructs --- loops ---
 that are used in imperative programming. A single loop can be often
-rewritten using \texttt{fmap} that applies the body of the loop to each
-element of the list. The \texttt{do} notation in the list monad can be
+rewritten using \code{fmap} that applies the body of the loop to each
+element of the list. The \code{do} notation in the list monad can be
 used to replace complex nested loops.
 
 My favorite example is the program that generates Pythagorean triples
@@ -172,13 +172,13 @@ My favorite example is the program that generates Pythagorean triples
 triples = do z <- [1..] x <- [1..z] y <- [x..z] guard (x^2 + y^2 == z^2) return (x, y, z)
 \end{verbatim}
 
-The first line tells us that \texttt{z} gets an element from an infinite
-list of positive numbers \texttt{{[}1..{]}}. Then \texttt{x} gets an
-element from the (finite) list \texttt{{[}1..z{]}} of numbers between 1
-and \texttt{z}. Finally \texttt{y} gets an element from the list of
-numbers between \texttt{x} and \texttt{z}. We have three numbers
-\texttt{1\ \textless{}=\ x\ \textless{}=\ y\ \textless{}=\ z} at our
-disposal. The function \texttt{guard} takes a \texttt{Bool} expression
+The first line tells us that \code{z} gets an element from an infinite
+list of positive numbers \code{{[}1..{]}}. Then \code{x} gets an
+element from the (finite) list \code{{[}1..z{]}} of numbers between 1
+and \code{z}. Finally \code{y} gets an element from the list of
+numbers between \code{x} and \code{z}. We have three numbers
+\code{1\ \textless{}=\ x\ \textless{}=\ y\ \textless{}=\ z} at our
+disposal. The function \code{guard} takes a \code{Bool} expression
 and returns a list of units:
 
 \begin{verbatim}
@@ -186,22 +186,22 @@ guard :: Bool -> [()] guard True = [()] guard False = []
 \end{verbatim}
 
 This function (which is a member of a larger class called
-\texttt{MonadPlus}) is used here to filter out non-Pythagorean triples.
+\code{MonadPlus}) is used here to filter out non-Pythagorean triples.
 Indeed, if you look at the implementation of bind (or the related
-operator \texttt{\textgreater{}\textgreater{}}), you'll notice that,
+operator \code{\textgreater{}\textgreater{}}), you'll notice that,
 when given an empty list, it produces an empty list. On the other hand,
 when given a non-empty list (here, the singleton list containing unit
-\texttt{{[}(){]}}), bind will call the continuation, here
-\texttt{return\ (x,\ y,\ z)}, which produces a singleton list with a
+\code{{[}(){]}}), bind will call the continuation, here
+\code{return\ (x,\ y,\ z)}, which produces a singleton list with a
 verified Pythagorean triple. All those singleton lists will be
 concatenated by the enclosing binds to produce the final (infinite)
-result. Of course, the caller of \texttt{triples} will never be able to
+result. Of course, the caller of \code{triples} will never be able to
 consume the whole list, but that doesn't matter, because Haskell is
 lazy.
 
 The problem that normally would require a set of three nested loops has
 been dramatically simplified with the help of the list monad and the
-\texttt{do} notation. As if that weren't enough, Haskell let's you
+\code{do} notation. As if that weren't enough, Haskell let's you
 simplify this code even further using list comprehension:
 
 \begin{verbatim}
@@ -209,7 +209,7 @@ triples = [(x, y, z) | z <- [1..] , x <- [1..z] , y <- [x..z] , x^2 + y^2 == z^2
 \end{verbatim}
 
 This is just further syntactic sugar for the list monad (strictly
-speaking, \texttt{MonadPlus}).
+speaking, \code{MonadPlus}).
 
 You might see similar constructs in other functional or imperative
 languages under the guise of generators and coroutines.
@@ -219,19 +219,19 @@ languages under the guise of generators and coroutines.
 A function that has read-only access to some external state, or
 environment, can be always replaced by a function that takes that
 environment as an additional argument. A pure function
-\texttt{(a,\ e)\ -\textgreater{}\ b} (where \texttt{e} is the type of
+\code{(a,\ e)\ -\textgreater{}\ b} (where \code{e} is the type of
 the environment) doesn't look, at first sight, like a Kleisli arrow. But
 as soon as we curry it to
-\texttt{a\ -\textgreater{}\ (e\ -\textgreater{}\ b)} we recognize the
+\code{a\ -\textgreater{}\ (e\ -\textgreater{}\ b)} we recognize the
 embellishment as our old friend the reader functor:
 
 \begin{verbatim}
 newtype Reader e a = Reader (e -> a)
 \end{verbatim}
 
-You may interpret a function returning a \texttt{Reader} as producing a
+You may interpret a function returning a \code{Reader} as producing a
 mini-executable: an action that given an environment produces the
-desired result. There is a helper function \texttt{runReader} to execute
+desired result. There is a helper function \code{runReader} to execute
 such an action:
 
 \begin{verbatim}
@@ -241,39 +241,39 @@ runReader :: Reader e a -> e -> a runReader (Reader f) e = f e
 It may produce different results for different values of the
 environment.
 
-Notice that both the function returning a \texttt{Reader}, and the
-\texttt{Reader} action itself are pure.
+Notice that both the function returning a \code{Reader}, and the
+\code{Reader} action itself are pure.
 
-To implement bind for the \texttt{Reader} monad, first notice that you
-have to produce a function that takes the environment \texttt{e} and
-produces a \texttt{b}:
+To implement bind for the \code{Reader} monad, first notice that you
+have to produce a function that takes the environment \code{e} and
+produces a \code{b}:
 
 \begin{verbatim}
 ra >>= k = Reader (\e -> ...)
 \end{verbatim}
 
-Inside the lambda, we can execute the action \texttt{ra} to produce an
-\texttt{a}:
+Inside the lambda, we can execute the action \code{ra} to produce an
+\code{a}:
 
 \begin{verbatim}
 ra >>= k = Reader (\e -> let a = runReader ra e in ...)
 \end{verbatim}
 
-We can then pass the \texttt{a} to the continuation \texttt{k} to get a
-new action \texttt{rb}:
+We can then pass the \code{a} to the continuation \code{k} to get a
+new action \code{rb}:
 
 \begin{verbatim}
 ra >>= k = Reader (\e -> let a = runReader ra e rb = k a in ...)
 \end{verbatim}
 
-Finally, we can run the action \texttt{rb} with the environment
-\texttt{e}:
+Finally, we can run the action \code{rb} with the environment
+\code{e}:
 
 \begin{verbatim}
 ra >>= k = Reader (\e -> let a = runReader ra e rb = k a in runReader rb e)
 \end{verbatim}
 
-To implement \texttt{return} we create an action that ignores the
+To implement \code{return} we create an action that ignores the
 environment and returns the unchanged value.
 
 Putting it all together, after a few simplifications, we get the
@@ -286,22 +286,22 @@ instance Monad (Reader e) where ra >>= k = Reader (\e -> runReader (k (runReader
 \subsubsection{Write-Only State}\label{write-only-state}
 
 This is just our initial logging example. The embellishment is given by
-the \texttt{Writer} functor:
+the \code{Writer} functor:
 
 \begin{verbatim}
 newtype Writer w a = Writer (a, w)
 \end{verbatim}
 
-For completeness, there's also a trivial helper \texttt{runWriter} that
+For completeness, there's also a trivial helper \code{runWriter} that
 unpacks the data constructor:
 
 \begin{verbatim}
 runWriter :: Writer w a -> (a, w) runWriter (Writer (a, w)) = (a, w)
 \end{verbatim}
 
-As we've seen before, in order to make \texttt{Writer} composable,
-\texttt{w} has to be a monoid. Here's the monad instance for
-\texttt{Writer} written in terms of the bind operator:
+As we've seen before, in order to make \code{Writer} composable,
+\code{w} has to be a monoid. Here's the monad instance for
+\code{Writer} written in terms of the bind operator:
 
 \begin{verbatim}
 instance (Monoid w) => Monad (Writer w) where (Writer (a, w)) >>= k = let (a&apos;, w&apos;) = runWriter (k a) in Writer (a&apos;, w `mappend` w&apos;) return a = Writer (a, mempty)
@@ -310,13 +310,13 @@ instance (Monoid w) => Monad (Writer w) where (Writer (a, w)) >>= k = let (a&apo
 \subsubsection{State}\label{state}
 
 Functions that have read/write access to state combine the
-embellishments of the \texttt{Reader} and the \texttt{Writer}. You may
+embellishments of the \code{Reader} and the \code{Writer}. You may
 think of them as pure functions that take the state as an extra argument
 and produce a pair value/state as a result:
-\texttt{(a,\ s)\ -\textgreater{}\ (b,\ s)}. After currying, we get them
+\code{(a,\ s)\ -\textgreater{}\ (b,\ s)}. After currying, we get them
 into the form of Kleisli arrows
-\texttt{a\ -\textgreater{}\ (s\ -\textgreater{}\ (b,\ s))}, with the
-embellishment abstracted in the \texttt{State} functor:
+\code{a\ -\textgreater{}\ (s\ -\textgreater{}\ (b,\ s))}, with the
+embellishment abstracted in the \code{State} functor:
 
 \begin{verbatim}
 newtype State s a = State (s -> (a, s))
@@ -332,8 +332,8 @@ runState :: State s a -> s -> (a, s) runState (State f) s = f s
 Different initial states may not only produce different results, but
 also different final states.
 
-The implementation of bind for the \texttt{State} monad is very similar
-to that of the \texttt{Reader} monad, except that care has to be taken
+The implementation of bind for the \code{State} monad is very similar
+to that of the \code{Reader} monad, except that care has to be taken
 to pass the correct state at each step:
 
 \begin{verbatim}
@@ -364,21 +364,21 @@ put :: s -> State s () put s&apos; = State (\s -> ((), s&apos;))
 An imperative function that throws an exception is really a partial
 function --- it's a function that's not defined for some values of its
 arguments. The simplest implementation of exceptions in terms of pure
-total functions uses the \texttt{Maybe} functor. A partial function is
-extended to a total function that returns \texttt{Just\ a} whenever it
-makes sense, and \texttt{Nothing} when it doesn't. If we want to also
+total functions uses the \code{Maybe} functor. A partial function is
+extended to a total function that returns \code{Just\ a} whenever it
+makes sense, and \code{Nothing} when it doesn't. If we want to also
 return some information about the cause of the failure, we can use the
-\texttt{Either} functor instead (with the first type fixed, for
-instance, to \texttt{String}).
+\code{Either} functor instead (with the first type fixed, for
+instance, to \code{String}).
 
-Here's the \texttt{Monad} instance for \texttt{Maybe}:
+Here's the \code{Monad} instance for \code{Maybe}:
 
 \begin{verbatim}
 instance Monad Maybe where Nothing >>= k = Nothing Just a >>= k = k a return a = Just a
 \end{verbatim}
 
-Notice that monadic composition for \texttt{Maybe} correctly
-short-circuits the computation (the continuation \texttt{k} is never
+Notice that monadic composition for \code{Maybe} correctly
+short-circuits the computation (the continuation \code{k} is never
 called) when an error is detected. That's the behavior we expect from
 exceptions.
 
@@ -397,8 +397,8 @@ which represents ``the rest of the computation'':
 data Cont r a = Cont ((a -> r) -> r)
 \end{verbatim}
 
-The handler \texttt{a\ -\textgreater{}\ r}, when it's eventually called,
-produces the result of type \texttt{r}, and this result is returned at
+The handler \code{a\ -\textgreater{}\ r}, when it's eventually called,
+produces the result of type \code{r}, and this result is returned at
 the end. A continuation is parameterized by the result type. (In
 practice, this is often some kind of status indicator.)
 
@@ -410,7 +410,7 @@ runCont :: Cont r a -> (a -> r) -> r runCont (Cont k) h = k h
 \end{verbatim}
 
 The composition of continuations is notoriously difficult, so its
-handling through a monad and, in particular, the \texttt{do} notation,
+handling through a monad and, in particular, the \code{do} notation,
 is of extreme advantage.
 
 Let's figure out the implementation of bind. First let's look at the
@@ -421,14 +421,14 @@ stripped down signature:
 \end{verbatim}
 
 Our goal is to create a function that takes the handler
-\texttt{(b\ -\textgreater{}\ r)} and produces the result \texttt{r}. So
+\code{(b\ -\textgreater{}\ r)} and produces the result \code{r}. So
 that's our starting point:
 
 \begin{verbatim}
 ka >>= kab = Cont (\hb -> ...)
 \end{verbatim}
 
-Inside the lambda, we want to call the function \texttt{ka} with the
+Inside the lambda, we want to call the function \code{ka} with the
 appropriate handler that represents the rest of the computation. We'll
 implement this handler as a lambda:
 
@@ -437,15 +437,15 @@ runCont ka (\a -> ...)
 \end{verbatim}
 
 In this case, the rest of the computation involves first calling
-\texttt{kab} with \texttt{a}, and then passing \texttt{hb} to the
-resulting action \texttt{kb}:
+\code{kab} with \code{a}, and then passing \code{hb} to the
+resulting action \code{kb}:
 
 \begin{verbatim}
 runCont ka (\a -> let kb = kab a in runCont kb hb)
 \end{verbatim}
 
 As you can see, continuations are composed inside out. The final handler
-\texttt{hb} is called from the innermost layer of the computation.
+\code{hb} is called from the innermost layer of the computation.
 Here's the full instance:
 
 \begin{verbatim}
@@ -455,11 +455,11 @@ instance Monad (Cont r) where ka >>= kab = Cont (\hb -> runCont ka (\a -> runCon
 \subsubsection{Interactive Input}\label{interactive-input}
 
 This is the trickiest problem and a source of a lot of confusion.
-Clearly, a function like \texttt{getChar}, if it were to return a
+Clearly, a function like \code{getChar}, if it were to return a
 character typed at the keyboard, couldn't be pure. But what if it
 returned the character inside a container? As long as there was no way
 of extracting the character from this container, we could claim that the
-function is pure. Every time you call \texttt{getChar} it would return
+function is pure. Every time you call \code{getChar} it would return
 exactly the same container. Conceptually, this container would contain
 the superposition of all possible characters.
 
@@ -467,7 +467,7 @@ If you're familiar with quantum mechanics, you should have no problem
 understanding this analogy. It's just like the box with the
 Schrödinger's cat inside --- except that there is no way to open or peek
 inside the box. The box is defined using the special built-in
-\texttt{IO} functor. In our example, \texttt{getChar} could be declared
+\code{IO} functor. In our example, \code{getChar} could be declared
 as a Kleisli arrow:
 
 \begin{verbatim}
@@ -475,31 +475,31 @@ getChar :: () -> IO Char
 \end{verbatim}
 
 (Actually, since a function from the unit type is equivalent to picking
-a value of the return type, the declaration of \texttt{getChar} is
-simplified to \texttt{getChar\ ::\ IO\ Char}.)
+a value of the return type, the declaration of \code{getChar} is
+simplified to \code{getChar\ ::\ IO\ Char}.)
 
-Being a functor, \texttt{IO} lets you manipulate its contents using
-\texttt{fmap}. And, as a functor, it can store the contents of any type,
+Being a functor, \code{IO} lets you manipulate its contents using
+\code{fmap}. And, as a functor, it can store the contents of any type,
 not just a character. The real utility of this approach comes to light
-when you consider that, in Haskell, \texttt{IO} is a monad. It means
-that you are able to compose Kleisli arrows that produce \texttt{IO}
+when you consider that, in Haskell, \code{IO} is a monad. It means
+that you are able to compose Kleisli arrows that produce \code{IO}
 objects.
 
 You might think that Kleisli composition would allow you to peek at the
-contents of the \texttt{IO} object (thus ``collapsing the wave
+contents of the \code{IO} object (thus ``collapsing the wave
 function,'' if we were to continue the quantum analogy). Indeed, you
-could compose \texttt{getChar} with another Kleisli arrow that takes a
+could compose \code{getChar} with another Kleisli arrow that takes a
 character and, say, converts it to an integer. The catch is that this
 second Kleisli arrow could only return this integer as an
-\texttt{(IO\ Int)}. Again, you'll end up with a superposition of all
+\code{(IO\ Int)}. Again, you'll end up with a superposition of all
 possible integers. And so on. The Schrödinger's cat is never out of the
-bag. Once you are inside the \texttt{IO} monad, there is no way out of
-it. There is no equivalent of \texttt{runState} or \texttt{runReader}
-for the \texttt{IO} monad. There is no \texttt{runIO}!
+bag. Once you are inside the \code{IO} monad, there is no way out of
+it. There is no equivalent of \code{runState} or \code{runReader}
+for the \code{IO} monad. There is no \code{runIO}!
 
-So what can you do with the result of a Kleisli arrow, the \texttt{IO}
+So what can you do with the result of a Kleisli arrow, the \code{IO}
 object, other than compose it with another Kleisli arrow? Well, you can
-return it from \texttt{main}. In Haskell, \texttt{main} has the
+return it from \code{main}. In Haskell, \code{main} has the
 signature:
 
 \begin{verbatim}
@@ -513,26 +513,26 @@ main :: () -> IO ()
 \end{verbatim}
 
 From that perspective, a Haskell program is just one big Kleisli arrow
-in the \texttt{IO} monad. You can compose it from smaller Kleisli arrows
+in the \code{IO} monad. You can compose it from smaller Kleisli arrows
 using monadic composition. It's up to the runtime system to do something
-with the resulting \texttt{IO} object (also called \texttt{IO} action).
+with the resulting \code{IO} object (also called \code{IO} action).
 
 Notice that the arrow itself is a pure function --- it's pure functions
 all the way down. The dirty work is relegated to the system. When it
-finally executes the \texttt{IO} action returned from \texttt{main}, it
+finally executes the \code{IO} action returned from \code{main}, it
 does all kinds of nasty things like reading user input, modifying files,
 printing obnoxious messages, formatting a disk, and so on. The Haskell
 program never dirties its hands (well, except when it calls
-\texttt{unsafePerformIO}, but that's a different story).
+\code{unsafePerformIO}, but that's a different story).
 
-Of course, because Haskell is lazy, \texttt{main} returns almost
+Of course, because Haskell is lazy, \code{main} returns almost
 immediately, and the dirty work begins right away. It's during the
-execution of the \texttt{IO} action that the results of pure
+execution of the \code{IO} action that the results of pure
 computations are requested and evaluated on demand. So, in reality, the
 execution of a program is an interleaving of pure (Haskell) and dirty
 (system) code.
 
-There is an alternative interpretation of the \texttt{IO} monad that is
+There is an alternative interpretation of the \code{IO} monad that is
 even more bizarre but makes perfect sense as a mathematical model. It
 treats the whole Universe as an object in a program. Notice that,
 conceptually, the imperative model treats the Universe as an external
@@ -544,27 +544,27 @@ We already know how to deal with state in functional programming --- we
 use the state monad. Unlike simple state, however, the state of the
 Universe cannot be easily described using standard data structures. But
 we don't have to, as long as we never directly interact with it. It's
-enough that we assume that there exists a type \texttt{RealWorld} and,
+enough that we assume that there exists a type \code{RealWorld} and,
 by some miracle of cosmic engineering, the runtime is able to provide an
-object of this type. An \texttt{IO} action is just a function:
+object of this type. An \code{IO} action is just a function:
 
 \begin{verbatim}
 type IO a = RealWorld -> (a, RealWorld)
 \end{verbatim}
 
-Or, in terms of the \texttt{State} monad:
+Or, in terms of the \code{State} monad:
 
 \begin{verbatim}
 type IO = State RealWorld
 \end{verbatim}
 
-However, \texttt{\textgreater{}=\textgreater{}} and \texttt{return} for
-the \texttt{IO} monad have to be built into the language.
+However, \code{\textgreater{}=\textgreater{}} and \code{return} for
+the \code{IO} monad have to be built into the language.
 
 \subsubsection{Interactive Output}\label{interactive-output}
 
-The same \texttt{IO} monad is used to encapsulate interactive output.
-\texttt{RealWorld} is supposed to contain all output devices. You might
+The same \code{IO} monad is used to encapsulate interactive output.
+\code{RealWorld} is supposed to contain all output devices. You might
 wonder why we can't just call output functions from Haskell and pretend
 that they do nothing. For instance, why do we have:
 
@@ -583,8 +583,8 @@ output --- here, the unit object --- is not used for anything. And, even
 if it weren't lazy, it could still freely change the order of such calls
 and thus garble the output. The only way to force sequential execution
 of two functions in Haskell is through data dependency. The input of one
-function must depend on the output of another. Having \texttt{RealWorld}
-passed between \texttt{IO} actions enforces sequencing.
+function must depend on the output of another. Having \code{RealWorld}
+passed between \code{IO} actions enforces sequencing.
 
 Conceptually, in this program:
 

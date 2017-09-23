@@ -6,7 +6,7 @@ its pattern of relationships with other objects (and itself). These
 relationships are defined by morphisms.
 
 There is a common construction in category theory called the
-\emph{universal construction} for defining objects in terms of their
+\newterm{universal construction} for defining objects in terms of their
 relationships. One way of doing this is to pick a pattern, a particular
 shape constructed from objects and morphisms, and look for all its
 occurrences in the category. If it's a common enough pattern, and the
@@ -54,27 +54,27 @@ morphism going to any object in the category.
 
 However, even that doesn't guarantee the uniqueness of the initial
 object (if one exists). But it guarantees the next best thing:
-uniqueness \emph{up to isomorphism}. Isomorphisms are very important in
+uniqueness \newterm{up to isomorphism}. Isomorphisms are very important in
 category theory, so I'll talk about them shortly. For now, let's just
 agree that uniqueness up to isomorphism justifies the use of ``the'' in
 the definition of the initial object.
 
 Here are some examples: The initial object in a partially ordered set
-(often called a \emph{poset}) is its least element. Some posets don't
+(often called a \newterm{poset}) is its least element. Some posets don't
 have an initial object --- like the set of all integers, positive and
 negative, with less-than-or-equal relation for morphisms.
 
 In the category of sets and functions, the initial object is the empty
 set. Remember, an empty set corresponds to the Haskell type
-\texttt{Void} (there is no corresponding type in C++) and the unique
-polymorphic function from \texttt{Void} to any other type is called
-\texttt{absurd}:
+\code{Void} (there is no corresponding type in C++) and the unique
+polymorphic function from \code{Void} to any other type is called
+\code{absurd}:
 
 \begin{verbatim}
 absurd :: Void -> a
 \end{verbatim}
 
-It's this family of morphisms that makes \texttt{Void} the initial
+It's this family of morphisms that makes \code{Void} the initial
 object in the category of types.
 
 \subsection{Terminal Object}\label{terminal-object}
@@ -101,10 +101,10 @@ And again, the terminal object is unique, up to isomorphism, which I
 will show shortly. But first let's look at some examples. In a poset,
 the terminal object, if it exists, is the biggest object. In the
 category of sets, the terminal object is a singleton. We've already
-talked about singletons --- they correspond to the \texttt{void} type in
-C++ and the unit type \texttt{()} in Haskell. It's a type that has only
+talked about singletons --- they correspond to the \code{void} type in
+C++ and the unit type \code{()} in Haskell. It's a type that has only
 one value --- implicit in C++ and explicit in Haskell, denoted by
-\texttt{()}. We've also established that there is one and only one pure
+\code{()}. We've also established that there is one and only one pure
 function from any type to the unit type:
 
 \begin{verbatim}
@@ -124,8 +124,8 @@ yes :: a -> Bool
 yes _ = True
 \end{verbatim}
 
-But \texttt{Bool} is not a terminal object. There is at least one more
-\texttt{Bool}-valued function from every type:
+But \code{Bool} is not a terminal object. There is at least one more
+\code{Bool}-valued function from every type:
 
 \begin{verbatim}
 no :: a -> Bool
@@ -140,15 +140,15 @@ the definition of the terminal object to just one type.
 You can't help but to notice the symmetry between the way we defined the
 initial object and the terminal object. The only difference between the
 two was the direction of morphisms. It turns out that for any category C
-we can define the \emph{opposite category} C\textsuperscript{op} just by
+we can define the \newterm{opposite category} C\textsuperscript{op} just by
 reversing all the arrows. The opposite category automatically satisfies
 all the requirements of a category, as long as we simultaneously
 redefine composition. If original morphisms
-\texttt{f::a->b} and \texttt{g::b->c} composed
-to \texttt{h::a->c} with \texttt{h=g◦f}, then the reversed
-morphisms \texttt{f\textsuperscript{op}::b->a} and
-\texttt{g\textsuperscript{op}::c->b} will compose to
-\texttt{h\textsuperscript{op}::c->a} with \texttt{h\textsuperscript{op}=f\textsuperscript{op}◦g\textsuperscript{op}}. And reversing
+\code{f::a->b} and \code{g::b->c} composed
+to \code{h::a->c} with \code{h=g◦f}, then the reversed
+morphisms \code{f\textsuperscript{op}::b->a} and
+\code{g\textsuperscript{op}::c->b} will compose to
+\code{h\textsuperscript{op}::c->a} with \code{h\textsuperscript{op}=f\textsuperscript{op}◦g\textsuperscript{op}}. And reversing
 the identity arrows is a (pun alert!) no-op.
 
 Duality is a very important property of categories because it doubles
@@ -244,7 +244,7 @@ can figure that out, we'll be able to generalize it to other categories.
 
 All we can say is that there are two functions, the projections, from
 the product to each of the constituents. In Haskell, these two functions
-are called \texttt{fst} and \texttt{snd} and they pick, respectively,
+are called \code{fst} and \code{snd} and they pick, respectively,
 the first and the second component of a pair:
 
 \begin{verbatim}
@@ -258,8 +258,8 @@ snd (x, y) = y
 \end{verbatim}
 
 Here, the functions are defined by pattern matching their arguments: the
-pattern that matches any pair is \texttt{(x, y)}, and it extracts its
-components into variables \texttt{x} and \texttt{y}.
+pattern that matches any pair is \code{(x, y)}, and it extracts its
+components into variables \code{x} and \code{y}.
 
 These definitions can be simplified even further with the use of
 wildcards:
@@ -306,11 +306,11 @@ the product. There may be lots of them.
 
 \noindent
 For instance, let's pick, as our constituents, two Haskell types,
-\texttt{Int} and \texttt{Bool}, and get a sampling of candidates for
+\code{Int} and \code{Bool}, and get a sampling of candidates for
 their product.
 
-Here's one: \texttt{Int}. Can \texttt{Int} be considered a candidate for
-the product of \texttt{Int} and \texttt{Bool}? Yes, it can --- and here
+Here's one: \code{Int}. Can \code{Int} be considered a candidate for
+the product of \code{Int} and \code{Bool}? Yes, it can --- and here
 are its projections:
 
 \begin{verbatim}
@@ -324,7 +324,7 @@ q _ = True
 \noindent
 That's pretty lame, but it matches the criteria.
 
-Here's another one: \texttt{(Int, Int, Bool)}. It's a tuple of three
+Here's another one: \code{(Int, Int, Bool)}. It's a tuple of three
 elements, or a triple. Here are two morphisms that make it a legitimate
 candidate (we are using pattern matching on triples):
 
@@ -338,8 +338,8 @@ q (_, _, b) = b
 
 \noindent
 You may have noticed that while our first candidate was too small --- it
-only covered the \texttt{Int} dimension of the product; the second was
-too big --- it spuriously duplicated the \texttt{Int} dimension.
+only covered the \code{Int} dimension of the product; the second was
+too big --- it spuriously duplicated the \code{Int} dimension.
 
 But we haven't explored yet the other part of the universal
 construction: the ranking. We want to be able to compare two instances
@@ -370,8 +370,8 @@ equations are in natural numbers, and the dot is multiplication:
 \emph{m} is a common factor shared by \emph{p'} and \emph{q'}.
 
 Just to build some intuitions, let me show you that the pair
-\texttt{(Int,\ Bool)} with the two canonical projections, \texttt{fst}
-and \texttt{snd} is indeed \emph{better} than the two candidates I
+\code{(Int,\ Bool)} with the two canonical projections, \code{fst}
+and \code{snd} is indeed \emph{better} than the two candidates I
 presented before.
 
 \begin{figure}[H]
@@ -380,7 +380,7 @@ presented before.
 \end{figure}
 
 \noindent
-The mapping \texttt{m} for the first candidate is:
+The mapping \code{m} for the first candidate is:
 
 \begin{verbatim}
 m :: Int -> (Int, Bool)
@@ -388,7 +388,7 @@ m x = (x, True)
 \end{verbatim}
 
 \noindent
-Indeed, the two projections, \texttt{p} and \texttt{q} can be
+Indeed, the two projections, \code{p} and \code{q} can be
 reconstructed as:
 
 \begin{verbatim}
@@ -397,31 +397,31 @@ q x = snd (m x) = True
 \end{verbatim}
 
 \noindent
-The \texttt{m} for the second example is similarly uniquely determined:
+The \code{m} for the second example is similarly uniquely determined:
 
 \begin{verbatim}
 m (x, _, b) = (x, b)
 \end{verbatim}
 
 \noindent
-We were able to show that \texttt{(Int,\ Bool)} is better than either of
+We were able to show that \code{(Int,\ Bool)} is better than either of
 the two candidates. Let's see why the opposite is not true. Could we
-find some \texttt{m'} that would help us reconstruct \texttt{fst}
-and \texttt{snd} from \texttt{p} and \texttt{q}?
+find some \code{m'} that would help us reconstruct \code{fst}
+and \code{snd} from \code{p} and \code{q}?
 
 \begin{verbatim}
 fst = p . m'
 snd = q . m'
 \end{verbatim}
 
-In our first example, \texttt{q} always returned \texttt{True} and we
-know that there are pairs whose second component is \texttt{False}. We
-can't reconstruct \texttt{snd} from \texttt{q}.
+In our first example, \code{q} always returned \code{True} and we
+know that there are pairs whose second component is \code{False}. We
+can't reconstruct \code{snd} from \code{q}.
 
 The second example is different: we retain enough information after
-running either \texttt{p} or \texttt{q}, but there is more than one way
-to factorize \texttt{fst} and \texttt{snd}. Because both \texttt{p} and
-\texttt{q} ignore the second component of the triple, our \texttt{m’}
+running either \code{p} or \code{q}, but there is more than one way
+to factorize \code{fst} and \code{snd}. Because both \code{p} and
+\code{q} ignore the second component of the triple, our \code{m’}
 can put anything in it. We can have:
 
 \begin{verbatim}
@@ -438,17 +438,17 @@ m' (x, b) = (x, 42, b)
 \noindent
 and so on.
 
-Putting it all together, given any type \texttt{c} with two projections
-\texttt{p} and \texttt{q}, there is a unique \texttt{m} from \texttt{c}
-to the cartesian product \texttt{(a, b)} that factorizes them. In fact,
-it just combines \texttt{p} and \texttt{q} into a pair.
+Putting it all together, given any type \code{c} with two projections
+\code{p} and \code{q}, there is a unique \code{m} from \code{c}
+to the cartesian product \code{(a, b)} that factorizes them. In fact,
+it just combines \code{p} and \code{q} into a pair.
 
 \begin{verbatim}
 m :: c -> (a, b)
 m x = (p x, q x)
 \end{verbatim}
 
-That makes the cartesian product \texttt{(a, b)} our best match, which
+That makes the cartesian product \code{(a, b)} our best match, which
 means that this universal construction works in the category of sets. It
 picks the product of any two sets.
 
@@ -464,8 +464,8 @@ A \textbf{product} of two objects \emph{a} and \emph{b} is the object
 \end{quote}
 
 A (higher order) function that produces the factorizing function
-\texttt{m} from two candidates is sometimes called the
-\emph{factorizer}. In our case, it would be the function:
+\code{m} from two candidates is sometimes called the
+\newterm{factorizer}. In our case, it would be the function:
 
 \begin{verbatim}
 factorizer :: (c -> a) -> (c -> b) -> (c -> (a, b))
@@ -477,7 +477,7 @@ factorizer p q = \x -> (p x, q x)
 Like every construction in category theory, the product has a dual,
 which is called the coproduct. When we reverse the arrows in the product
 pattern, we end up with an object \emph{c} equipped with two
-\emph{injections}, \texttt{i} and \texttt{j}: morphisms from \emph{a}
+\emph{injections}, \code{i} and \code{j}: morphisms from \emph{a}
 and \emph{b} to \emph{c}.
 
 \begin{verbatim}
@@ -531,8 +531,8 @@ types: it's a tagged union of two types. C++ supports unions, but they
 are not tagged. It means that in your program you have to somehow keep
 track which member of the union is valid. To create a tagged union, you
 have to define a tag --- an enumeration --- and combine it with the
-union. For instance, a tagged union of an \texttt{int} and a\\
-\texttt{char const *} could be implemented as:
+union. For instance, a tagged union of an \code{int} and a\\
+\code{char const *} could be implemented as:
 
 \begin{verbatim}
 struct Contact { 
@@ -544,7 +544,7 @@ struct Contact {
 \noindent
 The two injections can either be implemented as constructors or as
 functions. For instance, here's the first injection as a function
-\texttt{PhoneNum}:
+\code{PhoneNum}:
 
 \begin{verbatim}
 Contact PhoneNum(int n) { 
@@ -556,14 +556,14 @@ Contact PhoneNum(int n) {
 \end{verbatim}
 
 \noindent
-It injects an integer into \texttt{Contact}.
+It injects an integer into \code{Contact}.
 
-A tagged union is also called a \emph{variant}, and there is a very
+A tagged union is also called a \newterm{variant}, and there is a very
 general implementation of a variant in the boost library,
-\texttt{boost::variant}.
+\code{boost::variant}.
 
 In Haskell, you can combine any data types into a tagged union by
-separating data constructors with a vertical bar. The \texttt{Contact}
+separating data constructors with a vertical bar. The \code{Contact}
 example translates into the declaration:
 
 \begin{verbatim}
@@ -571,7 +571,7 @@ data Contact = PhoneNum Int | EmailAddr String
 \end{verbatim}
 
 \noindent
-Here, \texttt{PhoneNum} and \texttt{EmailAddr} serve both as
+Here, \code{PhoneNum} and \code{EmailAddr} serve both as
 constructors (injections), and as tags for pattern matching (more about
 this later). For instance, this is how you would construct a contact
 using a phone number:
@@ -584,7 +584,7 @@ helpdesk = PhoneNum 2222222
 \noindent
 Unlike the canonical implementation of the product that is built into
 Haskell as the primitive pair, the canonical implementation of the
-coproduct is a data type called \texttt{Either}, which is defined in the
+coproduct is a data type called \code{Either}, which is defined in the
 standard Prelude as:
 
 \begin{verbatim}
@@ -592,13 +592,13 @@ Either a b = Left a | Right b
 \end{verbatim}
 
 \noindent
-It is parameterized by two types, \texttt{a} and \texttt{b} and has two
-constructors: \texttt{Left} that takes a value of type \texttt{a}, and
-\texttt{Right} that takes a value of type \texttt{b}.
+It is parameterized by two types, \code{a} and \code{b} and has two
+constructors: \code{Left} that takes a value of type \code{a}, and
+\code{Right} that takes a value of type \code{b}.
 
 Just as we've defined the factorizer for a product, we can define one
-for the coproduct. Given a candidate type \texttt{c} and two candidate
-injections \texttt{i} and \texttt{j}, the factorizer for \texttt{Either}
+for the coproduct. Given a candidate type \code{c} and two candidate
+injections \code{i} and \code{j}, the factorizer for \code{Either}
 produces the factoring function:
 
 \begin{verbatim}
@@ -625,7 +625,7 @@ This shows that the category of sets is not symmetric with respect to
 the inversion of arrows.
 
 Notice that while the empty set has a unique morphism to any set (the
-\texttt{absurd} function), it has no morphisms coming back. The
+\code{absurd} function), it has no morphisms coming back. The
 singleton set has a unique morphism coming to it from any set, but it
 \emph{also} has outgoing morphisms to every set (except for the empty
 one). As we've seen before, these outgoing morphisms from the terminal
@@ -634,12 +634,12 @@ empty set has no elements, so there's nothing to pick).
 
 It's the relationship of the singleton set to the product that sets it
 apart from the coproduct. Consider using the singleton set, represented
-by the unit type \texttt{()}, as yet another --- vastly inferior ---
+by the unit type \code{()}, as yet another --- vastly inferior ---
 candidate for the product pattern. Equip it with two projections
-\texttt{p} and \texttt{q}: functions from the singleton to each of the
+\code{p} and \code{q}: functions from the singleton to each of the
 constituent sets. Each selects a concrete element from either set.
 Because the product is universal, there is also a (unique) morphism
-\texttt{m} from our candidate, the singleton, to the product. This
+\code{m} from our candidate, the singleton, to the product. This
 morphism selects an element from the product set --- it selects a
 concrete pair. It also factorizes the two projections:
 
@@ -648,7 +648,7 @@ p = fst . m
 q = snd . m
 \end{verbatim}
 
-When acting on the singleton value \texttt{()}, the only element of the
+When acting on the singleton value \code{()}, the only element of the
 singleton set, these two equations become:
 
 \begin{verbatim}
@@ -656,10 +656,10 @@ p () = fst (m ())
 q () = snd (m ())
 \end{verbatim}
 
-Since \texttt{m ()} is the element of the product picked by \texttt{m},
-these equations tell use that the element picked by \texttt{p} from the
-first set, \texttt{p ()}, is the first component of the pair picked by
-\texttt{m}. Similarly, \texttt{q ()} is equal to the second component.
+Since \code{m ()} is the element of the product picked by \code{m},
+these equations tell use that the element picked by \code{p} from the
+first set, \code{p ()}, is the first component of the pair picked by
+\code{m}. Similarly, \code{q ()} is equal to the second component.
 This is in total agreement with our understanding that elements of the
 product are pairs of elements from the constituent sets.
 
@@ -678,7 +678,7 @@ which we use as morphisms in \textbf{Set}. Functions are, in general,
 asymmetric. Let me explain.
 
 A function must be defined for every element of its domain set (in
-programming, we call it a \emph{total} function), but it doesn't have to
+programming, we call it a \newterm{total} function), but it doesn't have to
 cover the whole codomain. We've seen some extreme cases of it: functions
 from a singleton set --- functions that select just a single element in
 the codomain. (Actually, functions from an empty set are the real
@@ -686,21 +686,21 @@ extremes.) When the size of the domain is much smaller than the size of
 the codomain, we often think of such functions as embedding the domain
 in the codomain. For instance, we can think of a function from a
 singleton set as embedding its single element in the codomain. I call
-them \emph{embedding} functions, but mathematicians prefer to give a
+them \newterm{embedding} functions, but mathematicians prefer to give a
 name to the opposite: functions that tightly fill their codomains are
-called \emph{surjective} or \emph{onto}.
+called \newterm{surjective} or \newterm{onto}.
 
 The other source of asymmetry is that functions are allowed to map many
 elements of the domain set into one element of the codomain. They can
 collapse them. The extreme case are functions that map whole sets into a
-singleton. You've seen the polymorphic \texttt{unit} function that does
+singleton. You've seen the polymorphic \code{unit} function that does
 just that. The collapsing can only be compounded by composition. A
 composition of two collapsing functions is even more collapsing than the
 individual functions. Mathematicians have a name for non-collapsing
-functions: they call them \emph{injective} or \emph{one-to-one}
+functions: they call them \newterm{injective} or \newterm{one-to-one}
 
 Of course there are some functions that are neither embedding nor
-collapsing. They are called \emph{bijections} and they are truly
+collapsing. They are called \newterm{bijections} and they are truly
 symmetric, because they are invertible. In the category of sets, an
 isomorphism is the same as a bijection.
 
@@ -716,10 +716,10 @@ isomorphism is the same as a bijection.
 \item
   What is a coproduct of two objects in a poset?
 \item
-  Implement the equivalent of Haskell \texttt{Either} as a generic type
+  Implement the equivalent of Haskell \code{Either} as a generic type
   in your favorite language (other than Haskell).
 \item
-  Show that \texttt{Either} is a ``better'' coproduct than \texttt{int}
+  Show that \code{Either} is a ``better'' coproduct than \code{int}
   equipped with two injections:
 
 \begin{verbatim}
@@ -733,11 +733,11 @@ int j(bool b) { return b? 0: 1; }
 int m(Either const & e);
 \end{verbatim}
 
-  that factorizes \texttt{i} and \texttt{j}.
+  that factorizes \code{i} and \code{j}.
 \item
-  Continuing the previous problem: How would you argue that \texttt{int}
-  with the two injections \texttt{i} and \texttt{j} cannot be ``better''
-  than \texttt{Either}?
+  Continuing the previous problem: How would you argue that \code{int}
+  with the two injections \code{i} and \code{j} cannot be ``better''
+  than \code{Either}?
 \item
   Still continuing: What about these injections?
 
@@ -750,9 +750,9 @@ int i(int n) {
 int j(bool b) { return b? 0: 1; }
 \end{verbatim}
 \item
-  Come up with an inferior candidate for a coproduct of \texttt{int} and
-  \texttt{bool} that cannot be better than \texttt{Either} because it
-  allows multiple acceptable morphisms from it to \texttt{Either}.
+  Come up with an inferior candidate for a coproduct of \code{int} and
+  \code{bool} that cannot be better than \code{Either} because it
+  allows multiple acceptable morphisms from it to \code{Either}.
 \end{enumerate}
 
 \subsection{Bibliography}\label{bibliography}

@@ -23,52 +23,52 @@ blueprint may be realized in many different ways. Natural
 transformations help us compare these realizations. They are mappings of
 functors --- special mappings that preserve their functorial nature.
 
-Consider two functors \texttt{F} and \texttt{G} between categories
-\emph{C} and \emph{D}. If you focus on just one object \texttt{a} in
-\emph{C}, it is mapped to two objects: \texttt{F\ a} and \texttt{G\ a}.
-A mapping of functors should therefore map \texttt{F\ a} to
-\texttt{G\ a}.
+Consider two functors \code{F} and \code{G} between categories
+\emph{C} and \emph{D}. If you focus on just one object \code{a} in
+\emph{C}, it is mapped to two objects: \code{F\ a} and \code{G\ a}.
+A mapping of functors should therefore map \code{F\ a} to
+\code{G\ a}.
 
 \includegraphics[width=3.12500in]{images/2_natcomp.jpg}
 
-Notice that \texttt{F\ a} and \texttt{G\ a} are objects in the same
+Notice that \code{F\ a} and \code{G\ a} are objects in the same
 category \emph{D}. Mappings between objects in the same category should
 not go against the grain of the category. We don't want to make
 artificial connections between objects. So it's \emph{natural} to use
 existing connections, namely morphisms. A natural transformation is a
-selection of morphisms: for every object \texttt{a}, it picks one
-morphism from \texttt{F\ a} to \texttt{G\ a}. If we call the natural
-transformation \texttt{α}, this morphism is called the \emph{component}
-of \texttt{α} at \texttt{a}, or \texttt{αa}.
+selection of morphisms: for every object \code{a}, it picks one
+morphism from \code{F\ a} to \code{G\ a}. If we call the natural
+transformation \code{α}, this morphism is called the \newterm{component}
+of \code{α} at \code{a}, or \code{αa}.
 
 \begin{verbatim}
 αa :: F a -> G a
 \end{verbatim}
 
-Keep in mind that \texttt{a} is an object in \emph{C} while \texttt{αa}
+Keep in mind that \code{a} is an object in \emph{C} while \code{αa}
 is a morphism in \emph{D}.
 
-If, for some \texttt{a}, there is no morphism between \texttt{F\ a} and
-\texttt{G\ a} in \emph{D}, there can be no natural transformation
-between \texttt{F} and \texttt{G}.
+If, for some \code{a}, there is no morphism between \code{F\ a} and
+\code{G\ a} in \emph{D}, there can be no natural transformation
+between \code{F} and \code{G}.
 
 Of course that's only half of the story, because functors not only map
 objects, they map morphisms as well. So what does a natural
 transformation do with those mappings? It turns out that the mapping of
 morphisms is fixed --- under any natural transformation between F and G,
-\texttt{F\ f} must be transformed into \texttt{G\ f}. What's more, the
+\code{F\ f} must be transformed into \code{G\ f}. What's more, the
 mapping of morphisms by the two functors drastically restricts the
 choices we have in defining a natural transformation that's compatible
-with it. Consider a morphism \texttt{f} between two objects \texttt{a}
-and \texttt{b} in \emph{C}. It's mapped to two morphisms, \texttt{F\ f}
-and \texttt{G\ f} in \emph{D}:
+with it. Consider a morphism \code{f} between two objects \code{a}
+and \code{b} in \emph{C}. It's mapped to two morphisms, \code{F\ f}
+and \code{G\ f} in \emph{D}:
 
 \begin{verbatim}
 F f :: F a -> F b
 G f :: G a -> G b
 \end{verbatim}
 
-The natural transformation \texttt{α} provides two additional morphisms
+The natural transformation \code{α} provides two additional morphisms
 that complete the diagram in \emph{D}:
 
 \begin{verbatim}
@@ -78,18 +78,18 @@ that complete the diagram in \emph{D}:
 
 \includegraphics[width=3.12500in]{images/3_naturality.jpg}
 
-Now we have two ways of getting from \texttt{F\ a} to \texttt{G\ b}. To
-make sure that they are equal, we must impose the \emph{naturality
-condition} that holds for any \texttt{f}:
+Now we have two ways of getting from \code{F\ a} to \code{G\ b}. To
+make sure that they are equal, we must impose the \newterm{naturality
+condition} that holds for any \code{f}:
 
 \begin{verbatim}
 G f ∘ αa = αb ∘ F f
 \end{verbatim}
 
 The naturality condition is a pretty stringent requirement. For
-instance, if the morphism \texttt{F\ f} is invertible, naturality
-determines \texttt{αb} in terms of \texttt{αa}. It \emph{transports}
-\texttt{αa} along \texttt{f}:
+instance, if the morphism \code{F\ f} is invertible, naturality
+determines \code{αb} in terms of \code{αa}. It \newterm{transports}
+\code{αa} along \code{f}:
 
 \begin{verbatim}
 αb = (G f) ∘ αa ∘ (F f)-1
@@ -121,7 +121,7 @@ that when we get to limits, colimits, and adjunctions.
 
 Finally, natural transformations may be used to define isomorphisms of
 functors. Saying that two functors are naturally isomorphic is almost
-like saying they are the same. \emph{Natural isomorphism} is defined as
+like saying they are the same. \newterm{Natural isomorphism} is defined as
 a natural transformation whose components are all isomorphisms
 (invertible morphisms).
 
@@ -130,28 +130,28 @@ a natural transformation whose components are all isomorphisms
 We talked about the role of functors (or, more specifically,
 endofunctors) in programming. They correspond to type constructors that
 map types to types. They also map functions to functions, and this
-mapping is implemented by a higher order function \texttt{fmap} (or
-\texttt{transform}, \texttt{then}, and the like in C++).
+mapping is implemented by a higher order function \code{fmap} (or
+\code{transform}, \code{then}, and the like in C++).
 
 To construct a natural transformation we start with an object, here a
-type, \texttt{a}. One functor, \texttt{F}, maps it to the type
-\texttt{F\ a}. Another functor, \texttt{G}, maps it to \texttt{G\ a}.
-The component of a natural transformation \texttt{alpha} at \texttt{a}
-is a function from \texttt{F\ a} to \texttt{G\ a}. In pseudo-Haskell:
+type, \code{a}. One functor, \code{F}, maps it to the type
+\code{F\ a}. Another functor, \code{G}, maps it to \code{G\ a}.
+The component of a natural transformation \code{alpha} at \code{a}
+is a function from \code{F\ a} to \code{G\ a}. In pseudo-Haskell:
 
 \begin{verbatim}
 alphaa :: F a -> G a
 \end{verbatim}
 
 A natural transformation is a polymorphic function that is defined for
-all types \texttt{a}:
+all types \code{a}:
 
 \begin{verbatim}
 alpha :: forall a . F a -> G a
 \end{verbatim}
 
-The \texttt{forall\ a} is optional in Haskell (and in fact requires
-turning on the language extension \texttt{ExplicitForAll}). Normally,
+The \code{forall\ a} is optional in Haskell (and in fact requires
+turning on the language extension \code{ExplicitForAll}). Normally,
 you would write it like this:
 
 \begin{verbatim}
@@ -159,7 +159,7 @@ alpha :: F a -> G a
 \end{verbatim}
 
 Keep in mind that it's really a family of functions parameterized by
-\texttt{a}. This is another example of the terseness of the Haskell
+\code{a}. This is another example of the terseness of the Haskell
 syntax. A similar construct in C++ would be slightly more verbose:
 
 \begin{verbatim}
@@ -170,9 +170,9 @@ There is a more profound difference between Haskell's polymorphic
 functions and C++ generic functions, and it's reflected in the way these
 functions are implemented and type-checked. In Haskell, a polymorphic
 function must be defined uniformly for all types. One formula must work
-across all types. This is called \emph{parametric polymorphism}.
+across all types. This is called \newterm{parametric polymorphism}.
 
-C++, on the other hand, supports by default~\emph{ad hoc polymorphism},
+C++, on the other hand, supports by default~\newterm{ad hoc polymorphism},
 which means that a template doesn't have to be well-defined for all
 types. Whether a template will work for a given type is decided at
 instantiation time, where a concrete type is substituted for the type
@@ -191,16 +191,16 @@ polymorphic function of the type:
 alpha :: F a -> G a
 \end{verbatim}
 
-where \texttt{F} and \texttt{G} are functors, automatically satisfies
-the naturality condition. Here it is in categorical notation (\texttt{f}
-is a function \texttt{f::a-\textgreater{}b}):
+where \code{F} and \code{G} are functors, automatically satisfies
+the naturality condition. Here it is in categorical notation (\code{f}
+is a function \code{f::a-\textgreater{}b}):
 
 \begin{verbatim}
 G f ∘ αa = αb ∘ F f
 \end{verbatim}
 
-In Haskell, the action of a functor \texttt{G} on a morphism \texttt{f}
-is implemented using \texttt{fmap}. I'll first write it in
+In Haskell, the action of a functor \code{G} on a morphism \code{f}
+is implemented using \code{fmap}. I'll first write it in
 pseudo-Haskell, with explicit type annotations:
 
 \begin{verbatim}
@@ -239,13 +239,13 @@ a new container.
 
 The naturality condition becomes the statement that it doesn't matter
 whether we modify the items first, through the application of
-\texttt{fmap}, and repackage later; or repackage first, and then modify
+\code{fmap}, and repackage later; or repackage first, and then modify
 the items in the new container, with its own implementation of
-\texttt{fmap}. These two actions, repackaging and \texttt{fmap}ping, are
+\code{fmap}. These two actions, repackaging and \code{fmap}ping, are
 orthogonal. ``One moves the eggs, the other boils them.''
 
 Let's see a few examples of natural transformations in Haskell. The
-first is between the list functor, and the \texttt{Maybe} functor. It
+first is between the list functor, and the \code{Maybe} functor. It
 returns the head of the list, but only if the list is non-empty:
 
 \begin{verbatim}
@@ -254,8 +254,8 @@ safeHead [] = Nothing
 safeHead (x:xs) = Just x
 \end{verbatim}
 
-It's a function polymorphic in \texttt{a}. It works for any type
-\texttt{a}, with no limitations, so it is an example of parametric
+It's a function polymorphic in \code{a}. It works for any type
+\code{a}, with no limitations, so it is an example of parametric
 polymorphism. Therefore it is a natural transformation between the two
 functors. But just to convince ourselves, let's verify the naturality
 condition.
@@ -284,14 +284,14 @@ fmap f (safeHead (x:xs)) = fmap f (Just x) = Just (f x)
 safeHead (fmap f (x:xs)) = safeHead (f x : fmap f xs) = Just (f x)
 \end{verbatim}
 
-I used the implementation of \texttt{fmap} for lists:
+I used the implementation of \code{fmap} for lists:
 
 \begin{verbatim}
 fmap f [] = []
 fmap f (x:xs) = f x : fmap f xs
 \end{verbatim}
 
-and for \texttt{Maybe}:
+and for \code{Maybe}:
 
 \begin{verbatim}
 fmap f Nothing = Nothing
@@ -299,12 +299,12 @@ fmap f (Just x) = Just (f x)
 \end{verbatim}
 
 An interesting case is when one of the functors is the trivial
-\texttt{Const} functor. A natural transformation from or to a
-\texttt{Const} functor looks just like a function that's either
+\code{Const} functor. A natural transformation from or to a
+\code{Const} functor looks just like a function that's either
 polymorphic in its return type or in its argument type.
 
-For instance, \texttt{length} can be thought of as a natural
-transformation from the list functor to the \texttt{Const\ Int} functor:
+For instance, \code{length} can be thought of as a natural
+transformation from the list functor to the \code{Const\ Int} functor:
 
 \begin{verbatim}
 length :: [a] -> Const Int a
@@ -312,7 +312,7 @@ length [] = Const 0
 length (x:xs) = Const (1 + unConst (length xs))
 \end{verbatim}
 
-Here, \texttt{unConst} is used to peel off the \texttt{Const}
+Here, \code{unConst} is used to peel off the \code{Const}
 constructor:
 
 \begin{verbatim}
@@ -320,7 +320,7 @@ unConst :: Const c a -> c
 unConst (Const x) = x
 \end{verbatim}
 
-Of course, in practice \texttt{length} is defined as:
+Of course, in practice \code{length} is defined as:
 
 \begin{verbatim}
 length :: [a] -> Int
@@ -329,7 +329,7 @@ length :: [a] -> Int
 which effectively hides the fact that it's a natural transformation.
 
 Finding a parametrically polymorphic function \emph{from} a
-\texttt{Const} functor is a little harder, since it would require the
+\code{Const} functor is a little harder, since it would require the
 creation of a value from nothing. The best we can do is:
 
 \begin{verbatim}
@@ -338,8 +338,8 @@ scam (Const x) = Nothing
 \end{verbatim}
 
 Another common functor that we've seen already, and which will play an
-important role in the Yoneda lemma, is the \texttt{Reader} functor. I
-will rewrite its definition as a \texttt{newtype}:
+important role in the Yoneda lemma, is the \code{Reader} functor. I
+will rewrite its definition as a \code{newtype}:
 
 \begin{verbatim}
 newtype Reader e a = Reader (e -> a)
@@ -352,26 +352,26 @@ in the second one:
 instance Functor (Reader e) where fmap f (Reader g) = Reader (\x -> f (g x))
 \end{verbatim}
 
-For every type \texttt{e}, you can define a family of natural
-transformations from \texttt{Reader\ e} to any other functor \texttt{f}.
+For every type \code{e}, you can define a family of natural
+transformations from \code{Reader\ e} to any other functor \code{f}.
 We'll see later that the members of this family are always in one to one
-correspondence with the elements of \texttt{f\ e} (the
+correspondence with the elements of \code{f\ e} (the
 \href{https://bartoszmilewski.com/2015/09/01/the-yoneda-lemma/}{Yoneda
 lemma}).
 
-For instance, consider the somewhat trivial unit type \texttt{()} with
-one element \texttt{()}. The functor \texttt{Reader\ ()} takes any type
-\texttt{a} and maps it into a function type \texttt{()-\textgreater{}a}.
+For instance, consider the somewhat trivial unit type \code{()} with
+one element \code{()}. The functor \code{Reader\ ()} takes any type
+\code{a} and maps it into a function type \code{()-\textgreater{}a}.
 These are just all the functions that pick a single element from the set
-\texttt{a}. There are as many of these as there are elements in
-\texttt{a}. Now let's consider natural transformations from this functor
-to the \texttt{Maybe} functor:
+\code{a}. There are as many of these as there are elements in
+\code{a}. Now let's consider natural transformations from this functor
+to the \code{Maybe} functor:
 
 \begin{verbatim}
 alpha :: Reader () a -> Maybe a
 \end{verbatim}
 
-There are only two of these, \texttt{dumb} and \texttt{obvious}:
+There are only two of these, \code{dumb} and \code{obvious}:
 
 \begin{verbatim}
 dumb (Reader _) = Nothing
@@ -383,28 +383,28 @@ and
 obvious (Reader g) = Just (g ())
 \end{verbatim}
 
-(The only thing you can do with \texttt{g} is to apply it to the unit
-value \texttt{()}.)
+(The only thing you can do with \code{g} is to apply it to the unit
+value \code{()}.)
 
 And, indeed, as predicted by the Yoneda lemma, these correspond to the
-two elements of the \texttt{Maybe\ ()} type, which are \texttt{Nothing}
-and \texttt{Just\ ()}. We'll come back to the Yoneda lemma later ---
+two elements of the \code{Maybe\ ()} type, which are \code{Nothing}
+and \code{Just\ ()}. We'll come back to the Yoneda lemma later ---
 this was just a little teaser.
 
 \subsection{Beyond Naturality}\label{beyond-naturality}
 
 A parametrically polymorphic function between two functors (including
-the edge case of the \texttt{Const} functor) is always a natural
+the edge case of the \code{Const} functor) is always a natural
 transformation. Since all standard algebraic data types are functors,
 any polymorphic function between such types is a natural transformation.
 
 We also have function types at our disposal, and those are functorial in
 their return type. We can use them to build functors (like the
-\texttt{Reader} functor) and define natural transformations that are
+\code{Reader} functor) and define natural transformations that are
 higher-order functions.
 
 However, function types are not covariant in the argument type. They are
-\emph{contravariant}. Of course contravariant functors are equivalent to
+\newterm{contravariant}. Of course contravariant functors are equivalent to
 covariant functors from the opposite category. Polymorphic functions
 between two contravariant functors are still natural transformations in
 the categorical sense, except that they work on functors from the
@@ -417,14 +417,14 @@ at before:
 newtype Op r a = Op (a -> r)
 \end{verbatim}
 
-This functor is contravariant in \texttt{a}:
+This functor is contravariant in \code{a}:
 
 \begin{verbatim}
 instance Contravariant (Op r) where contramap f (Op g) = Op (g . f)
 \end{verbatim}
 
-We can write a polymorphic function from, say, \texttt{Op\ Bool} to
-\texttt{Op\ String}:
+We can write a polymorphic function from, say, \code{Op\ Bool} to
+\code{Op\ String}:
 
 \begin{verbatim}
 predToStr (Op f) = Op (\x -> if f x then "T" else "F")
@@ -438,9 +438,9 @@ contravariant, they satisfy the ``opposite'' naturality condition:
 contramap f . predToStr = predToStr . contramap f
 \end{verbatim}
 
-Notice that the function \texttt{f} must go in the opposite direction
-than what you'd use with \texttt{fmap}, because of the signature of
-\texttt{contramap}:
+Notice that the function \code{f} must go in the opposite direction
+than what you'd use with \code{fmap}, because of the signature of
+\code{contramap}:
 
 \begin{verbatim}
 contramap :: (b -> a) -> (Op Bool a -> Op Bool b)
@@ -453,16 +453,16 @@ or contravariant? Here's one example:
 a -> a
 \end{verbatim}
 
-This is not a functor because the same type \texttt{a} is used both in
+This is not a functor because the same type \code{a} is used both in
 the negative (contravariant) and positive (covariant) position. You
-can't implement \texttt{fmap} or \texttt{contramap} for this type.
+can't implement \code{fmap} or \code{contramap} for this type.
 Therefore a function of the signature:
 
 \begin{verbatim}
 (a -> a) -> f a
 \end{verbatim}
 
-where \texttt{f} is an arbitrary functor, cannot be a natural
+where \code{f} is an arbitrary functor, cannot be a natural
 transformation. Interestingly, there is a generalization of natural
 transformations, called dinatural transformations, that deals with such
 cases. We'll get to them when we discuss ends.
@@ -481,14 +481,14 @@ quite easy. The components of natural transformations are morphisms, and
 we know how to compose morphisms.
 
 Indeed, let's take a natural transformation α from functor F to G. Its
-component at object \texttt{a} is some morphism:
+component at object \code{a} is some morphism:
 
 \begin{verbatim}
 αa :: F a -> G a
 \end{verbatim}
 
 We'd like to compose α with β, which is a natural transformation from
-functor G to H. The component of β at \texttt{a} is a morphism:
+functor G to H. The component of β at \code{a} is a morphism:
 
 \begin{verbatim}
 βa :: G a -> H a
@@ -543,8 +543,8 @@ horizontal composition shortly.
 \includegraphics[width=2.29167in]{images/6a_vertical.jpg}
 
 The functor category between categories C and D is written as
-\texttt{Fun(C,\ D)}, or \texttt{{[}C,\ D{]}}, or sometimes as
-\texttt{DC}. This last notation suggests that a functor category itself
+\code{Fun(C,\ D)}, or \code{{[}C,\ D{]}}, or sometimes as
+\code{DC}. This last notation suggests that a functor category itself
 might be considered a function object (an exponential) in some other
 category. Is this indeed the case?
 
@@ -572,12 +572,12 @@ As you may remember, in order to construct an exponential, we need to
 first define a product. In \textbf{Cat}, this turns out to be relatively
 easy, because small categories are \emph{sets} of objects, and we know
 how to define cartesian products of sets. So an object in a product
-category C × D is just a pair of objects, \texttt{(c,\ d)}, one from C
+category C × D is just a pair of objects, \code{(c,\ d)}, one from C
 and one from D. Similarly, a morphism between two such pairs,
-\texttt{(c,\ d)} and \texttt{(c\&apos;,\ d\&apos;)}, is a pair of
-morphisms, \texttt{(f,\ g)}, where
-\texttt{f\ ::\ c\ -\textgreater{}\ c\&apos;} and
-\texttt{g\ ::\ d\ -\textgreater{}\ d\&apos;}. These pairs of morphisms
+\code{(c,\ d)} and \code{(c\&apos;,\ d\&apos;)}, is a pair of
+morphisms, \code{(f,\ g)}, where
+\code{f\ ::\ c\ -\textgreater{}\ c\&apos;} and
+\code{g\ ::\ d\ -\textgreater{}\ d\&apos;}. These pairs of morphisms
 compose component-wise, and there is always an identity pair that is
 just a pair of identity morphisms. To make the long story short,
 \textbf{Cat} is a full-blown cartesian closed category in which there is
@@ -660,8 +660,8 @@ from G ∘ F to G'∘ F'? Let me sketch the construction.
 
 \includegraphics[width=3.84375in]{images/9_horizontal.jpg}
 
-As usual, we start with an object \texttt{a} in C. Its image splits into
-two objects in D: \texttt{F\ a} and \texttt{F\&apos;a}. There is also a
+As usual, we start with an object \code{a} in C. Its image splits into
+two objects in D: \code{F\ a} and \code{F\&apos;a}. There is also a
 morphism, a component of α, connecting these two objects:
 
 \begin{verbatim}
@@ -692,10 +692,10 @@ G&apos;αa :: G&apos;(F a) -> G&apos;(F&apos;a)
 \end{verbatim}
 
 That's a lot of morphisms. Our goal is to find a morphism that goes from
-\texttt{G\ (F\ a)} to \texttt{G\&apos;(F\&apos;a)}, a candidate for the
+\code{G\ (F\ a)} to \code{G\&apos;(F\&apos;a)}, a candidate for the
 component of a natural transformation connecting the two functors G ∘ F
 and G'∘ F'. In fact there's not one but two paths we can take from
-\texttt{G\ (F\ a)} to \texttt{G\&apos;(F\&apos;a)}:
+\code{G\ (F\ a)} to \code{G\&apos;(F\&apos;a)}:
 
 \begin{verbatim}
 G&apos;αa ∘ βF a
@@ -709,7 +709,7 @@ We have just defined a component of a natural transformation from G ∘ F
 to G'∘ F'. The proof of naturality for this transformation is pretty
 straightforward, provided you have enough patience.
 
-We call this natural transformation the \emph{horizontal composition} of
+We call this natural transformation the \newterm{horizontal composition} of
 α and β:
 
 \begin{verbatim}
@@ -795,8 +795,8 @@ functions.
 
 A functor maps objects to objects, so we can use it as a type
 constructor, or a parametric type. A functor also maps morphisms, so it
-is a higher order function --- \texttt{fmap}. There are some simple
-functors, like \texttt{Const}, product, and coproduct, that can be used
+is a higher order function --- \code{fmap}. There are some simple
+functors, like \code{Const}, product, and coproduct, that can be used
 to generate a large variety of algebraic data types. Function types are
 also functorial, both covariant and contravariant, and can be used to
 extend algebraic data types.
@@ -809,15 +809,15 @@ natural transformation is a special type of polymorphic function.
 
 \begin{enumerate}
 \item
-  Define a natural transformation from the \texttt{Maybe} functor to the
+  Define a natural transformation from the \code{Maybe} functor to the
   list functor. Prove the naturality condition for it.
 \item
   Define at least two different natural transformations between
-  \texttt{Reader\ ()} and the list functor. How many different lists of
-  \texttt{()} are there?
+  \code{Reader\ ()} and the list functor. How many different lists of
+  \code{()} are there?
 \item
-  Continue the previous exercise with \texttt{Reader\ Bool} and
-  \texttt{Maybe}.
+  Continue the previous exercise with \code{Reader\ Bool} and
+  \code{Maybe}.
 \item
   Show that horizontal composition of natural transformation satisfies
   the naturality condition (hint: use components). It's a good exercise
@@ -827,7 +827,7 @@ natural transformation is a special type of polymorphic function.
   diagrams needed to prove the interchange law.
 \item
   Create a few test cases for the opposite naturality condition of
-  transformations between different \texttt{Op} functors. Here's one
+  transformations between different \code{Op} functors. Here's one
   choice:
 
 \begin{verbatim}
