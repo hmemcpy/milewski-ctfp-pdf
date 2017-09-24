@@ -47,11 +47,12 @@ The \textbf{initial object} is the object that has one and only one
 morphism going to any object in the category.
 \end{quote}
 
-\begin{figure}
-  \centering
-  \fbox{\includegraphics[width=60mm]{images/initial.jpg}}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=60mm]{images/initial.jpg}}
 \end{figure}
 
+\noindent
 However, even that doesn't guarantee the uniqueness of the initial
 object (if one exists). But it guarantees the next best thing:
 uniqueness \newterm{up to isomorphism}. Isomorphisms are very important in
@@ -73,7 +74,6 @@ polymorphic function from \code{Void} to any other type is called
 \begin{verbatim}
 absurd :: Void -> a
 \end{verbatim}
-
 It's this family of morphisms that makes \code{Void} the initial
 object in the category of types.
 
@@ -92,8 +92,8 @@ morphism coming to it from any object in the category.
 \end{quote}
 
 \begin{figure}[H]
-  \centering
-  \fbox{\includegraphics[width=60mm]{images/final.jpg}}
+\centering
+\fbox{\includegraphics[width=60mm]{images/final.jpg}}
 \end{figure}
 
 \noindent
@@ -111,7 +111,6 @@ function from any type to the unit type:
 unit :: a -> ()
 unit _ = ()
 \end{verbatim}
-
 so all the conditions for the terminal object are satisfied.
 
 Notice that in this example the uniqueness condition is crucial, because
@@ -123,7 +122,6 @@ Boolean-valued function (a predicate) defined for every type:
 yes :: a -> Bool
 yes _ = True
 \end{verbatim}
-
 But \code{Bool} is not a terminal object. There is at least one more
 \code{Bool}-valued function from every type:
 
@@ -131,7 +129,6 @@ But \code{Bool} is not a terminal object. There is at least one more
 no :: a -> Bool
 no _ = False
 \end{verbatim}
-
 Insisting on uniqueness gives us just the right precision to narrow down
 the definition of the terminal object to just one type.
 
@@ -197,7 +194,6 @@ two ways of composing two morphisms:
 f . g = id
 g . f = id
 \end{verbatim}
-
 When I said that the initial (terminal) object was unique up to
 isomorphism, I meant that any two initial (terminal) objects are
 isomorphic. That's actually easy to see. Let's suppose that we have two
@@ -208,13 +204,14 @@ i\textsubscript{2} is initial, there is a unique morphism \emph{g} from
 i\textsubscript{2} to i\textsubscript{1}. What's the composition of
 these two morphisms?
 
-\begin{figure}
-  \centering
-          \includegraphics[width=1.56250in]{images/uniqueness.jpg}
-      \captionsetup{labelformat=empty,font=scriptsize}
-      \caption{All morphisms in this diagram are unique.}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.56250in]{images/uniqueness.jpg}
+\captionsetup{labelformat=empty,font=scriptsize}
+\caption{All morphisms in this diagram are unique.}
 \end{figure}
 
+\noindent
 The composition \emph{g∘f} must be a morphism from i\textsubscript{1} to
 i\textsubscript{1}. But i\textsubscript{1} is initial so there can only
 be one morphism going from i\textsubscript{1} to i\textsubscript{1}.
@@ -256,7 +253,6 @@ fst (x, y) = x
 snd :: (a, b) -> b
 snd (x, y) = y
 \end{verbatim}
-
 Here, the functions are defined by pattern matching their arguments: the
 pattern that matches any pair is \code{(x, y)}, and it extracts its
 components into variables \code{x} and \code{y}.
@@ -268,7 +264,6 @@ wildcards:
 fst (x, _) = x
 snd (_, y) = y
 \end{verbatim}
-
 In C++, we would use template functions, for instance:
 
 \begin{verbatim}
@@ -277,7 +272,6 @@ fst(pair<A, B> const & p) {
     return p.first;
 }
 \end{verbatim}
-
 Equipped with this seemingly very limited knowledge, let's try to define
 a pattern of objects and morphisms in the category of sets that will
 lead us to the construction of a product of two sets, \emph{a} and
@@ -291,8 +285,8 @@ q :: c -> b
 \end{verbatim}
 
 \begin{figure}[H]
-  \centering
-  \fbox{\includegraphics[width=1.56250in]{images/productpattern.jpg}}
+\centering
+\fbox{\includegraphics[width=1.56250in]{images/productpattern.jpg}}
 \end{figure}
 
 \noindent
@@ -300,8 +294,8 @@ All \emph{c}s that fit this pattern will be considered candidates for
 the product. There may be lots of them.
 
 \begin{figure}[H]
-  \centering
-  \fbox{\includegraphics[width=1.56250in]{images/productcandidates.jpg}}
+\centering
+\fbox{\includegraphics[width=1.56250in]{images/productcandidates.jpg}}
 \end{figure}
 
 \noindent
@@ -320,8 +314,6 @@ p x = x
 q :: Int -> Bool
 q _ = True
 \end{verbatim}
-
-\noindent
 That's pretty lame, but it matches the criteria.
 
 Here's another one: \code{(Int, Int, Bool)}. It's a tuple of three
@@ -335,8 +327,6 @@ p (x, _, _) = x
 q :: (Int, Int, Bool) -> Bool
 q (_, _, b) = b
 \end{verbatim}
-
-\noindent
 You may have noticed that while our first candidate was too small --- it
 only covered the \code{Int} dimension of the product; the second was
 too big --- it spuriously duplicated the \code{Int} dimension.
@@ -359,8 +349,8 @@ q' = q . m
 \end{verbatim}
 
 \begin{figure}[H]
-  \centering
-  \fbox{\includegraphics[width=1.56250in]{images/productranking.jpg}}
+\centering
+\fbox{\includegraphics[width=1.56250in]{images/productranking.jpg}}
 \end{figure}
 
 \noindent
@@ -375,8 +365,8 @@ and \code{snd} is indeed \emph{better} than the two candidates I
 presented before.
 
 \begin{figure}[H]
-  \centering
-  \fbox{\includegraphics[width=2.20833in]{images/not-a-product.jpg}}
+\centering
+\fbox{\includegraphics[width=2.20833in]{images/not-a-product.jpg}}
 \end{figure}
 
 \noindent
@@ -386,8 +376,6 @@ The mapping \code{m} for the first candidate is:
 m :: Int -> (Int, Bool)
 m x = (x, True)
 \end{verbatim}
-
-\noindent
 Indeed, the two projections, \code{p} and \code{q} can be
 reconstructed as:
 
@@ -395,15 +383,11 @@ reconstructed as:
 p x = fst (m x) = x
 q x = snd (m x) = True
 \end{verbatim}
-
-\noindent
 The \code{m} for the second example is similarly uniquely determined:
 
 \begin{verbatim}
 m (x, _, b) = (x, b)
 \end{verbatim}
-
-\noindent
 We were able to show that \code{(Int,\ Bool)} is better than either of
 the two candidates. Let's see why the opposite is not true. Could we
 find some \code{m'} that would help us reconstruct \code{fst}
@@ -413,7 +397,6 @@ and \code{snd} from \code{p} and \code{q}?
 fst = p . m'
 snd = q . m'
 \end{verbatim}
-
 In our first example, \code{q} always returned \code{True} and we
 know that there are pairs whose second component is \code{False}. We
 can't reconstruct \code{snd} from \code{q}.
@@ -427,15 +410,11 @@ can put anything in it. We can have:
 \begin{verbatim}
 m' (x, b) = (x, x, b)
 \end{verbatim}
-
-\noindent
 or
 
 \begin{verbatim}
 m' (x, b) = (x, 42, b)
 \end{verbatim}
-
-\noindent
 and so on.
 
 Putting it all together, given any type \code{c} with two projections
@@ -447,7 +426,6 @@ it just combines \code{p} and \code{q} into a pair.
 m :: c -> (a, b)
 m x = (p x, q x)
 \end{verbatim}
-
 That makes the cartesian product \code{(a, b)} our best match, which
 means that this universal construction works in the category of sets. It
 picks the product of any two sets.
@@ -463,6 +441,7 @@ A \textbf{product} of two objects \emph{a} and \emph{b} is the object
 \emph{m} from \emph{c'} to \emph{c} that factorizes those projections.
 \end{quote}
 
+\noindent
 A (higher order) function that produces the factorizing function
 \code{m} from two candidates is sometimes called the
 \newterm{factorizer}. In our case, it would be the function:
@@ -486,8 +465,8 @@ j :: b -> c
 \end{verbatim}
 
 \begin{figure}[H]
-  \centering
-  \fbox{\includegraphics[width=1.56250in]{images/coproductpattern.jpg}}
+\centering
+\fbox{\includegraphics[width=1.56250in]{images/coproductpattern.jpg}}
 \end{figure}
 
 \noindent
@@ -502,8 +481,8 @@ j' = m . j
 \end{verbatim}
 
 \begin{figure}[H]
-  \centering
-  \fbox{\includegraphics[width=1.56250in]{images/coproductranking.jpg}}
+\centering
+\fbox{\includegraphics[width=1.56250in]{images/coproductranking.jpg}}
 \end{figure}
 
 \noindent
@@ -540,8 +519,6 @@ struct Contact {
     union { int phoneNum; char const * emailAddr; };
 };
 \end{verbatim}
-
-\noindent
 The two injections can either be implemented as constructors or as
 functions. For instance, here's the first injection as a function
 \code{PhoneNum}:
@@ -554,8 +531,6 @@ Contact PhoneNum(int n) {
     return c;
 }
 \end{verbatim}
-
-\noindent
 It injects an integer into \code{Contact}.
 
 A tagged union is also called a \newterm{variant}, and there is a very
@@ -569,8 +544,6 @@ example translates into the declaration:
 \begin{verbatim}
 data Contact = PhoneNum Int | EmailAddr String
 \end{verbatim}
-
-\noindent
 Here, \code{PhoneNum} and \code{EmailAddr} serve both as
 constructors (injections), and as tags for pattern matching (more about
 this later). For instance, this is how you would construct a contact
@@ -580,8 +553,6 @@ using a phone number:
 helpdesk :: Contact;
 helpdesk = PhoneNum 2222222
 \end{verbatim}
-
-\noindent
 Unlike the canonical implementation of the product that is built into
 Haskell as the primitive pair, the canonical implementation of the
 coproduct is a data type called \code{Either}, which is defined in the
@@ -590,8 +561,6 @@ standard Prelude as:
 \begin{verbatim}
 Either a b = Left a | Right b
 \end{verbatim}
-
-\noindent
 It is parameterized by two types, \code{a} and \code{b} and has two
 constructors: \code{Left} that takes a value of type \code{a}, and
 \code{Right} that takes a value of type \code{b}.
@@ -647,7 +616,6 @@ concrete pair. It also factorizes the two projections:
 p = fst . m
 q = snd . m
 \end{verbatim}
-
 When acting on the singleton value \code{()}, the only element of the
 singleton set, these two equations become:
 
@@ -655,7 +623,6 @@ singleton set, these two equations become:
 p () = fst (m ())
 q () = snd (m ())
 \end{verbatim}
-
 Since \code{m ()} is the element of the product picked by \code{m},
 these equations tell use that the element picked by \code{p} from the
 first set, \code{p ()}, is the first component of the pair picked by
