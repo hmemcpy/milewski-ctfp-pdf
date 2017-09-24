@@ -96,10 +96,10 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \chapter{Categories Great and Small}
 \subfile{content/1.3/Categories Great and Small}
 
-\chapter{Kleisli Categories}
+\chapter{Kleisli Categories}\label{kleisli-categories-page}
 \subfile{content/1.4/Kleisli Categories}
 
-\chapter{Products and Coproducts}
+\chapter{Products and Coproducts}\label{products-and-coproducts}
 \subfile{content/1.5/Products and Coproducts}
 
 \chapter{Simple Algebraic Data Types}
@@ -107,6 +107,9 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 
 \chapter{Functors}
 \subfile{content/1.7/Functors}
+
+\chapter{Functors}
+\subfile{content/1.8/Functoriality}
 
 \backmatter
 
