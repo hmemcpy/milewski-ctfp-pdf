@@ -1,13 +1,11 @@
-\begin{quote}
-This is part 9 of Categories for Programmers. Previously:
-\href{https://bartoszmilewski.com/2015/02/03/functoriality/}{Functoriality}.
-See the
-\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
-of Contents}.
-\end{quote}
-
 So far I've been glossing over the meaning of function types. A function
 type is different from other types.
+
+\begin{wrapfigure}[13]{R}{0pt}
+\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
+\fbox{\includegraphics[width=40mm]{images/set-hom-set.jpg}}}%
+\caption{Hom-set in Set is just a set}
+\end{wrapfigure}
 
 Take \code{Integer}, for instance: It's just a set of integers.
 \code{Bool} is a two element set. But a function type
@@ -17,19 +15,17 @@ two objects in any category is called a hom-set. It just so happens that
 in the category \textbf{Set} every hom-set is itself an object in the
 same category ---because it is, after all, a \newterm{set}.
 
-\hypertarget{attachment_4241}{}
-\includegraphics[width=2.79167in]{images/set-hom-set.jpg}
-
-Hom-set in Set is just a set
-
 The same is not true of other categories where hom-sets are external to
 a category. They are even called \newterm{external} hom-sets.
 
-\hypertarget{attachment_4242}{}
-\includegraphics[width=2.65625in]{images/hom-set.jpg}
+\pagebreak
+\begin{wrapfigure}[11]{R}{0pt}
+\raisebox{0pt}[\dimexpr\height]{
+\fbox{\includegraphics[width=40mm]{images/hom-set.jpg}}}%
+\caption{Hom-set in category C is an external set}
+\end{wrapfigure}
 
-Hom-set in category C is an external set
-
+\noindent
 It's the self-referential nature of the category \textbf{Set} that makes
 function types special. But there is a way, at least in some categories,
 to construct objects that represent hom-sets. Such objects are called
@@ -47,8 +43,7 @@ A function type may be considered a composite type because of its
 relationship to the argument type and the result type. We've already
 seen the constructions of composite types --- those that involved
 relationships between objects. We used universal constructions to define
-a
-\href{https://bartoszmilewski.com/2015/01/07/products-and-coproducts/}{product
+a \hyperref[products-and-coproducts]{product
 type and a coproduct types}. We can use the same trick to define a
 function type. We will need a pattern that involves three objects: the
 function type that we are constructing, the argument type, and the
@@ -70,12 +65,13 @@ with an argument \code{x} (an element of \code{a}) and map it to
 \code{f\ x} (the application of \code{f} to \code{x}, which is an
 element of \code{b}).
 
-\hypertarget{attachment_4243}{}
-\includegraphics[width=3.12500in]{images/functionset.jpg}
-
-In Set we can pick a function f from a set of functions z and we can
+\begin{figure}
+\centering
+\fbox{\includegraphics[width=60mm]{images/functionset.jpg}}
+\caption{In Set we can pick a function f from a set of functions z and we can
 pick an argument x from the set (type) a. We get an element f x in the
-set (type) b.
+set (type) b.}
+\end{figure}
 
 But instead of dealing with individual pairs \code{(f,\ x)}, we can as
 well talk about the whole \newterm{product} of the function type \code{z}
@@ -88,11 +84,12 @@ So that's the pattern: a product of two objects \code{z} and
 \code{a} connected to another object \code{b} by a morphism
 \code{g}.
 
-\hypertarget{attachment_4244}{}
-\includegraphics[width=3.12500in]{images/functionpattern.jpg}
-
-A pattern of objects and morphisms that is the starting point of the
-universal construction
+\begin{figure}
+\centering
+\fbox{\includegraphics[width=60mm]{images/functionpattern.jpg}}
+\caption{A pattern of objects and morphisms that is the starting point of the
+universal construction}
+\end{figure}
 
 Is this pattern specific enough to single out the function type using a
 universal construction? Not in every category. But in the categories of
@@ -115,103 +112,102 @@ requiring that there be a unique mapping between candidate objects --- a
 mapping that somehow factorizes our construction. In our case, we'll
 decree that \code{z} together with the morphism \code{g} from
 \code{z×a} to \code{b} is \newterm{better} than some other
-\code{z\'} with its own application \code{g\'}, if and
-only if there is a unique mapping \code{h} from \code{z\'} to
-\code{z} such that the application of \code{g\'} factors
+\code{z'} with its own application \code{g'}, if and
+only if there is a unique mapping \code{h} from \code{z'} to
+\code{z} such that the application of \code{g'} factors
 through the application of \code{g}. (Hint: Read this sentence while
 looking at the picture.)
 
-\hypertarget{attachment_4245}{}
-\includegraphics[width=3.12500in]{images/functionranking.jpg}
-
-Establishing a ranking between candidates for the function object
+\begin{figure}
+\centering
+\fbox{\includegraphics[width=60mm]{images/functionranking.jpg}}
+\caption{Establishing a ranking between candidates for the function object}
+\end{figure}
 
 Now here's the tricky part, and the main reason I postponed this
-particular universal construction till now. Given the morphism
-\code{h\ ::\ z\'->\ z}, we want to close the diagram
-that has both \code{z\'} and \code{z} crossed with \code{a}.
-What we really need, given the mapping \code{h} from \code{z\'}
-to \code{z}, is a mapping from \code{z\'×a} to \code{z×a}.
-And now, after discussing the
-\href{https://bartoszmilewski.com/2015/02/03/functoriality/}{functoriality
+particular universal construction till now. Given the morphism\\
+\code{h :: z'-> z}, we want to close the diagram
+that has both \code{z'} and \code{z} crossed with \code{a}.
+What we really need, given the mapping \code{h} from \code{z'}
+to \code{z}, is a mapping from \code{z'×a} to \code{z×a}.
+And now, after discussing the \hyperref[functoriality]{functoriality
 of the product}, we know how to do it. Because the product itself is a
 functor (more precisely an endo-bi-functor), it's possible to lift pairs
 of morphisms. In other words, we can define not only products of objects
 but also products of morphisms.
 
 Since we are not touching the second component of the product
-\code{z\'×a}, we will lift the pair of morphisms
-\code{(h,\ id)}, where \code{id} is an identity on \code{a}.
+\code{z'×a}, we will lift the pair of morphisms
+\code{(h, id)}, where \code{id} is an identity on \code{a}.
 
 So, here's how we can factor one application, \code{g}, out of another
-application \code{g\'}:
+application \code{g'}:
 
 \begin{verbatim}
-g' = g ∘ (h × id)
+g' = g ◦ (h × id)
 \end{verbatim}
-
 The key here is the action of the product on morphisms.
 
 The third part of the universal construction is selecting the object
-that is universally the best. Let's call this object \code{a⇒b} (think
+that is universally the best. Let's call this object \code{a\ensuremath{\Rightarrow}b} (think
 of this as a symbolic name for one object, not to be confused with a
 Haskell typeclass constraint --- I'll discuss different ways of naming
 it later). This object comes with its own application --- a morphism
-from \code{(a⇒b)×a} to \code{b} --- which we will call
-\code{eval}. The object \code{a⇒b} is the best if any other
+from \code{(a\ensuremath{\Rightarrow}b)×a} to \code{b} --- which we will call
+\code{eval}. The object \code{a\ensuremath{\Rightarrow}b} is the best if any other
 candidate for a function object can be uniquely mapped to it in such a
 way that its application morphism \code{g} factorizes through
 \code{eval}. This object is better than any other object according to
 our ranking.
 
-\hypertarget{attachment_4246}{}
-\includegraphics[width=3.12500in]{images/universalfunctionobject.jpg}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics{images/universalfunctionobject.jpg}}
+\caption{The definition of the universal function object. This is the same
+diagram as above, but now the object \code{a\ensuremath{\Rightarrow}b} is \newterm{universal}.}
+\end{figure}
 
-The definition of the universal function object. This is the same
-diagram as above, but now the object \code{a⇒b} is \newterm{universal}.
-
+\noindent
 Formally:
 
 \begin{longtable}[]{@{}l@{}}
 \toprule
 \begin{minipage}[t]{0.97\columnwidth}\raggedright\strut
 A \textbf{function object} from \code{a} to \code{b} is an object
-\code{a⇒b} together with the morphism
+\code{a\ensuremath{\Rightarrow}b} together with the morphism
 
-\begin{verbatim}
-eval :: ((a⇒b) × a) -> b
-\end{verbatim}
-
+\begin{minted}[escapeinside=||,mathescape=true]{text}
+eval :: ((a|\ensuremath{\Rightarrow}|b) × a) -> b
+\end{minted}
 such that for any other object \code{z} with a morphism
 
 \begin{verbatim}
 g :: z × a -> b
 \end{verbatim}
-
 there is a unique morphism
 
-\begin{verbatim}
-h :: z -> (a⇒b)
-\end{verbatim}
-
+\begin{minted}[escapeinside=||,mathescape=true]{text}
+h :: z -> (a|\ensuremath{\Rightarrow}|b)
+\end{minted}
 that factors \code{g} through \code{eval}:
 
 \begin{verbatim}
-g = eval ∘ (h × id)
+g = eval ◦ (h × id)
 \end{verbatim}
 \strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
-Of course, there is no guarantee that such an object \code{a⇒b} exists
+\noindent
+Of course, there is no guarantee that such an object \code{a\ensuremath{\Rightarrow}b} exists
 for any pair of objects \code{a} and \code{b} in a given category.
 But it always does in \textbf{Set}. Moreover, in \textbf{Set}, this
 object is isomorphic to the hom-set \emph{Set(a, b)}.
 
 This is why, in Haskell, we interpret the function type
 \code{a->b} as the categorical function object
-\code{a⇒b}.
+\code{a\ensuremath{\Rightarrow}b}.
 
 \section{Currying}\label{currying}
 
@@ -222,7 +218,6 @@ of two variables, \code{z} and \code{a}.
 \begin{verbatim}
 g :: z × a -> b
 \end{verbatim}
-
 Being a morphism from a product comes as close as it gets to being a
 function of two variables. In particular, in \textbf{Set}, \code{g} is
 a function from pairs of values, one from the set \code{z} and one
@@ -230,12 +225,11 @@ from the set \code{a}.
 
 On the other hand, the universal property tells us that for each such
 \code{g} there is a unique morphism \code{h} that maps \code{z} to
-a function object \code{a⇒b}.
+a function object \code{a\ensuremath{\Rightarrow}b}.
 
 \begin{verbatim}
 h :: z -> (a⇒b)
 \end{verbatim}
-
 In \textbf{Set}, this just means that \code{h} is a function that
 takes one variable of type \code{z} and returns a function from
 \code{a} to \code{b}. That makes \code{h} a higher order function.
@@ -250,9 +244,8 @@ a unique \code{h}, and given any \code{h} you can always recreate
 the two-argument function \code{g} using the formula:
 
 \begin{verbatim}
-g = eval ∘ (h × id)
+g = eval ◦ (h × id)
 \end{verbatim}
-
 The function \code{g} can be called the \newterm{uncurried} version of
 \code{h}.
 
@@ -262,44 +255,38 @@ returning a function:
 \begin{verbatim}
 a -> (b -> c)
 \end{verbatim}
-
 is often thought of as a function of two variables. That's how we read
 the un-parenthesized signature:
 
 \begin{verbatim}
 a -> b -> c
 \end{verbatim}
-
 This interpretation is apparent in the way we define multi-argument
 functions. For instance:
 
 \begin{verbatim}
 catstr :: String -> String -> String
-catstr s s’ = s ++ s’
+catstr s s' = s ++ s'
 \end{verbatim}
-
 The same function can be written as a one-argument function returning a
 function --- a lambda:
 
 \begin{verbatim}
-catstr’ s = \s’ -> s ++ s’
+catstr' s = \s' -> s ++ s'
 \end{verbatim}
-
 These two definitions are equivalent, and either can be partially
 applied to just one argument, producing a one-argument function, as in:
 
 \begin{verbatim}
 greet :: String -> String
-greet = catstr “Hello “
+greet = catstr "Hello "
 \end{verbatim}
-
 Strictly speaking, a function of two variables is one that takes a pair
 (a product type):
 
 \begin{verbatim}
 (a, b) -> c
 \end{verbatim}
-
 It's trivial to convert between the two representations, and the two
 (higher-order) functions that do it are called, unsurprisingly,
 \code{curry} and \code{uncurry}:
@@ -308,14 +295,12 @@ It's trivial to convert between the two representations, and the two
 curry :: ((a, b)->c) -> (a->b->c)
 curry f a b = f (a, b)
 \end{verbatim}
-
 and
 
 \begin{verbatim}
 uncurry :: (a->b->c) -> ((a, b)->c)
 uncurry f (a, b) = f a b
 \end{verbatim}
-
 Notice that \code{curry} is the \newterm{factorizer} for the universal
 construction of the function object. This is especially apparent if it's
 rewritten in this form:
@@ -324,7 +309,6 @@ rewritten in this form:
 factorizer :: ((a, b)->c) -> (a->(b->c))
 factorizer g = \a -> (\b -> g (a, b))
 \end{verbatim}
-
 (As a reminder: A factorizer produces the factorizing function from a
 candidate.)
 
@@ -339,17 +323,18 @@ You can partially apply a C++ function using the template
 \code{std::bind}. For instance, given a function of two strings:
 
 \begin{verbatim}
-std::string catstr(std::string s1, std::string s2) { return s1 + s2;
+std::string catstr(std::string s1, std::string s2) {
+    return s1 + s2;
 }
 \end{verbatim}
-
 you can define a function of one string:
 
 \begin{verbatim}
-using namespace std::placeholders; auto greet = std::bind(catstr, "Hello ", _1);
+using namespace std::placeholders;
+
+auto greet = std::bind(catstr, "Hello ", _1);
 std::cout << greet("Haskell Curry");
 \end{verbatim}
-
 Scala, which is more functional than C++ or Java, falls somewhere in
 between. If you anticipate that the function you're defining will be
 partially applied, you define it with multiple argument lists:
@@ -357,7 +342,6 @@ partially applied, you define it with multiple argument lists:
 \begin{verbatim}
 def catstr(s1: String)(s2: String) = s1 + s2
 \end{verbatim}
-
 Of course that requires some amount of foresight or prescience on the
 part of a library writer.
 
@@ -384,7 +368,7 @@ For instance a (pure) function from \code{Bool} is completely
 specified by a pair of values: one corresponding to \code{False}, and
 one corresponding to \code{True}. The set of all possible functions
 from \code{Bool} to, say, \code{Int} is the set of all pairs of
-\code{Int}s. This is the same as the product \code{Int\ ×\ Int} or,
+\code{Int}s. This is the same as the product \code{Int × Int} or,
 being a little creative with notation, \code{Int2}.
 
 For another example, let's look at the C++ type \code{char}, which
@@ -394,7 +378,7 @@ C++ Standard Library that are usually implemented using lookups.
 Functions like \code{isupper} or \code{isspace} are implemented
 using tables, which are equivalent to tuples of 256 Boolean values. A
 tuple is a product type, so we are dealing with products of 256
-Booleans: \code{bool\ ×\ bool\ ×\ bool\ ×\ ...\ ×\ bool}. We know from
+Booleans: \code{bool × bool × bool × ... × bool}. We know from
 arithmetics that an iterated product defines a power. If you
 ``multiply'' \code{bool} by itself 256 (or \code{char}) times, you
 get \code{bool} to the power of \code{char}, or \code{boolchar}.
@@ -438,7 +422,6 @@ A cartesian closed category must contain:
 \item
   An exponential for any pair of objects.
 \end{enumerate}
-
 If you consider an exponential as an iterated product (possibly
 infinitely many times), then you can think of a cartesian closed
 category as one supporting products of an arbitrary arity. In
@@ -458,7 +441,6 @@ two, and in which product can be distributed over coproduct
 a × (b + c) = a × b + a × c
 (b + c) × a = b × a + c × a
 \end{verbatim}
-
 is called a \newterm{bicartesian closed} category. We'll see in the next
 section that bicartesian closed categories, of which \textbf{Set} is a
 prime example, have some interesting properties.
@@ -477,10 +459,9 @@ here nevertheless as a source of valuable intuitions.
 
 \subsection{Zeroth Power}\label{zeroth-power}
 
-\begin{verbatim}
-a0 = 1
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+a\textsuperscript{0} = 1
+\end{Verbatim}
 In the categorical interpretation, we replace 0 with the initial object,
 1 with the final object, and equality with isomorphism. The exponential
 is the internal hom-object. This particular exponential represents the
@@ -508,10 +489,9 @@ never ending calculation, it will never return!)
 
 \subsection{Powers of One}\label{powers-of-one}
 
-\begin{verbatim}
-1a = 1
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+1\textsuperscript{a} = 1
+\end{Verbatim}
 This identity, when interpreted in \textbf{Set}, restates the definition
 of the terminal object: There is a unique morphism from any object to
 the terminal object. In general, the internal hom-object from \code{a}
@@ -524,10 +504,9 @@ also think of it as the function \code{const} partially applied to
 
 \subsection{First Power}\label{first-power}
 
-\begin{verbatim}
-a1 = a
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+a\textsuperscript{1} = a
+\end{Verbatim}
 This is a restatement of the observation that morphisms from the
 terminal object can be used to pick ``elements'' of the object
 \code{a}. The set of such morphisms is isomorphic to the object
@@ -537,10 +516,9 @@ elements of the set \code{a} and functions that pick those elements,
 
 \subsection{Exponentials of Sums}\label{exponentials-of-sums}
 
-\begin{verbatim}
-ab+c = ab × ac
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+a\textsuperscript{b+c} = a\textsuperscript{b} × a\textsuperscript{c}
+\end{Verbatim}
 Categorically, this says that the exponential from a coproduct of two
 objects is isomorphic to a product of two exponentials. In Haskell, this
 algebraic identity has a very practical, interpretation. It tells us
@@ -550,29 +528,26 @@ use when defining functions on sums. Instead of writing one function
 definition with a \code{case} statement, we usually split it into two
 (or more) functions dealing with each type constructor separately. For
 instance, take a function from the sum type
-\code{(Either\ Int\ Double)}:
+\code{(Either Int Double)}:
 
 \begin{verbatim}
 f :: Either Int Double -> String
 \end{verbatim}
-
 It may be defined as a pair of functions from, respectively,
 \code{Int} and \code{Double}:
 
-\begin{verbatim}
+\begin{minted}[breaklines, breakbefore=Positive]{text}
 f (Left n) = if n < 0 then "Negative int" else "Positive int"
 f (Right x) = if x < 0.0 then "Negative double" else "Positive double"
-\end{verbatim}
-
+\end{minted}
 Here, \code{n} is an \code{Int} and \code{x} is a \code{Double}.
 
 \subsection{Exponentials of
 Exponentials}\label{exponentials-of-exponentials}
 
-\begin{verbatim}
-(ab)c = ab×c
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+(a\textsuperscript{b})\textsuperscript{c} = a\textsuperscript{b×c}
+\end{Verbatim}
 This is just a way of expressing currying purely in terms of exponential
 objects. A function returning a function is equivalent to a function
 from a product (a two-argument function).
@@ -580,10 +555,9 @@ from a product (a two-argument function).
 \subsection{Exponentials over
 Products}\label{exponentials-over-products}
 
-\begin{verbatim}
-(a × b)c = ac × bc
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+(a × b)\textsuperscript{c} = a\textsuperscript{c} × b\textsuperscript{c}
+\end{Verbatim}
 In Haskell: A function returning a pair is equivalent to a pair of
 functions, each producing one element of the pair.
 
@@ -596,8 +570,8 @@ functional programming.
 I have already mentioned the correspondence between logic and algebraic
 data types. The \code{Void} type and the unit type \code{()}
 correspond to false and true. Product types and sum types correspond to
-logical conjunction ∧ (AND) and disjunction ⋁ (OR). In this scheme, the
-function type we have just defined corresponds to logical implication ⇒.
+logical conjunction \ensuremath{\wedge} (AND) and disjunction \ensuremath{\vee} (OR). In this scheme, the
+function type we have just defined corresponds to logical implication \ensuremath{\Rightarrow}.
 In other words, the type \code{a->b} can be read as ``if
 a then b.''
 
@@ -616,23 +590,20 @@ definition of the function object. Its signature is:
 \begin{verbatim}
 eval :: ((a -> b), a) -> b
 \end{verbatim}
-
 It takes a pair consisting of a function and its argument and produces a
 result of the appropriate type. It's the Haskell implementation of the
 morphism:
 
-\begin{verbatim}
-eval :: (a⇒b) × a -> b
-\end{verbatim}
-
-which defines the function type \code{a⇒b} (or the exponential object
+\begin{Verbatim}[commandchars=\\\{\}]
+eval :: (a\ensuremath{\Rightarrow}b) × a -> b
+\end{Verbatim}
+which defines the function type \code{a\ensuremath{\Rightarrow}b} (or the exponential object
 \code{ba}). Let's translate this signature to a logical predicate
 using the Curry-Howard isomorphism:
 
-\begin{verbatim}
-((a ⇒ b) ∧ a) ⇒ b
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+((a \ensuremath{\Rightarrow} b) \ensuremath{\wedge} a) \ensuremath{\Rightarrow} b
+\end{Verbatim}
 Here's how you can read this statement: If it's true that \code{b}
 follows from \code{a}, and \code{a} is true, then \code{b} must be
 true. This makes perfect intuitive sense and has been known since
@@ -643,22 +614,20 @@ implementing the function:
 eval :: ((a -> b), a) -> b
 eval (f, x) = f x
 \end{verbatim}
-
 If you give me a pair consisting of a function \code{f} taking
 \code{a} and returning \code{b}, and a concrete value \code{x} of
 type \code{a}, I can produce a concrete value of type \code{b} by
 simply applying the function \code{f} to \code{x}. By implementing
 this function I have just shown that the type
-\code{((a\ ->\ b),\ a)\ ->\ b} is inhabited.
+\code{((a -> b), a) -> b} is inhabited.
 Therefore \newterm{modus ponens} is true in our logic.
 
 How about a predicate that is blatantly false? For instance: if
 \code{a} or \code{b} is true then \code{a} must be true.
 
-\begin{verbatim}
-a ⋁ b ⇒ a
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+a \ensuremath{\vee} b \ensuremath{\Rightarrow} a
+\end{Verbatim}
 This is obviously wrong because you can chose an \code{a} that is
 false and a \code{b} that is true, and that's a counter-example.
 
@@ -668,36 +637,31 @@ isomorphism, we get:
 \begin{verbatim}
 Either a b -> a
 \end{verbatim}
-
 Try as you may, you can't implement this function --- you can't produce
 a value of type \code{a} if you are called with the \code{Right}
-value. (Remember, we are talking about \newterm{pure} functions.)
+value. (Remember, we are talking about \emph{pure} functions.)
 
 Finally, we come to the meaning of the \code{absurd} function:
 
 \begin{verbatim}
 absurd :: Void -> a
 \end{verbatim}
-
 Considering that \code{Void} translates into false, we get:
 
-\begin{verbatim}
- false ⇒ a
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+false \ensuremath{\Rightarrow} a
+\end{Verbatim}
 Anything follows from falsehood (\emph{ex falso quodlibet}). Here's one
 possible proof (implementation) of this statement (function) in Haskell:
 
 \begin{verbatim}
 absurd (Void a) = absurd a
 \end{verbatim}
-
 where \code{Void} is defined as:
 
 \begin{verbatim}
 newtype Void = Void Void
 \end{verbatim}
-
 As always, the type \code{Void} is tricky. This definition makes it
 impossible to construct a value because in order to construct one, you
 would need to provide one. Therefore, the function \code{absurd} can
@@ -727,14 +691,3 @@ revolutionizing the world in more than one way.
   algebraic identities in category theory that I mentioned in this
   chapter.
 \end{enumerate}
-
-Next:
-\href{https://bartoszmilewski.com/2015/04/07/natural-transformations/}{Natural
-Transformations}.
-
-\section{Acknowledgments}\label{acknowledgments}
-
-I'd like to thank Gershom Bazerman for checking my math and logic, and
-André van Meulebrouck, who has been volunteering his editing help
-throughout this series of posts.\\
-\href{https://twitter.com/BartoszMilewski}{Follow @BartoszMilewski}
