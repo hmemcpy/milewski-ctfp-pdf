@@ -112,8 +112,23 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 
 @unnumbered Acknowledgments
 
+@noindent
+I’d like to thank Andrew Su on for rewriting my C++ monoid concept
+code according to his and Bjarne Stroustrup’s latest proposal.
+
+@sp 1.0
+@noindent
 Gershom Bazerman is kind enough to keep reviewing these posts. I'm
 grateful for his patience and insight.
+
+@sp 1.0
+@noindent
+I'm grateful to Eric Niebler for reading the draft and providing the
+clever implementation of \code{compose} that uses advanced features of
+C++14 to drive type inference. I was able to cut the whole section of
+old fashioned template magic that did the same thing using type traits.
+Good riddance! I'm also grateful to Gershom Bazerman for useful comments
+that helped me clarify some important points.
 
 \setindexprenote{\normalsize \begin{quote} Any inaccuracies in this index may be explained by the fact
 that it has been prepared with the help of a computer.
