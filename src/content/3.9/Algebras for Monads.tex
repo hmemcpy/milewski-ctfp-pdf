@@ -432,7 +432,7 @@ coalgs a = Store (set a) (get a)
 \end{verbatim}
 
 Here, \code{a} is a value of type \code{a}. Notice that partially
-applied \code{set} is a function \code{s-\textgreater{}a}.
+applied \code{set} is a function \code{s->a}.
 
 We also know that \code{Store\ s} is a comonad:
 
@@ -519,7 +519,7 @@ the \code{Store} functor.
 \begin{enumerate}
 \item
   What is the action of the free functor
-  \code{F\ ::\ C\ -\textgreater{}\ CT} on morphisms. Hint: use the
+  \code{F\ ::\ C\ ->\ CT} on morphisms. Hint: use the
   naturality condition for monadic \code{μ}.
 \item
   Define the adjunction:

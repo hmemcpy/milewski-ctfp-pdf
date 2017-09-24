@@ -96,7 +96,7 @@ from composition laws for 1-cells. These laws are strict, so we will
 always get a strict monoidal category. It is, however, possible to relax
 these laws as well. We can say, for instance, that a composition of the
 identity 1-cell \code{ida} with another 1-cell,
-\code{f\ ::\ a\ -\textgreater{}\ b}, is isomorphic, rather than equal,
+\code{f\ ::\ a\ ->\ b}, is isomorphic, rather than equal,
 to \code{f}. Isomorphism of 1-cells is defined using 2-cells. In other
 words, there is a 2-cell:
 
@@ -134,23 +134,23 @@ first step is to define a composition of spans. Suppose that we have an
 adjoining span:
 
 \begin{verbatim}
-f&apos;:: y -> b g&apos;:: y -> c
+f':: y -> b g':: y -> c
 \end{verbatim}
 
 \includegraphics[width=2.26042in]{images/compspan.png}\\
 The composition would be a third span, with some apex \code{z}. The
 most natural choice for it is the pullback of \code{g} along
-\code{f\&apos;}. Remember that a pullback is the object \code{z}
+\code{f\'}. Remember that a pullback is the object \code{z}
 together with two morphisms:
 
 \begin{verbatim}
-h :: z -> x h&apos;:: z -> y
+h :: z -> x h':: z -> y
 \end{verbatim}
 
 such that:
 
 \begin{verbatim}
-g ∘ h = f&apos; ∘ h&apos;
+g ∘ h = f' ∘ h'
 \end{verbatim}
 
 which is universal among all such objects.
@@ -161,7 +161,7 @@ case, the pullback is just a set of pairs \code{(p,\ q)} from the
 cartesian product \code{x\ ×\ y} such that:
 
 \begin{verbatim}
-g p = f&apos; q
+g p = f' q
 \end{verbatim}
 
 A morphism between two spans that share the same endpoints is defined as

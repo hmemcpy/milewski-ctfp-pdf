@@ -129,7 +129,7 @@ identity arrow for every object, then the functor \code{m} is called a
 \newterm{monad}, and the resulting category is called the Kleisli category.
 
 In Haskell, Kleisli composition is defined using the fish operator
-\code{\textgreater{}=\textgreater{}}, and the identity arrrow is a
+\code{>=>}, and the identity arrrow is a
 polymorphic function called \code{return}. Here's the definition of a
 monad using Kleisli composition:
 
@@ -164,7 +164,7 @@ Kleisli arrows for the \code{Writer} functor) form a category because
 \code{Writer} is a monad:
 
 \begin{verbatim}
-instance Monoid w => Monad (Writer w) where f >=> g = \a -> let Writer (b, s) = f a Writer (c, s&apos;) = g b in Writer (c, s `mappend` s&apos;) return a = Writer (a, mempty)
+instance Monoid w => Monad (Writer w) where f >=> g = \a -> let Writer (b, s) = f a Writer (c, s') = g b in Writer (c, s `mappend` s') return a = Writer (a, mempty)
 \end{verbatim}
 
 Monad laws for \code{Writer\ w} are satisfied as long as monoid laws
@@ -200,7 +200,7 @@ f >=> g = \a -> let mb = f a in ...
 
 At this point we have to produce the result of type \code{m\ c},
 having at our disposal an object of type \code{m\ b} and a function
-\code{g\ ::\ b\ -\textgreater{}\ m\ c}. Let's define a function that
+\code{g\ ::\ b\ ->\ m\ c}. Let's define a function that
 does that for us. This function is called bind and is usually written in
 the form of an infix operator:
 
@@ -219,14 +219,14 @@ class Monad m where (>>=) :: m a -> (a -> m b) -> m b return :: a -> m a
 Here's the definition of bind for the \code{Writer} monad:
 
 \begin{verbatim}
-(Writer (a, w)) >>= f = let Writer (b, w&apos;) = f a in Writer (b, w `mappend` w&apos;)
+(Writer (a, w)) >>= f = let Writer (b, w') = f a in Writer (b, w `mappend` w')
 \end{verbatim}
 
 It is indeed shorter than the definition of the fish operator.
 
 It's possible to further dissect bind, taking advantage of the fact that
 \code{m} is a functor. We can use \code{fmap} to apply the function
-\code{a\ -\textgreater{}\ m\ b} to the contents of \code{m\ a}. This
+\code{a\ ->\ m\ b} to the contents of \code{m\ a}. This
 will turn \code{a} into \code{m\ b}. The result of the application
 is therefore of type \code{m\ (m\ b)}. This is not exactly what we
 want --- we need the result of type \code{m\ b} --- but we're close.
@@ -262,7 +262,7 @@ fmap f ma = ma >>= \a -> return (f a)
 For completeness, here's \code{join} for the \code{Writer} monad:
 
 \begin{verbatim}
-join :: Monoid w => Writer w (Writer w a) -> Writer w a join (Writer ((Writer (a, w&apos;)), w)) = Writer (a, w `mappend` w&apos;)
+join :: Monoid w => Writer w (Writer w a) -> Writer w a join (Writer ((Writer (a, w')), w)) = Writer (a, w `mappend` w')
 \end{verbatim}
 
 \section{\texorpdfstring{The \code{do}

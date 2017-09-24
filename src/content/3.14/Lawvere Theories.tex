@@ -114,7 +114,7 @@ natural numbers (including zero) that correspond to the element count in
 \textbf{F} correspond to functions between finite sets. For instance,
 there is a unique morphism from \code{0} to \code{n} (empty set
 being the initial object), no morphisms from \code{n} to \code{0}
-(except \code{0-\textgreater{}0}), n morphisms from \code{1} to
+(except \code{0->0}), n morphisms from \code{1} to
 \code{n} (the injections), one morphism from \code{n} to \code{1},
 and so on. Here, \code{n} denotes an object in \textbf{F}
 corresponding to all n-element sets in \textbf{FinSet} that have been
@@ -165,8 +165,8 @@ pk :: 1n -> 1
 \end{verbatim}
 
 as the prototype for a function of n variables that ignores all but the
-k'th variable. Conversely, constant morphisms \code{n-\textgreater{}1}
-in \textbf{F} become diagonal morphisms \code{1-\textgreater{}1n} in
+k'th variable. Conversely, constant morphisms \code{n->1}
+in \textbf{F} become diagonal morphisms \code{1->1n} in
 \textbf{L}. They correspond to duplication of variables.
 
 The interesting morphisms in \textbf{L} are the ones that define n-ary
@@ -174,10 +174,10 @@ operations other than projections. It's those morphisms that distinguish
 one Lawvere theory from another. These are the multiplications, the
 additions, the selections of unit elements, and so on, that define the
 algebra. But to make \textbf{L} a full category, we also need compound
-operations \code{n-\textgreater{}m} (or, equivalently,
-\code{1n\ -\textgreater{}\ 1m}). Because of the simple structure of
+operations \code{n->m} (or, equivalently,
+\code{1n\ ->\ 1m}). Because of the simple structure of
 the category, they turn out to be products of simpler morphisms of the
-type \code{n-\textgreater{}1}. This is a generalization of the
+type \code{n->1}. This is a generalization of the
 statement that a function that returns a product is a product of
 functions (or, as we've seen earlier, that the hom-functor is
 continuous).
@@ -193,11 +193,11 @@ arrows).
 Lavwere theories form a category \textbf{Law}, in which morphisms are
 functors that preserve finite products and commute with the functors
 \code{I}. Given two such theories, \code{(L,\ IL)} and
-\code{(L\&apos;,\ I\&apos;L\&apos;)}, a morphism between them is a
-functor \code{F\ ::\ L\ -\textgreater{}\ L\&apos;} such that:
+\code{(L\',\ I\'L\')}, a morphism between them is a
+functor \code{F\ ::\ L\ ->\ L\'} such that:
 
 \begin{verbatim}
-F (m × n) = F m × F n F ∘ IL = I&apos;L&apos;
+F (m × n) = F m × F n F ∘ IL = I'L'
 \end{verbatim}
 
 Morphisms between Lawvere theories encapsulate the idea of the
@@ -259,7 +259,7 @@ constant functor mapping all objects to a single set, and all morphisms
 to the identity function on it.
 
 A general morphism in \textbf{L} of the form
-\code{m\ -\textgreater{}\ n} is mapped to a function:
+\code{m\ ->\ n} is mapped to a function:
 
 \begin{verbatim}
 am -> an
@@ -288,7 +288,7 @@ n-ary operations:
 N f ∘ μn = μ1 ∘ M f
 \end{verbatim}
 
-where \code{f\ ::\ n\ -\textgreater{}\ 1} is an n-ary operation in
+where \code{f\ ::\ n\ ->\ 1} is an n-ary operation in
 \textbf{L}.
 
 The functors that define models form a category of models,
@@ -301,7 +301,7 @@ set, there are as many of these models as there are sets in
 \textbf{Set}. Moreover, every morphism in \code{Mod(Fop,\ Set)} (a
 natural transformation between functors \code{M} and \code{N}) is
 uniquely determined by its component at \code{M\ 1}. Conversely, every
-function \code{M\ 1\ -\textgreater{}\ N\ 1} induces a natural
+function \code{M\ 1\ ->\ N\ 1} induces a natural
 transformation between the two models \code{M} and \code{N}.
 Therefore \code{Mod(Fop,\ Set)} is equivalent to \textbf{Set}.
 
@@ -326,7 +326,7 @@ Every monoid must have a unit, so we have to have a special morphism
 \code{1} to \code{0} which, in \textbf{FinSet}, would be a function
 from the singleton set to the empty set. No such function exists.
 
-Next, consider morphisms \code{2-\textgreater{}1}, members of
+Next, consider morphisms \code{2->1}, members of
 \code{LMon(2,\ 1)}, which must contain prototypes of all binary
 operations. When constructing models in \code{Mod(LMon,\ Set)}, these
 morphisms will be mapped to functions from the cartesian product
@@ -378,7 +378,7 @@ the functor M from \code{Mod(L,\ Set)} at the object \code{1} in
 Another way of deriving \code{U} is by exploiting the fact that
 \textbf{F}\textsuperscript{op} is the initial object in \textbf{Law}. It
 meanst that, for any Lawvere theory \textbf{L}, there is a unique
-functor \code{Fop\ -\textgreater{}\ L}. This functor induces the
+functor \code{Fop\ ->\ L}. This functor induces the
 opposite functor on models (since models are functors \emph{from}
 theories to sets):
 
@@ -511,7 +511,7 @@ P n m = an × L(m, 1)
 
 This profunctor is contravariant in the first argument, \code{n}.
 Consider how it lifts morphisms. A morphism in \textbf{FinSet} is a
-mapping of finite sets \code{f\ ::\ m\ -\textgreater{}\ n}. Such a
+mapping of finite sets \code{f\ ::\ m\ ->\ n}. Such a
 mapping describes a selection of m elements from an n-element set
 (repetitions are allowed). It can be lifted to the mapping of powers of
 \code{a}, namely (notice the direction):
@@ -525,12 +525,12 @@ The lifting simply selects m elements from a tuple of n elements
 
 \includegraphics[width=3.12500in]{images/liftpower.png}
 
-For instance, let's take \code{fk\ ::\ 1\ -\textgreater{}\ n} --- a
+For instance, let's take \code{fk\ ::\ 1\ ->\ n} --- a
 selection of the \code{k}th element from an n-element set. It lifts to
 a function that takes a n-tuple of elements of \code{a} and returns
 the \code{k}th one.
 
-Or let's take \code{f\ ::\ m\ -\textgreater{}\ 1} --- a constant
+Or let's take \code{f\ ::\ m\ ->\ 1} --- a constant
 function that maps all m elements to one. Its lifting is a function that
 takes a single element of \code{a} and duplicates it m times:
 
@@ -544,26 +544,26 @@ in question is covariant in the second argument. The hom-functor
 are taking the coend not in the category \textbf{L} but in the category
 \textbf{F}. The coend variable \code{n} goes over finite sets (or the
 skeletons of such). The category \textbf{L} contains the opposite of
-\textbf{F}, so a morphism \code{m\ -\textgreater{}\ n} in \textbf{F}
+\textbf{F}, so a morphism \code{m\ ->\ n} in \textbf{F}
 is a member of \code{L(n,\ m)} in \textbf{L} (the embedding is given
 by the functor \code{IL}).
 
 Let's check the functoriality of \code{L(m,\ 1)} as a functor from
 \textbf{F} to \textbf{Set}. We want to lift a function
-\code{f\ ::\ m\ -\textgreater{}\ n}, so our goal is to implement a
+\code{f\ ::\ m\ ->\ n}, so our goal is to implement a
 function from \code{L(m,\ 1)} to \code{L(n,\ 1)}. Corresponding to
 the function \code{f} there is a morphism in \textbf{L} from
 \code{n} to \code{m} (notice the direction). Precomposing this
 morphism with \code{L(m,\ 1)} gives us a subset of
 \code{L(n,\ 1)}.\\
 \includegraphics[width=3.12500in]{images/liftl.png}\\
-Notice that, by lifting a function \code{1-\textgreater{}n} we can go
+Notice that, by lifting a function \code{1->n} we can go
 from \code{L(1,\ 1)} to \code{L(n,\ 1)}. We'll use this fact later
 on.
 
 The product of a contravariant functor \code{an} and a covariant
 functor \code{L(m,\ 1)} is a profunctor
-\code{Fop×F-\textgreater{}Set}. Remember that a coend can be defined
+\code{Fop×F->Set}. Remember that a coend can be defined
 as a coproduct (disjoint sum) of all the diagonal members of a
 profunctor, in which some elements are identified. The identifications
 correspond to cowedge conditions.
@@ -574,14 +574,14 @@ be generated by expressing the
 \href{https://bartoszmilewski.com/2017/03/29/ends-and-coends/}{coend as
 a coequilizer}. We start with an off-diagonal term
 \code{an\ ×\ L(m,\ 1)}. To get to the diagonal, we can apply a
-morphism \code{f\ ::\ m\ -\textgreater{}\ n} either to the first or
+morphism \code{f\ ::\ m\ ->\ n} either to the first or
 the second component of the product. The two results are then
 identified.
 
 \includegraphics[width=3.12500in]{images/equalize1.png}
 
 I have shown before that the lifting of
-\code{f\ ::\ 1\ -\textgreater{}\ n} results in these two
+\code{f\ ::\ 1\ ->\ n} results in these two
 transformations:
 
 \begin{verbatim}
@@ -600,19 +600,19 @@ Therefore, starting from \code{an\ ×\ L(1,\ 1)} we can reach both:
 a × L(1, 1)
 \end{verbatim}
 
-when we lift \code{\textless{}f,\ id\textgreater{}} and:
+when we lift \code{\textless{}f,\ id>} and:
 
 \begin{verbatim}
 an × L(n, 1)
 \end{verbatim}
 
-when we lift \code{\textless{}id,\ f\textgreater{}}. This doesn't
+when we lift \code{\textless{}id,\ f>}. This doesn't
 mean, however, that all elements of \code{an\ ×\ L(n,\ 1)} can be
 identified with \code{a\ ×\ L(1,\ 1)}. That's because not all elements
 of \code{L(n,\ 1)} can be reached from \code{L(1,\ 1)}. Remember
 that we can only lift morphisms from \textbf{F}. A non-trivial n-ary
 operation in \textbf{L} cannot be constructed by lifting a morphism
-\code{f\ ::\ 1\ -\textgreater{}\ n}.
+\code{f\ ::\ 1\ ->\ n}.
 
 In other words, we can only identify all addends in the coend formula
 for which \code{L(n,\ 1)} can be reached from \code{L(1,\ 1)}
@@ -625,7 +625,7 @@ Let's see how this works in the simplest case of the Lawvere theory, the
 \code{L(n,\ 1)} can be reached from \code{L(1,\ 1)}. This is because
 \code{L(1,\ 1)} is a singleton containing just the identity morphism,
 and \code{L(n,\ 1)} only contains morphisms corresponding to
-injections \code{1-\textgreater{}n} in \textbf{F}, which \emph{are}
+injections \code{1->n} in \textbf{F}, which \emph{are}
 basic morphisms. Therefore all the addends in the coproduct are
 equivalent and we get:
 
@@ -653,7 +653,7 @@ effects, I'll discuss the simple case of exceptions that are
 traditionally implemented using the \code{Maybe} monad.
 
 The \code{Maybe} monad is generated by the Lawvere theory with a
-single nullary operation \code{0-\textgreater{}1}. A model of this
+single nullary operation \code{0->1}. A model of this
 theory is a functor that maps \code{1} to some set \code{a}, and
 maps the nullary operation to a function:
 
@@ -666,7 +666,7 @@ consider what the addition of the nullary operation does to the hom-sets
 \code{L(n,\ 1)}. Besides creating a new \code{L(0,\ 1)} (which is
 absent from \textbf{F}\textsuperscript{op}), it also adds new morphisms
 to \code{L(n,\ 1)}. These are the results of composing morphism of the
-type \code{n-\textgreater{}0} with our \code{0-\textgreater{}1}.
+type \code{n->0} with our \code{0->1}.
 Such contributions are all identified with \code{a0\ ×\ L(0,\ 1)} in
 the coend formula, because they can be obtained from:
 
@@ -674,7 +674,7 @@ the coend formula, because they can be obtained from:
 an × L(0, 1)
 \end{verbatim}
 
-by lifting \code{0-\textgreater{}n} in two different ways.
+by lifting \code{0->n} in two different ways.
 
 \includegraphics[width=3.12500in]{images/equalize2.png}
 

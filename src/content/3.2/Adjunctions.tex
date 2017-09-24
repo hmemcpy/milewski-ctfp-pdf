@@ -129,7 +129,7 @@ Let's start with the unit. It's a natural transformation, so it's a
 family of morphisms. Given an object \code{d} in \emph{D}, the
 component of η is a morphism between \code{I\ d}, which is equal to
 \code{d}, and \code{(R\ ∘\ L)\ d}; which, in the picture, is called
-\code{d\&apos;}:
+\code{d\'}:
 
 \begin{verbatim}
 ηd :: d -> (R ∘ L) d
@@ -139,7 +139,7 @@ Notice that the composition \code{R∘L} is an endofunctor in \emph{D}.
 
 This equation tells us that we can pick any object \code{d} in
 \emph{D} as our starting point, and use the round trip functor
-\code{R\ ∘\ L} to pick our target object \code{d\&apos;}. Then we
+\code{R\ ∘\ L} to pick our target object \code{d\'}. Then we
 shoot an arrow --- the morphism \code{ηd} --- to our target.
 
 \includegraphics[width=3.12500in]{images/adj-counit.jpg}
@@ -147,14 +147,14 @@ shoot an arrow --- the morphism \code{ηd} --- to our target.
 By the same token, the component of of the counit ε can be described as:
 
 \begin{verbatim}
-εc&apos; :: (L ∘ R) c -> c
+εc' :: (L ∘ R) c -> c
 \end{verbatim}
 
-where \code{c\&apos;} is \code{(L\ ∘\ R)\ c}. It tells us that we
+where \code{c\'} is \code{(L\ ∘\ R)\ c}. It tells us that we
 can pick any object \code{c} in \emph{C} as our target, and use the
 round trip functor \code{L\ ∘\ R} to pick the source
-\code{c\&apos;}. Then we shoot the arrow --- the morphism
-\code{εc\&apos;} --- from the source to the target.
+\code{c\'}. Then we shoot the arrow --- the morphism
+\code{εc\'} --- from the source to the target.
 
 Another way of looking at unit and counit is that unit lets us
 \emph{introduce} the composition \code{R\ ∘\ L} anywhere we could
@@ -232,10 +232,10 @@ multi-parameter type class --- the two parameters being \code{f} and
 these two type constructors.
 
 Additional conditions, after the vertical bar, specify functional
-dependencies. For instance, \code{f\ -\textgreater{}\ u} means that
+dependencies. For instance, \code{f\ ->\ u} means that
 \code{u} is determined by \code{f} (the relation between \code{f}
 and \code{u} is a function, here on type constructors). Conversely,
-\code{u\ -\textgreater{}\ f} means that, if we know \code{u}, then
+\code{u\ ->\ f} means that, if we know \code{u}, then
 \code{f} is uniquely determined.
 
 I'll explain in a moment why, in Haskell, we can impose the condition
@@ -271,8 +271,8 @@ adjunction.
 \includegraphics[width=3.12500in]{images/adj-homsets.jpg}
 
 Here's the alternative definition of the adjunction using hom-sets. As
-before, we have two functors \code{L\ ::\ D-\textgreater{}C} and
-\code{R\ ::\ C-\textgreater{}D}. We pick two arbitrary objects: the
+before, we have two functors \code{L\ ::\ D->C} and
+\code{R\ ::\ C->D}. We pick two arbitrary objects: the
 source object \code{d} in \emph{D}, and the target object \code{c}
 in \emph{C}. We can map the source object \code{d} to \emph{C} using
 \code{L}. Now we have two objects in \emph{C}, \code{L\ d} and
@@ -443,8 +443,8 @@ More precisely, the product of two objects \code{a} and \code{b} is
 the object \code{(a\ ×\ b)} (or \code{(a,\ b)} in the Haskell
 notation) equipped with two morphisms \code{fst} and \code{snd} such
 that, for any other candidate \code{c} equipped with two morphisms
-\code{p::c-\textgreater{}a} and \code{q::c-\textgreater{}b}, there
-exists a unique morphism \code{m::c-\textgreater{}(a,\ b)} that
+\code{p::c->a} and \code{q::c->b}, there
+exists a unique morphism \code{m::c->(a,\ b)} that
 factorizes \code{p} and \code{q} through \code{fst} and
 \code{snd}.
 
@@ -492,12 +492,12 @@ morphisms.
 
 However, a pair of objects from \emph{C} is \emph{not} an object in
 \emph{C}. It's an object in a different category, \emph{C×C}. We can
-write the pair formally as \code{\textless{}a,\ b\textgreater{}},
+write the pair formally as \code{\textless{}a,\ b>},
 where \code{a} and \code{b} are objects of \emph{C}. The universal
 construction, on the other hand, is necessary in order to define the
 object \code{a×b} (or \code{(a,\ b)} in Haskell), which is an object
 in \emph{the same} category \emph{C}. This object is supposed to
-represent the pair \code{\textless{}a,\ b\textgreater{}} in a way
+represent the pair \code{\textless{}a,\ b>} in a way
 specified by the universal construction. It doesn't always exist and,
 even if it exists for some, might not exist for other pairs of objects
 in \emph{C}.
@@ -505,14 +505,14 @@ in \emph{C}.
 Let's now look at the \code{factorizer} as a mapping of hom-sets. The
 first hom-set is in the product category \emph{C×C}, and the second is
 in \emph{C}. A general morphism in \emph{C×C} would be a pair of
-morphisms \code{\textless{}f,\ g\textgreater{}}:
+morphisms \code{\textless{}f,\ g>}:
 
 \begin{verbatim}
-f :: c&apos; -> a g :: c&apos;&apos; -> b
+f :: c' -> a g :: c'' -> b
 \end{verbatim}
 
-with \code{c\&apos;\&apos;} potentially different from
-\code{c\&apos;}. But to define a product, we are interested in a
+with \code{c\'\'} potentially different from
+\code{c\'}. But to define a product, we are interested in a
 special morphism in \emph{C×C}, the pair \code{p} and \code{q} that
 share the same source object \code{c}. That's okay: In the definition
 of an adjuncion, the source of the left hom-set is not an arbitrary
@@ -541,7 +541,7 @@ morphisms that we recognize as the arguments to our \code{factorizer}:
 The right-hand side hom-set lives in \emph{C}, and it goes between the
 source object \code{c} and the result of some functor \code{R}
 acting on the target object in \emph{C×C}. That's the functor that maps
-the pair \code{\textless{}a,\ b\textgreater{}} to our product object,
+the pair \code{\textless{}a,\ b>} to our product object,
 \code{a×b}. We recognize this element of the hom-set as the
 \emph{result} of the \code{factorizer}:
 
@@ -563,9 +563,9 @@ C(c, a×b)
 \end{verbatim}
 
 The inverse factorizer should map \code{m} to a morphism
-\code{\textless{}p,\ q\textgreater{}} in \emph{C×C} that goes from
-\code{\textless{}c,\ c\textgreater{}} to
-\code{\textless{}a,\ b\textgreater{}}; in other words, a morphism
+\code{\textless{}p,\ q>} in \emph{C×C} that goes from
+\code{\textless{}c,\ c>} to
+\code{\textless{}a,\ b>}; in other words, a morphism
 that's an element of:
 
 \begin{verbatim}
@@ -597,7 +597,7 @@ globally as the \newterm{right adjoint} of the diagonal functor:
 
 Here, \code{a×b} is the result of the action of our right adjoint
 functor \code{Product} on the pair
-\code{\textless{}a,\ b\textgreater{}}. Notice that any functor from
+\code{\textless{}a,\ b>}. Notice that any functor from
 \emph{C×C} is a bifunctor, so \code{Product} is a bifunctor. In
 Haskell, the \code{Product} bifunctor is written simply as
 \code{(,)}. You can apply it to two types and get their product type,

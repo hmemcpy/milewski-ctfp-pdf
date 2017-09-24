@@ -162,10 +162,10 @@ any choice of \code{q} leads to a unique natural transformation.
 
 The first claim is that the choice of one point \code{q} uniquely
 determines the rest of the function \code{αa}. Indeed, let's pick any
-other point, \code{p\&apos;} in \code{C(a,\ a)}, corresponding to
+other point, \code{p\'} in \code{C(a,\ a)}, corresponding to
 some morphism \code{g} from \code{a} to \code{a}. And here's where
 the magic of the Yoneda lemma happens: \code{g} can be viewed as a
-point \code{p\&apos;} in the set \code{C(a,\ a)}. At the same time,
+point \code{p\'} in the set \code{C(a,\ a)}. At the same time,
 it selects two \newterm{functions} between sets. Indeed, under the
 hom-functor, the morphism \code{g} is mapped to a function
 \code{C(a,\ g)}; and under \code{F} it's mapped to \code{F\ g}.
@@ -175,15 +175,15 @@ hom-functor, the morphism \code{g} is mapped to a function
 Now let's consider the action of \code{C(a,\ g)} on our original
 \code{p} which, as you remember, corresponds to \code{ida}. It is
 defined as precomposition, \code{g∘ida}, which is equal to \code{g},
-which corresponds to our point \code{p\&apos;}. So the morphism
+which corresponds to our point \code{p\'}. So the morphism
 \code{g} is mapped to a function that, when acting on \code{p}
-produces \code{p\&apos;}, which is \code{g}. We have come full
+produces \code{p\'}, which is \code{g}. We have come full
 circle!
 
 Now consider the action of \code{F\ g} on \code{q}. It is some
-\code{q\&apos;}, a point in \code{F\ a}. To complete the naturality
-square, \code{p\&apos;} must be mapped to \code{q\&apos;} under
-\code{αa}. We picked an arbitrary \code{p\&apos;} (an arbitrary
+\code{q\'}, a point in \code{F\ a}. To complete the naturality
+square, \code{p\'} must be mapped to \code{q\'} under
+\code{αa}. We picked an arbitrary \code{p\'} (an arbitrary
 \code{g}) and derived its mapping under \code{αa}. The function
 \code{αa} is thus completely determined.
 
@@ -205,14 +205,14 @@ F g :: F a -> F x
 
 Again, \code{C(a,\ g)} acting on our \code{p} is given by the
 precomposition: \code{g\ ∘\ ida}, which corresponds to a point
-\code{p\&apos;} in \code{C(a,\ x)}. Naturality determines the value
-of \code{αx} acting on \code{p\&apos;} to be:
+\code{p\'} in \code{C(a,\ x)}. Naturality determines the value
+of \code{αx} acting on \code{p\'} to be:
 
 \begin{verbatim}
-q&apos; = (F g) q
+q' = (F g) q
 \end{verbatim}
 
-Since \code{p\&apos;} was arbitrary, the whole function \code{αx} is
+Since \code{p\'} was arbitrary, the whole function \code{αx} is
 thus determined.
 
 \includegraphics{images/yoneda5.png}

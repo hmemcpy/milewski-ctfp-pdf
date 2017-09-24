@@ -142,7 +142,7 @@ function to an argument of the type \code{w\ b}:
 
 But how can we produce a value of type \code{w\ b} that could be fed
 to \code{g}? We have at our disposal the argument of type
-\code{w\ a} and the function \code{f\ ::\ w\ a\ -\textgreater{}\ b}.
+\code{w\ a} and the function \code{f\ ::\ w\ a\ ->\ b}.
 The solution is to define the dual of bind, which is called extend:
 
 \begin{verbatim}
@@ -156,7 +156,7 @@ f =>= g = g . extend f
 \end{verbatim}
 
 Can we next dissect \code{extend}? You might be tempted to say, why
-not just apply the function \code{w\ a\ -\textgreater{}\ b} to the
+not just apply the function \code{w\ a\ ->\ b} to the
 argument \code{w\ a}, but then you quickly realize that you'd have no
 way of converting the resulting \code{b} to \code{w\ b}. Remember,
 the comonad provides no means of lifting values. At this point, in the

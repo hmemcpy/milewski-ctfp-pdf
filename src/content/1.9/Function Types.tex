@@ -11,7 +11,7 @@ type is different from other types.
 
 Take \code{Integer}, for instance: It's just a set of integers.
 \code{Bool} is a two element set. But a function type
-\code{a-\textgreater{}b} is more than that: it's a set of morphisms
+\code{a->b} is more than that: it's a set of morphisms
 between objects \code{a} and \code{b}. A set of morphisms between
 two objects in any category is called a hom-set. It just so happens that
 in the category \textbf{Set} every hom-set is itself an object in the
@@ -115,9 +115,9 @@ requiring that there be a unique mapping between candidate objects --- a
 mapping that somehow factorizes our construction. In our case, we'll
 decree that \code{z} together with the morphism \code{g} from
 \code{z×a} to \code{b} is \newterm{better} than some other
-\code{z\&apos;} with its own application \code{g\&apos;}, if and
-only if there is a unique mapping \code{h} from \code{z\&apos;} to
-\code{z} such that the application of \code{g\&apos;} factors
+\code{z\'} with its own application \code{g\'}, if and
+only if there is a unique mapping \code{h} from \code{z\'} to
+\code{z} such that the application of \code{g\'} factors
 through the application of \code{g}. (Hint: Read this sentence while
 looking at the picture.)
 
@@ -128,10 +128,10 @@ Establishing a ranking between candidates for the function object
 
 Now here's the tricky part, and the main reason I postponed this
 particular universal construction till now. Given the morphism
-\code{h\ ::\ z\&apos;-\textgreater{}\ z}, we want to close the diagram
-that has both \code{z\&apos;} and \code{z} crossed with \code{a}.
-What we really need, given the mapping \code{h} from \code{z\&apos;}
-to \code{z}, is a mapping from \code{z\&apos;×a} to \code{z×a}.
+\code{h\ ::\ z\'->\ z}, we want to close the diagram
+that has both \code{z\'} and \code{z} crossed with \code{a}.
+What we really need, given the mapping \code{h} from \code{z\'}
+to \code{z}, is a mapping from \code{z\'×a} to \code{z×a}.
 And now, after discussing the
 \href{https://bartoszmilewski.com/2015/02/03/functoriality/}{functoriality
 of the product}, we know how to do it. Because the product itself is a
@@ -140,14 +140,14 @@ of morphisms. In other words, we can define not only products of objects
 but also products of morphisms.
 
 Since we are not touching the second component of the product
-\code{z\&apos;×a}, we will lift the pair of morphisms
+\code{z\'×a}, we will lift the pair of morphisms
 \code{(h,\ id)}, where \code{id} is an identity on \code{a}.
 
 So, here's how we can factor one application, \code{g}, out of another
-application \code{g\&apos;}:
+application \code{g\'}:
 
 \begin{verbatim}
-g&apos; = g ∘ (h × id)
+g' = g ∘ (h × id)
 \end{verbatim}
 
 The key here is the action of the product on morphisms.
@@ -210,7 +210,7 @@ But it always does in \textbf{Set}. Moreover, in \textbf{Set}, this
 object is isomorphic to the hom-set \emph{Set(a, b)}.
 
 This is why, in Haskell, we interpret the function type
-\code{a-\textgreater{}b} as the categorical function object
+\code{a->b} as the categorical function object
 \code{a⇒b}.
 
 \section{Currying}\label{currying}
@@ -475,7 +475,7 @@ coproducts, products, and exponentials. We don't have the tools yet to
 prove them (such as adjunctions or the Yoneda lemma), but I'll list them
 here nevertheless as a source of valuable intuitions.
 
-\subsubsection{Zeroth Power}\label{zeroth-power}
+\subsection{Zeroth Power}\label{zeroth-power}
 
 \begin{verbatim}
 a0 = 1
@@ -495,7 +495,7 @@ In Haskell, we replace 0 with \code{Void}; 1 with the unit type
 \code{()}; and the exponential with function type. The claim is that
 the set of functions from \code{Void} to any type \code{a} is
 equivalent to the unit type --- which is a singleton. In other words,
-there is only one function \code{Void-\textgreater{}a}. We've seen
+there is only one function \code{Void->a}. We've seen
 this function before: it's called \code{absurd}.
 
 This is a little bit tricky, for two reasons. One is that in Haskell we
@@ -506,7 +506,7 @@ matter what they do, nobody can ever execute them. There is no value
 that can be passed to \code{absurd}. (And if you manage to pass it a
 never ending calculation, it will never return!)
 
-\subsubsection{Powers of One}\label{powers-of-one}
+\subsection{Powers of One}\label{powers-of-one}
 
 \begin{verbatim}
 1a = 1
@@ -522,7 +522,7 @@ We've seen this function before --- it's called \code{unit}. You can
 also think of it as the function \code{const} partially applied to
 \code{()}.
 
-\subsubsection{First Power}\label{first-power}
+\subsection{First Power}\label{first-power}
 
 \begin{verbatim}
 a1 = a
@@ -533,9 +533,9 @@ terminal object can be used to pick ``elements'' of the object
 \code{a}. The set of such morphisms is isomorphic to the object
 itself. In \textbf{Set}, and in Haskell, the isomorphism is between
 elements of the set \code{a} and functions that pick those elements,
-\code{()-\textgreater{}a}.
+\code{()->a}.
 
-\subsubsection{Exponentials of Sums}\label{exponentials-of-sums}
+\subsection{Exponentials of Sums}\label{exponentials-of-sums}
 
 \begin{verbatim}
 ab+c = ab × ac
@@ -566,7 +566,7 @@ f (Right x) = if x < 0.0 then "Negative double" else "Positive double"
 
 Here, \code{n} is an \code{Int} and \code{x} is a \code{Double}.
 
-\subsubsection{Exponentials of
+\subsection{Exponentials of
 Exponentials}\label{exponentials-of-exponentials}
 
 \begin{verbatim}
@@ -577,7 +577,7 @@ This is just a way of expressing currying purely in terms of exponential
 objects. A function returning a function is equivalent to a function
 from a product (a two-argument function).
 
-\subsubsection{Exponentials over
+\subsection{Exponentials over
 Products}\label{exponentials-over-products}
 
 \begin{verbatim}
@@ -598,7 +598,7 @@ data types. The \code{Void} type and the unit type \code{()}
 correspond to false and true. Product types and sum types correspond to
 logical conjunction ∧ (AND) and disjunction ⋁ (OR). In this scheme, the
 function type we have just defined corresponds to logical implication ⇒.
-In other words, the type \code{a-\textgreater{}b} can be read as ``if
+In other words, the type \code{a->b} can be read as ``if
 a then b.''
 
 According to the Curry-Howard isomorphism, every type can be interpreted
@@ -649,7 +649,7 @@ If you give me a pair consisting of a function \code{f} taking
 type \code{a}, I can produce a concrete value of type \code{b} by
 simply applying the function \code{f} to \code{x}. By implementing
 this function I have just shown that the type
-\code{((a\ -\textgreater{}\ b),\ a)\ -\textgreater{}\ b} is inhabited.
+\code{((a\ ->\ b),\ a)\ ->\ b} is inhabited.
 Therefore \newterm{modus ponens} is true in our logic.
 
 How about a predicate that is blatantly false? For instance: if

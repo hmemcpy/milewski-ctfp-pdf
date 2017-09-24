@@ -47,18 +47,18 @@ the right Kan extension of \code{D} along \code{K} and is denoted by
 \code{RanKD}.
 
 Let's formulate the universal property. Suppose we have another cone ---
-that is another functor \code{F\&apos;} together with a natural
-transformation \code{ε\&apos;} from \code{F\&apos;\ ∘\ K} to
+that is another functor \code{F\'} together with a natural
+transformation \code{ε\'} from \code{F\'\ ∘\ K} to
 \code{D}.
 
 \includegraphics[width=2.36458in]{images/kan31-e1492120512209.jpg}
 
 If the Kan extension \code{F\ =\ RanKD} exists, there must be a unique
-natural transformation \code{σ} from \code{F\&apos;} to it, such
-that \code{ε\&apos;} factorizes through \code{ε}, that is:
+natural transformation \code{σ} from \code{F\'} to it, such
+that \code{ε\'} factorizes through \code{ε}, that is:
 
 \begin{verbatim}
-ε&apos; = ε . (σ ∘ K)
+ε' = ε . (σ ∘ K)
 \end{verbatim}
 
 Here, \code{σ\ ∘\ K} is the horizontal composition of two natural
@@ -71,12 +71,12 @@ on \code{K}). This transformation is then vertically composed with
 In components, when acting on an object \code{i} in \emph{I}, we get:
 
 \begin{verbatim}
-ε&apos;i = εi ∘ σ K i
+ε'i = εi ∘ σ K i
 \end{verbatim}
 
 In our case, \code{σ} has only one component corresponding to the
 single object of \textbf{1}. So, indeed, this is the unique morphism
-from the apex of the cone defined by \code{F\&apos;} to the apex of
+from the apex of the cone defined by \code{F\'} to the apex of
 the universal cone defined by \code{RanKD}. The commuting conditions
 are exactly the ones required by the definition of a limit.
 
@@ -86,32 +86,32 @@ extension remains valid.
 
 \section{Right Kan Extension}\label{right-kan-extension}
 
-The right Kan extension of the functor \code{D::I-\textgreater{}C}
-along the functor \code{K::I-\textgreater{}A} is a functor
-\code{F::A-\textgreater{}C} (denoted \code{RanKD}) together with a
+The right Kan extension of the functor \code{D::I->C}
+along the functor \code{K::I->A} is a functor
+\code{F::A->C} (denoted \code{RanKD}) together with a
 natural transformation
 
 \begin{verbatim}
 ε :: F ∘ K -> D
 \end{verbatim}
 
-such that for any other functor \code{F\&apos;::A-\textgreater{}C} and
+such that for any other functor \code{F\'::A->C} and
 a natural transformation
 
 \begin{verbatim}
-ε&apos; :: F&apos; ∘ K -> D
+ε' :: F' ∘ K -> D
 \end{verbatim}
 
 there is a unique natural transformation
 
 \begin{verbatim}
-σ :: F&apos; -> F
+σ :: F' -> F
 \end{verbatim}
 
-that factorizes \code{ε\&apos;}:
+that factorizes \code{ε\'}:
 
 \begin{verbatim}
-ε&apos; = ε . (σ ∘ K)
+ε' = ε . (σ ∘ K)
 \end{verbatim}
 
 This is quite a mouthful, but it can be visualized in this nice diagram:
@@ -160,11 +160,11 @@ functor \code{-∘K}. The latter maps functors in \code{{[}A,\ C{]}}
 to functors in \code{{[}I,\ C{]}}. The adjunction is:
 
 \begin{verbatim}
-[I, C](F&apos; ∘ K, D) ≅ [A, C](F&apos;, RanKD)
+[I, C](F' ∘ K, D) ≅ [A, C](F', RanKD)
 \end{verbatim}
 
 It is just a restatement of the fact that to every natural
-transformation we called \code{ε\&apos;} corresponds a unique natural
+transformation we called \code{ε\'} corresponds a unique natural
 transformation we called \code{σ}.
 
 \includegraphics[width=3.12500in]{images/kan92.jpg}
@@ -174,10 +174,10 @@ Furthermore, if we chose the category \emph{I} to be the same as
 \code{D}. We get the following identity:
 
 \begin{verbatim}
-[C, C](F&apos; ∘ K, IC) ≅ [A, C](F&apos;, RanKIC)
+[C, C](F' ∘ K, IC) ≅ [A, C](F', RanKIC)
 \end{verbatim}
 
-We can now chose \code{F\&apos;} to be the same as \code{RanKIC}. In
+We can now chose \code{F\'} to be the same as \code{RanKIC}. In
 that case the right hand side contains the identity natural
 transformation and, corresponding to it, the left hand side gives us the
 following natural transformation:
@@ -231,8 +231,8 @@ us practical means of finding right (and left) adjoints.
 There is a dual construction that gives us the left Kan extension. To
 build some intuition, we'll can start with the definition of a colimit
 and restructure it to use the singleton category \textbf{1}. We build a
-cocone by using the functor \code{D::I-\textgreater{}C} to form its
-base, and the functor \code{F::1-\textgreater{}C} to select its apex.
+cocone by using the functor \code{D::I->C} to form its
+base, and the functor \code{F::1->C} to select its apex.
 
 \includegraphics[width=1.90625in]{images/kan81.jpg}
 
@@ -242,23 +242,23 @@ transformation \code{η} from \code{D} to \code{F\ ∘\ K}.
 \includegraphics[width=2.33333in]{images/kan10a.jpg}
 
 The colimit is the universal cocone. So for any other functor
-\code{F\&apos;} and a natural transformation
+\code{F\'} and a natural transformation
 
 \begin{verbatim}
-η&apos; :: D -> F&apos;∘ K
+η' :: D -> F'∘ K
 \end{verbatim}
 
 \includegraphics[width=2.40625in]{images/kan10b.jpg}
 
 there is a unique natural transformation \code{σ} from \code{F} to
-\code{F\&apos;}
+\code{F\'}
 
 \includegraphics[width=2.08333in]{images/kan14.jpg}
 
 such that:
 
 \begin{verbatim}
-η&apos; = (σ ∘ K) . η
+η' = (σ ∘ K) . η
 \end{verbatim}
 
 This is illustrated in the following diagram:\\
@@ -280,13 +280,13 @@ As before, we can recast the one-to-one correspondence between natural
 transformations:
 
 \begin{verbatim}
-η&apos; = (σ ∘ K) . η
+η' = (σ ∘ K) . η
 \end{verbatim}
 
 in terms of the adjunction:
 
 \begin{verbatim}
-[A, C](LanKD, F&apos;) ≅ [I, C](D, F&apos; ∘ K)
+[A, C](LanKD, F') ≅ [I, C](D, F' ∘ K)
 \end{verbatim}
 
 In other words, the left Kan extension is the left adjoint, and the
@@ -342,10 +342,10 @@ A(a, K -) = A(a, -) ∘ K
 The right Kan extension is the right adjoint of functor composition:
 
 \begin{verbatim}
-[I, Set](F&apos; ∘ K, D) ≅ [A, Set](F&apos;, RanKD)
+[I, Set](F' ∘ K, D) ≅ [A, Set](F', RanKD)
 \end{verbatim}
 
-Let's see what happens when we replace \code{F\&apos;} with the hom
+Let's see what happens when we replace \code{F\'} with the hom
 functor:
 
 \begin{verbatim}
@@ -382,60 +382,60 @@ To see that this is the case, we'll show that this is indeed the left
 adjoint to functor composition:
 
 \begin{verbatim}
-[A, Set](LanKD, F&apos;) ≅ [I, Set](D, F&apos;∘ K)
+[A, Set](LanKD, F') ≅ [I, Set](D, F'∘ K)
 \end{verbatim}
 
 Let's substitute our formula in the left hand side:
 
 \begin{verbatim}
-[A, Set](∫i A(K i, -) × D i, F&apos;)
+[A, Set](∫i A(K i, -) × D i, F')
 \end{verbatim}
 
 This is a set of natural transformations, so it can be rewritten as an
 end:
 
 \begin{verbatim}
-∫a Set(∫i A(K i, a) × D i, F&apos;a)
+∫a Set(∫i A(K i, a) × D i, F'a)
 \end{verbatim}
 
 Using the continuity of the hom-functor, we can replace the coend with
 the end:
 
 \begin{verbatim}
-∫a ∫i Set(A(K i, a) × D i, F&apos;a)
+∫a ∫i Set(A(K i, a) × D i, F'a)
 \end{verbatim}
 
 We can use the product-exponential adjunction:
 
 \begin{verbatim}
-∫a ∫i Set(A(K i, a), (F&apos;a)D i)
+∫a ∫i Set(A(K i, a), (F'a)D i)
 \end{verbatim}
 
 The exponential is isomorphic to the corresponding hom-set:
 
 \begin{verbatim}
-∫a ∫i Set(A(K i, a), A(D i, F&apos;a))
+∫a ∫i Set(A(K i, a), A(D i, F'a))
 \end{verbatim}
 
 There is a theorem called the Fubini theorem that allows us to swap the
 two ends:
 
 \begin{verbatim}
-∫i ∫a Set(A(K i, a), A(D i, F&apos;a))
+∫i ∫a Set(A(K i, a), A(D i, F'a))
 \end{verbatim}
 
 The inner end represents the set of natural transformations between two
 functors, so we can use the Yoneda lemma:
 
 \begin{verbatim}
-∫i A(D i, F&apos;(K i))
+∫i A(D i, F'(K i))
 \end{verbatim}
 
 This is indeed the set of natural transformations that forms the right
 hand side of the adjunction we set out to prove:
 
 \begin{verbatim}
-[I, Set](D, F&apos;∘ K)
+[I, Set](D, F'∘ K)
 \end{verbatim}
 
 These kinds of calculations using ends, coends, and the Yoneda lemma are

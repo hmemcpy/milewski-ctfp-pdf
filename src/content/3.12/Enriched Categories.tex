@@ -216,7 +216,7 @@ either empty or a singleton. We interpret a non-empty set
 simple monoidal category that contains just two objects, 0 and 1
 (sometimes called False and True). Besides the mandatory identity
 morphisms, this category has a single morphism going from 0 to 1, let's
-call it \code{0-\textgreater{}1}. A simple monoidal structure can be
+call it \code{0->1}. A simple monoidal structure can be
 established in it, with the tensor product modeling the simple
 arithmetic of 0 and 1 (i.e., the only non-zero product is \code{1⊗1}).
 The identity object in this category is 1. This is a strict monoidal
@@ -232,7 +232,7 @@ to \code{b}, this object is 1; otherwise it's 0.
 Let's have a look at composition. The tensor product of any two objects
 is 0, unless both of them are 1, in which case it's 1. If it's 0, then
 we have two options for the composition morphism: it could be either
-\code{id0} or \code{0-\textgreater{}1}. But if it's 1, then the only
+\code{id0} or \code{0->1}. But if it's 1, then the only
 option is \code{id1}. Translating this back to relations, this says
 that if \code{a\ \textless{}=\ b} and \code{b\ \textless{}=\ c} then
 \code{a\ \textless{}=\ c}, which is exactly the transitivity law we
@@ -271,7 +271,7 @@ number? Only if we can construct a monoidal category \emph{V} in which
 these numbers are objects. Non-negative real numbers (plus infinity)
 form a total order, so they can be treated as a thin category. A
 morphism between two such numbers \code{x} and \code{y} exists if
-and only if \code{x\ \textgreater{}=\ y} (note: this is the opposite
+and only if \code{x\ >=\ y} (note: this is the opposite
 direction to the one traditionally used in the definition of a
 preorder). The monoidal structure is given by addition, with zero
 serving as the unit object. In other words, the tensor product of two

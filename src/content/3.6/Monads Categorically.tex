@@ -44,7 +44,7 @@ get:
 \end{verbatim}
 
 Here's what happened: We took an expression of type \code{m\ a} and
-applied a transformation of type \code{a\ -\textgreater{}\ m\ b}
+applied a transformation of type \code{a\ ->\ m\ b}
 (\code{b} represents the type of \code{y}). The result is an
 expression of type \code{m\ b}. Let me spell it out:
 
@@ -103,7 +103,7 @@ These natural transformations must satisfy some additional laws. One way
 of looking at it is that these laws let us define a Kleisli category for
 the endofunctor \code{T}. Remember that a Kleisli arrow between
 \code{a} and \code{b} is defined as a morphism
-\code{a\ -\textgreater{}\ T\ b}. The composition of two such arrows
+\code{a\ ->\ T\ b}. The composition of two such arrows
 (I'll write it as a circle with the subscript \code{T}) can be
 implemented using μ:
 
@@ -219,7 +219,7 @@ mappend :: m -> (m -> m)
 
 It's this interpretation that gives rise to the definition of a monoid
 as a single-object category where endomorphisms
-\code{(m\ -\textgreater{}\ m)} represent the elements of the monoid.
+\code{(m\ ->\ m)} represent the elements of the monoid.
 But because currying is built into Haskell, we could as well have
 started with a different definition of multiplication:
 
@@ -468,7 +468,7 @@ If you replace objects by endofunctors, arrows by natural
 transformations, and tensor products by composition, you get:
 
 \begin{verbatim}
-(F -> F&apos;) -> (G -> G&apos;) -> (F ∘ G -> F&apos; ∘ G&apos;)
+(F -> F') -> (G -> G') -> (F ∘ G -> F' ∘ G')
 \end{verbatim}
 
 which you may recognize as the special case of horizontal composition.

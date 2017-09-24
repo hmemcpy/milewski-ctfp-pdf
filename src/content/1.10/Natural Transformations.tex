@@ -193,7 +193,7 @@ alpha :: F a -> G a
 
 where \code{F} and \code{G} are functors, automatically satisfies
 the naturality condition. Here it is in categorical notation (\code{f}
-is a function \code{f::a-\textgreater{}b}):
+is a function \code{f::a->b}):
 
 \begin{verbatim}
 G f ∘ αa = αb ∘ F f
@@ -361,7 +361,7 @@ lemma}).
 
 For instance, consider the somewhat trivial unit type \code{()} with
 one element \code{()}. The functor \code{Reader\ ()} takes any type
-\code{a} and maps it into a function type \code{()-\textgreater{}a}.
+\code{a} and maps it into a function type \code{()->a}.
 These are just all the functions that pick a single element from the set
 \code{a}. There are as many of these as there are elements in
 \code{a}. Now let's consider natural transformations from this functor
@@ -574,10 +574,10 @@ easy, because small categories are \emph{sets} of objects, and we know
 how to define cartesian products of sets. So an object in a product
 category C × D is just a pair of objects, \code{(c,\ d)}, one from C
 and one from D. Similarly, a morphism between two such pairs,
-\code{(c,\ d)} and \code{(c\&apos;,\ d\&apos;)}, is a pair of
+\code{(c,\ d)} and \code{(c\',\ d\')}, is a pair of
 morphisms, \code{(f,\ g)}, where
-\code{f\ ::\ c\ -\textgreater{}\ c\&apos;} and
-\code{g\ ::\ d\ -\textgreater{}\ d\&apos;}. These pairs of morphisms
+\code{f\ ::\ c\ ->\ c\'} and
+\code{g\ ::\ d\ ->\ d\'}. These pairs of morphisms
 compose component-wise, and there is always an identity pair that is
 just a pair of identity morphisms. To make the long story short,
 \textbf{Cat} is a full-blown cartesian closed category in which there is
@@ -642,8 +642,8 @@ Suppose we have two natural transformations, α and β, that act,
 respectively, on functors F and G:
 
 \begin{verbatim}
-α :: F -> F&apos;
-β :: G -> G&apos;
+α :: F -> F'
+β :: G -> G'
 \end{verbatim}
 
 \includegraphics[width=3.12500in]{images/10_horizontal.jpg}
@@ -661,45 +661,45 @@ from G ∘ F to G'∘ F'? Let me sketch the construction.
 \includegraphics[width=3.84375in]{images/9_horizontal.jpg}
 
 As usual, we start with an object \code{a} in C. Its image splits into
-two objects in D: \code{F\ a} and \code{F\&apos;a}. There is also a
+two objects in D: \code{F\ a} and \code{F\'a}. There is also a
 morphism, a component of α, connecting these two objects:
 
 \begin{verbatim}
-αa :: F a -> F&apos;a
+αa :: F a -> F'a
 \end{verbatim}
 
 When going from D to E, these two objects split further into four
 objects:
 
 \begin{verbatim}
-G (F a), G&apos;(F a), G (F&apos;a), G&apos;(F&apos;a)
+G (F a), G'(F a), G (F'a), G'(F'a)
 \end{verbatim}
 
 We also have four morphisms forming a square. Two of these morphisms are
 the components of the natural transformation β:
 
 \begin{verbatim}
-βF a :: G (F a) -> G&apos;(F a)
-βF&apos;a :: G (F&apos;a) -> G&apos;(F&apos;a)
+βF a :: G (F a) -> G'(F a)
+βF'a :: G (F'a) -> G'(F'a)
 \end{verbatim}
 
 The other two are the images of α\textsubscript{a} under the two
 functors (functors map morphisms):
 
 \begin{verbatim}
-G αa :: G (F a) -> G (F&apos;a)
-G&apos;αa :: G&apos;(F a) -> G&apos;(F&apos;a)
+G αa :: G (F a) -> G (F'a)
+G'αa :: G'(F a) -> G'(F'a)
 \end{verbatim}
 
 That's a lot of morphisms. Our goal is to find a morphism that goes from
-\code{G\ (F\ a)} to \code{G\&apos;(F\&apos;a)}, a candidate for the
+\code{G\ (F\ a)} to \code{G\'(F\'a)}, a candidate for the
 component of a natural transformation connecting the two functors G ∘ F
 and G'∘ F'. In fact there's not one but two paths we can take from
-\code{G\ (F\ a)} to \code{G\&apos;(F\&apos;a)}:
+\code{G\ (F\ a)} to \code{G\'(F\'a)}:
 
 \begin{verbatim}
-G&apos;αa ∘ βF a
-βF&apos;a ∘ G αa
+G'αa ∘ βF a
+βF'a ∘ G αa
 \end{verbatim}
 
 Luckily for us, they are equal, because the square we have formed turns
@@ -713,7 +713,7 @@ We call this natural transformation the \newterm{horizontal composition} of
 α and β:
 
 \begin{verbatim}
-β ∘ α :: G ∘ F -> G&apos;∘ F&apos;
+β ∘ α :: G ∘ F -> G'∘ F'
 \end{verbatim}
 
 Again, following Mac Lane I use the small circle for horizontal
@@ -747,7 +747,7 @@ for vertical composition, but not vice versa.
 Finally, the two compositions satisfy the interchange law:
 
 \begin{verbatim}
-(β&apos; ⋅ α&apos;) ∘ (β ⋅ α) = (β&apos; ∘ β) ⋅ (α&apos; ∘ α)
+(β' ⋅ α') ∘ (β ⋅ α) = (β' ∘ β) ⋅ (α' ∘ α)
 \end{verbatim}
 
 I will quote Saunders Mac Lane here: The reader may enjoy writing down

@@ -50,27 +50,27 @@ For finite sets, you may visualize injective functions as parallel
 arrows connecting elements of one set to elements of another. Of course,
 the first set cannot be larger than the second set, or the arrows would
 necessarily converge. There is still some ambiguity left: there may be
-another set \code{a\&apos;} and another injective function
-\code{f\&apos;} from that set to \code{b} that picks the same
+another set \code{a\'} and another injective function
+\code{f\'} from that set to \code{b} that picks the same
 subset. But you can easily convince yourself that such a set would have
 to be isomorphic to \code{a}. We can use this fact to define a subset
 as a family of injective functions that are related by isomorphisms of
 their domains. More precisely, we say that two injective functions:
 
 \begin{verbatim}
-f :: a -> b f&apos;:: a&apos;-> b
+f :: a -> b f':: a'-> b
 \end{verbatim}
 
 are equivalent if there is an isomorphism:
 
 \begin{verbatim}
-h :: a -> a&apos;
+h :: a -> a'
 \end{verbatim}
 
 such that:
 
 \begin{verbatim}
-f = f&apos; . h
+f = f' . h
 \end{verbatim}
 
 Such a family of equivalent injections defines a subset of \code{b}.
@@ -83,16 +83,16 @@ monomorphism \code{m} from \code{a} to \code{b} is defined by its
 universal property. For any object \code{c} and any pair of morphisms:
 
 \begin{verbatim}
-g :: c -> a g&apos;:: c -> a
+g :: c -> a g':: c -> a
 \end{verbatim}
 
 such that:
 
 \begin{verbatim}
-m . g = m . g&apos;
+m . g = m . g'
 \end{verbatim}
 
-it must be that \code{g\ =\ g\&apos;}.
+it must be that \code{g\ =\ g\'}.
 
 \includegraphics[width=3.12500in]{images/monomorphism.jpg}
 
@@ -100,7 +100,7 @@ On sets, this definition is easier to understand if we consider what it
 would mean for a function \code{m} \emph{not} to be a monomorphism. It
 would map two different elements of \code{a} to a single element of
 \code{b}. We could then find two functions \code{g} and
-\code{g\&apos;} that differ only at those two elements. The
+\code{g\'} that differ only at those two elements. The
 postcomposition with \code{m} would then mask this difference.
 
 \includegraphics[width=3.12500in]{images/notmono.jpg}
@@ -177,7 +177,7 @@ diagram commute.
 Here we are solving a different system of equations. We are solving for
 \code{Ω} and \code{true} while varying both \code{a} \emph{and}
 \code{b}. For a given \code{a} and \code{b} there may or may not
-be a monomorphism \code{f::a-\textgreater{}b}. But if there is one, we
+be a monomorphism \code{f::a->b}. But if there is one, we
 want it to be a pullback of some \code{χ}. Moreover, we want this
 \code{χ} to be uniquely determined by \code{f}.
 

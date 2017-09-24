@@ -58,7 +58,7 @@ The beauty of this formulation is that it leads to interesting
 generalizations. For instance, how would we describe a group using this
 language? A group is a monoid with one additional function that assigns
 the inverse to every element. The latter is a function of the type
-\code{m-\textgreater{}m}. As an example, integers form a group with
+\code{m->m}. As an example, integers form a group with
 addition as a binary operation, zero as the unit, and negation as the
 inverse. To define a group we would start with a triple of functions:
 
@@ -261,7 +261,7 @@ constructing some new objects, see if they form a category. Not
 surprisingly, algebras over a given endofunctor \code{F} form a
 category. Objects in that category are algebras --- pairs consisting of
 a carrier object \code{a} and a morphism
-\code{F\ a\ -\textgreater{}\ a}, both from the original category
+\code{F\ a\ ->\ a}, both from the original category
 \emph{C}.
 
 To complete the picture, we have to define morphisms in the category of
@@ -295,7 +295,7 @@ homomorphisms is a homomorphism).
 An initial object in the category of F-algebras, if it exists, is called
 the \newterm{initial algebra}. Let's call the carrier of this initial
 algebra \code{i} and its evaluator
-\code{j\ ::\ F\ i\ -\textgreater{}\ i}. It turns out that \code{j},
+\code{j\ ::\ F\ i\ ->\ i}. It turns out that \code{j},
 the evaluator of the initial algebra, is an isomorphism. This result is
 known as Lambek's theorem. The proof relies on the definition of the
 initial object, which requires that there be a unique homomorphism
@@ -355,7 +355,7 @@ order to get the initial algebra, we take the functor \code{f} and
 replace its argument \code{a} with \code{Fix\ f}. We also see why
 the fixed point does not depend on \code{a}.
 
-\subsubsection{Natural Numbers}\label{natural-numbers}
+\subsection{Natural Numbers}\label{natural-numbers}
 
 Natural numbers can also be defined as an F-algebra. The starting point
 is the pair of morphisms:
@@ -535,7 +535,7 @@ homomorphism \code{m} that makes the following diagram commute:
 \includegraphics{images/alg7.png}
 
 A terminal colagebra is a fixed point of the functor, in the sense that
-the morphism \code{u\ ::\ t\ -\textgreater{}\ F\ t} is an isomorphism
+the morphism \code{u\ ::\ t\ ->\ F\ t} is an isomorphism
 (Lambek's theorem for coalgebras):
 
 \begin{verbatim}

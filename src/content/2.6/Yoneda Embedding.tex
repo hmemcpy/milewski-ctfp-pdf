@@ -44,7 +44,7 @@ other category. A morphism in \emph{C} is just an element of
 for a mapping of morphisms to natural transformations.
 
 Let's see if we can find a natural transformation corresponding to a
-morphism \code{f\ ::\ a-\textgreater{}b}. First, lets see what
+morphism \code{f\ ::\ a->b}. First, lets see what
 \code{a} and \code{b} are mapped to. They are mapped to two
 functors: \code{C(a,\ -)} and \code{C(b,\ -)}. We need a natural
 transformation between those two functors.
@@ -145,16 +145,16 @@ forall x. (a -> x) -> (b -> x) ≅ b -> a
 \end{verbatim}
 
 (Remember, the reader functor is equivalent to
-\code{((-\textgreater{})\ a)}.)
+\code{((->)\ a)}.)
 
 The left hand side of this identity is a polymorphic function that,
 given a function from \code{a} to \code{x} and a value of type
 \code{b}, can produce a value of type \code{x} (I'm uncurrying ---
 dropping the parentheses around --- the function
-\code{b\ -\textgreater{}\ x}). The only way this can be done for all
+\code{b\ ->\ x}). The only way this can be done for all
 \code{x} is if our function knows how to convert a \code{b} to an
 \code{a}. It has to secretly have access to a function
-\code{b-\textgreater{}a}.
+\code{b->a}.
 
 Given such a converter, \code{btoa}, one can define the left hand
 side, call it\code{fromY}, as:
@@ -175,7 +175,7 @@ This establishes the bijection between functions of the type
 
 An alternative way of looking at this isomorphism is that it's a CPS
 encoding of a function from \code{b} to \code{a}. The argument
-\code{a-\textgreater{}x} is a continuation (the handler). The result
+\code{a->x} is a continuation (the handler). The result
 is a function from \code{b} to \code{x} which, when called with a
 value of type \code{b}, will execute the continuation precomposed with
 the function being encoded.

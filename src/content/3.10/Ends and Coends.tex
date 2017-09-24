@@ -70,18 +70,18 @@ container.
 For profunctors acting within one category, we can extract quite a lot
 of information from diagonal elements of the type \code{p\ a\ a}. We
 can prove that \code{b} is related to \code{c} as long as we have a
-pair of morphisms \code{b-\textgreater{}a} and
-\code{a-\textgreater{}c}. Even better, we can use a single morphism to
+pair of morphisms \code{b->a} and
+\code{a->c}. Even better, we can use a single morphism to
 reach off-diagonal values. For instance, if we have a morphism
-\code{f::a-\textgreater{}b}, we can lift the pair
-\code{\textless{}f,\ idb\textgreater{}} to go from \code{p\ b\ b} to
+\code{f::a->b}, we can lift the pair
+\code{\textless{}f,\ idb>} to go from \code{p\ b\ b} to
 \code{p\ a\ b}:
 
 \begin{verbatim}
 dimap f id pbb :: p a b
 \end{verbatim}
 
-Or we can lift the pair \code{\textless{}ida,\ f\textgreater{}} to go
+Or we can lift the pair \code{\textless{}ida,\ f>} to go
 from \code{p\ a\ a} to \code{p\ a\ b}:
 
 \begin{verbatim}
@@ -105,7 +105,7 @@ family of morphisms:
 \end{verbatim}
 
 for which the following diagram commutes, for any
-\code{f::a-\textgreater{}b}:
+\code{f::a->b}:
 
 \includegraphics[width=2.77083in]{images/end.jpg}
 
@@ -147,7 +147,7 @@ polymorphic in its return type:
 
 Unlike in cones, within a wedge we don't have any functions that would
 connect vertices of the base. However, as we've seen earlier, given any
-morphism \code{f::a-\textgreater{}b} in \emph{C}, we can connect both
+morphism \code{f::a->b} in \emph{C}, we can connect both
 \code{p\ a\ a} and \code{p\ b\ b} to the common set
 \code{p\ a\ b}. We therefore insist that the following diagram
 commute:
@@ -170,7 +170,7 @@ We can now proceed with the universal construction and define the end of
 \code{p} as the uinversal wedge --- a set \code{e} together with a
 family of functions \code{π} such that for any other wedge with the
 apex \code{a} and a family \code{α} there is a unique function
-\code{h::a-\textgreater{}e} that makes all triangles commute:
+\code{h::a->e} that makes all triangles commute:
 
 \begin{verbatim}
 πa ∘ h = αa
@@ -208,7 +208,7 @@ Strictly speaking, this is just a product of all diagonal elements of
 \code{p}, but the wedge condition is satisfied automatically due to
 parametricity (I'll explain it in a
 \href{https://bartoszmilewski.com/2017/04/11/profunctor-parametricity/}{separate
-blog post}). For any function \code{f\ ::\ a\ -\textgreater{}\ b}, the
+blog post}). For any function \code{f\ ::\ a\ ->\ b}, the
 wedge condition reads:
 
 \begin{verbatim}
@@ -327,7 +327,7 @@ particular transformation, let's call them:
 \end{verbatim}
 
 In the left branch, we lift a pair of morphisms
-\code{\textless{}ida,\ G\ f\textgreater{}} using the hom-functor. You
+\code{\textless{}ida,\ G\ f>} using the hom-functor. You
 may recall that such lifting is implemented as simultaneous pre- and
 post-composition. When acting on \code{τa} the lifted pair gives us:
 
@@ -394,7 +394,7 @@ what \code{a} we chose.
 Just like an end can be defined using an equalizer, a coend can be
 described using a \newterm{coequalizer}. All the cowedge conditions can be
 summarized by taking one gigantic coproduct of \code{p\ a\ b} for all
-possible functions \code{b-\textgreater{}a}. In Haskell, that would be
+possible functions \code{b->a}. In Haskell, that would be
 expressed as an existential type:
 
 \begin{verbatim}
@@ -418,7 +418,7 @@ The coequalizer of these two functions is the coend. A coequilizer is
 obtained from \code{DiagSum\ p} by identifying values that are
 obtained by applying \code{lambda} or \code{rho} to the same
 argument. Here, the argument is a pair consisting of a function
-\code{b-\textgreater{}a} and an element of \code{p\ a\ b}. The
+\code{b->a} and an element of \code{p\ a\ b}. The
 application of \code{lambda} and \code{rho} produces two potentially
 different values of the type \code{DiagSum\ p}. In the coend, these
 two values are identified, making the cowedge condition automatically
