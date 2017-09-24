@@ -20,8 +20,8 @@ in C++ it's a relatively complex template defined in the Standard
 Library.
 
 \begin{figure}
-  \centering
-  \fbox{\includegraphics[width=1.56250in]{images/pair.jpg}}
+\centering
+\fbox{\includegraphics[width=1.56250in]{images/pair.jpg}}
 \end{figure}
 
 \noindent
@@ -35,8 +35,6 @@ its own inverse):
 swap :: (a, b) -> (b, a)
 swap (x, y) = (y, x)
 \end{verbatim}
-
-\noindent
 You can think of the two pairs as simply using a different format for
 storing the same data. It's just like big endian vs. little endian.
 
@@ -50,15 +48,11 @@ can do it in two ways:
 \begin{verbatim}
 ((a, b), c)
 \end{verbatim}
-
-\noindent
 or
 
 \begin{verbatim}
 (a, (b, c))
 \end{verbatim}
-
-\noindent
 These types are different --- you can't pass one to a function that
 expects the other --- but their elements are in one-to-one
 correspondence. There is a function that maps one to another:
@@ -67,16 +61,12 @@ correspondence. There is a function that maps one to another:
 alpha :: ((a, b), c) -> (a, (b, c))
 alpha ((x, y), z) = (x, (y, z))
 \end{verbatim}
-
-\noindent
 and this function is invertible:
 
 \begin{verbatim}
 alpha_inv :: (a, (b, c)) -> ((a, b), c)
 alpha_inv (x, (y, z)) = ((x, y), z)
 \end{verbatim}
-
-\noindent
 so it's an isomorphism. These are just different ways of repackaging the
 same data.
 
@@ -87,7 +77,6 @@ like the associativity law we've seen in monoids:
 \begin{verbatim}
 (a * b) * c = a * (b * c)
 \end{verbatim}
-
 Except that, in the monoid case, the two ways of composing products were
 equal, whereas here they are only equal ``up to isomorphism.''
 
@@ -100,8 +89,6 @@ doesn't add any information. The type:
 \begin{verbatim}
 (a, ())
 \end{verbatim}
-
-\noindent
 is isomorphic to \code{a}. Here's the isomorphism:
 
 \begin{verbatim}
@@ -113,8 +100,6 @@ rho (x, ()) = x
 rho_inv :: a -> (a, ())
 rho_inv x = (x, ())
 \end{verbatim}
-
-\noindent
 These observations can be formalized by saying that \textbf{Set} (the
 category of sets) is a \newterm{monoidal category}. It's a category that's
 also a monoid, in the sense that you can multiply objects (here, take
@@ -129,7 +114,6 @@ can be defined alternatively as:
 \begin{verbatim}
 data Pair a b = P a b
 \end{verbatim}
-
 Here, \code{Pair\ a\ b} is the name of the type paremeterized by two
 other types, \code{a} and \code{b}; and \code{P} is the name of
 the data constructor. You define a pair type by passing two types to the
@@ -142,8 +126,6 @@ instance, let's define a value \code{stmt} as a pair of
 stmt :: Pair String Bool
 stmt = P "This statements is" False
 \end{verbatim}
-
-\noindent
 The first line is the type declaration. It uses the type constructor
 \code{Pair}, with \code{String} and \code{Bool} replacing
 \code{a} and the \code{b} in the generic definition of
@@ -158,8 +140,6 @@ Haskell, you will often see the same name used for both, as in:
 \begin{verbatim}
 data Pair a b = Pair a b
 \end{verbatim}
-
-\noindent
 And if you squint hard enough, you may even view the built-in pair type
 as a variation on this kind of declaration, where the name \code{Pair}
 is replaced with the binary operator \code{(,)}. In fact you can use
@@ -169,8 +149,6 @@ using prefix notation:
 \begin{verbatim}
 stmt = (,) "This statement is" False
 \end{verbatim}
-
-\noindent
 Similarly, you can use \code{(,,)} to create triples, and so on.
 
 Instead of using generic pairs or tuples, you can also define specific
@@ -179,8 +157,6 @@ named product types, as in:
 \begin{verbatim}
 data Stmt = Stmt String Bool
 \end{verbatim}
-
-\noindent
 which is just a product of \code{String} and \code{Bool}, but it's
 given its own name and constructor. The advantage of this style of
 declaration is that you may define many types that have the same content
@@ -206,8 +182,6 @@ name (as in \textbf{He} being the prefix of \textbf{Helium}):
 startsWithSymbol :: (String, String, Int) -> Bool
 startsWithSymbol (name, symbol, _) = isPrefixOf symbol name
 \end{verbatim}
-
-\noindent
 This code is error prone, and is hard to read and maintain. It's much
 better to define a record:
 
@@ -216,8 +190,6 @@ data Element = Element { name :: String
                        , symbol :: String 
                        , atomicNumber :: Int }
 \end{verbatim}
-
-\noindent
 The two representations are isomorphic, as witnessed by these two
 conversion functions, which are the inverse of each other:
 
@@ -232,8 +204,6 @@ tupleToElem (n, s, a) = Element { name = n
 elemToTuple :: Element -> (String, String, Int)
 elemToTuple e = (name e, symbol e, atomicNumber e)
 \end{verbatim}
-
-\noindent
 Notice that the names of record fields also serve as functions to access
 these fields. For instance, \code{atomicNumber e} retrieves the
 \code{atomicNumber} field from \code{e}. We use
@@ -242,7 +212,6 @@ these fields. For instance, \code{atomicNumber e} retrieves the
 \begin{verbatim}
 atomicNumber :: Element -> Int
 \end{verbatim}
-
 With the record syntax for \code{Element}, our function
 \code{startsWithSymbol} becomes more readable:
 
@@ -250,8 +219,6 @@ With the record syntax for \code{Element}, our function
 startsWithSymbol :: Element -> Bool
 startsWithSymbol e = isPrefixOf (symbol e) (name e)
 \end{verbatim}
-
-\noindent
 We could even use the Haskell trick of turning the function
 \code{isPrefixOf} into an infix operator by surrounding it with
 backquotes, and make it read almost like a sentence:
@@ -259,8 +226,6 @@ backquotes, and make it read almost like a sentence:
 \begin{verbatim}
 startsWithSymbol e = symbol e `isPrefixOf` name e
 \end{verbatim}
-
-\noindent
 The parentheses could be omitted in this case, because an infix operator
 has lower precedence than a function call.
 
@@ -273,8 +238,6 @@ sum type in Haskell is:
 \begin{verbatim}
 data Either a b = Left a | Right b
 \end{verbatim}
-
-\noindent
 And like pairs, \code{Either}s are commutative (up to isomorphism),
 can be nested, and the nesting order is irrelevant (up to isomorphism).
 So we can, for instance, define a sum equivalent of a triple:
@@ -282,8 +245,6 @@ So we can, for instance, define a sum equivalent of a triple:
 \begin{verbatim}
 data OneOfThree a b c = Sinistral a | Medial b | Dextral c
 \end{verbatim}
-
-\noindent
 and so on.
 
 It turns out that \textbf{Set} is also a (symmetric) monoidal category
@@ -298,14 +259,12 @@ doesn't change its content. For instance:
 \begin{verbatim}
 Either a Void
 \end{verbatim}
-
-\noindent
 is isomorphic to \code{a}. That's because there is no way to construct
 a \code{Right} version of this type --- there isn't a value of type
-\code{Void}. The only inhabitants of \code{Either\ a\ Void} are
+\code{Void}. The only inhabitants of \code{Either a Void} are
 constructed using the \code{Left} constructors and they simply
 encapsulate a value of type \code{a}. So, symbolically,
-\code{a\ +\ 0\ =\ a}.
+\code{a + 0 = a}.
 
 Sum types are pretty common in Haskell, but their C++ equivalents,
 unions or variants, are much less common. There are several reasons for
@@ -318,22 +277,16 @@ sum type:
 \begin{verbatim}
 data Color = Red | Green | Blue
 \end{verbatim}
-
-\noindent
 is the C++:
 
 \begin{verbatim}
 enum { Red, Green, Blue };
 \end{verbatim}
-
-\noindent
 An even simpler sum type:
 
 \begin{verbatim}
 data Bool = True | False
 \end{verbatim}
-
-\noindent
 is the primitive \code{bool} in C++.
 
 Simple sum types that encode the presence or absence of a value are
@@ -345,8 +298,6 @@ kind of optionality, if deliberate, is expressed in Haskell using the
 \begin{verbatim}
 data Maybe a = Nothing | Just a
 \end{verbatim}
-
-\noindent
 The \code{Maybe} type is a sum of two types. You can see this if you
 separate the two constructors into individual types. The first one would
 look like this:
@@ -354,8 +305,6 @@ look like this:
 \begin{verbatim}
 data NothingType = Nothing
 \end{verbatim}
-
-\noindent
 It's an enumeration with one value called \code{Nothing}. In other
 words, it's a singleton, which is equivalent to the unit type
 \code{()}. The second part:
@@ -363,16 +312,12 @@ words, it's a singleton, which is equivalent to the unit type
 \begin{verbatim}
 data JustType a = Just a
 \end{verbatim}
-
-\noindent
 is just an encapsulation of the type \code{a}. We could have encoded
 \code{Maybe} as:
 
 \begin{verbatim}
 data Maybe a = Either () a
 \end{verbatim}
-
-\noindent
 More complex sum types are often faked in C++ using pointers. A pointer
 can be either null, or point to a value of specific type. For instance,
 a Haskell list type, which can be defined as a (recursive) sum type:
@@ -380,8 +325,6 @@ a Haskell list type, which can be defined as a (recursive) sum type:
 \begin{verbatim}
 List a = Nil | Cons a (List a)
 \end{verbatim}
-
-\noindent
 can be translated to C++ using the null pointer trick to implement the
 empty list:
 
@@ -396,8 +339,6 @@ public:
     {}
 };
 \end{verbatim}
-
-\noindent
 Notice that the two Haskell constructors \code{Nil} and \code{Cons}
 are translated into two overloaded \code{List} constructors with
 analogous arguments (none, for \code{Nil}; and a value and a list for
@@ -432,8 +373,6 @@ maybeTail :: List a -> Maybe (List a)
 maybeTail Nil = Nothing
 maybeTail (Cons _ t) = Just t
 \end{verbatim}
-
-\noindent
 The first part of the definition of \code{maybeTail} uses the
 \code{Nil} constructor as pattern and returns \code{Nothing}. The
 second part uses the \code{Cons} constructor as pattern. It replaces
@@ -488,23 +427,17 @@ property:
 \begin{verbatim}
 a * (b + c) = a * b + a * c
 \end{verbatim}
-
-\noindent
 Does it also hold for product and sum types? Yes, it does --- up to
 isomorphisms, as usual. The left hand side corresponds to the type:
 
 \begin{verbatim}
 (a, Either b c)
 \end{verbatim}
-
-\noindent
 and the right hand side corresponds to the type:
 
 \begin{verbatim}
 Either (a, b) (a, c)
 \end{verbatim}
-
-\noindent
 Here's the function that converts them one way:
 
 \begin{verbatim}
@@ -514,8 +447,6 @@ prodToSum (x, e) =
       Left  y -> Left  (x, y)
       Right z -> Right (x, z)
 \end{verbatim}
-
-\noindent
 and here's one that goes the other way:
 
 \begin{verbatim}
@@ -525,9 +456,7 @@ sumToProd e =
       Left  (x, y) -> (x, Left  y)
       Right (x, z) -> (x, Right z)
 \end{verbatim}
-
-\noindent
-The \code{case\ of} statement is used for pattern matching inside
+The \code{case of} statement is used for pattern matching inside
 functions. Each pattern is followed by an arrow and the expression to be
 evaluated when the pattern matches. For instance, if you call
 \code{prodToSum} with the value:
@@ -536,8 +465,6 @@ evaluated when the pattern matches. For instance, if you call
 prod1 :: (Int, Either String Float)
 prod1 = (2, Left "Hi!")
 \end{verbatim}
-
-\noindent
 the \code{e} in \code{case e of} will be equal to
 \code{Left "Hi!"}. It will match the pattern \code{Left y},
 substituting \code{"Hi!"} for \code{y}. Since the \code{x} has
@@ -584,16 +511,12 @@ equation:
 \begin{verbatim}
 List a = Nil | Cons a (List a)
 \end{verbatim}
-
-\noindent
 If we do our usual substitutions, and also replace \code{List\ a} with
 \code{x}, we get the equation:
 
 \begin{verbatim}
 x = 1 + a * x
 \end{verbatim}
-
-\noindent
 We can't solve it using traditional algebraic methods because we can't
 subtract or divide types. But we can try a series of substitutions,
 where we keep replacing \code{x} on the right hand side with
@@ -607,8 +530,6 @@ x = 1 + a + a*a*(1 + a*x) = 1 + a + a*a + a*a*a*x
 ...
 x = 1 + a + a*a + a*a*a + a*a*a*a...
 \end{verbatim}
-
-\noindent
 We end up with an infinite sum of products (tuples), which can be
 interpreted as: A list is either empty, \code{1}; or a singleton,
 \code{a}; or a pair, \code{a*a}; or a triple, \code{a*a*a};
@@ -663,7 +584,6 @@ talk about function types.
 data Shape = Circle Float 
            | Rect Float Float
 \end{verbatim}
-
   When we want to define a function like \code{area} that acts on a
   \code{Shape}, we do it by pattern matching on the two constructors:
 
@@ -672,7 +592,6 @@ area :: Shape -> Float
 area (Circle r) = pi * r * r
 area (Rect d h) = d * h
 \end{verbatim}
-
   Implement \code{Shape} in C++ or Java as an interface and create two
   classes: \code{Circle} and \code{Rect}. Implement \code{area} as
   a virtual function.
@@ -686,7 +605,6 @@ circ :: Shape -> Float
 circ (Circle r) = 2.0 * pi * r
 circ (Rect d h) = 2.0 * (d + h)
 \end{verbatim}
-
   Add \code{circ} to your C++ or Java implementation. What parts of
   the original code did you have to touch?
 \item
