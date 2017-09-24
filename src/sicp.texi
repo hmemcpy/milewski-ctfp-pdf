@@ -105,7 +105,15 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \chapter{Simple Algebraic Data Types}
 \subfile{content/1.6/Simple Algebraic Data Types}
 
+\chapter{Functors}
+\subfile{content/1.7/Functors}
+
 \backmatter
+
+@unnumbered Acknowledgments
+
+Gershom Bazerman is kind enough to keep reviewing these posts. I'm
+grateful for his patience and insight.
 
 \setindexprenote{\normalsize \begin{quote} Any inaccuracies in this index may be explained by the fact
 that it has been prepared with the help of a computer.
