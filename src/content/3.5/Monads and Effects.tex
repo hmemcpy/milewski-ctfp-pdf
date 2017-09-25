@@ -1,12 +1,4 @@
-\begin{quote}
-This is part 21 of Categories for Programmers. Previously:
-\href{https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/}{Monads:
-Programmer's Definition}. See the
-\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
-of Contents}.
-\end{quote}
-
-Now that we know what the monad is for --- it lets us compose
+\lettrine[lhang=0.17]{N}{ow that we know} what the monad is for --- it lets us compose
 embellished functions --- the really interesting question is why
 embellished functions are so important in functional programming. We've
 already seen one example, the \code{Writer} monad, where embellishment
@@ -90,7 +82,7 @@ identify the embellishment that applies to each problem in turn.
 
 We modify the return type of every function that may not terminate by
 turning it into a ``lifted'' type --- a type that contains all values of
-the original type plus the special ``bottom'' value \code{⊥}. For
+the original type plus the special ``bottom'' value \code{\ensuremath{\bot}}. For
 instance, the \code{Bool} type, as a set, would contain two elements:
 \code{True} and \code{False}. The lifted \code{Bool} contains
 three elements. Functions that return the lifted \code{Bool} may
@@ -128,16 +120,16 @@ containers --- \code{concat} concatenates a list of lists into a
 single list. \code{return} creates a singleton list:
 
 \begin{verbatim}
-instance Monad [] where join = concat return x = [x]
+instance Monad [] where
+    join = concat
+    return x = [x]
 \end{verbatim}
-
 The bind operator for the list monad is given by the general formula:
 \code{fmap} followed by \code{join} which, in this case gives:
 
 \begin{verbatim}
 as >>= k = concat (fmap k as)
 \end{verbatim}
-
 Here, the function \code{k}, which itself produces a list, is applied
 to every element of the list \code{as}. The result is a list of lists,
 which is flattened using \code{concat}.
@@ -169,22 +161,27 @@ My favorite example is the program that generates Pythagorean triples
 --- triples of positive integers that can form sides of right triangles.
 
 \begin{verbatim}
-triples = do z <- [1..] x <- [1..z] y <- [x..z] guard (x^2 + y^2 == z^2) return (x, y, z)
+triples = do
+    z <- [1..]
+    x <- [1..z]
+    y <- [x..z]
+    guard (x^2 + y^2 == z^2)
+    return (x, y, z)
 \end{verbatim}
-
 The first line tells us that \code{z} gets an element from an infinite
 list of positive numbers \code{{[}1..{]}}. Then \code{x} gets an
 element from the (finite) list \code{{[}1..z{]}} of numbers between 1
 and \code{z}. Finally \code{y} gets an element from the list of
 numbers between \code{x} and \code{z}. We have three numbers
-\code{1\ \textless{}=\ x\ \textless{}=\ y\ \textless{}=\ z} at our
+\code{1 <= x <= y <= z} at our
 disposal. The function \code{guard} takes a \code{Bool} expression
 and returns a list of units:
 
 \begin{verbatim}
-guard :: Bool -> [()] guard True = [()] guard False = []
+guard :: Bool -> [()]
+guard True = [()]
+guard False = []
 \end{verbatim}
-
 This function (which is a member of a larger class called
 \code{MonadPlus}) is used here to filter out non-Pythagorean triples.
 Indeed, if you look at the implementation of bind (or the related
@@ -192,7 +189,7 @@ operator \code{>>}), you'll notice that,
 when given an empty list, it produces an empty list. On the other hand,
 when given a non-empty list (here, the singleton list containing unit
 \code{{[}(){]}}), bind will call the continuation, here
-\code{return\ (x,\ y,\ z)}, which produces a singleton list with a
+\code{return (x, y, z)}, which produces a singleton list with a
 verified Pythagorean triple. All those singleton lists will be
 concatenated by the enclosing binds to produce the final (infinite)
 result. Of course, the caller of \code{triples} will never be able to
@@ -205,9 +202,11 @@ been dramatically simplified with the help of the list monad and the
 simplify this code even further using list comprehension:
 
 \begin{verbatim}
-triples = [(x, y, z) | z <- [1..] , x <- [1..z] , y <- [x..z] , x^2 + y^2 == z^2]
+triples = [(x, y, z) | z <- [1..]
+                     , x <- [1..z]
+                     , y <- [x..z]
+                     , x^2 + y^2 == z^2]
 \end{verbatim}
-
 This is just further syntactic sugar for the list monad (strictly
 speaking, \code{MonadPlus}).
 
@@ -219,25 +218,24 @@ languages under the guise of generators and coroutines.
 A function that has read-only access to some external state, or
 environment, can be always replaced by a function that takes that
 environment as an additional argument. A pure function
-\code{(a,\ e)\ ->\ b} (where \code{e} is the type of
+\code{(a, e) -> b} (where \code{e} is the type of
 the environment) doesn't look, at first sight, like a Kleisli arrow. But
 as soon as we curry it to
-\code{a\ ->\ (e\ ->\ b)} we recognize the
+\code{a -> (e -> b)} we recognize the
 embellishment as our old friend the reader functor:
 
 \begin{verbatim}
 newtype Reader e a = Reader (e -> a)
 \end{verbatim}
-
 You may interpret a function returning a \code{Reader} as producing a
 mini-executable: an action that given an environment produces the
 desired result. There is a helper function \code{runReader} to execute
 such an action:
 
 \begin{verbatim}
-runReader :: Reader e a -> e -> a runReader (Reader f) e = f e
+runReader :: Reader e a -> e -> a
+runReader (Reader f) e = f e
 \end{verbatim}
-
 It may produce different results for different values of the
 environment.
 
@@ -251,28 +249,29 @@ produces a \code{b}:
 \begin{verbatim}
 ra >>= k = Reader (\e -> ...)
 \end{verbatim}
-
 Inside the lambda, we can execute the action \code{ra} to produce an
 \code{a}:
 
 \begin{verbatim}
-ra >>= k = Reader (\e -> let a = runReader ra e in ...)
+ra >>= k = Reader (\e -> let a = runReader ra e
+                         in ...)
 \end{verbatim}
-
 We can then pass the \code{a} to the continuation \code{k} to get a
 new action \code{rb}:
 
 \begin{verbatim}
-ra >>= k = Reader (\e -> let a = runReader ra e rb = k a in ...)
+ra >>= k = Reader (\e -> let a  = runReader ra e
+                             rb = k a 
+                         in ...)
 \end{verbatim}
-
 Finally, we can run the action \code{rb} with the environment
 \code{e}:
 
 \begin{verbatim}
-ra >>= k = Reader (\e -> let a = runReader ra e rb = k a in runReader rb e)
+ra >>= k = Reader (\e -> let a = runReader ra e
+                             rb = k a
+                         in runReader rb e)
 \end{verbatim}
-
 To implement \code{return} we create an action that ignores the
 environment and returns the unchanged value.
 
@@ -280,7 +279,9 @@ Putting it all together, after a few simplifications, we get the
 following definition:
 
 \begin{verbatim}
-instance Monad (Reader e) where ra >>= k = Reader (\e -> runReader (k (runReader ra e)) e) return x = Reader (\e -> x)
+instance Monad (Reader e) where
+    ra >>= k = Reader (\e -> runReader (k (runReader ra e)) e)
+    return x = Reader (\e -> x)
 \end{verbatim}
 
 \subsection{Write-Only State}\label{write-only-state}
@@ -291,20 +292,22 @@ the \code{Writer} functor:
 \begin{verbatim}
 newtype Writer w a = Writer (a, w)
 \end{verbatim}
-
 For completeness, there's also a trivial helper \code{runWriter} that
 unpacks the data constructor:
 
 \begin{verbatim}
-runWriter :: Writer w a -> (a, w) runWriter (Writer (a, w)) = (a, w)
+runWriter :: Writer w a -> (a, w)
+runWriter (Writer (a, w)) = (a, w)
 \end{verbatim}
-
 As we've seen before, in order to make \code{Writer} composable,
 \code{w} has to be a monoid. Here's the monad instance for
 \code{Writer} written in terms of the bind operator:
 
 \begin{verbatim}
-instance (Monoid w) => Monad (Writer w) where (Writer (a, w)) >>= k = let (a', w') = runWriter (k a) in Writer (a', w `mappend` w') return a = Writer (a, mempty)
+instance (Monoid w) => Monad (Writer w) where
+    (Writer (a, w)) >>= k = let (a', w') = runWriter (k a)
+                            in Writer (a', w `mappend` w')
+    return a = Writer (a, mempty)
 \end{verbatim}
 
 \subsection{State}\label{state}
@@ -313,22 +316,21 @@ Functions that have read/write access to state combine the
 embellishments of the \code{Reader} and the \code{Writer}. You may
 think of them as pure functions that take the state as an extra argument
 and produce a pair value/state as a result:
-\code{(a,\ s)\ ->\ (b,\ s)}. After currying, we get them
+\code{(a, s) -> (b, s)}. After currying, we get them
 into the form of Kleisli arrows
-\code{a\ ->\ (s\ ->\ (b,\ s))}, with the
+\code{a -> (s -> (b, s))}, with the
 embellishment abstracted in the \code{State} functor:
 
 \begin{verbatim}
 newtype State s a = State (s -> (a, s))
 \end{verbatim}
-
 Again, we can look at a Kleisli arrow as returning an action, which can
 be executed using the helper function:
 
 \begin{verbatim}
-runState :: State s a -> s -> (a, s) runState (State f) s = f s
+runState :: State s a -> s -> (a, s)
+runState (State f) s = f s
 \end{verbatim}
-
 Different initial states may not only produce different results, but
 also different final states.
 
@@ -337,26 +339,30 @@ to that of the \code{Reader} monad, except that care has to be taken
 to pass the correct state at each step:
 
 \begin{verbatim}
-sa >>= k = State (\s -> let (a, s') = runState sa s sb = k a in runState sb s')
+sa >>= k = State (\s -> let (a, s') = runState sa s
+                            sb = k a 
+                        in runState sb s')
 \end{verbatim}
-
 Here's the full instance:
 
 \begin{verbatim}
-instance Monad (State s) where sa >>= k = State (\s -> let (a, s') = runState sa s in runState (k a) s') return a = State (\s -> (a, s))
+instance Monad (State s) where
+    sa >>= k = State (\s -> let (a, s') = runState sa s
+                            in runState (k a) s')
+    return a = State (\s -> (a, s))
 \end{verbatim}
-
 There are also two helper Kleisli arrows that may be used to manipulate
 the state. One of them retrieves the state for inspection:
 
 \begin{verbatim}
-get :: State s s get = State (\s -> (s, s))
+get :: State s s
+get = State (\s -> (s, s))
 \end{verbatim}
-
 and the other replaces it with a completely new state:
 
 \begin{verbatim}
-put :: s -> State s () put s' = State (\s -> ((), s'))
+put :: s -> State s ()
+put s' = State (\s -> ((), s'))
 \end{verbatim}
 
 \subsection{Exceptions}\label{exceptions}
@@ -365,7 +371,7 @@ An imperative function that throws an exception is really a partial
 function --- it's a function that's not defined for some values of its
 arguments. The simplest implementation of exceptions in terms of pure
 total functions uses the \code{Maybe} functor. A partial function is
-extended to a total function that returns \code{Just\ a} whenever it
+extended to a total function that returns \code{Just a} whenever it
 makes sense, and \code{Nothing} when it doesn't. If we want to also
 return some information about the cause of the failure, we can use the
 \code{Either} functor instead (with the first type fixed, for
@@ -374,9 +380,11 @@ instance, to \code{String}).
 Here's the \code{Monad} instance for \code{Maybe}:
 
 \begin{verbatim}
-instance Monad Maybe where Nothing >>= k = Nothing Just a >>= k = k a return a = Just a
+instance Monad Maybe where
+    Nothing >>= k = Nothing
+    Just a  >>= k = k a
+    return a = Just a
 \end{verbatim}
-
 Notice that monadic composition for \code{Maybe} correctly
 short-circuits the computation (the continuation \code{k} is never
 called) when an error is detected. That's the behavior we expect from
@@ -396,8 +404,7 @@ which represents ``the rest of the computation'':
 \begin{verbatim}
 data Cont r a = Cont ((a -> r) -> r)
 \end{verbatim}
-
-The handler \code{a\ ->\ r}, when it's eventually called,
+The handler \code{a -> r}, when it's eventually called,
 produces the result of type \code{r}, and this result is returned at
 the end. A continuation is parameterized by the result type. (In
 practice, this is often some kind of status indicator.)
@@ -406,9 +413,9 @@ There is also a helper function for executing the action returned by the
 Kleisli arrow. It takes the handler and passes it to the continuation:
 
 \begin{verbatim}
-runCont :: Cont r a -> (a -> r) -> r runCont (Cont k) h = k h
+runCont :: Cont r a -> (a -> r) -> r
+runCont (Cont k) h = k h
 \end{verbatim}
-
 The composition of continuations is notoriously difficult, so its
 handling through a monad and, in particular, the \code{do} notation,
 is of extreme advantage.
@@ -417,17 +424,17 @@ Let's figure out the implementation of bind. First let's look at the
 stripped down signature:
 
 \begin{verbatim}
-(>>=) :: ((a -> r) -> r) -> (a -> (b -> r) -> r) -> ((b -> r) -> r)
+(>>=) :: ((a -> r) -> r) ->
+         (a -> (b -> r) -> r) ->
+         ((b -> r) -> r)
 \end{verbatim}
-
 Our goal is to create a function that takes the handler
-\code{(b\ ->\ r)} and produces the result \code{r}. So
+\code{(b -> r)} and produces the result \code{r}. So
 that's our starting point:
 
 \begin{verbatim}
 ka >>= kab = Cont (\hb -> ...)
 \end{verbatim}
-
 Inside the lambda, we want to call the function \code{ka} with the
 appropriate handler that represents the rest of the computation. We'll
 implement this handler as a lambda:
@@ -435,21 +442,22 @@ implement this handler as a lambda:
 \begin{verbatim}
 runCont ka (\a -> ...)
 \end{verbatim}
-
 In this case, the rest of the computation involves first calling
 \code{kab} with \code{a}, and then passing \code{hb} to the
 resulting action \code{kb}:
 
 \begin{verbatim}
-runCont ka (\a -> let kb = kab a in runCont kb hb)
+runCont ka (\a -> let kb = kab a 
+                  in runCont kb hb)
 \end{verbatim}
-
 As you can see, continuations are composed inside out. The final handler
 \code{hb} is called from the innermost layer of the computation.
 Here's the full instance:
 
 \begin{verbatim}
-instance Monad (Cont r) where ka >>= kab = Cont (\hb -> runCont ka (\a -> runCont (kab a) hb)) return a = Cont (\ha -> ha a)
+instance Monad (Cont r) where
+    ka >>= kab = Cont (\hb -> runCont ka (\a -> runCont (kab a) hb))
+    return a = Cont (\ha -> ha a)
 \end{verbatim}
 
 \subsection{Interactive Input}\label{interactive-input}
@@ -473,10 +481,9 @@ as a Kleisli arrow:
 \begin{verbatim}
 getChar :: () -> IO Char
 \end{verbatim}
-
 (Actually, since a function from the unit type is equivalent to picking
 a value of the return type, the declaration of \code{getChar} is
-simplified to \code{getChar\ ::\ IO\ Char}.)
+simplified to \code{getChar :: IO Char}.)
 
 Being a functor, \code{IO} lets you manipulate its contents using
 \code{fmap}. And, as a functor, it can store the contents of any type,
@@ -505,13 +512,11 @@ signature:
 \begin{verbatim}
 main :: IO ()
 \end{verbatim}
-
 and you are free to think of it as a Kleisli arrow:
 
 \begin{verbatim}
 main :: () -> IO ()
 \end{verbatim}
-
 From that perspective, a Haskell program is just one big Kleisli arrow
 in the \code{IO} monad. You can compose it from smaller Kleisli arrows
 using monadic composition. It's up to the runtime system to do something
@@ -551,13 +556,11 @@ object of this type. An \code{IO} action is just a function:
 \begin{verbatim}
 type IO a = RealWorld -> (a, RealWorld)
 \end{verbatim}
-
 Or, in terms of the \code{State} monad:
 
 \begin{verbatim}
 type IO = State RealWorld
 \end{verbatim}
-
 However, \code{>=>} and \code{return} for
 the \code{IO} monad have to be built into the language.
 
@@ -571,13 +574,11 @@ that they do nothing. For instance, why do we have:
 \begin{verbatim}
 putStr :: String -> IO ()
 \end{verbatim}
-
 rather than the simpler:
 
 \begin{verbatim}
 putStr :: String -> ()
 \end{verbatim}
-
 Two reasons: Haskell is lazy, so it would never call a function whose
 output --- here, the unit object --- is not used for anything. And, even
 if it weren't lazy, it could still freely change the order of such calls
@@ -589,9 +590,11 @@ passed between \code{IO} actions enforces sequencing.
 Conceptually, in this program:
 
 \begin{verbatim}
-main :: IO () main = do putStr "Hello " putStr "World!"
+main :: IO () 
+main = do 
+    putStr "Hello "
+    putStr "World!"
 \end{verbatim}
-
 the action that prints ``World!'' receives, as input, the Universe in
 which ``Hello '' is already on the screen. It outputs a new Universe,
 with ``Hello World!'' on the screen.
@@ -607,7 +610,3 @@ compose with each other. Granted, you can combine most of the basic
 monads using the monad transformer library. It's relatively easy to
 create a monad stack that combines, say, state with exceptions, but
 there is no formula for stacking arbitrary monads together.
-
-Next:
-\href{https://bartoszmilewski.com/2016/12/27/monads-categorically/}{Monads
-Categorically}.

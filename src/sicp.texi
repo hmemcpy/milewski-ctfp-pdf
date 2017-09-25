@@ -124,7 +124,7 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \chapter{It's All About Morphisms}
 \subfile{content/3.1/It's All About Morphisms}
 
-\chapter{Adjunctions}
+\chapter{Adjunctions}\label{adjunctions}
 \subfile{content/3.2/Adjunctions}
 
 \chapter{Free/Forgetful Adjunctions}\label{free-forgetful-adjunctions}
@@ -132,6 +132,12 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 
 \chapter{Monads: Programmer's Definition}\label{monads-programmers-definition}
 \subfile{content/3.4/Monads - Programmer's Definition}
+
+\chapter{Monads and Effects}\label{monads-and-effects}
+\subfile{content/3.5/Monads and Effects}
+
+\chapter{Monads Categorically}\label{monads-categorically}
+\subfile{content/3.6/Monads Categorically}
 
 \backmatter
 
