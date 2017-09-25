@@ -1,12 +1,4 @@
-\begin{quote}
-This is part 18 of Categories for Programmers. Previously:
-\href{https://bartoszmilewski.com/2015/11/17/its-all-about-morphisms/}{It's
-All About Morphisms}. See the
-\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
-of Contents}.
-\end{quote}
-
-In mathematics we have various ways of saying that one thing is like
+\lettrine[lhang=0.17]{I}{n mathematics we have} various ways of saying that one thing is like
 another. The strictest is equality. Two things are equal if there is no
 way to distinguish one from another. One can be substituted for the
 other in every imaginable context. For instance, did you notice that we
@@ -16,8 +8,8 @@ can be compared for equality.
 
 But equality is often too strong. There are many examples of things
 being the same for all intents and purposes, without actually being
-equal. For instance, the pair type \code{(Bool,\ Char)} is not
-strictly equal to \code{(Char,\ Bool)}, but we understand that they
+equal. For instance, the pair type \code{(Bool, Char)} is not
+strictly equal to \code{(Char, Bool)}, but we understand that they
 contain the same information. This concept is best captured by an
 \newterm{isomorphism} between two types --- a morphism that's invertible.
 Since it's a morphism, it preserves the structure; and being ``iso''
@@ -26,9 +18,9 @@ matter on which side you start. In the case of pairs, this isomorphism
 is called \code{swap}:
 
 \begin{verbatim}
-swap :: (a,b) -> (b,a) swap (a,b) = (b,a)
+swap :: (a,b) -> (b,a)
+swap (a,b) = (b,a)
 \end{verbatim}
-
 \code{swap} happens to be its own inverse.
 
 \section{Adjunction and Unit/Counit
@@ -41,25 +33,27 @@ there exists a functor \code{R} (``right'') from \emph{C} to \emph{D},
 which is invertible. In other words, there exists another functor
 \code{L} (``left'') from \emph{D} back to \emph{C} which, when
 composed with \code{R}, is equal to the identity functor \code{I}.
-There are two possible compositions, \code{R\ ∘\ L} and
-\code{L\ ∘\ R}; and two possible identity functors: one in \emph{C}
+There are two possible compositions, \code{R ◦ L} and
+\code{L ◦ R}; and two possible identity functors: one in \emph{C}
 and another in \emph{D}.
 
-\includegraphics[width=3.12500in]{images/adj-1.jpg}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=3.12500in]{images/adj-1.jpg}}
+\end{figure}
 
+\noindent
 But here's the tricky part: What does it mean for two functors to be
 \emph{equal}? What do we mean by this equality:
 
-\begin{verbatim}
-R ∘ L = ID
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+R ◦ L = I\textsubscript{D}
+\end{Verbatim}
 or this one:
 
-\begin{verbatim}
-L ∘ R = IC
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+L ◦ R = I\textsubscript{C}
+\end{Verbatim}
 It would be reasonable to define functor equality in terms of equality
 of objects. Two functors, when acting on equal objects, should produce
 equal objects. But we don't, in general, have the notion of object
@@ -82,12 +76,12 @@ equality when talking about functors.
 
 So, instead of isomorphism of categories, it makes sense to consider a
 more general notion of \newterm{equivalence}. Two categories \emph{C} and
-\emph{D} are \newterm{equivalent} if we can find two functors going back
+\emph{D} are \emph{equivalent} if we can find two functors going back
 and forth between them, whose composition (either way) is
 \newterm{naturally isomorphic} to the identity functor. In other words,
 there is a two-way natural transformation between the composition
-\code{R\ ∘\ L} and the identity functor \code{ID}, and another
-between \code{L\ ∘\ R} and the identity functor \code{IC}.
+\code{R ◦ L} and the identity functor \code{I\textsubscript{D}}, and another
+between \code{L ◦ R} and the identity functor \code{I\textsubscript{C}}.
 
 Adjunction is even weaker than equivalence, because it doesn't require
 that the composition of the two functors be \newterm{isomorphic} to the
@@ -96,19 +90,19 @@ way} natural transformation from \code{ID} to \code{R∘L}, and
 another from \code{L∘R} to \code{IC}. Here are the signatures of
 these two natural transformations:
 
-\begin{verbatim}
-η :: ID -> R ∘ L ε :: L ∘ R -> IC
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+η :: I\textsubscript{D} -> R ◦ L
+ε :: L ◦ R -> I\textsubscript{C}
+\end{Verbatim}
 η is called the unit, and ε the counit of the adjunction.
 
 Notice the asymmetry between these two definitions. In general, we don't
 have the two remaining mappings:
 
-\begin{verbatim}
-R ∘ L -> ID -- not necessarily IC -> L ∘ R -- not necessarily
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+R ◦ L -> I\textsubscript{D} -- not necessarily
+I\textsubscript{C} -> L ◦ R -- not necessarily
+\end{Verbatim}
 Because of this asymmetry, the functor \code{L} is called the
 \newterm{left adjoint} to the functor \code{R}, while the functor
 \code{R} is the right adjoint to \code{L}. (Of course, left and
@@ -116,76 +110,91 @@ right make sense only if you draw your diagrams one particular way.)
 
 The compact notation for the adjunction is:
 
-\begin{verbatim}
-L ⊣ R
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+L \ensuremath{\dashv} R
+\end{Verbatim}
 To better understand the adjunction, let's analyze the unit and the
 counit in more detail.
 
-\includegraphics[width=3.12500in]{images/adj-unit.jpg}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=60mm]{images/adj-unit.jpg}}
+\end{figure}
 
+\noindent
 Let's start with the unit. It's a natural transformation, so it's a
 family of morphisms. Given an object \code{d} in \emph{D}, the
-component of η is a morphism between \code{I\ d}, which is equal to
-\code{d}, and \code{(R\ ∘\ L)\ d}; which, in the picture, is called
-\code{d\'}:
+component of η is a morphism between \code{I d}, which is equal to
+\code{d}, and \code{(R ◦ L) d}; which, in the picture, is called
+\code{d'}:
 
-\begin{verbatim}
-ηd :: d -> (R ∘ L) d
-\end{verbatim}
-
-Notice that the composition \code{R∘L} is an endofunctor in \emph{D}.
+\begin{Verbatim}[commandchars=\\\{\}]
+η\textsubscript{d} :: d -> (R ◦ L) d
+\end{Verbatim}
+Notice that the composition \code{R◦L} is an endofunctor in \emph{D}.
 
 This equation tells us that we can pick any object \code{d} in
 \emph{D} as our starting point, and use the round trip functor
-\code{R\ ∘\ L} to pick our target object \code{d\'}. Then we
-shoot an arrow --- the morphism \code{ηd} --- to our target.
+\code{R ◦ L} to pick our target object \code{d'}. Then we
+shoot an arrow --- the morphism \code{η\textsubscript{d}} --- to our target.
 
-\includegraphics[width=3.12500in]{images/adj-counit.jpg}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=60mm]{images/adj-counit.jpg}}
+\end{figure}
 
+\noindent
 By the same token, the component of of the counit ε can be described as:
 
-\begin{verbatim}
-εc' :: (L ∘ R) c -> c
-\end{verbatim}
-
-where \code{c\'} is \code{(L\ ∘\ R)\ c}. It tells us that we
+\begin{Verbatim}[commandchars=\\\{\}]
+ε\textsubscript{c'} :: (L ◦ R) c -> c
+\end{Verbatim}
+where \code{c'} is \code{(L ◦ R) c}. It tells us that we
 can pick any object \code{c} in \emph{C} as our target, and use the
-round trip functor \code{L\ ∘\ R} to pick the source
-\code{c\'}. Then we shoot the arrow --- the morphism
-\code{εc\'} --- from the source to the target.
+round trip functor \code{L ◦ R} to pick the source
+\code{c'}. Then we shoot the arrow --- the morphism
+\code{ε\textsubscript{c'}} --- from the source to the target.
 
 Another way of looking at unit and counit is that unit lets us
-\emph{introduce} the composition \code{R\ ∘\ L} anywhere we could
+\emph{introduce} the composition \code{R ◦ L} anywhere we could
 insert an identity functor on \emph{D}; and counit lets us
-\emph{eliminate} the composition \code{L\ ∘\ R}, replacing it with the
+\emph{eliminate} the composition \code{L ◦ R}, replacing it with the
 identity on \emph{C}. That leads to some ``obvious'' consistency
 conditions, which make sure that introduction followed by elimination
 doesn't change anything:
 
-\begin{verbatim}
-L = L ∘ ID -> L ∘ R ∘ L -> IC ∘ L = L
-\end{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
+L = L ◦ I\textsubscript{D} -> L ◦ R ∘ L -> I\textsubscript{C} ◦ L = L
+\end{Verbatim}
 
-\begin{verbatim}
-R = ID ∘ R -> R ∘ L ∘ R -> R ∘ IC = R
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+R = I\textsubscript{D} ◦ R -> R ◦ L ◦ R -> R ◦ I\textsubscript{C} = R
+\end{Verbatim}
 These are called triangular identities because they make the following
 diagrams commute:
 
-\includegraphics[width=2.17708in]{images/triangles.png}
+\begin{figure}[H]
+  \centering
 
-\includegraphics[width=2.19792in]{images/triangles-2.png}\\
+  \begin{subfigure}
+    \centering
+    \includegraphics[width=40mm]{images/triangles.png}
+  \end{subfigure}%
+  \begin{subfigure}
+    \centering
+    \includegraphics[width=44.5mm]{images/triangles-2.png}
+  \end{subfigure}
+\end{figure}
+
+\noindent
 These are diagrams in the functor category: the arrows are natural
 transformations, and their composition is the horizontal composition of
 natural transformations. In components, these identities become:
 
-\begin{verbatim}
-ε L d ∘ L η d = id L d R ε c ∘ η R c = id R c
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+ε \textsubscript{L d} ◦ L η \textsubscript{d} = id \textsubscript{L d}
+R ε c ◦ η \textsubscript{R c} = id \textsubscript{R c}
+\end{Verbatim}
 We often see unit and counit in Haskell under different names. Unit is
 known as \code{return} (or \code{pure}, in the definition of
 \code{Applicative}):
@@ -193,15 +202,13 @@ known as \code{return} (or \code{pure}, in the definition of
 \begin{verbatim}
 return :: d -> m d
 \end{verbatim}
-
 and counint as \code{extract}:
 
 \begin{verbatim}
 extract :: w c -> c
 \end{verbatim}
-
-Here, \code{m} is the (endo-) functor corresponding to \code{R∘L},
-and \code{w} is the (endo-) functor corresponding to \code{L∘R}. As
+Here, \code{m} is the (endo-) functor corresponding to \code{R◦L},
+and \code{w} is the (endo-) functor corresponding to \code{L◦R}. As
 we'll see later, they are part of the definition of a monad and a
 comonad, respectively.
 
@@ -223,19 +230,21 @@ Here's part of the definition taken from
 \code{Data.Functor.Adjunction}:
 
 \begin{verbatim}
-class (Functor f, Representable u) => Adjunction f u | f -> u, u -> f where unit :: a -> u (f a) counit :: f (u a) -> a 
+class (Functor f, Representable u) =>
+      Adjunction f u | f -> u, u -> f where
+    unit :: a -> u (f a)
+    counit :: f (u a) -> a
 \end{verbatim}
-
 This definition requires some explanation. First of all, it describes a
 multi-parameter type class --- the two parameters being \code{f} and
 \code{u}. It establishes a relation called \code{Adjunction} between
 these two type constructors.
 
 Additional conditions, after the vertical bar, specify functional
-dependencies. For instance, \code{f\ ->\ u} means that
+dependencies. For instance, \code{f -> u} means that
 \code{u} is determined by \code{f} (the relation between \code{f}
 and \code{u} is a function, here on type constructors). Conversely,
-\code{u\ ->\ f} means that, if we know \code{u}, then
+\code{u -> f} means that, if we know \code{u}, then
 \code{f} is uniquely determined.
 
 I'll explain in a moment why, in Haskell, we can impose the condition
@@ -268,8 +277,12 @@ category. As we'll see soon, if the product of \emph{any pair} of
 objects exists in a category, it can be also defined through an
 adjunction.
 
-\includegraphics[width=3.12500in]{images/adj-homsets.jpg}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=60mm]{images/adj-homsets.jpg}}
+\end{figure}
 
+\noindent
 Here's the alternative definition of the adjunction using hom-sets. As
 before, we have two functors \code{L\ ::\ D->C} and
 \code{R\ ::\ C->D}. We pick two arbitrary objects: the
@@ -281,7 +294,6 @@ in \emph{C}. We can map the source object \code{d} to \emph{C} using
 \begin{verbatim}
 C(L d, c)
 \end{verbatim}
-
 Similarly, we can map the target object \code{c} using \code{R}. Now
 we have two objects in \emph{D}, \code{d} and \code{R\ c}. They,
 too, define a hom set:
@@ -289,16 +301,13 @@ too, define a hom set:
 \begin{verbatim}
 D(d, R c)
 \end{verbatim}
-
 We say that \code{L} is left adjoint to \code{R} iff there is an
 isomorphism of hom sets:
 
-\begin{verbatim}
-C(L d, c) ≅ D(d, R c)
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+C(L d, c) \ensuremath{\cong} D(d, R c)
+\end{Verbatim}
 that is natural both in \code{d} and \code{c}.
-
 Naturality means that the source \code{d} can be varied smoothly
 across \emph{D}; and the target \code{c}, across \emph{C}. More
 precisely, we have a natural transformation \code{φ} between the
@@ -306,67 +315,63 @@ following two (covariant) functors from \emph{C} to \textbf{Set}. Here's
 the action of these functors on objects:
 
 \begin{verbatim}
-c -> C(L d, c) c -> D(d, R c)
+c -> C(L d, c)
+c -> D(d, R c)
 \end{verbatim}
-
 The other natural transformation, \code{ψ}, acts between the following
 (contravariant) functors:
 
 \begin{verbatim}
-d -> C(L d, c) d -> D(d, R c)
+d -> C(L d, c)
+d -> D(d, R c)
 \end{verbatim}
-
 Both natural transformations must be invertible.
 
 It's easy to show that the two definitions of the adjunction are
 equivalent. For instance, let's derive the unit transformation starting
 from the isomorphism of hom-sets:
 
-\begin{verbatim}
-C(L d, c) ≅ D(d, R c)
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+C(L d, c) \ensuremath{\cong} D(d, R c)
+\end{Verbatim}
 Since this isomorphism works for any object \code{c}, it must also
-work for \code{c\ =\ L\ d}:
+work for \code{c = L d}:
 
-\begin{verbatim}
-C(L d, L d) ≅ D(d, (R ∘ L) d)
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+C(L d, L d) \ensuremath{\cong} D(d, (R ◦ L) d)
+\end{Verbatim}
 We know that the left hand side must contain at least one morphism, the
 identity. The natural transformation will map this morphism to an
-element of \code{D(d,\ (R\ ∘\ L)\ d)} or, inserting the identity
+element of \code{D(d, (R ◦ L) d)} or, inserting the identity
 functor \code{I}, a morphism in:
 
 \begin{verbatim}
-D(I d, (R ∘ L) d)
+D(I d, (R ◦ L) d)
 \end{verbatim}
-
 We get a family of morphisms parameterized by \code{d}. They form a
 natural transformation between the functor \code{I} and the functor
-\code{R\ ∘\ L} (the naturality condition is easy to verify). This is
+\code{R ◦ L} (the naturality condition is easy to verify). This is
 exactly our unit, \code{η}.
 
 Conversely, starting from the existence of the unit and co-unit, we can
 define the transformations between hom-sets. For instance, let's pick an
-arbitrary morphism \code{f} in the hom-set \code{C(L\ d,\ c)}. We
+arbitrary morphism \code{f} in the hom-set \code{C(L d, c)}. We
 want to define a \code{φ} that, acting on \code{f}, produces a
-morphism in \code{D(d,\ R\ c)}.
+morphism in \code{D(d, R c)}.
 
 There isn't really much choice. One thing we can try is to lift
-\code{f} using \code{R}. That will produce a morphism \code{R\ f}
-from \code{R\ (L\ d)} to \code{R\ c} --- a morphism that's an
-element of \code{D((R\ ∘\ L)\ d,\ R\ c)}.
+\code{f} using \code{R}. That will produce a morphism \code{R f}
+from \code{R (L d)} to \code{R c} --- a morphism that's an
+element of \code{D((R ◦ L) d, R c)}.
 
 What we need for a component of \code{φ}, is a morphism from
-\code{d} to \code{R\ c}. That's not a problem, since we can use a
-component of \code{ηd} to get from \code{d} to
-\code{(R\ ∘\ L)\ d}. We get:
+\code{d} to \code{R c}. That's not a problem, since we can use a
+component of \code{η\textsubscript{d}} to get from \code{d} to
+\code{(R ◦ L) d}. We get:
 
-\begin{verbatim}
-φf = R f ∘ ηd
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+φ\textsubscript{f} = R f ◦ η\textsubscript{d}
+\end{Verbatim}
 The other direction is analogous, and so is the derivation of
 \code{ψ}.
 
@@ -377,31 +382,34 @@ transformations \code{φ} and \code{ψ} are replaced by polymorphic
 \code{R} are called \code{f} and \code{u}:
 
 \begin{verbatim}
-class (Functor f, Representable u) => Adjunction f u | f -> u, u -> f where leftAdjunct :: (f a -> b) -> (a -> u b) rightAdjunct :: (a -> u b) -> (f a -> b) 
+class (Functor f, Representable u) => 
+      Adjunction f u | f -> u, u -> f where
+    leftAdjunct  :: (f a -> b) -> (a -> u b)
+    rightAdjunct :: (a -> u b) -> (f a -> b) 
 \end{verbatim}
-
 The equivalence between the \code{unit}/\code{counit} formulation
-and the \code{leftAdjunct}/\code{rightAdjunct} formulation is
+and the\\ \code{leftAdjunct}/\code{rightAdjunct} formulation is
 witnessed by these mappings:
 
 \begin{verbatim}
- unit = leftAdjunct id counit = rightAdjunct id leftAdjunct f = fmap f . unit rightAdjunct f = counit . fmap f 
+unit           = leftAdjunct id
+counit         = rightAdjunct id
+leftAdjunct f  = fmap f . unit
+rightAdjunct f = counit . fmap f 
 \end{verbatim}
-
 It's very instructive to follow the translation from the categorical
 description of the adjunction to Haskell code. I highly encourage this
 as an exercise.
 
 We are now ready to explain why, in Haskell, the right adjoint is
-automatically a
-\href{https://bartoszmilewski.com/2015/07/29/representable-functors/}{representable
+automatically a \hyperref[representable-functors]{representable
 functor}. The reason for this is that, to the first approximation, we
 can treat the category of Haskell types as the category of sets.
 
 When the right category \emph{D} is \textbf{Set}, the right adjoint
 \code{R} is a functor from \emph{C} to \textbf{Set}. Such a functor is
 representable if we can find an object \code{rep} in \emph{C} such
-that the hom-functor \code{C(rep,\ \_)} is naturally isomorphic to
+that the hom-functor \code{C(rep, \_)} is naturally isomorphic to
 \code{R}. It turns out that, if \code{R} is the right adjoint of
 some functor \code{L} from \textbf{Set} to \emph{C}, such an object
 always exists --- it's the image of the singleton set \code{()} under
@@ -410,23 +418,20 @@ always exists --- it's the image of the singleton set \code{()} under
 \begin{verbatim}
 rep = L ()
 \end{verbatim}
-
 Indeed, the adjunction tells us that the following two hom-sets are
 naturally isomorphic:
 
-\begin{verbatim}
-C(L (), c) ≅ Set((), R c)
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+C(L (), c) \ensuremath{\cong} Set((), R c)
+\end{Verbatim}
 For a given \code{c}, the right hand side is the set of functions from
 the singleton set \code{()} to \code{R\ c}. We've seen earlier that
 each such function picks one element from the set \code{R\ c}. The set
 of such functions is isomorphic to the set \code{R\ c}. So we have:
 
-\begin{verbatim}
-C(L (), -) ≅ R
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+C(L (), -) \ensuremath{\cong} R
+\end{Verbatim}
 which shows that \code{R} is indeed representable.
 
 \section{Product from Adjunction}\label{product-from-adjunction}
@@ -434,38 +439,35 @@ which shows that \code{R} is indeed representable.
 We have previously introduced several concepts using universal
 constructions. Many of those concepts, when defined globally, are easier
 to express using adjunctions. The simplest non-trivial example is that
-of the product. The gist of the
-\href{https://bartoszmilewski.com/2015/01/07/products-and-coproducts/}{universal
+of the product. The gist of the \hyperref[products-and-coproducts]{universal
 construction of the product} is the ability to factorize any
 product-like candidate through the universal product.
 
 More precisely, the product of two objects \code{a} and \code{b} is
-the object \code{(a\ ×\ b)} (or \code{(a,\ b)} in the Haskell
+the object \code{(a × b)} (or \code{(a, b)} in the Haskell
 notation) equipped with two morphisms \code{fst} and \code{snd} such
 that, for any other candidate \code{c} equipped with two morphisms
 \code{p::c->a} and \code{q::c->b}, there
-exists a unique morphism \code{m::c->(a,\ b)} that
+exists a unique morphism \code{m::c->(a, b)} that
 factorizes \code{p} and \code{q} through \code{fst} and
 \code{snd}.
 
-As we've seen
-\href{https://bartoszmilewski.com/2015/01/07/products-and-coproducts/}{earlier},
-in Haskell, we can implement a \code{factorizer} that generates this
+As we've seen earlier, in Haskell, we can implement a \code{factorizer} that generates this
 morphism from the two projections:
 
 \begin{verbatim}
-factorizer :: (c -> a) -> (c -> b) -> (c -> (a, b)) factorizer p q = \x -> (p x, q x)
+factorizer :: (c -> a) -> (c -> b) -> (c -> (a, b))
+factorizer p q = \x -> (p x, q x)
 \end{verbatim}
-
 It's easy to verify that the factorization conditions hold:
 
 \begin{verbatim}
-fst . factorizer p q = p snd . factorizer p q = q
+fst . factorizer p q = p
+snd . factorizer p q = q
 \end{verbatim}
-
 We have a mapping that takes a pair of morphisms \code{p} and
 \code{q} and produces another morphism
-\code{m\ =\ factorizer\ p\ q}.
+\code{m = factorizer p q}.
 
 How can we translate this into a mapping between two hom-sets that we
 need to define an adjunction? The trick is to go outside of
@@ -482,8 +484,12 @@ To define a product in some category \emph{C}, we should start with the
 product category \emph{C×C}. Pairs of morphism from \emph{C} are single
 morphisms in the product category \emph{C×C}.
 
-\includegraphics[width=3.12500in]{images/adj-productcat.jpg}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=60mm]{images/adj-productcat.jpg}}
+\end{figure}
 
+\noindent
 It might be a little confusing at first that we are using a product
 category to define a product. These are, however, very different
 products. We don't need a universal construction to define a product
@@ -492,12 +498,12 @@ morphisms.
 
 However, a pair of objects from \emph{C} is \emph{not} an object in
 \emph{C}. It's an object in a different category, \emph{C×C}. We can
-write the pair formally as \code{\textless{}a,\ b>},
+write the pair formally as \code{<a, b>},
 where \code{a} and \code{b} are objects of \emph{C}. The universal
 construction, on the other hand, is necessary in order to define the
-object \code{a×b} (or \code{(a,\ b)} in Haskell), which is an object
+object \code{a×b} (or \code{(a, b)} in Haskell), which is an object
 in \emph{the same} category \emph{C}. This object is supposed to
-represent the pair \code{\textless{}a,\ b>} in a way
+represent the pair \code{<a, b>} in a way
 specified by the universal construction. It doesn't always exist and,
 even if it exists for some, might not exist for other pairs of objects
 in \emph{C}.
@@ -505,14 +511,13 @@ in \emph{C}.
 Let's now look at the \code{factorizer} as a mapping of hom-sets. The
 first hom-set is in the product category \emph{C×C}, and the second is
 in \emph{C}. A general morphism in \emph{C×C} would be a pair of
-morphisms \code{\textless{}f,\ g>}:
+morphisms \code{<f, g>}:
 
 \begin{verbatim}
 f :: c' -> a g :: c'' -> b
 \end{verbatim}
-
-with \code{c\'\'} potentially different from
-\code{c\'}. But to define a product, we are interested in a
+with \code{c''} potentially different from
+\code{c'}. But to define a product, we are interested in a
 special morphism in \emph{C×C}, the pair \code{p} and \code{q} that
 share the same source object \code{c}. That's okay: In the definition
 of an adjuncion, the source of the left hom-set is not an arbitrary
@@ -524,24 +529,21 @@ whose action on objects is:
 \begin{verbatim}
 Δ c = <c, c>
 \end{verbatim}
-
 The left-hand side hom-set in our adjunction should thus be:
 
 \begin{verbatim}
 (C×C)(Δ c, <a, b>)
 \end{verbatim}
-
 It's a hom-set in the product category. Its elements are pairs of
 morphisms that we recognize as the arguments to our \code{factorizer}:
 
 \begin{verbatim}
 (c -> a) -> (c -> b) ...
 \end{verbatim}
-
 The right-hand side hom-set lives in \emph{C}, and it goes between the
 source object \code{c} and the result of some functor \code{R}
 acting on the target object in \emph{C×C}. That's the functor that maps
-the pair \code{\textless{}a,\ b>} to our product object,
+the pair \code{<a, b>} to our product object,
 \code{a×b}. We recognize this element of the hom-set as the
 \emph{result} of the \code{factorizer}:
 
@@ -549,8 +551,12 @@ the pair \code{\textless{}a,\ b>} to our product object,
 ... -> (c -> (a, b))
 \end{verbatim}
 
-\includegraphics[width=3.12500in]{images/adj-product.jpg}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=3.12500in]{images/adj-product.jpg}}
+\end{figure}
 
+\noindent
 We still don't have a full adjunction. For that we first need our
 \code{factorizer} to be invertible --- we are building an
 \newterm{isomorphism} between hom-sets. The inverse of the
@@ -561,17 +567,15 @@ In other words, \code{m} should be an element of:
 \begin{verbatim}
 C(c, a×b)
 \end{verbatim}
-
 The inverse factorizer should map \code{m} to a morphism
-\code{\textless{}p,\ q>} in \emph{C×C} that goes from
-\code{\textless{}c,\ c>} to
-\code{\textless{}a,\ b>}; in other words, a morphism
+\code{<p, q>} in \emph{C×C} that goes from
+\code{<c, c>} to
+\code{<a, b>}; in other words, a morphism
 that's an element of:
 
 \begin{verbatim}
 (C×C)(Δ c, <a, b>)
 \end{verbatim}
-
 If that mapping exists, we conclude that there exists the right adjoint
 to the diagonal functor. That functor defines a product.
 
@@ -580,9 +584,9 @@ In Haskell, we can always construct the inverse of the
 \code{fst} and \code{snd}.
 
 \begin{verbatim}
-p = fst ∘ m q = snd ∘ m
+p = fst ◦ m
+q = snd ◦ m
 \end{verbatim}
-
 To complete the proof of the equivalence of the two ways of defining a
 product we also need to show that the mapping between hom-sets is
 natural in \code{a}, \code{b}, and \code{c}. I will leave this as
@@ -591,13 +595,12 @@ an exercise for the dedicated reader.
 To summarize what we have done: A categorical product may be defined
 globally as the \newterm{right adjoint} of the diagonal functor:
 
-\begin{verbatim}
-(C × C)(Δ c, <a, b>) ≅ C(c, a×b)
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+(C × C)(Δ c, <a, b>) \ensuremath{\cong} C(c, a×b)
+\end{Verbatim}
 Here, \code{a×b} is the result of the action of our right adjoint
 functor \code{Product} on the pair
-\code{\textless{}a,\ b>}. Notice that any functor from
+\code{<a, b>}. Notice that any functor from
 \emph{C×C} is a bifunctor, so \code{Product} is a bifunctor. In
 Haskell, the \code{Product} bifunctor is written simply as
 \code{(,)}. You can apply it to two types and get their product type,
@@ -610,9 +613,8 @@ for instance:
 \section{Exponential from
 Adjunction}\label{exponential-from-adjunction}
 
-The exponential \code{ba}, or the function object \code{a\ensuremath{\Rightarrow}b}, can be
-defined using a
-\href{https://bartoszmilewski.com/2015/03/13/function-types/}{universal
+The exponential \code{b\textsuperscript{a}}, or the function object \code{a\ensuremath{\Rightarrow}b}, can be
+defined using a \hyperref[function-types]{universal
 construction}. This construction, if it exists for all pairs of objects,
 can be seen as an adjunction. Again, the trick is to concentrate on the
 statement:
@@ -623,48 +625,47 @@ For any other object \code{z} with a morphism
 \begin{verbatim}
 g :: z × a -> b
 \end{verbatim}
-
 there is a unique morphism
 
-\begin{verbatim}
-h :: z -> (a⇒b)
-\end{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
+h :: z -> (a\ensuremath{\Rightarrow}b)
+\end{Verbatim}
 \end{quote}
-
 This statement establishes a mapping between hom-sets.
 
 In this case, we are dealing with objects in the same category, so the
 two adjoint functors are endofunctors. The left (endo-)functor
-\code{L}, when acting on object \code{z}, produces \code{z\ ×\ a}.
+\code{L}, when acting on object \code{z}, produces \code{z × a}.
 It's a functor that corresponds to taking a product with some fixed
 \code{a}.
 
 The right (endo-)functor \code{R}, when acting on \code{b} produces
-the function object \code{a\ensuremath{\Rightarrow}b} (or \code{ba}). Again, \code{a} is
+the function object \code{a\ensuremath{\Rightarrow}b} (or \code{b\textsuperscript{a}}). Again, \code{a} is
 fixed. The adjunction between these two functors is often written as:
 
-\begin{verbatim}
-- × a ⊣ (-)a
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+- × a \ensuremath{\dashv} (-)\textsuperscript{a}
+\end{Verbatim}
 The mapping of hom-sets that underlies this adjunction is best seen by
 redrawing the diagram that we used in the universal construction.
 
-\includegraphics[width=3.12500in]{images/adj-expo.jpg}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=60mm]{images/adj-expo.jpg}}
+\end{figure}
 
+\noindent
 Notice that the \code{eval} morphism is nothing else but the counit of
 this adjunction:
 
-\begin{verbatim}
-(a⇒b) × a -> b
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+(a\ensuremath{\Rightarrow}b) × a -> b
+\end{Verbatim}
 where:
 
-\begin{verbatim}
-(a⇒b) × a = (L ∘ R) b
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+(a\ensuremath{\Rightarrow}b) × a = (L ◦ R) b
+\end{Verbatim}
 I have previously mentioned that a universal construction defines a
 unique object, up to isomorphism. That's why we have ``the'' product and
 ``the'' exponential. This property translates to adjunctions as well: if
@@ -673,12 +674,14 @@ a functor has an adjoint, this adjoint is unique up to isomorphism.
 \section{Challenges}\label{challenges}
 
 \begin{enumerate}
+\tightlist
 \item
   Derive the naturality square for \code{ψ}, the transformation
   between the two (contravariant) functors:
 
 \begin{verbatim}
-a -> C(L a, b) a -> D(a, R b)
+a -> C(L a, b)
+a -> D(a, R b)
 \end{verbatim}
 \item
   Derive the counit \code{ε} starting from the hom-sets isomorphism in
@@ -695,14 +698,3 @@ a -> C(L a, b) a -> D(a, R b)
   Define the adjunction between a product and a function object in
   Haskell.
 \end{enumerate}
-
-Next:
-\href{https://bartoszmilewski.com/2016/06/15/freeforgetful-adjunctions/}{Free/Forgetful
-Adjunctions}.
-
-\section{Acknowledgments}\label{acknowledgments}
-
-I'd like to thank Edward Kmett and Gershom Bazerman for checking my math
-and logic, and André van Meulebrouck, who has been volunteering his
-editing help throughout this series of posts.\\
-\href{https://twitter.com/BartoszMilewski}{Follow @BartoszMilewski}
