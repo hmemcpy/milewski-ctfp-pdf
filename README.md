@@ -10,9 +10,7 @@ Category Theory for Programmers
 
 This is an *unofficial* PDF version of "Category Theory for Programmers" by Bartosz Milewski, converted from his [blogpost series](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/).
 
-Conversion is done by scraping the blog with [Mercury Web Parser](https://mercury.postlight.com/web-parser/) to get a clean HTML content, modifying and tweaking with [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/), finally, converting to LaTeX with [Pandoc](https://pandoc.org/).
-
-See <b>[scraper.py](https://github.com/hmemcpy/milewski-ctfp-pdf/blob/master/src/scraper.py)</b> for additional information.
+Conversion is done by scraping the blog with [Mercury Web Parser](https://mercury.postlight.com/web-parser/) to get a clean HTML content, modifying and tweaking with [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/), finally, converting to LaTeX with [Pandoc](https://pandoc.org/). See [scraper.py](https://github.com/hmemcpy/milewski-ctfp-pdf/blob/master/src/scraper.py) for additional information.
 
 Acknowledgements
 ----------------
