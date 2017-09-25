@@ -114,6 +114,9 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \chapter{Function Types}
 \subfile{content/1.9/Function Types}
 
+\chapter{Natural Transformations}
+\subfile{content/1.10/Natural Transformations}
+
 \backmatter
 
 @unnumbered Acknowledgments

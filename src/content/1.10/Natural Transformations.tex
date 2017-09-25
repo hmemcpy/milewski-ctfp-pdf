@@ -1,19 +1,17 @@
-\begin{quote}
-This is part 10 of Categories for Programmers. Previously:
-\href{https://bartoszmilewski.com/2015/03/13/function-types/}{Function
-Types}. See the
-\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
-of Contents}.
-\end{quote}
+\lettrine[lhang=0.17]{W}{e talked about} functors as mappings between categories that preserve
+their structure.
 
-We talked about functors as mappings between categories that preserve
-their structure. A functor ``embeds'' one category in another. It may
+\begin{wrapfigure}[13]{R}{0pt}
+\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
+\fbox{\includegraphics[width=60mm]{images/1_functors.jpg}}}%
+\end{wrapfigure}
+
+\noindent
+A functor ``embeds'' one category in another. It may
 collapse multiple things into one, but it never breaks connections. One
 way of thinking about it is that with a functor we are modeling one
 category inside another. The source category serves as a model, a
 blueprint, for some structure that's part of the target category.
-
-\includegraphics[width=5.31250in]{images/1_functors.jpg}
 
 There may be many ways of embedding one category in another. Sometimes
 they are equivalent, sometimes very different. One may collapse the
@@ -25,78 +23,86 @@ functors --- special mappings that preserve their functorial nature.
 
 Consider two functors \code{F} and \code{G} between categories
 \emph{C} and \emph{D}. If you focus on just one object \code{a} in
-\emph{C}, it is mapped to two objects: \code{F\ a} and \code{G\ a}.
-A mapping of functors should therefore map \code{F\ a} to
-\code{G\ a}.
+\emph{C}, it is mapped to two objects: \code{F a} and \code{G a}.
+A mapping of functors should therefore map \code{F a} to
+\code{G a}.
 
-\includegraphics[width=3.12500in]{images/2_natcomp.jpg}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=80mm]{images/2_natcomp.jpg}}
+\end{figure}
 
-Notice that \code{F\ a} and \code{G\ a} are objects in the same
+\noindent
+Notice that \code{F a} and \code{G a} are objects in the same
 category \emph{D}. Mappings between objects in the same category should
 not go against the grain of the category. We don't want to make
 artificial connections between objects. So it's \emph{natural} to use
 existing connections, namely morphisms. A natural transformation is a
 selection of morphisms: for every object \code{a}, it picks one
-morphism from \code{F\ a} to \code{G\ a}. If we call the natural
+morphism from \code{F a} to \code{G a}. If we call the natural
 transformation \code{α}, this morphism is called the \newterm{component}
-of \code{α} at \code{a}, or \code{αa}.
+of \code{α} at \code{a}, or \code{α\textsubscript{a}}.
 
-\begin{verbatim}
-αa :: F a -> G a
-\end{verbatim}
-
-Keep in mind that \code{a} is an object in \emph{C} while \code{αa}
+\begin{Verbatim}[commandchars=\\\{\}]
+α\textsubscript{a} :: F a -> G a
+\end{Verbatim}
+Keep in mind that \code{a} is an object in \emph{C} while \code{α\textsubscript{a}}
 is a morphism in \emph{D}.
 
-If, for some \code{a}, there is no morphism between \code{F\ a} and
-\code{G\ a} in \emph{D}, there can be no natural transformation
+If, for some \code{a}, there is no morphism between \code{F a} and
+\code{G a} in \emph{D}, there can be no natural transformation
 between \code{F} and \code{G}.
 
 Of course that's only half of the story, because functors not only map
 objects, they map morphisms as well. So what does a natural
 transformation do with those mappings? It turns out that the mapping of
 morphisms is fixed --- under any natural transformation between F and G,
-\code{F\ f} must be transformed into \code{G\ f}. What's more, the
+\code{F f} must be transformed into \code{G f}. What's more, the
 mapping of morphisms by the two functors drastically restricts the
 choices we have in defining a natural transformation that's compatible
 with it. Consider a morphism \code{f} between two objects \code{a}
-and \code{b} in \emph{C}. It's mapped to two morphisms, \code{F\ f}
-and \code{G\ f} in \emph{D}:
+and \code{b} in \emph{C}. It's mapped to two morphisms, \code{F f}
+and \code{G f} in \emph{D}:
 
 \begin{verbatim}
 F f :: F a -> F b
 G f :: G a -> G b
 \end{verbatim}
 
+\begin{wrapfigure}[5]{R}{0pt}
+\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
+\fbox{\includegraphics[width=40mm]{images/3_naturality.jpg}}}%
+\end{wrapfigure}
+\noindent
 The natural transformation \code{α} provides two additional morphisms
 that complete the diagram in \emph{D}:
 
-\begin{verbatim}
-αa :: F a -> G a
-αb :: F b -> G b
-\end{verbatim}
-
-\includegraphics[width=3.12500in]{images/3_naturality.jpg}
-
-Now we have two ways of getting from \code{F\ a} to \code{G\ b}. To
+\begin{Verbatim}[commandchars=\\\{\}]
+α\textsubscript{a} :: F a -> G a
+α\textsubscript{b} :: F b -> G b
+\end{Verbatim}
+Now we have two ways of getting from \code{F a} to \code{G b}. To
 make sure that they are equal, we must impose the \newterm{naturality
 condition} that holds for any \code{f}:
 
-\begin{verbatim}
-G f ∘ αa = αb ∘ F f
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+G f ◦ α\textsubscript{a} = α\textsubscript{b} ◦ F f
+\end{Verbatim}
 The naturality condition is a pretty stringent requirement. For
-instance, if the morphism \code{F\ f} is invertible, naturality
-determines \code{αb} in terms of \code{αa}. It \newterm{transports}
-\code{αa} along \code{f}:
+instance, if the morphism \code{F f} is invertible, naturality
+determines \code{α\textsubscript{b}} in terms of \code{α\textsubscript{a}}. It \newterm{transports}
+\code{α\textsubscript{a}} along \code{f}:
 
-\begin{verbatim}
-αb = (G f) ∘ αa ∘ (F f)-1
-\end{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
+α\textsubscript{b} = (G f) ◦ α\textsubscript{a} ◦ (F f)\textsuperscript{-1}
+\end{Verbatim}
 
-\includegraphics[width=3.12500in]{images/4_transport.jpg}
+\begin{wrapfigure}[7]{R}{0pt}
+\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
+\fbox{\includegraphics[width=40mm]{images/4_transport.jpg}}}%
+\end{wrapfigure}
 
+\noindent
 If there is more than one invertible morphism between two objects, all
 these transports have to agree. In general, though, morphisms are not
 invertible; but you can see that the existence of natural
@@ -111,8 +117,12 @@ maps objects to morphisms. Because of the naturality condition, one may
 also say that it maps morphisms to commuting squares --- there is one
 commuting naturality square in \emph{D} for every morphism in \emph{C}.
 
-\includegraphics[width=3.12500in]{images/naturality.jpg}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=60mm]{images/naturality.jpg}}
+\end{figure}
 
+\noindent
 This property of natural transformations comes in very handy in a lot of
 categorical constructions, which often include commuting diagrams. With
 a judicious choice of functors, a lot of these commutativity conditions
@@ -135,29 +145,26 @@ mapping is implemented by a higher order function \code{fmap} (or
 
 To construct a natural transformation we start with an object, here a
 type, \code{a}. One functor, \code{F}, maps it to the type
-\code{F\ a}. Another functor, \code{G}, maps it to \code{G\ a}.
+\code{F a}. Another functor, \code{G}, maps it to \code{G a}.
 The component of a natural transformation \code{alpha} at \code{a}
-is a function from \code{F\ a} to \code{G\ a}. In pseudo-Haskell:
+is a function from \code{F a} to \code{G a}. In pseudo-Haskell:
 
-\begin{verbatim}
-alphaa :: F a -> G a
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+alpha\textsubscript{a} :: F a -> G a
+\end{Verbatim}
 A natural transformation is a polymorphic function that is defined for
 all types \code{a}:
 
 \begin{verbatim}
 alpha :: forall a . F a -> G a
 \end{verbatim}
-
-The \code{forall\ a} is optional in Haskell (and in fact requires
+The \code{forall a} is optional in Haskell (and in fact requires
 turning on the language extension \code{ExplicitForAll}). Normally,
 you would write it like this:
 
 \begin{verbatim}
 alpha :: F a -> G a
 \end{verbatim}
-
 Keep in mind that it's really a family of functions parameterized by
 \code{a}. This is another example of the terseness of the Haskell
 syntax. A similar construct in C++ would be slightly more verbose:
@@ -165,14 +172,13 @@ syntax. A similar construct in C++ would be slightly more verbose:
 \begin{verbatim}
 template<class A> G<A> alpha(F<A>);
 \end{verbatim}
-
 There is a more profound difference between Haskell's polymorphic
 functions and C++ generic functions, and it's reflected in the way these
 functions are implemented and type-checked. In Haskell, a polymorphic
 function must be defined uniformly for all types. One formula must work
 across all types. This is called \newterm{parametric polymorphism}.
 
-C++, on the other hand, supports by default~\newterm{ad hoc polymorphism},
+C++, on the other hand, supports by default \newterm{ad hoc polymorphism},
 which means that a template doesn't have to be well-defined for all
 types. Whether a template will work for a given type is decided at
 instantiation time, where a concrete type is substituted for the type
@@ -190,30 +196,26 @@ polymorphic function of the type:
 \begin{verbatim}
 alpha :: F a -> G a
 \end{verbatim}
-
 where \code{F} and \code{G} are functors, automatically satisfies
 the naturality condition. Here it is in categorical notation (\code{f}
 is a function \code{f::a->b}):
 
-\begin{verbatim}
-G f ∘ αa = αb ∘ F f
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+G f ◦ α\textsubscript{a} = α\textsubscript{b} ◦ F f
+\end{Verbatim}
 In Haskell, the action of a functor \code{G} on a morphism \code{f}
 is implemented using \code{fmap}. I'll first write it in
 pseudo-Haskell, with explicit type annotations:
 
-\begin{verbatim}
-fmapG f . alphaa = alphab . fmapF f
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+fmap\textsubscript{G} f . alpha\textsubscript{a} = alpha\textsubscript{b} . fmap\textsubscript{F} f
+\end{Verbatim}
 Because of type inference, these annotations are not necessary, and the
 following equation holds:
 
 \begin{verbatim}
 fmap f . alpha = alpha . fmap f
 \end{verbatim}
-
 This is still not real Haskell --- function equality is not expressible
 in code --- but it's an identity that can be used by the programmer in
 equational reasoning; or by the compiler, to implement optimizations.
@@ -224,10 +226,10 @@ define natural transformations in Haskell, imposes very strong
 limitations on the implementation --- one formula for all types. These
 limitations translate into equational theorems about such functions. In
 the case of functions that transform functors, free theorems are the
-naturality conditions. {[}You may read more about free theorems in my
-blog
-\href{https://bartoszmilewski.com/2014/09/22/parametricity-money-for-nothing-and-theorems-for-free/}{Parametricity:
-Money for Nothing and Theorems for Free}.{]}
+naturality conditions.\footnote{
+You may read more about free theorems in my
+blog \href{https://bartoszmilewski.com/2014/09/22/parametricity-money-for-nothing-and-theorems-for-free/}{Parametricity:
+Money for Nothing and Theorems for Free}.}
 
 One way of thinking about functors in Haskell that I mentioned earlier
 is to consider them generalized containers. We can continue this analogy
@@ -253,7 +255,6 @@ safeHead :: [a] -> Maybe a
 safeHead [] = Nothing
 safeHead (x:xs) = Just x
 \end{verbatim}
-
 It's a function polymorphic in \code{a}. It works for any type
 \code{a}, with no limitations, so it is an example of parametric
 polymorphism. Therefore it is a natural transformation between the two
@@ -263,7 +264,6 @@ condition.
 \begin{verbatim}
 fmap f . safeHead = safeHead . fmap f
 \end{verbatim}
-
 We have two cases to consider; an empty list:
 
 \begin{verbatim}
@@ -273,45 +273,39 @@ fmap f (safeHead []) = fmap f Nothing = Nothing
 \begin{verbatim}
 safeHead (fmap f []) = safeHead [] = Nothing
 \end{verbatim}
-
 and a non-empty list:
 
 \begin{verbatim}
 fmap f (safeHead (x:xs)) = fmap f (Just x) = Just (f x)
 \end{verbatim}
-
-\begin{verbatim}
+\begin{minted}[breaklines]{text}
 safeHead (fmap f (x:xs)) = safeHead (f x : fmap f xs) = Just (f x)
-\end{verbatim}
-
+\end{minted}
 I used the implementation of \code{fmap} for lists:
 
 \begin{verbatim}
 fmap f [] = []
 fmap f (x:xs) = f x : fmap f xs
 \end{verbatim}
-
 and for \code{Maybe}:
 
 \begin{verbatim}
 fmap f Nothing = Nothing
 fmap f (Just x) = Just (f x)
 \end{verbatim}
-
 An interesting case is when one of the functors is the trivial
 \code{Const} functor. A natural transformation from or to a
 \code{Const} functor looks just like a function that's either
 polymorphic in its return type or in its argument type.
 
 For instance, \code{length} can be thought of as a natural
-transformation from the list functor to the \code{Const\ Int} functor:
+transformation from the list functor to the \code{Const Int} functor:
 
 \begin{verbatim}
 length :: [a] -> Const Int a
 length [] = Const 0
 length (x:xs) = Const (1 + unConst (length xs))
 \end{verbatim}
-
 Here, \code{unConst} is used to peel off the \code{Const}
 constructor:
 
@@ -319,13 +313,11 @@ constructor:
 unConst :: Const c a -> c
 unConst (Const x) = x
 \end{verbatim}
-
 Of course, in practice \code{length} is defined as:
 
 \begin{verbatim}
 length :: [a] -> Int
 \end{verbatim}
-
 which effectively hides the fact that it's a natural transformation.
 
 Finding a parametrically polymorphic function \emph{from} a
@@ -336,7 +328,6 @@ creation of a value from nothing. The best we can do is:
 scam :: Const Int a -> Maybe a
 scam (Const x) = Nothing
 \end{verbatim}
-
 Another common functor that we've seen already, and which will play an
 important role in the Yoneda lemma, is the \code{Reader} functor. I
 will rewrite its definition as a \code{newtype}:
@@ -344,20 +335,18 @@ will rewrite its definition as a \code{newtype}:
 \begin{verbatim}
 newtype Reader e a = Reader (e -> a)
 \end{verbatim}
-
 It is parameterized by two types, but is (covariantly) functorial only
 in the second one:
 
 \begin{verbatim}
-instance Functor (Reader e) where fmap f (Reader g) = Reader (\x -> f (g x))
+instance Functor (Reader e) where
+    fmap f (Reader g) = Reader (\x -> f (g x))
 \end{verbatim}
-
 For every type \code{e}, you can define a family of natural
 transformations from \code{Reader\ e} to any other functor \code{f}.
 We'll see later that the members of this family are always in one to one
-correspondence with the elements of \code{f\ e} (the
-\href{https://bartoszmilewski.com/2015/09/01/the-yoneda-lemma/}{Yoneda
-lemma}).
+correspondence with the elements of \code{f e} (the
+\hyperref[the-yoneda-lemma]{Yoneda lemma}).
 
 For instance, consider the somewhat trivial unit type \code{()} with
 one element \code{()}. The functor \code{Reader\ ()} takes any type
@@ -370,25 +359,22 @@ to the \code{Maybe} functor:
 \begin{verbatim}
 alpha :: Reader () a -> Maybe a
 \end{verbatim}
-
 There are only two of these, \code{dumb} and \code{obvious}:
 
 \begin{verbatim}
 dumb (Reader _) = Nothing
 \end{verbatim}
-
 and
 
 \begin{verbatim}
 obvious (Reader g) = Just (g ())
 \end{verbatim}
-
 (The only thing you can do with \code{g} is to apply it to the unit
 value \code{()}.)
 
 And, indeed, as predicted by the Yoneda lemma, these correspond to the
-two elements of the \code{Maybe\ ()} type, which are \code{Nothing}
-and \code{Just\ ()}. We'll come back to the Yoneda lemma later ---
+two elements of the \code{Maybe ()} type, which are \code{Nothing}
+and \code{Just ()}. We'll come back to the Yoneda lemma later ---
 this was just a little teaser.
 
 \section{Beyond Naturality}\label{beyond-naturality}
@@ -416,20 +402,18 @@ at before:
 \begin{verbatim}
 newtype Op r a = Op (a -> r)
 \end{verbatim}
-
 This functor is contravariant in \code{a}:
 
 \begin{verbatim}
-instance Contravariant (Op r) where contramap f (Op g) = Op (g . f)
+instance Contravariant (Op r) where
+    contramap f (Op g) = Op (g . f)
 \end{verbatim}
-
-We can write a polymorphic function from, say, \code{Op\ Bool} to
-\code{Op\ String}:
+We can write a polymorphic function from, say, \code{Op Bool} to
+\code{Op String}:
 
 \begin{verbatim}
 predToStr (Op f) = Op (\x -> if f x then "T" else "F")
 \end{verbatim}
-
 But since the two functors are not covariant, this is not a natural
 transformation in \textbf{Hask}. However, because they are both
 contravariant, they satisfy the ``opposite'' naturality condition:
@@ -437,7 +421,6 @@ contravariant, they satisfy the ``opposite'' naturality condition:
 \begin{verbatim}
 contramap f . predToStr = predToStr . contramap f
 \end{verbatim}
-
 Notice that the function \code{f} must go in the opposite direction
 than what you'd use with \code{fmap}, because of the signature of
 \code{contramap}:
@@ -445,14 +428,12 @@ than what you'd use with \code{fmap}, because of the signature of
 \begin{verbatim}
 contramap :: (b -> a) -> (Op Bool a -> Op Bool b)
 \end{verbatim}
-
 Are there any type constructors that are not functors, whether covariant
 or contravariant? Here's one example:
 
 \begin{verbatim}
 a -> a
 \end{verbatim}
-
 This is not a functor because the same type \code{a} is used both in
 the negative (contravariant) and positive (covariant) position. You
 can't implement \code{fmap} or \code{contramap} for this type.
@@ -461,7 +442,6 @@ Therefore a function of the signature:
 \begin{verbatim}
 (a -> a) -> f a
 \end{verbatim}
-
 where \code{f} is an arbitrary functor, cannot be a natural
 transformation. Interestingly, there is a generalization of natural
 transformations, called dinatural transformations, that deals with such
@@ -483,42 +463,47 @@ we know how to compose morphisms.
 Indeed, let's take a natural transformation α from functor F to G. Its
 component at object \code{a} is some morphism:
 
-\begin{verbatim}
-αa :: F a -> G a
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+α\textsubscript{a} :: F a -> G a
+\end{Verbatim}
 We'd like to compose α with β, which is a natural transformation from
 functor G to H. The component of β at \code{a} is a morphism:
 
-\begin{verbatim}
-βa :: G a -> H a
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+β\textsubscript{a} :: G a -> H a
+\end{Verbatim}
 These morphisms are composable and their composition is another
 morphism:
 
-\begin{verbatim}
-βa ∘ αa :: F a -> H a
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+β\textsubscript{a} ◦ α\textsubscript{a} :: F a -> H a
+\end{Verbatim}
 We will use this morphism as the component of the natural transformation
 β ⋅ α --- the composition of two natural transformations β after α:
 
-\begin{verbatim}
-(β ⋅ α)a = βa ∘ αa
-\end{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
+(β \ensuremath{⋅} α)a = β\textsubscript{a} ◦ α\textsubscript{a}
+\end{Verbatim}
 
-\includegraphics[width=3.12500in]{images/5_vertical.jpg}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=60mm]{images/5_vertical.jpg}}
+\end{figure}
 
+\noindent
 One (long) look at a diagram convinces us that the result of this
 composition is indeed a natural transformation from F to H:
 
-\begin{verbatim}
-H f ∘ (β ⋅ α)a = (β ⋅ α)b ∘ F f
-\end{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
+H f ◦ (β \ensuremath{⋅} α)\textsubscript{a} = (β \ensuremath{⋅} α)\textsubscript{b} ◦ F f
+\end{Verbatim}
 
-\includegraphics[width=3.12500in]{images/6_verticalnaturality.jpg}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=60mm]{images/6_verticalnaturality.jpg}}
+\end{figure}
 
+\noindent
 Composition of natural transformations is associative, because their
 components, which are regular morphisms, are associative with respect to
 their composition.
@@ -526,10 +511,9 @@ their composition.
 Finally, for each functor F there is an identity natural transformation
 1\textsubscript{F} whose components are the identity morphisms:
 
-\begin{verbatim}
-idF a :: F a -> F a
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+id\textsubscript{F a} :: F a -> F a
+\end{Verbatim}
 So, indeed, functors form a category.
 
 A word about notation. Following Saunders Mac Lane I use the dot for the
@@ -540,10 +524,13 @@ usually stacked up vertically in the diagrams that describe it. Vertical
 composition is important in defining the functor category. I'll explain
 horizontal composition shortly.
 
-\includegraphics[width=2.29167in]{images/6a_vertical.jpg}
+\begin{figure}
+\centering
+\fbox{\includegraphics[width=60mm]{images/6a_vertical.jpg}}
+\end{figure}
 
 The functor category between categories C and D is written as
-\code{Fun(C,\ D)}, or \code{{[}C,\ D{]}}, or sometimes as
+\code{Fun(C, D)}, or \code{{[}C, D{]}}, or sometimes as
 \code{DC}. This last notation suggests that a functor category itself
 might be considered a function object (an exponential) in some other
 category. Is this indeed the case?
@@ -556,7 +543,10 @@ in a higher-level category \textbf{Cat}. Morphisms in that category are
 functors. A Hom-set in \textbf{Cat} is a set of functors. For instance
 Cat(C, D) is a set of functors between two categories C and D.
 
-\includegraphics[width=2.23958in]{images/7_cathomset.jpg}
+\begin{figure}
+\centering
+\fbox{\includegraphics[width=60mm]{images/7_cathomset.jpg}}
+\end{figure}
 
 A functor category {[}C, D{]} is also a set of functors between two
 categories (plus natural transformations as morphisms). Its objects are
@@ -572,12 +562,12 @@ As you may remember, in order to construct an exponential, we need to
 first define a product. In \textbf{Cat}, this turns out to be relatively
 easy, because small categories are \emph{sets} of objects, and we know
 how to define cartesian products of sets. So an object in a product
-category C × D is just a pair of objects, \code{(c,\ d)}, one from C
+category C × D is just a pair of objects, \code{(c, d)}, one from C
 and one from D. Similarly, a morphism between two such pairs,
-\code{(c,\ d)} and \code{(c\',\ d\')}, is a pair of
-morphisms, \code{(f,\ g)}, where
-\code{f\ ::\ c\ ->\ c\'} and
-\code{g\ ::\ d\ ->\ d\'}. These pairs of morphisms
+\code{(c, d)} and \code{(c', d')}, is a pair of
+morphisms, \code{(f, g)}, where
+\code{f :: c -> c'} and
+\code{g :: d -> d'}. These pairs of morphisms
 compose component-wise, and there is always an identity pair that is
 just a pair of identity morphisms. To make the long story short,
 \textbf{Cat} is a full-blown cartesian closed category in which there is
@@ -612,6 +602,12 @@ In the case of \textbf{Cat} seen as a 2-category we have:
   2-morphisms: Natural transformations between functors.
 \end{itemize}
 
+\begin{wrapfigure}[11]{R}{0pt}
+\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
+\fbox{\includegraphics[width=2.25000in]{images/8_cat-2-cat.jpg}}}%
+\end{wrapfigure}
+
+\noindent
 Instead of a Hom-set between two categories C and D, we have a
 Hom-category --- the functor category D\textsuperscript{C}. We have
 regular functor composition: a functor F from D\textsuperscript{C}
@@ -620,8 +616,7 @@ E\textsuperscript{C}. But we also have composition inside each
 Hom-category --- vertical composition of natural transformations, or
 2-morphisms, between functors.
 
-\includegraphics[width=2.25000in]{images/8_cat-2-cat.jpg}
-
+\noindent
 With two kinds of composition in a 2-category, the question arises: How
 do they interact with each other?
 
@@ -631,13 +626,11 @@ Let's pick two functors, or 1-morphisms, in \textbf{Cat}:
 F :: C -> D
 G :: D -> E
 \end{verbatim}
-
 and their composition:
 
 \begin{verbatim}
-G ∘ F :: C -> E
+G ◦ F :: C -> E
 \end{verbatim}
-
 Suppose we have two natural transformations, α and β, that act,
 respectively, on functors F and G:
 
@@ -646,8 +639,12 @@ respectively, on functors F and G:
 β :: G -> G'
 \end{verbatim}
 
-\includegraphics[width=3.12500in]{images/10_horizontal.jpg}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=60mm]{images/10_horizontal.jpg}}
+\end{figure}
 
+\noindent
 Notice that we cannot apply vertical composition to this pair, because
 the target of α is different from the source of β. In fact they are
 members of two different functor categories: D \textsuperscript{C} and E
@@ -658,50 +655,49 @@ category D. What's the relation between the functors G'∘ F' and G ∘ F?
 Having α and β at our disposal, can we define a natural transformation
 from G ∘ F to G'∘ F'? Let me sketch the construction.
 
-\includegraphics[width=3.84375in]{images/9_horizontal.jpg}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=90mm]{images/9_horizontal.jpg}}
+\end{figure}
 
+\noindent
 As usual, we start with an object \code{a} in C. Its image splits into
-two objects in D: \code{F\ a} and \code{F\'a}. There is also a
+two objects in D: \code{F a} and \code{F'a}. There is also a
 morphism, a component of α, connecting these two objects:
 
-\begin{verbatim}
-αa :: F a -> F'a
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+α\textsubscript{a} :: F a -> F'a
+\end{Verbatim}
 When going from D to E, these two objects split further into four
 objects:
 
 \begin{verbatim}
 G (F a), G'(F a), G (F'a), G'(F'a)
 \end{verbatim}
-
 We also have four morphisms forming a square. Two of these morphisms are
 the components of the natural transformation β:
 
-\begin{verbatim}
-βF a :: G (F a) -> G'(F a)
-βF'a :: G (F'a) -> G'(F'a)
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+β\textsubscript{F a} :: G (F a) -> G'(F a)
+β\textsubscript{F'a} :: G (F'a) -> G'(F'a)
+\end{Verbatim}
 The other two are the images of α\textsubscript{a} under the two
 functors (functors map morphisms):
 
-\begin{verbatim}
-G αa :: G (F a) -> G (F'a)
-G'αa :: G'(F a) -> G'(F'a)
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+G α\textsubscript{a} :: G (F a) -> G (F'a)
+G'α\textsubscript{a} :: G'(F a) -> G'(F'a)
+\end{Verbatim}
 That's a lot of morphisms. Our goal is to find a morphism that goes from
-\code{G\ (F\ a)} to \code{G\'(F\'a)}, a candidate for the
+\code{G (F a)} to \code{G'(F'a)}, a candidate for the
 component of a natural transformation connecting the two functors G ∘ F
 and G'∘ F'. In fact there's not one but two paths we can take from
-\code{G\ (F\ a)} to \code{G\'(F\'a)}:
+\code{G (F a)} to \code{G'(F'a)}:
 
-\begin{verbatim}
-G'αa ∘ βF a
-βF'a ∘ G αa
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+G'α\textsubscript{a} ◦ β\textsubscript{F a}
+β\textsubscript{F'a} ◦ G α\textsubscript{a}
+\end{Verbatim}
 Luckily for us, they are equal, because the square we have formed turns
 out to be the naturality square for β.
 
@@ -713,9 +709,8 @@ We call this natural transformation the \newterm{horizontal composition} of
 α and β:
 
 \begin{verbatim}
-β ∘ α :: G ∘ F -> G'∘ F'
+β ◦ α :: G ◦ F -> G' ◦ F'
 \end{verbatim}
-
 Again, following Mac Lane I use the small circle for horizontal
 composition, although you may also encounter star in its place.
 
@@ -730,8 +725,12 @@ between categories. A natural transformation sits between two
 categories, the ones that are connected by the functors it transforms.
 We can think of it as connecting these two categories.
 
-\includegraphics[width=3.12500in]{images/sideways.jpg}
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=60mm]{images/sideways.jpg}}
+\end{figure}
 
+\noindent
 Let's focus on two objects of \textbf{Cat} --- categories C and D. There
 is a set of natural transformations that go between functors that
 connect C to D. These natural transformations are our new arrows from C
@@ -762,9 +761,8 @@ transformation acting on this functor. So you'll often see this
 notation:
 
 \begin{verbatim}
-F ∘ α
+F ◦ α
 \end{verbatim}
-
 where F is a functor from D to E, and α is a natural transformation
 between two functors going from C to D. Since you can't compose a
 functor with a natural transformation, this is interpreted as a
@@ -774,9 +772,8 @@ horizontal composition of the identity natural transformation
 Similarly:
 
 \begin{verbatim}
-α ∘ F
+α ◦ F
 \end{verbatim}
-
 is a horizontal composition of α after 1\textsubscript{F}.
 
 \section{Conclusion}\label{conclusion}
@@ -808,15 +805,16 @@ natural transformation is a special type of polymorphic function.
 \section{Challenges}\label{challenges}
 
 \begin{enumerate}
+\tightlist
 \item
   Define a natural transformation from the \code{Maybe} functor to the
   list functor. Prove the naturality condition for it.
 \item
   Define at least two different natural transformations between
-  \code{Reader\ ()} and the list functor. How many different lists of
+  \code{Reader ()} and the list functor. How many different lists of
   \code{()} are there?
 \item
-  Continue the previous exercise with \code{Reader\ Bool} and
+  Continue the previous exercise with \code{Reader Bool} and
   \code{Maybe}.
 \item
   Show that horizontal composition of natural transformation satisfies
@@ -842,13 +840,3 @@ f :: String -> Int
 f x = read x
 \end{verbatim}
 \end{enumerate}
-
-Next:
-\href{https://bartoszmilewski.com/2015/04/15/category-theory-and-declarative-programming/}{Declarative
-Programming}.
-
-\section{Acknowledgments}\label{acknowledgments}
-
-I'd like to thank Gershom Bazerman for checking my math and logic, and
-André van Meulebrouck, who has been volunteering his editing help.\\
-\href{https://twitter.com/BartoszMilewski}{Follow @BartoszMilewski}
