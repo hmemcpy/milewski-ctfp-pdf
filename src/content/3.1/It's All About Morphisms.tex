@@ -1,12 +1,4 @@
-\begin{quote}
-This is part 17 of Categories for Programmers. Previously:
-\href{https://bartoszmilewski.com/2015/10/28/yoneda-embedding/}{Yoneda
-Embedding}. See the
-\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
-of Contents}.
-\end{quote}
-
-If I haven't convinced you yet that category theory is all about
+\lettrine[lhang=0.17]{I}{f I haven't} convinced you yet that category theory is all about
 morphisms then I haven't done my job properly. Since the next topic is
 adjunctions, which are defined in terms of isomorphisms of hom-sets, it
 makes sense to review our intuitions about the building blocks of
@@ -38,12 +30,15 @@ constructions (with the notable exceptions of the initial and terminal
 objects). We've seen this in the definitions of products, coproducts,
 various other (co-)limits, exponential objects, free monoids, etc.
 
+\begin{wrapfigure}[9]{R}{0pt}
+\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
+\fbox{\includegraphics[width=1.78125in]{images/productranking.jpg}}}%
+\end{wrapfigure}
+
 The product is a simple example of a universal construction. We pick two
 objects \code{a} and \code{b} and see if there exists an object
 \code{c}, together with a pair of morphisms \code{p} and \code{q},
 that has the universal property of being their product.
-
-\includegraphics[width=1.78125in]{images/productranking.jpg}
 
 A product is a special case of a limit. A limit is defined in terms of
 cones. A general cone is built from commuting diagrams. Commutativity of
@@ -60,8 +55,12 @@ naturality square are the mappings of some morphism \code{f} under two
 functors \code{F} and \code{G}. The other sides are the components
 of the natural transformation (which are also morphisms).
 
+\begin{figure}[H]
+\centering
 \includegraphics[width=2.25000in]{images/3_naturality.jpg}
+\end{figure}
 
+\noindent
 Naturality means that when you move to the ``neighboring'' component (by
 neighboring I mean connected by a morphism), you're not going against
 the structure of either the category or the functors. It doesn't matter
@@ -74,8 +73,12 @@ you up and down or back and forth --- so to speak. You can visualize the
 transformation maps one such sheet corresponding to F, to another,
 corresponding to G.
 
-\includegraphics{images/sheets.png}
+\begin{wrapfigure}[10]{R}{0pt}
+\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
+\includegraphics[width=60mm]{images/sheets.png}}%
+\end{wrapfigure}
 
+\noindent
 We've seen examples of this orthogonality in Haskell. There the action
 of a functor modifies the content of a container without changing its
 shape, while a natural transformation repackages the untouched contents
@@ -89,21 +92,19 @@ cones. These mappings must also satisfy commutativity conditions. (For
 instance, the triangles in the definition of the product must commute.)
 
 These conditions, too, may be replaced by naturality. You may recall
-that the \newterm{universal} cone, or the limit, is defined as a natural
+that the \emph{universal} cone, or the limit, is defined as a natural
 transformation between the (contravariant) hom-functor:
 
 \begin{verbatim}
 F :: c -> C(c, Lim D)
 \end{verbatim}
-
 and the (also contravariant) functor that maps objects in \emph{C} to
 cones, which themselves are natural transformations:
 
-\begin{verbatim}
-G :: c -> Nat(Δc, D)
-\end{verbatim}
-
-Here, \code{Δc} is the constant functor, and \code{D} is the functor
+\begin{Verbatim}[commandchars=\\\{\}]
+G :: c -> Nat(\ensuremath{\Delta}\textsubscript{c}, D)
+\end{Verbatim}
+Here, \code{\ensuremath{\Delta}\textsubscript{c}} is the constant functor, and \code{D} is the functor
 that defines the diagram in \emph{C}. Both functors \code{F} and
 \code{G} have well defined actions on morphisms in \emph{C}. It so
 happens that this particular natural transformation between \code{F}
@@ -133,9 +134,8 @@ there is a morphism \code{h} whose composition (either pre- or post-)
 with \code{f} is different than that with \code{g}, for instance:
 
 \begin{verbatim}
-h ∘ f ≠ h ∘ g
+h ◦ f ≠ h ◦ g
 \end{verbatim}
-
 then we can directly ``observe'' the difference between \code{f} and
 \code{g}. But even if the difference is not directly observable, we
 might use functors to zoom in on the hom-set. A functor \code{F} may
@@ -144,15 +144,13 @@ map the two morphisms to distinct morphisms:
 \begin{verbatim}
 F f ≠ F g
 \end{verbatim}
-
 in a richer category, where the abutting hom-sets provide more
 resolution, e.g.,
 
 \begin{verbatim}
-h' ∘ F f ≠ h' ∘ F g
+h' ◦ F f ≠ h' ◦ F g
 \end{verbatim}
-
-where \code{h\'} is not in the image of \code{F}.
+where \code{h'} is not in the image of \code{F}.
 
 \section{Hom-Set Isomorphisms}\label{hom-set-isomorphisms}
 
@@ -184,10 +182,9 @@ between hom-sets.
 The definition of a limit is also a natural isomorphism between hom-sets
 (the second one, again, in the functor category):
 
-\begin{verbatim}
-C(c, Lim D) ≃ Nat(Δc, D)
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+C(c, Lim D) \ensuremath{\simeq} Nat(\ensuremath{\Delta}\textsubscript{c}, D)
+\end{Verbatim}
 It turns out that our construction of an exponential object, or that of
 a free monoid, can also be rewritten as a natural isomorphism between
 hom-sets.
@@ -199,16 +196,16 @@ hom-sets.
 \section{Asymmetry of Hom-Sets}\label{asymmetry-of-hom-sets}
 
 There is one more observation that will help us understand adjunctions.
-Hom-sets are, in general, not symmetric. A hom-set \code{C(a,\ b)} is
-often very different from the hom-set \code{C(b,\ a)}. The ultimate
+Hom-sets are, in general, not symmetric. A hom-set \code{C(a, b)} is
+often very different from the hom-set \code{C(b, a)}. The ultimate
 demonstration of this asymmetry is a partial order viewed as a category.
 In a partial order, a morphism from \code{a} to \code{b} exists if
 and only if \code{a} is less than or equal to \code{b}. If
 \code{a} and \code{b} are different, then there can be no morphism
 going the other way, from \code{b} to \code{a}. So if the hom-set
-\code{C(a,\ b)} is non-empty, which in this case means it's a
-singleton set, then \code{C(b,\ a)} must be empty, unless
-\code{a\ =\ b}. The arrows in this category have a definite flow in
+\code{C(a, b)} is non-empty, which in this case means it's a
+singleton set, then \code{C(b, a)} must be empty, unless
+\code{a = b}. The arrows in this category have a definite flow in
 one direction.
 
 A preorder, which is based on a relation that's not necessarily
@@ -227,20 +224,10 @@ empty. We can visualize a general category as a ``thick'' preorder.
   Consider some degenerate cases of a naturality condition and draw the
   appropriate diagrams. For instance, what happens if either functor
   \code{F} or \code{G} map both objects \code{a} and \code{b}
-  (the ends of \code{f\ ::\ a\ ->\ b}) to the same
-  object, e.g., \code{F\ a\ =\ F\ b} or \code{G\ a\ =\ G\ b}?
+  (the ends of\\ \code{f :: a -> b}) to the same
+  object, e.g., \code{F a = F b} or \code{G a = G b}?
   (Notice that you get a cone or a co-cone this way.) Then consider
-  cases where either \code{F\ a\ =\ G\ a} or \code{F\ b\ =\ G\ b}.
+  cases where either \code{F a = G a} or \code{F b = G b}.
   Finally, what if you start with a morphism that loops on itself ---
-  \code{f\ ::\ a\ ->\ a}?
+  \code{f :: a -> a}?
 \end{enumerate}
-
-Next:
-\href{https://bartoszmilewski.com/2016/04/18/adjunctions/}{Adjunctions}.
-
-\section{Acknowledgments}\label{acknowledgments}
-
-I'd like to thank Gershom Bazerman for checking my math and logic, and
-André van Meulebrouck, who has been volunteering his editing help
-throughout this series of posts.\\
-\href{https://twitter.com/BartoszMilewski}{Follow @BartoszMilewski}

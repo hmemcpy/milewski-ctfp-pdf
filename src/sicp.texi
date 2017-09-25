@@ -117,6 +117,13 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \chapter{Natural Transformations}
 \subfile{content/1.10/Natural Transformations}
 
+\part{Part Two}
+
+\part{Part Three}
+
+\chapter{It's All About Morphisms}
+\subfile{content/3.1/It's All About Morphisms}
+
 \backmatter
 
 @unnumbered Acknowledgments
