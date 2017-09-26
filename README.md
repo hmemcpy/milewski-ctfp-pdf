@@ -6,7 +6,7 @@ Category Theory for Programmers
 
 **Note**: this is a work in progress! Please [report](https://github.com/hmemcpy/milewski-ctfp-pdf/issues) any formatting/content issues!
 
-<b>Direct link: [category-theory-for-programmers.pdf](https://github.com/hmemcpy/milewski-ctfp-pdf/raw/master/ctfp.pdf)</b>
+<b>Direct link: [category-theory-for-programmers.pdf](https://github.com/hmemcpy/milewski-ctfp-pdf/raw/master/category-theory-for-programmers.pdf)</b>
 
 This is an *unofficial* PDF version of "Category Theory for Programmers" by Bartosz Milewski, converted from his [blogpost series](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/).
 

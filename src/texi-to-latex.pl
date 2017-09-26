@@ -3,7 +3,7 @@
  ######################################################
 #                                                      #
 #  Texinfo to LaTeX conversion script tailored to      #
-#  handle the sicp.texi source. Does not work with     #
+#  handle the ctpf.texi source. Does not work with     #
 #  other Texinfo files, needs to be extended for       #
 #  general utility.                                    #
 #                                                      #

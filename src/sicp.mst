@@ -1,6 +1,0 @@
-headings_flag 1
-heading_prefix "{\\sffamily\\bfseries\\large "
-heading_suffix " \\hfil}\\nopagebreak\\smallskip\n"
-delim_0 "\\dotfill "
-delim_1 "\\dotfill "
-delim_2 "\\dotfill "
