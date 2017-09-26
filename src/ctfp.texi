@@ -132,6 +132,9 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \chapter{Monads Categorically}\label{monads-categorically}
 \subfile{content/3.6/Monads Categorically}
 
+\chapter{Comonads}\label{comonads}
+\subfile{content/3.7/Comonads}
+
 \backmatter
 
 @unnumbered Acknowledgments
