@@ -27,4 +27,4 @@ License
 
 The PDF book, `.tex`/`.texi` files, and associated images and figures in directories `src/fig` and `src/content` are licensed under Creative Commons Attribution-ShareAlike 4.0 International License ([cc by-sa](http://creativecommons.org/licenses/by-sa/4.0/)).
 
-The script files `scraper.py, ex-fig-ref.pl, survey.rb,` and `texi-to-latex.pl` are licensed under GNU General Public License version 3 (for details, see src/LICENSE).
+The script files `scraper.py` and `texi-to-latex.pl` are licensed under GNU General Public License version 3 (for details, see src/LICENSE).
