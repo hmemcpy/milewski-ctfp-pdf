@@ -95,7 +95,7 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \chapter{Products and Coproducts}\label{products-and-coproducts}
 \subfile{content/1.5/Products and Coproducts}
 
-\chapter{Simple Algebraic Data Types}
+\chapter{Simple Algebraic Data Types}\label{simple-algebraic-data-types}
 \subfile{content/1.6/Simple Algebraic Data Types}
 
 \chapter{Functors}
@@ -134,6 +134,10 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 
 \chapter{Comonads}\label{comonads}
 \subfile{content/3.7/Comonads}
+
+\chapter{F-Algebras}\label{f-algebras}
+\subfile{content/3.8/F-Algebras}
+
 
 \backmatter
 
