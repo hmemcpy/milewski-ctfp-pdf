@@ -138,6 +138,8 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \chapter{F-Algebras}\label{f-algebras}
 \subfile{content/3.8/F-Algebras}
 
+\chapter{Algebras for Monads}\label{algebras-for-monads}
+\subfile{content/3.9/Algebras for Monads}
 
 \backmatter
 
