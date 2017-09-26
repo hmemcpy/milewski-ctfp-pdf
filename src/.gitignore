@@ -14,10 +14,6 @@
 *.out
 *.swp
 *~
-fig/chap*/Fig*.pdf
-fig/icons/*_chess_queen.pdf
 coverpage.pdf
-sicp.tex
-sicp.fdb_latexmk
-exercises.tex
-figures.tex
+ctfp.tex
+ctfp.fdb_latexmk
