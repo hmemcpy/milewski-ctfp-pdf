@@ -144,6 +144,9 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \chapter{Ends and Coends}\label{ends-and-coends}
 \subfile{content/3.10/Ends and Coends}
 
+\chapter{Kan Extensions}\label{kan-extensions}
+\subfile{content/3.11/Kan Extensions}
+
 \backmatter
 
 @unnumbered Acknowledgments
