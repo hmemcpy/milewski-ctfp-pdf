@@ -141,6 +141,9 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \chapter{Algebras for Monads}\label{algebras-for-monads}
 \subfile{content/3.9/Algebras for Monads}
 
+\chapter{Ends and Coends}\label{ends-and-coends}
+\subfile{content/3.10/Ends and Coends}
+
 \backmatter
 
 @unnumbered Acknowledgments
