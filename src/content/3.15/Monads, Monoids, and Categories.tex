@@ -101,7 +101,7 @@ to \code{f}. Isomorphism of 1-cells is defined using 2-cells. In other
 words, there is a 2-cell:
 
 \begin{verbatim}
-ρ :: f ∘ ida -> f
+ρ :: f ◦ ida -> f
 \end{verbatim}
 
 that has an inverse.
@@ -150,7 +150,7 @@ h :: z -> x h':: z -> y
 such that:
 
 \begin{verbatim}
-g ∘ h = f' ∘ h'
+g ◦ h = f' ◦ h'
 \end{verbatim}
 
 which is universal among all such objects.
@@ -207,7 +207,7 @@ The second morphism maps the tensor product of \code{T\ ⊗\ T} to
 we get:
 
 \begin{verbatim}
-μ :: T ∘ T -> T
+μ :: T ◦ T -> T
 \end{verbatim}
 
 \includegraphics[width=1.35417in]{images/monad.png}\\
@@ -222,7 +222,7 @@ category. We can therefore define a monoid in \code{C(a,\ a)} by
 picking a 1-cell, \code{T}, and two 2-cells:
 
 \begin{verbatim}
-η :: I -> T μ :: T ∘ T -> T
+η :: I -> T μ :: T ◦ T -> T
 \end{verbatim}
 
 satisfying the monoid laws. We call \emph{this} a monad.
@@ -258,7 +258,7 @@ functions. The 2-cell \code{η} is a function between the apices
 commutation conditions --- in this case:
 
 \begin{verbatim}
-dom ∘ η = id cod ∘ η = id
+dom ◦ η = id cod ◦ η = id
 \end{verbatim}
 
 \includegraphics[width=2.27083in]{images/spanunit.png}\\

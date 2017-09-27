@@ -71,7 +71,7 @@ morphism \code{h} from \code{a} to \code{x}.
 So the naturality square for \code{α}:
 
 \begin{verbatim}
-αy ∘ C(a, f) = F f ∘ αx
+αy ◦ C(a, f) = F f ◦ αx
 \end{verbatim}
 
 becomes, point-wise, when acting on \code{h}:
@@ -85,13 +85,13 @@ hom-functor \code{C(a,-)} on a morphism \code{f} was defined as
 precomposition:
 
 \begin{verbatim}
-C(a, f) h = f ∘ h
+C(a, f) h = f ◦ h
 \end{verbatim}
 
 which leads to:
 
 \begin{verbatim}
-αy (f ∘ h) = (F f) (αx h)
+αy (f ◦ h) = (F f) (αx h)
 \end{verbatim}
 
 Just how strong this condition is can be seen by specializing it to the
@@ -174,7 +174,7 @@ hom-functor, the morphism \code{g} is mapped to a function
 
 Now let's consider the action of \code{C(a,\ g)} on our original
 \code{p} which, as you remember, corresponds to \code{ida}. It is
-defined as precomposition, \code{g∘ida}, which is equal to \code{g},
+defined as precomposition, \code{g◦ida}, which is equal to \code{g},
 which corresponds to our point \code{p\'}. So the morphism
 \code{g} is mapped to a function that, when acting on \code{p}
 produces \code{p\'}, which is \code{g}. We have come full
@@ -204,7 +204,7 @@ F g :: F a -> F x
 \end{verbatim}
 
 Again, \code{C(a,\ g)} acting on our \code{p} is given by the
-precomposition: \code{g\ ∘\ ida}, which corresponds to a point
+precomposition: \code{g\ ◦\ ida}, which corresponds to a point
 \code{p\'} in \code{C(a,\ x)}. Naturality determines the value
 of \code{αx} acting on \code{p\'} to be:
 

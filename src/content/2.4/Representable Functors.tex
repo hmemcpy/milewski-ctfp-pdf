@@ -92,7 +92,7 @@ composable, if they match end to end. It so happens that the target of
 \code{h} matches the source of \code{f}, so their composition:
 
 \begin{verbatim}
-f ∘ h :: a -> y
+f ◦ h :: a -> y
 \end{verbatim}
 
 is a morphism going from \code{a} to \code{y}. It is therefore a
@@ -111,7 +111,7 @@ C(a, f)
 and its action on a morphism \code{h} as:
 
 \begin{verbatim}
-C(a, f) h = f ∘ h
+C(a, f) h = f ◦ h
 \end{verbatim}
 
 Since this construction works in any category, it must also work in the
@@ -223,7 +223,7 @@ morphism \code{f} from \code{x} to \code{y}, the following diagram
 commutes:
 
 \begin{verbatim}
-F f ∘ αx = αy ∘ C(a, f)
+F f ◦ αx = αy ◦ C(a, f)
 \end{verbatim}
 
 In Haskell, we would replace natural transformations with polymorphic
@@ -260,7 +260,7 @@ beta :: forall x. F x -> (a -> x)
 It must respect naturality conditions, and it must be the inverse of α:
 
 \begin{verbatim}
-α ∘ β = id = β ∘ α
+α ◦ β = id = β ◦ α
 \end{verbatim}
 
 We will see later that a natural transformation from \code{C(a,\ -)}

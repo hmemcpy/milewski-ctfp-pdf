@@ -197,7 +197,7 @@ functors that preserve finite products and commute with the functors
 functor \code{F\ ::\ L\ ->\ L\'} such that:
 
 \begin{verbatim}
-F (m × n) = F m × F n F ∘ IL = I'L'
+F (m × n) = F m × F n F ◦ IL = I'L'
 \end{verbatim}
 
 Morphisms between Lawvere theories encapsulate the idea of the
@@ -285,7 +285,7 @@ Notice that the naturality condition guarantees the preservation of
 n-ary operations:
 
 \begin{verbatim}
-N f ∘ μn = μ1 ∘ M f
+N f ◦ μn = μ1 ◦ M f
 \end{verbatim}
 
 where \code{f\ ::\ n\ ->\ 1} is an n-ary operation in
@@ -429,7 +429,7 @@ adjunction is the result of the Yoneda lemma:
 
 Together, the forgetful and the free functor define a
 \href{https://bartoszmilewski.com/2016/12/27/monads-categorically/}{monad}
-\code{T\ =\ U∘F} on \textbf{Set}. Thus every Lawvere theory generates
+\code{T\ =\ U◦F} on \textbf{Set}. Thus every Lawvere theory generates
 a monad.
 
 It turns out that the category of

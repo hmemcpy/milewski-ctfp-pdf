@@ -611,7 +611,7 @@ In the case of \textbf{Cat} seen as a 2-category we have:
 Instead of a Hom-set between two categories C and D, we have a
 Hom-category --- the functor category D\textsuperscript{C}. We have
 regular functor composition: a functor F from D\textsuperscript{C}
-composes with a functor G from E\textsuperscript{D} to give G ∘ F from
+composes with a functor G from E\textsuperscript{D} to give G ◦ F from
 E\textsuperscript{C}. But we also have composition inside each
 Hom-category --- vertical composition of natural transformations, or
 2-morphisms, between functors.
@@ -650,10 +650,10 @@ the target of α is different from the source of β. In fact they are
 members of two different functor categories: D \textsuperscript{C} and E
 \textsuperscript{D}. We can, however, apply composition to the functors
 F' and G', because the target of F' is the source of G' --- it's the
-category D. What's the relation between the functors G'∘ F' and G ∘ F?
+category D. What's the relation between the functors G'◦ F' and G ◦ F?
 
 Having α and β at our disposal, can we define a natural transformation
-from G ∘ F to G'∘ F'? Let me sketch the construction.
+from G ◦ F to G'◦ F'? Let me sketch the construction.
 
 \begin{figure}[H]
 \centering
@@ -690,8 +690,8 @@ G'α\textsubscript{a} :: G'(F a) -> G'(F'a)
 \end{Verbatim}
 That's a lot of morphisms. Our goal is to find a morphism that goes from
 \code{G (F a)} to \code{G'(F'a)}, a candidate for the
-component of a natural transformation connecting the two functors G ∘ F
-and G'∘ F'. In fact there's not one but two paths we can take from
+component of a natural transformation connecting the two functors G ◦ F
+and G'◦ F'. In fact there's not one but two paths we can take from
 \code{G (F a)} to \code{G'(F'a)}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -701,8 +701,8 @@ G'α\textsubscript{a} ◦ β\textsubscript{F a}
 Luckily for us, they are equal, because the square we have formed turns
 out to be the naturality square for β.
 
-We have just defined a component of a natural transformation from G ∘ F
-to G'∘ F'. The proof of naturality for this transformation is pretty
+We have just defined a component of a natural transformation from G ◦ F
+to G'◦ F'. The proof of naturality for this transformation is pretty
 straightforward, provided you have enough patience.
 
 We call this natural transformation the \newterm{horizontal composition} of
@@ -746,7 +746,7 @@ for vertical composition, but not vice versa.
 Finally, the two compositions satisfy the interchange law:
 
 \begin{verbatim}
-(β' ⋅ α') ∘ (β ⋅ α) = (β' ∘ β) ⋅ (α' ∘ α)
+(β' ⋅ α') ◦ (β ⋅ α) = (β' ◦ β) ⋅ (α' ◦ α)
 \end{verbatim}
 
 I will quote Saunders Mac Lane here: The reader may enjoy writing down
