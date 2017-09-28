@@ -1,12 +1,4 @@
-\begin{quote}
-This is part 28 of Categories for Programmers. Previously:
-\href{https://bartoszmilewski.com/2017/04/17/kan-extensions/}{Kan
-Extensions}. See the
-\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
-of Contents}.
-\end{quote}
-
-A category is \newterm{small} if its objects form a set. But we know that
+\lettrine[lhang=0.17]{A}{ category} is \newterm{small} if its objects form a set. But we know that
 there are things larger than sets. Famously, a set of all sets cannot be
 formed within the standard set theory (the Zermelo-Fraenkel theory,
 optionally augmented with the Axiom of Choice). So a category of all
@@ -52,14 +44,13 @@ keep reformulating them in a point-free manner --- that is, without
 naming elements of sets.
 
 Let's start with the definition of composition. Normally, it takes a
-pair of morphisms, one from \code{C(b,\ c)} and one from
-\code{C(a,\ b)} and maps it to a morphism from \code{C(a,\ c)}. In
+pair of morphisms, one from \code{C(b, c)} and one from
+\code{C(a, b)} and maps it to a morphism from \code{C(a, c)}. In
 other words it's a mapping:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 C(b, c) × C(a, b) -> C(a, c)
-\end{verbatim}
-
+\end{Verbatim}
 This is a function between sets --- one of them being the cartesian
 product of two hom-sets. This formula can be easily generalized by
 replacing cartesian product with something more general. A categorical
@@ -70,10 +61,9 @@ Next come the identity morphisms. Instead of picking individual elements
 from hom-sets, we can define them using functions from the singleton set
 \textbf{1}:
 
-\begin{verbatim}
-ja :: 1 -> C(a, a)
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+j\textsubscript{a} :: 1 -> C(a, a)
+\end{Verbatim}
 Again, we could replace the singleton set with the terminal object, but
 we can go even further by replacing it with the unit \code{i} of the
 tensor product.
@@ -87,18 +77,16 @@ We've talked about monoidal categories before, but it's worth restating
 the definition. A monoidal category defines a tensor product that is a
 bifunctor:
 
-\begin{verbatim}
-⊗ :: V × V -> V
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+\ensuremath{\otimes} :: V × V -> V
+\end{Verbatim}
 We want the tensor product to be associative, but it's enough to satisfy
 associativity up to natural isomorphism. This isomorphism is called the
 associator. Its components are:
 
-\begin{verbatim}
-αa b c :: (a ⊗ b) ⊗ c -> a ⊗ (b ⊗ c)
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+α\textsubscript{a b c} :: (a \ensuremath{\otimes} b) \ensuremath{\otimes} c -> a \ensuremath{\otimes} (b \ensuremath{\otimes} c)
+\end{Verbatim}
 It must be natural in all three arguments.
 
 A monoidal category must also define a special unit object \code{i}
@@ -106,29 +94,34 @@ that serves as the unit of the tensor product; again, up to natural
 isomorphism. The two isomorphisms are called, respectively, the left and
 the right unitor, and their components are:
 
-\begin{verbatim}
-λa :: i ⊗ a -> a ρa :: a ⊗ i -> a
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+λ\textsubscript{a} :: i \ensuremath{\otimes} a -> a
+ρ\textsubscript{a} :: a \ensuremath{\otimes} i -> a
+\end{Verbatim}
 The associator and the unitors must satisfy coherence conditions:
 
-\includegraphics[width=5.31250in]{images/assoc.jpg}
+\begin{figure}[H]
+\centering
+\includegraphics[width=80mm]{images/assoc.jpg}
+\end{figure}
 
-\includegraphics[width=4.23958in]{images/idcoherence.jpg}
+\begin{figure}[H]
+\centering
+\includegraphics[width=60mm]{images/idcoherence.jpg}
+\end{figure}
 
+\noindent
 A monoidal category is called \newterm{symmetric} if there is a natural
 isomorphism with components:
 
-\begin{verbatim}
-γa b :: a ⊗ b -> b ⊗ a
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+γ\textsubscript{a b} :: a \ensuremath{\otimes} b -> b \ensuremath{\otimes} a
+\end{Verbatim}
 whose ``square is one'':
 
-\begin{verbatim}
-γb a ◦ γa b = ida⊗b
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+γ\textsubscript{b a} ◦ γ\textsubscript{a b} = id\textsubscript{a\ensuremath{\otimes}b}
+\end{Verbatim}
 and which is consistent with the monoidal structure.
 
 An interesting thing about monoidal categories is that you may be able
@@ -139,28 +132,25 @@ the categorical product. A category in which such an object existed for
 any pair of objects was called cartesian closed. Here is the adjunction
 that defines the internal hom in a monoidal category:
 
-\begin{verbatim}
-V(a ⊗ b, c) ~ V(a, [b, c])
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+V(a \ensuremath{\otimes} b, c) ~ V(a, [b, c])
+\end{Verbatim}
 Following
 \href{http://www.tac.mta.ca/tac/reprints/articles/10/tr10.pdf}{G. M.
-Kelly}, I'm using the notation \code{{[}b,\ c{]}} for the internal
+Kelly}, I'm using the notation \code{{[}b, c{]}} for the internal
 hom. The counit of this adjunction is the natural transformation whose
 components are called evaluation morphisms:
 
-\begin{verbatim}
-εa b :: ([a, b] ⊗ a) -> b
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+ε\textsubscript{a b} :: ([a, b] \ensuremath{\otimes} a) -> b
+\end{Verbatim}
 Notice that, if the tensor product is not symmetric, we may define
-another internal hom, denoted by \code{{[}{[}a,\ c{]}{]}}, using the
+another internal hom, denoted by \code{{[}{[}a, c{]}{]}}, using the
 following adjunction:
 
-\begin{verbatim}
-V(a ⊗ b, c) ~ V(b, [[a, c]])
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+V(a \ensuremath{\otimes} b, c) ~ V(b, [[a, c]])
+\end{Verbatim}
 A monoidal category in which both are defined is called biclosed. An
 example of a category that is not biclosed is the category of
 endofunctors in \textbf{Set}, with functor composition serving as tensor
@@ -170,7 +160,7 @@ product. That's the category we used to define monads.
 
 A category \emph{C} enriched over a monoidal category \emph{V} replaces
 hom-sets with hom-objects. To every pair of objects \code{a} and
-\code{b} in \emph{C} we associate an object \code{C(a,\ b)} in
+\code{b} in \emph{C} we associate an object \code{C(a, b)} in
 \emph{V}. We use the same notation for hom-objects as we used for
 hom-sets, with the understanding that they don't contain morphisms. On
 the other hand, \emph{V} is a regular (non-enriched) category with
@@ -180,52 +170,70 @@ swept them under the rug.
 Since we cannot talk about individual morphisms in \emph{C}, composition
 of morphisms is replaced by a family of morphisms in \emph{V}:
 
-\begin{verbatim}
-◦ :: C(b, c) ⊗ C(a, b) -> C(a, c)
-\end{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
+◦ :: C(b, c) \ensuremath{\otimes} C(a, b) -> C(a, c)
+\end{Verbatim}
 
-\includegraphics[width=4.11458in]{images/composition.jpg}\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=60mm]{images/composition.jpg}
+\end{figure}
+
+\noindent
 Similarly, identity morphisms are replaced by a family of morphisms in
 \emph{V}:
 
-\begin{verbatim}
-ja :: i -> C(a, a)
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+j\textsubscript{a} :: i -> C(a, a)
+\end{Verbatim}
 where \code{i} is the tensor unit in \emph{V}.
 
+\begin{figure}[H]
+\centering
 \includegraphics[width=2.64583in]{images/id.jpg}
+\end{figure}
 
+\noindent
 Associativity of composition is defined in terms of the associator in
 \emph{V}:
 
-\includegraphics[width=5.35417in]{images/compcoherence.jpg}
+\begin{figure}[H]
+\centering
+\includegraphics[width=80mm]{images/compcoherence.jpg}
+\end{figure}
 
+\noindent
 Unit laws are likewise expressed in terms of unitors:
 
-\includegraphics[width=4.64583in]{images/rightid.jpg}
+\begin{figure}[H]
+\centering
+\includegraphics[width=70mm]{images/rightid.jpg}
+\end{figure}
 
-\includegraphics[width=4.65625in]{images/leftid.jpg}
+\begin{figure}[H]
+\centering
+\includegraphics[width=70mm]{images/leftid.jpg}
+\end{figure}
 
 \section{Preorders}\label{preorders}
 
 A preorder is defined as a thin category, one in which every hom-set is
 either empty or a singleton. We interpret a non-empty set
-\code{C(a,\ b)} as the proof that \code{a} is less than or equal to
+\code{C(a, b)} as the proof that \code{a} is less than or equal to
 \code{b}. Such a category can be interpreted as enriched over a very
 simple monoidal category that contains just two objects, 0 and 1
 (sometimes called False and True). Besides the mandatory identity
 morphisms, this category has a single morphism going from 0 to 1, let's
 call it \code{0->1}. A simple monoidal structure can be
 established in it, with the tensor product modeling the simple
-arithmetic of 0 and 1 (i.e., the only non-zero product is \code{1⊗1}).
+arithmetic of 0 and 1 (i.e., the only non-zero product is \code{1\ensuremath{\otimes}1}).
 The identity object in this category is 1. This is a strict monoidal
 category, that is, the associator and the unitors are identity
 morphisms.
 
 Since in a preorder the-hom set is either empty or a singleton, we can
 easily replace it with a hom-object from our tiny category. The enriched
-preorder \emph{C} has a hom-object \code{C(a,\ b)} for any pair of
+preorder \emph{C} has a hom-object \code{C(a, b)} for any pair of
 objects \code{a} and \code{b}. If \code{a} is less than or equal
 to \code{b}, this object is 1; otherwise it's 0.
 
@@ -234,14 +242,14 @@ is 0, unless both of them are 1, in which case it's 1. If it's 0, then
 we have two options for the composition morphism: it could be either
 \code{id0} or \code{0->1}. But if it's 1, then the only
 option is \code{id1}. Translating this back to relations, this says
-that if \code{a\ \textless{}=\ b} and \code{b\ \textless{}=\ c} then
-\code{a\ \textless{}=\ c}, which is exactly the transitivity law we
+that if \code{a <= b} and \code{b <= c} then
+\code{a <= c}, which is exactly the transitivity law we
 need.
 
-What about the identity? It's a morphism from 1 to \code{C(a,\ a)}.
+What about the identity? It's a morphism from 1 to \code{C(a, a)}.
 There is only one morphism going from 1, and that's the identity
-\code{id1}, so \code{C(a,\ a)} must be 1. It means that
-\code{a\ \textless{}=\ a}, which is the reflexivity law for a
+\code{id1}, so \code{C(a, a)} must be 1. It means that
+\code{a <= a}, which is the reflexivity law for a
 preorder. So both transitivity and reflexivity are automatically
 enforced, if we implement a preorder as an enriched category.
 
@@ -271,33 +279,32 @@ number? Only if we can construct a monoidal category \emph{V} in which
 these numbers are objects. Non-negative real numbers (plus infinity)
 form a total order, so they can be treated as a thin category. A
 morphism between two such numbers \code{x} and \code{y} exists if
-and only if \code{x\ >=\ y} (note: this is the opposite
+and only if \code{x >= y} (note: this is the opposite
 direction to the one traditionally used in the definition of a
 preorder). The monoidal structure is given by addition, with zero
 serving as the unit object. In other words, the tensor product of two
 numbers is their sum.
 
 A metric space is a category enriched over such monoidal category. A
-hom-object \code{C(a,\ b)} from object \code{a} to \code{b} is a
+hom-object \code{C(a, b)} from object \code{a} to \code{b} is a
 non-negative (possibly infinite) number that we will call the distance
 from \code{a} to \code{b}. Let's see what we get for identity and
 composition in such a category.
 
 By our definitions, a morphism from the tensorial unit, which is the
-number zero, to a hom-object \code{C(a,\ a)} is the relation:
+number zero, to a hom-object \code{C(a, a)} is the relation:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 0 >= C(a, a)
-\end{verbatim}
-
-Since \code{C(a,\ a)} is a non-negative number, this condition tells
+\end{Verbatim}
+Since \code{C(a, a)} is a non-negative number, this condition tells
 us that the distance from \code{a} to \code{a} is always zero.
 Check!
 
 Now let's talk about composition. We start with the tensor product of
-two abutting hom-objects, \code{C(b,\ c)⊗C(a,\ b)}. We have defined
+two abutting hom-objects, \code{C(b, c)\ensuremath{\otimes}C(a, b)}. We have defined
 the tensor product as the sum of the two distances. Composition is a
-morphism in \emph{V} from this product to \code{C(a,\ c)}. A morphism
+morphism in \emph{V} from this product to \code{C(a, c)}. A morphism
 in \emph{V} is defined as the greater-or-equal relation. In other words,
 the sum of distances from \code{a} to \code{b} and from \code{b}
 to \code{c} is greater than or equal to the distance from \code{a}
@@ -321,20 +328,26 @@ An \newterm{enriched functor} \code{F} between two categories \emph{C}
 and \emph{D}, besides mapping objects to objects, also assigns, to every
 pair of objects in \emph{C}, a morphism in \emph{V}:
 
-\begin{verbatim}
-Fa b :: C(a, b) -> D(F a, F b)
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+F\textsubscript{a b} :: C(a, b) -> D(F a, F b)
+\end{Verbatim}
 A functor is a structure-preserving mapping. For regular functors it
 meant preserving composition and identity. In the enriched setting, the
 preservation of composition means that the following diagram commute:
 
-\includegraphics[width=5.31250in]{images/functorcomp.jpg}
+\begin{figure}[H]
+\centering
+\includegraphics[width=80mm]{images/functorcomp.jpg}
+\end{figure}
 
+\noindent
 The preservation of identity is replaced by the preservation of the
 morphisms in \emph{V} that ``select'' the identity:
 
-\includegraphics[width=4.04167in]{images/functorid.jpg}
+\begin{figure}[H]
+\centering
+\includegraphics[width=70mm]{images/functorid.jpg}
+\end{figure}
 
 \section{Self Enrichment}\label{self-enrichment}
 
@@ -343,78 +356,68 @@ hom-sets with internal homs (see the definition above). To make this
 work, we have to define the composition law for internal homs. In other
 words, we have to implement a morphism with the following signature:
 
-\begin{verbatim}
-[b, c] ⊗ [a, b] -> [a, c]
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+[b, c] \ensuremath{\otimes} [a, b] -> [a, c]
+\end{Verbatim}
 This is not much different from any other programming task, except that,
 in category theory, we usually use point free implementations. We start
 by specifying the set whose element it's supposed to be. In this case,
 it's a member of the hom-set:
 
-\begin{verbatim}
-V([b, c] ⊗ [a, b], [a, c])
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+V([b, c] \ensuremath{\otimes} [a, b], [a, c])
+\end{Verbatim}
 This hom-set is isomorphic to:
 
-\begin{verbatim}
-V(([b, c] ⊗ [a, b]) ⊗ a, c)
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+V(([b, c] \ensuremath{\otimes} [a, b]) \ensuremath{\otimes} a, c)
+\end{Verbatim}
 I just used the adjunction that defined the internal hom
-\code{{[}a,\ c{]}}. If we can build a morphism in this new set, the
+\code{{[}a, c{]}}. If we can build a morphism in this new set, the
 adjunction will point us at the morphism in the original set, which we
 can then use as composition. We construct this morphism by composing
 several morphisms that are at our disposal. To begin with, we can use
-the associator \code{α{[}b,\ c{]}\ {[}a,\ b{]}\ a} to reassociate the
+the associator \code{α\textsubscript{{[}b, c{]} {[}a, b{]} a}} to reassociate the
 expression on the left:
 
-\begin{verbatim}
-([b, c] ⊗ [a, b]) ⊗ a -> [b, c] ⊗ ([a, b] ⊗ a)
-\end{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
+([b, c] \ensuremath{\otimes} [a, b]) \ensuremath{\otimes} a -> [b, c] \ensuremath{\otimes} ([a, b] \ensuremath{\otimes} a)
+\end{Verbatim}
+We can follow it with the co-unit of the adjunction \code{ε\textsubscript{a b}}:
 
-We can follow it with the co-unit of the adjunction \code{εa\ b}:
-
-\begin{verbatim}
-[b, c] ⊗ ([a, b] ⊗ a) -> [b, c] ⊗ b
-\end{verbatim}
-
-And use the counit \code{εb\ c} again to get to \code{c}. We have
+\begin{Verbatim}[commandchars=\\\{\}]
+[b, c] \ensuremath{\otimes} ([a, b] \ensuremath{\otimes} a) -> [b, c] \ensuremath{\otimes} b
+\end{Verbatim}
+And use the counit \code{εb c} again to get to \code{c}. We have
 thus constructed a morphism:
 
-\begin{verbatim}
-εb c . (id[b, c] ⊗ εa b) . α[b, c] [a, b] a
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+ε\textsubscript{b c} . (id\textsubscript{[b, c]} \ensuremath{\otimes} ε\textsubscript{a b}) . α\textsubscript{[b, c] [a, b] a}
+\end{Verbatim}
 that is an element of the hom-set:
 
-\begin{verbatim}
-V(([b, c] ⊗ [a, b]) ⊗ a, c)
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+V(([b, c] \ensuremath{\otimes} [a, b]) \ensuremath{\otimes} a, c)
+\end{Verbatim}
 The adjunction will give us the composition law we were looking for.
 
 Similarly, the identity:
 
-\begin{verbatim}
-ja :: i -> [a, a]
-\end{verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+j\textsubscript{a} :: i -> [a, a]
+\end{Verbatim}
 is a member of the following hom-set:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 V(i, [a, a])
-\end{verbatim}
-
+\end{Verbatim}
 which is isomorphic, through adjunction, to:
 
-\begin{verbatim}
- V(i ⊗ a, a)
-\end{verbatim}
-
-We know that this hom-set contains the left identity \code{λa}. We can
-define \code{ja} as its image under the adjunction.
+\begin{Verbatim}[commandchars=\\\{\}]
+V(i \ensuremath{\otimes} a, a)
+\end{Verbatim}
+We know that this hom-set contains the left identity \code{λ\textsubscript{a}}. We can
+define \code{j\textsubscript{a}} as its image under the adjunction.
 
 A practical example of self-enrichment is the category \textbf{Set} that
 serves as the prototype for types in programming languages. We've seen
@@ -443,5 +446,3 @@ category enriched over \textbf{Set}, \textbf{Cat} can be treated as a
 category enriched over \textbf{Cat}. Even more generally, just like
 every category can be treated as enriched over \textbf{Set}, every
 2-category can be considered enriched over \textbf{Cat}.
-
-Next: \href{https://bartoszmilewski.com/2017/07/22/topoi/}{Topoi}.

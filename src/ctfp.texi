@@ -153,6 +153,9 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \chapter{Kan Extensions}\label{kan-extensions}
 \subfile{content/3.11/Kan Extensions}
 
+\chapter{Enriched Categories}\label{enriched-categories}
+\subfile{content/3.12/Enriched Categories}
+
 \backmatter
 
 @unnumbered Acknowledgments
