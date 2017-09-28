@@ -1,17 +1,18 @@
-\lettrine[lhang=0.17]{I}{t} seems like in category theory everything is related to everything and
+\lettrine[lhang=0.17]{I}{seems like} in category theory everything is related to everything and
 everything can be viewed from many angles. Take for instance the
-universal construction of the \namelink{chap:0105}{product}.
-Now that we know more about \namelink{chap:0107}{functors} and
-\namelink{chap:0110}{natural transformations}, can we simplify and, possibly, generalize it? Let us
+universal construction of the \hyperref[products-and-coproducts]{product}.
+Now that we know more about \hyperref[chap-functors]{functors} and
+\hyperref[chap-natural-transformations]{natural transformations}, can we simplify and, possibly, generalize it? Let us
 try.
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics[width=1.56250in]{images/productpattern.jpg}}
+\centering
+\fbox{\includegraphics[width=1.56250in]{images/productpattern.jpg}}
 \end{figure}
 
+\noindent
 The construction of a product starts with the selection of two objects
-\texttt{a} and \texttt{b}, whose product we want to construct. But what
+\code{a} and \code{b}, whose product we want to construct. But what
 does it mean to \emph{select objects}? Can we rephrase this action in
 more categorical terms? Two objects form a pattern --- a very simple
 pattern. We can abstract this pattern into a category --- a very simple
@@ -26,10 +27,11 @@ functor collapses objects, which is fine too). It also maps morphisms
 morphisms.
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics[width=1.56250in]{images/two.jpg}}
+\centering
+\fbox{\includegraphics[width=1.56250in]{images/two.jpg}}
 \end{figure}
 
+\noindent
 What's great about this approach is that it builds on categorical
 notions, eschewing the imprecise descriptions like "selecting
 objects", taken straight from the hunter-gatherer lexicon of our
@@ -48,10 +50,11 @@ done with \mathtext{\Delta_c}. Remember, \mathtext{\Delta_c} maps all
 objects into \mathtext{c} and all morphisms into \mathtext{id_c}.
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics[width=1.56250in]{images/twodelta.jpg}}
+\centering
+\includegraphics[width=1.56250in]{images/twodelta.jpg}
 \end{figure}
 
+\noindent
 Now we have two functors, \mathtext{\Delta_c} and \mathtext{D} going between
 \mathtext{2} and \mathtext{C} so it's only natural to ask about natural
 transformations between them. Since there are only two objects in
@@ -70,10 +73,11 @@ is trivially satisfied, because there are no morphisms (other than the
 identities) in \mathtext{2}.
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics[width=1.56250in]{images/productcone.jpg}}
+\centering
+\includegraphics[width=1.56250in]{images/productcone.jpg}
 \end{figure}
 
+\noindent
 A generalization of this construction to categories other than
 \mathtext{2} --- ones that, for instance, contain non-trivial morphisms
 --- will impose naturality conditions on the transformation between
@@ -93,10 +97,11 @@ morphisms connecting \mathtext{c} to the diagram: the image of \mathtext{I}
 under \mathtext{D}.
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics[width=1.56250in]{images/cone.jpg}}
+\centering
+\includegraphics[width=1.56250in]{images/cone.jpg}
 \end{figure}
 
+\noindent
 Naturality requires that all triangles (the walls of the pyramid) in
 this diagram commute. Indeed, take any morphism \mathtext{f} in \mathtext{I}.
 The functor \mathtext{D} maps it to a morphism \mathtext{D f} in \mathtext{C}, a
@@ -107,11 +112,12 @@ the naturality square becomes a commuting triangle. The two arms of this
 triangle are the components of the natural transformation.
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics[width=1.56250in]{images/conenaturality.jpg}}
+\centering
+\fbox{\includegraphics[width=1.56250in]{images/conenaturality.jpg}}
 \end{figure}
 
-So that's one cone. What we are interested in is the \emph{universal
+\noindent
+So that's one cone. What we are interested in is the \newterm{universal
 cone} --- just like we picked a universal object for our definition of a
 product.
 
@@ -144,14 +150,14 @@ This condition translates, in the general case, to the condition that
 the triangles whose one side is the factorizing morphism all commute.
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics[width=2.48958in]{images/conecommutativity.jpg}}
-    \captionsetup{labelformat=empty,font=scriptsize}
-    \caption{The commuting triangle connecting two cones, with the factorizing
+\centering
+\fbox{\includegraphics[width=2.48958in]{images/conecommutativity.jpg}}
+\caption{The commuting triangle connecting two cones, with the factorizing
 morphism \code{h} (here, the lower cone is the universal one, with
 \code{Lim D} as its apex)}
 \end{figure}
 
+\noindent
 We'll take those factorizing morphisms as the morphisms in our category
 of cones. It's easy to check that those morphisms indeed compose, and
 that the identity morphism is a factorizing morphism as well. Cones
@@ -173,7 +179,7 @@ diagram is the product of two objects. The product (together with the
 two projections) contains the information about both objects. And being
 universal means that it has no extraneous junk.
 
-\subsection{Limit as a Natural Isomorphism}\label{limit-as-a-natural-isomorphism}
+\section{Limit as a Natural Isomorphism}\label{limit-as-a-natural-isomorphism}
 
 There is still something unsatisfying about this definition of a limit.
 I mean, it's workable, but we still have this commutativity condition
@@ -187,7 +193,7 @@ clear --- there's no guarantee of that), one of those cones is the
 universal cone. For every other cone we have a unique factorizing
 morphism that maps its apex, let's call it \mathtext{c}, to the apex of
 the universal cone, which we named \code{Lim D}. (In fact, I can skip
-the word "other", because the identity morphism maps the universal
+the word ``other'', because the identity morphism maps the universal
 cone to itself and it trivially factorizes through itself.) Let me
 repeat the important part: given any cone, there is a unique morphism of
 a special kind. We have a mapping of cones to special morphisms, and
@@ -209,8 +215,9 @@ it maps objects to sets. In fact it's a contravariant functor. Here's
 how we define its action on morphisms: Let's take a morphism \code{f}
 from \code{c'} to \code{c}:
 
-\mint{haskell}|f :: c' -> c|
-
+\begin{verbatim}
+f :: c' -> c
+\end{verbatim}
 Our functor maps \code{c'} to the set
 \code{C(c', Lim D)}. To define the action of this functor on
 \code{f} (in other words, to lift \code{f}), we have to define the
@@ -220,28 +227,30 @@ corresponding mapping between \code{C(c, Lim D)} and
 \code{C(c', Lim D)}. An element of a hom-set is a morphism, so
 we have:
 
-\mint{haskell}|u :: c -> Lim D|
-
+\begin{verbatim}
+u :: c -> Lim D
+\end{verbatim}
 We can precompose \code{u} with \code{f} to get:
 
-\mint{haskell}|u . f :: c' -> Lim D|
-
+\begin{verbatim}
+u . f :: c' -> Lim D
+\end{verbatim}
 And that's an element of \code{C(c', Lim D)}--- so indeed, we
 have found a mapping of morphisms:
 
-\begin{minted}{haskell}
+\begin{verbatim}
 contramap :: (c' -> c) -> (c -> Lim D) -> (c' -> Lim D) 
 contramap f u = u . f
-\end{minted}
-
+\end{verbatim}
 Notice the inversion in the order of \code{c} and \code{c'}
 characteristic of a \emph{contravariant} functor.
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics[width=2.59375in]{images/homsetmapping.jpg}}
+\centering
+\fbox{\includegraphics[width=2.59375in]{images/homsetmapping.jpg}}
 \end{figure}
 
+\noindent
 To define a natural transformation, we need another functor that's also
 a mapping from \mathtext{C} to \mathtext{Set}. But this time we'll consider a
 set of cones. Cones are just natural transformations, so we are looking
@@ -250,62 +259,57 @@ from \code{c} to this particular set of natural transformations is a
 (contravariant) functor. How can we show that? Again, let's define its
 action on a morphism:
 
-\mint{haskell}|f :: c' -> c|
-
+\begin{verbatim}
+f :: c' -> c
+\end{verbatim}
 The lifting of \code{f} should be a mapping of natural transformations
 between two functors that go from \mathtext{I} to \mathtext{C}:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
-Nat(|\ensuremath{\Delta_c}|, D) -> Nat(|\ensuremath{\Delta_{c'}}|, D)
-\end{minted}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+Nat(\ensuremath{\Delta_c}, D) -> Nat(\ensuremath{\Delta_{c'}}, D)
+\end{Verbatim}
 How do we map natural transformations? Every natural transformation is a
 selection of morphisms --- its components --- one morphism per element
 of \mathtext{I}. A component of some \mathtext{\alpha} (a member of \code{ Nat(\ensuremath{\Delta_c}, D)}) at
 \code{a} (an object in \mathtext{I}) is a morphism:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
-|\ensuremath{\alpha_a}|:: |\ensuremath{\Delta_c a}| -> D a
-\end{minted}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+\ensuremath{\alpha_a}:: \ensuremath{\Delta_c a} -> D a
+\end{Verbatim}
 or, using the definition of the constant functor \mathtext{\Delta},
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
-|\ensuremath{\alpha_a}| :: c -> D a
-\end{minted}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+\ensuremath{\alpha_a} :: c -> D a
+\end{Verbatim}
 Given \code{f} and \mathtext{\alpha}, we have to construct a \mathtext{\beta}, a member of
-\code{Nat(\ensuremath{\Delta_{c'}},\ D)}. Its component at \code{a} should be a
+\code{Nat(\ensuremath{\Delta_{c'}}, D)}. Its component at \code{a} should be a
 morphism:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
-|\ensuremath{\beta_a}| :: c' -> D a
-\end{minted}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+\ensuremath{\beta_a} :: c' -> D a
+\end{Verbatim}
 We can easily get the latter from the former by precomposing it with
 \code{f}:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 |\ensuremath{\beta_a}| = |\ensuremath{\alpha_a}| . f
-\end{minted}
-
-
+\end{Verbatim}
 It's relatively easy to show that those components indeed add up to a
 natural transformation.
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics[width=1.56250in]{images/natmapping.jpg}}
+\centering
+\fbox{\includegraphics[width=1.56250in]{images/natmapping.jpg}}
 \end{figure}
 
+\noindent
 Given our morphism \code{f}, we have thus built a mapping between two
 natural transformations, component-wise. This mapping defines
 \code{contramap} for the functor:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
-c -> Nat(|\ensuremath{\Delta_c}|, D)
-\end{minted}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+c -> Nat(\ensuremath{\Delta_c}, D)
+\end{Verbatim}
 What I have just done is to show you that we have two (contravariant)
 functors from \mathtext{C} to \textbf{Set}. I haven't made any assumptions
 --- these functors always exist.
@@ -313,8 +317,8 @@ functors from \mathtext{C} to \textbf{Set}. I haven't made any assumptions
 Incidentally, the first of these functors plays an important role in
 category theory, and we'll see it again when we talk about Yoneda's
 lemma. There is a name for contravariant functors from any category
-\mathtext{C} to \textbf{Set}: they are called "presheaves". This one is
-called a \emph{representable presheaf}. The second functor is also a
+\mathtext{C} to \textbf{Set}: they are called ``presheaves''. This one is
+called a \newterm{representable presheaf}. The second functor is also a
 presheaf.
 
 Now that we have two functors, we can talk about natural transformations
@@ -323,10 +327,9 @@ between them. So without further ado, here's the conclusion: A functor
 only if there is a natural isomorphism between the two functors I have
 just defined:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
-C(c, Lim D) |\ensuremath{\backsimeq}| Nat(|\ensuremath{\Delta_c}|, D)
-\end{minted}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+C(c, Lim D) \ensuremath{\backsimeq} Nat(\ensuremath{\Delta_c}, D)
+\end{Verbatim}
 Let me remind you what a natural isomorphism is. It's a natural
 transformation whose every component is an isomorphism, that is to say
 an invertible morphism.
@@ -354,7 +357,7 @@ As a preview of coming attractions, let me mention that the set
 category; so our natural isomorphism relates two hom-sets, which points
 at an even more general relationship called an adjunction.
 
-\subsection{Examples of Limits}\label{examples-of-limits}
+\section{Examples of Limits}\label{examples-of-limits}
 
 We've seen that the categorical product is a limit of a diagram
 generated by a simple category we called \mathtext{2}.
@@ -374,41 +377,39 @@ between them (and, as always, the identity morphisms). This category
 selects a diagram in \mathtext{C} consisting of two objects, \code{a} and
 \code{b}, and two morphisms:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{verbatim}
 f :: a -> b 
 g :: a -> b
-\end{minted}
-
-To build a cone over this diagram, we have to add the apex, \texttt{c}
+\end{verbatim}
+To build a cone over this diagram, we have to add the apex, \code{c}
 and two projections:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 p :: c -> a 
 q :: c -> b
-\end{minted}
+\end{Verbatim}
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics[width=2.27083in]{images/equalizercone.jpg}}
+\centering
+\fbox{\includegraphics[width=2.27083in]{images/equalizercone.jpg}}
 \end{figure}
 
+\noindent
 We have two triangles that must commute:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 q = f . p 
 q = g . p
-\end{minted}
-
+\end{Verbatim}
 This tells us that \code{q} is uniquely determined by one of these
 equations, say, \code{q = f . p}, and we can omit it from the
 picture. So we are left with just one condition:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 f . p = g . p
-\end{minted}
-
+\end{Verbatim}
 The way to think about it is that, if we restrict our attention to
-\textbf{Set}, the image of the function \texttt{p} selects a subset of
+\textbf{Set}, the image of the function \code{p} selects a subset of
 \code{a}. When restricted to this subset, the functions \code{f} and
 \code{g} are equal.
 
@@ -416,54 +417,50 @@ For instance, take \code{a} to be the two-dimensional plane
 parameterized by coordinates \code{x} and \code{y}. Take \code{b}
 to be the real line, and take:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 f (x, y) = 2 * y + x 
 g (x, y) = y - x
-\end{minted}
-
+\end{Verbatim}
 The equalizer for these two functions is the set of real numbers (the
 apex, \code{c}) and the function:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 p t = (t, (-2) * t)
-\end{minted}
-
+\end{Verbatim}
 Notice that \code{(p t)} defines a straight line in the
 two-dimensional plane. Along this line, the two functions are equal.
 
 Of course, there are other sets \code{c'} and functions
-\texttt{p'} that may lead to the equality:
+\code{p'} that may lead to the equality:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 f . p' = g . p'
-\end{minted}
-
-but they all uniquely factor out through \texttt{p}. For instance, we
-can take the singleton set \texttt{()} as \texttt{c\&apos;} and the
+\end{Verbatim}
+but they all uniquely factor out through \code{p}. For instance, we
+can take the singleton set \code{()} as \code{c'} and the
 function:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 p'() = (0, 0)
-\end{minted}
-
+\end{Verbatim}
 It's a good cone, because \code{f (0, 0) = g (0, 0)}. But it's
 not universal, because of the unique factorization through \code{h}:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 p' = p . h
-\end{minted}
-
+\end{Verbatim}
 with
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 h () = 0
-\end{minted}
+\end{Verbatim}
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics[width=2.19792in]{images/equilizerlimit.jpg}}
+\centering
+\fbox{\includegraphics[width=2.19792in]{images/equilizerlimit.jpg}}
 \end{figure}
 
+\noindent
 An equalizer can thus be used to solve equations of the type
 \code{f x = g x}. But it's much more general, because it's defined
 in terms of objects and morphisms rather than algebraically.
@@ -472,46 +469,46 @@ An even more general idea of solving an equation is embodied in another
 limit --- the pullback. Here, we still have two morphisms that we want
 to equate, but this time their domains are different. We start with a
 three-object category of the shape:
-\code{1-\textgreater{}2\textless{}-3}. The diagram corresponding to
+\code{1->2<-3}. The diagram corresponding to
 this category consists of three objects, \code{a}, \code{b}, and
 \code{c}, and two morphisms:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
-f :: a -> b 
+\begin{Verbatim}[commandchars=\\\{\}]
+f :: a -> b
 g :: c -> b
-\end{minted}
-
+\end{Verbatim}
 This diagram is often called a \emph{cospan}.
 
-A cone built on top of this diagram consists of the apex, \texttt{d},
+A cone built on top of this diagram consists of the apex, \code{d},
 and three morphisms:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
-p :: d -> a 
-q :: d -> c 
+\begin{Verbatim}[commandchars=\\\{\}]
+p :: d -> a
+q :: d -> c
 r :: d -> b
-\end{minted}
+\end{Verbatim}
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics[width=2.47917in]{images/pullbackcone.jpg}}
+\centering
+\fbox{\includegraphics[width=2.47917in]{images/pullbackcone.jpg}}
 \end{figure}
 
+\noindent
 Commutativity conditions tell us that \code{r} is completely
 determined by the other morphisms, and can be omitted from the picture.
 So we are only left with the following condition:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 g . q = f . p
-\end{minted}
-
+\end{Verbatim}
 A pullback is a universal cone of this shape.
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics[width=2.12500in]{images/pullbacklimit.jpg}}
+\centering
+\fbox{\includegraphics[width=2.12500in]{images/pullbacklimit.jpg}}
 \end{figure}
 
+\noindent
 Again, if you narrow your focus down to sets, you can think of the
 object \code{d} as consisting of pairs of elements from \code{a} and
 \code{c} for which \code{f} acting on the first component is equal
@@ -520,16 +517,15 @@ general, consider the special case in which \code{g} is a constant
 function, say \code{g \_ = 1.23} (assuming that \code{b} is a set
 of real numbers). Then you are really solving the equation:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 f x = 1.23
-\end{minted}
-
+\end{Verbatim}
 In this case, the choice of \code{c} is irrelevant (as long as it's
 not an empty set), so we can take it to be a singleton set. The set
 \code{a} could, for instance, be the set of three-dimensional vectors,
 and \code{f} the vector length. Then the pullback is the set of pairs
 \code{(v, ())}, where \code{v} is a vector of length 1.23 (a
-solution to the equation \code{sqrt (\ensuremath{x^2+y^2+z^2}) = 1.23}), and
+solution to the equation \code{sqrt ({x\textsuperscript{2}+y\textsuperscript{2}+z\textsuperscript{2}}) = 1.23}), and
 \code{()} is the dummy element of the singleton set.
 
 But pullbacks have more general applications, also in programming. For
@@ -550,7 +546,7 @@ What would it mean to have D be a pullback in this diagram? It would
 mean that any class E that multiply inherits from B and C is also a
 subclass of D. This is not directly expressible in C++, where subtyping
 is nominal (the C++ compiler wouldn't infer this kind of class
-relationship --- it would require "duck typing"). But we could go
+relationship --- it would require ``duck typing''). But we could go
 outside of the subtyping relationship and instead ask whether a cast
 from E to D would be safe or not. This cast would be safe if D were the
 bare-bone combination of B and C, with no additional data and no
@@ -558,63 +554,58 @@ overriding of methods. And, of course, there would be no pullback if
 there is a name conflict between some methods of B and C.
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics[width=1.61458in]{images/classes.jpg}}
+\centering
+\fbox{\includegraphics[width=1.61458in]{images/classes.jpg}}
 \end{figure}
 
+\noindent
 There's also a more advanced use of a pullback in type inference. There
 is often a need to \emph{unify} types of two expressions. For instance,
 suppose that the compiler wants to infer the type of a function:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 twice f x = f (f x)
-\end{minted}
-
+\end{Verbatim}
 It will assign preliminary types to all variables and sub-expressions.
 In particular, it will assign:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
-f       :: t0 
-x       :: t1 
-f x     :: t2 
+\begin{Verbatim}[commandchars=\\\{\}]
+f       :: t0
+x       :: t1
+f x     :: t2
 f (f x) :: t3
-\end{minted}
-
+\end{Verbatim}
 from which it will deduce that:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 twice :: t0 -> t1 -> t3
-\end{minted}
-
+\end{Verbatim}
 It will also come up with a set of constraints resulting from the rules
 of function application:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 t0 = t1 -> t2 -- because f is applied to x 
 t0 = t2 -> t3 -- because f is applied to (f x)
-\end{minted}
-
+\end{Verbatim}
 These constraints have to be unified by finding a set of types (or type
 variables) that, when substituted for the unknown types in both
 expressions, produce the same type. One such substitution is:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 t1 = t2 = t3 = Int 
 twice :: (Int -> Int) -> Int -> Int
-\end{minted}
-
+\end{Verbatim}
 but, obviously, it's not the most general one. The most general
 substitution is obtained using a pullback. I won't go into the details,
 because they are beyond the scope of this book, but you can convince
 yourself that the result should be:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 twice :: (t -> t) -> t -> t
-\end{minted}
-
+\end{Verbatim}
 with \code{t} a free type variable.
 
-\subsection{Colimits}\label{colimits}
+\section{Colimits}\label{colimits}
 
 Just like all constructions in category theory, limits have their dual
 image in opposite categories. When you invert the direction of all
@@ -624,10 +615,11 @@ morphism, which now flows from the universal co-cone to any other
 co-cone.
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics{images/colimit.jpg}}
+\centering
+\fbox{\includegraphics{images/colimit.jpg}}
 \end{figure}
 
+\noindent
 Cocone with a factorizing morphism \code{h} connecting two apexes.
 
 A typical example of a colimit is a coproduct, which corresponds to the
@@ -635,10 +627,11 @@ diagram generated by \textbf{2}, the category we've used in the
 definition of the product.
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics[width=1.56250in]{images/coproductranking.jpg}}
+\centering
+\fbox{\includegraphics[width=1.56250in]{images/coproductranking.jpg}}
 \end{figure}
 
+\noindent
 Both the product and the coproduct embody the essence of a pair of
 objects, each in a different way.
 
@@ -647,15 +640,15 @@ colimit corresponding to the diagram based on an empty category.
 
 The dual of the pullback is called the \emph{pushout}. It's based on a
 diagram called a span, generated by the category
-\texttt{1\textless{}-2-\textgreater{}3}.
+\code{1<-2->3}.
 
-\subsection{Continuity}\label{continuity}
+\section{Continuity}\label{continuity}
 
 I said previously that functors come close to the idea of continuous
 mappings of categories, in the sense that they never break existing
 connections (morphisms). The actual definition of a \emph{continuous
 functor} \code{F} from a category \mathtext{C} to \mathtext{C'} includes the
-requirement that the functor preserve limits. Every diagram \texttt{D}
+requirement that the functor preserve limits. Every diagram \code{D}
 in \emph{C} can be mapped to a diagram \mathtext{F \circ D} in \mathtext{C'} by
 simply composing two functors. The continuity condition for \mathtext{F}
 states that, if the diagram \mathtext{D} has a limit \code{Lim D}, then
@@ -663,10 +656,11 @@ the diagram \mathtext{F \circ D} also has a limit, and it is equal to
 \code{F (Lim D)}.
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics[width=3.12500in]{images/continuity.jpg}}
+\centering
+\fbox{\includegraphics[width=3.12500in]{images/continuity.jpg}}
 \end{figure}
 
+\noindent
 Notice that, because functors map morphisms to morphisms, and
 compositions to compositions, an image of a cone is always a cone. A
 commuting triangle is always mapped to a commuting triangle (functors
@@ -681,10 +675,9 @@ A hom-functor is an example of a continuous functor. Recall that the
 hom-functor, \code{C(a, b)}, is contravariant in the first variable
 and covariant in the second. In other words, it's a functor:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
-|\ensuremath{C^{op}} \times C| -> Set
-\end{minted}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+C\textsuperscript{op} \times C -> Set
+\end{Verbatim}
 When its second argument is fixed, the hom-set functor (which becomes
 the representable presheaf) maps colimits in \mathtext{C} to limits in
 \textbf{Set}; and when its first argument is fixed, it maps limits to
@@ -692,24 +685,22 @@ limits.
 
 In Haskell, a hom-functor is the mapping of any two types to a function
 type, so it's just a parameterized function type. When we fix the second
-parameter, let's say to \texttt{String}, we get the contravariant
+parameter, let's say to \code{String}, we get the contravariant
 functor:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 newtype ToString a = ToString (a -> String) 
 instance Contravariant ToString where 
     contramap f (ToString g) = ToString (g . f)
-\end{minted}
-
+\end{Verbatim}
 Continuity means that when \code{ToString} is applied to a colimit,
 for instance a coproduct \code{Either b c}, it will produce a limit;
 in this case a product of two function types:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 ToString (Either b c) ~ (b -> String, c -> String)
-\end{minted}
-
-Indeed, any function of \texttt{Either\ b\ c} is implemented as a case
+\end{Verbatim}
+Indeed, any function of \code{Either b c} is implemented as a case
 statement with the two cases being serviced by a pair of functions.
 
 Similarly, when we fix the first argument of the hom-set, we get the
@@ -717,23 +708,22 @@ familiar reader functor. Its continuity means that, for instance, any
 function returning a product is equivalent to a product of functions; in
 particular:
 
-\begin{minted}[escapeinside=||,mathescape=true]{haskell}
+\begin{Verbatim}[commandchars=\\\{\}]
 r -> (a, b) ~ (r -> a, r -> b)
-\end{minted}
-
+\end{Verbatim}
 I know what you're thinking: You don't need category theory to figure
 these things out. And you're right! Still, I find it amazing that such
 results can be derived from first principles with no recourse to bits
 and bytes, processor architectures, compiler technologies, or even
 lambda calculus.
 
-If you're curious where the names "limit" and "continuity" come
+If you're curious where the names ``limit'' and ``continuity'' come
 from, they are a generalization of the corresponding notions from
 calculus. In calculus limits and continuity are defined in terms of open
 neighborhoods. Open sets, which define topology, form a category (a
 poset).
 
-\subsection{Challenges}\label{challenges}
+\section{Challenges}\label{challenges}
 
 \begin{enumerate}
 \tightlist
@@ -741,7 +731,7 @@ poset).
   How would you describe a pushout in the category of C++ classes?
 \item
   Show that the limit of the identity functor
-  \code{Id\ ::\ C\ -\textgreater{}\ C} is the initial object.
+  \code{Id :: C -> C} is the initial object.
 \item
   Subsets of a given set form a category. A morphism in that category is
   defined to be an arrow connecting two sets if the first is the subset
@@ -756,8 +746,3 @@ poset).
   Similarly, show that a pushout from an initial object (if one exists)
   is the coproduct.
 \end{enumerate}
-
-\subsection{Acknowledgments}\label{acknowledgments}
-
-I'd like to thank Gershom Bazerman for checking my math and logic, and
-André van Meulebrouck, who has been volunteering his editing help.
