@@ -1,12 +1,4 @@
-\begin{quote}
-This is part 11 of Categories for Programmers. Previously:
-\href{https://bartoszmilewski.com/2015/04/07/natural-transformations/}{Natural
-Transformations}. See the
-\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
-of Contents}.
-\end{quote}
-
-In the first part of the book I argued that both category theory and
+\lettrine[lhang=0.17]{I}{n the first} part of the book I argued that both category theory and
 programming are about composability. In programming, you keep
 decomposing a problem until you reach the level of detail that you can
 deal with, solve each subproblem in turn, and re-compose the solutions
@@ -21,18 +13,17 @@ after \code{f}:
 \begin{verbatim}
 h = g . f
 \end{verbatim}
-
 or imperatively; as in, call \code{f} first, remember the result of
 that call, then call \code{g} with the result:
 
 \begin{verbatim}
-h x = let y = f x in g y
+h x = let y = f x 
+      in g y
 \end{verbatim}
-
 The imperative version of a program is usually described as a sequence
 of actions ordered in time. In particular, the call to \code{g} cannot
 happen before the execution of \code{f} completes. At least, that's
-the conceptual picture --- in a lazy language, with \newterm{call-by-need}
+the conceptual picture --- in a lazy language, with \emph{call-by-need}
 argument passing, the actual execution may proceed differently.
 
 In fact, depending on the cleverness of the compiler, there may be
@@ -47,6 +38,11 @@ And, if there is a declarative solution, can it always be translated
 into computer code? The answer to this question is far from obvious and,
 if we could find it, we would probably revolutionize our understanding
 of the universe.
+
+\begin{wrapfigure}[9]{R}{0pt}
+\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
+\includegraphics[width=50mm]{images/asteroids.png}}
+\end{wrapfigure}
 
 Let me elaborate. There is a similar duality in physics, which either
 points at some deep underlying principle, or tells us something about
@@ -71,15 +67,17 @@ calculated by multiplying its velocity by the time delta. The velocity,
 in turn, is changed by a small increment proportional to acceleration,
 which is given by force divided by mass.
 
-\includegraphics[width=3.12500in]{images/asteroids.png}
-
 These are the direct encodings of the differential equations
 corresponding to Newton's laws of motion:
 
-\begin{verbatim}
-F = m dv/dt v = dx/dt
-\end{verbatim}
+\begin{equation}
+\begin{split}
+F = m \frac{dv}{dt} \\
+v = \frac{dx}{dt}
+\end{split}
+\end{equation}
 
+\noindent
 Similar methods may be applied to more complex problems, like the
 propagation of electromagnetic fields using Maxwell's equations, or even
 the behavior of quarks and gluons inside a proton using lattice QCD
@@ -104,14 +102,18 @@ then take a shortcut through water. The path of minimum time makes the
 ray refract at the boundary of air and water, resulting in Snell's law
 of refraction:
 
-\begin{verbatim}
-sin θ1 / sin θ2 = v1 / v2
-\end{verbatim}
+\begin{equation}
+\frac{sin(\theta_1)}{sin(\theta_2)} = \frac{v_1}{v_2}
+\end{equation}
 
-where \code{v1} is the speed of light in the air and \code{v2} is
+\noindent
+where \ensuremath{v_1} is the speed of light in the air and \ensuremath{v_2} is
 the speed of light in the water.
 
-\includegraphics[width=2.33333in]{images/snell.jpg}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.56250in]{images/snell.jpg}
+\end{figure}
 
 All of classical mechanics can be derived from the principle of least
 action. The action can be calculated for any trajectory by integrating
@@ -124,16 +126,24 @@ the action. It will also slow down at the top of the parabola, to
 minimize kinetic energy. Then it will speed up to go quickly through the
 area of low potential energy.
 
-\includegraphics[width=3.12500in]{images/mortar.jpg}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.56250in]{images/mortar.jpg}
+\end{figure}
 
+\noindent
 Feynman's greatest contribution was to realize that the principle of
 least action can be generalized to quantum mechanics. There, again, the
 problem is formulated in terms of initial state and final state. The
 Feynman path integral between those states is used to calculate the
 probability of transition.
 
-\includegraphics[width=3.12500in]{images/feynman.jpg}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.56250in]{images/feynman.jpg}
+\end{figure}
 
+\noindent
 The point is that there is a curious unexplained duality in the way we
 can describe the laws of physics. We can use the local picture, in which
 things happen sequentially and in small increments. Or we can use the
@@ -161,10 +171,10 @@ shared mutable state, FRP treats external events as an infinite list,
 and applies a series of transformations to it. Conceptually, the list of
 all our future actions is there, available as the input data to our
 program. From a program's perspective there's no difference between the
-list of digits of π, a list of pseudo-random numbers, or a list of mouse
+list of digits of \ensuremath{\pi}, a list of pseudo-random numbers, or a list of mouse
 positions coming through computer hardware. In each case, if you want to
-get the nth item, you have to first go through the first n-1 items. When
-applied to temporal events, we call this property \newterm{causality}.
+get the nth item, you have to first go through the first \ensuremath{n-1} items. When
+applied to temporal events, we call this property \emph{causality}.
 
 So what does it have to do with category theory? I will argue that
 category theory encourages a global approach and therefore supports
@@ -180,7 +190,11 @@ approach. It's an object equipped with two projections, and it's the
 best such object --- it optimizes a certain property: the property of
 factorizing the projections of other such objects.
 
-\includegraphics[width=3.12500in]{images/productranking.jpg}\\
+\begin{figure}
+\centering
+\fbox{\includegraphics[width=1.56250in]{images/productranking.jpg}}
+\end{figure}
+
 Compare this with Fermat's principle of minimum time, or the principle
 of least action.
 
@@ -203,15 +217,3 @@ pre-existing programming constructs, and give rise to new ones. Most
 importantly, category theory provides a meta-language for reasoning
 about computer programs at a declarative level. It also encourages
 reasoning about problem specification before it is cast into code.
-
-Next
-\href{https://bartoszmilewski.com/2015/04/15/limits-and-colimits/}{Limits
-and Colimits}.
-
-\section{Acknowledgments}\label{acknowledgments}
-
-I'd like to thank Gershom Bazerman for checking my math and logic, and
-André van Meulebrouck, who has been volunteering his editing help.\\
-\href{https://twitter.com/BartoszMilewski}{Follow @BartoszMilewski}
-
-{43.193051} {11.286150}
