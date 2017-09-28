@@ -47,9 +47,9 @@ defined as a morphism from the product \code{a×a} back to \code{a}.
 A general n-ary operation is a morphism from the n-th power of
 \code{a} to \code{a}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 αn :: an -> a
-\end{verbatim}
+\end{Verbatim}
 
 A nullary operation is a morphism from the terminal object (the zeroth
 power of \code{a}). So all we need in order to define any algebra is a
@@ -96,9 +96,9 @@ singleton set using coproducts (treating the empty set as a special case
 of a nullary coproduct). For instance, a two-element set is a sum of two
 singletons, \code{2\ =\ 1\ +\ 1}, as expressed in Haskell:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 type Two = Either () ()
-\end{verbatim}
+\end{Verbatim}
 
 However, even though it's natural to think that there's only one empty
 set, there may be many distinct singleton sets. In particular, the set
@@ -123,17 +123,17 @@ identified through isomorphims.
 Using the category \textbf{F} we can formally define a \newterm{Lawvere
 theory} as a category \textbf{L} equipped with a special functor
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 IL :: Fop -> L
-\end{verbatim}
+\end{Verbatim}
 
 This functor must be a bijection on objects and it must preserve finite
 products (products in \textbf{F}\textsuperscript{op} are the same as
 coproducts in \textbf{F}):
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 IL (m × n) = IL m × IL n
-\end{verbatim}
+\end{Verbatim}
 
 You may sometimes see this functor characterized as identity-on-objects,
 which means that the objects in \textbf{F} and \textbf{L} are the same.
@@ -160,9 +160,9 @@ Among morphisms in \textbf{L} we have those transferred by the functor
 particular coproduct injections \code{ik} become product projections
 \code{pk}. A useful intuition is to imagine the projection:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 pk :: 1n -> 1
-\end{verbatim}
+\end{Verbatim}
 
 as the prototype for a function of n variables that ignores all but the
 k'th variable. Conversely, constant morphisms \code{n->1}
@@ -196,9 +196,9 @@ functors that preserve finite products and commute with the functors
 \code{(L\',\ I\'L\')}, a morphism between them is a
 functor \code{F\ ::\ L\ ->\ L\'} such that:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 F (m × n) = F m × F n F ◦ IL = I'L'
-\end{verbatim}
+\end{Verbatim}
 
 Morphisms between Lawvere theories encapsulate the idea of the
 interpretation of one theory inside another. For instance, group
@@ -230,9 +230,9 @@ products, we require that such a functor preserve finite products. A
 model of \textbf{L}, also called the algebra over the Lawvere theory
 \textbf{L}, is therefore defined by a functor:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 M :: L -> Set M (a × b) ≅ M a × M b
-\end{verbatim}
+\end{Verbatim}
 
 Notice that we require the preservation of products only \newterm{up to
 isomorphism}. This is very important, because strict preservation of
@@ -246,9 +246,9 @@ called a \newterm{sort}, and such algebra is called single-sorted. There
 exist generalizations of Lawvere theories to multi-sorted algebras.) In
 particular, binary operations from \textbf{L} are mapped to functions:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 a × a -> a
-\end{verbatim}
+\end{Verbatim}
 
 As with any functor, it's possible that multiple morphisms in \textbf{L}
 are collapsed to the same function in \textbf{Set}.
@@ -261,32 +261,32 @@ to the identity function on it.
 A general morphism in \textbf{L} of the form
 \code{m\ ->\ n} is mapped to a function:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 am -> an
-\end{verbatim}
+\end{Verbatim}
 
 If we have two different models, \code{M} and \code{N}, a natural
 transformation between them is a family of functions indexed by
 \code{n}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 μn :: M n -> N n
-\end{verbatim}
+\end{Verbatim}
 
 or, equivalently:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 μn :: an -> bn
-\end{verbatim}
+\end{Verbatim}
 
 where \code{b\ =\ N\ 1}.
 
 Notice that the naturality condition guarantees the preservation of
 n-ary operations:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 N f ◦ μn = μ1 ◦ M f
-\end{verbatim}
+\end{Verbatim}
 
 where \code{f\ ::\ n\ ->\ 1} is an n-ary operation in
 \textbf{L}.
@@ -382,17 +382,17 @@ functor \code{Fop\ ->\ L}. This functor induces the
 opposite functor on models (since models are functors \emph{from}
 theories to sets):
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Mod(L, Set) -> Mod(Fop, Set)
-\end{verbatim}
+\end{Verbatim}
 
 But, as we discussed, the category of models of
 \textbf{F}\textsubscript{op} is equivalent to \textbf{Set}, so we get
 the forgetful functor:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 U :: Mod(L, Set) -> Set
-\end{verbatim}
+\end{Verbatim}
 
 It can be shown that so defined \code{U} always has a left adjoint,
 the free functor \code{F}.
@@ -402,30 +402,30 @@ produces free algebras. A free algebra is a particular model in
 \code{Mod(L,\ Set)} that is generated from a finite set of generators
 \code{n}. We can implement \code{F} as the representable functor:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 L(n, -) :: L -> Set
-\end{verbatim}
+\end{Verbatim}
 
 To show that it's indeed free, all we have to do is to prove that it's a
 left adjoint to the forgetful functor:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Mod(L(n, -), M) ≅ Set(n, U(M))
-\end{verbatim}
+\end{Verbatim}
 
 Let's simplify the right hand side:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Set(n, U(M)) ≅ Set(n, M 1) ≅ (M 1)n ≅ M n
-\end{verbatim}
+\end{Verbatim}
 
 (I used the fact that a set of morphisms is isomorphic to the
 exponential which, in this case, is just the iterated product.) The
 adjunction is the result of the Yoneda lemma:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 [L, Set](L(n, -), M) ≅ M n
-\end{verbatim}
+\end{Verbatim}
 
 Together, the forgetful and the free functor define a
 \href{https://bartoszmilewski.com/2016/12/27/monads-categorically/}{monad}
@@ -447,9 +447,9 @@ is based on a finitary functor. A finitary functor on \textbf{Set} is
 fully determined by its action on finite sets. Its action on an
 arbitrary set \code{a} can be evaluated using the following coend:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 F a = ∫ n an × (F n)
-\end{verbatim}
+\end{Verbatim}
 
 Since the coend generalizes a coproduct, or a sum, this formula is a
 generalization of a power series expansion. Or we can use the intuition
@@ -463,9 +463,9 @@ shape for every arity. A tree has more shapes per arity, and so on.
 First off, all monads that are generated from Lawvere theories are
 finitary and they can be expressed as coends:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 TL a = ∫ n an × L(n, 1)
-\end{verbatim}
+\end{Verbatim}
 
 Conversely, given any finitary monad \code{T} on \textbf{Set}, we can
 construct a Lawvere theory. We start by constructing a Kleisli category
@@ -473,15 +473,15 @@ for \code{T}. As you may remember, a morphism in a Kleisli category
 from \code{a} to \code{b} is given by a morphism in the underlying
 category:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 a -> T b
-\end{verbatim}
+\end{Verbatim}
 
 When restricted to finite sets, this becomes:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 m -> T n
-\end{verbatim}
+\end{Verbatim}
 
 The category opposite to this Kleisli category,
 \textbf{Kl}\textsubscript{T}\textsuperscript{op}, restricted to finite
@@ -498,16 +498,16 @@ operations.
 
 Let's explore the coend formula in more detail.
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 TL a = ∫ n an × L(n, 1)
-\end{verbatim}
+\end{Verbatim}
 
 To begin with, this coend is taken over a profunctor \code{P} in
 \textbf{F} defined as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 P n m = an × L(m, 1)
-\end{verbatim}
+\end{Verbatim}
 
 This profunctor is contravariant in the first argument, \code{n}.
 Consider how it lifts morphisms. A morphism in \textbf{FinSet} is a
@@ -516,9 +516,9 @@ mapping describes a selection of m elements from an n-element set
 (repetitions are allowed). It can be lifted to the mapping of powers of
 \code{a}, namely (notice the direction):
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 an -> am
-\end{verbatim}
+\end{Verbatim}
 
 The lifting simply selects m elements from a tuple of n elements
 \code{(a1,\ a2,...an)} (possibly with repetitions).
@@ -534,9 +534,9 @@ Or let's take \code{f\ ::\ m\ ->\ 1} --- a constant
 function that maps all m elements to one. Its lifting is a function that
 takes a single element of \code{a} and duplicates it m times:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 λx -> (x, x, ... x)
-\end{verbatim}
+\end{Verbatim}
 
 You might notice that it's not immediately obvious that the profunctor
 in question is covariant in the second argument. The hom-functor
@@ -584,29 +584,29 @@ I have shown before that the lifting of
 \code{f\ ::\ 1\ ->\ n} results in these two
 transformations:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 an -> a
-\end{verbatim}
+\end{Verbatim}
 
 and:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 L(1, 1) -> L(n, 1)
-\end{verbatim}
+\end{Verbatim}
 
 Therefore, starting from \code{an\ ×\ L(1,\ 1)} we can reach both:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 a × L(1, 1)
-\end{verbatim}
+\end{Verbatim}
 
-when we lift \code{\textless{}f,\ id>} and:
+when we lift \code{<f,\ id>} and:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 an × L(n, 1)
-\end{verbatim}
+\end{Verbatim}
 
-when we lift \code{\textless{}id,\ f>}. This doesn't
+when we lift \code{<id,\ f>}. This doesn't
 mean, however, that all elements of \code{an\ ×\ L(n,\ 1)} can be
 identified with \code{a\ ×\ L(1,\ 1)}. That's because not all elements
 of \code{L(n,\ 1)} can be reached from \code{L(1,\ 1)}. Remember
@@ -629,9 +629,9 @@ injections \code{1->n} in \textbf{F}, which \emph{are}
 basic morphisms. Therefore all the addends in the coproduct are
 equivalent and we get:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 T a = a × L(1, 1) = a
-\end{verbatim}
+\end{Verbatim}
 
 which is the identity monad.
 
@@ -657,9 +657,9 @@ single nullary operation \code{0->1}. A model of this
 theory is a functor that maps \code{1} to some set \code{a}, and
 maps the nullary operation to a function:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 raise :: () -> a
-\end{verbatim}
+\end{Verbatim}
 
 We can recover the \code{Maybe} monad using the coend formula. Let's
 consider what the addition of the nullary operation does to the hom-sets
@@ -670,9 +670,9 @@ type \code{n->0} with our \code{0->1}.
 Such contributions are all identified with \code{a0\ ×\ L(0,\ 1)} in
 the coend formula, because they can be obtained from:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 an × L(0, 1)
-\end{verbatim}
+\end{Verbatim}
 
 by lifting \code{0->n} in two different ways.
 
@@ -680,21 +680,21 @@ by lifting \code{0->n} in two different ways.
 
 The coend reduces to:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 TL a = a0 + a1
-\end{verbatim}
+\end{Verbatim}
 
 or, using Haskell notation:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 type Maybe a = Either () a
-\end{verbatim}
+\end{Verbatim}
 
 which is equivalent to:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Maybe a = Nothing | Just a
-\end{verbatim}
+\end{Verbatim}
 
 Notice that this Lawvere theory only supports the raising of exceptions,
 not their handling.

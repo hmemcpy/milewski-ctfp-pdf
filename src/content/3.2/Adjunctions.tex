@@ -17,10 +17,10 @@ means that it's part of a round trip that lands you in the same spot, no
 matter on which side you start. In the case of pairs, this isomorphism
 is called \code{swap}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 swap :: (a,b) -> (b,a)
 swap (a,b) = (b,a)
-\end{verbatim}
+\end{Verbatim}
 \code{swap} happens to be its own inverse.
 
 \section{Adjunction and Unit/Counit
@@ -199,14 +199,14 @@ We often see unit and counit in Haskell under different names. Unit is
 known as \code{return} (or \code{pure}, in the definition of
 \code{Applicative}):
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 return :: d -> m d
-\end{verbatim}
+\end{Verbatim}
 and counint as \code{extract}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 extract :: w c -> c
-\end{verbatim}
+\end{Verbatim}
 Here, \code{m} is the (endo-) functor corresponding to \code{R◦L},
 and \code{w} is the (endo-) functor corresponding to \code{L◦R}. As
 we'll see later, they are part of the definition of a monad and a
@@ -229,12 +229,12 @@ We can however define adjunctions of \newterm{endofunctors} in Haskell.
 Here's part of the definition taken from
 \code{Data.Functor.Adjunction}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 class (Functor f, Representable u) =>
       Adjunction f u | f -> u, u -> f where
     unit :: a -> u (f a)
     counit :: f (u a) -> a
-\end{verbatim}
+\end{Verbatim}
 This definition requires some explanation. First of all, it describes a
 multi-parameter type class --- the two parameters being \code{f} and
 \code{u}. It establishes a relation called \code{Adjunction} between
@@ -291,16 +291,16 @@ in \emph{C}. We can map the source object \code{d} to \emph{C} using
 \code{L}. Now we have two objects in \emph{C}, \code{L\ d} and
 \code{c}. They define a hom-set:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 C(L d, c)
-\end{verbatim}
+\end{Verbatim}
 Similarly, we can map the target object \code{c} using \code{R}. Now
 we have two objects in \emph{D}, \code{d} and \code{R\ c}. They,
 too, define a hom set:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 D(d, R c)
-\end{verbatim}
+\end{Verbatim}
 We say that \code{L} is left adjoint to \code{R} iff there is an
 isomorphism of hom sets:
 
@@ -314,17 +314,17 @@ precisely, we have a natural transformation \code{φ} between the
 following two (covariant) functors from \emph{C} to \textbf{Set}. Here's
 the action of these functors on objects:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 c -> C(L d, c)
 c -> D(d, R c)
-\end{verbatim}
+\end{Verbatim}
 The other natural transformation, \code{ψ}, acts between the following
 (contravariant) functors:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 d -> C(L d, c)
 d -> D(d, R c)
-\end{verbatim}
+\end{Verbatim}
 Both natural transformations must be invertible.
 
 It's easy to show that the two definitions of the adjunction are
@@ -345,9 +345,9 @@ identity. The natural transformation will map this morphism to an
 element of \code{D(d, (R ◦ L) d)} or, inserting the identity
 functor \code{I}, a morphism in:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 D(I d, (R ◦ L) d)
-\end{verbatim}
+\end{Verbatim}
 We get a family of morphisms parameterized by \code{d}. They form a
 natural transformation between the functor \code{I} and the functor
 \code{R ◦ L} (the naturality condition is easy to verify). This is
@@ -381,22 +381,22 @@ transformations \code{φ} and \code{ψ} are replaced by polymorphic
 \code{rightAdjunct}, respectively. The functors \code{L} and
 \code{R} are called \code{f} and \code{u}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 class (Functor f, Representable u) => 
       Adjunction f u | f -> u, u -> f where
     leftAdjunct  :: (f a -> b) -> (a -> u b)
     rightAdjunct :: (a -> u b) -> (f a -> b) 
-\end{verbatim}
+\end{Verbatim}
 The equivalence between the \code{unit}/\code{counit} formulation
 and the\\ \code{leftAdjunct}/\code{rightAdjunct} formulation is
 witnessed by these mappings:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 unit           = leftAdjunct id
 counit         = rightAdjunct id
 leftAdjunct f  = fmap f . unit
 rightAdjunct f = counit . fmap f 
-\end{verbatim}
+\end{Verbatim}
 It's very instructive to follow the translation from the categorical
 description of the adjunction to Haskell code. I highly encourage this
 as an exercise.
@@ -415,9 +415,9 @@ some functor \code{L} from \textbf{Set} to \emph{C}, such an object
 always exists --- it's the image of the singleton set \code{()} under
 \code{L}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 rep = L ()
-\end{verbatim}
+\end{Verbatim}
 Indeed, the adjunction tells us that the following two hom-sets are
 naturally isomorphic:
 
@@ -455,16 +455,16 @@ factorizes \code{p} and \code{q} through \code{fst} and
 As we've seen earlier, in Haskell, we can implement a \code{factorizer} that generates this
 morphism from the two projections:
 
-\begin{verbatim}
+\begin{Verbatim}
 factorizer :: (c -> a) -> (c -> b) -> (c -> (a, b))
 factorizer p q = \x -> (p x, q x)
-\end{verbatim}
+\end{Verbatim}
 It's easy to verify that the factorization conditions hold:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fst . factorizer p q = p
 snd . factorizer p q = q
-\end{verbatim}
+\end{Verbatim}
 We have a mapping that takes a pair of morphisms \code{p} and
 \code{q} and produces another morphism
 \code{m = factorizer p q}.
@@ -513,9 +513,9 @@ first hom-set is in the product category \emph{C×C}, and the second is
 in \emph{C}. A general morphism in \emph{C×C} would be a pair of
 morphisms \code{<f, g>}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f :: c' -> a g :: c'' -> b
-\end{verbatim}
+\end{Verbatim}
 with \code{c''} potentially different from
 \code{c'}. But to define a product, we are interested in a
 special morphism in \emph{C×C}, the pair \code{p} and \code{q} that
@@ -526,20 +526,20 @@ object from the right category. The functor that fits the bill is easy
 to guess --- it's the diagonal functor from \emph{C} to \emph{C×C},
 whose action on objects is:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Δ c = <c, c>
-\end{verbatim}
+\end{Verbatim}
 The left-hand side hom-set in our adjunction should thus be:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (C×C)(Δ c, <a, b>)
-\end{verbatim}
+\end{Verbatim}
 It's a hom-set in the product category. Its elements are pairs of
 morphisms that we recognize as the arguments to our \code{factorizer}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (c -> a) -> (c -> b) ...
-\end{verbatim}
+\end{Verbatim}
 The right-hand side hom-set lives in \emph{C}, and it goes between the
 source object \code{c} and the result of some functor \code{R}
 acting on the target object in \emph{C×C}. That's the functor that maps
@@ -547,9 +547,9 @@ the pair \code{<a, b>} to our product object,
 \code{a×b}. We recognize this element of the hom-set as the
 \emph{result} of the \code{factorizer}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 ... -> (c -> (a, b))
-\end{verbatim}
+\end{Verbatim}
 
 \begin{figure}[H]
 \centering
@@ -564,18 +564,18 @@ We still don't have a full adjunction. For that we first need our
 morphism from some object \code{c} to the product object \code{a×b}.
 In other words, \code{m} should be an element of:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 C(c, a×b)
-\end{verbatim}
+\end{Verbatim}
 The inverse factorizer should map \code{m} to a morphism
 \code{<p, q>} in \emph{C×C} that goes from
 \code{<c, c>} to
 \code{<a, b>}; in other words, a morphism
 that's an element of:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (C×C)(Δ c, <a, b>)
-\end{verbatim}
+\end{Verbatim}
 If that mapping exists, we conclude that there exists the right adjoint
 to the diagonal functor. That functor defines a product.
 
@@ -583,10 +583,10 @@ In Haskell, we can always construct the inverse of the
 \code{factorizer} by composing \code{m} with, respectively,
 \code{fst} and \code{snd}.
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 p = fst ◦ m
 q = snd ◦ m
-\end{verbatim}
+\end{Verbatim}
 To complete the proof of the equivalence of the two ways of defining a
 product we also need to show that the mapping between hom-sets is
 natural in \code{a}, \code{b}, and \code{c}. I will leave this as
@@ -606,9 +606,9 @@ Haskell, the \code{Product} bifunctor is written simply as
 \code{(,)}. You can apply it to two types and get their product type,
 for instance:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (,) Int Bool ~ (Int, Bool)
-\end{verbatim}
+\end{Verbatim}
 
 \section{Exponential from
 Adjunction}\label{exponential-from-adjunction}
@@ -622,9 +622,9 @@ statement:
 \begin{quote}
 For any other object \code{z} with a morphism
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 g :: z × a -> b
-\end{verbatim}
+\end{Verbatim}
 there is a unique morphism
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -679,10 +679,10 @@ a functor has an adjoint, this adjoint is unique up to isomorphism.
   Derive the naturality square for \code{ψ}, the transformation
   between the two (contravariant) functors:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 a -> C(L a, b)
 a -> D(a, R b)
-\end{verbatim}
+\end{Verbatim}
 \item
   Derive the counit \code{ε} starting from the hom-sets isomorphism in
   the second definition of the adjunction.

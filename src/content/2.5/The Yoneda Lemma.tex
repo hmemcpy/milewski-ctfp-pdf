@@ -57,9 +57,9 @@ Let's call the natural transformation between these two functors
 the natural transformation, like \code{αx} or \code{αy}, are just
 regular functions between sets:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 αx :: C(a, x) -> F x αy :: C(a, y) -> F y
-\end{verbatim}
+\end{Verbatim}
 
 \includegraphics[width=2.73958in]{images/yoneda1.png}
 
@@ -70,29 +70,29 @@ morphism \code{h} from \code{a} to \code{x}.
 
 So the naturality square for \code{α}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 αy ◦ C(a, f) = F f ◦ αx
-\end{verbatim}
+\end{Verbatim}
 
 becomes, point-wise, when acting on \code{h}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 αy (C(a, f) h) = (F f) (αx h)
-\end{verbatim}
+\end{Verbatim}
 
 You might recall from the previous section that the action of the
 hom-functor \code{C(a,-)} on a morphism \code{f} was defined as
 precomposition:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 C(a, f) h = f ◦ h
-\end{verbatim}
+\end{Verbatim}
 
 which leads to:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 αy (f ◦ h) = (F f) (αx h)
-\end{verbatim}
+\end{Verbatim}
 
 Just how strong this condition is can be seen by specializing it to the
 case of \code{x} equal to \code{a}.
@@ -103,9 +103,9 @@ In that case \code{h} becomes a morphism from \code{a} to
 \code{a}. We know that there is at least one such morphism,
 \code{h\ =\ ida}. Let's plug it in:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 αy f = (F f) (αa ida)
-\end{verbatim}
+\end{Verbatim}
 
 Notice what has just happened: The left hand side is the action of
 \code{αy} on an arbitrary element \code{f} of \code{C(a,\ y)}. And
@@ -125,17 +125,17 @@ from \code{C(a,\ -)} to \code{F} and elements of \code{F\ a}.
 
 in other words,
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Nat(C(a, -), F) ≅ F a
-\end{verbatim}
+\end{Verbatim}
 
 Or, if we use the notation \code{{[}C,\ Set{]}} for the functor
 category between \emph{C} and \textbf{Set}, the set of natural
 transformation is just a hom-set in that category, and we can write:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 [C, Set](C(a, -), F) ≅ F a
-\end{verbatim}
+\end{Verbatim}
 
 I'll explain later how this correspondence is in fact a natural
 isomorphism.
@@ -193,24 +193,24 @@ reasoning is analogous, except that now we have two more sets,
 \code{C(a,\ x)} and \code{F\ x}, and the morphism \code{g} from
 \code{a} to \code{x} is mapped, under the hom-functor, to:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 C(a, g) :: C(a, a) -> C(a, x)
-\end{verbatim}
+\end{Verbatim}
 
 and under \code{F} to:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 F g :: F a -> F x
-\end{verbatim}
+\end{Verbatim}
 
 Again, \code{C(a,\ g)} acting on our \code{p} is given by the
 precomposition: \code{g\ ◦\ ida}, which corresponds to a point
 \code{p\'} in \code{C(a,\ x)}. Naturality determines the value
 of \code{αx} acting on \code{p\'} to be:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 q' = (F g) q
-\end{verbatim}
+\end{Verbatim}
 
 Since \code{p\'} was arbitrary, the whole function \code{αx} is
 thus determined.
@@ -243,15 +243,15 @@ the image of the functor \code{F} in \textbf{Set}.
 We have already encountered the hom-functor in Haskell under the guise
 of the reader functor:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 type Reader a x = a -> x
-\end{verbatim}
+\end{Verbatim}
 
 The reader maps morphisms (here, functions) by precomposition:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Functor (Reader a) where fmap f h = f . h
-\end{verbatim}
+\end{Verbatim}
 
 The Yoneda lemma tells us that the reader functor can be naturally
 mapped to any other functor.
@@ -259,9 +259,9 @@ mapped to any other functor.
 A natural transformation is a polymorphic function. So given a functor
 \code{F}, we have a mapping to it from the reader functor:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 alpha :: forall x . (a -> x) -> F x
-\end{verbatim}
+\end{Verbatim}
 
 As usual, \code{forall} is optional, but I like to write it explicitly
 to emphasize parametric polymorphism of natural transformations.
@@ -269,9 +269,9 @@ to emphasize parametric polymorphism of natural transformations.
 The Yoneda lemma tells us that these natural transformations are in
 one-to-one correspondence with the elements of \code{F\ a}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 forall x . (a -> x) -> F x ≅ F a
-\end{verbatim}
+\end{Verbatim}
 
 The right hand side of this identity is what we would normally consider
 a data structure. Remember the interpretation of functors as generalized
@@ -283,29 +283,29 @@ equivalent --- they contain the same information.
 Another way of saying this is: Give me a polymorphic function of the
 type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 alpha :: forall x . (a -> x) -> F x
-\end{verbatim}
+\end{Verbatim}
 
 and I'll produce a container of \code{a}. The trick is the one we used
 in the proof of the Yoneda lemma: we call this function with \code{id}
 to get an element of \code{F\ a}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 alpha id :: F a
-\end{verbatim}
+\end{Verbatim}
 
 The converse is also true: Given a value of the type \code{F\ a}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fa :: F a
-\end{verbatim}
+\end{Verbatim}
 
 one can define a polymorphic function:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 alpha h = fmap h fa
-\end{verbatim}
+\end{Verbatim}
 
 of the correct type. You can easily go back and forth between the two
 representations.
@@ -319,9 +319,9 @@ that is often used in compiler construction: the continuation passing
 style or CPS. It's the simplest application of the Yoneda lemma to the
 identity functor. Replacing \code{F} with identity produces:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 forall r . (a -> r) -> r ≅ a
-\end{verbatim}
+\end{Verbatim}
 
 The interpretation of this formula is that any type \code{a} can be
 replaced by a function that takes a ``handler'' for \code{a}. A
@@ -353,15 +353,15 @@ establishes one-to-one correspondence between natural transformations
 from this functor to any other contravariant functor \code{F} and the
 elements of the set \code{F\ a}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Nat(C(-, a), F) ≅ F a
-\end{verbatim}
+\end{Verbatim}
 
 Here's the Haskell version of the co-Yoneda lemma:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 forall x . (x -> a) -> F x ≅ F a
-\end{verbatim}
+\end{Verbatim}
 
 Notice that in some literature it's the contravariant version that's
 called the Yoneda lemma.
@@ -373,13 +373,13 @@ called the Yoneda lemma.
   Show that the two functions \code{phi} and \code{psi} that form
   the Yoneda isomorphism in Haskell are inverses of each other.
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 phi :: (forall x . (a -> x) -> F x) -> F a phi alpha = alpha id
-\end{verbatim}
+\end{Verbatim}
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 psi :: F a -> (forall x . (a -> x) -> F x) psi fa h = fmap h fa
-\end{verbatim}
+\end{Verbatim}
 \item
   A discrete category is one that has objects but no morphisms other
   than identity morphisms. How does the Yoneda lemma work for functors

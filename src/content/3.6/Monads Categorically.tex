@@ -42,9 +42,9 @@ applied a transformation of type \code{a -> m b}
 (\code{b} represents the type of \code{y}). The result is an
 expression of type \code{m b}. Let me spell it out:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 m a -> (a -> m b) -> m b
-\end{verbatim}
+\end{Verbatim}
 Yes, that's the signature of monadic bind.
 
 That was a bit of motivation. Now let's get to the math of the monad.
@@ -77,9 +77,9 @@ which, in \newterm{Hask}, translates directly to our definition of
 η is a natural transformation between the identity functor \code{I}
 and \code{T}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 η :: I -> T
-\end{verbatim}
+\end{Verbatim}
 Considering that the action of \code{I} on the object \code{a} is
 just \code{a}, the component of η is given by the morphism:
 
@@ -101,22 +101,22 @@ g ◦\textsubscript{T} f = μ\textsubscript{c} ◦ (T g) ◦ f
 \end{Verbatim}
 where
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f :: a -> T b
 g :: b -> T c
-\end{verbatim}
+\end{Verbatim}
 Here \code{T}, being a functor, can be applied to the morphism
 \code{g}. It might be easier to recognize this formula in Haskell
 notation:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f >=> g = join . fmap g . f
-\end{verbatim}
+\end{Verbatim}
 or, in components:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (f >=> g) a = join (fmap g (f a))
-\end{verbatim}
+\end{Verbatim}
 In terms of the algebraic interpretation, we are just composing two
 successive substitutions.
 
@@ -204,11 +204,11 @@ Let's go back to the conventional definition of a monoid. It's a set
 with a binary operation and a special element called unit. In Haskell,
 this can be expressed as a typeclass:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 class Monoid m where
     mappend :: m -> m -> m
     mempty  :: m
-\end{verbatim}
+\end{Verbatim}
 The binary operation \code{mappend} must be associative and unital
 (i.e., multiplication by the unit \code{mempty} is a no-op).
 
@@ -216,18 +216,18 @@ Notice that, in Haskell, the definition of \code{mappend} is curried.
 It can be interpreted as mapping every element of \code{m} to a
 function:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 mappend :: m -> (m -> m)
-\end{verbatim}
+\end{Verbatim}
 It's this interpretation that gives rise to the definition of a monoid
 as a single-object category where endomorphisms
 \code{(m -> m)} represent the elements of the monoid.
 But because currying is built into Haskell, we could as well have
 started with a different definition of multiplication:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 mu :: (m, m) -> m
-\end{verbatim}
+\end{Verbatim}
 Here, the cartesian product \code{(m, m)} becomes the source of pairs
 to be multiplied.
 
@@ -236,25 +236,25 @@ the cartesian product with categorical product. We could start with a
 category where products are globally defined, pick an object \code{m}
 there, and define multiplication as a morphism:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 μ :: m × m -> m
-\end{verbatim}
+\end{Verbatim}
 We have one problem though: In an arbitrary category we can't peek
 inside an object, so how do we pick the unit element? There is a trick
 to it. Remember how element selection is equivalent to a function from
 the singleton set? In Haskell, we could replace the definition of
 \code{mempty} with a function:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 eta :: () -> m
-\end{verbatim}
+\end{Verbatim}
 The singleton is the terminal object in \textbf{Set}, so it's natural to
 generalize this definition to any category that has a terminal object
 \code{t}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 η :: t -> m
-\end{verbatim}
+\end{Verbatim}
 This lets us pick the unit ``element'' without having to talk about
 elements.
 
@@ -267,72 +267,72 @@ recall how monoidal structure works in Haskell first.
 We start with associativity. In Haskell, the corresponding equational
 law is:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 mu x (mu y z) = mu (mu x y) z
-\end{verbatim}
+\end{Verbatim}
 Before we can generalize it to other categories, we have to rewrite it
 as an equality of functions (morphisms). We have to abstract it away
 from its action on individual variables --- in other words, we have to
 use point-free notation. Knowning that the cartesian product is a
 bifunctor, we can write the left hand side as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (mu . bimap id mu)(x, (y, z))
-\end{verbatim}
+\end{Verbatim}
 and the right hand side as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (mu . bimap mu id)((x, y), z)
-\end{verbatim}
+\end{Verbatim}
 This is almost what we want. Unfortunately, the cartesian product is not
 strictly associative --- \code{(x, (y, z))} is not the same as
 \code{((x, y), z)} --- so we can't just write point-free:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 mu . bimap id mu = mu . bimap mu id
-\end{verbatim}
+\end{Verbatim}
 On the other hand, the two nestings of pairs are isomorphic. There is an
 invertible function called the associator that converts between them:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 alpha :: ((a, b), c) -> (a, (b, c))
 alpha ((x, y), z) = (x, (y, z))
-\end{verbatim}
+\end{Verbatim}
 With the help of the associator, we can write the point-free
 associativity law for \code{mu}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 mu . bimap id mu . alpha = mu . bimap mu id
-\end{verbatim}
+\end{Verbatim}
 We can apply a similar trick to unit laws which, in the new notation,
 take the form:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 mu (eta (), x) = x mu (x, eta ()) = x
-\end{verbatim}
+\end{Verbatim}
 They can be rewritten as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (mu . bimap eta id) ((), x) = lambda((), x)
 (mu . bimap id eta) (x, ()) = rho (x, ())
-\end{verbatim}
+\end{Verbatim}
 The isomorphisms \code{lambda} and \code{rho} are called the left
 and right unitor, respectively. They witness the fact that the unit
 \code{()} is the identity of the cartesian product up to isomorphism:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 lambda :: ((), a) -> a
 lambda ((), x) = x
-\end{verbatim}
-\begin{verbatim}
+\end{Verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 rho :: (a, ()) -> a
 rho (x, ()) = x
-\end{verbatim}
+\end{Verbatim}
 The point-free versions of the unit laws are therefore:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 mu . bimap id eta = lambda mu . bimap eta id = rho
-\end{verbatim}
+\end{Verbatim}
 We have formulated point-free monoidal laws for \code{mu} and
 \code{eta} using the fact that the underlying cartesian product itself
 acts like a monoidal multiplication in the category of types. Keep in
@@ -472,9 +472,9 @@ bimap :: (a -> b) -> (c -> d) -> (a \ensuremath{\otimes} c -> b \ensuremath{\oti
 If you replace objects by endofunctors, arrows by natural
 transformations, and tensor products by composition, you get:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (F -> F') -> (G -> G') -> (F ◦ G -> F' ◦ G')
-\end{verbatim}
+\end{Verbatim}
 which you may recognize as the special case of horizontal composition.
 
 \begin{figure}[H]
@@ -494,10 +494,10 @@ What's a monoid in this category? It's an object --- that is an
 endofunctor \code{T}; and two morphisms --- that is natural
 transformations:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 μ :: T ◦ T -> T
 η :: I -> T
-\end{verbatim}
+\end{Verbatim}
 Not only that, here are the monoid laws:
 
 \begin{figure}[H]
@@ -540,16 +540,16 @@ the η. That's a natural transformation between the square of our
 endofunctor and the endofunctor itself or, in terms of the adjoint
 functors:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 R ◦ L ◦ R ◦ L -> R ◦ L
-\end{verbatim}
+\end{Verbatim}
 And, indeed, we can use the counit to collapse the \code{L ◦ R} in
 the middle. The exact formula for μ is given by the horizontal
 composition:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 μ = R ◦ ε ◦ L
-\end{verbatim}
+\end{Verbatim}
 Monadic laws follow from the identities satisfied by the unit and counit
 of the adjunction and the interchange law.
 
@@ -569,52 +569,52 @@ R (L z) = s \ensuremath{\Rightarrow} (z × s)
 \end{Verbatim}
 We've seen this monad before in Haskell:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 newtype State s a = State (s -> (a, s))
-\end{verbatim}
+\end{Verbatim}
 Let's also translate the adjunction to Haskell. The left functor is the
 product functor:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 newtype Prod s a = Prod (a, s)
-\end{verbatim}
+\end{Verbatim}
 and the right functor is the reader functor:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 newtype Reader s a = Reader (s -> a)
-\end{verbatim}
+\end{Verbatim}
 They form the adjunction:
 
-\begin{verbatim}
+\begin{Verbatim}
 instance Adjunction (Prod s) (Reader s) where
     counit (Prod (Reader f, s)) = f s
     unit a = Reader (\s -> Prod (a, s))
-\end{verbatim}
+\end{Verbatim}
 You can easily convince yourself that the composition of the reader
 functor after the product functor is indeed equivalent to the state
 functor:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 newtype State s a = State (s -> (a, s))
-\end{verbatim}
+\end{Verbatim}
 As expected, the \code{unit} of the adjunction is equivalent to the
 \code{return} function of the state monad. The \code{counit} acts by
 evaluating a function acting on its argument. This is recognizable as
 the uncurried version of the function \code{runState}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 runState :: State s a -> s -> (a, s)
 runState (State f) s = f s
-\end{verbatim}
+\end{Verbatim}
 (uncurried, because in \code{counit} it acts on a pair).
 
 We can now define \code{join} for the state monad as a component of
 the natural transformation μ. For that we need a horizontal composition
 of three natural transformations:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 μ = R ◦ ε ◦ L
-\end{verbatim}
+\end{Verbatim}
 In other words, we need to sneak the counit ε across one level of the
 reader functor. We can't just call \code{fmap} directly, because the
 compiler would pick the one for the \code{State} functor, rather than
@@ -626,18 +626,18 @@ We have to first peel off the data constructor \code{State} to expose
 the function inside the \code{State} functor. This is done using
 \code{runState}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 ssa :: State s (State s a)
 runState ssa :: s -> (State s a, s)
-\end{verbatim}
+\end{Verbatim}
 Then we left-compose it with the counit, which is defined by
 \code{uncurry\ runState}. Finally, we clothe it back in the
 \code{State} data constructor:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 join :: State s (State s a) -> State s a
 join ssa = State (uncurry runState . runState ssa)
-\end{verbatim}
+\end{Verbatim}
 This is indeed the implementation of \code{join} for the
 \code{State} monad.
 

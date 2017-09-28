@@ -10,16 +10,16 @@ You can see this even at the most basic level. Composition itself may be
 defined declaratively; as in, \code{h} is a composite of \code{g}
 after \code{f}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 h = g . f
-\end{verbatim}
+\end{Verbatim}
 or imperatively; as in, call \code{f} first, remember the result of
 that call, then call \code{g} with the result:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 h x = let y = f x 
       in g y
-\end{verbatim}
+\end{Verbatim}
 The imperative version of a program is usually described as a sequence
 of actions ordered in time. In particular, the call to \code{g} cannot
 happen before the execution of \code{f} completes. At least, that's

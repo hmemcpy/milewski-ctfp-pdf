@@ -31,9 +31,9 @@ as a pair of morphisms which goes from one pair of objects to another
 pair of objects. These pairs of morphisms can be composed in the obvious
 way:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (f, g) ◦ (f', g') = (f ◦ f', g ◦ g')
-\end{verbatim}
+\end{Verbatim}
 The composition is associative and it has an identity --- a pair of
 identity morphisms \emph{(id, id)}. So a cartesian product of categories
 is indeed a category.
@@ -54,7 +54,7 @@ constructor that takes two type arguments. Here's the definition of the
 \code{Bifunctor} typeclass taken directly from the library
 \code{Control.Bifunctor}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 class Bifunctor f where 
     bimap :: (a -> c) -> (b -> d) -> f a b -> f c d
     bimap g h = first g . second h
@@ -62,7 +62,7 @@ class Bifunctor f where
     first g = bimap g id
     second :: (b -> d) -> f a b -> f a d
     second = bimap id
-\end{verbatim}
+\end{Verbatim}
 The type variable \code{f} represents the bifunctor. You can see that
 in all type signatures it's always applied to two type arguments. The
 first type signature defines \code{bimap}: a mapping of two functions
@@ -120,34 +120,34 @@ mapping from those objects to the product is bifunctorial. This is true
 in general, and in Haskell in particular. Here's the \code{Bifunctor}
 instance for a pair constructor --- the simplest product type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Bifunctor (,) where 
     bimap f g (x, y) = (f x, g y)
-\end{verbatim}
+\end{Verbatim}
 There isn't much choice: \code{bimap} simply applies the first
 function to the first component, and the second function to the second
 component of a pair. The code pretty much writes itself, given the
 types:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 bimap :: (a -> c) -> (b -> d) -> (a, b) -> (c, d)
-\end{verbatim}
+\end{Verbatim}
 The action of the bifunctor here is to make pairs of types, for
 instance:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (,) a b = (a, b)
-\end{verbatim}
+\end{Verbatim}
 By duality, a coproduct, if it's defined for every pair of objects in a
 category, is also a bifunctor. In Haskell, this is exemplified by the
 \code{Either} type constructor being an instance of
 \code{Bifunctor}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Bifunctor Either where
     bimap f _ (Left x) = Left (f x)
     bimap _ g (Right y) = Right (g y)
-\end{verbatim}
+\end{Verbatim}
 This code also writes itself.
 
 Now, remember when we talked about monoidal categories? A monoidal
@@ -189,14 +189,14 @@ identity functor. I mentioned the identity functor previously, as the
 identity morphism in \emph{Cat}, but didn't give its definition in
 Haskell. Here it is:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Identity a = Identity a
-\end{verbatim}
+\end{Verbatim}
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Functor Identity where
     fmap f (Identity x) = Identity (f x)
-\end{verbatim}
+\end{Verbatim}
 You can think of \code{Identity} as the simplest possible container
 that always stores just one (immutable) value of type \code{a}.
 
@@ -206,9 +206,9 @@ two primitives using products and sums.
 With this new knowledge, let's have a fresh look at the \code{Maybe}
 type constructor:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Maybe a = Nothing | Just a
-\end{verbatim}
+\end{Verbatim}
 It's a sum of two types, and we now know that the sum is functorial. The
 first part, \code{Nothing} can be represented as a \code{Const ()}
 acting on \code{a} (the first type parameter of \code{Const} is set
@@ -216,9 +216,9 @@ to unit --- later we'll see more interesting uses of \code{Const}).
 The second part is just a different name for the identity functor. We
 could have defined \code{Maybe}, up to isomorphism, as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 type Maybe a = Either (Const () a) (Identity a)
-\end{verbatim}
+\end{Verbatim}
 So \code{Maybe} is the composition of the bifunctor \code{Either}
 with two functors, \code{Const ()} and \code{Identity}.
 (\code{Const} is really a bifunctor, but here we always use it
@@ -239,9 +239,9 @@ type variable each), and two regular types \code{a} and \code{b}. We
 apply \code{fu} to \code{a} and \code{gu} to \code{b}, and then
 apply \code{bf} to the resulting two types:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 newtype BiComp bf fu gu a b = BiComp (bf (fu a) (gu b))
-\end{verbatim}
+\end{Verbatim}
 That's the composition on objects, or types. Notice how in Haskell we
 apply type constructors to types, just like we apply functions to
 arguments. The syntax is the same.
@@ -260,11 +260,11 @@ know that there will be a definition of \code{bimap} available for
 instance declaration: a set of class constraints followed by a double
 arrow:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance (Bifunctor bf, Functor fu, Functor gu) =>
   Bifunctor (BiComp bf fu gu) where
     bimap f1 f2 (BiComp x) = BiComp ((bimap (fmap f1) (fmap f2)) x) 
-\end{verbatim}
+\end{Verbatim}
 The implementation of \code{bimap} for \code{BiComp} is given in
 terms of \code{bimap} for \code{bf} and the two \code{fmap}s for
 \code{fu} and \code{gu}. The compiler automatically infers all the
@@ -273,25 +273,25 @@ types and picks the correct overloaded functions whenever
 
 The \code{x} in the definition of \code{bimap} has the type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 bf (fu a) (gu b)
-\end{verbatim}
+\end{Verbatim}
 which is quite a mouthful. The outer \code{bimap} breaks through the
 outer \code{bf} layer, and the two \code{fmap}s dig under
 \code{fu} and \code{gu}, respectively. If the types of \code{f1}
 and \code{f2} are:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f1 :: a -> a'
 f2 :: b -> b'
-\end{verbatim}
+\end{Verbatim}
 then the final result is of the type
 \code{bf (fu a') (gu b')}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 bimap (fu a -> fu a') -> (gu b -> gu b')
   -> bf (fu a) (gu b) -> bf (fu a') (gu b')
-\end{verbatim}
+\end{Verbatim}
 If you like jigsaw puzzles, these kinds of type manipulations can
 provide hours of entertainment.
 
@@ -305,14 +305,14 @@ can't it be automated and performed by the compiler? Indeed, it can, and
 it is. You need to enable a particular Haskell extension by including
 this line at the top of your source file:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 {-# LANGUAGE DeriveFunctor #-}
-\end{verbatim}
+\end{Verbatim}
 and then add \code{deriving Functor} to your data structure:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Maybe a = Nothing | Just a deriving Functor
-\end{verbatim}
+\end{Verbatim}
 and the corresponding \code{fmap} will be implemented for you.
 
 The regularity of algebraic data structures makes it possible to derive
@@ -334,10 +334,10 @@ is made into a generic template, you should be able to quickly implement
 Let's have a look at a tree data structure, which we would define in
 Haskell as a recursive sum type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Tree a = Leaf a | Node (Tree a) (Tree a)
     deriving Functor
-\end{verbatim}
+\end{Verbatim}
 As I mentioned before, one way of implementing sum types in C++ is
 through class hierarchies. It would be natural, in an object-oriented
 language, to implement \code{fmap} as a virtual function of the base
@@ -353,31 +353,31 @@ The base class must define at least one virtual function in order to
 support dynamic casting, so we'll make the destructor virtual (which is
 a good idea in any case):
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class T>
 struct Tree { 
     virtual ~Tree() {};
 };
-\end{verbatim}
+\end{Verbatim}
 The \code{Leaf} is just an \code{Identity} functor in disguise:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class T>
 struct Leaf : public Tree<T> {
     T _label;
     Leaf(T l) : _label(l) {}
 };
-\end{verbatim}
+\end{Verbatim}
 The \code{Node} is a product type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class T>
 struct Node : public Tree<T> {
     Tree<T> * _left;
     Tree<T> * _right;
     Node(Tree<T> * l, Tree<T> * r) : _left(l), _right(r) {}
 };
-\end{verbatim}
+\end{Verbatim}
 When implementing \code{fmap} we take advantage of dynamic dispatching
 on the type of the \code{Tree}. The \code{Leaf} case applies the
 \code{Identity} version of \code{fmap}, and the \code{Node} case
@@ -386,7 +386,7 @@ is treated like a bifunctor composed with two copies of the
 analyzing code in these terms, but it's a good exercise in categorical
 thinking.
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class A, class B>
 Tree<B> * fmap(std::function<B(A)> f, Tree<A> * t) {
     Leaf<A> * pl = dynamic_cast <Leaf<A>*>(t);
@@ -398,18 +398,18 @@ Tree<B> * fmap(std::function<B(A)> f, Tree<A> * t) {
                           , fmap<A>(f, pn->_right));
     return nullptr;
 }
-\end{verbatim}
+\end{Verbatim}
 For simplicity, I decided to ignore memory and resource management
 issues, but in production code you would probably use smart pointers
 (unique or shared, depending on your policy).
 
 Compare it with the Haskell implementation of \code{fmap}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Functor Tree where
     fmap f (Leaf a) = Leaf (f a)
     fmap f (Node t t') = Node (fmap f t) (fmap f t')
-\end{verbatim}
+\end{Verbatim}
 This implementation can also be automatically derived by the compiler.
 
 \section{The Writer Functor}\label{the-writer-functor}
@@ -419,9 +419,9 @@ category} I described earlier. Morphisms in that category were
 represented as ``embellished'' functions returning the \code{Writer}
 data structure.
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 type Writer a = (a, String)
-\end{verbatim}
+\end{Verbatim}
 I said that the embellishment was somehow related to endofunctors. And,
 indeed, the \code{Writer} type constructor is functorial in
 \code{a}. We don't even have to implement \code{fmap} for it,
@@ -432,26 +432,26 @@ general? A Kleisli category, being a category, defines composition and
 identity. Let' me remind you that the composition is given by the fish
 operator:
 
-\begin{verbatim}
+\begin{Verbatim}
 (>=>) :: (a -> Writer b) -> (b -> Writer c) -> (a -> Writer c)
 m1 >=> m2 = \x ->
     let (y, s1) = m1 x
         (z, s2) = m2 y 
     in (z, s1 ++ s2)
-\end{verbatim}
+\end{Verbatim}
 and the identity morphism by a function called \code{return}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 return :: a -> Writer a return x = (x, "")
-\end{verbatim}
+\end{Verbatim}
 It turns out that, if you look at the types of these two functions long
 enough (and I mean, \emph{long} enough), you can find a way to combine
 them to produce a function with the right type signature to serve as
 \code{fmap}. Like this:
 
-\begin{verbatim}
+\begin{Verbatim}
 fmap f = id >=> (\x -> return (f x))
-\end{verbatim}
+\end{Verbatim}
 Here, the fish operator combines two functions: one of them is the
 familiar \code{id}, and the other is a lambda that applies
 \code{return} to the result of acting with \code{f} on the lambda's
@@ -493,20 +493,20 @@ Now that we've reviewed the writer functor, let's go back to the reader
 functor. It was based on the partially applied function-arrow type
 constructor:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (->) r
-\end{verbatim}
+\end{Verbatim}
 We can rewrite it as a type synonym:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 type Reader r a = r -> a
-\end{verbatim}
+\end{Verbatim}
 for which the \code{Functor} instance, as we've seen before, reads:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Functor (Reader r) where
    fmap f g = f . g
-\end{verbatim}
+\end{Verbatim}
 But just like the pair type constructor, or the \code{Either} type
 constructor, the function type constructor takes two type arguments. The
 pair and \code{Either} were functorial in both arguments --- they were
@@ -516,17 +516,17 @@ Let's try to make it functorial in the first argument. We'll start with
 a type synonym --- it's just like the \code{Reader} but with the
 arguments flipped:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 type Op r a = a -> r
-\end{verbatim}
+\end{Verbatim}
 This time we fix the return type, \code{r}, and vary the argument
 type, \code{a}. Let's see if we can somehow match the types in order
 to implement \code{fmap}, which would have the following type
 signature:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fmap :: (a -> b) -> (a -> r) -> (b -> r)
-\end{verbatim}
+\end{Verbatim}
 With just two functions taking \code{a} and returning, respectively,
 \code{b} and \code{r}, there is simply no way to build a function
 taking \code{b} and returning \code{r}! It would be different if we
@@ -577,17 +577,17 @@ by the way --- the kind we've been studying thus far --- are called
 Here's the typeclass defining a contravariant functor (really, a
 contravariant \emph{endo}functor) in Haskell:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 class Contravariant f where
     contramap :: (b -> a) -> (f a -> f b)
-\end{verbatim}
+\end{Verbatim}
 Our type constructor \code{Op} is an instance of it:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Contravariant (Op r) where
     -- (b -> a) -> Op r a -> Op r b
     contramap f g = g . f
-\end{verbatim}
+\end{Verbatim}
 Notice that the function \code{f} inserts itself \emph{before} (that
 is, to the right of) the contents of \code{Op} --- the function
 \code{g}.
@@ -597,15 +597,15 @@ terser, if you notice that it's just the function composition operator
 with the arguments flipped. There is a special function for flipping
 arguments, called \code{flip}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 flip :: (a -> b -> c) -> (b -> a -> c)
 flip f y x = f x y
-\end{verbatim}
+\end{Verbatim}
 With it, we get:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 contramap = flip (.)
-\end{verbatim}
+\end{Verbatim}
 
 \section{Profunctors}\label{profunctors}
 
@@ -623,7 +623,7 @@ which is contra-functorial in the first argument and functorial in the
 second. Here's the appropriate typeclass taken from the
 \code{Data.Profunctor} library:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 class Profunctor p where
     dimap :: (a -> b) -> (c -> d) -> p b c -> p a d
     dimap f g = lmap f . rmap g
@@ -631,7 +631,7 @@ class Profunctor p where
     lmap f = dimap f id
     rmap :: (b -> c) -> p a b -> p a c
     rmap = dimap id
-\end{verbatim}
+\end{Verbatim}
 All three functions come with default implementations. Just like with
 \code{Bifunctor}, when declaring an instance of \code{Profunctor},
 you have a choice of either implementing \code{dimap} and accepting
@@ -649,12 +649,12 @@ the defaults for \code{lmap} and \code{rmap}, or implementing both
 Now we can assert that the function-arrow operator is an instance of a
 \code{Profunctor}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Profunctor (->) where
     dimap ab cd bc = cd . bc . ab
     lmap = flip (.)
     rmap = (.)
-\end{verbatim}
+\end{Verbatim}
 Profunctors have their application in the Haskell lens library. We'll
 see them again when we talk about ends and coends.
 
@@ -665,9 +665,9 @@ see them again when we talk about ends and coends.
 \item
   Show that the data type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Pair a b = Pair a b
-\end{verbatim}
+\end{Verbatim}
 
   is a bifunctor. For additional credit implement all three methods of
   \code{Bifunctor} and use equational reasoning to show that these
@@ -677,9 +677,9 @@ data Pair a b = Pair a b
   Show the isomorphism between the standard definition of \code{Maybe}
   and this desugaring:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 type Maybe' a = Either (Const () a) (Identity a)
-\end{verbatim}
+\end{Verbatim}
 
   Hint: Define two mappings between the two implementations. For
   additional credit, show that they are the inverse of each other using
@@ -689,9 +689,9 @@ type Maybe' a = Either (Const () a) (Identity a)
   it's a precursor to a \code{List}. It replaces recursion with a type
   parameter \code{b}.
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data PreList a b = Nil | Cons a b
-\end{verbatim}
+\end{Verbatim}
 
   You could recover our earlier definition of a \code{List} by
   recursively applying \code{PreList} to itself (we'll see how it's
@@ -702,17 +702,17 @@ data PreList a b = Nil | Cons a b
   Show that the following data types define bifunctors in \code{a} and
   \code{b}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data K2 c a b = K2 c
-\end{verbatim}
+\end{Verbatim}
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Fst a b = Fst a
-\end{verbatim}
+\end{Verbatim}
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Snd a b = Snd b
-\end{verbatim}
+\end{Verbatim}
 
   For additional credit, check your solutions agains Conor McBride's
   paper \href{http://strictlypositive.org/CJ.pdf}{Clowns to the Left of

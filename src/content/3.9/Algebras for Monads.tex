@@ -25,9 +25,9 @@ conditions. The components of these transformations at \code{a} are:
 An algebra for the same endofunctor is a selection of a particular
 object --- the carrier \code{a} --- together with the morphism:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 alg :: m a -> a
-\end{verbatim}
+\end{Verbatim}
 The first thing to notice is that the algebra goes in the opposite
 direction to \code{ηa}. The intuition is that \code{η\textsubscript{a}} creates a
 trivial expression from a value of type \code{a}. The first coherence
@@ -66,35 +66,35 @@ diagrams describe the two conditions (I replaced \code{m} with
 \noindent
 We can also express these condition in Haskell:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 alg . return = id
 alg . join = alg . fmap alg
-\end{verbatim}
+\end{Verbatim}
 Let's look at a small example. An algebra for a list endofunctor
 consists of some type \code{a} and a function that produces an
 \code{a} from a list of \code{a}. We can express this function using
 \code{foldr} by choosing both the element type and the accumulator
 type to be equal to \code{a}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 foldr :: (a -> a -> a) -> a -> [a] -> a
-\end{verbatim}
+\end{Verbatim}
 This particular algebra is specified by a two-argument function, let's
 call it \code{f}, and a value \code{z}. The list functor happens to
 also be a monad, with \code{return} turning a value into a singleton
 list. The composition of the algebra, here \code{foldr f z}, after
 \code{return} takes \code{x} to:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 foldr f z [x] = x `f` z
-\end{verbatim}
+\end{Verbatim}
 where the action of \code{f} is written in the infix notation. The
 algebra is compatible with the monad if the following coherence
 condition is satisfied for every \code{x}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 x `f` z = x
-\end{verbatim}
+\end{Verbatim}
 If we look at \code{f} as a binary operator, this condition tells us
 that \code{z} is the right unit.
 
@@ -234,9 +234,9 @@ As expected, the unit of the adjunction is the unit of the monad
 You may remember that the counint of the adjunction produces monadic
 muliplication through the following formula:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 μ = R ◦ ε ◦ L
-\end{verbatim}
+\end{Verbatim}
 This is a horizontal composition of three natural transformations, two
 of them being identity natural transformations mapping, respectively,
 \code{L} to \code{L} and \code{R} to \code{R}. The one in the
@@ -273,10 +273,10 @@ g\textsubscript{K} :: b -> c
 \end{Verbatim}
 which, in the category \emph{C}, corresponds to:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f :: a -> T b
 g :: b -> T c
-\end{verbatim}
+\end{Verbatim}
 We define the composition:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -284,48 +284,48 @@ h\textsubscript{K} = g\textsubscript{K} ◦ f\textsubscript{K}
 \end{Verbatim}
 as a Kleisli arrow in \emph{C}
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 h :: a -> T c
 h = μ ◦ (T g) ◦ f
-\end{verbatim}
+\end{Verbatim}
 In Haskell we would write it as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 h = join . fmap g . f
-\end{verbatim}
+\end{Verbatim}
 There is a functor \code{F} from \emph{C} to \emph{C\textsubscript{T}}
 which acts trivially on objects. On morphims, it maps \code{f} in
 \emph{C} to a morphism in \emph{C\textsubscript{T}} by creating a
 Kleisli arrow that embellishes the return value of \code{f}. Given a
 morphism:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f :: a -> b
-\end{verbatim}
+\end{Verbatim}
 it creates a morphism in \emph{C\textsubscript{T}} with the
 corresponding Kleisli arrow:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 η ◦ f
-\end{verbatim}
+\end{Verbatim}
 In Haskell we'd write it as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 return . f
-\end{verbatim}
+\end{Verbatim}
 We can also define a functor \code{G} from \emph{C\textsubscript{T}}
 back to \emph{C}. It takes an object \code{a} from the Kleisli
 category and maps it to an object \code{T a} in \emph{C}. Its action
 on a morphism \code{f\textsubscript{K}} corresponding to a Kleisli arrow:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f :: a -> T b
-\end{verbatim}
+\end{Verbatim}
 is a morphism in \emph{C}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 T a -> T b
-\end{verbatim}
+\end{Verbatim}
 given by first lifting \code{f} and then applying \code{μ}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -369,9 +369,9 @@ with a comonad. They make the following diagrams commute:
 where \code{coa} is the coevaluation morphism of the coalgebra whose
 carrier is \code{a}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 coa :: a -> W a
-\end{verbatim}
+\end{Verbatim}
 and \code{ε} and \code{δ} are the two natural transformations
 defining the comonad (in Haskell, their components are called
 \code{extract} and \code{duplicate}).
@@ -402,31 +402,31 @@ coalg\textsubscript{s} :: a -> Store s a
 \end{Verbatim}
 for the functor \code{Store s}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Store s a = Store (s -> a) s
-\end{verbatim}
+\end{Verbatim}
 This coalgebra can be also expressed as a pair of functions:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 set :: a -> s -> a
 get :: a -> s
-\end{verbatim}
+\end{Verbatim}
 (Think of \code{a} as standing for ``all,'' and \code{s} as a
 ``small'' part of it.) In terms of this pair, we have:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 coalgs a = Store (set a) (get a)
-\end{verbatim}
+\end{Verbatim}
 Here, \code{a} is a value of type \code{a}. Notice that partially
 applied \code{set} is a function \code{s->a}.
 
 We also know that \code{Store s} is a comonad:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Comonad (Store s) where
     extract (Store f s) = f s
     duplicate (Store f s) = Store (Store f) s
-\end{verbatim}
+\end{Verbatim}
 The question is: Under what conditions is a lens a coalgebra for this
 comonad? The first coherence condition:
 
@@ -435,9 +435,9 @@ comonad? The first coherence condition:
 \end{Verbatim}
 translates to:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 set a (get a) = a
-\end{verbatim}
+\end{Verbatim}
 This is the lens law that expresses the fact that if you set a field of
 the structure \code{a} to its previous value, nothing changes.
 
@@ -449,42 +449,42 @@ fmap coalg ◦ coalg = δ\textsubscript{a} ◦ coalg
 requires a little more work. First, recall the definition of
 \code{fmap} for the \code{Store} functor:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fmap g (Store f s) = Store (g . f) s
-\end{verbatim}
+\end{Verbatim}
 Applying \code{fmap\ coalg} to the result of \code{coalg} gives us:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Store (coalg . set a) (get a)
-\end{verbatim}
+\end{Verbatim}
 On the other hand, applying \code{duplicate} to the result of
 \code{coalg} produces:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Store (Store (set a)) (get a)
-\end{verbatim}
+\end{Verbatim}
 For these two expressions to be equal, the two functions under
 \code{Store} must be equal when acting on an arbitrary \code{s}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 coalg (set a s) = Store (set a) s
-\end{verbatim}
+\end{Verbatim}
 Expanding \code{coalg}, we get:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Store (set (set a s)) (get (set a s)) = Store (set a) s
-\end{verbatim}
+\end{Verbatim}
 This is equivalent to two remaining lens laws. The first one:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 set (set a s) = set a
-\end{verbatim}
+\end{Verbatim}
 tells us that setting the value of a field twice is the same as setting
 it once. The second law:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 get (set a s) = s
-\end{verbatim}
+\end{Verbatim}
 tells us that getting a value of a field that was set to \code{s}
 gives \code{s} back.
 

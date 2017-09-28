@@ -57,21 +57,21 @@ to be isomorphic to \code{a}. We can use this fact to define a subset
 as a family of injective functions that are related by isomorphisms of
 their domains. More precisely, we say that two injective functions:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f :: a -> b f':: a'-> b
-\end{verbatim}
+\end{Verbatim}
 
 are equivalent if there is an isomorphism:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 h :: a -> a'
-\end{verbatim}
+\end{Verbatim}
 
 such that:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f = f' . h
-\end{verbatim}
+\end{Verbatim}
 
 Such a family of equivalent injections defines a subset of \code{b}.
 
@@ -82,15 +82,15 @@ injective functions with monomorphism. Just to remind you, a
 monomorphism \code{m} from \code{a} to \code{b} is defined by its
 universal property. For any object \code{c} and any pair of morphisms:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 g :: c -> a g':: c -> a
-\end{verbatim}
+\end{Verbatim}
 
 such that:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 m . g = m . g'
-\end{verbatim}
+\end{Verbatim}
 
 it must be that \code{g\ =\ g\'}.
 
@@ -117,9 +117,9 @@ It remains to specify what it means to designate an element of
 from a singleton set to \code{Ω}. We'll call this function
 \code{true}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 true :: 1 -> Ω
-\end{verbatim}
+\end{Verbatim}
 
 \includegraphics[width=1.97917in]{images/true.jpg}
 
@@ -145,9 +145,9 @@ pullback diagram:
 
 Let's analyze this diagram. The pullback equation is:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 true . unit = χ . f
-\end{verbatim}
+\end{Verbatim}
 
 The function \code{true\ .\ unit} maps every element of \code{a} to
 ``true.'' Therefore \code{f} must map all elements of \code{a} to
@@ -194,9 +194,9 @@ We can thus define a set of subobjects of \code{b}, \code{Sub(b)},
 as a family of monomorphisms, and see that it is isomorphic to the set
 of morphisms from \code{b} to \code{Ω}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Sub(b) ≅ C(b, Ω)
-\end{verbatim}
+\end{Verbatim}
 
 This happens to be a natural isomorphism of two functors. In other
 words, \code{Sub(-)} is a representable (contravariant) functor whose

@@ -29,9 +29,9 @@ functions: \ensuremath{g \circ f}. Notice the right to left order of composition
 people this is confusing. You may be familiar with the pipe notation in
 Unix, as in:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 lsof | grep Chrome
-\end{verbatim}
+\end{Verbatim}
 or the chevron \code{>>} in F\#, which both
 go from left to right. But in mathematics and in Haskell functions
 compose right to left. It helps if you read \code{g◦f} as ``g \emph{after} f.''
@@ -40,22 +40,22 @@ Let's make this even more explicit by writing some C code. We have one
 function \code{f} that takes an argument of type \code{A} and
 returns a value of type \code{B}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 B f(A a);
-\end{verbatim}
+\end{Verbatim}
 and another:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 C g(B b);
-\end{verbatim}
+\end{Verbatim}
 Their composition is:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 C g_after_f(A a)
 {
     return g(f(a));
 }
-\end{verbatim}
+\end{Verbatim}
 Here, again, you see right-to-left composition: \code{g(f(a))}; this
 time in C.
 
@@ -64,27 +64,27 @@ Library that takes two functions and returns their composition, but
 there isn't one. So let's try some Haskell for a change. Here's the
 declaration of a function from A to B:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f :: A -> B
-\end{verbatim}
+\end{Verbatim}
 Similarly:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 g :: B -> C
-\end{verbatim}
+\end{Verbatim}
 Their composition is:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 g . f
-\end{verbatim}
+\end{Verbatim}
 Once you see how simple things are in Haskell, the inability to express
 straightforward functional concepts in C++ is a little embarrassing. In
 fact, Haskell will let you use Unicode characters so you can write
 composition as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 g ◦ f
-\end{verbatim}
+\end{Verbatim}
 You can even use Unicode double colons and arrows:
 
 \begin{minted}[escapeinside=||,mathescape=true]{text}
@@ -107,17 +107,17 @@ that can be composed (that is, their objects match end-to-end), you
 don't need parentheses to compose them. In math notation this is
 expressed as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 h◦(g◦f) = (h◦g)◦f = h◦g◦f
-\end{verbatim}
+\end{Verbatim}
 In (pseudo) Haskell:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f :: A -> B
 g :: B -> C
 h :: C -> D
 h . (g . f) == (h . g) . f == h . g . f
-\end{verbatim}
+\end{Verbatim}
 (I said ``pseudo,'' because equality is not defined for functions.)
 
 Associativity is pretty obvious when dealing with functions, but it may
@@ -142,9 +142,9 @@ identity function that just returns back its argument. The
 implementation is the same for every type, which means this function is
 universally polymorphic. In C++ we could define it as a template:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class T> T id(T x) { return x; }
-\end{verbatim}
+\end{Verbatim}
 Of course, in C++ nothing is that simple, because you have to take into
 account not only what you're passing but also how (that is, by value, by
 reference, by const reference, by move, and so on).
@@ -152,10 +152,10 @@ reference, by const reference, by move, and so on).
 In Haskell, the identity function is part of the standard library
 (called Prelude). Here's its declaration and definition:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 id :: a -> a
 id x = x
-\end{verbatim}
+\end{Verbatim}
 As you can see, polymorphic functions in Haskell are a piece of cake. In
 the declaration, you just replace the type with a type variable. Here's
 the trick: names of concrete types always start with a capital letter,
@@ -180,10 +180,10 @@ This concludes our second Haskell lesson.
 
 The identity conditions can be written (again, in pseudo-Haskell) as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f . id == f
 id . f == f
-\end{verbatim}
+\end{Verbatim}
 You might be asking yourself the question: Why would anyone bother with
 the identity function --- a function that does nothing? Then again, why
 do we bother with the number zero? Zero is a symbol for nothing. Ancient

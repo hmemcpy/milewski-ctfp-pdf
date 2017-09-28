@@ -71,9 +71,9 @@ set. Remember, an empty set corresponds to the Haskell type
 polymorphic function from \code{Void} to any other type is called
 \code{absurd}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 absurd :: Void -> a
-\end{verbatim}
+\end{Verbatim}
 It's this family of morphisms that makes \code{Void} the initial
 object in the category of types.
 
@@ -107,10 +107,10 @@ one value --- implicit in C++ and explicit in Haskell, denoted by
 \code{()}. We've also established that there is one and only one pure
 function from any type to the unit type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 unit :: a -> ()
 unit _ = ()
-\end{verbatim}
+\end{Verbatim}
 so all the conditions for the terminal object are satisfied.
 
 Notice that in this example the uniqueness condition is crucial, because
@@ -118,17 +118,17 @@ there are other sets (actually, all of them, except for the empty set)
 that have incoming morphisms from every set. For instance, there is a
 Boolean-valued function (a predicate) defined for every type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 yes :: a -> Bool
 yes _ = True
-\end{verbatim}
+\end{Verbatim}
 But \code{Bool} is not a terminal object. There is at least one more
 \code{Bool}-valued function from every type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 no :: a -> Bool
 no _ = False
-\end{verbatim}
+\end{Verbatim}
 Insisting on uniqueness gives us just the right precision to narrow down
 the definition of the terminal object to just one type.
 
@@ -190,10 +190,10 @@ We understand the inverse in terms of composition and identity: Morphism
 identity morphism. These are actually two equations because there are
 two ways of composing two morphisms:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f . g = id
 g . f = id
-\end{verbatim}
+\end{Verbatim}
 When I said that the initial (terminal) object was unique up to
 isomorphism, I meant that any two initial (terminal) objects are
 isomorphic. That's actually easy to see. Let's suppose that we have two
@@ -243,15 +243,15 @@ the product to each of the constituents. In Haskell, these two functions
 are called \code{fst} and \code{snd} and they pick, respectively,
 the first and the second component of a pair:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fst :: (a, b) -> a
 fst (x, y) = x
-\end{verbatim}
+\end{Verbatim}
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 snd :: (a, b) -> b
 snd (x, y) = y
-\end{verbatim}
+\end{Verbatim}
 Here, the functions are defined by pattern matching their arguments: the
 pattern that matches any pair is \code{(x, y)}, and it extracts its
 components into variables \code{x} and \code{y}.
@@ -259,18 +259,18 @@ components into variables \code{x} and \code{y}.
 These definitions can be simplified even further with the use of
 wildcards:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fst (x, _) = x
 snd (_, y) = y
-\end{verbatim}
+\end{Verbatim}
 In C++, we would use template functions, for instance:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class A, class B> A
 fst(pair<A, B> const & p) {
     return p.first;
 }
-\end{verbatim}
+\end{Verbatim}
 Equipped with this seemingly very limited knowledge, let's try to define
 a pattern of objects and morphisms in the category of sets that will
 lead us to the construction of a product of two sets, \emph{a} and
@@ -278,10 +278,10 @@ lead us to the construction of a product of two sets, \emph{a} and
 \emph{p} and \emph{q} connecting it to \emph{a} and \emph{b},
 respectively:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 p :: c -> a
 q :: c -> b
-\end{verbatim}
+\end{Verbatim}
 
 \begin{figure}[H]
 \centering
@@ -306,26 +306,26 @@ Here's one: \code{Int}. Can \code{Int} be considered a candidate for
 the product of \code{Int} and \code{Bool}? Yes, it can --- and here
 are its projections:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 p :: Int -> Int
 p x = x
 
 q :: Int -> Bool
 q _ = True
-\end{verbatim}
+\end{Verbatim}
 That's pretty lame, but it matches the criteria.
 
 Here's another one: \code{(Int, Int, Bool)}. It's a tuple of three
 elements, or a triple. Here are two morphisms that make it a legitimate
 candidate (we are using pattern matching on triples):
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 p :: (Int, Int, Bool) -> Int
 p (x, _, _) = x
 
 q :: (Int, Int, Bool) -> Bool
 q (_, _, b) = b
-\end{verbatim}
+\end{Verbatim}
 You may have noticed that while our first candidate was too small --- it
 only covered the \code{Int} dimension of the product; the second was
 too big --- it spuriously duplicated the \code{Int} dimension.
@@ -342,10 +342,10 @@ projections of \emph{c'}. What it means is that the projections
 \emph{p'} and \emph{q'} can be reconstructed from \emph{p} and \emph{q}
 using \emph{m}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 p' = p . m
 q' = q . m
-\end{verbatim}
+\end{Verbatim}
 
 \begin{figure}[H]
 \centering
@@ -371,31 +371,31 @@ presented before.
 \noindent
 The mapping \code{m} for the first candidate is:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 m :: Int -> (Int, Bool)
 m x = (x, True)
-\end{verbatim}
+\end{Verbatim}
 Indeed, the two projections, \code{p} and \code{q} can be
 reconstructed as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 p x = fst (m x) = x
 q x = snd (m x) = True
-\end{verbatim}
+\end{Verbatim}
 The \code{m} for the second example is similarly uniquely determined:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 m (x, _, b) = (x, b)
-\end{verbatim}
+\end{Verbatim}
 We were able to show that \code{(Int,\ Bool)} is better than either of
 the two candidates. Let's see why the opposite is not true. Could we
 find some \code{m'} that would help us reconstruct \code{fst}
 and \code{snd} from \code{p} and \code{q}?
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fst = p . m'
 snd = q . m'
-\end{verbatim}
+\end{Verbatim}
 In our first example, \code{q} always returned \code{True} and we
 know that there are pairs whose second component is \code{False}. We
 can't reconstruct \code{snd} from \code{q}.
@@ -406,14 +406,14 @@ to factorize \code{fst} and \code{snd}. Because both \code{p} and
 \code{q} ignore the second component of the triple, our \code{m'}
 can put anything in it. We can have:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 m' (x, b) = (x, x, b)
-\end{verbatim}
+\end{Verbatim}
 or
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 m' (x, b) = (x, 42, b)
-\end{verbatim}
+\end{Verbatim}
 and so on.
 
 Putting it all together, given any type \code{c} with two projections
@@ -421,10 +421,10 @@ Putting it all together, given any type \code{c} with two projections
 to the cartesian product \code{(a, b)} that factorizes them. In fact,
 it just combines \code{p} and \code{q} into a pair.
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 m :: c -> (a, b)
 m x = (p x, q x)
-\end{verbatim}
+\end{Verbatim}
 That makes the cartesian product \code{(a, b)} our best match, which
 means that this universal construction works in the category of sets. It
 picks the product of any two sets.
@@ -445,10 +445,10 @@ A (higher order) function that produces the factorizing function
 \code{m} from two candidates is sometimes called the
 \newterm{factorizer}. In our case, it would be the function:
 
-\begin{verbatim}
+\begin{Verbatim}
 factorizer :: (c -> a) -> (c -> b) -> (c -> (a, b))
 factorizer p q = \x -> (p x, q x)
-\end{verbatim}
+\end{Verbatim}
 
 \section{Coproduct}\label{coproduct}
 
@@ -458,10 +458,10 @@ pattern, we end up with an object \emph{c} equipped with two
 \emph{injections}, \code{i} and \code{j}: morphisms from \emph{a}
 and \emph{b} to \emph{c}.
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 i :: a -> c
 j :: b -> c
-\end{verbatim}
+\end{Verbatim}
 
 \begin{figure}[H]
 \centering
@@ -474,10 +474,10 @@ The ranking is also inverted: object \emph{c} is ``better'' than object
 if there is a morphism \emph{m} from \emph{c} to \emph{c'} that
 factorizes the injections:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 i' = m . i
 j' = m . j
-\end{verbatim}
+\end{Verbatim}
 
 \begin{figure}[H]
 \centering
@@ -512,24 +512,24 @@ have to define a tag --- an enumeration --- and combine it with the
 union. For instance, a tagged union of an \code{int} and a\\
 \code{char const *} could be implemented as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 struct Contact { 
     enum { isPhone, isEmail } tag;
     union { int phoneNum; char const * emailAddr; };
 };
-\end{verbatim}
+\end{Verbatim}
 The two injections can either be implemented as constructors or as
 functions. For instance, here's the first injection as a function
 \code{PhoneNum}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Contact PhoneNum(int n) { 
     Contact c;
     c.tag = isPhone;
     c.phoneNum = n;
     return c;
 }
-\end{verbatim}
+\end{Verbatim}
 It injects an integer into \code{Contact}.
 
 A tagged union is also called a \newterm{variant}, and there is a very
@@ -540,26 +540,26 @@ In Haskell, you can combine any data types into a tagged union by
 separating data constructors with a vertical bar. The \code{Contact}
 example translates into the declaration:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Contact = PhoneNum Int | EmailAddr String
-\end{verbatim}
+\end{Verbatim}
 Here, \code{PhoneNum} and \code{EmailAddr} serve both as
 constructors (injections), and as tags for pattern matching (more about
 this later). For instance, this is how you would construct a contact
 using a phone number:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 helpdesk :: Contact;
 helpdesk = PhoneNum 2222222
-\end{verbatim}
+\end{Verbatim}
 Unlike the canonical implementation of the product that is built into
 Haskell as the primitive pair, the canonical implementation of the
 coproduct is a data type called \code{Either}, which is defined in the
 standard Prelude as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Either a b = Left a | Right b
-\end{verbatim}
+\end{Verbatim}
 It is parameterized by two types, \code{a} and \code{b} and has two
 constructors: \code{Left} that takes a value of type \code{a}, and
 \code{Right} that takes a value of type \code{b}.
@@ -569,11 +569,11 @@ for the coproduct. Given a candidate type \code{c} and two candidate
 injections \code{i} and \code{j}, the factorizer for \code{Either}
 produces the factoring function:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 factorizer :: (a -> c) -> (b -> c) -> Either a b -> c
 factorizer i j (Left a)  = i a
 factorizer i j (Right b) = j b
-\end{verbatim}
+\end{Verbatim}
 
 \section{Asymmetry}\label{asymmetry}
 
@@ -611,17 +611,17 @@ Because the product is universal, there is also a (unique) morphism
 morphism selects an element from the product set --- it selects a
 concrete pair. It also factorizes the two projections:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 p = fst . m
 q = snd . m
-\end{verbatim}
+\end{Verbatim}
 When acting on the singleton value \code{()}, the only element of the
 singleton set, these two equations become:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 p () = fst (m ())
 q () = snd (m ())
-\end{verbatim}
+\end{Verbatim}
 Since \code{m ()} is the element of the product picked by \code{m},
 these equations tell use that the element picked by \code{p} from the
 first set, \code{p ()}, is the first component of the pair picked by
@@ -688,16 +688,16 @@ isomorphism is the same as a bijection.
   Show that \code{Either} is a ``better'' coproduct than \code{int}
   equipped with two injections:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 int i(int n) { return n; }
 int j(bool b) { return b? 0: 1; }
-\end{verbatim}
+\end{Verbatim}
 
   Hint: Define a function
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 int m(Either const & e);
-\end{verbatim}
+\end{Verbatim}
 
   that factorizes \code{i} and \code{j}.
 \item
@@ -707,14 +707,14 @@ int m(Either const & e);
 \item
   Still continuing: What about these injections?
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 int i(int n) { 
     if (n < 0) return n;
     return n + 2;
 }
 
 int j(bool b) { return b? 0: 1; }
-\end{verbatim}
+\end{Verbatim}
 \item
   Come up with an inferior candidate for a coproduct of \code{int} and
   \code{bool} that cannot be better than \code{Either} because it

@@ -10,9 +10,9 @@ We've seen previously that, when we fix an object \code{a} in the
 category \emph{C}, the mapping \code{C(a,\ -)} is a (covariant)
 functor from \emph{C} to \textbf{Set}.
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 x -> C(a, x)
-\end{verbatim}
+\end{Verbatim}
 
 (The codomain is \textbf{Set} because the hom-set C(a, x) is a
 \emph{set}.) We call this mapping a hom-functor --- we have previously
@@ -21,9 +21,9 @@ defined its action on morphisms as well.
 Now let's vary \code{a} in this mapping. We get a new mapping that
 assigns the hom-\emph{functor} \code{C(a,\ -)} to any \code{a}.
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 a -> C(a, -)
-\end{verbatim}
+\end{Verbatim}
 
 It's a mapping of objects from category \emph{C} to functors, which are
 \emph{objects} in the functor category (see the section about functor
@@ -51,16 +51,16 @@ transformation between those two functors.
 
 And here's the trick: we use the Yoneda lemma:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 [C, Set](C(a, -), F) ≅ F a
-\end{verbatim}
+\end{Verbatim}
 
 and replace the generic \code{F} with the hom-functor
 \code{C(b,\ -)}. We get:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 [C, Set](C(a, -), C(b, -)) ≅ C(b, a)
-\end{verbatim}
+\end{Verbatim}
 
 \includegraphics[width=3.87500in]{images/yoneda-embedding.jpg}
 
@@ -101,9 +101,9 @@ objects.
 The (contravariant) functor we have just described, the functor that
 maps objects in \emph{C} to functors in \code{{[}C,\ Set{]}}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 a -> C(a, -)
-\end{verbatim}
+\end{Verbatim}
 
 defines the \newterm{Yoneda embedding}. It \emph{embeds} a category
 \emph{C} (strictly speaking, the category \emph{C\textsuperscript{op}},
@@ -127,9 +127,9 @@ and Colimits}). The co-Yoneda embedding defines the embedding of a
 category \emph{C} in the category of presheaves. Its action on morphisms
 is given by:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 [C, Set](C(-, a), C(-, b)) ≅ C(a, b)
-\end{verbatim}
+\end{Verbatim}
 
 Again, mathematicians know a lot about the category of presheaves, so
 being able to embed an arbitrary category in it is a big win.
@@ -140,9 +140,9 @@ In Haskell, the Yoneda embedding can be represented as the isomorphism
 between natural transformations amongst reader functors on the one hand,
 and functions (going in the opposite direction) on the other hand:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 forall x. (a -> x) -> (b -> x) ≅ b -> a
-\end{verbatim}
+\end{Verbatim}
 
 (Remember, the reader functor is equivalent to
 \code{((->)\ a)}.)
@@ -159,16 +159,16 @@ dropping the parentheses around --- the function
 Given such a converter, \code{btoa}, one can define the left hand
 side, call it\code{fromY}, as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fromY :: (a -> x) -> b -> x fromY f b = f (btoa b)
-\end{verbatim}
+\end{Verbatim}
 
 Conversely, given a function \code{fromY} we can recover the converter
 by calling \code{fromY} with the identity:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fromY id :: b -> a
-\end{verbatim}
+\end{Verbatim}
 
 This establishes the bijection between functions of the type
 \code{fromY} and \code{btoa}.
@@ -191,7 +191,7 @@ of lenses} from the \code{Control.Lens} library.
 This example was suggested by Robert Harper. It's the application of the
 Yoneda embedding to a category defined by a preorder. A preorder is a
 set with an ordering relation between its elements that's traditionally
-written as \code{\textless{}=} (less than or equal). The ``pre'' in
+written as \code{<=} (less than or equal). The ``pre'' in
 preorder is there because we're only requiring the relation to be
 transitive and reflexive but not necessarily antisymmetric (so it's
 possible to have cycles).
@@ -199,29 +199,29 @@ possible to have cycles).
 A set with the preorder relation gives rise to a category. The objects
 are the elements of this set. A morphism from object \code{a} to
 \code{b} either doesn't exist, if the objects cannot be compared or if
-it's not true that \code{a\ \textless{}=\ b}; or it exists if
-\code{a\ \textless{}=\ b}, and it points from \code{a} to
+it's not true that \code{a\ <=\ b}; or it exists if
+\code{a\ <=\ b}, and it points from \code{a} to
 \code{b}. There is never more than one morphism from one object to
 another. Therefore any hom-set in such a category is either an empty set
 or a one-element set. Such a category is called \newterm{thin}.
 
 It's easy to convince yourself that this construction is indeed a
 category: The arrows are composable because, if
-\code{a\ \textless{}=\ b} and \code{b\ \textless{}=\ c} then
-\code{a\ \textless{}=\ c}; and the composition is associative. We also
+\code{a\ <=\ b} and \code{b\ <=\ c} then
+\code{a\ <=\ c}; and the composition is associative. We also
 have the identity arrows because every element is (less than or) equal
 to itself (reflexivity of the underlying relation).
 
 We can now apply the co-Yoneda embedding to a preorder category. In
 particular, we're interested in its action on morphisms:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 [C, Set](C(-, a), C(-, b)) ≅ C(a, b)
-\end{verbatim}
+\end{Verbatim}
 
 The hom-set on the right hand side is non-empty if and only if
-\code{a\ \textless{}=\ b} --- in which case it's a one-element set.
-Consequently, if \code{a\ \textless{}=\ b}, there exists a single
+\code{a\ <=\ b} --- in which case it's a one-element set.
+Consequently, if \code{a\ <=\ b}, there exists a single
 natural transformation on the left. Otherwise there is no natural
 transformation.
 
@@ -241,30 +241,30 @@ empty set (what would the value of such a function be when acting on the
 single element?).
 
 So our natural transformation will never connect a singleton hom-set to
-an empty hom-set. In other words, if \code{x\ \textless{}=\ a}
+an empty hom-set. In other words, if \code{x\ <=\ a}
 (singleton hom-set \code{C(x,\ a)}) then \code{C(x,\ b)} cannot be
 empty. A non-empty \code{C(x,\ b)} means that \code{x} is less or
 equal to \code{b}. So the existence of the natural transformation in
 question requires that, for every \code{x}, if
-\code{x\ \textless{}=\ a} then \code{x\ \textless{}=\ b}.
+\code{x\ <=\ a} then \code{x\ <=\ b}.
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 for all x, x ≤ a ⇒ x ≤ b
-\end{verbatim}
+\end{Verbatim}
 
 On the other hand, co-Yoneda tells us that the existence of this natural
 transformation is equivalent to \code{C(a,\ b)} being non-empty, or to
-\code{a\ \textless{}=\ b}. Together, we get:
+\code{a\ <=\ b}. Together, we get:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 a ≤ b if and only if for all x, x ≤ a ⇒ x ≤ b
-\end{verbatim}
+\end{Verbatim}
 
 We could have arrived at this result directly. The intuition is that, if
-\code{a\ \textless{}=\ b} then all elements that are below \code{a}
+\code{a\ <=\ b} then all elements that are below \code{a}
 must also be below \code{b}. Conversely, when you substitute
 \code{a} for \code{x} on the right hand side, it follows that
-\code{a\ \textless{}=\ b}. But you must admit that arriving at this
+\code{a\ <=\ b}. But you must admit that arriving at this
 result through the Yoneda embedding is much more exciting.
 
 \section{Naturality}\label{naturality}
@@ -275,9 +275,9 @@ are morphisms in the functor category \code{{[}C,\ Set{]}}. The set of
 natural transformation between any two functors is a hom-set in that
 category. The Yoneda lemma is the isomorphism:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 [C, Set](C(a, -), F) ≅ F a
-\end{verbatim}
+\end{Verbatim}
 
 This isomorphism turns out to be natural in both \code{F} and
 \code{a}. In other words, it's natural in \code{(F,\ a)}, a pair
@@ -309,15 +309,15 @@ easily construct such a function from the component of \code{Φ} at
 \code{a} (which maps \code{F\ a} to \code{G\ a}) and the morphism
 \code{f} lifted by \code{G}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (G f) ◦ Φa
-\end{verbatim}
+\end{Verbatim}
 
 Notice that, because of naturality of \code{Φ}, this is the same as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Φb ◦ (F f)
-\end{verbatim}
+\end{Verbatim}
 
 I'm not going to prove the naturality of the whole isomorphism --- after
 you've established what the functors are, the proof is pretty

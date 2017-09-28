@@ -76,9 +76,9 @@ problems with infinite lists.)
 
 A monoid in Haskell is defined by the type class:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 class Monoid m where mempty :: m mappend :: m -> m -> m
-\end{verbatim}
+\end{Verbatim}
 
 This just says that every \code{Monoid} must have a neutral element,
 which is called \code{mempty}, and a binary function (multiplication)
@@ -89,9 +89,9 @@ monoid is instantiated.
 The fact that a list of any type forms a monoid is described by this
 instance definition:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Monoid [a] where mempty = [] mappend = (++)
-\end{verbatim}
+\end{Verbatim}
 
 It states that an empty list \code{{[}{]}} is the unit element, and
 list concatenation \code{(++)} is the binary operation.
@@ -101,9 +101,9 @@ with the set \code{a} serving as generators. The set of natural
 numbers with multiplication is not a free monoid, because we identify
 lots of products. Compare for instance:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 2 * 3 = 6 [2] ++ [3] = [2, 3] // not the same as [6]
-\end{verbatim}
+\end{Verbatim}
 
 That was easy, but the question is, can we perform this free
 construction in category theory, where we are not allowed to look inside
@@ -131,24 +131,24 @@ structure-preserving functions are called \newterm{homomorphisms}. A monoid
 homomorphism must map the product of two elements to the product of the
 mapping of the two elements:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 h (a * b) = h a * h b
-\end{verbatim}
+\end{Verbatim}
 
 and it must map unit to unit.\\
 For instance, consider a homomorphism from lists of integers to
 integers. If we map \code{{[}2{]}} to 2 and \code{{[}3{]}} to 3, we
 have to map \code{{[}2,\ 3{]}} to 6, because concatenation
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 [2] ++ [3] = [2, 3]
-\end{verbatim}
+\end{Verbatim}
 
 becomes multiplication
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 2 * 3 = 6
-\end{verbatim}
+\end{Verbatim}
 
 Now let's forget about the internal structure of individual monoids, and
 only look at them as objects with corresponding morphisms. You get a
@@ -194,9 +194,9 @@ We start with a set of generators, \code{x}. That's a set in
 The pattern we are going to match consists of a monoid \code{m} --- an
 object of \textbf{Mon} --- and a function \code{p} in \textbf{Set}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 p :: x -> U m
-\end{verbatim}
+\end{Verbatim}
 
 where \code{U} is our forgetful functor from \textbf{Mon} to
 \textbf{Set}. This is a weird heterogeneous pattern --- half in
@@ -214,23 +214,23 @@ We also have to define the ranking among candidates. Suppose we have
 another candidate: a monoid \code{n} and a function that identifies
 the generators in its X-ray image:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 q :: x -> U n
-\end{verbatim}
+\end{Verbatim}
 
 We'll say that \code{m} is better than \code{n} if there is a
 morphism of monoids (that's a structure-preserving homomorphism):
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 h :: m -> n
-\end{verbatim}
+\end{Verbatim}
 
 whose image under \code{U} (remember, \code{U} is a functor, so it
 maps morphisms to functions) factorizes through \code{p}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 q = U h . p
-\end{verbatim}
+\end{Verbatim}
 
 If you think of \code{p} as selecting the generators in \code{m};
 and \code{q} as selecting ``the same'' generators in \code{n}; then
@@ -270,9 +270,9 @@ We'll come back to free monoids when we talk about adjunctions.
   homomorphism of monoids preserve the unit is redundant. After all, we
   know that for all \code{a}
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 h a * h e = h (a * e) = h a
-\end{verbatim}
+\end{Verbatim}
 
   So \code{h\ e} acts like a right unit (and, by analogy, as a left
   unit). The problem is that \code{h\ a}, for all \code{a} might

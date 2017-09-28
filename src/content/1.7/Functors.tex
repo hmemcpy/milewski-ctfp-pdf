@@ -10,15 +10,15 @@ function on morphisms. But it doesn't map morphisms willy-nilly --- it
 preserves connections. So if a morphism \emph{f} in C connects object
 \emph{a} to object \emph{b},
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f :: a -> b
-\end{verbatim}
+\end{Verbatim}
 the image of \emph{f} in D, \emph{F f}, will connect the image of
 \emph{a} to the image of \emph{b}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 F f :: F a -> F b
-\end{verbatim}
+\end{Verbatim}
 (This is a mixture of mathematical and Haskell notation that hopefully
 makes sense by now. I won't use parentheses when applying functors to
 objects or morphisms.)
@@ -35,15 +35,15 @@ category will be connected in the other category. But there's something
 more to the structure of a category: there's also the composition of
 morphisms. If \emph{h} is a composition of \emph{f} and \emph{g}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 h = g . f
-\end{verbatim}
+\end{Verbatim}
 we want its image under F to be a composition of the images of \emph{f}
 and \emph{g}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 F h = F g . F f
-\end{verbatim}
+\end{Verbatim}
 
 \begin{figure}[H]
 \centering
@@ -55,9 +55,9 @@ Finally, we
 want all identity morphisms in C to be mapped to identity morphisms in
 D:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 F ida = idF a
-\end{verbatim}
+\end{Verbatim}
 Here, \emph{id\textsubscript{a}} is the identity at the object \emph{a},
 and \emph{id\textsubscript{F a}} the identity at \emph{F a}.
 
@@ -107,9 +107,9 @@ types that were parameterized by other types. Let's see a few examples.
 The definition of \code{Maybe} is a mapping from type \code{a} to
 type \code{Maybe a}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Maybe a = Nothing | Just a
-\end{verbatim}
+\end{Verbatim}
 Here's an important subtlety: \code{Maybe} itself is not a type, it's
 a \emph{type constructor}. You have to give it a type argument, like
 \code{Int} or \code{Bool}, in order to turn it into a type.
@@ -120,9 +120,9 @@ endofunctors.) A functor is not only a mapping of objects (here, types)
 but also a mapping of morphisms (here, functions). For any function from
 \code{a} to \code{b}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f :: a -> b
-\end{verbatim}
+\end{Verbatim}
 we would like to produce a function from \code{Maybe a} to
 \code{Maybe\ b}. To define such a function, we'll have two cases to
 consider, corresponding to the two constructors of \code{Maybe}. The
@@ -131,20 +131,20 @@ back. And if the argument is \code{Just}, we'll apply the function
 \code{f} to its contents. So the image of \code{f} under
 \code{Maybe} is the function:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f' :: Maybe a -> Maybe b
 f' Nothing = Nothing
 f' (Just x) = Just (f x)
-\end{verbatim}
+\end{Verbatim}
 (By the way, in Haskell you can use apostrophes in variables names,
 which is very handy in cases like these.) In Haskell, we implement the
 morphism-mapping part of a functor as a higher order function called
 \code{fmap}. In the case of \code{Maybe}, it has the following
 signature:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fmap :: (a -> b) -> (Maybe a -> Maybe b)
-\end{verbatim}
+\end{Verbatim}
 
 \begin{figure}[H]
 \centering
@@ -160,16 +160,16 @@ itself is a function \code{(a->b)} --- returning a
 function \code{(Maybe a -> Maybe b)}; or as a
 function of two arguments returning \code{Maybe b}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fmap :: (a -> b) -> Maybe a -> Maybe b
-\end{verbatim}
+\end{Verbatim}
 Based on our previous discussion, this is how we implement \code{fmap}
 for \code{Maybe}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fmap _ Nothing = Nothing
 fmap f (Just x) = Just (f x)
-\end{verbatim}
+\end{Verbatim}
 To show that the type constructor \code{Maybe} together with the
 function \code{fmap} form a functor, we have to prove that
 \code{fmap} preserves identity and composition. These are called ``the
@@ -187,9 +187,9 @@ either inlining a function, or the other way around, refactoring an
 expression into a function. Let's take the identity function as an
 example:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 id x = x
-\end{verbatim}
+\end{Verbatim}
 If you see, for instance, \code{id y} in some expression, you can
 replace it with \code{y} (inlining). Further, if you see \code{id}
 applied to an expression, say \code{id (y + 2)}, you can replace it
@@ -202,20 +202,20 @@ given the above definition of \code{fmap} you can replace
 around. Let's see how this works in practice. Let's start with the
 preservation of identity:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fmap id = id
-\end{verbatim}
+\end{Verbatim}
 There are two cases to consider: \code{Nothing} and \code{Just}.
 Here's the first case (I'm using Haskell pseudo-code to transform the
 left hand side to the right hand side):
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
   fmap id Nothing
 = { definition of fmap }
   Nothing
 = { definition of id } 
   id Nothing
-\end{verbatim}
+\end{Verbatim}
 Notice that in the last step I used the definition of \code{id}
 backwards. I replaced the expression \code{Nothing} with
 \code{id\ Nothing}. In practice, you carry out such proofs by
@@ -223,7 +223,7 @@ backwards. I replaced the expression \code{Nothing} with
 in the middle --- here it was \code{Nothing}. The second case is also
 easy:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
   fmap id (Just x)
 = { definition of fmap }
   Just (id x)
@@ -231,15 +231,15 @@ easy:
   Just x
 = { definition of id }
   id (Just x)
-\end{verbatim}
+\end{Verbatim}
 Now, lets show that \code{fmap} preserves composition:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fmap (g . f) = fmap g . fmap f
-\end{verbatim}
+\end{Verbatim}
 First the \code{Nothing} case:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
   fmap (g . f) Nothing
 = { definition of fmap }
   Nothing
@@ -247,10 +247,10 @@ First the \code{Nothing} case:
   fmap g Nothing
 = { definition of fmap }
   fmap g (fmap f Nothing)
-\end{verbatim}
+\end{Verbatim}
 And then the \code{Just} case:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
   fmap (g . f) (Just x)
 = { definition of fmap }
   Just ((g . f) x)
@@ -262,11 +262,11 @@ And then the \code{Just} case:
   fmap g (fmap f (Just x))
 = { definition of composition }
   (fmap g . fmap f) (Just x)
-\end{verbatim}
+\end{Verbatim}
 It's worth stressing that equational reasoning doesn't work for C++
 style ``functions'' with side effects. Consider this code:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 int square(int x) { 
     return x * x;
 }
@@ -277,13 +277,13 @@ int counter() {
 }
 
 double y = square(counter());
-\end{verbatim}
+\end{Verbatim}
 Using equational reasoning, you would be able to inline \code{square}
 to get:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 double y = counter() * counter();
-\end{verbatim}
+\end{Verbatim}
 This is definitely not a valid transformation, and it will not produce
 the same result. Despite that, the C++ compiler will try to use
 equational reasoning if you implement \code{square} as a macro, with
@@ -299,7 +299,7 @@ implementation is much more complex, dealing with various ways the
 argument may be passed, with copy semantics, and with the resource
 management issues characteristic of C++):
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class T>
 class optional { 
     bool _isValid; // the tag
@@ -309,13 +309,13 @@ public:
     optional(T x) : _isValid(true) , _v(x) {} // Just
     bool isValid() const { return _isValid; }
     T val() const { return _v; } };
-\end{verbatim}
+\end{Verbatim}
 This template provides one part of the definition of a functor: the
 mapping of types. It maps any type \code{T} to a new type
 \code{optional<T>}. Let's define its action on
 functions:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class A, class B>
 std::function<optional<B>(optional<A>)>
 fmap(std::function<B(A)> f) { 
@@ -326,11 +326,11 @@ fmap(std::function<B(A)> f) {
             return optional<B>{ f(opt.val()) };
     };
 }
-\end{verbatim}
+\end{Verbatim}
 This is a higher order function, taking a function as an argument and
 returning a function. Here's the uncurried version of it:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class A, class B>
 optional<B> fmap(std::function<B(A)> f, optional<A> opt) { 
     if (!opt.isValid())
@@ -338,7 +338,7 @@ optional<B> fmap(std::function<B(A)> f, optional<A> opt) {
     else 
         return optional<B>{ f(opt.val()) };
 }
-\end{verbatim}
+\end{Verbatim}
 There is also an option of making \code{fmap} a template method of
 \code{optional}. This embarrassment of choices makes abstracting the
 functor pattern in C++ a problem. Should functor be an interface to
@@ -349,9 +349,9 @@ specified explicitly? Consider a situation where the input function
 \code{f} takes an \code{int} to a \code{bool}. How will the
 compiler figure out the type of \code{g}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 auto g = fmap(f);
-\end{verbatim}
+\end{Verbatim}
 especially if, in the future, there are multiple functors overloading
 \code{fmap}? (We'll see more functors soon.)
 
@@ -362,10 +362,10 @@ typeclass mechanism. A typeclass defines a family of types that support
 a common interface. For instance, the class of objects that support
 equality is defined as follows:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 class Eq a where
     (==) :: a -> a -> Bool
-\end{verbatim}
+\end{Verbatim}
 This definition states that type \code{a} is of the class \code{Eq}
 if it supports the operator \code{(==)} that takes two arguments of
 type \code{a} and returns a \code{Bool}. If you want to tell Haskell
@@ -374,15 +374,15 @@ that a particular type is \code{Eq}, you have to declare it an
 \code{(==)}. For example, given the definition of a 2D \code{Point}
 (a product type of two \code{Float}s):
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Point = Pt Float Float
-\end{verbatim}
+\end{Verbatim}
 you can define the equality of points:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Eq Point where
     (Pt x y) == (Pt x' y') = x == x' && y == y'
-\end{verbatim}
+\end{Verbatim}
 Here I used the operator \code{(==)} (the one I'm defining) in the
 infix position between the two patterns \code{(Pt x y)} and
 \code{(Pt x' y')}. The body of the function follows the
@@ -399,10 +399,10 @@ the case with \code{Eq}, but a family of type constructors.
 Fortunately a Haskell typeclass works with type constructors as well as
 with types. So here's the definition of the \code{Functor} class:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 class Functor f where
     fmap :: (a -> b) -> f a -> f b
-\end{verbatim}
+\end{Verbatim}
 It stipulates that \code{f} is a \code{Functor} if there exists a
 function \code{fmap} with the specified type signature. The lowercase
 \code{f} is a type variable, similar to type variables \code{a} and
@@ -412,11 +412,11 @@ other types, as in \code{f\ a} and \code{f\ b}. Accordingly, when
 declaring an instance of \code{Functor}, you have to give it a type
 constructor, as is the case with \code{Maybe}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Functor Maybe where
     fmap _ Nothing = Nothing
     fmap f (Just x) = Just (f x)
-\end{verbatim}
+\end{Verbatim}
 By the way, the \code{Functor} class, as well as its instance
 definitions for a lot of simple data types, including \code{Maybe},
 are part of the standard Prelude library.
@@ -428,22 +428,22 @@ template class, like \code{optional}, so by analogy, we would
 parameterize \code{fmap} with a \newterm{template template parameter}
 \code{F}. This is the syntax for it:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<template<class> F, class A, class B>
 F<B> fmap(std::function<B(A)>, F<A>);
-\end{verbatim}
+\end{Verbatim}
 We would like to be able to specialize this template for different
 functors. Unfortunately, there is a prohibition against partial
 specialization of template functions in C++. You can't write:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class A, class B>
 optional<B> fmap<optional>(std::function<B(A)> f, optional<A> opt)
-\end{verbatim}
+\end{Verbatim}
 Instead, we have to fall back on function overloading, which brings us
 back to the original definition of the uncurried \code{fmap}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class A, class B>
 optional<B> fmap(std::function<B(A)> f, optional<A> opt) { 
     if (!opt.isValid()) 
@@ -451,7 +451,7 @@ optional<B> fmap(std::function<B(A)> f, optional<A> opt) {
     else
         return optional<B>{ f(opt.val()) };
 }
-\end{verbatim}
+\end{Verbatim}
 This definition works, but only because the second argument of
 \code{fmap} selects the overload. It totally ignores the more generic
 definition of \code{fmap}.
@@ -464,18 +464,18 @@ is a candidate for a functor. Generic containers are parameterized by
 the type of the elements they store, so let's look at a very simple
 container, the list:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data List a = Nil | Cons a (List a)
-\end{verbatim}
+\end{Verbatim}
 We have the type constructor \code{List}, which is a mapping from any
 type \code{a} to the type \code{List a}. To show that \code{List}
 is a functor we have to define the lifting of functions: Given a
 function \code{a->b} define a function\\
 \code{List a -> List b}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fmap :: (a -> b) -> (List a -> List b)
-\end{verbatim}
+\end{Verbatim}
 A function acting on \code{List a} must consider two cases
 corresponding to the two list constructors. The \code{Nil} case is
 trivial --- just return \code{Nil} --- there isn't much you can do
@@ -491,9 +491,9 @@ lifted (\code{fmap}ped) \code{f} to the tail. This is a recursive
 definition, because we are defining lifted \code{f} in terms of lifted
 \code{f}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fmap f (Cons x t) = Cons (f x) (fmap f t)
-\end{verbatim}
+\end{Verbatim}
 Notice that, on the right hand side, \code{fmap f} is applied to a
 list that's shorter than the list for which we are defining it --- it's
 applied to its tail. We recurse towards shorter and shorter lists, so we
@@ -504,17 +504,17 @@ we combine the new head \code{(f x)} with the new tail
 \code{(fmap f t)} using the \code{Cons} constructor. Putting it
 all together, here's the instance declaration for the list functor:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Functor List where
     fmap _ Nil = Nil
     fmap f (Cons x t) = Cons (f x) (fmap f t)
-\end{verbatim}
+\end{Verbatim}
 If you are more comfortable with C++, consider the case of a
 \code{std::vector}, which could be considered the most generic C++
 container. The implementation of \code{fmap} for \code{std::vector}
 is just a thin encapsulation of \code{std::transform}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class A, class B>
 std::vector<B> fmap(std::function<B(A)> f, std::vector<A> v) {
     std::vector<B> w;
@@ -524,17 +524,17 @@ std::vector<B> fmap(std::function<B(A)> f, std::vector<A> v) {
                   , f); 
     return w;
 }
-\end{verbatim}
+\end{Verbatim}
 We can use it, for instance, to square the elements of a sequence of
 numbers:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 std::vector<int> v{ 1, 2, 3, 4 };
 auto w = fmap([](int i) { return i*i; }, v);
 std::copy( std::begin(w)
          , std::end(w)
          , std::ostream_iterator(std::cout, ", "));
-\end{verbatim}
+\end{Verbatim}
 Most C++ containers are functors by virtue of implementing iterators
 that can be passed to \code{std::transform}, which is the more
 primitive cousin of \code{fmap}. Unfortunately, the simplicity of a
@@ -557,16 +557,16 @@ argument type and the result type. You've already seen it in infix form,
 \code{a->b}, but it can equally well be used in prefix
 form, when parenthesized:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (->) a b
-\end{verbatim}
+\end{Verbatim}
 Just like with regular functions, type functions of more than one
 argument can be partially applied. So when we provide just one type
 argument to the arrow, it still expects another one. That's why:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (->) a
-\end{verbatim}
+\end{Verbatim}
 is a type constructor. It needs one more type \code{b} to produce a
 complete type \code{a->b}. As it stands, it defines a
 whole family of type constructors parameterized by \code{a}. Let's see
@@ -583,9 +583,9 @@ are the types that are formed using the type constructor
 \code{b}. Here's the type signature of \code{fmap} applied to this
 case:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fmap :: (a -> b) -> (r -> a) -> (r -> b)
-\end{verbatim}
+\end{Verbatim}
 We have to solve the following puzzle: given a function
 \code{f::a->b} and a function
 \code{g::r->a}, create a function
@@ -593,23 +593,23 @@ We have to solve the following puzzle: given a function
 functions, and the result is exactly what we need. So here's the
 implementation of our \code{fmap}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Functor ((->) r) where
     fmap f g = f . g
-\end{verbatim}
+\end{Verbatim}
 It just works! If you like terse notation, this definition can be
 reduced further by noticing that composition can be rewritten in prefix
 form:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fmap f g = (.) f g
-\end{verbatim}
+\end{Verbatim}
 and the arguments can be omitted to yield a direct equality of two
 functions:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fmap = (.)
-\end{verbatim}
+\end{Verbatim}
 This combination of the type constructor \code{(->) r}
 with the above implementation of \code{fmap} is called the reader
 functor.
@@ -626,9 +626,9 @@ Haskell's laziness, a traditional container, like a list, may actually
 be implemented as a function. Consider, for instance, an infinite list
 of natural numbers, which can be compactly defined as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 nats :: [Integer] nats = [1..]
-\end{verbatim}
+\end{Verbatim}
 In the first line, a pair of square brackets is the Haskell's built-in
 type constructor for lists. In the second line, square brackets are used
 to create a list literal. Obviously, an infinite list like this cannot
@@ -666,9 +666,9 @@ don't care about being able to access the values inside a functor
 object, here's a type constructor that ignores completely its argument
 \code{a}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Const c a = Const c
-\end{verbatim}
+\end{Verbatim}
 The \code{Const} type constructor takes two types, \code{c} and
 \code{a}. Just like we did with the arrow constructor, we are going to
 partially apply it to create a functor. The data constructor (also
@@ -676,38 +676,38 @@ called \code{Const}) takes just one value of type \code{c}. It has
 no dependence on \code{a}. The type of \code{fmap} for this type
 constructor is:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fmap :: (a -> b) -> Const c a -> Const c b
-\end{verbatim}
+\end{Verbatim}
 Because the functor ignores its type argument, the implementation of
 \code{fmap} is free to ignore its function argument --- the function
 has nothing to act upon:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Functor (Const c) where
     fmap _ (Const v) = Const v
-\end{verbatim}
+\end{Verbatim}
 This might be a little clearer in C++ (I never thought I would utter
 those words!), where there is a stronger distinction between type
 arguments --- which are compile-time --- and values, which are run-time:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class C, class A>
 struct Const { 
     Const(C v) : _v(v) {}
     C _v;
 };
-\end{verbatim}
+\end{Verbatim}
 The C++ implementation of \code{fmap} also ignores the function
 argument and essentially re-casts the \code{Const} argument without
 changing its value:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class C, class A, class B>
 Const<C, B> fmap(std::function<B(A)> f, Const<C, A> c) {
     return Const<C, B>{c._v};
 }
-\end{verbatim}
+\end{Verbatim}
 Despite its weirdness, the \code{Const} functor plays an important
 role in many constructions. In category theory, it's a special case of
 the \ensuremath{\Delta}\textsubscript{c} functor I mentioned earlier --- the endo-functor
@@ -726,11 +726,11 @@ particular, it's easy to compose endofunctors. Remember the function
 \code{maybeTail}? I'll rewrite it using the Haskell's built in
 implementation of lists:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 maybeTail :: [a] -> Maybe [a]
 maybeTail [] = Nothing
 maybeTail (x:xs) = Just xs
-\end{verbatim}
+\end{Verbatim}
 (The empty list constructor that we used to call \code{Nil} is
 replaced with the empty pair of square brackets \code{{[}{]}}. The
 \code{Cons} constructor is replaced with the infix operator \code{:}
@@ -746,45 +746,45 @@ to send \code{(fmap f)} to operate on the inner list. For instance,
 let's see how we can square the elements of a \code{Maybe} list of
 integers:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 square x = x * x
 
 mis :: Maybe [Int]
 mis = Just [1, 2, 3]
 
 mis2 = fmap (fmap square) mis
-\end{verbatim}
+\end{Verbatim}
 The compiler, after analyzing the types, will figure out that, for the
 outer \code{fmap}, it should use the implementation from the
 \code{Maybe} instance, and for the inner one, the list functor
 implementation. It may not be immediately obvious that the above code
 may be rewritten as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 mis2 = (fmap . fmap) square mis
-\end{verbatim}
+\end{Verbatim}
 But remember that \code{fmap} may be considered a function of just one
 argument:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fmap :: (a -> b) -> (f a -> f b)
-\end{verbatim}
+\end{Verbatim}
 In our case, the second \code{fmap} in \code{(fmap . fmap)} takes
 as its argument:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 square :: Int -> Int
-\end{verbatim}
+\end{Verbatim}
 and returns a function of the type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 [Int] -> [Int]
-\end{verbatim}
+\end{Verbatim}
 The first \code{fmap} then takes that function and returns a function:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Maybe [Int] -> Maybe [Int]
-\end{verbatim}
+\end{Verbatim}
 Finally, that function is applied to \code{mis}. So the composition of
 two functors is a functor whose \code{fmap} is the composition of the
 corresponding \code{fmap}s. Going back to category theory: It's pretty
@@ -814,9 +814,9 @@ We'll see later that functors form categories as well.
   Can we turn the \code{Maybe} type constructor into a functor by
   defining:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fmap _ _ = Nothing
-\end{verbatim}
+\end{Verbatim}
 
   which ignores both of its arguments? (Hint: Check the functor laws.)
 \item

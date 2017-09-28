@@ -31,10 +31,10 @@ the same information. They are, however, commutative up to isomorphism
 --- the isomorphism being given by the \code{swap} function (which is
 its own inverse):
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 swap :: (a, b) -> (b, a)
 swap (x, y) = (y, x)
-\end{verbatim}
+\end{Verbatim}
 You can think of the two pairs as simply using a different format for
 storing the same data. It's just like big endian vs. little endian.
 
@@ -45,28 +45,28 @@ ways of nesting pairs are isomorphic. If you want to combine three types
 in a product, \code{a}, \code{b}, and \code{c}, in this order, you
 can do it in two ways:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 ((a, b), c)
-\end{verbatim}
+\end{Verbatim}
 or
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (a, (b, c))
-\end{verbatim}
+\end{Verbatim}
 These types are different --- you can't pass one to a function that
 expects the other --- but their elements are in one-to-one
 correspondence. There is a function that maps one to another:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 alpha :: ((a, b), c) -> (a, (b, c))
 alpha ((x, y), z) = (x, (y, z))
-\end{verbatim}
+\end{Verbatim}
 and this function is invertible:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 alpha_inv :: (a, (b, c)) -> ((a, b), c)
 alpha_inv (x, (y, z)) = ((x, y), z)
-\end{verbatim}
+\end{Verbatim}
 so it's an isomorphism. These are just different ways of repackaging the
 same data.
 
@@ -74,9 +74,9 @@ You can interpret the creation of a product type as a binary operation
 on types. From that perspective, the above isomorphism looks very much
 like the associativity law we've seen in monoids:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (a * b) * c = a * (b * c)
-\end{verbatim}
+\end{Verbatim}
 Except that, in the monoid case, the two ways of composing products were
 equal, whereas here they are only equal ``up to isomorphism.''
 
@@ -86,20 +86,20 @@ unit of the product the same way 1 is the unit of multiplication.
 Indeed, the pairing of a value of some type \code{a} with a unit
 doesn't add any information. The type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (a, ())
-\end{verbatim}
+\end{Verbatim}
 is isomorphic to \code{a}. Here's the isomorphism:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 rho :: (a, ()) -> a
 rho (x, ()) = x
-\end{verbatim}
+\end{Verbatim}
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 rho_inv :: a -> (a, ())
 rho_inv x = (x, ())
-\end{verbatim}
+\end{Verbatim}
 These observations can be formalized by saying that \textbf{Set} (the
 category of sets) is a \newterm{monoidal category}. It's a category that's
 also a monoid, in the sense that you can multiply objects (here, take
@@ -111,9 +111,9 @@ especially, as we'll see soon, when they are combined with sum types. It
 uses named constructors with multiple arguments. A pair, for instance,
 can be defined alternatively as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Pair a b = P a b
-\end{verbatim}
+\end{Verbatim}
 Here, \code{Pair\ a\ b} is the name of the type paremeterized by two
 other types, \code{a} and \code{b}; and \code{P} is the name of
 the data constructor. You define a pair type by passing two types to the
@@ -122,10 +122,10 @@ two values of appropriate types to the constructor \code{P}. For
 instance, let's define a value \code{stmt} as a pair of
 \code{String} and \code{Bool}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 stmt :: Pair String Bool
 stmt = P "This statements is" False
-\end{verbatim}
+\end{Verbatim}
 The first line is the type declaration. It uses the type constructor
 \code{Pair}, with \code{String} and \code{Bool} replacing
 \code{a} and the \code{b} in the generic definition of
@@ -137,26 +137,26 @@ constructors, to construct values.
 Since the name spaces for type and data constructors are separate in
 Haskell, you will often see the same name used for both, as in:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Pair a b = Pair a b
-\end{verbatim}
+\end{Verbatim}
 And if you squint hard enough, you may even view the built-in pair type
 as a variation on this kind of declaration, where the name \code{Pair}
 is replaced with the binary operator \code{(,)}. In fact you can use
 \code{(,)} just like any other named constructor and create pairs
 using prefix notation:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 stmt = (,) "This statement is" False
-\end{verbatim}
+\end{Verbatim}
 Similarly, you can use \code{(,,)} to create triples, and so on.
 
 Instead of using generic pairs or tuples, you can also define specific
 named product types, as in:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Stmt = Stmt String Bool
-\end{verbatim}
+\end{Verbatim}
 which is just a product of \code{String} and \code{Bool}, but it's
 given its own name and constructor. The advantage of this style of
 declaration is that you may define many types that have the same content
@@ -178,54 +178,54 @@ what. We would extract components by pattern matching, as in this
 function that checks if the symbol of the element is the prefix of its
 name (as in \textbf{He} being the prefix of \textbf{Helium}):
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 startsWithSymbol :: (String, String, Int) -> Bool
 startsWithSymbol (name, symbol, _) = isPrefixOf symbol name
-\end{verbatim}
+\end{Verbatim}
 This code is error prone, and is hard to read and maintain. It's much
 better to define a record:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Element = Element { name :: String 
                        , symbol :: String 
                        , atomicNumber :: Int }
-\end{verbatim}
+\end{Verbatim}
 The two representations are isomorphic, as witnessed by these two
 conversion functions, which are the inverse of each other:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 tupleToElem :: (String, String, Int) -> Element
 tupleToElem (n, s, a) = Element { name = n 
                                 , symbol = s 
                                 , atomicNumber = a }
-\end{verbatim}
+\end{Verbatim}
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 elemToTuple :: Element -> (String, String, Int)
 elemToTuple e = (name e, symbol e, atomicNumber e)
-\end{verbatim}
+\end{Verbatim}
 Notice that the names of record fields also serve as functions to access
 these fields. For instance, \code{atomicNumber e} retrieves the
 \code{atomicNumber} field from \code{e}. We use
 \code{atomicNumber} as a function of the type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 atomicNumber :: Element -> Int
-\end{verbatim}
+\end{Verbatim}
 With the record syntax for \code{Element}, our function
 \code{startsWithSymbol} becomes more readable:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 startsWithSymbol :: Element -> Bool
 startsWithSymbol e = isPrefixOf (symbol e) (name e)
-\end{verbatim}
+\end{Verbatim}
 We could even use the Haskell trick of turning the function
 \code{isPrefixOf} into an infix operator by surrounding it with
 backquotes, and make it read almost like a sentence:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 startsWithSymbol e = symbol e `isPrefixOf` name e
-\end{verbatim}
+\end{Verbatim}
 The parentheses could be omitted in this case, because an infix operator
 has lower precedence than a function call.
 
@@ -235,16 +235,16 @@ Just as the product in the category of sets gives rise to product types,
 the coproduct gives rise to sum types. The canonical implementation of a
 sum type in Haskell is:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Either a b = Left a | Right b
-\end{verbatim}
+\end{Verbatim}
 And like pairs, \code{Either}s are commutative (up to isomorphism),
 can be nested, and the nesting order is irrelevant (up to isomorphism).
 So we can, for instance, define a sum equivalent of a triple:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data OneOfThree a b c = Sinistral a | Medial b | Dextral c
-\end{verbatim}
+\end{Verbatim}
 and so on.
 
 It turns out that \textbf{Set} is also a (symmetric) monoidal category
@@ -256,9 +256,9 @@ neutral element. You can think of \code{Either} as plus, and
 \code{Void} as zero. Indeed, adding \code{Void} to a sum type
 doesn't change its content. For instance:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Either a Void
-\end{verbatim}
+\end{Verbatim}
 is isomorphic to \code{a}. That's because there is no way to construct
 a \code{Right} version of this type --- there isn't a value of type
 \code{Void}. The only inhabitants of \code{Either a Void} are
@@ -274,19 +274,19 @@ First of all, the simplest sum types are just enumerations and are
 implemented using \code{enum} in C++. The equivalent of the Haskell
 sum type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Color = Red | Green | Blue
-\end{verbatim}
+\end{Verbatim}
 is the C++:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 enum { Red, Green, Blue };
-\end{verbatim}
+\end{Verbatim}
 An even simpler sum type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Bool = True | False
-\end{verbatim}
+\end{Verbatim}
 is the primitive \code{bool} in C++.
 
 Simple sum types that encode the presence or absence of a value are
@@ -295,40 +295,40 @@ values, like empty strings, negative numbers, null pointers, etc. This
 kind of optionality, if deliberate, is expressed in Haskell using the
 \code{Maybe} type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Maybe a = Nothing | Just a
-\end{verbatim}
+\end{Verbatim}
 The \code{Maybe} type is a sum of two types. You can see this if you
 separate the two constructors into individual types. The first one would
 look like this:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data NothingType = Nothing
-\end{verbatim}
+\end{Verbatim}
 It's an enumeration with one value called \code{Nothing}. In other
 words, it's a singleton, which is equivalent to the unit type
 \code{()}. The second part:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data JustType a = Just a
-\end{verbatim}
+\end{Verbatim}
 is just an encapsulation of the type \code{a}. We could have encoded
 \code{Maybe} as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Maybe a = Either () a
-\end{verbatim}
+\end{Verbatim}
 More complex sum types are often faked in C++ using pointers. A pointer
 can be either null, or point to a value of specific type. For instance,
 a Haskell list type, which can be defined as a (recursive) sum type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 List a = Nil | Cons a (List a)
-\end{verbatim}
+\end{Verbatim}
 can be translated to C++ using the null pointer trick to implement the
 empty list:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class A>
 class List { 
     Node<A> * _head;
@@ -338,7 +338,7 @@ public:
       : _head(new Node<A>(a, l))
     {}
 };
-\end{verbatim}
+\end{Verbatim}
 Notice that the two Haskell constructors \code{Nil} and \code{Cons}
 are translated into two overloaded \code{List} constructors with
 analogous arguments (none, for \code{Nil}; and a value and a list for
@@ -368,11 +368,11 @@ constructors. One matches the empty \code{Nil} list, and the other a
 \code{Cons}-constructed list. For instance, here's the definition of a
 simple function on \code{List}s:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 maybeTail :: List a -> Maybe (List a)
 maybeTail Nil = Nothing
 maybeTail (Cons _ t) = Just t
-\end{verbatim}
+\end{Verbatim}
 The first part of the definition of \code{maybeTail} uses the
 \code{Nil} constructor as pattern and returns \code{Nothing}. The
 second part uses the \code{Cons} constructor as pattern. It replaces
@@ -424,47 +424,47 @@ words, \code{a*0 = 0}.
 Another thing that links addition and multiplication is the distributive
 property:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 a * (b + c) = a * b + a * c
-\end{verbatim}
+\end{Verbatim}
 Does it also hold for product and sum types? Yes, it does --- up to
 isomorphisms, as usual. The left hand side corresponds to the type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (a, Either b c)
-\end{verbatim}
+\end{Verbatim}
 and the right hand side corresponds to the type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Either (a, b) (a, c)
-\end{verbatim}
+\end{Verbatim}
 Here's the function that converts them one way:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 prodToSum :: (a, Either b c) -> Either (a, b) (a, c)
 prodToSum (x, e) = 
     case e of
       Left  y -> Left  (x, y)
       Right z -> Right (x, z)
-\end{verbatim}
+\end{Verbatim}
 and here's one that goes the other way:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 sumToProd :: Either (a, b) (a, c) -> (a, Either b c)
 sumToProd e =
     case e of
       Left  (x, y) -> (x, Left  y)
       Right (x, z) -> (x, Right z)
-\end{verbatim}
+\end{Verbatim}
 The \code{case of} statement is used for pattern matching inside
 functions. Each pattern is followed by an arrow and the expression to be
 evaluated when the pattern matches. For instance, if you call
 \code{prodToSum} with the value:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 prod1 :: (Int, Either String Float)
 prod1 = (2, Left "Hi!")
-\end{verbatim}
+\end{Verbatim}
 the \code{e} in \code{case e of} will be equal to
 \code{Left "Hi!"}. It will match the pattern \code{Left y},
 substituting \code{"Hi!"} for \code{y}. Since the \code{x} has
@@ -508,28 +508,28 @@ The list type is quite interesting, because it's defined as a solution
 to an equation. The type we are defining appears on both sides of the
 equation:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 List a = Nil | Cons a (List a)
-\end{verbatim}
+\end{Verbatim}
 If we do our usual substitutions, and also replace \code{List\ a} with
 \code{x}, we get the equation:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 x = 1 + a * x
-\end{verbatim}
+\end{Verbatim}
 We can't solve it using traditional algebraic methods because we can't
 subtract or divide types. But we can try a series of substitutions,
 where we keep replacing \code{x} on the right hand side with
 \code{(1 + a*x)}, and use the distributive property. This leads to
 the following series:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 x = 1 + a*x
 x = 1 + a*(1 + a*x) = 1 + a + a*a*x
 x = 1 + a + a*a*(1 + a*x) = 1 + a + a*a + a*a*a*x
 ...
 x = 1 + a + a*a + a*a*a + a*a*a*a...
-\end{verbatim}
+\end{Verbatim}
 We end up with an infinite sum of products (tuples), which can be
 interpreted as: A list is either empty, \code{1}; or a singleton,
 \code{a}; or a pair, \code{a*a}; or a triple, \code{a*a*a};
@@ -580,18 +580,18 @@ talk about function types.
 \item
   Here's a sum type defined in Haskell:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Shape = Circle Float 
            | Rect Float Float
-\end{verbatim}
+\end{Verbatim}
   When we want to define a function like \code{area} that acts on a
   \code{Shape}, we do it by pattern matching on the two constructors:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 area :: Shape -> Float
 area (Circle r) = pi * r * r
 area (Rect d h) = d * h
-\end{verbatim}
+\end{Verbatim}
   Implement \code{Shape} in C++ or Java as an interface and create two
   classes: \code{Circle} and \code{Rect}. Implement \code{area} as
   a virtual function.
@@ -600,11 +600,11 @@ area (Rect d h) = d * h
   \code{circ} that calculates the circumference of a \code{Shape}.
   We can do it without touching the definition of \code{Shape}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 circ :: Shape -> Float
 circ (Circle r) = 2.0 * pi * r
 circ (Rect d h) = 2.0 * (d + h)
-\end{verbatim}
+\end{Verbatim}
   Add \code{circ} to your C++ or Java implementation. What parts of
   the original code did you have to touch?
 \item

@@ -67,9 +67,9 @@ mapping from \code{x} to \textbf{Set}.\\
 If we want to stress the fact that we are considering the hom-set as a
 mapping in its second argument, we use the notation:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 C(a, -)
-\end{verbatim}
+\end{Verbatim}
 
 with the dash serving as the placeholder for the argument.
 
@@ -81,9 +81,9 @@ the set \code{C(a,\ x)}, and the object \code{y} is mapped to
 mapping is to be a functor, \code{f} must be mapped to a function
 between the two sets:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 C(a, x) -> C(a, y)
-\end{verbatim}
+\end{Verbatim}
 
 Let's define this function point-wise, that is for each argument
 separately. For the argument we should pick an arbitrary element of
@@ -91,9 +91,9 @@ separately. For the argument we should pick an arbitrary element of
 composable, if they match end to end. It so happens that the target of
 \code{h} matches the source of \code{f}, so their composition:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f ◦ h :: a -> y
-\end{verbatim}
+\end{Verbatim}
 
 is a morphism going from \code{a} to \code{y}. It is therefore a
 member of \code{C(a,\ y)}.
@@ -104,35 +104,35 @@ We have just found our function from \code{C(a,\ x)} to
 \code{C(a,\ y)}, which can serve as the image of \code{f}. If there
 is no danger of confusion, we'll write this lifted function as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 C(a, f)
-\end{verbatim}
+\end{Verbatim}
 
 and its action on a morphism \code{h} as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 C(a, f) h = f ◦ h
-\end{verbatim}
+\end{Verbatim}
 
 Since this construction works in any category, it must also work in the
 category of Haskell types. In Haskell, the hom-functor is better known
 as the \code{Reader} functor:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 type Reader a x = a -> x
-\end{verbatim}
+\end{Verbatim}
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Functor (Reader a) where fmap f h = f . h
-\end{verbatim}
+\end{Verbatim}
 
 Now let's consider what happens if, instead of fixing the source of the
 hom-set, we fix the target. In other words, we're asking the question if
 the mapping
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 C(-, a)
-\end{verbatim}
+\end{Verbatim}
 
 is also a functor. It is, but instead of being covariant, it's
 contravariant. That's because the same kind of matching of morphisms end
@@ -142,13 +142,13 @@ precomposition, as was the case with \code{C(a,\ -)}.
 We have already seen this contravariant functor in Haskell. We called it
 \code{Op}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 type Op a x = x -> a
-\end{verbatim}
+\end{Verbatim}
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Contravariant (Op a) where contramap f h = h . f
-\end{verbatim}
+\end{Verbatim}
 
 Finally, if we let both objects vary, we get a profunctor
 \code{C(-,\ =)}, which is contravariant in the first argument and
@@ -156,18 +156,18 @@ covariant in the second (to underline the fact that the two arguments
 may vary independently, we use a double dash as the second placeholder).
 We have seen this profunctor before, when we talked about functoriality:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Profunctor (->) where dimap ab cd bc = cd . bc . ab lmap = flip (.) rmap = (.)
-\end{verbatim}
+\end{Verbatim}
 
 The important lesson is that this observation holds in any category: the
 mapping of objects to hom-sets is functorial. Since contravariance is
 equivalent to a mapping from the opposite category, we can state this
 fact succintly as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 C(-, =) :: Cop × C -> Set
-\end{verbatim}
+\end{Verbatim}
 
 \section{Representable Functors}\label{representable-functors}
 
@@ -214,30 +214,30 @@ natural transformation.
 Let's look at the component of α at some object \code{x}. It's a
 function in \textbf{Set}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 αx :: C(a, x) -> F x
-\end{verbatim}
+\end{Verbatim}
 
 The naturality condition for this transformation tells us that, for any
 morphism \code{f} from \code{x} to \code{y}, the following diagram
 commutes:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 F f ◦ αx = αy ◦ C(a, f)
-\end{verbatim}
+\end{Verbatim}
 
 In Haskell, we would replace natural transformations with polymorphic
 functions:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 alpha :: forall x. (a -> x) -> F x
-\end{verbatim}
+\end{Verbatim}
 
 with the optional \code{forall} quantifier. The naturality condition
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fmap f . alpha = alpha . fmap f
-\end{verbatim}
+\end{Verbatim}
 
 is automatically satisfied due to parametricity (it's one of those
 theorems for free I mentioned earlier), with the understanding that
@@ -247,21 +247,21 @@ the one on the right is defined by the reader functor. Since
 more explicit. Acting on \code{h}, an element of \code{C(a,\ x)},
 the naturality condition simplifies to:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 fmap f (alpha h) = alpha (f . h)
-\end{verbatim}
+\end{Verbatim}
 
 The other transformation, \code{beta}, goes the opposite way:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 beta :: forall x. F x -> (a -> x)
-\end{verbatim}
+\end{Verbatim}
 
 It must respect naturality conditions, and it must be the inverse of α:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 α ◦ β = id = β ◦ α
-\end{verbatim}
+\end{Verbatim}
 
 We will see later that a natural transformation from \code{C(a,\ -)}
 to any \textbf{Set}-valued functor always exists (Yoneda's lemma) but it
@@ -271,9 +271,9 @@ Let me give you an example in Haskell with the list functor and
 \code{Int} as \code{a}. Here's a natural transformation that does
 the job:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 alpha :: forall x. (Int -> x) -> [x] alpha h = map h [12]
-\end{verbatim}
+\end{Verbatim}
 
 I have arbitrarily picked the number 12 and created a singleton list
 with it. I can then \code{fmap} the function \code{h} over this list
@@ -283,17 +283,17 @@ as many such transformations as there are list of integers.)
 The naturality condition is equivalent to the composability of
 \code{map} (the list version of \code{fmap}):
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 map f (map h [12]) = map (f . h) [12]
-\end{verbatim}
+\end{Verbatim}
 
 But if we tried to find the inverse transformation, we would have to go
 from a list of arbitrary type \code{x} to a function returning
 \code{x}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 beta :: forall x. [x] -> (Int -> x)
-\end{verbatim}
+\end{Verbatim}
 
 You might think of retrieving an \code{x} from the list, e.g., using
 \code{head}, but that won't work for an empty list. Notice that there
@@ -310,9 +310,9 @@ The transformation we called α is called \code{tabulate}, and its
 inverse, β, is called \code{index}. Here's a (slightly simplified)
 \code{Representable} class definition:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 class Representable f where type Rep f :: * tabulate :: (Rep f -> x) -> f x index :: f x -> Rep f -> x
-\end{verbatim}
+\end{Verbatim}
 
 Notice that the representing type, our \code{a}, which is called
 \code{Rep\ f} here, is part of the definition of
@@ -321,9 +321,9 @@ type (as opposed to a type constructor, or other more exotic kinds).
 
 Infinite lists, or streams, which cannot be empty, are representable.
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 data Stream x = Cons x (Stream x)
-\end{verbatim}
+\end{Verbatim}
 
 You can think of them as memoized values of a function taking an
 \code{Integer} as an argument. (Strictly speaking, I should be using
@@ -334,9 +334,9 @@ values. Of course, this is only possible because Haskell is lazy. The
 values are evaluated on demand. You access the memoized values using
 \code{index}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 instance Representable Stream where type Rep Stream = Integer tabulate f = Cons (f 0) (tabulate (f . (+1))) index (Cons b bs) n = if n == 0 then b else index bs (n - 1)
-\end{verbatim}
+\end{Verbatim}
 
 It's interesting that you can implement a single memoization scheme to
 cover a whole family of functions with arbitrary return types.
@@ -352,15 +352,15 @@ hom-sets can internally be treated as exponential objects, in cartesian
 closed categories. The hom-set \code{C(a,\ x)} is equivalent to
 \code{xa}, and for a representable functor \code{F} we can write:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 -a = F
-\end{verbatim}
+\end{Verbatim}
 
 Let's take the logarithm of both sides, just for kicks:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 a = log F
-\end{verbatim}
+\end{Verbatim}
 
 Of course, this is a purely formal transformation, but if you know some
 of the properties of logarithms, it is quite helpful. In particular, it
@@ -401,9 +401,9 @@ explore alternative implementations that have practical value.
 \item
   The functor:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Pair a = Pair a a
-\end{verbatim}
+\end{Verbatim}
 
   is representable. Can you guess the type that represents it? Implement
   \code{tabulate} and \code{index}.

@@ -215,9 +215,9 @@ it maps objects to sets. In fact it's a contravariant functor. Here's
 how we define its action on morphisms: Let's take a morphism \code{f}
 from \code{c'} to \code{c}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f :: c' -> c
-\end{verbatim}
+\end{Verbatim}
 Our functor maps \code{c'} to the set
 \code{C(c', Lim D)}. To define the action of this functor on
 \code{f} (in other words, to lift \code{f}), we have to define the
@@ -227,21 +227,21 @@ corresponding mapping between \code{C(c, Lim D)} and
 \code{C(c', Lim D)}. An element of a hom-set is a morphism, so
 we have:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 u :: c -> Lim D
-\end{verbatim}
+\end{Verbatim}
 We can precompose \code{u} with \code{f} to get:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 u . f :: c' -> Lim D
-\end{verbatim}
+\end{Verbatim}
 And that's an element of \code{C(c', Lim D)}--- so indeed, we
 have found a mapping of morphisms:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 contramap :: (c' -> c) -> (c -> Lim D) -> (c' -> Lim D) 
 contramap f u = u . f
-\end{verbatim}
+\end{Verbatim}
 Notice the inversion in the order of \code{c} and \code{c'}
 characteristic of a \emph{contravariant} functor.
 
@@ -259,9 +259,9 @@ from \code{c} to this particular set of natural transformations is a
 (contravariant) functor. How can we show that? Again, let's define its
 action on a morphism:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f :: c' -> c
-\end{verbatim}
+\end{Verbatim}
 The lifting of \code{f} should be a mapping of natural transformations
 between two functors that go from \mathtext{I} to \mathtext{C}:
 
@@ -377,10 +377,10 @@ between them (and, as always, the identity morphisms). This category
 selects a diagram in \mathtext{C} consisting of two objects, \code{a} and
 \code{b}, and two morphisms:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f :: a -> b 
 g :: a -> b
-\end{verbatim}
+\end{Verbatim}
 To build a cone over this diagram, we have to add the apex, \code{c}
 and two projections:
 

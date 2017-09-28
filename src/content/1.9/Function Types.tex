@@ -143,9 +143,9 @@ Since we are not touching the second component of the product
 So, here's how we can factor one application, \code{g}, out of another
 application \code{g'}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 g' = g ◦ (h × id)
-\end{verbatim}
+\end{Verbatim}
 The key here is the action of the product on morphisms.
 
 The third part of the universal construction is selecting the object
@@ -181,9 +181,9 @@ eval :: ((a|\ensuremath{\Rightarrow}|b) × a) -> b
 \end{minted}
 such that for any other object \code{z} with a morphism
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 g :: z × a -> b
-\end{verbatim}
+\end{Verbatim}
 there is a unique morphism
 
 \begin{minted}[escapeinside=||,mathescape=true]{text}
@@ -191,9 +191,9 @@ h :: z -> (a|\ensuremath{\Rightarrow}|b)
 \end{minted}
 that factors \code{g} through \code{eval}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 g = eval ◦ (h × id)
-\end{verbatim}
+\end{Verbatim}
 \strut
 \end{minipage}\tabularnewline
 \bottomrule
@@ -215,9 +215,9 @@ Let's have a second look at all the candidates for the function object.
 This time, however, let's think of the morphism \code{g} as a function
 of two variables, \code{z} and \code{a}.
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 g :: z × a -> b
-\end{verbatim}
+\end{Verbatim}
 Being a morphism from a product comes as close as it gets to being a
 function of two variables. In particular, in \textbf{Set}, \code{g} is
 a function from pairs of values, one from the set \code{z} and one
@@ -227,9 +227,9 @@ On the other hand, the universal property tells us that for each such
 \code{g} there is a unique morphism \code{h} that maps \code{z} to
 a function object \code{a\ensuremath{\Rightarrow}b}.
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 h :: z -> (a⇒b)
-\end{verbatim}
+\end{Verbatim}
 In \textbf{Set}, this just means that \code{h} is a function that
 takes one variable of type \code{z} and returns a function from
 \code{a} to \code{b}. That makes \code{h} a higher order function.
@@ -243,72 +243,72 @@ This correspondence is one-to-one, because given any \code{g} there is
 a unique \code{h}, and given any \code{h} you can always recreate
 the two-argument function \code{g} using the formula:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 g = eval ◦ (h × id)
-\end{verbatim}
+\end{Verbatim}
 The function \code{g} can be called the \newterm{uncurried} version of
 \code{h}.
 
 Currying is essentially built into the syntax of Haskell. A function
 returning a function:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 a -> (b -> c)
-\end{verbatim}
+\end{Verbatim}
 is often thought of as a function of two variables. That's how we read
 the un-parenthesized signature:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 a -> b -> c
-\end{verbatim}
+\end{Verbatim}
 This interpretation is apparent in the way we define multi-argument
 functions. For instance:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 catstr :: String -> String -> String
 catstr s s' = s ++ s'
-\end{verbatim}
+\end{Verbatim}
 The same function can be written as a one-argument function returning a
 function --- a lambda:
 
-\begin{verbatim}
+\begin{Verbatim}
 catstr' s = \s' -> s ++ s'
-\end{verbatim}
+\end{Verbatim}
 These two definitions are equivalent, and either can be partially
 applied to just one argument, producing a one-argument function, as in:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 greet :: String -> String
 greet = catstr "Hello "
-\end{verbatim}
+\end{Verbatim}
 Strictly speaking, a function of two variables is one that takes a pair
 (a product type):
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (a, b) -> c
-\end{verbatim}
+\end{Verbatim}
 It's trivial to convert between the two representations, and the two
 (higher-order) functions that do it are called, unsurprisingly,
 \code{curry} and \code{uncurry}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 curry :: ((a, b)->c) -> (a->b->c)
 curry f a b = f (a, b)
-\end{verbatim}
+\end{Verbatim}
 and
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 uncurry :: (a->b->c) -> ((a, b)->c)
 uncurry f (a, b) = f a b
-\end{verbatim}
+\end{Verbatim}
 Notice that \code{curry} is the \newterm{factorizer} for the universal
 construction of the function object. This is especially apparent if it's
 rewritten in this form:
 
-\begin{verbatim}
+\begin{Verbatim}
 factorizer :: ((a, b)->c) -> (a->(b->c))
 factorizer g = \a -> (\b -> g (a, b))
-\end{verbatim}
+\end{Verbatim}
 (As a reminder: A factorizer produces the factorizing function from a
 candidate.)
 
@@ -322,26 +322,26 @@ initializer lists).
 You can partially apply a C++ function using the template
 \code{std::bind}. For instance, given a function of two strings:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 std::string catstr(std::string s1, std::string s2) {
     return s1 + s2;
 }
-\end{verbatim}
+\end{Verbatim}
 you can define a function of one string:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 using namespace std::placeholders;
 
 auto greet = std::bind(catstr, "Hello ", _1);
 std::cout << greet("Haskell Curry");
-\end{verbatim}
+\end{Verbatim}
 Scala, which is more functional than C++ or Java, falls somewhere in
 between. If you anticipate that the function you're defining will be
 partially applied, you define it with multiple argument lists:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 def catstr(s1: String)(s2: String) = s1 + s2
-\end{verbatim}
+\end{Verbatim}
 Of course that requires some amount of foresight or prescience on the
 part of a library writer.
 
@@ -437,10 +437,10 @@ The terminal object and the product have their duals: the initial object
 and the coproduct. A cartesian closed category that also supports those
 two, and in which product can be distributed over coproduct
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 a × (b + c) = a × b + a × c
 (b + c) × a = b × a + c × a
-\end{verbatim}
+\end{Verbatim}
 is called a \newterm{bicartesian closed} category. We'll see in the next
 section that bicartesian closed categories, of which \textbf{Set} is a
 prime example, have some interesting properties.
@@ -530,9 +530,9 @@ definition with a \code{case} statement, we usually split it into two
 instance, take a function from the sum type
 \code{(Either Int Double)}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f :: Either Int Double -> String
-\end{verbatim}
+\end{Verbatim}
 It may be defined as a pair of functions from, respectively,
 \code{Int} and \code{Double}:
 
@@ -587,9 +587,9 @@ proving theorems. Let's see a few examples.
 Let's take the function \code{eval} we have introduced in the
 definition of the function object. Its signature is:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 eval :: ((a -> b), a) -> b
-\end{verbatim}
+\end{Verbatim}
 It takes a pair consisting of a function and its argument and produces a
 result of the appropriate type. It's the Haskell implementation of the
 morphism:
@@ -610,10 +610,10 @@ true. This makes perfect intuitive sense and has been known since
 antiquity as \newterm{modus ponens}. We can prove this theorem by
 implementing the function:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 eval :: ((a -> b), a) -> b
 eval (f, x) = f x
-\end{verbatim}
+\end{Verbatim}
 If you give me a pair consisting of a function \code{f} taking
 \code{a} and returning \code{b}, and a concrete value \code{x} of
 type \code{a}, I can produce a concrete value of type \code{b} by
@@ -634,18 +634,18 @@ false and a \code{b} that is true, and that's a counter-example.
 Mapping this predicate into a function signature using the Curry-Howard
 isomorphism, we get:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Either a b -> a
-\end{verbatim}
+\end{Verbatim}
 Try as you may, you can't implement this function --- you can't produce
 a value of type \code{a} if you are called with the \code{Right}
 value. (Remember, we are talking about \emph{pure} functions.)
 
 Finally, we come to the meaning of the \code{absurd} function:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 absurd :: Void -> a
-\end{verbatim}
+\end{Verbatim}
 Considering that \code{Void} translates into false, we get:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -654,14 +654,14 @@ false \ensuremath{\Rightarrow} a
 Anything follows from falsehood (\emph{ex falso quodlibet}). Here's one
 possible proof (implementation) of this statement (function) in Haskell:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 absurd (Void a) = absurd a
-\end{verbatim}
+\end{Verbatim}
 where \code{Void} is defined as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 newtype Void = Void Void
-\end{verbatim}
+\end{Verbatim}
 As always, the type \code{Void} is tricky. This definition makes it
 impossible to construct a value because in order to construct one, you
 would need to provide one. Therefore, the function \code{absurd} can

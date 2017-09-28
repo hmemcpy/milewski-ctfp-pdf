@@ -5,14 +5,14 @@ functions that log or trace their execution. Something that, in an
 imperative language, would likely be implemented by mutating some global
 state, as in:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 string logger;
 
 bool negate(bool b) {
     logger += "Not so! ";
     return !b;
 }
-\end{verbatim}
+\end{Verbatim}
 You know that this is not a pure function, because its memoized version
 would fail to produce a log. This function has \newterm{side effects}.
 
@@ -25,25 +25,25 @@ have to pass the log explicitly, in and out. Let's do that by adding a
 string argument, and pairing regular output with a string that contains
 the updated log:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 pair<bool, string> negate(bool b, string logger) {
     return make_pair(!b, logger + "Not so! ");
 }
-\end{verbatim}
+\end{Verbatim}
 This function is pure, it has no side effects, it returns the same pair
 every time it's called with the same arguments, and it can be memoized
 if necessary. However, considering the cumulative nature of the log,
 you'd have to memoize all possible histories that can lead to a given
 call. There would be a separate memo entry for:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 negate(true, "It was the best of times. ");
-\end{verbatim}
+\end{Verbatim}
 and
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 negate(true, "It was the worst of times. ");
-\end{verbatim}
+\end{Verbatim}
 and so on.
 
 It's also not a very good interface for a library function. The callers
@@ -60,11 +60,11 @@ continuous log is a separate concern. We still want the function to
 produce a string, but we'd like to unburden it from producing a log. So
 here's the compromise solution:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 pair<bool, string> negate(bool b) {
     return make_pair(!b, "Not so! ");
 }
-\end{verbatim}
+\end{Verbatim}
 The idea is that the log will be aggregated \emph{between} function
 calls.
 
@@ -72,25 +72,25 @@ To see how this can be done, let's switch to a slightly more realistic
 example. We have one function from string to string that turns lower
 case characters to upper case:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 string toUpper(string s) {
     string result;
     int (*toupperp)(int) = &toupper; // toupper is overloaded
     transform(begin(s), end(s), back_inserter(result), toupperp);
     return result;
 }
-\end{verbatim}
+\end{Verbatim}
 and another that splits a string into a vector of strings, breaking it
 on whitespace boundaries:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 vector<string> toWords(string s) {
     return words(s);
 }
-\end{verbatim}
+\end{Verbatim}
 The actual work is done in the auxiliary function \code{words}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 vector<string> words(string s) {
     vector<string> result{""};
     for (auto i = begin(s); i != end(s); ++i)
@@ -102,7 +102,7 @@ vector<string> words(string s) {
     }
     return result;
 }
-\end{verbatim}
+\end{Verbatim}
 
 \begin{wrapfigure}[11]{R}{0pt}
 \raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
@@ -118,13 +118,13 @@ in a generic way by defining a template \code{Writer} that
 encapsulates a pair whose first component is a value of arbitrary type
 \code{A} and the second component is a string:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class A>
 using Writer = pair<A, string>;
-\end{verbatim}
+\end{Verbatim}
 Here are the embellished functions:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Writer<string> toUpper(string s) {
     string result;
     int (*toupperp)(int) = &toupper;
@@ -135,18 +135,18 @@ Writer<string> toUpper(string s) {
 Writer<vector<string>> toWords(string s) { 
     return make_pair(words(s), "toWords ");
 }
-\end{verbatim}
+\end{Verbatim}
 We want to compose these two functions into another embellished function
 that uppercases a string and splits it into words, all the while
 producing a log of those actions. Here's how we may do it:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Writer<vector<string>> process(string s) {
     auto p1 = toUpper(s);
     auto p2 = toWords(p1.first);
     return make_pair(p2.first, p1.second + p2.second);
 }
-\end{verbatim}
+\end{Verbatim}
 We have accomplished our goal: The aggregation of the log is no longer
 the concern of the individual functions. They produce their own
 messages, which are then, externally, concatenated into a larger log.
@@ -174,32 +174,32 @@ important point is that this morphism is still considered an arrow
 between the objects \code{int} and \code{bool}, even though the
 embellished function returns a pair:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 pair<bool, string> isEven(int n) {
     return make_pair(n % 2 == 0, "isEven ");
 }
-\end{verbatim}
+\end{Verbatim}
 By the laws of a category, we should be able to compose this morphism
 with another morphism that goes from the object \code{bool} to
 whatever. In particular, we should be able to compose it with our
 earlier \code{negate}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 pair<bool, string> negate(bool b) {
     return make_pair(!b, "Not so! ");
 }
-\end{verbatim}
+\end{Verbatim}
 Obviously, we cannot compose these two morphisms the same way we compose
 regular functions, because of the input/output mismatch. Their
 composition should look more like this:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 pair<bool, string> isOdd(int n) {
     pair<bool, string> p1 = isEven(n);
     pair<bool, string> p2 = negate(p1.first);
     return make_pair(p2.first, p1.second + p2.second);
 }
-\end{verbatim}
+\end{Verbatim}
 So here's the recipe for the composition of two morphisms in this new
 category we are constructing:
 
@@ -224,7 +224,7 @@ corresponding to three objects in our category. It should take two
 embellished functions that are composable according to our rules, and
 return a third embellished function:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class A, class B, class C>
 function<Writer<C>(A)> compose(function<Writer<B>(A)> m1,
                                function<Writer<C>(B)> m2)
@@ -235,7 +235,7 @@ function<Writer<C>(A)> compose(function<Writer<B>(A)> m1,
         return make_pair(p2.first, p1.second + p2.second); 
     };
 }
-\end{verbatim}
+\end{Verbatim}
 Now we can go back to our earlier example and implement the composition
 of \code{toUpper} and \code{toWords} using this new template:
 
@@ -249,7 +249,7 @@ There is still a lot of noise with the passing of types to the
 C++14-compliant compiler that supports generalized lambda functions with
 return type deduction (credit for this code goes to Eric Niebler):
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 auto const compose = [](auto m1, auto m2) { 
     return [m1, m2](auto x) { 
         auto p1 = m1(x);
@@ -257,33 +257,33 @@ auto const compose = [](auto m1, auto m2) {
         return make_pair(p2.first, p1.second + p2.second);
     };
 };
-\end{verbatim}
+\end{Verbatim}
 In this new definition, the implementation of \code{process}
 simplifies to:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Writer<vector<string>> process(string s) {
     return compose(toUpper, toWords)(s);
 }
-\end{verbatim}
+\end{Verbatim}
 But we are not finished yet. We have defined composition in our new
 category, but what are the identity morphisms? These are not our regular
 identity functions! They have to be morphisms from type A back to type
 A, which means they are embellished functions of the form:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 Writer<A> identity(A);
-\end{verbatim}
+\end{Verbatim}
 They have to behave like units with respect to composition. If you look
 at our definition of composition, you'll see that an identity morphism
 should pass its argument without change, and only contribute an empty
 string to the log:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class A> Writer<A> identity(A x) {
     return make_pair(x, "");
 }
-\end{verbatim}
+\end{Verbatim}
 You can easily convince yourself that the category we have just defined
 is indeed a legitimate category. In particular, our composition is
 trivially associative. If you follow what's happening with the first
@@ -306,9 +306,9 @@ The same thing in Haskell is a little more terse, and we also get a lot
 more help from the compiler. Let's start by defining the \code{Writer}
 type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 type Writer a = (a, String)
-\end{verbatim}
+\end{Verbatim}
 Here I'm just defining a type alias, an equivalent of a \code{typedef}
 (or \code{using}) in C++. The type \code{Writer} is parameterized by
 a type variable \code{a} and is equivalent to a pair of \code{a} and
@@ -318,15 +318,15 @@ parentheses, separated by a comma.
 Our morphisms are functions from an arbitrary type to some
 \code{Writer} type:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 a -> Writer b
-\end{verbatim}
+\end{Verbatim}
 We'll declare the composition as a funny infix operator, sometimes
 called the ``fish'':
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (>=>) :: (a -> Writer b) -> (b -> Writer c) -> (a -> Writer c)
-\end{verbatim}
+\end{Verbatim}
 It's a function of two arguments, each being a function on its own, and
 returning a function. The first argument is of the type
 \code{(a->Writer b)}, the second is
@@ -337,12 +337,12 @@ Here's the definition of this infix operator --- the two arguments
 \code{m1} and \code{m2} appearing on either side of the fishy
 symbol:
 
-\begin{verbatim}
+\begin{Verbatim}
 m1 >=> m2 = \x ->
     let (y, s1) = m1 x
         (z, s2) = m2 y
     in (z, s1 ++ s2)
-\end{verbatim}
+\end{Verbatim}
 The result is a lambda function of one argument \code{x}. The lambda
 is written as a backslash --- think of it as the Greek letter λ with an
 amputated leg.
@@ -366,22 +366,22 @@ I will also define the identity morphism for our category, but for
 reasons that will become clear much later, I will call it
 \code{return}.
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 return :: a -> Writer a
 return x = (x, "")
-\end{verbatim}
+\end{Verbatim}
 For completeness, let's have the Haskell versions of the embellished
 functions \code{upCase} and \code{toWords}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 upCase :: String -> Writer String
 upCase s = (map toUpper s, "upCase ")
-\end{verbatim}
+\end{Verbatim}
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 toWords :: String -> Writer [String]
 toWords s = (words s, "toWords ")
-\end{verbatim}
+\end{Verbatim}
 The function \code{map} corresponds to the C++ \code{transform}. It
 applies the character function \code{toUpper} to the string
 \code{s}. The auxiliary function \code{words} is defined in the
@@ -390,10 +390,10 @@ standard Prelude library.
 Finally, the composition of the two functions is accomplished with the
 help of the fish operator:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 process :: String -> Writer [String]
 process = upCase >=> toWords
-\end{verbatim}
+\end{Verbatim}
 
 \section{Kleisli Categories}\label{kleisli-categories}
 
@@ -432,7 +432,7 @@ mathematical sense, so it doesn't fit the standard categorical mold. It
 can, however, be represented by a function that returns an embellished
 type \code{optional}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 template<class A> class optional {
     bool _isValid;
     A _value;
@@ -442,16 +442,16 @@ public:
     bool isValid() const { return _isValid; }
     A value() const { return _value; }
 };
-\end{verbatim}
+\end{Verbatim}
 As an example, here's the implementation of the embellished function
 \code{safe\_root}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 optional<double> safe_root(double x) {
     if (x >= 0) return optional<double>{sqrt(x)}; 
     else return optional<double>{};
 }
-\end{verbatim}
+\end{Verbatim}
 Here's the challenge:
 
 \begin{enumerate}

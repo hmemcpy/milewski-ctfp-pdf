@@ -100,9 +100,9 @@ identity 1-cell \code{ida} with another 1-cell,
 to \code{f}. Isomorphism of 1-cells is defined using 2-cells. In other
 words, there is a 2-cell:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 ρ :: f ◦ ida -> f
-\end{verbatim}
+\end{Verbatim}
 
 that has an inverse.
 
@@ -123,9 +123,9 @@ An interesting example of a bicategory is the category of spans. A span
 between two objects \code{a} and \code{b} is an object \code{x}
 and a pair of morphisms:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f :: x -> a g :: x -> b
-\end{verbatim}
+\end{Verbatim}
 
 \includegraphics[width=1.46875in]{images/span.png}\\
 You might recall that we used spans in the definition of a categorical
@@ -133,9 +133,9 @@ product. Here, we want to look at spans as 1-cells in a bicategory. The
 first step is to define a composition of spans. Suppose that we have an
 adjoining span:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 f':: y -> b g':: y -> c
-\end{verbatim}
+\end{Verbatim}
 
 \includegraphics[width=2.26042in]{images/compspan.png}\\
 The composition would be a third span, with some apex \code{z}. The
@@ -143,15 +143,15 @@ most natural choice for it is the pullback of \code{g} along
 \code{f\'}. Remember that a pullback is the object \code{z}
 together with two morphisms:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 h :: z -> x h':: z -> y
-\end{verbatim}
+\end{Verbatim}
 
 such that:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 g ◦ h = f' ◦ h'
-\end{verbatim}
+\end{Verbatim}
 
 which is universal among all such objects.
 
@@ -160,9 +160,9 @@ For now, let's concentrate on spans over the category of sets. In that
 case, the pullback is just a set of pairs \code{(p,\ q)} from the
 cartesian product \code{x\ ×\ y} such that:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 g p = f' q
-\end{verbatim}
+\end{Verbatim}
 
 A morphism between two spans that share the same endpoints is defined as
 a morphism \code{h} between their apices, such that the appropriate
@@ -198,17 +198,17 @@ together with two morphisms. Morphisms between endofunctors are natural
 transformations. One morphism maps the monoidal unit --- the identity
 endofunctor --- to \code{T}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 η :: I -> T
-\end{verbatim}
+\end{Verbatim}
 
-The second morphism maps the tensor product of \code{T\ ⊗\ T} to
+The second morphism maps the tensor product of \code{T\ \ensuremath{\otimes}\ T} to
 \code{T}. The tensor product is given by endofunctor composition, so
 we get:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 μ :: T ◦ T -> T
-\end{verbatim}
+\end{Verbatim}
 
 \includegraphics[width=1.35417in]{images/monad.png}\\
 We recognize these as the two operations defining a monad (they are
@@ -221,9 +221,9 @@ As we've seen earlier, the hom-category \code{C(a,\ a)} is a monoidal
 category. We can therefore define a monoid in \code{C(a,\ a)} by
 picking a 1-cell, \code{T}, and two 2-cells:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 η :: I -> T μ :: T ◦ T -> T
-\end{verbatim}
+\end{Verbatim}
 
 satisfying the monoid laws. We call \emph{this} a monad.
 
@@ -239,9 +239,9 @@ set that, for reasons that will become clear soon, I will call
 to \code{Ob}. It has a set at the apex, which I will call \code{Ar},
 equipped with two functions:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 dom :: Ar -> Ob cod :: Ar -> Ob
-\end{verbatim}
+\end{Verbatim}
 
 \includegraphics[width=1.91667in]{images/spanmonad.png}\\
 Let's call the elements of the set \code{Ar} ``arrows.'' If I also
@@ -257,16 +257,16 @@ functions. The 2-cell \code{η} is a function between the apices
 ``arrow'' to every ``object.'' A 2-cell in \textbf{Span} must satisfy
 commutation conditions --- in this case:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 dom ◦ η = id cod ◦ η = id
-\end{verbatim}
+\end{Verbatim}
 
 \includegraphics[width=2.27083in]{images/spanunit.png}\\
 In components, this becomes:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 dom (η ob) = ob = cod (η ob)
-\end{verbatim}
+\end{Verbatim}
 
 where \code{ob} is an ``object'' in \code{Ob}. In other words,
 \code{η} assigns to every ``object'' and ``arrow'' whose domain and
@@ -278,9 +278,9 @@ The second 2-cell \code{μ} acts on the composition of the span
 its elements are pairs of elements from \code{Ar} --- pairs of
 ``arrows'' \code{(a1,\ a2)}. The pullback condition is:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 cod a1 = dom a2
-\end{verbatim}
+\end{Verbatim}
 
 We say that \code{a1} and \code{a1} are ``composable,'' because the
 domain of one is the codomain of the other.\\

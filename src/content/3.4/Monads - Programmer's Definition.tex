@@ -52,7 +52,7 @@ directly from function to function. We also inline short segments of
 glue code rather than abstract them into helper functions. Here's an
 imperative-style implementation of the vector-length function in C:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 double vlen(double * v) {
     double d = 0.0;
     int n;
@@ -60,13 +60,13 @@ double vlen(double * v) {
         d += v[n] * v[n];
     return sqrt(d);
 }
-\end{verbatim}
+\end{Verbatim}
 Compare this with the (stylized) Haskell version that makes function
 composition explicit:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 vlen = sqrt . sum . fmap (flip (^) 2)
-\end{verbatim}
+\end{Verbatim}
 (Here, to make things even more cryptic, I partially applied the
 exponentiation operator \code{(\^{})} by setting its second argument
 to \code{2}.)
@@ -88,18 +88,18 @@ was done by pairing their return values with strings or, more generally,
 with elements of a monoid. We can now recognize that such embellishment
 is a functor:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 newtype Writer w a = Writer (a, w)
 
 instance Functor (Writer w) where
     fmap f (Writer (a, w)) = Writer (f a, w)
-\end{verbatim}
+\end{Verbatim}
 We have subsequently found a way of composing embellished functions, or
 Kleisli arrows, which are functions of the form:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 a -> Writer w b
-\end{verbatim}
+\end{Verbatim}
 
 It was inside the composition that we implemented the accumulation of
 the log.
@@ -111,9 +111,9 @@ corresponding Kleisli category \emph{K} has the same objects as
 objects \code{a} and \code{b} in \emph{K} is implemented as a
 morphism:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 a -> m b
-\end{verbatim}
+\end{Verbatim}
 in the original category \emph{C}. It's important to keep in mind that
 we treat a Kleisli arrow in \emph{K} as a morphism between \code{a}
 and \code{b}, and not between \code{a} and \code{m b}.
@@ -131,11 +131,11 @@ In Haskell, Kleisli composition is defined using the fish operator
 polymorphic function called \code{return}. Here's the definition of a
 monad using Kleisli composition:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 class Monad m where 
     (>=>) :: (a -> m b) -> (b -> m c) -> (a -> m c)
     return :: a -> m a
-\end{verbatim}
+\end{Verbatim}
 Keep in mind that there are many equivalent ways of defining a monad,
 and that this is not the primary one in the Haskell ecosystem. I like it
 for its conceptual simplicity and the intuition it provides, but there
@@ -146,11 +146,11 @@ In this formulation, monad laws are very easy to express. They cannot be
 enforced in Haskell, but they can be used for equational reasoning. They
 are simply the standard composition laws for the Kleisli category:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (f >=> g) >=> h = f >=> (g >=> h) -- associativity
 return >=> f = f                  -- left
 unit f >=> return = f             -- right unit
-\end{verbatim}
+\end{Verbatim}
 This kind of a definition also expresses what a monad really is: it's a
 way of composing embellished functions. It's not about side effects or
 state. It's about composition. As we'll see later, embellished functions
@@ -163,14 +163,14 @@ Going back to our \code{Writer} example: The logging functions (the
 Kleisli arrows for the \code{Writer} functor) form a category because
 \code{Writer} is a monad:
 
-\begin{verbatim}
+\begin{Verbatim}
 instance Monoid w => Monad (Writer w) where
     f >=> g = \a ->
         let Writer (b, s) = f a
             Writer (c, s') = g b
         in Writer (c, s `mappend` s')
     return a = Writer (a, mempty)
-\end{verbatim}
+\end{Verbatim}
 Monad laws for \code{Writer w} are satisfied as long as monoid laws
 for \code{w} are satisfied (they can't be enforced in Haskell either).
 
@@ -178,10 +178,10 @@ There's a useful Kleisli arrow defined for the \code{Writer} monad
 called \code{tell}. It's sole purpose is to add its argument to the
 log:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 tell :: w -> Writer w ()
 tell s = Writer ((), s)
-\end{verbatim}
+\end{Verbatim}
 We'll use it later as a building block for other monadic functions.
 
 \section{Fish Anatomy}\label{fish-anatomy}
@@ -192,40 +192,40 @@ To begin with, the Kleisli composition of two functions must return a
 function, so its implementation may as well start with a lambda taking
 an argument of type \code{a}:
 
-\begin{verbatim}
+\begin{Verbatim}
 (>=>) :: (a -> m b) -> (b -> m c) -> (a -> m c)
 f >=> g = \a -> ...
-\end{verbatim}
+\end{Verbatim}
 The only thing we can do with this argument is to pass it to \code{f}:
 
-\begin{verbatim}
+\begin{Verbatim}
 f >=> g = \a -> let mb = f a
                 in ...
-\end{verbatim}
+\end{Verbatim}
 At this point we have to produce the result of type \code{m c},
 having at our disposal an object of type \code{m b} and a function
 \code{g :: b -> m c}. Let's define a function that
 does that for us. This function is called \emph{bind} and is usually written in
 the form of an infix operator:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (>>=) :: m a -> (a -> m b) -> m b
-\end{verbatim}
+\end{Verbatim}
 For every monad, instead of defining the fish operator, we may instead
 define bind. In fact the standard Haskell definition of a monad uses
 bind:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 class Monad m where
     (>>=) :: m a -> (a -> m b) -> m b
     return :: a -> m a
-\end{verbatim}
+\end{Verbatim}
 Here's the definition of bind for the \code{Writer} monad:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (Writer (a, w)) >>= f = let Writer (b, w') = f a 
                         in Writer (b, w `mappend` w')
-\end{verbatim}
+\end{Verbatim}
 It is indeed shorter than the definition of the fish operator.
 
 It's possible to further dissect bind, taking advantage of the fact that
@@ -237,36 +237,36 @@ want --- we need the result of type \code{m b} --- but we're close.
 All we need is a function that collapses or flattens the double
 application of \code{m}. Such function is called \code{join}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 join :: m (m a) -> m a
-\end{verbatim}
+\end{Verbatim}
 Using \code{join}, we can rewrite bind as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 ma >>= f = join (fmap f ma)
-\end{verbatim}
+\end{Verbatim}
 That leads us to the third option for defining a monad:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 class Functor m => Monad m where
     join :: m (m a) -> m a
     return :: a -> m a
-\end{verbatim}
+\end{Verbatim}
 Here we have explicitly requested that \code{m} be a \code{Functor}.
 We didn't have to do that in the previous two definitions of the monad.
 That's because any type constructor \code{m} that either supports the
 fish or bind operator is automatically a functor. For instance, it's
 possible to define \code{fmap} in terms of bind and \code{return}:
 
-\begin{verbatim}
+\begin{Verbatim}
 fmap f ma = ma >>= \a -> return (f a)
-\end{verbatim}
+\end{Verbatim}
 For completeness, here's \code{join} for the \code{Writer} monad:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 join :: Monoid w => Writer w (Writer w a) -> Writer w a
 join (Writer ((Writer (a, w')), w)) = Writer (a, w `mappend` w')
-\end{verbatim}
+\end{Verbatim}
 
 \section{\texorpdfstring{The \code{do}
 Notation}{The do Notation}}\label{the-do-notation}
@@ -304,41 +304,41 @@ For instance, take the example we used previously to illustrate the
 composition of Kleisli arrows in the \code{Writer} monad. Using our
 current definitions, it could be rewritten as:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 process :: String -> Writer String [String]
 process = upCase >=> toWords
-\end{verbatim}
+\end{Verbatim}
 This function turns all characters in the input string to upper case and
 splits it into words, all the while producing a log of its actions.
 
 In the \code{do} notation it would look like this:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 process s = do 
     upStr <- upCase s
     toWords upStr
-\end{verbatim}
+\end{Verbatim}
 Here, \code{upStr} is just a \code{String}, even though
 \code{upCase} produces a \code{Writer}:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 upCase :: String -> Writer String String
 upCase s = Writer (map toUpper s, "upCase ")
-\end{verbatim}
+\end{Verbatim}
 This is because the \code{do} block is desugared by the compiler to:
 
-\begin{verbatim}
+\begin{Verbatim}
 process s = 
     upCase s >>= \upStr ->
         toWords upStr
-\end{verbatim}
+\end{Verbatim}
 The monadic result of \code{upCase} is bound to a lambda that takes a
 \code{String}. It's the name of this string that shows up in the
 \code{do} block. When reading the line:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 upStr <- upCase s
-\end{verbatim}
+\end{Verbatim}
 we say that \code{upStr} \emph{gets} the result of \code{upCase s}.
 
 The pseudo-imperative style is even more pronounced when we inline
@@ -348,39 +348,39 @@ logs the string \code{"toWords "}, followed by the call to
 using \code{words}. Notice that \code{words} is a regular function
 working on strings.
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 process s = do
     upStr <- upStr s
     tell "toWords "
     return (words upStr)
-\end{verbatim}
+\end{Verbatim}
 Here, each line in the do block introduces a new nested bind in the
 desugared code:
 
-\begin{verbatim}
+\begin{Verbatim}
 process s =
     upCase s >>= \upStr ->
       tell "toWords " >>= \() ->
         return (words upStr)
-\end{verbatim}
+\end{Verbatim}
 Notice that \code{tell} produces a unit value, so it doesn't have to
 be passed to the following lambda. Ignoring the contents of a monadic
 result (but not its effect --- here, the contribution to the log) is
 quite common, so there is a special operator to replace bind in that
 case:
 
-\begin{verbatim}
+\begin{Verbatim}[commandchars=\\\{\}]
 (>>) :: m a -> m b -> m b m
 >> k = m >>= (\_ -> k)
-\end{verbatim}
+\end{Verbatim}
 The actual desugaring of our code looks like this:
 
-\begin{verbatim}
+\begin{Verbatim}
 process s =
     upCase s >>= \upStr ->
       tell "toWords " >>
         return (words upStr)
-\end{verbatim}
+\end{Verbatim}
 In general, \code{do} blocks consist of lines (or sub-blocks) that
 either use the left arrow to introduce new names that are then available
 in the rest of the code, or are executed purely for side-effects. Bind
