@@ -112,6 +112,9 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 
 \part{Part Two}
 
+\chapter{Declarative Programming}\label{declarative-programming}
+\subfile{content/2.1/Declarative Programming}
+
 \part{Part Three}
 
 \chapter{It's All About Morphisms}
