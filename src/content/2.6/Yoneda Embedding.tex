@@ -1,96 +1,93 @@
-\begin{quote}
-This is part 16 of Categories for Programmers. Previously:
-\href{https://bartoszmilewski.com/2015/09/01/the-yoneda-lemma/}{The
-Yoneda Lemma}. See the
-\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
-of Contents}.
-\end{quote}
-
-We've seen previously that, when we fix an object \code{a} in the
-category \emph{C}, the mapping \code{C(a,\ -)} is a (covariant)
+\lettrine[lhang=0.17]{W}{e've seen previously} that, when we fix an object \code{a} in the
+category \emph{C}, the mapping \code{C(a, -)} is a (covariant)
 functor from \emph{C} to \textbf{Set}.
 
 \begin{Verbatim}[commandchars=\\\{\}]
 x -> C(a, x)
 \end{Verbatim}
-
 (The codomain is \textbf{Set} because the hom-set C(a, x) is a
 \emph{set}.) We call this mapping a hom-functor --- we have previously
 defined its action on morphisms as well.
 
 Now let's vary \code{a} in this mapping. We get a new mapping that
-assigns the hom-\emph{functor} \code{C(a,\ -)} to any \code{a}.
+assigns the hom-\emph{functor} \code{C(a, -)} to any \code{a}.
 
 \begin{Verbatim}[commandchars=\\\{\}]
 a -> C(a, -)
 \end{Verbatim}
-
 It's a mapping of objects from category \emph{C} to functors, which are
 \emph{objects} in the functor category (see the section about functor
 categories in
-\href{https://bartoszmilewski.com/2015/04/07/natural-transformations/}{Natural
-Transformations}). Let's use the notation \code{{[}C,\ Set{]}} for the
+\hyperref[natural-transformations]{Natural
+Transformations}). Let's use the notation \code{{[}C, Set{]}} for the
 functor category from \emph{C} to \textbf{Set}. You may also recall that
 hom-functors are the prototypical
-\href{https://bartoszmilewski.com/2015/07/29/representable-functors/}{representable
+\hyperref[representable-functors]{representable
 functors}.
 
 Every time we have a mapping of objects between two categories, it's
 natural to ask if such a mapping is also a functor. In other words
 whether we can lift a morphism from one category to a morphism in the
 other category. A morphism in \emph{C} is just an element of
-\code{C(a,\ b)}, but a morphism in the functor category
-\code{{[}C,\ Set{]}} is a natural transformation. So we are looking
+\code{C(a, b)}, but a morphism in the functor category
+\code{{[}C, Set{]}} is a natural transformation. So we are looking
 for a mapping of morphisms to natural transformations.
 
 Let's see if we can find a natural transformation corresponding to a
-morphism \code{f\ ::\ a->b}. First, lets see what
+morphism \code{f :: a->b}. First, lets see what
 \code{a} and \code{b} are mapped to. They are mapped to two
-functors: \code{C(a,\ -)} and \code{C(b,\ -)}. We need a natural
+functors: \code{C(a, -)} and \code{C(b, -)}. We need a natural
 transformation between those two functors.
 
 And here's the trick: we use the Yoneda lemma:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-[C, Set](C(a, -), F) ≅ F a
+[C, Set](C(a, -), F) \ensuremath{\cong} F a
 \end{Verbatim}
-
 and replace the generic \code{F} with the hom-functor
-\code{C(b,\ -)}. We get:
+\code{C(b, -)}. We get:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-[C, Set](C(a, -), C(b, -)) ≅ C(b, a)
+[C, Set](C(a, -), C(b, -)) \ensuremath{\cong} C(b, a)
 \end{Verbatim}
 
+\begin{figure}[H]
+\centering
 \includegraphics[width=3.87500in]{images/yoneda-embedding.jpg}
+\end{figure}
 
+\noindent
 This is exactly the natural transformation between the two hom-functors
 we were looking for, but with a little twist: We have a mapping between
 a natural transformation and a morphism --- an element of
-\code{C(b,\ a)} --- that goes in the ``wrong'' direction. But that's
+\code{C(b, a)} --- that goes in the ``wrong'' direction. But that's
 okay; it only means that the functor we are looking at is contravariant.
 
-\includegraphics[width=4.51042in]{images/yoneda-embedding-2.jpg}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/yoneda-embedding-2.jpg}
+\end{figure}
 
+\noindent
 Actually, we've got even more than we bargained for. The mapping from
-\emph{C} to \code{{[}C,\ Set{]}} is not only a contravariant functor
---- it is a \newterm{fully faithful} functor. Fullness and faithfulness are
+\emph{C} to \code{{[}C, Set{]}} is not only a contravariant functor
+--- it is a \emph{fully faithful} functor. Fullness and faithfulness are
 properties of functors that describe how they map hom-sets.
 
-A \newterm{faithful} functor is \newterm{injective} on hom-sets, meaning that
+A \emph{faithful} functor is \newterm{injective} on hom-sets, meaning that
 it maps distinct morphisms to distinct morphisms. In other words, it
 doesn't coalesce them.
 
-A \newterm{full} functor is \newterm{surjective} on hom-sets, meaning that it
-maps one hom-set \newterm{onto} the other hom-set, fully covering the
+A \emph{full} functor is \newterm{surjective} on hom-sets, meaning that it
+maps one hom-set \emph{onto} the other hom-set, fully covering the
 latter.
 
 A fully faithful functor \code{F} is a \newterm{bijection} on hom-sets
 --- a one to one matching of all elements of both sets. For every pair
 of objects \code{a} and \code{b} in the source category \emph{C}
-there is a bijection between \code{C(a,\ b)} and
-\code{D(F\ a,\ F\ b)}, where \emph{D} is the target category of
-\code{F} (in our case, the functor category, \code{{[}C,\ Set{]}}).
+there is a bijection between \code{C(a, b)} and
+\code{D(F a, F b)}, where \emph{D} is the target category of
+\code{F} (in our case, the functor category, \code{{[}C, Set{]}}).
 Notice that this doesn't mean that \code{F} is a bijection on
 \emph{objects}. There may be objects in \emph{D} that are not in the
 image of \code{F}, and we can't say anything about hom-sets for those
@@ -99,16 +96,15 @@ objects.
 \section{The Embedding}\label{the-embedding}
 
 The (contravariant) functor we have just described, the functor that
-maps objects in \emph{C} to functors in \code{{[}C,\ Set{]}}:
+maps objects in \emph{C} to functors in \code{{[}C, Set{]}}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 a -> C(a, -)
 \end{Verbatim}
-
 defines the \newterm{Yoneda embedding}. It \emph{embeds} a category
 \emph{C} (strictly speaking, the category \emph{C\textsuperscript{op}},
 because of contravariance) inside the functor category
-\code{{[}C,\ Set{]}}. It not only maps objects in \emph{C} to
+\code{{[}C, Set{]}}. It not only maps objects in \emph{C} to
 functors, but also faithfully preserves all connections between them.
 
 This is a very useful result because mathematicians know a lot about the
@@ -119,18 +115,17 @@ category of functors, especially functors whose codomain is
 Of course there is a dual version of the Yoneda embedding, sometimes
 called the co-Yoneda embedding. Observe that we could have started by
 fixing the target object (rather than the source object) of each
-hom-set, \code{C(-,\ a)}. That would give us a contravariant
+hom-set, \code{C(-, a)}. That would give us a contravariant
 hom-functor. Contravariant functors from \emph{C} to \textbf{Set} are
 our familiar presheaves (see, for instance,
-\href{https://bartoszmilewski.com/2015/04/15/limits-and-colimits/}{Limits
+\hyperref[limits-and-colimits]{Limits
 and Colimits}). The co-Yoneda embedding defines the embedding of a
 category \emph{C} in the category of presheaves. Its action on morphisms
 is given by:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-[C, Set](C(-, a), C(-, b)) ≅ C(a, b)
+[C, Set](C(-, a), C(-, b)) \ensuremath{\cong} C(a, b)
 \end{Verbatim}
-
 Again, mathematicians know a lot about the category of presheaves, so
 being able to embed an arbitrary category in it is a big win.
 
@@ -141,17 +136,16 @@ between natural transformations amongst reader functors on the one hand,
 and functions (going in the opposite direction) on the other hand:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-forall x. (a -> x) -> (b -> x) ≅ b -> a
+forall x. (a -> x) -> (b -> x) \ensuremath{\cong} b -> a
 \end{Verbatim}
-
 (Remember, the reader functor is equivalent to
-\code{((->)\ a)}.)
+\code{((->) a)}.)
 
 The left hand side of this identity is a polymorphic function that,
 given a function from \code{a} to \code{x} and a value of type
 \code{b}, can produce a value of type \code{x} (I'm uncurrying ---
 dropping the parentheses around --- the function
-\code{b\ ->\ x}). The only way this can be done for all
+\code{b -> x}). The only way this can be done for all
 \code{x} is if our function knows how to convert a \code{b} to an
 \code{a}. It has to secretly have access to a function
 \code{b->a}.
@@ -160,16 +154,15 @@ Given such a converter, \code{btoa}, one can define the left hand
 side, call it\code{fromY}, as:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-fromY :: (a -> x) -> b -> x fromY f b = f (btoa b)
+fromY :: (a -> x) -> b -> x
+fromY f b = f (btoa b)
 \end{Verbatim}
-
 Conversely, given a function \code{fromY} we can recover the converter
 by calling \code{fromY} with the identity:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 fromY id :: b -> a
 \end{Verbatim}
-
 This establishes the bijection between functions of the type
 \code{fromY} and \code{btoa}.
 
@@ -182,9 +175,8 @@ the function being encoded.
 
 The Yoneda embedding also explains some of the alternative
 representations of data structures in Haskell. In particular, it
-provides a very useful
-\href{https://bartoszmilewski.com/2015/07/13/from-lenses-to-yoneda-embedding/}{representation
-of lenses} from the \code{Control.Lens} library.
+provides a very useful representation
+of lenses\urlfootnote{https://bartoszmilewski.com/2015/07/13/from-lenses-to-yoneda-embedding/} from the \code{Control.Lens} library.
 
 \section{Preorder Example}\label{preorder-example}
 
@@ -199,16 +191,16 @@ possible to have cycles).
 A set with the preorder relation gives rise to a category. The objects
 are the elements of this set. A morphism from object \code{a} to
 \code{b} either doesn't exist, if the objects cannot be compared or if
-it's not true that \code{a\ <=\ b}; or it exists if
-\code{a\ <=\ b}, and it points from \code{a} to
+it's not true that \code{a <= b}; or it exists if
+\code{a <= b}, and it points from \code{a} to
 \code{b}. There is never more than one morphism from one object to
 another. Therefore any hom-set in such a category is either an empty set
 or a one-element set. Such a category is called \newterm{thin}.
 
 It's easy to convince yourself that this construction is indeed a
 category: The arrows are composable because, if
-\code{a\ <=\ b} and \code{b\ <=\ c} then
-\code{a\ <=\ c}; and the composition is associative. We also
+\code{a <= b} and \code{b <= c} then
+\code{a <= c}; and the composition is associative. We also
 have the identity arrows because every element is (less than or) equal
 to itself (reflexivity of the underlying relation).
 
@@ -216,18 +208,17 @@ We can now apply the co-Yoneda embedding to a preorder category. In
 particular, we're interested in its action on morphisms:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-[C, Set](C(-, a), C(-, b)) ≅ C(a, b)
+[C, Set](C(-, a), C(-, b)) \ensuremath{\cong} C(a, b)
 \end{Verbatim}
-
 The hom-set on the right hand side is non-empty if and only if
-\code{a\ <=\ b} --- in which case it's a one-element set.
-Consequently, if \code{a\ <=\ b}, there exists a single
+\code{a <= b} --- in which case it's a one-element set.
+Consequently, if \code{a <= b}, there exists a single
 natural transformation on the left. Otherwise there is no natural
 transformation.
 
 So what's a natural transformation between hom-functors in a preorder?
-It should be a family of functions between sets \code{C(-,\ a)} and
-\code{C(-,\ b)}. In a preorder, each of these sets can either be empty
+It should be a family of functions between sets \code{C(-, a)} and
+\code{C(-, b)}. In a preorder, each of these sets can either be empty
 or a singleton. Let's see what kind of functions are there at our
 disposal.
 
@@ -241,84 +232,79 @@ empty set (what would the value of such a function be when acting on the
 single element?).
 
 So our natural transformation will never connect a singleton hom-set to
-an empty hom-set. In other words, if \code{x\ <=\ a}
-(singleton hom-set \code{C(x,\ a)}) then \code{C(x,\ b)} cannot be
-empty. A non-empty \code{C(x,\ b)} means that \code{x} is less or
+an empty hom-set. In other words, if \code{x <= a}
+(singleton hom-set \code{C(x, a)}) then \code{C(x, b)} cannot be
+empty. A non-empty \code{C(x, b)} means that \code{x} is less or
 equal to \code{b}. So the existence of the natural transformation in
 question requires that, for every \code{x}, if
-\code{x\ <=\ a} then \code{x\ <=\ b}.
+\code{x <= a} then \code{x <= b}.
 
 \begin{Verbatim}[commandchars=\\\{\}]
-for all x, x ≤ a ⇒ x ≤ b
+for all x, x ≤ a \ensuremath{\Rightarrow} x ≤ b
 \end{Verbatim}
-
 On the other hand, co-Yoneda tells us that the existence of this natural
-transformation is equivalent to \code{C(a,\ b)} being non-empty, or to
-\code{a\ <=\ b}. Together, we get:
+transformation is equivalent to \code{C(a, b)} being non-empty, or to
+\code{a <= b}. Together, we get:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-a ≤ b if and only if for all x, x ≤ a ⇒ x ≤ b
+a ≤ b if and only if for all x, x ≤ a \ensuremath{\Rightarrow} x ≤ b
 \end{Verbatim}
-
 We could have arrived at this result directly. The intuition is that, if
-\code{a\ <=\ b} then all elements that are below \code{a}
+\code{a <= b} then all elements that are below \code{a}
 must also be below \code{b}. Conversely, when you substitute
 \code{a} for \code{x} on the right hand side, it follows that
-\code{a\ <=\ b}. But you must admit that arriving at this
+\code{a <= b}. But you must admit that arriving at this
 result through the Yoneda embedding is much more exciting.
 
 \section{Naturality}\label{naturality}
 
 The Yoneda lemma establishes the isomorphism between the set of natural
 transformations and an object in \textbf{Set}. Natural transformations
-are morphisms in the functor category \code{{[}C,\ Set{]}}. The set of
+are morphisms in the functor category \code{{[}C, Set{]}}. The set of
 natural transformation between any two functors is a hom-set in that
 category. The Yoneda lemma is the isomorphism:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-[C, Set](C(a, -), F) ≅ F a
+[C, Set](C(a, -), F) \ensuremath{\cong} F a
 \end{Verbatim}
-
 This isomorphism turns out to be natural in both \code{F} and
-\code{a}. In other words, it's natural in \code{(F,\ a)}, a pair
-taken from the product category \code{{[}C,\ Set{]}\ ×\ C}. Notice
+\code{a}. In other words, it's natural in \code{(F, a)}, a pair
+taken from the product category \code{{[}C, Set{]} × C}. Notice
 that we are now treating \code{F} as an \newterm{object} in the functor
 category.
 
 Let's think for a moment what this means. A natural isomorphism is an
 invertible \newterm{natural transformation} between two functors. And
 indeed, the right hand side of our isomorphism is a functor. It's a
-functor from \code{{[}C,\ Set{]}\ ×\ C} to \textbf{Set}. Its action on
-a pair \code{(F,\ a)} is a set --- the result of evaluating the
+functor from \code{{[}C, Set{]} × C} to \textbf{Set}. Its action on
+a pair \code{(F, a)} is a set --- the result of evaluating the
 functor \code{F} at the object \code{a}. This is called the
 evaluation functor.
 
-The left hand side is also a functor that takes \code{(F,\ a)} to a
-set of natural transformations \code{{[}C,\ Set{]}(C(a,\ -),\ F)}.
+The left hand side is also a functor that takes \code{(F, a)} to a
+set of natural transformations \code{{[}C, Set{]}(C(a, -), F)}.
 
 To show that these are really functors, we should also define their
 action on morphisms. But what's a morphism between a pair
-\code{(F,\ a)} and \code{(G,\ b)}? It's a pair of morphisms,
-\code{(Φ,\ f)}; the first being a morphism between functors --- a
+\code{(F, a)} and \code{(G, b)}? It's a pair of morphisms,
+\code{(Φ, f)}; the first being a morphism between functors --- a
 natural transformation --- the second being a regular morphism in
 \emph{C}.
 
-The evaluation functor takes this pair \code{(Φ,\ f)} and maps it to a
-function between two sets, \code{F\ a} and \code{G\ b}. We can
+The evaluation functor takes this pair \code{(Φ, f)} and maps it to a
+function between two sets, \code{F a} and \code{G b}. We can
 easily construct such a function from the component of \code{Φ} at
-\code{a} (which maps \code{F\ a} to \code{G\ a}) and the morphism
+\code{a} (which maps \code{F a} to \code{G a}) and the morphism
 \code{f} lifted by \code{G}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-(G f) ◦ Φa
+(G f) ◦ Φ\textsubscript{a}
 \end{Verbatim}
-
 Notice that, because of naturality of \code{Φ}, this is the same as:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-Φb ◦ (F f)
+Φ\textsubscript{b} ◦ (F f)
 \end{Verbatim}
-
 I'm not going to prove the naturality of the whole isomorphism --- after
 you've established what the functors are, the proof is pretty
 mechanical. It follows from the fact that our isomorphism is built up
@@ -344,16 +330,7 @@ to go wrong.
   preorders? (Question suggested by Gershom Bazerman.)
 \item
   Yoneda embedding can be used to embed an arbitrary functor category
-  \code{{[}C,\ D{]}} in the functor category
-  \code{{[}{[}C,\ D{]},\ Set{]}}. Figure out how it works on morphisms
+  \code{{[}C, D{]}} in the functor category
+  \code{{[}{[}C, D{]}, Set{]}}. Figure out how it works on morphisms
   (which in this case are natural transformations).
 \end{enumerate}
-
-Next:
-\href{https://bartoszmilewski.com/2015/11/17/its-all-about-morphisms/}{It's
-All About Morphisms}.
-
-\section{Acknowledgments}\label{acknowledgments}
-
-I'd like to thank Gershom Bazerman for checking my math and logic.\\
-\href{https://twitter.com/BartoszMilewski}{Follow @BartoszMilewski}
