@@ -1,12 +1,4 @@
-\begin{quote}
-This is part 31 of Categories for Programmers. Previously:
-\href{https://bartoszmilewski.com/2017/08/26/lawvere-theories/}{Lawvere
-Theories}. See the
-\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
-of Contents}\href{https://bartoszmilewski.com/2017/07/22/topoi/}{.}
-\end{quote}
-
-There is no good place to end a book on category theory. There's always
+\lettrine[lhang=0.17]{T}{here is no good} place to end a book on category theory. There's always
 more to learn. Category theory is a vast subject. At the same time, it's
 obvious that the same themes, concepts, and patterns keep showing up
 over and over again. There is a saying that all concepts are Kan
@@ -52,34 +44,36 @@ one. This is how we get the concept of a 2-category, in which objects
 are called 0-cells, morphisms are 1-cells, and morphisms between
 morphisms are 2-cells.
 
-\hypertarget{attachment_9117}{}
+\begin{figure}[H]
+\centering
 \includegraphics[width=1.53125in]{images/twocat.png}
+\caption{0-cells a, b; 1-cells f, g; and a 2-cell α.}
+\end{figure}
 
-0-cells a, b; 1-cells f, g; and a 2-cell α.
-
+\noindent
 The category of categories \textbf{Cat} is an immediate example. We have
 categories as 0-cells, functors as 1-cells, and natural transformations
 as 2-cells. The laws of a 2-category tell us that 1-cells between any
-two 0-cells form a category (in other words, \code{C(a,\ b)} is a
+two 0-cells form a category (in other words, \code{C(a, b)} is a
 hom-category rather than a hom-set). This fits nicely with our earlier
 assertion that functors between any two categories form a functor
 category.
 
 In particular, 1-cells from any 0-cell back to itself also form a
-category, the hom-category \code{C(a,\ a)}; but that category has even
-more structure. Members of \code{C(a,\ a)} can be viewed as arrows in
-\textbf{C} or as objects in \code{C(a,\ a)}. As arrows, they can be
+category, the hom-category \code{C(a, a)}; but that category has even
+more structure. Members of \code{C(a, a)} can be viewed as arrows in
+\textbf{C} or as objects in \code{C(a, a)}. As arrows, they can be
 composed with each other. But when we look at them as objects, the
 composition becomes a mapping from a pair of objects to an object. In
 fact it looks very much like a product --- a tensor product to be
 precise. This tensor product has a unit: the identity 1-cell. It turns
-out that, in any 2-category, a hom-category \code{C(a,\ a)} is
+out that, in any 2-category, a hom-category \code{C(a, a)} is
 automatically a monoidal category with the tensor product defined as
 composition of 1-cells. Associativity and unit laws simply fall out from
 the corresponding category laws.
 
 Let's see what this means in our canonical example of a 2-category
-\textbf{Cat}. The hom-category \code{Cat(a,\ a)} is the category of
+\textbf{Cat}. The hom-category \code{Cat(a, a)} is the category of
 endofunctors on \code{a}. Endofunctor composition plays the role of a
 tensor product in it. The identity functor is the unit with respect to
 this product. We've seen before that endofunctors form a monoidal
@@ -91,27 +85,28 @@ generalize monads.
 You might recall that, in a general monoidal category, we did not insist
 on the monoid laws being satisfied on the nose. It was often enough for
 the unit laws and the associativity laws to be satisfied up to
-isomorphism. In a 2-category, monoidal laws in \code{C(a,\ a)} follow
+isomorphism. In a 2-category, monoidal laws in \code{C(a, a)} follow
 from composition laws for 1-cells. These laws are strict, so we will
 always get a strict monoidal category. It is, however, possible to relax
 these laws as well. We can say, for instance, that a composition of the
-identity 1-cell \code{ida} with another 1-cell,
-\code{f\ ::\ a\ ->\ b}, is isomorphic, rather than equal,
+identity 1-cell \code{id\textsubscript{a}} with another 1-cell,
+\code{f :: a -> b}, is isomorphic, rather than equal,
 to \code{f}. Isomorphism of 1-cells is defined using 2-cells. In other
 words, there is a 2-cell:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-ρ :: f ◦ ida -> f
+ρ :: f ◦ id\textsubscript{a} -> f
 \end{Verbatim}
-
 that has an inverse.
 
-\hypertarget{attachment_9107}{}
+\begin{figure}[H]
+\centering
 \includegraphics[width=1.70833in]{images/bicat.png}
+\caption{Identity law in a bicategory holds up to isomorphism (an invertible
+2-cell ρ).}
+\end{figure}
 
-Identity law in a bicategory holds up to isomorphism (an invertible
-2-cell ρ).
-
+\noindent
 We can do the same for the left identity and associativity laws. This
 kind of relaxed 2-category is called a bicategory (there are some
 additional coherency laws, which I will omit here).
@@ -124,55 +119,72 @@ between two objects \code{a} and \code{b} is an object \code{x}
 and a pair of morphisms:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-f :: x -> a g :: x -> b
+f :: x -> a
+g :: x -> b
 \end{Verbatim}
 
-\includegraphics[width=1.46875in]{images/span.png}\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.46875in]{images/span.png}
+\end{figure}
+
+\noindent
 You might recall that we used spans in the definition of a categorical
 product. Here, we want to look at spans as 1-cells in a bicategory. The
 first step is to define a composition of spans. Suppose that we have an
 adjoining span:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-f':: y -> b g':: y -> c
+f':: y -> b
+g':: y -> c
 \end{Verbatim}
 
-\includegraphics[width=2.26042in]{images/compspan.png}\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=2.26042in]{images/compspan.png}
+\end{figure}
+
+\noindent
 The composition would be a third span, with some apex \code{z}. The
 most natural choice for it is the pullback of \code{g} along
-\code{f\'}. Remember that a pullback is the object \code{z}
+\code{f'}. Remember that a pullback is the object \code{z}
 together with two morphisms:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-h :: z -> x h':: z -> y
+h :: z -> x
+h':: z -> y
 \end{Verbatim}
-
 such that:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 g ◦ h = f' ◦ h'
 \end{Verbatim}
-
 which is universal among all such objects.
 
+\begin{figure}[H]
+\centering
 \includegraphics[width=2.42708in]{images/pullspan.png}\\
+\end{figure}
+
+\noindent
 For now, let's concentrate on spans over the category of sets. In that
-case, the pullback is just a set of pairs \code{(p,\ q)} from the
-cartesian product \code{x\ ×\ y} such that:
+case, the pullback is just a set of pairs \code{(p, q)} from the
+cartesian product \code{x × y} such that:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 g p = f' q
 \end{Verbatim}
-
 A morphism between two spans that share the same endpoints is defined as
 a morphism \code{h} between their apices, such that the appropriate
 triangles commute.
 
-\hypertarget{attachment_9111}{}
+\begin{figure}[H]
+\centering
 \includegraphics[width=1.70833in]{images/morphspan.png}
+\caption{A 2-cell in \textbf{Span}.}
+\end{figure}
 
-A 2-cell in \textbf{Span}.
-
+\noindent
 To summarize, in the bicategory \textbf{Span}: 0-cells are sets, 1-cells
 are spans, 2-cells are span morphisms. An identity 1-cell is a
 degenerate span in which all three objects are the same, and the two
@@ -180,7 +192,7 @@ morphisms are identities.
 
 We've seen another example of a bicategory before: the bicategory
 \textbf{Prof} of
-\href{https://bartoszmilewski.com/2017/03/29/ends-and-coends/}{profunctors},
+\hyperref[ends-and-coends]{profunctors},
 where 0-cells are categories, 1-cells are profunctors, and 2-cells are
 natural transformations. The composition of profunctors was given by a
 coend.
@@ -201,8 +213,7 @@ endofunctor --- to \code{T}:
 \begin{Verbatim}[commandchars=\\\{\}]
 η :: I -> T
 \end{Verbatim}
-
-The second morphism maps the tensor product of \code{T\ \ensuremath{\otimes}\ T} to
+The second morphism maps the tensor product of \code{T \ensuremath{\otimes} T} to
 \code{T}. The tensor product is given by endofunctor composition, so
 we get:
 
@@ -210,24 +221,34 @@ we get:
 μ :: T ◦ T -> T
 \end{Verbatim}
 
-\includegraphics[width=1.35417in]{images/monad.png}\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.35417in]{images/monad.png}
+\end{figure}
+
+\noindent
 We recognize these as the two operations defining a monad (they are
 called \code{return} and \code{join} in Haskell), and we know that
 monoid laws turn to monad laws.
 
 Now let's remove all mention of endofunctors from this definition. We
 start with a bicategory \code{C} and pick a 0-cell \code{a} in it.
-As we've seen earlier, the hom-category \code{C(a,\ a)} is a monoidal
-category. We can therefore define a monoid in \code{C(a,\ a)} by
+As we've seen earlier, the hom-category \code{C(a, a)} is a monoidal
+category. We can therefore define a monoid in \code{C(a, a)} by
 picking a 1-cell, \code{T}, and two 2-cells:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-η :: I -> T μ :: T ◦ T -> T
+η :: I -> T
+μ :: T ◦ T -> T
 \end{Verbatim}
-
 satisfying the monoid laws. We call \emph{this} a monad.
 
-\includegraphics[width=1.39583in]{images/bimonad.png}\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.39583in]{images/bimonad.png}
+\end{figure}
+
+\noindent
 That's a much more general definition of a monad using only 0-cells,
 1-cells, and 2-cells. It reduces to the usual monad when applied to the
 bicategory \textbf{Cat}. But let's see what happens in other
@@ -240,10 +261,16 @@ to \code{Ob}. It has a set at the apex, which I will call \code{Ar},
 equipped with two functions:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-dom :: Ar -> Ob cod :: Ar -> Ob
+dom :: Ar -> Ob
+cod :: Ar -> Ob
 \end{Verbatim}
 
-\includegraphics[width=1.91667in]{images/spanmonad.png}\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.91667in]{images/spanmonad.png}
+\end{figure}
+
+\noindent
 Let's call the elements of the set \code{Ar} ``arrows.'' If I also
 tell you to call the elements of \code{Ob} ``objects,'' you might get
 a hint where this is leading to. The two functions \code{dom} and
@@ -258,16 +285,21 @@ functions. The 2-cell \code{η} is a function between the apices
 commutation conditions --- in this case:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-dom ◦ η = id cod ◦ η = id
+dom ◦ η = id
+cod ◦ η = id
 \end{Verbatim}
 
-\includegraphics[width=2.27083in]{images/spanunit.png}\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=2.27083in]{images/spanunit.png}
+\end{figure}
+
+\noindent
 In components, this becomes:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 dom (η ob) = ob = cod (η ob)
 \end{Verbatim}
-
 where \code{ob} is an ``object'' in \code{Ob}. In other words,
 \code{η} assigns to every ``object'' and ``arrow'' whose domain and
 codomain are that ``object.'' We'll call this special ``arrow'' the
@@ -276,18 +308,22 @@ codomain are that ``object.'' We'll call this special ``arrow'' the
 The second 2-cell \code{μ} acts on the composition of the span
 \code{Ar} with itself. The composition is defined as a pullback, so
 its elements are pairs of elements from \code{Ar} --- pairs of
-``arrows'' \code{(a1,\ a2)}. The pullback condition is:
+``arrows'' \code{(a\textsubscript{1}, a\textsubscript{2})}. The pullback condition is:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-cod a1 = dom a2
+cod a\textsubscript{1} = dom a\textsubscript{2}
 \end{Verbatim}
+We say that \code{a\textsubscript{1}} and \code{a\textsubscript{1}} are ``composable,'' because the
+domain of one is the codomain of the other.
 
-We say that \code{a1} and \code{a1} are ``composable,'' because the
-domain of one is the codomain of the other.\\
+\begin{figure}[H]
+\centering
 \includegraphics[width=2.75000in]{images/spanmul.png}
+\end{figure}
 
+\noindent
 The 2-cell \code{μ} is a function that maps a pair of composable
-arrows \code{(a1,\ a2)} to a single arrow \code{a3} from
+arrows \code{(a\textsubscript{1}, a\textsubscript{2})} to a single arrow \code{a\textsubscript{3}} from
 \code{Ar}. In other words \code{μ} defines composition of arrows.
 
 It's easy to check that monad laws correspond to identity and
@@ -322,3 +358,8 @@ all of mathematics, this is a very humbling realization.
 \end{enumerate}
 
 \section{Bibliography}\label{bibliography}
+\begin{enumerate}
+  \tightlist
+  \item
+  \href{https://graphicallinearalgebra.net/2017/04/16/a-monoid-is-a-category-a-category-is-a-monad-a-monad-is-a-monoid/}{Paweł Sobociński’s blog}.
+\end{enumerate}

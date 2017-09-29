@@ -162,6 +162,9 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \chapter{Lawvere Theories}\label{lawvere-theories}
 \subfile{content/3.14/Lawvere Theories}
 
+\chapter{Monads, Monoids, and Categories}\label{monads-monoids-categories}
+\subfile{content/3.15/Monads, Monoids, and Categories}
+
 \backmatter
 
 @unnumbered Acknowledgments
