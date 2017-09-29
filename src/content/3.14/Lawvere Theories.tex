@@ -1,11 +1,4 @@
-\begin{quote}
-This is part 30 of Categories for Programmers. Previously:
-{Topoi}\href{https://bartoszmilewski.com/2017/07/22/topoi/}{. See
-the}\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
-of Contents}\href{https://bartoszmilewski.com/2017/07/22/topoi/}{.}
-\end{quote}
-
-Nowadays you can't talk about functional programming without mentioning
+\lettrine[lhang=0.17]{N}{owadays you can't} talk about functional programming without mentioning
 monads. But there is an alternative universe in which, by chance,
 Eugenio Moggi turned his attention to Lawvere theories rather than
 monads. Let's explore that universe.
@@ -15,8 +8,8 @@ monads. Let's explore that universe.
 There are many ways of describing algebras at various levels of
 abstraction. We try to find a general language to describe things like
 monoids, groups, or rings. At the simplest level, all these
-constructions define \newterm{operations} on elements of a set, plus some
-\newterm{laws} that must be satisfied by these operations. For instance, a
+constructions define \emph{operations} on elements of a set, plus some
+\emph{laws} that must be satisfied by these operations. For instance, a
 monoid can be defined in terms of a binary operation that is
 associative. We also have a unit element and unit laws. But with a
 little bit of imagination we can turn the unit element to a nullary
@@ -48,9 +41,8 @@ A general n-ary operation is a morphism from the n-th power of
 \code{a} to \code{a}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-αn :: an -> a
+α\textsubscript{n} :: a\textsuperscript{n} -> a
 \end{Verbatim}
-
 A nullary operation is a morphism from the terminal object (the zeroth
 power of \code{a}). So all we need in order to define any algebra is a
 category whose objects are powers of one special object \code{a}. The
@@ -72,10 +64,13 @@ the roadmap:
   Lawvere theory \textbf{L}: an object in the category \textbf{Law}.
 \item
   Model \code{M} of a Lawvere category: an object in the category
-  \code{Mod(Law,\ Set)}.
+  \code{Mod(Law, Set)}.
 \end{enumerate}
 
-\includegraphics[width=5.31250in]{images/lawvere1.png}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/lawvere1.png}
+\end{figure}
 
 \section{Lavwere Theories}\label{lavwere-theories}
 
@@ -94,15 +89,14 @@ category of finite sets, \textbf{FinSet}. It contains the empty set
 and so on. All objects in this category can be generated from the
 singleton set using coproducts (treating the empty set as a special case
 of a nullary coproduct). For instance, a two-element set is a sum of two
-singletons, \code{2\ =\ 1\ +\ 1}, as expressed in Haskell:
+singletons, \code{2 = 1 + 1}, as expressed in Haskell:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 type Two = Either () ()
 \end{Verbatim}
-
 However, even though it's natural to think that there's only one empty
 set, there may be many distinct singleton sets. In particular, the set
-\code{1\ +\ 0} is different from the set \code{0\ +\ 1}, and
+\code{1 + 0} is different from the set \code{0 + 1}, and
 different from \code{1} --- even though they are all isomorphic. The
 coproduct in the category of sets is not associative. We can remedy that
 situation by building a category that identifies all isomorphic sets.
@@ -124,17 +118,15 @@ Using the category \textbf{F} we can formally define a \newterm{Lawvere
 theory} as a category \textbf{L} equipped with a special functor
 
 \begin{Verbatim}[commandchars=\\\{\}]
-IL :: Fop -> L
+I\textsubscript{L} :: F\textsuperscript{op} -> L
 \end{Verbatim}
-
 This functor must be a bijection on objects and it must preserve finite
 products (products in \textbf{F}\textsuperscript{op} are the same as
 coproducts in \textbf{F}):
 
 \begin{Verbatim}[commandchars=\\\{\}]
-IL (m × n) = IL m × IL n
+I\textsubscript{L} (m × n) = I\textsubscript{L} m × I\textsubscript{L} n
 \end{Verbatim}
-
 You may sometimes see this functor characterized as identity-on-objects,
 which means that the objects in \textbf{F} and \textbf{L} are the same.
 We will therefore use the same names for them --- we'll denote them by
@@ -152,21 +144,20 @@ is mapped to some object that we also call \code{1} in \textbf{L}, and
 all the other objects in \textbf{L} are automatically powers of this
 object. For instance, the two-element set \code{2} in \textbf{F} is
 the coproduct \code{1+1}, so it must be mapped to a product
-\code{1×1} (or \code{12}) in \textbf{L}. In this sense, the category
+\code{1×1} (or \code{1\textsuperscript{2}}) in \textbf{L}. In this sense, the category
 \textbf{F} behaves like the logarithm of \textbf{L}.
 
 Among morphisms in \textbf{L} we have those transferred by the functor
-\code{IL} from \textbf{F}. They play structural role in \textbf{L}. In
-particular coproduct injections \code{ik} become product projections
-\code{pk}. A useful intuition is to imagine the projection:
+\code{I\textsubscript{L}} from \textbf{F}. They play structural role in \textbf{L}. In
+particular coproduct injections \code{i\textsubscript{k}} become product projections
+\code{p\textsubscript{k}}. A useful intuition is to imagine the projection:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-pk :: 1n -> 1
+p\textsubscript{k} :: 1n -> 1
 \end{Verbatim}
-
 as the prototype for a function of n variables that ignores all but the
 k'th variable. Conversely, constant morphisms \code{n->1}
-in \textbf{F} become diagonal morphisms \code{1->1n} in
+in \textbf{F} become diagonal morphisms \code{1->1\textsuperscript{n}} in
 \textbf{L}. They correspond to duplication of variables.
 
 The interesting morphisms in \textbf{L} are the ones that define n-ary
@@ -175,16 +166,19 @@ one Lawvere theory from another. These are the multiplications, the
 additions, the selections of unit elements, and so on, that define the
 algebra. But to make \textbf{L} a full category, we also need compound
 operations \code{n->m} (or, equivalently,
-\code{1n\ ->\ 1m}). Because of the simple structure of
+\code{1\textsuperscript{n} -> 1\textsuperscript{m}}). Because of the simple structure of
 the category, they turn out to be products of simpler morphisms of the
 type \code{n->1}. This is a generalization of the
 statement that a function that returns a product is a product of
 functions (or, as we've seen earlier, that the hom-functor is
 continuous).
 
-\hypertarget{attachment_9070}{}
-\includegraphics[width=5.31250in]{images/lawvere1.png}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/lawvere1.png}
+\end{figure}
 
+\noindent
 Lawvere theory L is based on \textbf{F}\textsuperscript{op}, from which
 it inherits the ``boring'' morphisms that define the products. It adds
 the ``interesting'' morphisms that describe the n-ary operations (dotted
@@ -192,14 +186,14 @@ arrows).
 
 Lavwere theories form a category \textbf{Law}, in which morphisms are
 functors that preserve finite products and commute with the functors
-\code{I}. Given two such theories, \code{(L,\ IL)} and
-\code{(L\',\ I\'L\')}, a morphism between them is a
-functor \code{F\ ::\ L\ ->\ L\'} such that:
+\code{I}. Given two such theories, \code{(L, I\textsubscript{L})} and
+\code{(L', I'\textsubscript{L'})}, a morphism between them is a
+functor \code{F :: L -> L'} such that:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-F (m × n) = F m × F n F ◦ IL = I'L'
+F (m × n) = F m × F n
+F ◦ I\textsubscript{L} = I'\textsubscript{L'}
 \end{Verbatim}
-
 Morphisms between Lawvere theories encapsulate the idea of the
 interpretation of one theory inside another. For instance, group
 multiplication may be interpreted as monoid multiplication if we ignore
@@ -214,8 +208,7 @@ At this point it would be very helpful to present a non-trivial example
 of a Lawvere theory, but it would be hard to explain it without first
 understanding what models are.
 
-\section{Models of Lawvere
-Theories}\label{models-of-lawvere-theories}
+\section{Models of Lawvere Theories}\label{models-of-lawvere-theories}
 
 The key to understand Lawvere theories is to realize that one such
 theory generalizes a lot of individual algebras that share the same
@@ -231,16 +224,16 @@ model of \textbf{L}, also called the algebra over the Lawvere theory
 \textbf{L}, is therefore defined by a functor:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-M :: L -> Set M (a × b) ≅ M a × M b
+M :: L -> Set
+M (a × b) \ensuremath{\cong} M a × M b
 \end{Verbatim}
-
-Notice that we require the preservation of products only \newterm{up to
+Notice that we require the preservation of products only \emph{up to
 isomorphism}. This is very important, because strict preservation of
 products would eliminate most interesting theories.
 
 The preservation of products by models means that the image of
 \code{M} in \textbf{Set} is a sequence of sets generated by powers of
-the set \code{M\ 1} --- the image of the object \code{1} from
+the set \code{M 1} --- the image of the object \code{1} from
 \textbf{L}. Let's call this set \code{a}. (This set is sometimes
 called a \newterm{sort}, and such algebra is called single-sorted. There
 exist generalizations of Lawvere theories to multi-sorted algebras.) In
@@ -249,7 +242,6 @@ particular, binary operations from \textbf{L} are mapped to functions:
 \begin{Verbatim}[commandchars=\\\{\}]
 a × a -> a
 \end{Verbatim}
-
 As with any functor, it's possible that multiple morphisms in \textbf{L}
 are collapsed to the same function in \textbf{Set}.
 
@@ -259,51 +251,47 @@ constant functor mapping all objects to a single set, and all morphisms
 to the identity function on it.
 
 A general morphism in \textbf{L} of the form
-\code{m\ ->\ n} is mapped to a function:
+\code{m -> n} is mapped to a function:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-am -> an
+a\textsuperscript{m} -> a\textsuperscript{n}
 \end{Verbatim}
-
 If we have two different models, \code{M} and \code{N}, a natural
 transformation between them is a family of functions indexed by
 \code{n}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-μn :: M n -> N n
+μ\textsubscript{n} :: M n -> N n
 \end{Verbatim}
-
 or, equivalently:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-μn :: an -> bn
+μ\textsubscript{n} :: a\textsuperscript{n} -> b\textsuperscript{n}
 \end{Verbatim}
-
-where \code{b\ =\ N\ 1}.
+where \code{b = N 1}.
 
 Notice that the naturality condition guarantees the preservation of
 n-ary operations:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-N f ◦ μn = μ1 ◦ M f
+N f ◦ μ\textsubscript{n} = μ\textsubscript{1} ◦ M f
 \end{Verbatim}
-
-where \code{f\ ::\ n\ ->\ 1} is an n-ary operation in
+where \code{f :: n -> 1} is an n-ary operation in
 \textbf{L}.
 
 The functors that define models form a category of models,
-\code{Mod(L,\ Set)}, with natural transformations as morphisms.
+\code{Mod(L, Set)}, with natural transformations as morphisms.
 
 Consider a model for the trivial Lawvere category
 \textbf{F}\textsuperscript{op}. Such model is completely determined by
-its value at \code{1}, \code{M\ 1}. Since \code{M\ 1} can be any
+its value at \code{1}, \code{M 1}. Since \code{M 1} can be any
 set, there are as many of these models as there are sets in
-\textbf{Set}. Moreover, every morphism in \code{Mod(Fop,\ Set)} (a
+\textbf{Set}. Moreover, every morphism in \code{Mod(F\textsuperscript{op}, Set)} (a
 natural transformation between functors \code{M} and \code{N}) is
-uniquely determined by its component at \code{M\ 1}. Conversely, every
-function \code{M\ 1\ ->\ N\ 1} induces a natural
+uniquely determined by its component at \code{M 1}. Conversely, every
+function \code{M 1 -> N 1} induces a natural
 transformation between the two models \code{M} and \code{N}.
-Therefore \code{Mod(Fop,\ Set)} is equivalent to \textbf{Set}.
+Therefore \code{Mod(F\textsuperscript{op}, Set)} is equivalent to \textbf{Set}.
 
 \section{The Theory of Monoids}\label{the-theory-of-monoids}
 
@@ -311,7 +299,7 @@ The simplest nontrivial example of a Lawvere theory describes the
 structure of monoids. It is a single theory that distills the structure
 of all possible monoids, in the sense that the models of this theory
 span the whole category \textbf{Mon} of monoids. We've already seen a
-\href{https://bartoszmilewski.com/2015/07/21/free-monoids/}{universal
+\hyperref[free-monoids]{universal
 construction}, which showed that every monoid can be obtained from an
 appropriate free monoid by identifying a subset of morphisms. So a
 single free monoid already generalizes a whole lot of monoids. There
@@ -327,10 +315,10 @@ Every monoid must have a unit, so we have to have a special morphism
 from the singleton set to the empty set. No such function exists.
 
 Next, consider morphisms \code{2->1}, members of
-\code{LMon(2,\ 1)}, which must contain prototypes of all binary
-operations. When constructing models in \code{Mod(LMon,\ Set)}, these
+\code{L\textsubscript{Mon}(2, 1)}, which must contain prototypes of all binary
+operations. When constructing models in \code{Mod(L\textsubscript{Mon}, Set)}, these
 morphisms will be mapped to functions from the cartesian product
-\code{M\ 1\ ×\ M\ 1} to \code{M\ 1}. In other words, functions of
+\code{M 1 × M 1} to \code{M 1}. In other words, functions of
 two arguments.
 
 The question is: how many functions of two arguments can one implement
@@ -342,50 +330,48 @@ by functions that return \code{ab}, \code{ba}, \code{aa},
 \code{bb}, \code{aab}, and so on\ldots{} In fact there are as many
 such functions of two arguments as there are elements in the free monoid
 with generators \code{a} and \code{b}. Notice that
-\code{LMon(2,\ 1)} must contain all those morphisms because one of the
+\code{L\textsubscript{Mon}(2, 1)} must contain all those morphisms because one of the
 models is the free monoid. In a free monoid they correspond to distinct
 functions. Other models may collapse multiple morphisms in
-\code{LMon(2,\ 1)} down to a single function, but not the free monoid.
+\code{L\textsubscript{Mon}(2, 1)} down to a single function, but not the free monoid.
 
-If we denote the free monoid with n generators \code{n*}, we may
-identify the hom-set \code{L(2,\ 1)} with the hom-set
-\code{Mon(1*,\ 2*)} in \textbf{Mon}, the category of monoids. In
-general, we pick \code{LMon(m,\ n)} to be \code{Mon(n*,\ m*)}. In
-other words, the category \code{LMon} is the opposite of the category
+If we denote the free monoid with n generators \code{n\textsuperscript{*}}, we may
+identify the hom-set \code{L(2, 1)} with the hom-set
+\code{Mon(1\textsuperscript{*}, 2\textsuperscript{*})} in \textbf{Mon}, the category of monoids. In
+general, we pick \code{L\textsubscript{Mon}(m, n)} to be \code{Mon(n\textsuperscript{*}, m*)}. In
+other words, the category \code{L\textsubscript{Mon}} is the opposite of the category
 of free monoids.
 
-The category of \newterm{models} of the Lawvere theory for monoids,
-\code{Mod(LMon,\ Set)}, is equivalent to the category of all monoids,
+The category of \emph{models} of the Lawvere theory for monoids,
+\code{Mod(L\textsubscript{Mon}, Set)}, is equivalent to the category of all monoids,
 \textbf{Mon}.
 
-\section{Lawvere Theories and
-Monads}\label{lawvere-theories-and-monads}
+\section{Lawvere Theories and Monads}\label{lawvere-theories-and-monads}
 
 As you may remember, algebraic theories can be described using monads
 --- in particular
-\href{https://bartoszmilewski.com/2017/03/14/algebras-for-monads/}{algebras
+\hyperref[algebras-for-monads]{algebras
 for monads}. It should be no surprise then that there is a connection
 between Lawvere theories and monads.
 
 First, let's see how a Lawvere theory induces a monad. It does it
 through an
-\href{https://bartoszmilewski.com/2016/06/15/freeforgetful-adjunctions/}{adjunction}
+\hyperref[free-forgetful-adjunctions]{adjunction}
 between a forgetful functor and a free functor. The forgetful functor
 \code{U} assigns a set to each model. This set is given by evaluating
-the functor M from \code{Mod(L,\ Set)} at the object \code{1} in
+the functor M from \code{Mod(L, Set)} at the object \code{1} in
 \textbf{L}.
 
 Another way of deriving \code{U} is by exploiting the fact that
 \textbf{F}\textsuperscript{op} is the initial object in \textbf{Law}. It
 meanst that, for any Lawvere theory \textbf{L}, there is a unique
-functor \code{Fop\ ->\ L}. This functor induces the
+functor \code{F\textsuperscript{op} -> L}. This functor induces the
 opposite functor on models (since models are functors \emph{from}
 theories to sets):
 
 \begin{Verbatim}[commandchars=\\\{\}]
-Mod(L, Set) -> Mod(Fop, Set)
+Mod(L, Set) -> Mod(F\textsuperscript{op}, Set)
 \end{Verbatim}
-
 But, as we discussed, the category of models of
 \textbf{F}\textsubscript{op} is equivalent to \textbf{Set}, so we get
 the forgetful functor:
@@ -393,47 +379,42 @@ the forgetful functor:
 \begin{Verbatim}[commandchars=\\\{\}]
 U :: Mod(L, Set) -> Set
 \end{Verbatim}
-
 It can be shown that so defined \code{U} always has a left adjoint,
 the free functor \code{F}.
 
 This is easily seen for finite sets. The free functor \code{F}
 produces free algebras. A free algebra is a particular model in
-\code{Mod(L,\ Set)} that is generated from a finite set of generators
+\code{Mod(L, Set)} that is generated from a finite set of generators
 \code{n}. We can implement \code{F} as the representable functor:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 L(n, -) :: L -> Set
 \end{Verbatim}
-
 To show that it's indeed free, all we have to do is to prove that it's a
 left adjoint to the forgetful functor:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-Mod(L(n, -), M) ≅ Set(n, U(M))
+Mod(L(n, -), M) \ensuremath{\cong} Set(n, U(M))
 \end{Verbatim}
-
 Let's simplify the right hand side:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-Set(n, U(M)) ≅ Set(n, M 1) ≅ (M 1)n ≅ M n
+Set(n, U(M)) \ensuremath{\cong} Set(n, M 1) \ensuremath{\cong} (M 1)\textsuperscript{n} \ensuremath{\cong} M n
 \end{Verbatim}
-
 (I used the fact that a set of morphisms is isomorphic to the
 exponential which, in this case, is just the iterated product.) The
 adjunction is the result of the Yoneda lemma:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-[L, Set](L(n, -), M) ≅ M n
+[L, Set](L(n, -), M) \ensuremath{\cong} M n
 \end{Verbatim}
-
 Together, the forgetful and the free functor define a
-\href{https://bartoszmilewski.com/2016/12/27/monads-categorically/}{monad}
-\code{T\ =\ U◦F} on \textbf{Set}. Thus every Lawvere theory generates
+\hyperref[monads-categorically]{monad}
+\code{T = U◦F} on \textbf{Set}. Thus every Lawvere theory generates
 a monad.
 
 It turns out that the category of
-\href{https://bartoszmilewski.com/2017/03/14/algebras-for-monads/}{algebras
+\hyperref[algebras-for-monads]{algebras
 for this monad} is equivalent to the category of models.
 
 You may recall that monad algebras define ways to evaluate expressions
@@ -448,25 +429,23 @@ fully determined by its action on finite sets. Its action on an
 arbitrary set \code{a} can be evaluated using the following coend:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-F a = ∫ n an × (F n)
+F a = ∫ \textsuperscript{n} a\textsuperscript{n} × (F n)
 \end{Verbatim}
-
 Since the coend generalizes a coproduct, or a sum, this formula is a
 generalization of a power series expansion. Or we can use the intuition
 that a functor is a generalized container. In that case a finitary
 container of \code{a}s can be described as a sum of shapes and
-contents. Here, \code{F\ n} is a set of shapes for storing n elements,
+contents. Here, \code{F n} is a set of shapes for storing n elements,
 and the contents is an n-tuple of elements, itself an element of
-\code{an}. For instance, a list (as a functor) is finitary, with one
+\code{a\textsuperscript{n}}. For instance, a list (as a functor) is finitary, with one
 shape for every arity. A tree has more shapes per arity, and so on.
 
 First off, all monads that are generated from Lawvere theories are
 finitary and they can be expressed as coends:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-TL a = ∫ n an × L(n, 1)
+T\textsubscript{L} a = ∫ \textsuperscript{n} a\textsuperscript{n} × L(n, 1)
 \end{Verbatim}
-
 Conversely, given any finitary monad \code{T} on \textbf{Set}, we can
 construct a Lawvere theory. We start by constructing a Kleisli category
 for \code{T}. As you may remember, a morphism in a Kleisli category
@@ -476,18 +455,16 @@ category:
 \begin{Verbatim}[commandchars=\\\{\}]
 a -> T b
 \end{Verbatim}
-
 When restricted to finite sets, this becomes:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 m -> T n
 \end{Verbatim}
-
 The category opposite to this Kleisli category,
 \textbf{Kl}\textsubscript{T}\textsuperscript{op}, restricted to finite
 sets, is the Lawvere theory in question. In particular, the hom-set
-\code{L(n,\ 1)} that describes n-ary operations in \textbf{L} is given
-by the hom-set \code{KlT(1,\ n)}.
+\code{L(n, 1)} that describes n-ary operations in \textbf{L} is given
+by the hom-set \code{Kl\textsubscript{T}(1, n)}.
 
 It turns out that most monads that we encounter in programming are
 finitary, with the notable exception of the continuation monad. It is
@@ -499,132 +476,138 @@ operations.
 Let's explore the coend formula in more detail.
 
 \begin{Verbatim}[commandchars=\\\{\}]
-TL a = ∫ n an × L(n, 1)
+TL a = ∫ \textsuperscript{n} a\textsuperscript{n} × L(n, 1)
 \end{Verbatim}
-
 To begin with, this coend is taken over a profunctor \code{P} in
 \textbf{F} defined as:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-P n m = an × L(m, 1)
+P n m = a\textsuperscript{n} × L(m, 1)
 \end{Verbatim}
-
 This profunctor is contravariant in the first argument, \code{n}.
 Consider how it lifts morphisms. A morphism in \textbf{FinSet} is a
-mapping of finite sets \code{f\ ::\ m\ ->\ n}. Such a
+mapping of finite sets \code{f :: m -> n}. Such a
 mapping describes a selection of m elements from an n-element set
 (repetitions are allowed). It can be lifted to the mapping of powers of
 \code{a}, namely (notice the direction):
 
 \begin{Verbatim}[commandchars=\\\{\}]
-an -> am
+a\textsuperscript{n} -> a\textsuperscript{m}
 \end{Verbatim}
-
 The lifting simply selects m elements from a tuple of n elements
-\code{(a1,\ a2,...an)} (possibly with repetitions).
+\code{(a\textsubscript{1}, a\textsubscript{2},...a\textsubscript{n})} (possibly with repetitions).
 
-\includegraphics[width=3.12500in]{images/liftpower.png}
+\begin{figure}[H]
+\centering
+\includegraphics[width=60mm]{images/liftpower.png}
+\end{figure}
 
-For instance, let's take \code{fk\ ::\ 1\ ->\ n} --- a
+\noindent
+For instance, let's take \code{f\textsubscript{k} :: 1 -> n} --- a
 selection of the \code{k}th element from an n-element set. It lifts to
 a function that takes a n-tuple of elements of \code{a} and returns
 the \code{k}th one.
 
-Or let's take \code{f\ ::\ m\ ->\ 1} --- a constant
+Or let's take \code{f :: m -> 1} --- a constant
 function that maps all m elements to one. Its lifting is a function that
 takes a single element of \code{a} and duplicates it m times:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 λx -> (x, x, ... x)
 \end{Verbatim}
-
 You might notice that it's not immediately obvious that the profunctor
 in question is covariant in the second argument. The hom-functor
-\code{L(m,\ 1)} is actually contravariant in \code{m}. However, we
+\code{L(m, 1)} is actually contravariant in \code{m}. However, we
 are taking the coend not in the category \textbf{L} but in the category
 \textbf{F}. The coend variable \code{n} goes over finite sets (or the
 skeletons of such). The category \textbf{L} contains the opposite of
-\textbf{F}, so a morphism \code{m\ ->\ n} in \textbf{F}
-is a member of \code{L(n,\ m)} in \textbf{L} (the embedding is given
-by the functor \code{IL}).
+\textbf{F}, so a morphism \code{m -> n} in \textbf{F}
+is a member of \code{L(n, m)} in \textbf{L} (the embedding is given
+by the functor \code{I\textsubscript{L}}).
 
-Let's check the functoriality of \code{L(m,\ 1)} as a functor from
+Let's check the functoriality of \code{L(m, 1)} as a functor from
 \textbf{F} to \textbf{Set}. We want to lift a function
-\code{f\ ::\ m\ ->\ n}, so our goal is to implement a
-function from \code{L(m,\ 1)} to \code{L(n,\ 1)}. Corresponding to
+\code{f :: m -> n}, so our goal is to implement a
+function from \code{L(m, 1)} to \code{L(n, 1)}. Corresponding to
 the function \code{f} there is a morphism in \textbf{L} from
 \code{n} to \code{m} (notice the direction). Precomposing this
-morphism with \code{L(m,\ 1)} gives us a subset of
-\code{L(n,\ 1)}.\\
-\includegraphics[width=3.12500in]{images/liftl.png}\\
+morphism with \code{L(m, 1)} gives us a subset of
+\code{L(n,\ 1)}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=60mm]{images/liftl.png}
+\end{figure}
+
+\noindent
 Notice that, by lifting a function \code{1->n} we can go
-from \code{L(1,\ 1)} to \code{L(n,\ 1)}. We'll use this fact later
+from \code{L(1, 1)} to \code{L(n, 1)}. We'll use this fact later
 on.
 
 The product of a contravariant functor \code{an} and a covariant
-functor \code{L(m,\ 1)} is a profunctor
-\code{Fop×F->Set}. Remember that a coend can be defined
+functor \code{L(m, 1)} is a profunctor
+\code{F\textsuperscript{op}×F->Set}. Remember that a coend can be defined
 as a coproduct (disjoint sum) of all the diagonal members of a
 profunctor, in which some elements are identified. The identifications
 correspond to cowedge conditions.
 
 Here, the coend starts as the disjoint sum of sets
-\code{an\ ×\ L(n,\ 1)} over all \code{n}s. The identifications can
+\code{a\textsuperscript{n} × L(n, 1)} over all \code{n}s. The identifications can
 be generated by expressing the
-\href{https://bartoszmilewski.com/2017/03/29/ends-and-coends/}{coend as
+\hyperref[ends-and-coends]{coend as
 a coequilizer}. We start with an off-diagonal term
-\code{an\ ×\ L(m,\ 1)}. To get to the diagonal, we can apply a
-morphism \code{f\ ::\ m\ ->\ n} either to the first or
+\code{a\textsuperscript{n} × L(m, 1)}. To get to the diagonal, we can apply a
+morphism \code{f :: m -> n} either to the first or
 the second component of the product. The two results are then
 identified.
 
+\begin{figure}[H]
+\centering
 \includegraphics[width=3.12500in]{images/equalize1.png}
+\end{figure}
 
+\noindent
 I have shown before that the lifting of
-\code{f\ ::\ 1\ ->\ n} results in these two
+\code{f :: 1 -> n} results in these two
 transformations:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-an -> a
+a\textsuperscript{n} -> a
 \end{Verbatim}
-
 and:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 L(1, 1) -> L(n, 1)
 \end{Verbatim}
-
-Therefore, starting from \code{an\ ×\ L(1,\ 1)} we can reach both:
+Therefore, starting from \code{a\textsuperscript{n} × L(1, 1)} we can reach both:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 a × L(1, 1)
 \end{Verbatim}
-
-when we lift \code{<f,\ id>} and:
+when we lift \code{<f, id>} and:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-an × L(n, 1)
+a\textsuperscript{n} × L(n, 1)
 \end{Verbatim}
-
-when we lift \code{<id,\ f>}. This doesn't
-mean, however, that all elements of \code{an\ ×\ L(n,\ 1)} can be
-identified with \code{a\ ×\ L(1,\ 1)}. That's because not all elements
-of \code{L(n,\ 1)} can be reached from \code{L(1,\ 1)}. Remember
+when we lift \code{<id, f>}. This doesn't
+mean, however, that all elements of \code{a\textsuperscript{n} × L(n, 1)} can be
+identified with \code{a × L(1, 1)}. That's because not all elements
+of \code{L(n, 1)} can be reached from \code{L(1, 1)}. Remember
 that we can only lift morphisms from \textbf{F}. A non-trivial n-ary
 operation in \textbf{L} cannot be constructed by lifting a morphism
-\code{f\ ::\ 1\ ->\ n}.
+\code{f :: 1 -> n}.
 
 In other words, we can only identify all addends in the coend formula
-for which \code{L(n,\ 1)} can be reached from \code{L(1,\ 1)}
+for which \code{L(n, 1)} can be reached from \code{L(1, 1)}
 through the application of basic morphisms. They are all equivalent to
-\code{a\ ×\ L(1,\ 1)}. Basic morphisms are the ones that are images of
+\code{a × L(1, 1)}. Basic morphisms are the ones that are images of
 morphisms in \textbf{F}.
 
 Let's see how this works in the simplest case of the Lawvere theory, the
 \textbf{F}\textsuperscript{op} itself. In such a theory, every
-\code{L(n,\ 1)} can be reached from \code{L(1,\ 1)}. This is because
-\code{L(1,\ 1)} is a singleton containing just the identity morphism,
-and \code{L(n,\ 1)} only contains morphisms corresponding to
+\code{L(n, 1)} can be reached from \code{L(1, 1)}. This is because
+\code{L(1, 1)} is a singleton containing just the identity morphism,
+and \code{L(n, 1)} only contains morphisms corresponding to
 injections \code{1->n} in \textbf{F}, which \emph{are}
 basic morphisms. Therefore all the addends in the coproduct are
 equivalent and we get:
@@ -632,7 +615,6 @@ equivalent and we get:
 \begin{Verbatim}[commandchars=\\\{\}]
 T a = a × L(1, 1) = a
 \end{Verbatim}
-
 which is the identity monad.
 
 \section{Lawvere Theory of Side
@@ -660,48 +642,43 @@ maps the nullary operation to a function:
 \begin{Verbatim}[commandchars=\\\{\}]
 raise :: () -> a
 \end{Verbatim}
-
 We can recover the \code{Maybe} monad using the coend formula. Let's
 consider what the addition of the nullary operation does to the hom-sets
-\code{L(n,\ 1)}. Besides creating a new \code{L(0,\ 1)} (which is
+\code{L(n, 1)}. Besides creating a new \code{L(0, 1)} (which is
 absent from \textbf{F}\textsuperscript{op}), it also adds new morphisms
-to \code{L(n,\ 1)}. These are the results of composing morphism of the
+to \code{L(n, 1)}. These are the results of composing morphism of the
 type \code{n->0} with our \code{0->1}.
-Such contributions are all identified with \code{a0\ ×\ L(0,\ 1)} in
+Such contributions are all identified with \code{a\textsuperscript{0} × L(0, 1)} in
 the coend formula, because they can be obtained from:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-an × L(0, 1)
+a\textsuperscript{n} × L(0, 1)
 \end{Verbatim}
-
 by lifting \code{0->n} in two different ways.
 
-\includegraphics[width=3.12500in]{images/equalize2.png}
+\begin{figure}[H]
+\centering
+\includegraphics[width=60mm]{images/equalize2.png}
+\end{figure}
 
+\noindent
 The coend reduces to:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-TL a = a0 + a1
+T\textsubscript{L} a = a\textsuperscript{0} + a\textsuperscript{1}
 \end{Verbatim}
-
 or, using Haskell notation:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 type Maybe a = Either () a
 \end{Verbatim}
-
 which is equivalent to:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 data Maybe a = Nothing | Just a
 \end{Verbatim}
-
 Notice that this Lawvere theory only supports the raising of exceptions,
 not their handling.
-
-Next:
-\href{https://bartoszmilewski.com/2017/09/06/monads-monoids-and-categories/}{Monads,
-Monoids, and Categories}.
 
 \section{Challenges}\label{challenges}
 
@@ -724,8 +701,11 @@ Monoids, and Categories}.
   the left Kan extension of its own restriction.
 \end{enumerate}
 
-\section{Acknowledgments}\label{acknowledgments}
-
-I'm grateful to Gershom Bazerman for many useful comments.
-
 \section{Further Reading}\label{further-reading}
+\begin{enumerate}
+  \tightlist
+  \item
+  \href{http://www.tac.mta.ca/tac/reprints/articles/5/tr5.pdf}{Functorial Semantics of Algebraic Theories}, F. William Lawvere
+  \item
+  \href{http://homepages.inf.ed.ac.uk/gdp/publications/Comp_Eff_Monads.pdf}{Notions of computation determine monads}, Gordon Plotkin and John Power
+\end{enumerate}

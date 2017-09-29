@@ -159,6 +159,9 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \chapter{Topoi}\label{topoi}
 \subfile{content/3.13/Topoi}
 
+\chapter{Lawvere Theories}\label{lawvere-theories}
+\subfile{content/3.14/Lawvere Theories}
+
 \backmatter
 
 @unnumbered Acknowledgments
