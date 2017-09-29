@@ -156,6 +156,9 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \chapter{Enriched Categories}\label{enriched-categories}
 \subfile{content/3.12/Enriched Categories}
 
+\chapter{Topoi}\label{topoi}
+\subfile{content/3.13/Topoi}
+
 \backmatter
 
 @unnumbered Acknowledgments

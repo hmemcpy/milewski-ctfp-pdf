@@ -1,11 +1,4 @@
-\begin{quote}
-This is part 29 of Categories for Programmers. Previously: {Enriched
-Categories}. See the
-\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
-of Contents}.
-\end{quote}
-
-I realize that we might be getting away from programming and diving into
+\lettrine[lhang=0.17]{I}{ realize that} we might be getting away from programming and diving into
 hard-core math. But you never know what the next big revolution in
 programming might bring and what kind of math might be necessary to
 understand it. There are some very interesting ideas going around, like
@@ -58,53 +51,62 @@ as a family of injective functions that are related by isomorphisms of
 their domains. More precisely, we say that two injective functions:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-f :: a -> b f':: a'-> b
+f :: a -> b
+f':: a'-> b
 \end{Verbatim}
-
 are equivalent if there is an isomorphism:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 h :: a -> a'
 \end{Verbatim}
-
 such that:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 f = f' . h
 \end{Verbatim}
-
 Such a family of equivalent injections defines a subset of \code{b}.
 
+\begin{figure}[H]
+\centering
 \includegraphics[width=2.29167in]{images/subsetinjection.jpg}
+\end{figure}
 
+\noindent
 This definition can be lifted to an arbitrary category if we replace
 injective functions with monomorphism. Just to remind you, a
 monomorphism \code{m} from \code{a} to \code{b} is defined by its
 universal property. For any object \code{c} and any pair of morphisms:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-g :: c -> a g':: c -> a
+g :: c -> a
+g':: c -> a
 \end{Verbatim}
-
 such that:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 m . g = m . g'
 \end{Verbatim}
+it must be that \code{g = g'}.
 
-it must be that \code{g\ =\ g\'}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=60mm]{images/monomorphism.jpg}
+\end{figure}
 
-\includegraphics[width=3.12500in]{images/monomorphism.jpg}
-
+\noindent
 On sets, this definition is easier to understand if we consider what it
 would mean for a function \code{m} \emph{not} to be a monomorphism. It
 would map two different elements of \code{a} to a single element of
 \code{b}. We could then find two functions \code{g} and
-\code{g\'} that differ only at those two elements. The
+\code{g'} that differ only at those two elements. The
 postcomposition with \code{m} would then mask this difference.
 
-\includegraphics[width=3.12500in]{images/notmono.jpg}
+\begin{figure}[H]
+\centering
+\includegraphics[width=60mm]{images/notmono.jpg}
+\end{figure}
 
+\noindent
 There is another way of defining a subset: using a single function
 called the characteristic function. It's a function \code{χ} from the
 set \code{b} to a two-element set \code{Ω}. One element of this set
@@ -120,7 +122,6 @@ from a singleton set to \code{Ω}. We'll call this function
 \begin{Verbatim}[commandchars=\\\{\}]
 true :: 1 -> Ω
 \end{Verbatim}
-
 \includegraphics[width=1.97917in]{images/true.jpg}
 
 These definitions can be combined in such a way that they not only
@@ -141,15 +142,18 @@ characteristic function \code{χ} defines both the subset \code{a}
 and the injective function that embeds it in \code{b}. Here's the
 pullback diagram:
 
+\begin{figure}[H]
+\centering
 \includegraphics[width=2.41667in]{images/pullback.jpg}
+\end{figure}
 
+\noindent
 Let's analyze this diagram. The pullback equation is:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 true . unit = χ . f
 \end{Verbatim}
-
-The function \code{true\ .\ unit} maps every element of \code{a} to
+The function \code{true . unit} maps every element of \code{a} to
 ``true.'' Therefore \code{f} must map all elements of \code{a} to
 those elements of \code{b} for which \code{χ} is ``true.'' These
 are, by definition, the elements of the subset that is specified by the
@@ -195,9 +199,8 @@ as a family of monomorphisms, and see that it is isomorphic to the set
 of morphisms from \code{b} to \code{Ω}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-Sub(b) ≅ C(b, Ω)
+Sub(b) \ensuremath{\cong} C(b, Ω)
 \end{Verbatim}
-
 This happens to be a natural isomorphism of two functors. In other
 words, \code{Sub(-)} is a representable (contravariant) functor whose
 representation is the object Ω.
@@ -257,10 +260,6 @@ terminate. It doesn't make sense to claim that a statement is true if we
 cannot prove it in finite amount of time. A topos with its more nuanced
 truth object provides a more general framework for modeling interesting
 logics.
-
-Next:
-\href{https://bartoszmilewski.com/2017/08/26/lawvere-theories/}{Lawvere
-Theories}.
 
 \section{Challenges}\label{challenges}
 
