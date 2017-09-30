@@ -50,7 +50,7 @@ C g(B b);
 \end{Verbatim}
 Their composition is:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 C g_after_f(A a)
 {
     return g(f(a));
@@ -87,9 +87,9 @@ g ◦ f
 \end{Verbatim}
 You can even use Unicode double colons and arrows:
 
-\begin{minted}[escapeinside=||,mathescape=true]{text}
-f |\ensuremath{\Colon}| A → B
-\end{minted}
+\begin{Verbatim}[commandchars=\\\{\}]
+f \ensuremath{\Colon} A → B
+\end{Verbatim}
 So here's the first Haskell lesson: Double colon means ``has the type
 of\ldots{}'' A function type is created by inserting an arrow between
 two types. You compose two functions by inserting a period between them
@@ -142,7 +142,7 @@ identity function that just returns back its argument. The
 implementation is the same for every type, which means this function is
 universally polymorphic. In C++ we could define it as a template:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class T> T id(T x) { return x; }
 \end{Verbatim}
 Of course, in C++ nothing is that simple, because you have to take into

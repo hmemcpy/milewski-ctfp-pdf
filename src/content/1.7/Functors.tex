@@ -56,7 +56,7 @@ want all identity morphisms in C to be mapped to identity morphisms in
 D:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-F ida = idF a
+F id\textsubscript{a} = id\textsubscript{F a}
 \end{Verbatim}
 Here, \emph{id\textsubscript{a}} is the identity at the object \emph{a},
 and \emph{id\textsubscript{F a}} the identity at \emph{F a}.
@@ -209,7 +209,7 @@ There are two cases to consider: \code{Nothing} and \code{Just}.
 Here's the first case (I'm using Haskell pseudo-code to transform the
 left hand side to the right hand side):
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
   fmap id Nothing
 = { definition of fmap }
   Nothing
@@ -223,7 +223,7 @@ backwards. I replaced the expression \code{Nothing} with
 in the middle --- here it was \code{Nothing}. The second case is also
 easy:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
   fmap id (Just x)
 = { definition of fmap }
   Just (id x)
@@ -239,7 +239,7 @@ fmap (g . f) = fmap g . fmap f
 \end{Verbatim}
 First the \code{Nothing} case:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
   fmap (g . f) Nothing
 = { definition of fmap }
   Nothing
@@ -250,7 +250,7 @@ First the \code{Nothing} case:
 \end{Verbatim}
 And then the \code{Just} case:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
   fmap (g . f) (Just x)
 = { definition of fmap }
   Just ((g . f) x)
@@ -266,7 +266,7 @@ And then the \code{Just} case:
 It's worth stressing that equational reasoning doesn't work for C++
 style ``functions'' with side effects. Consider this code:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 int square(int x) { 
     return x * x;
 }
@@ -281,7 +281,7 @@ double y = square(counter());
 Using equational reasoning, you would be able to inline \code{square}
 to get:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 double y = counter() * counter();
 \end{Verbatim}
 This is definitely not a valid transformation, and it will not produce
@@ -299,7 +299,7 @@ implementation is much more complex, dealing with various ways the
 argument may be passed, with copy semantics, and with the resource
 management issues characteristic of C++):
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class T>
 class optional { 
     bool _isValid; // the tag
@@ -315,7 +315,7 @@ mapping of types. It maps any type \code{T} to a new type
 \code{optional<T>}. Let's define its action on
 functions:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class A, class B>
 std::function<optional<B>(optional<A>)>
 fmap(std::function<B(A)> f) { 
@@ -330,7 +330,7 @@ fmap(std::function<B(A)> f) {
 This is a higher order function, taking a function as an argument and
 returning a function. Here's the uncurried version of it:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class A, class B>
 optional<B> fmap(std::function<B(A)> f, optional<A> opt) { 
     if (!opt.isValid())
@@ -428,7 +428,7 @@ template class, like \code{optional}, so by analogy, we would
 parameterize \code{fmap} with a \newterm{template template parameter}
 \code{F}. This is the syntax for it:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<template<class> F, class A, class B>
 F<B> fmap(std::function<B(A)>, F<A>);
 \end{Verbatim}
@@ -436,14 +436,14 @@ We would like to be able to specialize this template for different
 functors. Unfortunately, there is a prohibition against partial
 specialization of template functions in C++. You can't write:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class A, class B>
 optional<B> fmap<optional>(std::function<B(A)> f, optional<A> opt)
 \end{Verbatim}
 Instead, we have to fall back on function overloading, which brings us
 back to the original definition of the uncurried \code{fmap}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class A, class B>
 optional<B> fmap(std::function<B(A)> f, optional<A> opt) { 
     if (!opt.isValid()) 
@@ -514,7 +514,7 @@ If you are more comfortable with C++, consider the case of a
 container. The implementation of \code{fmap} for \code{std::vector}
 is just a thin encapsulation of \code{std::transform}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class A, class B>
 std::vector<B> fmap(std::function<B(A)> f, std::vector<A> v) {
     std::vector<B> w;
@@ -528,7 +528,7 @@ std::vector<B> fmap(std::function<B(A)> f, std::vector<A> v) {
 We can use it, for instance, to square the elements of a sequence of
 numbers:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 std::vector<int> v{ 1, 2, 3, 4 };
 auto w = fmap([](int i) { return i*i; }, v);
 std::copy( std::begin(w)
@@ -691,7 +691,7 @@ This might be a little clearer in C++ (I never thought I would utter
 those words!), where there is a stronger distinction between type
 arguments --- which are compile-time --- and values, which are run-time:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class C, class A>
 struct Const { 
     Const(C v) : _v(v) {}
@@ -702,7 +702,7 @@ The C++ implementation of \code{fmap} also ignores the function
 argument and essentially re-casts the \code{Const} argument without
 changing its value:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class C, class A, class B>
 Const<C, B> fmap(std::function<B(A)> f, Const<C, A> c) {
     return Const<C, B>{c._v};

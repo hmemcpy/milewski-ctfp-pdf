@@ -1,7 +1,7 @@
 \lettrine[lhang=0.17]{S}{o far I've} been glossing over the meaning of function types. A function
 type is different from other types.
 
-\begin{wrapfigure}[13]{R}{0pt}
+\begin{wrapfigure}[12]{R}{0pt}
 \raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
 \fbox{\includegraphics[width=40mm]{images/set-hom-set.jpg}}}%
 \caption{Hom-set in Set is just a set}
@@ -322,14 +322,14 @@ initializer lists).
 You can partially apply a C++ function using the template
 \code{std::bind}. For instance, given a function of two strings:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 std::string catstr(std::string s1, std::string s2) {
     return s1 + s2;
 }
 \end{Verbatim}
 you can define a function of one string:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 using namespace std::placeholders;
 
 auto greet = std::bind(catstr, "Hello ", _1);
@@ -339,7 +339,7 @@ Scala, which is more functional than C++ or Java, falls somewhere in
 between. If you anticipate that the function you're defining will be
 partially applied, you define it with multiple argument lists:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 def catstr(s1: String)(s2: String) = s1 + s2
 \end{Verbatim}
 Of course that requires some amount of foresight or prescience on the

@@ -265,7 +265,7 @@ snd (_, y) = y
 \end{Verbatim}
 In C++, we would use template functions, for instance:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class A, class B> A
 fst(pair<A, B> const & p) {
     return p.first;
@@ -359,7 +359,7 @@ equations are in natural numbers, and the dot is multiplication:
 \emph{m} is a common factor shared by \emph{p'} and \emph{q'}.
 
 Just to build some intuitions, let me show you that the pair
-\code{(Int,\ Bool)} with the two canonical projections, \code{fst}
+\code{(Int, Bool)} with the two canonical projections, \code{fst}
 and \code{snd} is indeed \emph{better} than the two candidates I
 presented before.
 
@@ -387,7 +387,7 @@ The \code{m} for the second example is similarly uniquely determined:
 \begin{Verbatim}[commandchars=\\\{\}]
 m (x, _, b) = (x, b)
 \end{Verbatim}
-We were able to show that \code{(Int,\ Bool)} is better than either of
+We were able to show that \code{(Int, Bool)} is better than either of
 the two candidates. Let's see why the opposite is not true. Could we
 find some \code{m'} that would help us reconstruct \code{fst}
 and \code{snd} from \code{p} and \code{q}?
@@ -512,7 +512,7 @@ have to define a tag --- an enumeration --- and combine it with the
 union. For instance, a tagged union of an \code{int} and a\\
 \code{char const *} could be implemented as:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 struct Contact { 
     enum { isPhone, isEmail } tag;
     union { int phoneNum; char const * emailAddr; };
@@ -522,7 +522,7 @@ The two injections can either be implemented as constructors or as
 functions. For instance, here's the first injection as a function
 \code{PhoneNum}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 Contact PhoneNum(int n) { 
     Contact c;
     c.tag = isPhone;
@@ -673,7 +673,7 @@ isomorphism is the same as a bijection.
 \section{Challenges}\label{challenges}
 
 \begin{enumerate}
-  \tightlist
+\tightlist
 \item
   Show that the terminal object is unique up to unique isomorphism.
 \item
@@ -688,14 +688,14 @@ isomorphism is the same as a bijection.
   Show that \code{Either} is a ``better'' coproduct than \code{int}
   equipped with two injections:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 int i(int n) { return n; }
 int j(bool b) { return b? 0: 1; }
 \end{Verbatim}
 
   Hint: Define a function
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 int m(Either const & e);
 \end{Verbatim}
 
@@ -707,7 +707,7 @@ int m(Either const & e);
 \item
   Still continuing: What about these injections?
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 int i(int n) { 
     if (n < 0) return n;
     return n + 2;

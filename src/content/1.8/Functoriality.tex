@@ -249,7 +249,7 @@ arguments. The syntax is the same.
 If you're getting a little lost, try applying \code{BiComp} to
 \code{Either}, \code{Const ()}, \code{Identity}, \code{a}, and
 \code{b}, in this order. You will recover our bare-bone version of
-\code{Maybe\ b} (\code{a} is ignored).
+\code{Maybe b} (\code{a} is ignored).
 
 The new data type \code{BiComp} is a bifunctor in \code{a} and
 \code{b}, but only if \code{bf} is itself a \code{Bifunctor} and
@@ -260,11 +260,11 @@ know that there will be a definition of \code{bimap} available for
 instance declaration: a set of class constraints followed by a double
 arrow:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{minted}[breaklines]{text}
 instance (Bifunctor bf, Functor fu, Functor gu) =>
   Bifunctor (BiComp bf fu gu) where
     bimap f1 f2 (BiComp x) = BiComp ((bimap (fmap f1) (fmap f2)) x) 
-\end{Verbatim}
+\end{minted}
 The implementation of \code{bimap} for \code{BiComp} is given in
 terms of \code{bimap} for \code{bf} and the two \code{fmap}s for
 \code{fu} and \code{gu}. The compiler automatically infers all the
@@ -305,9 +305,9 @@ can't it be automated and performed by the compiler? Indeed, it can, and
 it is. You need to enable a particular Haskell extension by including
 this line at the top of your source file:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{minted}{haskell}
 {-# LANGUAGE DeriveFunctor #-}
-\end{Verbatim}
+\end{minted}
 and then add \code{deriving Functor} to your data structure:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -334,7 +334,7 @@ is made into a generic template, you should be able to quickly implement
 Let's have a look at a tree data structure, which we would define in
 Haskell as a recursive sum type:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data Tree a = Leaf a | Node (Tree a) (Tree a)
     deriving Functor
 \end{Verbatim}
@@ -353,7 +353,7 @@ The base class must define at least one virtual function in order to
 support dynamic casting, so we'll make the destructor virtual (which is
 a good idea in any case):
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class T>
 struct Tree { 
     virtual ~Tree() {};
@@ -361,7 +361,7 @@ struct Tree {
 \end{Verbatim}
 The \code{Leaf} is just an \code{Identity} functor in disguise:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class T>
 struct Leaf : public Tree<T> {
     T _label;
@@ -370,7 +370,7 @@ struct Leaf : public Tree<T> {
 \end{Verbatim}
 The \code{Node} is a product type:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class T>
 struct Node : public Tree<T> {
     Tree<T> * _left;
@@ -386,7 +386,7 @@ is treated like a bifunctor composed with two copies of the
 analyzing code in these terms, but it's a good exercise in categorical
 thinking.
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class A, class B>
 Tree<B> * fmap(std::function<B(A)> f, Tree<A> * t) {
     Leaf<A> * pl = dynamic_cast <Leaf<A>*>(t);
@@ -405,7 +405,7 @@ issues, but in production code you would probably use smart pointers
 
 Compare it with the Haskell implementation of \code{fmap}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 instance Functor Tree where
     fmap f (Leaf a) = Leaf (f a)
     fmap f (Node t t') = Node (fmap f t) (fmap f t')
@@ -467,7 +467,7 @@ So \code{id} will take \code{Writer a} and turn it into
 \code{Writer a}. The fish operator will fish out the value of
 \code{a} and pass it as \code{x} to the lambda. There, \code{f}
 will turn it into a \code{b} and \code{return} will embellish it,
-making it \code{Writer\ b}. Putting it all together, we end up with a
+making it \code{Writer b}. Putting it all together, we end up with a
 function that takes \code{Writer a} and returns \code{Writer b},
 exactly what \code{fmap} is supposed to produce.
 
@@ -479,7 +479,7 @@ every functor, though, gives rise to a Kleisli category.)
 
 You might wonder if the \code{fmap} we have just defined is the same
 \code{fmap} the compiler would have derived for us with
-\code{deriving\ Functor}. Interestingly enough, it is. This is due to
+\code{deriving Functor}. Interestingly enough, it is. This is due to
 the way Haskell implements polymorphic functions. It's called
 \newterm{parametric polymorphism}, and it's a source of so called
 \newterm{theorems for free}. One of those theorems says that, if there is
@@ -577,13 +577,13 @@ by the way --- the kind we've been studying thus far --- are called
 Here's the typeclass defining a contravariant functor (really, a
 contravariant \emph{endo}functor) in Haskell:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 class Contravariant f where
     contramap :: (b -> a) -> (f a -> f b)
 \end{Verbatim}
 Our type constructor \code{Op} is an instance of it:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 instance Contravariant (Op r) where
     -- (b -> a) -> Op r a -> Op r b
     contramap f g = g . f
@@ -623,7 +623,7 @@ which is contra-functorial in the first argument and functorial in the
 second. Here's the appropriate typeclass taken from the
 \code{Data.Profunctor} library:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 class Profunctor p where
     dimap :: (a -> b) -> (c -> d) -> p b c -> p a d
     dimap f g = lmap f . rmap g
@@ -649,7 +649,7 @@ the defaults for \code{lmap} and \code{rmap}, or implementing both
 Now we can assert that the function-arrow operator is an instance of a
 \code{Profunctor}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 instance Profunctor (->) where
     dimap ab cd bc = cd . bc . ab
     lmap = flip (.)
@@ -677,7 +677,7 @@ data Pair a b = Pair a b
   Show the isomorphism between the standard definition of \code{Maybe}
   and this desugaring:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 type Maybe' a = Either (Const () a) (Identity a)
 \end{Verbatim}
 

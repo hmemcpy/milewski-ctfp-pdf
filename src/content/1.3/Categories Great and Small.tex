@@ -1,4 +1,4 @@
-\lettrine[lhang=0.17]{Y}{ou can get real appreciation} for categories by studying a variety of
+\lettrine[lhang=0.17]{Y}{ou can get} real appreciation for categories by studying a variety of
 examples. Categories come in all shapes and sizes and often pop up in
 unexpected places. We'll start with something really simple.
 
@@ -195,7 +195,7 @@ so this might be a little confusing to the beginner.)
 The closest one can get to declaring a monoid in C++ would be to use the
 (proposed) syntax for concepts.
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class T>
   T mempty = delete;
   
@@ -223,7 +223,7 @@ type) that tests whether there exist appropriate definitions of
 An instantiation of the Monoid concept can be accomplished by providing
 appropriate specializations and overloads:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<>
 std::string mempty<std::string> = {""};
 

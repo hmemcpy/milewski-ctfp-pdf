@@ -25,8 +25,8 @@ Library.
 \end{figure}
 
 \noindent
-Pairs are not strictly commutative: a pair \code{(Int,\ Bool)} cannot
-be substituted for a pair \code{(Bool,\ Int)}, even though they carry
+Pairs are not strictly commutative: a pair \code{(Int, Bool)} cannot
+be substituted for a pair \code{(Bool, Int)}, even though they carry
 the same information. They are, however, commutative up to isomorphism
 --- the isomorphism being given by the \code{swap} function (which is
 its own inverse):
@@ -114,7 +114,7 @@ can be defined alternatively as:
 \begin{Verbatim}[commandchars=\\\{\}]
 data Pair a b = P a b
 \end{Verbatim}
-Here, \code{Pair\ a\ b} is the name of the type paremeterized by two
+Here, \code{Pair a b} is the name of the type paremeterized by two
 other types, \code{a} and \code{b}; and \code{P} is the name of
 the data constructor. You define a pair type by passing two types to the
 \code{Pair} type constructor. You construct a pair value by passing
@@ -173,7 +173,7 @@ named fields is called a record in Haskell, and a \code{struct} in C.
 Let's have a look at a simple example. We want to describe chemical
 elements by combining two strings, name and symbol; and an integer, the
 atomic number; into one data structure. We can use a tuple
-\code{(String,\ String,\ Int)} and remember which component represents
+\code{(String, String, Int)} and remember which component represents
 what. We would extract components by pattern matching, as in this
 function that checks if the symbol of the element is the prefix of its
 name (as in \textbf{He} being the prefix of \textbf{Helium}):
@@ -185,7 +185,7 @@ startsWithSymbol (name, symbol, _) = isPrefixOf symbol name
 This code is error prone, and is hard to read and maintain. It's much
 better to define a record:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data Element = Element { name :: String 
                        , symbol :: String 
                        , atomicNumber :: Int }
@@ -193,7 +193,7 @@ data Element = Element { name :: String
 The two representations are isomorphic, as witnessed by these two
 conversion functions, which are the inverse of each other:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 tupleToElem :: (String, String, Int) -> Element
 tupleToElem (n, s, a) = Element { name = n 
                                 , symbol = s 
@@ -242,7 +242,7 @@ And like pairs, \code{Either}s are commutative (up to isomorphism),
 can be nested, and the nesting order is irrelevant (up to isomorphism).
 So we can, for instance, define a sum equivalent of a triple:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data OneOfThree a b c = Sinistral a | Medial b | Dextral c
 \end{Verbatim}
 and so on.
@@ -279,7 +279,7 @@ data Color = Red | Green | Blue
 \end{Verbatim}
 is the C++:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 enum { Red, Green, Blue };
 \end{Verbatim}
 An even simpler sum type:
@@ -328,7 +328,7 @@ List a = Nil | Cons a (List a)
 can be translated to C++ using the null pointer trick to implement the
 empty list:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class A>
 class List { 
     Node<A> * _head;
@@ -380,7 +380,7 @@ the first constructor argument with a wildcard, because we are not
 interested in it. The second argument to \code{Cons} is bound to the
 variable \code{t} (I will call these things variables even though,
 strictly speaking, they never vary: once bound to an expression, a
-variable never changes). The return value is \code{Just\ t}. Now,
+variable never changes). The return value is \code{Just t}. Now,
 depending on how your \code{List} was created, it will match one of
 the clauses. If it was created using \code{Cons}, the two arguments
 that were passed to it will be retrieved (and the first discarded).
@@ -417,7 +417,7 @@ example, is it possible to create a pair of, say \code{Int} and
 
 To create a pair you need two values. Although you can easily come up
 with an integer, there is no value of type \code{Void}. Therefore, for
-any type \code{a}, the type \code{(a,\ Void)} is uninhabited --- has
+any type \code{a}, the type \code{(a, Void)} is uninhabited --- has
 no values --- and is therefore equivalent to \code{Void}. In other
 words, \code{a*0 = 0}.
 
@@ -511,7 +511,7 @@ equation:
 \begin{Verbatim}[commandchars=\\\{\}]
 List a = Nil | Cons a (List a)
 \end{Verbatim}
-If we do our usual substitutions, and also replace \code{List\ a} with
+If we do our usual substitutions, and also replace \code{List a} with
 \code{x}, we get the equation:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -613,7 +613,7 @@ circ (Rect d h) = 2.0 * (d + h)
   have to touch in Haskell vs. C++ or Java? (Even if you're not a
   Haskell programmer, the modifications should be pretty obvious.)
 \item
-  Show that \code{a\ +\ a\ =\ 2\ *\ a} holds for types (up to
+  Show that \code{a + a = 2 * a} holds for types (up to
   isomorphism). Remember that \code{2} corresponds to \code{Bool},
   according to our translation table.
 \end{enumerate}

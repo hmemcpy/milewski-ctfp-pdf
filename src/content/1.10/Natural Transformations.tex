@@ -169,7 +169,7 @@ Keep in mind that it's really a family of functions parameterized by
 \code{a}. This is another example of the terseness of the Haskell
 syntax. A similar construct in C++ would be slightly more verbose:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class A> G<A> alpha(F<A>);
 \end{Verbatim}
 There is a more profound difference between Haskell's polymorphic
@@ -746,7 +746,7 @@ for vertical composition, but not vice versa.
 Finally, the two compositions satisfy the interchange law:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-(β' ⋅ α') ◦ (β ⋅ α) = (β' ◦ β) ⋅ (α' ◦ α)
+(β' \ensuremath{\cdot} α') ◦ (β \ensuremath{\cdot} α) = (β' ◦ β) \ensuremath{\cdot} (α' ◦ α)
 \end{Verbatim}
 
 I will quote Saunders Mac Lane here: The reader may enjoy writing down

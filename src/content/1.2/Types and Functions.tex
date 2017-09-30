@@ -247,7 +247,7 @@ The function \code{product} multiplies all elements of a list. That's
 just like a definition of factorial taken from a math text. Compare this
 with C:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 int fact(int n) {
     int i;
     int result = 1;
@@ -342,7 +342,7 @@ Think of functions from and to this type. A function from \code{void}
 can always be called. If it's a pure function, it will always return the
 same result. Here's an example of such a function:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 int f44() { return 44; }
 \end{Verbatim}
 You might think of this function as taking ``nothing'', but as we've
@@ -418,7 +418,7 @@ unit _ = ()
 \end{Verbatim}
 In C++ you would write this function as:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 template<class T>
 void unit(T) {}
 \end{Verbatim}
@@ -434,7 +434,7 @@ data Bool = True | False
 \code{True} or \code{False}.) In principle, one should also be able
 to define a Boolean type in C++ as an enumeration:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 enum bool { 
     true,
     false
@@ -455,8 +455,8 @@ the Haskell library \code{Data.Char} is full of predicates like
 \code{} that defines, among others, \code{isalpha} and
 \code{isdigit}, but these return an \code{int} rather than a
 Boolean. The actual predicates are defined in \code{std::ctype} and
-have the form \code{ctype::is(alpha,\ c)},
-\code{ctype::is(digit,\ c)}, etc.
+have the form \code{ctype::is(alpha, c)},
+\code{ctype::is(digit, c)}, etc.
 
 \section{Challenges}\label{challenges}
 
@@ -491,18 +491,18 @@ have the form \code{ctype::is(alpha,\ c)},
   \item
     The factorial function from the example in the text.
   \item
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 std::getchar()
 \end{Verbatim}
   \item
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 bool f() { 
     std::cout << "Hello!" << std::endl;
     return true;
 }
 \end{Verbatim}
   \item
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 int f(int x)
 {
     static int y = 0;
