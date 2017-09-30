@@ -10,9 +10,6 @@ ctfp.pdf: ctfp.tex coverpage.pdf ${FIG}
 	latexmk -shell-escape -pdflatex="xelatex %O %S" -pdf -dvi- -ps- $<; \
 	mv ctfp.pdf ../category-theory-for-programmers.pdf
 
-ctfp.tex: ctfp.texi preamble.tex postamble.tex texi-to-latex.pl
-	./texi-to-latex.pl $<
-
 %.pdf: %.svg
 	inkscape -f ${DIR}/$< -C -A ${DIR}/$@
 

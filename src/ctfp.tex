@@ -1,29 +1,24 @@
-@comment
-@comment             **********************************************************
-@setfilename         ctfp
-@settitle            Category Theory for Programmers
-@comment             Unofficial Texinfo Format
-@comment
-@set utfversion      0.1
-@set utfversiondate  September 2017
-@comment
-@comment             This file is licensed under a Creative Commons
-@comment             Attribution-ShareAlike 4.0 International License
-@comment             (http://creativecommons.org/licenses/by-sa/4.0/).
-@comment
-@comment             This is a Texinfo file with embedded LaTeX commands.
-@comment             To compile it to PDF, enter `make' in current directory.
-@comment             For more information about this file, see the text under
-@comment             `@node UTF' below.
-@comment
-@comment             **********************************************************
+%                                                                                    %
+%             **********************************************************             %
+%             Category Theory for Programmers by Bartosz Milewski                    %
+%                                                                                    %
+%             Compiled by Igal Tabachnik                                             %
+%             https://github.com/hmemcpy/milewski-ctfp-pdf                           %
+%                                                                                    %
+%             This file is licensed under a Creative Commons                         %
+%             Attribution-ShareAlike 4.0 International License                       %
+%             (http://creativecommons.org/licenses/by-sa/4.0/).                      %
+%             **********************************************************             %
 
-@comment HISTORY:
-@comment
-@comment * Version 1 (September, 2017) by Igal Tabachnik.
-@comment   Based on the SICP PDF work of Andres Raba et al.
-@comment   https://github.com/sarabander/sicp-pdf
-@comment   
+% HISTORY:
+%
+% * Version 0.11 (September, 2017) by Igal Tabachnik.
+%   Based on the SICP PDF work of Andres Raba et al.
+%   https://github.com/sarabander/sicp-pdf
+%
+%   Almost verbatim translation of the blog posts. Slight adjustments to images and text.
+
+\input{preamble.tex}
 
 \frontmatter
 
@@ -37,33 +32,33 @@
 \begin{small}
 \begin{center}
 
-@noindent
-Category Theory for Programmers@*
+\noindent
+Category Theory for Programmers\\
 
-@sp 1.0
-@noindent
-Bartosz Milewski@*
+\vspace{1.0em}
+\noindent
+Bartosz Milewski\\
 
-@sp 1.26
-@noindent
-Version @value{utfversion}, @value{utfversiondate}@*
+\vspace{1.26em}
+\noindent
+Version 0.1, September 2017\\
 
-@sp 1.6
-@noindent
-@image{fig/icons/cc, 3mm,,,.pdf}
-@image{fig/icons/by, 3mm,,,.pdf}
-@image{fig/icons/sa, 3mm,,,.pdf}
+\vspace{1.6em}
+\noindent
+\includegraphics[width=3mm]{fig/icons/cc.pdf}
+\includegraphics[width=3mm]{fig/icons/by.pdf}
+\includegraphics[width=3mm]{fig/icons/sa.pdf}
 
-@sp 0.4
-@noindent
-This work is licensed under a Creative Commons@*
-Attribution-ShareAlike 4.0 International License@*
-(@url{http://creativecommons.org/licenses/by-sa/4.0/, @acronym{CC BY-SA 4.0}}).
+\vspace{0.4em}
+\noindent
+This work is licensed under a Creative Commons\\
+Attribution-ShareAlike 4.0 International License\\
+(\href{http://creativecommons.org/licenses/by-sa/4.0/}{\acronym{CC BY-SA 4.0}}).
 
-@sp 1.26
-@noindent
-Converted to LaTeX from a series of blog posts by @url{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/, Bartosz Milewski}.@*
-PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachnik}.@*
+\vspace{1.26em}
+\noindent
+Converted to LaTeX from a series of blog posts by \href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Bartosz Milewski}.\\
+PDF compiled by \href{https://github.com/hmemcpy/milewski-ctfp-pdf}{Igal Tabachnik}.\\
 
 \end{center}
 \end{small}
@@ -71,8 +66,9 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \pagebreak
 \tableofcontents
 
-@unnumbered Preface
-@node    Preface
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+\label{Preface}
 
 \subfile{content/0.0/Preface}
 
@@ -179,20 +175,21 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 
 \backmatter
 
-@unnumbered Acknowledgments
+\chapter*{Acknowledgments}
+\addcontentsline{toc}{chapter}{Acknowledgments}
 
-@noindent
+\noindent
 I’d like to thank Edward Kmett and Gershom Bazerman for checking my math
 and logic, and André van Meulebrouck, who has been volunteering his editing
 help throughout this series of posts.
 
-@sp 1.0
-@noindent
+\vspace{1.0em}
+\noindent
 I’d like to thank Andrew Su on for rewriting my C++ monoid concept
 code according to his and Bjarne Stroustrup’s latest proposal.
 
-@sp 1.0
-@noindent
+\vspace{1.0em}
+\noindent
 I'm grateful to Eric Niebler for reading the draft and providing the
 clever implementation of \code{compose} that uses advanced features of
 C++14 to drive type inference. I was able to cut the whole section of
@@ -208,11 +205,14 @@ that it has been prepared with the help of a computer.
 (Volume 1 of \textit{The Art of Computer Programming})
 \end{quote}}
 
-@printindex cp
+\printindex
 
-@unnumbered Colophon
+\chapter*{Colophon}
+\addcontentsline{toc}{chapter}{Colophon}
 \lettrine[lraise=-0.03,loversize=0.08]{T}{his book} is ...
 
 The typefaces are Linux Libertine for body text and Linux Biolinum for headings, both by Philipp H. Poll. Typewriter face is Inconsolata created by Raph Levien and supplemented by Dimosthenis Kaponis and Takashi Tanigawa in the form of Inconsolata @acronym{LGC}. The cover page typeface is Alegreya, designed by Juan Pablo del Peral.
 
 Graphic design and typography are done by Andres Raba. Texinfo source is converted to LaTeX by a Perl script and compiled to @acronym{PDF} by XeLaTeX. Diagrams are drawn with Inkscape.
+
+\input{postamble.tex}
