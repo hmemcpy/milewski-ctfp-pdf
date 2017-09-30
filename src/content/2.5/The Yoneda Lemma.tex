@@ -1,12 +1,4 @@
-\begin{quote}
-This is part 15 of Categories for Programmers. Previously:
-\href{https://bartoszmilewski.com/2015/07/29/representable-functors/}{Representable
-Functors}. See the
-\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
-of Contents}.
-\end{quote}
-
-Most constructions in category theory are generalizations of results
+\lettrine[lhang=0.17]{M}{ost constructions in} category theory are generalizations of results
 from other more specific areas of mathematics. Things like products,
 coproducts, monoids, exponentials, etc., have been known long before
 category theory. They might have been known under different names in
@@ -45,9 +37,9 @@ of the natural transformation just follows from naturality conditions.
 So let's review the naturality condition between the two functors
 involved in the Yoneda lemma. The first functor is the hom-functor. It
 maps any object \code{x} in \emph{C} to the set of morphisms
-\code{C(a,\ x)} --- for \code{a} a fixed object in \emph{C}. We've
+\code{C(a, x)} --- for \code{a} a fixed object in \emph{C}. We've
 also seen that it maps any morphism \code{f} from \code{x} to
-\code{y} to \code{C(a,\ f)}.
+\code{y} to \code{C(a, f)}.
 
 The second functor is an arbitrary \textbf{Set}-valued functor
 \code{F}.
@@ -58,28 +50,31 @@ the natural transformation, like \code{αx} or \code{αy}, are just
 regular functions between sets:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-αx :: C(a, x) -> F x αy :: C(a, y) -> F y
+α\textsubscript{x} :: C(a, x) -> F x
+α\textsubscript{y} :: C(a, y) -> F y
 \end{Verbatim}
 
+\begin{figure}[H]
+\centering
 \includegraphics[width=2.73958in]{images/yoneda1.png}
+\end{figure}
 
+\noindent
 And because these are just functions, we can look at their values at
-specific points. But what's a point in the set \code{C(a,\ x)}? Here's
-the key observation: Every point in the set \code{C(a,\ x)} is also a
+specific points. But what's a point in the set \code{C(a, x)}? Here's
+the key observation: Every point in the set \code{C(a, x)} is also a
 morphism \code{h} from \code{a} to \code{x}.
 
 So the naturality square for \code{α}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-αy ◦ C(a, f) = F f ◦ αx
+α\textsubscript{y} ◦ C(a, f) = F f ◦ α\textsubscript{x}
 \end{Verbatim}
-
 becomes, point-wise, when acting on \code{h}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-αy (C(a, f) h) = (F f) (αx h)
+α\textsubscript{y} (C(a, f) h) = (F f) (α\textsubscript{x} h)
 \end{Verbatim}
-
 You might recall from the previous section that the action of the
 hom-functor \code{C(a,-)} on a morphism \code{f} was defined as
 precomposition:
@@ -87,138 +82,148 @@ precomposition:
 \begin{Verbatim}[commandchars=\\\{\}]
 C(a, f) h = f ◦ h
 \end{Verbatim}
-
 which leads to:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 αy (f ◦ h) = (F f) (αx h)
 \end{Verbatim}
-
 Just how strong this condition is can be seen by specializing it to the
 case of \code{x} equal to \code{a}.
 
+\begin{figure}[H]
+\centering
 \includegraphics[width=3.12500in]{images/yoneda2.png}
+\end{figure}
 
+\noindent
 In that case \code{h} becomes a morphism from \code{a} to
 \code{a}. We know that there is at least one such morphism,
-\code{h\ =\ ida}. Let's plug it in:
+\code{h = id\textsubscript{a}}. Let's plug it in:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-αy f = (F f) (αa ida)
+α\textsubscript{y} f = (F f) (α\textsubscript{a} id\textsubscript{a})
 \end{Verbatim}
-
 Notice what has just happened: The left hand side is the action of
-\code{αy} on an arbitrary element \code{f} of \code{C(a,\ y)}. And
-it is totally determined by the single value of \code{αa} at
-\code{ida}. We can pick any such value and it will generate a natural
-transformation. Since the values of \code{αa} are in the set
-\code{F\ a}, any point in \code{F\ a} will define some \code{α}.
+\code{α\textsubscript{y}} on an arbitrary element \code{f} of \code{C(a, y)}. And
+it is totally determined by the single value of \code{α\textsubscript{a}} at
+\code{id\textsubscript{a}}. We can pick any such value and it will generate a natural
+transformation. Since the values of \code{α\textsubscript{a}} are in the set
+\code{F a}, any point in \code{F a} will define some \code{α}.
 
 Conversely, given any natural transformation \code{α} from
-\code{C(a,\ -)} to \code{F}, you can evaluate it at \code{ida} to
-get a point in \code{F\ a}.
+\code{C(a, -)} to \code{F}, you can evaluate it at \code{id\textsubscript{a}} to
+get a point in \code{F a}.
 
 We have just proven the Yoneda lemma:
 
+\begin{quote}
 There is a one-to-one correspondence between natural transformations
-from \code{C(a,\ -)} to \code{F} and elements of \code{F\ a}.
-
+from \code{C(a, -)} to \code{F} and elements of \code{F a}. 
+\end{quote}
 in other words,
 
-\begin{Verbatim}[commandchars=\\\{\}]
-Nat(C(a, -), F) ≅ F a
-\end{Verbatim}
 
-Or, if we use the notation \code{{[}C,\ Set{]}} for the functor
+\begin{Verbatim}[commandchars=\\\{\}]
+Nat(C(a, -), F) \ensuremath{\cong} F a
+\end{Verbatim}
+Or, if we use the notation \code{{[}C, Set{]}} for the functor
 category between \emph{C} and \textbf{Set}, the set of natural
 transformation is just a hom-set in that category, and we can write:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-[C, Set](C(a, -), F) ≅ F a
+[C, Set](C(a, -), F) \ensuremath{\cong} F a
 \end{Verbatim}
-
 I'll explain later how this correspondence is in fact a natural
 isomorphism.
 
 Now let's try to get some intuition about this result. The most amazing
 thing is that the whole natural transformation crystallizes from just
-one nucleation site: the value we assign to it at \code{ida}. It
+one nucleation site: the value we assign to it at \code{id\textsubscript{a}}. It
 spreads from that point following the naturality condition. It floods
 the image of \emph{C} in \textbf{Set}. So let's first consider what the
-image of \emph{C} is under \code{C(a,\ -)}.
+image of \emph{C} is under \code{C(a, -)}.
 
 Let's start with the image of \code{a} itself. Under the hom-functor
-\code{C(a,\ -)}, \code{a} is mapped to the set \code{C(a,\ a)}.
+\code{C(a, -)}, \code{a} is mapped to the set \code{C(a, a)}.
 Under the functor \code{F}, on the other hand, it is mapped to the set
-\code{F\ a}. The component of the natural transformation \code{αa}
-is some function from \code{C(a,\ a)} to \code{F\ a}. Let's focus on
-just one point in the set \code{C(a,\ a)}, the point corresponding to
-the morphism \code{ida}. To emphasize the fact that it's just a point
-in a set, let's call it \code{p}. The component \code{αa} should map
-\code{p} to some point \code{q} in \code{F\ a}. I'll show you that
+\code{F a}. The component of the natural transformation \code{α\textsubscript{a}}
+is some function from \code{C(a, a)} to \code{F a}. Let's focus on
+just one point in the set \code{C(a, a)}, the point corresponding to
+the morphism \code{id\textsubscript{a}}. To emphasize the fact that it's just a point
+in a set, let's call it \code{p}. The component \code{α\textsubscript{a}} should map
+\code{p} to some point \code{q} in \code{F a}. I'll show you that
 any choice of \code{q} leads to a unique natural transformation.
 
-\includegraphics{images/yoneda3.png}
+\begin{figure}[H]
+\centering
+\includegraphics[width=60mm]{images/yoneda3.png}
+\end{figure}
 
+\noindent
 The first claim is that the choice of one point \code{q} uniquely
-determines the rest of the function \code{αa}. Indeed, let's pick any
-other point, \code{p\'} in \code{C(a,\ a)}, corresponding to
+determines the rest of the function \code{α\textsubscript{a}}. Indeed, let's pick any
+other point, \code{p'} in \code{C(a, a)}, corresponding to
 some morphism \code{g} from \code{a} to \code{a}. And here's where
 the magic of the Yoneda lemma happens: \code{g} can be viewed as a
-point \code{p\'} in the set \code{C(a,\ a)}. At the same time,
+point \code{p'} in the set \code{C(a, a)}. At the same time,
 it selects two \newterm{functions} between sets. Indeed, under the
 hom-functor, the morphism \code{g} is mapped to a function
-\code{C(a,\ g)}; and under \code{F} it's mapped to \code{F\ g}.
+\code{C(a, g)}; and under \code{F} it's mapped to \code{F g}.
 
-\includegraphics{images/yoneda4.png}
+\begin{figure}[H]
+\centering
+\includegraphics[width=60mm]{images/yoneda4.png}
+\end{figure}
 
-Now let's consider the action of \code{C(a,\ g)} on our original
-\code{p} which, as you remember, corresponds to \code{ida}. It is
-defined as precomposition, \code{g◦ida}, which is equal to \code{g},
-which corresponds to our point \code{p\'}. So the morphism
+\noindent
+Now let's consider the action of \code{C(a, g)} on our original
+\code{p} which, as you remember, corresponds to \code{id\textsubscript{a}}. It is
+defined as precomposition, \code{g◦id\textsubscript{a}}, which is equal to \code{g},
+which corresponds to our point \code{p'}. So the morphism
 \code{g} is mapped to a function that, when acting on \code{p}
-produces \code{p\'}, which is \code{g}. We have come full
+produces \code{p'}, which is \code{g}. We have come full
 circle!
 
-Now consider the action of \code{F\ g} on \code{q}. It is some
-\code{q\'}, a point in \code{F\ a}. To complete the naturality
-square, \code{p\'} must be mapped to \code{q\'} under
-\code{αa}. We picked an arbitrary \code{p\'} (an arbitrary
-\code{g}) and derived its mapping under \code{αa}. The function
-\code{αa} is thus completely determined.
+Now consider the action of \code{F g} on \code{q}. It is some
+\code{q'}, a point in \code{F a}. To complete the naturality
+square, \code{p'} must be mapped to \code{q'} under
+\code{α\textsubscript{a}}. We picked an arbitrary \code{p'} (an arbitrary
+\code{g}) and derived its mapping under \code{α\textsubscript{a}}. The function
+\code{α\textsubscript{a}} is thus completely determined.
 
-The second claim is that \code{αx} is uniquely determined for any
+The second claim is that \code{α\textsubscript{x}} is uniquely determined for any
 object \code{x} in \emph{C} that is connected to \code{a}. The
 reasoning is analogous, except that now we have two more sets,
-\code{C(a,\ x)} and \code{F\ x}, and the morphism \code{g} from
+\code{C(a, x)} and \code{F x}, and the morphism \code{g} from
 \code{a} to \code{x} is mapped, under the hom-functor, to:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 C(a, g) :: C(a, a) -> C(a, x)
 \end{Verbatim}
-
 and under \code{F} to:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 F g :: F a -> F x
 \end{Verbatim}
-
-Again, \code{C(a,\ g)} acting on our \code{p} is given by the
-precomposition: \code{g\ ◦\ ida}, which corresponds to a point
-\code{p\'} in \code{C(a,\ x)}. Naturality determines the value
-of \code{αx} acting on \code{p\'} to be:
+Again, \code{C(a, g)} acting on our \code{p} is given by the
+precomposition: \code{g ◦ id\textsubscript{a}}, which corresponds to a point
+\code{p'} in \code{C(a, x)}. Naturality determines the value
+of \code{αx} acting on \code{p'} to be:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 q' = (F g) q
 \end{Verbatim}
-
-Since \code{p\'} was arbitrary, the whole function \code{αx} is
+Since \code{p'} was arbitrary, the whole function \code{α\textsubscript{x}} is
 thus determined.
 
-\includegraphics{images/yoneda5.png}
+\begin{figure}[H]
+\centering
+\includegraphics[width=60mm]{images/yoneda5.png}
+\end{figure}
 
+\noindent
 What if there are objects in \emph{C} that have no connection to
-\code{a}? They are all mapped under \code{C(a,\ -)} to a single set
+\code{a}? They are all mapped under \code{C(a, -)} to a single set
 --- the empty set. Recall that the empty set is the initial object in
 the category of sets. It means that there is a unique function from this
 set to any other set. We called this function \code{absurd}. So here,
@@ -232,7 +237,7 @@ collapse information and it may cover only parts of its codomain. The
 only functions that are not lossy are the ones that are invertible ---
 the isomorphisms. It follows then that the best structure-preserving
 \textbf{Set}-valued functors are the representable ones. They are either
-the hom-functors or~the functors that are naturally isomorphic to
+the hom-functors or the functors that are naturally isomorphic to
 hom-functors. Any other functor \code{F} is obtained from a
 hom-functor through a lossy transformation. Such a transformation may
 not only lose information, but it may also cover only a small part of
@@ -246,13 +251,12 @@ of the reader functor:
 \begin{Verbatim}[commandchars=\\\{\}]
 type Reader a x = a -> x
 \end{Verbatim}
-
 The reader maps morphisms (here, functions) by precomposition:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-instance Functor (Reader a) where fmap f h = f . h
+instance Functor (Reader a) where
+    fmap f h = f . h
 \end{Verbatim}
-
 The Yoneda lemma tells us that the reader functor can be naturally
 mapped to any other functor.
 
@@ -262,20 +266,18 @@ A natural transformation is a polymorphic function. So given a functor
 \begin{Verbatim}[commandchars=\\\{\}]
 alpha :: forall x . (a -> x) -> F x
 \end{Verbatim}
-
 As usual, \code{forall} is optional, but I like to write it explicitly
 to emphasize parametric polymorphism of natural transformations.
 
 The Yoneda lemma tells us that these natural transformations are in
-one-to-one correspondence with the elements of \code{F\ a}:
+one-to-one correspondence with the elements of \code{F a}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-forall x . (a -> x) -> F x ≅ F a
+forall x . (a -> x) -> F x \ensuremath{\cong} F a
 \end{Verbatim}
-
 The right hand side of this identity is what we would normally consider
 a data structure. Remember the interpretation of functors as generalized
-containers? \code{F\ a} is a container of \code{a}. But the left
+containers? \code{F a} is a container of \code{a}. But the left
 hand side is a polymorphic function that takes a function as an
 argument. The Yoneda lemma tells us that the two representations are
 equivalent --- they contain the same information.
@@ -286,27 +288,23 @@ type:
 \begin{Verbatim}[commandchars=\\\{\}]
 alpha :: forall x . (a -> x) -> F x
 \end{Verbatim}
-
 and I'll produce a container of \code{a}. The trick is the one we used
 in the proof of the Yoneda lemma: we call this function with \code{id}
-to get an element of \code{F\ a}:
+to get an element of \code{F a}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 alpha id :: F a
 \end{Verbatim}
-
-The converse is also true: Given a value of the type \code{F\ a}:
+The converse is also true: Given a value of the type \code{F a}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 fa :: F a
 \end{Verbatim}
-
 one can define a polymorphic function:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 alpha h = fmap h fa
 \end{Verbatim}
-
 of the correct type. You can easily go back and forth between the two
 representations.
 
@@ -316,13 +314,12 @@ some applications than the other.
 
 The simplest illustration of this principle is the code transformation
 that is often used in compiler construction: the continuation passing
-style or CPS. It's the simplest application of the Yoneda lemma to the
+style or \acronym{CPS}. It's the simplest application of the Yoneda lemma to the
 identity functor. Replacing \code{F} with identity produces:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-forall r . (a -> r) -> r ≅ a
+forall r . (a -> r) -> r \ensuremath{\cong} a
 \end{Verbatim}
-
 The interpretation of this formula is that any type \code{a} can be
 replaced by a function that takes a ``handler'' for \code{a}. A
 handler is a function accepting \code{a} and performing the rest of
@@ -330,13 +327,13 @@ the computation --- the continuation. (The type \code{r} usually
 encapsulates some kind of status code.)
 
 This style of programming is very common in UIs, in asynchronous
-systems, and in concurrent programming. The drawback of CPS is that it
+systems, and in concurrent programming. The drawback of \acronym{CPS} is that it
 involves inversion of control. The code is split between producers and
 consumers (handlers), and is not easily composable. Anybody who's done
 any amount of nontrivial web programming is familiar with the nightmare
 of spaghetti code from interacting stateful handlers. As we'll see
 later, judicious use of functors and monads can restore some
-compositional properties of CPS.
+compositional properties of \acronym{CPS}.
 
 \section{Co-Yoneda}\label{co-yoneda}
 
@@ -348,37 +345,37 @@ functors.
 Equivalently, we can derive the co-Yoneda lemma by fixing the target
 object of our hom-functors instead of the source. We get the
 contravariant hom-functor from \emph{C} to \textbf{Set}:
-\code{C(-,\ a)}. The contravariant version of the Yoneda lemma
+\code{C(-, a)}. The contravariant version of the Yoneda lemma
 establishes one-to-one correspondence between natural transformations
 from this functor to any other contravariant functor \code{F} and the
-elements of the set \code{F\ a}:
+elements of the set \code{F a}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-Nat(C(-, a), F) ≅ F a
+Nat(C(-, a), F) \ensuremath{\cong} F a
 \end{Verbatim}
-
 Here's the Haskell version of the co-Yoneda lemma:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-forall x . (x -> a) -> F x ≅ F a
+forall x . (x -> a) -> F x \ensuremath{\cong} F a
 \end{Verbatim}
-
 Notice that in some literature it's the contravariant version that's
 called the Yoneda lemma.
 
 \section{Challenges}\label{challenges}
 
 \begin{enumerate}
+\tightlist
 \item
   Show that the two functions \code{phi} and \code{psi} that form
   the Yoneda isomorphism in Haskell are inverses of each other.
 
 \begin{Verbatim}[commandchars=\\\{\}]
-phi :: (forall x . (a -> x) -> F x) -> F a phi alpha = alpha id
+phi :: (forall x . (a -> x) -> F x) -> F a
+phi alpha = alpha id
 \end{Verbatim}
-
 \begin{Verbatim}[commandchars=\\\{\}]
-psi :: F a -> (forall x . (a -> x) -> F x) psi fa h = fmap h fa
+psi :: F a -> (forall x . (a -> x) -> F x)
+psi fa h = fmap h fa
 \end{Verbatim}
 \item
   A discrete category is one that has objects but no morphisms other
@@ -395,13 +392,8 @@ psi :: F a -> (forall x . (a -> x) -> F x) psi fa h = fmap h fa
 
 \section{Bibliography}\label{bibliography}
 
-Next:
-\href{https://bartoszmilewski.com/2015/10/28/yoneda-embedding/}{Yoneda
-Embedding}.
-
-\section{Acknowledgments}\label{acknowledgments}
-
-I'd like to thank Gershom Bazerman for checking my math and logic, and
-André van Meulebrouck, who has been volunteering his editing help
-throughout this series of posts.\\
-\href{https://twitter.com/BartoszMilewski}{Follow @BartoszMilewski}
+\begin{enumerate}
+\tightlist
+\item
+  \href{https://www.youtube.com/watch?v=TLMxHB19khE}{Catsters} video
+\end{enumerate}

@@ -118,6 +118,9 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \chapter{Limits and Colimits}\label{limits-and-colimits}
 \subfile{content/2.2/Limits and Colimits}
 
+\chapter{The Yoneda Lemma}\label{the-yoneda-lemma}
+\subfile{content/2.5/The Yoneda Lemma}
+
 \chapter{Yoneda Embedding}\label{yoneda-embedding}
 \subfile{content/2.6/Yoneda Embedding}
 
