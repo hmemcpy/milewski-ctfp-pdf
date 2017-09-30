@@ -43,7 +43,7 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994951"
-     inkscape:cx="678.97117"
+     inkscape:cx="440.0701"
      inkscape:cy="434.61539"
      inkscape:document-units="px"
      inkscape:current-layer="layer3"
@@ -137,41 +137,41 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:36.18788528px;line-height:100%;font-family:Alegreya;-inkscape-font-specification:Alegreya;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;enable-background:new"
-       x="320.69214"
+       x="320.19278"
        y="329.89368"
        id="text2985"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         x="320.69214"
+         x="320.19278"
          y="329.89368"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:52.5px;line-height:110.00000238%;font-family:Alegreya;-inkscape-font-specification:Alegreya;text-align:center;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1"
          id="tspan3294">Category Theory</tspan><tspan
          sodipodi:role="line"
-         x="320.69214"
+         x="320.19278"
          y="387.64368"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:52.5px;line-height:110.00000238%;font-family:Alegreya;-inkscape-font-specification:Alegreya;text-align:center;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1"
          id="tspan3386">for Programmers</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24.12525558px;line-height:139.99999762%;font-family:Alegreya;-inkscape-font-specification:Alegreya;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;enable-background:new"
-       x="153.76953"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:139.99999762%;font-family:Alegreya;-inkscape-font-specification:'Alegreya, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;enable-background:new"
+       x="178.76469"
        y="797.94342"
        id="text4059"
        sodipodi:linespacing="140%"><tspan
          sodipodi:role="line"
-         x="153.76953"
+         x="178.76469"
          y="797.94342"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:139.99999762%;font-family:sans-serif;-inkscape-font-specification:sans-serif;word-spacing:0px;fill:#000000;fill-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:139.99999762%;font-family:Alegreya;-inkscape-font-specification:'Alegreya, Normal';text-align:start;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1"
          id="tspan7240">Bartosz Milewski</tspan></text>
     <image
-       sodipodi:absref="/Users/igalt/code/milewski-ctfp-pdf/src/commutative_diagram.png"
+       sodipodi:absref="commutative_diagram.png"
        xlink:href="commutative_diagram.png"
-       y="436.8056"
-       x="215.9724"
-       id="image7052"
-       height="301.99292"
+       style="display:inline;enable-background:new"
        width="208.05521"
-       style="display:inline;enable-background:new" />
+       height="301.99292"
+       id="image7052"
+       x="215.9724"
+       y="436.8056" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
