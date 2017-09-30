@@ -1,12 +1,4 @@
-\begin{quote}
-This is part 13 of Categories for Programmers. Previously:
-\href{https://bartoszmilewski.com/2015/04/15/limits-and-colimits/}{Limits
-and Colimits}. See the
-\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
-of Contents}.
-\end{quote}
-
-Monoids are an important concept in both category theory and in
+\lettrine[lhang=0.17]{M}{onoids are an important} concept in both category theory and in
 programming. Categories correspond to strongly typed languages, monoids
 to untyped languages. That's because in a monoid you can compose any two
 arrows, just as in an untyped language you can compose any two functions
@@ -34,26 +26,30 @@ identify some of the pairs --- just enough to support the unit and
 associativity laws.
 
 Let's see how this works in a simple example. Let's start with a set of
-two elements, \code{\{a,\ b\}}. We'll call them the generators of the
+two elements, \code{\{a, b\}}. We'll call them the generators of the
 free monoid. First, we'll add a special element \code{e} to serve as
 the unit. Next we'll add all the pairs of elements and call them
 ``products''. The product of \code{a} and \code{b} will be the pair
-\code{(a,\ b)}. The product of \code{b} and \code{a} will be the
-pair \code{(b,\ a)}, the product of \code{a} with \code{a} will be
-\code{(a,\ a)}, the product of \code{b} with \code{b} will be
-\code{(b,\ b)}. We can also form pairs with \code{e}, like
-\code{(a,\ e)}, \code{(e,\ b)}, etc., but we'll identify them with
+\code{(a, b)}. The product of \code{b} and \code{a} will be the
+pair \code{(b, a)}, the product of \code{a} with \code{a} will be
+\code{(a, a)}, the product of \code{b} with \code{b} will be
+\code{(b, b)}. We can also form pairs with \code{e}, like
+\code{(a, e)}, \code{(e, b)}, etc., but we'll identify them with
 \code{a}, \code{b}, etc. So in this round we'll only add
-\code{(a,\ a)}, \code{(a,\ b)} and \code{(b,\ a)} and
-\code{(b,\ b)}, and end up with the set
-\code{\{e,\ a,\ b,\ (a,\ a),\ (a,\ b),\ (b,\ a),\ (b,\ b)\}}.
+\code{(a, a)}, \code{(a, b)} and \code{(b, a)} and
+\code{(b, b)}, and end up with the set
+\code{\{e, a, b, (a, a), (a, b), (b, a), (b, b)\}}.
 
-\includegraphics[width=4.54167in]{images/bunnies.jpg}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/bunnies.jpg}
+\end{figure}
 
+\noindent
 In the next round we'll keep adding elements like:
-\code{(a,\ (a,\ b))}, \code{((a,\ b),\ a)}, etc. At this point we'll
+\code{(a, (a, b))}, \code{((a, b), a)}, etc. At this point we'll
 have to make sure that associativity holds, so we'll identify
-\code{(a,\ (b,\ a))} with \code{((a,\ b),\ a)}, etc. In other words,
+\code{(a, (b, a))} with \code{((a, b), a)}, etc. In other words,
 we won't be needing internal parentheses.
 
 You can guess what the final result of this process will be: we'll
@@ -65,7 +61,7 @@ This kind of construction, in which you keep generating all possible
 combinations of elements, and perform the minimum number of
 identifications --- just enough to uphold the laws --- is called a free
 construction. What we have just done is to construct a \newterm{free
-monoid} from the set of generators \code{\{a,\ b\}}.
+monoid} from the set of generators \code{\{a, b\}}.
 
 \section{Free Monoid in Haskell}\label{free-monoid-in-haskell}
 
@@ -77,9 +73,10 @@ problems with infinite lists.)
 A monoid in Haskell is defined by the type class:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-class Monoid m where mempty :: m mappend :: m -> m -> m
+class Monoid m where
+    mempty :: m
+    mappend :: m -> m -> m
 \end{Verbatim}
-
 This just says that every \code{Monoid} must have a neutral element,
 which is called \code{mempty}, and a binary function (multiplication)
 called \code{mappend}. The unit and associativity laws cannot be
@@ -90,9 +87,10 @@ The fact that a list of any type forms a monoid is described by this
 instance definition:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-instance Monoid [a] where mempty = [] mappend = (++)
+instance Monoid [a] where
+    mempty = []
+    mappend = (++)
 \end{Verbatim}
-
 It states that an empty list \code{{[}{]}} is the unit element, and
 list concatenation \code{(++)} is the binary operation.
 
@@ -102,9 +100,9 @@ numbers with multiplication is not a free monoid, because we identify
 lots of products. Compare for instance:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-2 * 3 = 6 [2] ++ [3] = [2, 3] // not the same as [6]
+2 * 3 = 6
+[2] ++ [3] = [2, 3] // not the same as [6]
 \end{Verbatim}
-
 That was easy, but the question is, can we perform this free
 construction in category theory, where we are not allowed to look inside
 objects? We'll use our workhorse: the universal construction.
@@ -114,8 +112,7 @@ free monoid by identifying more than the minimum number of elements
 required by the laws? I'll show you that this follows directly from the
 universal construction.
 
-\section{Free Monoid Universal
-Construction}\label{free-monoid-universal-construction}
+\section{Free Monoid Universal Construction}\label{free-monoid-universal-construction}
 
 If you recall our previous experiences with universal constructions, you
 might notice that it's not so much about constructing something as about
@@ -134,22 +131,19 @@ mapping of the two elements:
 \begin{Verbatim}[commandchars=\\\{\}]
 h (a * b) = h a * h b
 \end{Verbatim}
-
 and it must map unit to unit.\\
 For instance, consider a homomorphism from lists of integers to
 integers. If we map \code{{[}2{]}} to 2 and \code{{[}3{]}} to 3, we
-have to map \code{{[}2,\ 3{]}} to 6, because concatenation
+have to map \code{{[}2, 3{]}} to 6, because concatenation
 
 \begin{Verbatim}[commandchars=\\\{\}]
 [2] ++ [3] = [2, 3]
 \end{Verbatim}
-
 becomes multiplication
 
 \begin{Verbatim}[commandchars=\\\{\}]
 2 * 3 = 6
 \end{Verbatim}
-
 Now let's forget about the internal structure of individual monoids, and
 only look at them as objects with corresponding morphisms. You get a
 category \textbf{Mon} of monoids.
@@ -197,7 +191,6 @@ object of \textbf{Mon} --- and a function \code{p} in \textbf{Set}:
 \begin{Verbatim}[commandchars=\\\{\}]
 p :: x -> U m
 \end{Verbatim}
-
 where \code{U} is our forgetful functor from \textbf{Mon} to
 \textbf{Set}. This is a weird heterogeneous pattern --- half in
 \textbf{Mon} and half in \textbf{Set}.
@@ -208,8 +201,12 @@ functions may be lousy at identifying points inside sets (they may
 collapse them). It will all be sorted out by the universal construction,
 which will pick the best representative of this pattern.
 
+\begin{figure}[H]
+\centering
 \includegraphics[width=3.12500in]{images/monoid-pattern.jpg}
+\end{figure}
 
+\noindent
 We also have to define the ranking among candidates. Suppose we have
 another candidate: a monoid \code{n} and a function that identifies
 the generators in its X-ray image:
@@ -217,21 +214,18 @@ the generators in its X-ray image:
 \begin{Verbatim}[commandchars=\\\{\}]
 q :: x -> U n
 \end{Verbatim}
-
 We'll say that \code{m} is better than \code{n} if there is a
 morphism of monoids (that's a structure-preserving homomorphism):
 
 \begin{Verbatim}[commandchars=\\\{\}]
 h :: m -> n
 \end{Verbatim}
-
 whose image under \code{U} (remember, \code{U} is a functor, so it
 maps morphisms to functions) factorizes through \code{p}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 q = U h . p
 \end{Verbatim}
-
 If you think of \code{p} as selecting the generators in \code{m};
 and \code{q} as selecting ``the same'' generators in \code{n}; then
 you can think of \code{h} as mapping these generators between the two
@@ -240,20 +234,25 @@ structure. It means that a product of two generators in one monoid will
 be mapped to a product of the corresponding two generators in the second
 monoid, and so on.
 
+\begin{figure}[H]
+\centering
 \includegraphics[width=3.12500in]{images/monoid-ranking.jpg}
+\end{figure}
 
+\noindent
 This ranking may be used to find the best candidate --- the free monoid.
 Here's the definition:
 
+\begin{quote}
 We'll say that \code{m} (together with the function \code{p}) is the
 \textbf{free monoid} with the generators \code{x} if and only if there
 is a \emph{unique} morphism \code{h} from \code{m} to any other
 monoid \code{n} (together with the function \code{q}) that satisfies
 the above factorization property.
-
+\end{quote}
 Incidentally, this answers our second question. The function
-\code{U\ h} is the one that has the power to collapse multiple
-elements of \code{U\ m} to a single element of \code{U\ n}. This
+\code{U h} is the one that has the power to collapse multiple
+elements of \code{U m} to a single element of \code{U n}. This
 collapse corresponds to identifying some elements of the free monoid.
 Therefore any monoid with generators \code{x} can be obtained from the
 free monoid based on \code{x} by identifying some of the elements. The
@@ -265,6 +264,7 @@ We'll come back to free monoids when we talk about adjunctions.
 \section{Challenges}\label{challenges}
 
 \begin{enumerate}
+\tightlist
 \item
   You might think (as I did, originally) that the requirement that a
   homomorphism of monoids preserve the unit is redundant. After all, we
@@ -273,9 +273,8 @@ We'll come back to free monoids when we talk about adjunctions.
 \begin{Verbatim}[commandchars=\\\{\}]
 h a * h e = h (a * e) = h a
 \end{Verbatim}
-
-  So \code{h\ e} acts like a right unit (and, by analogy, as a left
-  unit). The problem is that \code{h\ a}, for all \code{a} might
+  So \code{h e} acts like a right unit (and, by analogy, as a left
+  unit). The problem is that \code{h a}, for all \code{a} might
   only cover a sub-monoid of the target monoid. There may be a ``true''
   unit outside of the image of \code{h}. Show that an isomorphism
   between monoids that preserves multiplication must automatically
@@ -285,23 +284,10 @@ h a * h e = h (a * e) = h a
   concatenation to integers with multiplication. What is the image of
   the empty list \code{{[}{]}}? Assume that all singleton lists are
   mapped to the integers they contain, that is \code{{[}3{]}} is
-  mapped to 3, etc. What's the image of \code{{[}1,\ 2,\ 3,\ 4{]}}?
+  mapped to 3, etc. What's the image of \code{{[}1, 2, 3, 4{]}}?
   How many different lists map to the integer 12? Is there any other
   homomorphism between the two monoids?
 \item
   What is the free monoid generated by a one-element set? Can you see
   what it's isomorphic to?
 \end{enumerate}
-
-Next:
-\href{https://bartoszmilewski.com/2015/07/29/representable-functors/}{Representable
-Functors}.
-
-\section{Acknowledgments}\label{acknowledgments}
-
-I'd like to thank Gershom Bazerman for checking my math and logic, and
-André van Meulebrouck, who has been volunteering his editing help
-throughout this series of posts.\\
-\href{https://twitter.com/BartoszMilewski}{Follow @BartoszMilewski}
-
-{43.193044} {11.286147}

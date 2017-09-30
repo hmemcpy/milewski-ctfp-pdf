@@ -118,6 +118,9 @@ PDF compiled by @url{https://github.com/hmemcpy/milewski-ctfp-pdf, Igal Tabachni
 \chapter{Limits and Colimits}\label{limits-and-colimits}
 \subfile{content/2.2/Limits and Colimits}
 
+\chapter{Free Monoids}\label{chap-free-monoids}
+\subfile{content/2.3/Free Monoids}
+
 \chapter{Representable Functors}\label{chap-representable-functors}
 \subfile{content/2.4/Representable Functors}
 
