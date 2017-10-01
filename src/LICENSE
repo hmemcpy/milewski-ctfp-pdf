@@ -1,12 +1,11 @@
 
     LICENSING TERMS
  
- 1. Output PDF, .tex/.texi, all files in content/* and fig/* are licensed
+ 1. Output PDF, *.tex, all files in content/* and fig/* are licensed
     under Creative Commons Attribution-ShareAlike 4.0 International License
     (http://creativecommons.org/licenses/by-sa/4.0/).
  
- 2. The script files scraper.py and texi-to-latex.pl
-    are under GNU GPL v.3:
+ 2. The script files scraper.py and additional scripts are under GNU GPL v.3:
 
 
                     GNU GENERAL PUBLIC LICENSE
