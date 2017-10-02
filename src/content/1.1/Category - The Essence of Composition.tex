@@ -127,11 +127,11 @@ For every object $A$ there is an arrow which is a unit of composition.
 This arrow loops from the object to itself. Being a unit of composition
 means that, when composed with any arrow that either starts at $A$ or ends
 at $A$, respectively, it gives back the same arrow. The unit arrow for
-object A is called $\code{id}_A$ (\newterm{identity} on $A$). In math
+object A is called $\idarrow[A]$ (\newterm{identity} on $A$). In math
 notation, if \code{f} goes from $A$ to $B$ then
-\[f\circ{}\code{id}_A = f\]
+\[f \circ \idarrow[A] = f\]
 and
-\[\code{id}_B\circ{}f = f\]
+\[\idarrow[B] \circ f = f\]
 \end{enumerate}
 When dealing with functions, the identity arrow is implemented as the
 identity function that just returns back its argument. The
