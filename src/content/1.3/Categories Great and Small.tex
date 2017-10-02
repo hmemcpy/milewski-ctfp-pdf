@@ -40,28 +40,27 @@ And now for something completely different! A category where a morphism
 is a relation between objects: the relation of being less than or equal.
 Let's check if it indeed is a category. Do we have identity morphisms?
 Every object is less than or equal to itself: check! Do we have
-composition? If \code{a <= b} and \code{b <= c} then \code{a
-<= c}: check! Is composition associative? Check! A set with a
+composition? If $a \leq b$ and $b \leq c$ then $a \leq c$: check! Is composition associative? Check! A set with a
 relation like this is called a \newterm{preorder}, so a preorder is indeed
 a category.
 
 You can also have a stronger relation, that satisfies an additional
-condition that, if \code{a <= b} and \code{b <= a} then \code{a} must be
-the same as \code{b}. That's called a \newterm{partial order}.
+condition that, if $a \leq b$ and $b \leq a$ then $a$ must be
+the same as $b$. That's called a \newterm{partial order}.
 
 Finally, you can impose the condition that any two objects are in a
 relation with each other, one way or another; and that gives you a
 \newterm{linear order} or \newterm{total order}.
 
 Let's characterize these ordered sets as categories. A preorder is a
-category where there is at most one morphism going from any object a to
-any object b. Another name for such a category is ``thin.'' A preorder
+category where there is at most one morphism going from any object $a$ to
+any object $b$. Another name for such a category is ``thin.'' A preorder
 is a thin category.
 
-A set of morphisms from object a to object b in a category C is called a
-\newterm{hom-set} and is written as \code{C(a, b)} (or, sometimes,
-\code{Hom\textsubscript{C}(a, b)}). So every hom-set in a preorder is either
-empty or a singleton. That includes the hom-set \code{C(a, a)}, the set of
+A set of morphisms from object a to object b in a category $\cat{C}$ is called a
+\newterm{hom-set} and is written as $\cat{C}(a, b)$ (or, sometimes,
+$\cat{Hom_C}(a, b)$). So every hom-set in a preorder is either
+empty or a singleton. That includes the hom-set $\cat{C}(a, a)$, the set of
 morphisms from a to a, which must be a singleton, containing only the
 identity, in any preorder. You may, however, have cycles in a preorder.
 Cycles are forbidden in a partial order.
@@ -86,24 +85,15 @@ it.
 
 For instance, natural numbers with zero form a monoid under addition.
 Associativity means that:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-(a + b) + c = a + (b + c)
-\end{Verbatim}
+\[(a + b) + c = a + (b + c)\]
 (In other words, we can skip parentheses when adding numbers.)
 
 The neutral element is zero, because:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-0 + a = a
-\end{Verbatim}
+\[0 + a = a\]
 and
-
-\begin{Verbatim}[commandchars=\\\{\}]
-a + 0 = a
-\end{Verbatim}
-The second equation is redundant, because addition is commutative \code{(a + b
-= b + a)}, but commutativity is not part of the definition of a monoid.
+\[a + 0 = a\]
+The second equation is redundant, because addition is commutative $(a + b
+= b + a)$, but commutativity is not part of the definition of a monoid.
 For instance, string concatenation is not commutative and yet it forms a
 monoid. The neutral element for string concatenation, by the way, is an
 empty string, which can be attached to either side of a string without
@@ -113,7 +103,7 @@ In Haskell we can define a type class for monoids --- a type for which
 there is a neutral element called \code{mempty} and a binary operation
 called \code{mappend}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 class Monoid m where
     mempty  :: m
     mappend :: m -> m -> m
@@ -143,7 +133,7 @@ be a monoid by providing the implementation of \code{mempty} and
 \code{mappend} (this is, in fact, done for you in the standard
 Prelude):
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 instance Monoid String where
     mempty = ""
     mappend = (++)
@@ -155,12 +145,12 @@ A word about Haskell syntax: Any infix operator can be turned into a
 two-argument function by surrounding it with parentheses. Given two
 strings, you can concatenate them by inserting \code{++} between them:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 "Hello " ++ "world!"
 \end{Verbatim}
 or by passing them as two arguments to the parenthesized \code{(++)}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 (++) "Hello " "world!"
 \end{Verbatim}
 Notice that arguments to a function are not separated by commas or
@@ -170,13 +160,13 @@ used to when learning Haskell.)
 It's worth emphasizing that Haskell lets you express equality of
 functions, as in:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 mappend = (++)
 \end{Verbatim}
 Conceptually, this is different than expressing the equality of values
 produced by functions, as in:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 mappend s1 s2 = (++) s1 s2
 \end{Verbatim}
 The former translates into equality of morphisms in the category
@@ -186,7 +176,7 @@ succinct, but can often be generalized to other categories. The latter
 is called \newterm{extensional} equality, and states the fact that for any
 two input strings, the outputs of \code{mappend} and \code{(++)} are
 the same. Since the values of arguments are sometimes called
-\newterm{points} (as in: the value of f at point x), this is called
+\newterm{points} (as in: the value of $f$ at point $x$), this is called
 point-wise equality. Function equality without specifying the arguments
 is described as \newterm{point-free}. (Incidentally, point-free equations
 often involve composition of functions, which is symbolized by a point,
@@ -243,8 +233,8 @@ the binary operator as ``moving'' or ``shifting'' things around the set.
 For instance, there is the operation of adding 5 to every natural
 number. It maps 0 to 5, 1 to 6, 2 to 7, and so on. That's a function
 defined on the set of natural numbers. That's good: we have a function
-and a set. In general, for any number n there is a function of adding n
---- the ``adder'' of n.
+and a set. In general, for any number n there is a function of adding $n$
+--- the ``adder'' of $n$.
 
 How do adders compose? The composition of the function that adds 5 with
 the function that adds 7 is a function that adds 12. So the composition
@@ -267,21 +257,20 @@ adders follows from the second interpretation of the type signature of
 tells us that \code{mappend} maps an element of a monoid set to a
 function acting on that set.
 
+\begin{wrapfigure}[11]{R}{0pt}
+\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
+\includegraphics[width=40mm]{images/monoid.jpg}}
+\end{wrapfigure}
+
 Now I want you to forget that you are dealing with the set of natural
 numbers and just think of it as a single object, a blob with a bunch of
 morphisms --- the adders. A monoid is a single object category. In fact
-the name monoid comes from Greek \newterm{mono}, which means single. Every
+the name monoid comes from Greek \emph{mono}, which means single. Every
 monoid can be described as a single object category with a set of
 morphisms that follow appropriate rules of composition.
 
-
-\begin{figure}
-\centering
-\fbox{\includegraphics[width=2.45833in]{images/monoid.jpg}}
-\end{figure}
-
 String concatenation is an interesting case, because we have a choice of
-defining right appenders and left appenders (or \newterm{prependers}, if
+defining right appenders and left appenders (or \emph{prependers}, if
 you will). The composition tables of the two models are a mirror reverse
 of each other. You can easily convince yourself that appending ``bar''
 after ``foo'' corresponds to prepending ``foo'' after prepending
@@ -291,13 +280,13 @@ You might ask the question whether every categorical monoid --- a
 one-object category --- defines a unique set-with-binary-operator
 monoid. It turns out that we can always extract a set from a
 single-object category. This set is the set of morphisms --- the adders
-in our example. In other words, we have the hom-set \code{M(m, m)} of the
-single object \code{m} in the category \code{M}. We can easily define a binary
+in our example. In other words, we have the hom-set $\cat{M}(m, m)$ of the
+single object $m$ in the category $\cat{M}$. We can easily define a binary
 operator in this set: The monoidal product of two set-elements is the
 element corresponding to the composition of the corresponding morphisms.
-If you give me two elements of \code{M(m, m)} corresponding to \code{f} and
-\code{g}, their product will correspond to the composition
-\code{g◦f}. The composition always exists, because the source and the
+If you give me two elements of $\cat{M}(m, m)$ corresponding to $f$ and
+$g$, their product will correspond to the composition
+$f \circ g$. The composition always exists, because the source and the
 target for these morphisms are the same object. And it's associative by
 the rules of category. The identity morphism is the neutral element of
 this product. So we can always recover a set monoid from a category
@@ -305,7 +294,7 @@ monoid. For all intents and purposes they are one and the same.
 
 \begin{figure}
 \centering
-\fbox{\includegraphics[width=60mm]{images/monoidhomset.jpg}}
+\includegraphics[width=60mm]{images/monoidhomset.jpg}
 \caption{Monoid hom-set seen as morphisms and as points in a set.}
 \end{figure}
 
@@ -319,7 +308,7 @@ A lot of interesting phenomena in category theory have their root in the
 fact that elements of a hom-set can be seen both as morphisms, which
 follow the rules of composition, and as points in a set. Here,
 composition of morphisms in M translates into monoidal product in the
-set \code{M(m, m)}.
+set $\cat{M}(m, m)$.
 
 \section{Challenges}\label{challenges}
 
@@ -347,17 +336,17 @@ set \code{M(m, m)}.
   \begin{enumerate}
   \tightlist
   \item
-    A set of sets with the inclusion relation: A is included in B if
-    every element of A is also an element of B.
+    A set of sets with the inclusion relation: $A$ is included in $B$ if
+    every element of $A$ is also an element of $B$.
   \item
-    C++ types with the following subtyping relation: T1 is a subtype of
-    T2 if a pointer to T1 can be passed to a function that expects a
-    pointer to T2 without triggering a compilation error.
+    C++ types with the following subtyping relation: \code{T1} is a subtype of
+    \code{T2} if a pointer to \code{T1} can be passed to a function that expects a
+    pointer to \code{T2} without triggering a compilation error.
   \end{enumerate}
 \item
   Considering that Bool is a set of two values True and False, show that
   it forms two (set-theoretical) monoids with respect to, respectively,
-  operator \code{\&\&} (AND) and \code{\textbar{}\textbar{}} (OR).
+  operator \code{\&\&} (AND) and \code{||} (OR).
 \item
   Represent the Bool monoid with the AND operator as a category: List
   the morphisms and their rules of composition.
