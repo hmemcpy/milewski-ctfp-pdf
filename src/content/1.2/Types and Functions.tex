@@ -120,11 +120,11 @@ There are some subtleties that make this identification of types and
 sets tricky. There are problems with polymorphic functions that involve
 circular definitions, and with the fact that you can't have a set of all
 sets; but as I promised, I won't be a stickler for math. The great thing
-is that there is a category of sets, which is called \textbf{Set}, and
-we'll just work with it. In \textbf{Set}, objects are sets and morphisms
+is that there is a category of sets, which is called $\Set$, and
+we'll just work with it. In $\Set$, objects are sets and morphisms
 (arrows) are functions.
 
-\textbf{Set} is a very special category, because we can actually peek
+$\Set$ is a very special category, because we can actually peek
 inside its objects and get a lot of intuitions from doing that. For
 instance, we know that an empty set has no elements. We know that there
 are special one-element sets. We know that functions map elements of one
@@ -180,12 +180,12 @@ Functions that may return bottom are called partial, as opposed to total
 functions, which return valid results for every possible argument.
 
 Because of the bottom, you'll see the category of Haskell types and
-functions referred to as \textbf{Hask} rather than \textbf{Set}. From
+functions referred to as \textbf{Hask} rather than $\Set$. From
 the theoretical point of view, this is the source of never-ending
 complications, so at this point I will use my butcher's knife and
 terminate this line of reasoning. From the pragmatic point of view, it's
 okay to ignore non-terminating functions and bottoms, and treat
-\textbf{Hask} as bona fide \textbf{Set}.\footnote{Nils Anders Danielsson,
+\textbf{Hask} as bona fide $\Set$.\footnote{Nils Anders Danielsson,
 John Hughes, Patrik Jansson, Jeremy Gibbons, \href{http://www.cs.ox.ac.uk/jeremy.gibbons/publications/fast+loose.pdf}{
 Fast and Loose Reasoning is Morally Correct}. This paper provides justification for ignoring bottoms in most contexts.}
 

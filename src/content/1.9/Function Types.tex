@@ -12,7 +12,7 @@ Take \code{Integer}, for instance: It's just a set of integers.
 \code{a->b} is more than that: it's a set of morphisms
 between objects \code{a} and \code{b}. A set of morphisms between
 two objects in any category is called a hom-set. It just so happens that
-in the category \textbf{Set} every hom-set is itself an object in the
+in the category $\Set$ every hom-set is itself an object in the
 same category ---because it is, after all, a \newterm{set}.
 
 The same is not true of other categories where hom-sets are external to
@@ -26,7 +26,7 @@ a category. They are even called \newterm{external} hom-sets.
 \end{wrapfigure}
 
 \noindent
-It's the self-referential nature of the category \textbf{Set} that makes
+It's the self-referential nature of the category $\Set$ that makes
 function types special. But there is a way, at least in some categories,
 to construct objects that represent hom-sets. Such objects are called
 \newterm{internal} hom-sets.
@@ -35,7 +35,7 @@ to construct objects that represent hom-sets. Such objects are called
 
 Let's forget for a moment that function types are sets and try to
 construct a function type, or more generally, an internal hom-set, from
-scratch. As usual, we'll take our cues from the \textbf{Set} category,
+scratch. As usual, we'll take our cues from the $\Set$ category,
 but carefully avoid using any properties of sets, so that the
 construction will automatically work for other categories.
 
@@ -52,7 +52,7 @@ result type.
 The obvious pattern that connects these three types is called
 \newterm{function application} or \newterm{evaluation}. Given a candidate for
 a function type, let's call it \code{z} (notice that, if we are not in
-the category \textbf{Set}, this is just an object like any other
+the category $\Set$, this is just an object like any other
 object), and the argument type \code{a} (an object), the application
 maps this pair to the result type \code{b} (an object). We have three
 objects, two of them fixed (the ones representing the argument type and
@@ -77,7 +77,7 @@ But instead of dealing with individual pairs \code{(f,\ x)}, we can as
 well talk about the whole \newterm{product} of the function type \code{z}
 and the argument type \code{a}. The product \code{z×a} is an object,
 and we can pick, as our application morphism, an arrow \code{g} from
-that object to \code{b}. In \textbf{Set}, \code{g} would be the
+that object to \code{b}. In $\Set$, \code{g} would be the
 function that maps every pair \code{(f,\ x)} to \code{f\ x}.
 
 So that's the pattern: a product of two objects \code{z} and
@@ -102,7 +102,7 @@ about exponentials.
 
 Let's review the universal construction. We start with a pattern of
 objects and morphisms. That's our imprecise query, and it usually yields
-lots and lots of hits. In particular, in \textbf{Set}, pretty much
+lots and lots of hits. In particular, in $\Set$, pretty much
 everything is connected to everything. We can take any object
 \code{z}, form its product with \code{a}, and there's going to be a
 function from it to \code{b} (except when \code{b} is an empty set).
@@ -202,7 +202,7 @@ g = eval ◦ (h × id)
 \noindent
 Of course, there is no guarantee that such an object \code{a\ensuremath{\Rightarrow}b} exists
 for any pair of objects \code{a} and \code{b} in a given category.
-But it always does in \textbf{Set}. Moreover, in \textbf{Set}, this
+But it always does in $\Set$. Moreover, in $\Set$, this
 object is isomorphic to the hom-set \emph{Set(a, b)}.
 
 This is why, in Haskell, we interpret the function type
@@ -219,7 +219,7 @@ of two variables, \code{z} and \code{a}.
 g :: z × a -> b
 \end{Verbatim}
 Being a morphism from a product comes as close as it gets to being a
-function of two variables. In particular, in \textbf{Set}, \code{g} is
+function of two variables. In particular, in $\Set$, \code{g} is
 a function from pairs of values, one from the set \code{z} and one
 from the set \code{a}.
 
@@ -230,7 +230,7 @@ a function object \code{a\ensuremath{\Rightarrow}b}.
 \begin{Verbatim}[commandchars=\\\{\}]
 h :: z -> (a⇒b)
 \end{Verbatim}
-In \textbf{Set}, this just means that \code{h} is a function that
+In $\Set$, this just means that \code{h} is a function that
 takes one variable of type \code{z} and returns a function from
 \code{a} to \code{b}. That makes \code{h} a higher order function.
 Therefore the universal construction establishes a one-to-one
@@ -408,7 +408,7 @@ Categories}\label{cartesian-closed-categories}
 Although I will continue using the category of sets as a model for types
 and functions, it's worth mentioning that there is a larger family of
 categories that can be used for that purpose. These categories are
-called \newterm{cartesian closed}, and \textbf{Set} is just one example of
+called \newterm{cartesian closed}, and $\Set$ is just one example of
 such a category.
 
 A cartesian closed category must contain:
@@ -442,7 +442,7 @@ a × (b + c) = a × b + a × c
 (b + c) × a = b × a + c × a
 \end{Verbatim}
 is called a \newterm{bicartesian closed} category. We'll see in the next
-section that bicartesian closed categories, of which \textbf{Set} is a
+section that bicartesian closed categories, of which $\Set$ is a
 prime example, have some interesting properties.
 
 \section{Exponentials and Algebraic Data
@@ -468,8 +468,8 @@ is the internal hom-object. This particular exponential represents the
 set of morphisms going from the initial object to an arbitrary object
 \code{a}. By the definition of the initial object, there is exactly
 one such morphism, so the hom-set \emph{C(0, a)} is a singleton set. A
-singleton set is the terminal object in \textbf{Set}, so this identity
-trivially works in \textbf{Set}. What we are saying is that it works in
+singleton set is the terminal object in $\Set$, so this identity
+trivially works in $\Set$. What we are saying is that it works in
 any bicartesian closed category.
 
 In Haskell, we replace 0 with \code{Void}; 1 with the unit type
@@ -492,7 +492,7 @@ never ending calculation, it will never return!)
 \begin{Verbatim}[commandchars=\\\{\}]
 1\textsuperscript{a} = 1
 \end{Verbatim}
-This identity, when interpreted in \textbf{Set}, restates the definition
+This identity, when interpreted in $\Set$, restates the definition
 of the terminal object: There is a unique morphism from any object to
 the terminal object. In general, the internal hom-object from \code{a}
 to the terminal object is isomorphic to the terminal object itself.
@@ -510,7 +510,7 @@ a\textsuperscript{1} = a
 This is a restatement of the observation that morphisms from the
 terminal object can be used to pick ``elements'' of the object
 \code{a}. The set of such morphisms is isomorphic to the object
-itself. In \textbf{Set}, and in Haskell, the isomorphism is between
+itself. In $\Set$, and in Haskell, the isomorphism is between
 elements of the set \code{a} and functions that pick those elements,
 \code{()->a}.
 

@@ -13,10 +13,10 @@ theorem in group theory (every group is isomorphic to a permutation
 group of some set).
 
 The setting for the Yoneda lemma is an arbitrary category \emph{C}
-together with a functor \code{F} from \emph{C} to \textbf{Set}. We've
-seen in the previous section that some \textbf{Set}-valued functors are
+together with a functor \code{F} from \emph{C} to $\Set$. We've
+seen in the previous section that some $\Set$-valued functors are
 representable, that is isomorphic to a hom-functor. The Yoneda lemma
-tells us that all \textbf{Set}-valued functors can be obtained from
+tells us that all $\Set$-valued functors can be obtained from
 hom-functors through natural transformations, and it explicitly
 enumerates all such transformations.
 
@@ -27,7 +27,7 @@ strong enough to ``transport'' this component to another object that is
 connected to it through a morphism. The more arrows between objects in
 the source and the target categories there are, the more constraints you
 have for transporting the components of natural transformations.
-\textbf{Set} happens to be a very arrow-rich category.
+$\Set$ happens to be a very arrow-rich category.
 
 The Yoneda lemma tells us that a natural transformation between a
 hom-functor and any other functor \code{F} is completely determined by
@@ -41,11 +41,11 @@ maps any object \code{x} in \emph{C} to the set of morphisms
 also seen that it maps any morphism \code{f} from \code{x} to
 \code{y} to \code{C(a, f)}.
 
-The second functor is an arbitrary \textbf{Set}-valued functor
+The second functor is an arbitrary $\Set$-valued functor
 \code{F}.
 
 Let's call the natural transformation between these two functors
-\code{α}. Because we are operating in \textbf{Set}, the components of
+\code{α}. Because we are operating in $\Set$, the components of
 the natural transformation, like \code{αx} or \code{αy}, are just
 regular functions between sets:
 
@@ -127,7 +127,7 @@ in other words,
 Nat(C(a, -), F) \ensuremath{\cong} F a
 \end{Verbatim}
 Or, if we use the notation \code{{[}C, Set{]}} for the functor
-category between \emph{C} and \textbf{Set}, the set of natural
+category between \emph{C} and $\Set$, the set of natural
 transformation is just a hom-set in that category, and we can write:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -140,7 +140,7 @@ Now let's try to get some intuition about this result. The most amazing
 thing is that the whole natural transformation crystallizes from just
 one nucleation site: the value we assign to it at \code{id\textsubscript{a}}. It
 spreads from that point following the naturality condition. It floods
-the image of \emph{C} in \textbf{Set}. So let's first consider what the
+the image of \emph{C} in $\Set$. So let's first consider what the
 image of \emph{C} is under \code{C(a, -)}.
 
 Let's start with the image of \code{a} itself. Under the hom-functor
@@ -231,17 +231,17 @@ again, we have no choice for the component of the natural
 transformation: it can only be \code{absurd}.
 
 One way of understanding the Yoneda lemma is to realize that natural
-transformations between \textbf{Set}-valued functors are just families
+transformations between $\Set$-valued functors are just families
 of functions, and functions are in general lossy. A function may
 collapse information and it may cover only parts of its codomain. The
 only functions that are not lossy are the ones that are invertible ---
 the isomorphisms. It follows then that the best structure-preserving
-\textbf{Set}-valued functors are the representable ones. They are either
+$\Set$-valued functors are the representable ones. They are either
 the hom-functors or the functors that are naturally isomorphic to
 hom-functors. Any other functor \code{F} is obtained from a
 hom-functor through a lossy transformation. Such a transformation may
 not only lose information, but it may also cover only a small part of
-the image of the functor \code{F} in \textbf{Set}.
+the image of the functor \code{F} in $\Set$.
 
 \section{Yoneda in Haskell}\label{yoneda-in-haskell}
 
@@ -344,7 +344,7 @@ functors.
 
 Equivalently, we can derive the co-Yoneda lemma by fixing the target
 object of our hom-functors instead of the source. We get the
-contravariant hom-functor from \emph{C} to \textbf{Set}:
+contravariant hom-functor from \emph{C} to $\Set$:
 \code{C(-, a)}. The contravariant version of the Yoneda lemma
 establishes one-to-one correspondence between natural transformations
 from this functor to any other contravariant functor \code{F} and the

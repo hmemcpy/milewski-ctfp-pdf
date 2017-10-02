@@ -10,7 +10,7 @@ A category is \newterm{locally small} if morphisms between any two objects
 form a set. If they don't form a set, we have to rethink a few
 definitions. In particular, what does it mean to compose morphisms if we
 can't even pick them from a set? The solution is to bootstrap ourselves
-by replacing hom-sets, which are objects in \textbf{Set}, with
+by replacing hom-sets, which are objects in $\Set$, with
 \newterm{objects} from some other category \emph{V}. The difference is
 that, in general, objects don't have elements, so we are no longer
 allowed to talk about individual morphisms. We have to define all
@@ -38,7 +38,7 @@ mostly in terms of enriched categories.
 
 When constructing an enriched category we have to keep in mind that we
 should be able to recover the usual definitions when we replace the
-monoidal category with \textbf{Set} and hom-objects with hom-sets. The
+monoidal category with $\Set$ and hom-objects with hom-sets. The
 best way to accomplish this is to start with the usual definitions and
 keep reformulating them in a point-free manner --- that is, without
 naming elements of sets.
@@ -153,7 +153,7 @@ V(a \ensuremath{\otimes} b, c) ~ V(b, [[a, c]])
 \end{Verbatim}
 A monoidal category in which both are defined is called biclosed. An
 example of a category that is not biclosed is the category of
-endofunctors in \textbf{Set}, with functor composition serving as tensor
+endofunctors in $\Set$, with functor composition serving as tensor
 product. That's the category we used to define monads.
 
 \section{Enriched Category}\label{enriched-category}
@@ -419,11 +419,11 @@ V(i \ensuremath{\otimes} a, a)
 We know that this hom-set contains the left identity \code{λ\textsubscript{a}}. We can
 define \code{j\textsubscript{a}} as its image under the adjunction.
 
-A practical example of self-enrichment is the category \textbf{Set} that
+A practical example of self-enrichment is the category $\Set$ that
 serves as the prototype for types in programming languages. We've seen
 before that it's a closed monoidal category with respect to cartesian
-product. In \textbf{Set}, the hom-set between any two sets is itself a
-set, so it's an object in \textbf{Set}. We know that it's isomorphic to
+product. In $\Set$, the hom-set between any two sets is itself a
+set, so it's an object in $\Set$. We know that it's isomorphic to
 the exponential set, so the external and the internal homs are
 equivalent. Now we also know that, through self-enrichment, we can use
 the exponential set as the hom-object and express composition in terms
@@ -441,8 +441,8 @@ morphisms, 1-cells; and morphisms between morphisms, 2-cells. In
 
 But notice that functors between two categories form a category too; so,
 in \textbf{Cat}, we really have a \newterm{hom-category} rather than a
-hom-set. It turns out that, just like \textbf{Set} can be treated as a
-category enriched over \textbf{Set}, \textbf{Cat} can be treated as a
+hom-set. It turns out that, just like $\Set$ can be treated as a
+category enriched over $\Set$, \textbf{Cat} can be treated as a
 category enriched over \textbf{Cat}. Even more generally, just like
-every category can be treated as enriched over \textbf{Set}, every
+every category can be treated as enriched over $\Set$, every
 2-category can be considered enriched over \textbf{Cat}.

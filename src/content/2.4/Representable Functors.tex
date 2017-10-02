@@ -3,7 +3,7 @@ love/hate relationship with set theory. It's the assembly language of
 mathematics --- at least it used to be. Category theory tries to step
 away from set theory, to some extent. For instance, it's a known fact
 that the set of all sets doesn't exist, but the category of all sets,
-\textbf{Set}, does. So that's good. On the other hand, we assume that
+$\Set$, does. So that's good. On the other hand, we assume that
 morphisms between any two objects in a category form a set. We even
 called it a hom-set. To be fair, there is a branch of category theory
 where morphisms don't form sets. Instead they are objects in another
@@ -46,14 +46,14 @@ gives us the necessary insight or even lets us prove valuable theorems.
 \section{The Hom Functor}\label{the-hom-functor}
 
 Every category comes equipped with a canonical family of mappings to
-\textbf{Set}. Those mappings are in fact functors, so they preserve the
+$\Set$. Those mappings are in fact functors, so they preserve the
 structure of the category. Let's build one such mapping.
 
 Let's fix one object \code{a} in \emph{C} and pick another object
 \code{x} also in \emph{C}. The hom-set \code{C(a, x)} is a set, an
-object in \textbf{Set}. When we vary \code{x}, keeping \code{a}
-fixed, \code{C(a, x)} will also vary in \textbf{Set}. Thus we have a
-mapping from \code{x} to \textbf{Set}.
+object in $\Set$. When we vary \code{x}, keeping \code{a}
+fixed, \code{C(a, x)} will also vary in $\Set$. Thus we have a
+mapping from \code{x} to $\Set$.
 
 \begin{figure}[H]
 \centering
@@ -163,16 +163,16 @@ C(-, =) :: Cop × C -> Set
 \section{Representable Functors}\label{representable-functors}
 
 We've seen that, for every choice of an object \code{a} in \emph{C},
-we get a functor from \emph{C} to \textbf{Set}. This kind of
-structure-preserving mapping to \textbf{Set} is often called a
+we get a functor from \emph{C} to $\Set$. This kind of
+structure-preserving mapping to $\Set$ is often called a
 \newterm{representation}. We are representing objects and morphisms of
-\emph{C} as sets and functions in \textbf{Set}.
+\emph{C} as sets and functions in $\Set$.
 
 The functor \code{C(a, -)} itself is sometimes called representable.
 More generally, any functor \code{F} that is naturally isomorphic to
 the hom-functor, for some choice of \code{a}, is called
 \newterm{representable}. Such functor must necessarily be
-\textbf{Set}-valued, since \code{C(a, -)} is.
+$\Set$-valued, since \code{C(a, -)} is.
 
 I said before that we often think of isomorphic sets as identical. More
 generally, we think of isomorphic \newterm{objects} in a category as
@@ -203,7 +203,7 @@ the opposite direction; and that their composition be the identity
 natural transformation.
 
 Let's look at the component of α at some object \code{x}. It's a
-function in \textbf{Set}:
+function in $\Set$:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 α\textsubscript{x} :: C(a, x) -> F x
@@ -248,7 +248,7 @@ It must respect naturality conditions, and it must be the inverse of α:
 α ◦ β = id = β ◦ α
 \end{Verbatim}
 We will see later that a natural transformation from \code{C(a, -)}
-to any \textbf{Set}-valued functor always exists (Yoneda's lemma) but it
+to any $\Set$-valued functor always exists (Yoneda's lemma) but it
 is not necessarily invertible.
 
 Let me give you an example in Haskell with the list functor and
@@ -328,7 +328,7 @@ cover a whole family of functions with arbitrary return types.
 Representability for contravariant functors is similarly defined, except
 that we keep the second argument of \code{C(-, a)} fixed. Or,
 equivalently, we may consider functors from \emph{C}\textsuperscript{op}
-to \textbf{Set}, because \code{C\textsuperscript{op}(a, -)} is the same as
+to $\Set$, because \code{C\textsuperscript{op}(a, -)} is the same as
 \code{C(-, a)}.
 
 There is an interesting twist to representability. Remember that
@@ -370,7 +370,7 @@ explore alternative implementations that have practical value.
 \tightlist
 \item
   Show that the hom-functors map identity morphisms in \emph{C} to
-  corresponding identity functions in \textbf{Set}.
+  corresponding identity functions in $\Set$.
 \item
   Show that \code{Maybe} is not representable.
 \item
