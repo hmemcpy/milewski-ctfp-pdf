@@ -301,21 +301,21 @@ No big surprise here.
 
 Then there is the derivation of the monad from an adjunction. Duality
 reverses an adjunction: the left adjoint becomes the right adjoint and
-vice versa. And, since the composition \code{R ◦ L} defines a monad,
-\code{L ◦ R} must define a comonad. The counit of the adjunction:
+vice versa. And, since the composition \code{R  \ensuremath{\circ} L} defines a monad,
+\code{L  \ensuremath{\circ} R} must define a comonad. The counit of the adjunction:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-ε :: L ◦ R -> I
+ε :: L  \ensuremath{\circ} R -> I
 \end{Verbatim}
 is indeed the same ε that we see in the definition of the comonad ---
 or, in components, as Haskell's \code{extract}. We can also use the
 unit of the adjunction:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-η :: I -> R ◦ L
+η :: I -> R  \ensuremath{\circ} L
 \end{Verbatim}
-to insert an \code{R ◦ L} in the middle of \code{L ◦ R} and
-produce \code{L ◦ R ◦ L ◦ R}. Making \code{T\textsuperscript{2}} from \code{T}
+to insert an \code{R  \ensuremath{\circ} L} in the middle of \code{L  \ensuremath{\circ} R} and
+produce \code{L  \ensuremath{\circ} R  \ensuremath{\circ} L  \ensuremath{\circ} R}. Making \code{T\textsuperscript{2}} from \code{T}
 defines the δ, and that completes the definition of the comonad.
 
 We've also seen that the monad is a monoid. The dual of this statement
@@ -404,7 +404,7 @@ L z = z × s
 R a = s \ensuremath{\Rightarrow} a
 \end{Verbatim}
 We'll use the same adjunction to define the costate comonad. A comonad
-is defined by the composition \code{L ◦ R}:
+is defined by the composition \code{L  \ensuremath{\circ} R}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 L (R a) = (s ⇒ a) × s
@@ -446,8 +446,8 @@ Store f :: s -> Store f s
 We construct δ, or \code{duplicate}, as the horizontal composition:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-δ :: L ◦ R -> L ◦ R ◦ L ◦ R
-δ = L ◦ η ◦ R
+δ :: L  \ensuremath{\circ} R -> L  \ensuremath{\circ} R  \ensuremath{\circ} L  \ensuremath{\circ} R
+δ = L  \ensuremath{\circ} η  \ensuremath{\circ} R
 \end{Verbatim}
 We have to sneak η through the leftmost \code{L}, which is the
 \code{Prod} functor. It means acting with η, or \code{Store f}, on

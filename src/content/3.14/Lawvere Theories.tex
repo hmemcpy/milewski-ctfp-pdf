@@ -192,7 +192,7 @@ functor \code{F :: L -> L'} such that:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 F (m × n) = F m × F n
-F ◦ I\textsubscript{L} = I'\textsubscript{L'}
+F  \ensuremath{\circ} I\textsubscript{L} = I'\textsubscript{L'}
 \end{Verbatim}
 Morphisms between Lawvere theories encapsulate the idea of the
 interpretation of one theory inside another. For instance, group
@@ -274,7 +274,7 @@ Notice that the naturality condition guarantees the preservation of
 n-ary operations:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-N f ◦ μ\textsubscript{n} = μ\textsubscript{1} ◦ M f
+N f  \ensuremath{\circ} μ\textsubscript{n} = μ\textsubscript{1}  \ensuremath{\circ} M f
 \end{Verbatim}
 where \code{f :: n -> 1} is an n-ary operation in
 \textbf{L}.
@@ -410,7 +410,7 @@ adjunction is the result of the Yoneda lemma:
 \end{Verbatim}
 Together, the forgetful and the free functor define a
 \hyperref[monads-categorically]{monad}
-\code{T = U◦F} on \textbf{Set}. Thus every Lawvere theory generates
+\code{T = U \ensuremath{\circ} F} on \textbf{Set}. Thus every Lawvere theory generates
 a monad.
 
 It turns out that the category of

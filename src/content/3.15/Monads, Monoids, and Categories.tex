@@ -95,7 +95,7 @@ to \code{f}. Isomorphism of 1-cells is defined using 2-cells. In other
 words, there is a 2-cell:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-ρ :: f ◦ id\textsubscript{a} -> f
+ρ :: f  \ensuremath{\circ} id\textsubscript{a} -> f
 \end{Verbatim}
 that has an inverse.
 
@@ -157,7 +157,7 @@ h':: z -> y
 such that:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-g ◦ h = f' ◦ h'
+g  \ensuremath{\circ} h = f'  \ensuremath{\circ} h'
 \end{Verbatim}
 which is universal among all such objects.
 
@@ -218,7 +218,7 @@ The second morphism maps the tensor product of \code{T \ensuremath{\otimes} T} t
 we get:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-μ :: T ◦ T -> T
+μ :: T  \ensuremath{\circ} T -> T
 \end{Verbatim}
 
 \begin{figure}[H]
@@ -239,7 +239,7 @@ picking a 1-cell, \code{T}, and two 2-cells:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 η :: I -> T
-μ :: T ◦ T -> T
+μ :: T  \ensuremath{\circ} T -> T
 \end{Verbatim}
 satisfying the monoid laws. We call \emph{this} a monad.
 
@@ -285,8 +285,8 @@ functions. The 2-cell \code{η} is a function between the apices
 commutation conditions --- in this case:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-dom ◦ η = id
-cod ◦ η = id
+dom  \ensuremath{\circ} η = id
+cod  \ensuremath{\circ} η = id
 \end{Verbatim}
 
 \begin{figure}[H]

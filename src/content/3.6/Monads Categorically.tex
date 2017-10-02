@@ -59,7 +59,7 @@ Therefore, in category theory, a monad is defined as an endofunctor
 
 μ is a natural transformation from the square of the functor \code{T2}
 back to \code{T}. The square is simply the functor composed with
-itself, \code{T ◦ T} (we can only do this kind of squaring for
+itself, \code{T  \ensuremath{\circ} T} (we can only do this kind of squaring for
 endofunctors).
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -97,7 +97,7 @@ the endofunctor \code{T}. Remember that a Kleisli arrow between
 implemented using μ:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-g ◦\textsubscript{T} f = μ\textsubscript{c} ◦ (T g) ◦ f
+g  \ensuremath{\circ}\textsubscript{T} f = μ\textsubscript{c}  \ensuremath{\circ} (T g)  \ensuremath{\circ} f
 \end{Verbatim}
 where
 
@@ -140,7 +140,7 @@ composition of \code{T} after \code{T\textsuperscript{2}}. We can apply to it th
 horizontal composition of two natural transformations:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-I\textsubscript{T} ◦ μ
+I\textsubscript{T}  \ensuremath{\circ} μ
 \end{Verbatim}
 
 \begin{wrapfigure}[8]{R}{0pt}
@@ -149,11 +149,11 @@ I\textsubscript{T} ◦ μ
 \end{wrapfigure}
 
 \noindent
-and get \code{T◦T}; which can be further reduced to \code{T} by
+and get \code{T \ensuremath{\circ} T}; which can be further reduced to \code{T} by
 applying \code{μ}. \code{I\textsubscript{T}} is the identity natural transformation
 from \code{T} to \code{T}. You will often see the notation for this
-type of horizontal composition \code{I\textsubscript{T} ◦ μ} shortened to
-\code{T◦μ}. This notation is unambiguous because it makes no sense to
+type of horizontal composition \code{I\textsubscript{T}  \ensuremath{\circ} μ} shortened to
+\code{T \ensuremath{\circ} μ}. This notation is unambiguous because it makes no sense to
 compose a functor with a natural transformation, therefore \code{T}
 must mean \code{I\textsubscript{T}} in this context.
 
@@ -167,8 +167,8 @@ We can also draw the diagram in the (endo-) functor category\\
 
 \noindent
 Alternatively, we can treat \code{T\textsuperscript{3}} as the composition of
-\code{T\textsuperscript{2}◦T} and apply \code{μ◦T} to it. The result is also
-\code{T◦T} which, again, can be reduced to \code{T} using μ. We
+\code{T\textsuperscript{2} \ensuremath{\circ} T} and apply \code{μ \ensuremath{\circ} T} to it. The result is also
+\code{T \ensuremath{\circ} T} which, again, can be reduced to \code{T} using μ. We
 require that the two paths produce the same result.
 
 \begin{figure}[H]
@@ -177,12 +177,12 @@ require that the two paths produce the same result.
 \end{figure}
 
 \noindent
-Similarly, we can apply the horizontal composition \code{η◦T} to the
+Similarly, we can apply the horizontal composition \code{η \ensuremath{\circ} T} to the
 composition of the identity functor \code{I} after \code{T} to
 obtain \code{T\textsuperscript{2}}, which can then be reduced using \code{μ}. The
 result should be the same as if we applied the identity natural
 transformation directly to \code{T}. And, by analogy, the same should
-be true for \code{T◦η}.
+be true for \code{T \ensuremath{\circ} η}.
 
 \begin{figure}[H]
 \centering
@@ -458,7 +458,7 @@ are endofunctors. For any given category \emph{C}, endofunctors from
 objects are endofunctors, and morphisms are natural transformations
 between them. We can take any two objects from this category, say
 endofunctors \code{F} and \code{G}, and produce a third object\\
-\code{F ◦ G} --- an endofunctor that's their composition.
+\code{F  \ensuremath{\circ} G} --- an endofunctor that's their composition.
 
 Is endofunctor composition a good candidate for a tensor product? First,
 we have to establish that it's a bifunctor. Can it be used to lift a
@@ -473,7 +473,7 @@ If you replace objects by endofunctors, arrows by natural
 transformations, and tensor products by composition, you get:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-(F -> F') -> (G -> G') -> (F ◦ G -> F' ◦ G')
+(F -> F') -> (G -> G') -> (F  \ensuremath{\circ} G -> F'  \ensuremath{\circ} G')
 \end{Verbatim}
 which you may recognize as the special case of horizontal composition.
 
@@ -495,7 +495,7 @@ endofunctor \code{T}; and two morphisms --- that is natural
 transformations:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-μ :: T ◦ T -> T
+μ :: T  \ensuremath{\circ} T -> T
 η :: I -> T
 \end{Verbatim}
 Not only that, here are the monoid laws:
@@ -525,30 +525,30 @@ programming conferences.
 An \hyperref[adjunctions]{adjunction},
 \code{L \ensuremath{\dashv} R}, is a pair of functors going back and forth between two
 categories \emph{C} and \emph{D}. There are two ways of composing them
-giving rise to two endofunctors, \code{R ◦ L} and \code{L ◦ R}.
+giving rise to two endofunctors, \code{R  \ensuremath{\circ} L} and \code{L  \ensuremath{\circ} R}.
 As per an adjunction, these endofunctors are related to identity
 functors through two natural transformations called unit and counit:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-η :: I\textsubscript{D} -> R ◦ L
-ε :: L ◦ R -> I\textsubscript{C}
+η :: I\textsubscript{D} -> R  \ensuremath{\circ} L
+ε :: L  \ensuremath{\circ} R -> I\textsubscript{C}
 \end{Verbatim}
 Immediately we see that the unit of an adjunction looks just like the
-unit of a monad. It turns out that the endofunctor \code{R ◦ L} is
+unit of a monad. It turns out that the endofunctor \code{R  \ensuremath{\circ} L} is
 indeed a monad. All we need is to define the appropriate μ to go with
 the η. That's a natural transformation between the square of our
 endofunctor and the endofunctor itself or, in terms of the adjoint
 functors:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-R ◦ L ◦ R ◦ L -> R ◦ L
+R  \ensuremath{\circ} L  \ensuremath{\circ} R  \ensuremath{\circ} L -> R  \ensuremath{\circ} L
 \end{Verbatim}
-And, indeed, we can use the counit to collapse the \code{L ◦ R} in
+And, indeed, we can use the counit to collapse the \code{L  \ensuremath{\circ} R} in
 the middle. The exact formula for μ is given by the horizontal
 composition:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-μ = R ◦ ε ◦ L
+μ = R  \ensuremath{\circ} ε  \ensuremath{\circ} L
 \end{Verbatim}
 Monadic laws follow from the identities satisfied by the unit and counit
 of the adjunction and the interchange law.
@@ -613,7 +613,7 @@ the natural transformation μ. For that we need a horizontal composition
 of three natural transformations:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-μ = R ◦ ε ◦ L
+μ = R  \ensuremath{\circ} ε  \ensuremath{\circ} L
 \end{Verbatim}
 In other words, we need to sneak the counit ε across one level of the
 reader functor. We can't just call \code{fmap} directly, because the
@@ -646,5 +646,5 @@ the converse is also true: every monad can be factorized into a
 composition of two adjoint functors. Such factorization is not unique
 though.
 
-We'll talk about the other endofunctor \code{L ◦ R} in the next
+We'll talk about the other endofunctor \code{L  \ensuremath{\circ} R} in the next
 section.

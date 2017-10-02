@@ -86,7 +86,7 @@ make sure that they are equal, we must impose the \newterm{naturality
 condition} that holds for any \code{f}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-G f ◦ α\textsubscript{a} = α\textsubscript{b} ◦ F f
+G f  \ensuremath{\circ} α\textsubscript{a} = α\textsubscript{b}  \ensuremath{\circ} F f
 \end{Verbatim}
 The naturality condition is a pretty stringent requirement. For
 instance, if the morphism \code{F f} is invertible, naturality
@@ -94,7 +94,7 @@ determines \code{α\textsubscript{b}} in terms of \code{α\textsubscript{a}}. It
 \code{α\textsubscript{a}} along \code{f}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-α\textsubscript{b} = (G f) ◦ α\textsubscript{a} ◦ (F f)\textsuperscript{-1}
+α\textsubscript{b} = (G f)  \ensuremath{\circ} α\textsubscript{a}  \ensuremath{\circ} (F f)\textsuperscript{-1}
 \end{Verbatim}
 
 \begin{wrapfigure}[7]{R}{0pt}
@@ -201,7 +201,7 @@ the naturality condition. Here it is in categorical notation (\code{f}
 is a function \code{f::a->b}):
 
 \begin{Verbatim}[commandchars=\\\{\}]
-G f ◦ α\textsubscript{a} = α\textsubscript{b} ◦ F f
+G f  \ensuremath{\circ} α\textsubscript{a} = α\textsubscript{b}  \ensuremath{\circ} F f
 \end{Verbatim}
 In Haskell, the action of a functor \code{G} on a morphism \code{f}
 is implemented using \code{fmap}. I'll first write it in
@@ -476,13 +476,13 @@ These morphisms are composable and their composition is another
 morphism:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-β\textsubscript{a} ◦ α\textsubscript{a} :: F a -> H a
+β\textsubscript{a}  \ensuremath{\circ} α\textsubscript{a} :: F a -> H a
 \end{Verbatim}
 We will use this morphism as the component of the natural transformation
 β ⋅ α --- the composition of two natural transformations β after α:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-(β \ensuremath{⋅} α)a = β\textsubscript{a} ◦ α\textsubscript{a}
+(β \ensuremath{⋅} α)a = β\textsubscript{a}  \ensuremath{\circ} α\textsubscript{a}
 \end{Verbatim}
 
 \begin{figure}[H]
@@ -495,7 +495,7 @@ One (long) look at a diagram convinces us that the result of this
 composition is indeed a natural transformation from F to H:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-H f ◦ (β \ensuremath{⋅} α)\textsubscript{a} = (β \ensuremath{⋅} α)\textsubscript{b} ◦ F f
+H f  \ensuremath{\circ} (β \ensuremath{⋅} α)\textsubscript{a} = (β \ensuremath{⋅} α)\textsubscript{b}  \ensuremath{\circ} F f
 \end{Verbatim}
 
 \begin{figure}[H]
@@ -611,7 +611,7 @@ In the case of \textbf{Cat} seen as a 2-category we have:
 Instead of a Hom-set between two categories C and D, we have a
 Hom-category --- the functor category D\textsuperscript{C}. We have
 regular functor composition: a functor F from D\textsuperscript{C}
-composes with a functor G from E\textsuperscript{D} to give G ◦ F from
+composes with a functor G from E\textsuperscript{D} to give G  \ensuremath{\circ} F from
 E\textsuperscript{C}. But we also have composition inside each
 Hom-category --- vertical composition of natural transformations, or
 2-morphisms, between functors.
@@ -629,7 +629,7 @@ G :: D -> E
 and their composition:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-G ◦ F :: C -> E
+G  \ensuremath{\circ} F :: C -> E
 \end{Verbatim}
 Suppose we have two natural transformations, α and β, that act,
 respectively, on functors F and G:
@@ -650,10 +650,10 @@ the target of α is different from the source of β. In fact they are
 members of two different functor categories: D \textsuperscript{C} and E
 \textsuperscript{D}. We can, however, apply composition to the functors
 F' and G', because the target of F' is the source of G' --- it's the
-category D. What's the relation between the functors G'◦ F' and G ◦ F?
+category D. What's the relation between the functors G' \ensuremath{\circ} F' and G  \ensuremath{\circ} F?
 
 Having α and β at our disposal, can we define a natural transformation
-from G ◦ F to G'◦ F'? Let me sketch the construction.
+from G  \ensuremath{\circ} F to G' \ensuremath{\circ} F'? Let me sketch the construction.
 
 \begin{figure}[H]
 \centering
@@ -690,26 +690,26 @@ G'α\textsubscript{a} :: G'(F a) -> G'(F'a)
 \end{Verbatim}
 That's a lot of morphisms. Our goal is to find a morphism that goes from
 \code{G (F a)} to \code{G'(F'a)}, a candidate for the
-component of a natural transformation connecting the two functors G ◦ F
-and G'◦ F'. In fact there's not one but two paths we can take from
+component of a natural transformation connecting the two functors G  \ensuremath{\circ} F
+and G' \ensuremath{\circ} F'. In fact there's not one but two paths we can take from
 \code{G (F a)} to \code{G'(F'a)}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-G'α\textsubscript{a} ◦ β\textsubscript{F a}
-β\textsubscript{F'a} ◦ G α\textsubscript{a}
+G'α\textsubscript{a}  \ensuremath{\circ} β\textsubscript{F a}
+β\textsubscript{F'a}  \ensuremath{\circ} G α\textsubscript{a}
 \end{Verbatim}
 Luckily for us, they are equal, because the square we have formed turns
 out to be the naturality square for β.
 
-We have just defined a component of a natural transformation from G ◦ F
-to G'◦ F'. The proof of naturality for this transformation is pretty
+We have just defined a component of a natural transformation from G  \ensuremath{\circ} F
+to G' \ensuremath{\circ} F'. The proof of naturality for this transformation is pretty
 straightforward, provided you have enough patience.
 
 We call this natural transformation the \newterm{horizontal composition} of
 α and β:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-β ◦ α :: G ◦ F -> G' ◦ F'
+β  \ensuremath{\circ} α :: G  \ensuremath{\circ} F -> G'  \ensuremath{\circ} F'
 \end{Verbatim}
 Again, following Mac Lane I use the small circle for horizontal
 composition, although you may also encounter star in its place.
@@ -746,7 +746,7 @@ for vertical composition, but not vice versa.
 Finally, the two compositions satisfy the interchange law:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-(β' \ensuremath{\cdot} α') ◦ (β \ensuremath{\cdot} α) = (β' ◦ β) \ensuremath{\cdot} (α' ◦ α)
+(β' \ensuremath{\cdot} α')  \ensuremath{\circ} (β \ensuremath{\cdot} α) = (β'  \ensuremath{\circ} β) \ensuremath{\cdot} (α'  \ensuremath{\circ} α)
 \end{Verbatim}
 
 I will quote Saunders Mac Lane here: The reader may enjoy writing down
@@ -761,7 +761,7 @@ transformation acting on this functor. So you'll often see this
 notation:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-F ◦ α
+F  \ensuremath{\circ} α
 \end{Verbatim}
 where F is a functor from D to E, and α is a natural transformation
 between two functors going from C to D. Since you can't compose a
@@ -772,7 +772,7 @@ horizontal composition of the identity natural transformation
 Similarly:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-α ◦ F
+α  \ensuremath{\circ} F
 \end{Verbatim}
 is a horizontal composition of α after 1\textsubscript{F}.
 

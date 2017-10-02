@@ -155,7 +155,7 @@ commute:
 This is called the wedge condition. It can be written as:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-p id\textsubscript{a} f ◦ α\textsubscript{a} = p f id\textsubscript{b} ◦ α\textsubscript{b}
+p id\textsubscript{a} f  \ensuremath{\circ} α\textsubscript{a} = p f id\textsubscript{b}  \ensuremath{\circ} α\textsubscript{b}
 \end{Verbatim}
 Or, using Haskell notation:
 
@@ -169,7 +169,7 @@ apex \code{a} and a family \code{α} there is a unique function
 \code{h::a->e} that makes all triangles commute:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-π\textsubscript{a} ◦ h = α\textsubscript{a}
+π\textsubscript{a}  \ensuremath{\circ} h = α\textsubscript{a}
 \end{Verbatim}
 
 \begin{figure}[H]
@@ -332,12 +332,12 @@ may recall that such lifting is implemented as simultaneous pre- and
 post-composition. When acting on \code{τ\textsubscript{a}} the lifted pair gives us:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-G f ◦ τ\textsubscript{a} ◦ id\textsubscript{a}
+G f  \ensuremath{\circ} τ\textsubscript{a}  \ensuremath{\circ} id\textsubscript{a}
 \end{Verbatim}
 The other branch of the diagram gives us:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-id\textsubscript{b} ◦ τ\textsubscript{b} ◦ F f
+id\textsubscript{b}  \ensuremath{\circ} τ\textsubscript{b}  \ensuremath{\circ} F f
 \end{Verbatim}
 Their equality, demanded by the wedge condition, is nothing but the
 naturality condition for \code{τ}.
@@ -549,7 +549,7 @@ proofs,'' we can define composition of profunctors using the following
 formula:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-(q ◦ p) a b = ∫ \textsuperscript{c} p c a × q b c
+(q  \ensuremath{\circ} p) a b = ∫ \textsuperscript{c} p c a × q b c
 \end{Verbatim}
 Here's the equivalent Haskell definition from
 \code{Data.Profunctor.Composition}, after some renaming:

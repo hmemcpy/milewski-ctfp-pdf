@@ -142,10 +142,10 @@ reversing all the arrows. The opposite category automatically satisfies
 all the requirements of a category, as long as we simultaneously
 redefine composition. If original morphisms
 \code{f::a->b} and \code{g::b->c} composed
-to \code{h::a->c} with \code{h=g◦f}, then the reversed
+to \code{h::a->c} with \code{h=g \ensuremath{\circ} f}, then the reversed
 morphisms \code{f\textsuperscript{op}::b->a} and
 \code{g\textsuperscript{op}::c->b} will compose to
-\code{h\textsuperscript{op}::c->a} with \code{h\textsuperscript{op}=f\textsuperscript{op}◦g\textsuperscript{op}}. And reversing
+\code{h\textsuperscript{op}::c->a} with \code{h\textsuperscript{op}=f\textsuperscript{op} \ensuremath{\circ} g\textsuperscript{op}}. And reversing
 the identity arrows is a (pun alert!) no-op.
 
 Duality is a very important property of categories because it doubles
@@ -211,13 +211,13 @@ these two morphisms?
 \end{figure}
 
 \noindent
-The composition \emph{g◦f} must be a morphism from i\textsubscript{1} to
+The composition \emph{g \ensuremath{\circ} f} must be a morphism from i\textsubscript{1} to
 i\textsubscript{1}. But i\textsubscript{1} is initial so there can only
 be one morphism going from i\textsubscript{1} to i\textsubscript{1}.
 Since we are in a category, we know that there is an identity morphism
 from i\textsubscript{1} to i\textsubscript{1}, and since there is room
-for only one, that must be it. Therefore \emph{g◦f} is equal to
-identity. Similarly, \emph{f◦g} must be equal to identity, because there
+for only one, that must be it. Therefore \emph{g \ensuremath{\circ} f} is equal to
+identity. Similarly, \emph{f \ensuremath{\circ} g} must be equal to identity, because there
 can be only one morphism from i\textsubscript{2} back to
 i\textsubscript{2}. This proves that \emph{f} and \emph{g} must be the
 inverse of each other. Therefore any two initial objects are isomorphic.

@@ -68,7 +68,7 @@ morphism \code{h} from \code{a} to \code{x}.
 So the naturality square for \code{α}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-α\textsubscript{y} ◦ C(a, f) = F f ◦ α\textsubscript{x}
+α\textsubscript{y}  \ensuremath{\circ} C(a, f) = F f  \ensuremath{\circ} α\textsubscript{x}
 \end{Verbatim}
 becomes, point-wise, when acting on \code{h}:
 
@@ -80,12 +80,12 @@ hom-functor \code{C(a,-)} on a morphism \code{f} was defined as
 precomposition:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-C(a, f) h = f ◦ h
+C(a, f) h = f  \ensuremath{\circ} h
 \end{Verbatim}
 which leads to:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-αy (f ◦ h) = (F f) (αx h)
+αy (f  \ensuremath{\circ} h) = (F f) (αx h)
 \end{Verbatim}
 Just how strong this condition is can be seen by specializing it to the
 case of \code{x} equal to \code{a}.
@@ -178,7 +178,7 @@ hom-functor, the morphism \code{g} is mapped to a function
 \noindent
 Now let's consider the action of \code{C(a, g)} on our original
 \code{p} which, as you remember, corresponds to \code{id\textsubscript{a}}. It is
-defined as precomposition, \code{g◦id\textsubscript{a}}, which is equal to \code{g},
+defined as precomposition, \code{g \ensuremath{\circ} id\textsubscript{a}}, which is equal to \code{g},
 which corresponds to our point \code{p'}. So the morphism
 \code{g} is mapped to a function that, when acting on \code{p}
 produces \code{p'}, which is \code{g}. We have come full
@@ -206,7 +206,7 @@ and under \code{F} to:
 F g :: F a -> F x
 \end{Verbatim}
 Again, \code{C(a, g)} acting on our \code{p} is given by the
-precomposition: \code{g ◦ id\textsubscript{a}}, which corresponds to a point
+precomposition: \code{g  \ensuremath{\circ} id\textsubscript{a}}, which corresponds to a point
 \code{p'} in \code{C(a, x)}. Naturality determines the value
 of \code{αx} acting on \code{p'} to be:
 
