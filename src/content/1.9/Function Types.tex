@@ -144,7 +144,7 @@ So, here's how we can factor one application, \code{g}, out of another
 application \code{g'}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-g' = g ◦ (h × id)
+g' = g  \ensuremath{\circ} (h × id)
 \end{Verbatim}
 The key here is the action of the product on morphisms.
 
@@ -192,7 +192,7 @@ h :: z -> (a|\ensuremath{\Rightarrow}|b)
 that factors \code{g} through \code{eval}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-g = eval ◦ (h × id)
+g = eval  \ensuremath{\circ} (h × id)
 \end{Verbatim}
 \strut
 \end{minipage}\tabularnewline
@@ -244,7 +244,7 @@ a unique \code{h}, and given any \code{h} you can always recreate
 the two-argument function \code{g} using the formula:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-g = eval ◦ (h × id)
+g = eval  \ensuremath{\circ} (h × id)
 \end{Verbatim}
 The function \code{g} can be called the \newterm{uncurried} version of
 \code{h}.

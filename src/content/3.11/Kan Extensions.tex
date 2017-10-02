@@ -31,8 +31,8 @@ potential apex for our cone.
 \end{figure}
 
 \noindent
-A cone is a natural transformation \code{ε} from \code{F ◦ K} to
-\code{D}. Notice that \code{F ◦ K} does exactly the same thing as
+A cone is a natural transformation \code{ε} from \code{F  \ensuremath{\circ} K} to
+\code{D}. Notice that \code{F  \ensuremath{\circ} K} does exactly the same thing as
 our original \code{\ensuremath{\Delta}\textsubscript{c}}. The following diagram shows this
 transformation.
 
@@ -45,14 +45,14 @@ transformation.
 We can now define a universal property that picks the ``best'' such
 functor \code{F}. This \code{F} will map \textbf{1} to the object
 that is the limit of \code{D} in \emph{C}, and the natural
-transformation \code{ε} from \code{F ◦ K} to \code{D} will
+transformation \code{ε} from \code{F  \ensuremath{\circ} K} to \code{D} will
 provide the corresponding projections. This universal functor is called
 the right Kan extension of \code{D} along \code{K} and is denoted by
 \code{Ran\textsubscript{K}D}.
 
 Let's formulate the universal property. Suppose we have another cone ---
 that is another functor \code{F'} together with a natural
-transformation \code{ε'} from \code{F' ◦ K} to
+transformation \code{ε'} from \code{F'  \ensuremath{\circ} K} to
 \code{D}.
 
 \begin{figure}[H]
@@ -66,9 +66,9 @@ natural transformation \code{σ} from \code{F'} to it, such
 that \code{ε'} factorizes through \code{ε}, that is:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-ε' = ε . (σ ◦ K)
+ε' = ε . (σ  \ensuremath{\circ} K)
 \end{Verbatim}
-Here, \code{σ ◦ K} is the horizontal composition of two natural
+Here, \code{σ  \ensuremath{\circ} K} is the horizontal composition of two natural
 transformations (one of them being the identity natural transformation
 on \code{K}). This transformation is then vertically composed with
 \code{ε}.
@@ -82,7 +82,7 @@ on \code{K}). This transformation is then vertically composed with
 In components, when acting on an object \code{i} in \emph{I}, we get:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-ε'\textsubscript{i} = ε\textsubscript{i} ◦ σ \textsubscript{K i}
+ε'\textsubscript{i} = ε\textsubscript{i}  \ensuremath{\circ} σ \textsubscript{K i}
 \end{Verbatim}
 In our case, \code{σ} has only one component corresponding to the
 single object of \textbf{1}. So, indeed, this is the unique morphism
@@ -102,13 +102,13 @@ along the functor \code{K::I->A} is a functor
 natural transformation
 
 \begin{Verbatim}[commandchars=\\\{\}]
-ε :: F ◦ K -> D
+ε :: F  \ensuremath{\circ} K -> D
 \end{Verbatim}
 such that for any other functor \code{F'::A->C} and
 a natural transformation
 
 \begin{Verbatim}[commandchars=\\\{\}]
-ε' :: F' ◦ K -> D
+ε' :: F'  \ensuremath{\circ} K -> D
 \end{Verbatim}
 there is a unique natural transformation
 
@@ -118,7 +118,7 @@ there is a unique natural transformation
 that factorizes \code{ε'}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-ε' = ε . (σ ◦ K)
+ε' = ε . (σ  \ensuremath{\circ} K)
 \end{Verbatim}
 This is quite a mouthful, but it can be visualized in this nice diagram:
 
@@ -136,7 +136,7 @@ called the counit of the right Kan extension, looks like simple
 cancellation:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-ε :: D/K ◦ K -> D
+ε :: D/K  \ensuremath{\circ} K -> D
 \end{Verbatim}
 There is another interpretation of Kan extensions. Consider that the
 functor \code{K} embeds the category \emph{I} inside \emph{A}. In the
@@ -144,11 +144,11 @@ simplest case \emph{I} could just be a subcategory of \emph{A}. We have
 a functor \code{D} that maps \emph{I} to \emph{C}. Can we extend
 \code{D} to a functor \code{F} that is defined on the whole of
 \emph{A}? Ideally, such an extension would make the composition
-\code{F ◦ K} be isomorphic to \code{D}. In other words, \code{F}
+\code{F  \ensuremath{\circ} K} be isomorphic to \code{D}. In other words, \code{F}
 would be extending the domain of \code{D} to \code{A}. But a
 full-blown isomorphism is usually too much to ask, and we can do with
 just half of it, namely a one-way natural transformation \code{ε} from\\
-\code{F ◦ K} to \code{D}. (The left Kan extension picks the other
+\code{F  \ensuremath{\circ} K} to \code{D}. (The left Kan extension picks the other
 direction.)
 
 \begin{figure}[H]
@@ -170,11 +170,11 @@ a fixed \code{K}). In that case \code{Ran\textsubscript{K} -} (with the dash
 replacing \code{D}) is a functor from the functor category
 \code{{[}I, C{]}} to the functor category \code{{[}A, C{]}}. It
 turns out that this functor is the right adjoint to the precomposition
-functor \code{-◦K}. The latter maps functors in \code{{[}A, C{]}}
+functor \code{- \ensuremath{\circ} K}. The latter maps functors in \code{{[}A, C{]}}
 to functors in \code{{[}I, C{]}}. The adjunction is:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-[I, C](F' ◦ K, D) \ensuremath{\cong} [A, C](F', Ran\textsubscript{K}D)
+[I, C](F'  \ensuremath{\circ} K, D) \ensuremath{\cong} [A, C](F', Ran\textsubscript{K}D)
 \end{Verbatim}
 It is just a restatement of the fact that to every natural
 transformation we called \code{ε'} corresponds a unique natural
@@ -191,7 +191,7 @@ Furthermore, if we chose the category \emph{I} to be the same as
 \code{D}. We get the following identity:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-[C, C](F' ◦ K, IC) \ensuremath{\cong} [A, C](F', Ran\textsubscript{K}I\textsubscript{C})
+[C, C](F'  \ensuremath{\circ} K, IC) \ensuremath{\cong} [A, C](F', Ran\textsubscript{K}I\textsubscript{C})
 \end{Verbatim}
 We can now chose \code{F'} to be the same as \code{Ran\textsubscript{K}I\textsubscript{C}}. In
 that case the right hand side contains the identity natural
@@ -199,7 +199,7 @@ transformation and, corresponding to it, the left hand side gives us the
 following natural transformation:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-ε :: Ran\textsubscript{K}I\textsubscript{C} ◦ K -> I\textsubscript{C}
+ε :: Ran\textsubscript{K}I\textsubscript{C}  \ensuremath{\circ} K -> I\textsubscript{C}
 \end{Verbatim}
 This looks very much like the counit of an adjunction:
 
@@ -216,7 +216,7 @@ original Kan extesion with \code{K}. In our case, this condition
 simplifies to:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-K ◦ Ran\textsubscript{K}I\textsubscript{C} \ensuremath{\cong} Ran\textsubscript{K}K
+K  \ensuremath{\circ} Ran\textsubscript{K}I\textsubscript{C} \ensuremath{\cong} Ran\textsubscript{K}K
 \end{Verbatim}
 Notice that, using the division-by-K notation, the adjunction can be
 written as:
@@ -228,7 +228,7 @@ which confirms our intuition that an adjunction describes some kind of
 an inverse. The preservation condition becomes:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-K ◦ I/K \ensuremath{\cong} K/K
+K  \ensuremath{\circ} I/K \ensuremath{\cong} K/K
 \end{Verbatim}
 The right Kan extension of a functor along itself, \code{K/K}, is
 called a codensity monad.
@@ -252,7 +252,7 @@ base, and the functor \code{F::1->C} to select its apex.
 
 \noindent
 The sides of the cocone, the injections, are components of a natural
-transformation \code{η} from \code{D} to \code{F ◦ K}.
+transformation \code{η} from \code{D} to \code{F  \ensuremath{\circ} K}.
 
 \begin{figure}[H]
 \centering
@@ -264,7 +264,7 @@ The colimit is the universal cocone. So for any other functor
 \code{F'} and a natural transformation
 
 \begin{Verbatim}[commandchars=\\\{\}]
-η' :: D -> F'◦ K
+η' :: D -> F' \ensuremath{\circ} K
 \end{Verbatim}
 
 \begin{figure}[H]
@@ -285,7 +285,7 @@ there is a unique natural transformation \code{σ} from \code{F} to
 such that:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-η' = (σ ◦ K) . η
+η' = (σ  \ensuremath{\circ} K) . η
 \end{Verbatim}
 This is illustrated in the following diagram:
 
@@ -308,7 +308,7 @@ extension, denoted by \code{Lan\textsubscript{K}D}.
 The natural transformation:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-η :: D -> Lan\textsubscript{K}D ◦ K
+η :: D -> Lan\textsubscript{K}D  \ensuremath{\circ} K
 \end{Verbatim}
 is called the unit of the left Kan extension.
 
@@ -316,12 +316,12 @@ As before, we can recast the one-to-one correspondence between natural
 transformations:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-η' = (σ ◦ K) . η
+η' = (σ  \ensuremath{\circ} K) . η
 \end{Verbatim}
 in terms of the adjunction:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-[A, C](Lan\textsubscript{K}D, F') \ensuremath{\cong} [I, C](D, F' ◦ K)
+[A, C](Lan\textsubscript{K}D, F') \ensuremath{\cong} [I, C](D, F'  \ensuremath{\circ} K)
 \end{Verbatim}
 In other words, the left Kan extension is the left adjoint, and the
 right Kan extension is the right adjoint of the postcomposition with
@@ -374,18 +374,18 @@ A(a, K -)
 Notice that this hom-functor is a composition of two functors:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-A(a, K -) = A(a, -) ◦ K
+A(a, K -) = A(a, -)  \ensuremath{\circ} K
 \end{Verbatim}
 The right Kan extension is the right adjoint of functor composition:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-[I, Set](F' ◦ K, D) \ensuremath{\cong} [A, Set](F', Ran\textsubscript{K}D)
+[I, Set](F'  \ensuremath{\circ} K, D) \ensuremath{\cong} [A, Set](F', Ran\textsubscript{K}D)
 \end{Verbatim}
 Let's see what happens when we replace \code{F'} with the hom
 functor:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-[I, Set](A(a, -) ◦ K, D) \ensuremath{\cong} [A, Set](A(a, -), Ran\textsubscript{K}D)
+[I, Set](A(a, -)  \ensuremath{\circ} K, D) \ensuremath{\cong} [A, Set](A(a, -), Ran\textsubscript{K}D)
 \end{Verbatim}
 and then inline the composition:
 
@@ -413,7 +413,7 @@ To see that this is the case, we'll show that this is indeed the left
 adjoint to functor composition:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-[A, Set](Lan\textsubscript{K}D, F') \ensuremath{\cong} [I, Set](D, F'◦ K)
+[A, Set](Lan\textsubscript{K}D, F') \ensuremath{\cong} [I, Set](D, F' \ensuremath{\circ} K)
 \end{Verbatim}
 Let's substitute our formula in the left hand side:
 
@@ -458,7 +458,7 @@ This is indeed the set of natural transformations that forms the right
 hand side of the adjunction we set out to prove:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-[I, Set](D, F'◦ K)
+[I, Set](D, F' \ensuremath{\circ} K)
 \end{Verbatim}
 These kinds of calculations using ends, coends, and the Yoneda lemma are
 pretty typical for the ``calculus'' of ends.

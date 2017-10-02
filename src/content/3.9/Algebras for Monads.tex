@@ -36,7 +36,7 @@ evaluating this expression using the algebra whose carrier is \code{a}
 gives us back the original value:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-alg ◦ η\textsubscript{a} = id\textsubscript{a}
+alg  \ensuremath{\circ} η\textsubscript{a} = id\textsubscript{a}
 \end{Verbatim}
 The second condition arises from the fact that there are two ways of
 evaluating the doubly nested expression \code{m (m a)}. We can first
@@ -46,7 +46,7 @@ inner expressions, and then apply the evaluator to the result. We'd like
 the two strategies to be equivalent:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-alg ◦ μ\textsubscript{a} = alg ◦ m alg
+alg  \ensuremath{\circ} μ\textsubscript{a} = alg  \ensuremath{\circ} m alg
 \end{Verbatim}
 Here, \code{m alg} is the morphism resulting from lifting
 \code{alg} using the functor \code{m}. The following commuting
@@ -134,10 +134,10 @@ We still have to show that this is a T-algebra. For that, two coherence
 conditions must be satisified:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-alg ◦ η\textsubscript{Ta} = id\textsubscript{Ta}
+alg  \ensuremath{\circ} η\textsubscript{Ta} = id\textsubscript{Ta}
 \end{Verbatim}
 \begin{Verbatim}[commandchars=\\\{\}]
-alg ◦ μ\textsubscript{a} = alg ◦ T alg
+alg  \ensuremath{\circ} μ\textsubscript{a} = alg  \ensuremath{\circ} T alg
 \end{Verbatim}
 But these are just monadic laws, if you plug in \code{μ} for the
 algebra.
@@ -159,7 +159,7 @@ this adjunction is indeed our original monad.
 The unit of the adjunction is the natural transformation:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-η :: I -> U\textsuperscript{T} ◦ F\textsuperscript{T}
+η :: I -> U\textsuperscript{T}  \ensuremath{\circ} F\textsuperscript{T}
 \end{Verbatim}
 Let's calculate the \code{a} component of this transformation. The
 identity functor gives us \code{a}. The free functor produces the free
@@ -171,7 +171,7 @@ unit of this adjunction.
 Let's look at the counit:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-ε :: F\textsuperscript{T} ◦ U\textsuperscript{T} -> I
+ε :: F\textsuperscript{T}  \ensuremath{\circ} U\textsuperscript{T} -> I
 \end{Verbatim}
 Let's calculate its component at some T-algebra \code{(a, f)}. The
 forgetful functor forgets the \code{f}, and the free functor produces
@@ -218,7 +218,7 @@ F\textsuperscript{T} \ensuremath{\dashv} U\textsuperscript{T}
 Every adjunction gives rise to a monad. The round trip
 
 \begin{Verbatim}[commandchars=\\\{\}]
-U\textsuperscript{T} ◦ F\textsuperscript{T}
+U\textsuperscript{T}  \ensuremath{\circ} F\textsuperscript{T}
 \end{Verbatim}
 is the endofunctor in C that gives rise to the corresponding monad.
 Let's see what its action on an object \code{a} is. The free algebra
@@ -226,7 +226,7 @@ created by \code{F\textsuperscript{T}} is \code{(T a, μ\textsubscript{a})}. The
 \code{F\textsuperscript{T}} drops the evaluator. So, indeed, we have:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-U\textsuperscript{T} ◦ F\textsuperscript{T} = T
+U\textsuperscript{T}  \ensuremath{\circ} F\textsuperscript{T} = T
 \end{Verbatim}
 As expected, the unit of the adjunction is the unit of the monad
 \code{T}.
@@ -235,7 +235,7 @@ You may remember that the counint of the adjunction produces monadic
 muliplication through the following formula:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-μ = R ◦ ε ◦ L
+μ = R  \ensuremath{\circ} ε  \ensuremath{\circ} L
 \end{Verbatim}
 This is a horizontal composition of three natural transformations, two
 of them being identity natural transformations mapping, respectively,
@@ -280,13 +280,13 @@ g :: b -> T c
 We define the composition:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-h\textsubscript{K} = g\textsubscript{K} ◦ f\textsubscript{K}
+h\textsubscript{K} = g\textsubscript{K}  \ensuremath{\circ} f\textsubscript{K}
 \end{Verbatim}
 as a Kleisli arrow in \emph{C}
 
 \begin{Verbatim}[commandchars=\\\{\}]
 h :: a -> T c
-h = μ ◦ (T g) ◦ f
+h = μ  \ensuremath{\circ} (T g)  \ensuremath{\circ} f
 \end{Verbatim}
 In Haskell we would write it as:
 
@@ -306,7 +306,7 @@ it creates a morphism in \emph{C\textsubscript{T}} with the
 corresponding Kleisli arrow:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-η ◦ f
+η  \ensuremath{\circ} f
 \end{Verbatim}
 In Haskell we'd write it as:
 
@@ -329,7 +329,7 @@ T a -> T b
 given by first lifting \code{f} and then applying \code{μ}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-μ\textsubscript{T b} ◦ T f
+μ\textsubscript{T b}  \ensuremath{\circ} T f
 \end{Verbatim}
 In Haskell notation this would read:
 
@@ -344,7 +344,7 @@ It's easy to see that the two functors form an adjunction:
 \begin{Verbatim}[commandchars=\\\{\}]
 F \ensuremath{\dashv} G
 \end{Verbatim}
-and their composition \code{G ◦ F} reproduces the original monad
+and their composition \code{G  \ensuremath{\circ} F} reproduces the original monad
 \code{T}.
 
 So this is the second adjunction that produces the same monad. In fact
@@ -387,7 +387,7 @@ The right adjoint to a forgetful functor is called a cofree functor.
 \code{F\textsuperscript{W}} generates cofree coalgebras. It assigns, to an object
 \code{a} in \emph{C}, the coalgebra \code{(W a, δ\textsubscript{a})}. The
 adjunction reproduces the original comonad as the composite
-\code{F\textsuperscript{W} ◦ U\textsuperscript{W}}.
+\code{F\textsuperscript{W}  \ensuremath{\circ} U\textsuperscript{W}}.
 
 Similarly, we can construct a co-Kleisli category with co-Kleisli arrows
 and regenerate the comonad from the corresponding adjunction.
@@ -431,7 +431,7 @@ The question is: Under what conditions is a lens a coalgebra for this
 comonad? The first coherence condition:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-ε\textsubscript{a} ◦ coalg = id\textsubscript{a}
+ε\textsubscript{a}  \ensuremath{\circ} coalg = id\textsubscript{a}
 \end{Verbatim}
 translates to:
 
@@ -444,7 +444,7 @@ the structure \code{a} to its previous value, nothing changes.
 The second condition:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-fmap coalg ◦ coalg = δ\textsubscript{a} ◦ coalg
+fmap coalg  \ensuremath{\circ} coalg = δ\textsubscript{a}  \ensuremath{\circ} coalg
 \end{Verbatim}
 requires a little more work. First, recall the definition of
 \code{fmap} for the \code{Store} functor:

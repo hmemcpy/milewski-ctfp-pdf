@@ -33,8 +33,8 @@ there exists a functor \code{R} (``right'') from \emph{C} to \emph{D},
 which is invertible. In other words, there exists another functor
 \code{L} (``left'') from \emph{D} back to \emph{C} which, when
 composed with \code{R}, is equal to the identity functor \code{I}.
-There are two possible compositions, \code{R ◦ L} and
-\code{L ◦ R}; and two possible identity functors: one in \emph{C}
+There are two possible compositions, \code{R  \ensuremath{\circ} L} and
+\code{L  \ensuremath{\circ} R}; and two possible identity functors: one in \emph{C}
 and another in \emph{D}.
 
 \begin{figure}[H]
@@ -47,12 +47,12 @@ But here's the tricky part: What does it mean for two functors to be
 \emph{equal}? What do we mean by this equality:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-R ◦ L = I\textsubscript{D}
+R  \ensuremath{\circ} L = I\textsubscript{D}
 \end{Verbatim}
 or this one:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-L ◦ R = I\textsubscript{C}
+L  \ensuremath{\circ} R = I\textsubscript{C}
 \end{Verbatim}
 It would be reasonable to define functor equality in terms of equality
 of objects. Two functors, when acting on equal objects, should produce
@@ -80,19 +80,19 @@ more general notion of \newterm{equivalence}. Two categories \emph{C} and
 and forth between them, whose composition (either way) is
 \newterm{naturally isomorphic} to the identity functor. In other words,
 there is a two-way natural transformation between the composition
-\code{R ◦ L} and the identity functor \code{I\textsubscript{D}}, and another
-between \code{L ◦ R} and the identity functor \code{I\textsubscript{C}}.
+\code{R  \ensuremath{\circ} L} and the identity functor \code{I\textsubscript{D}}, and another
+between \code{L  \ensuremath{\circ} R} and the identity functor \code{I\textsubscript{C}}.
 
 Adjunction is even weaker than equivalence, because it doesn't require
 that the composition of the two functors be \newterm{isomorphic} to the
 identity functor. Instead it stipulates the existence of a \newterm{one
-way} natural transformation from \code{ID} to \code{R◦L}, and
-another from \code{L◦R} to \code{IC}. Here are the signatures of
+way} natural transformation from \code{ID} to \code{R \ensuremath{\circ} L}, and
+another from \code{L \ensuremath{\circ} R} to \code{IC}. Here are the signatures of
 these two natural transformations:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-η :: I\textsubscript{D} -> R ◦ L
-ε :: L ◦ R -> I\textsubscript{C}
+η :: I\textsubscript{D} -> R  \ensuremath{\circ} L
+ε :: L  \ensuremath{\circ} R -> I\textsubscript{C}
 \end{Verbatim}
 η is called the unit, and ε the counit of the adjunction.
 
@@ -100,8 +100,8 @@ Notice the asymmetry between these two definitions. In general, we don't
 have the two remaining mappings:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-R ◦ L -> I\textsubscript{D} -- not necessarily
-I\textsubscript{C} -> L ◦ R -- not necessarily
+R  \ensuremath{\circ} L -> I\textsubscript{D} -- not necessarily
+I\textsubscript{C} -> L  \ensuremath{\circ} R -- not necessarily
 \end{Verbatim}
 Because of this asymmetry, the functor \code{L} is called the
 \newterm{left adjoint} to the functor \code{R}, while the functor
@@ -125,17 +125,17 @@ counit in more detail.
 Let's start with the unit. It's a natural transformation, so it's a
 family of morphisms. Given an object \code{d} in \emph{D}, the
 component of η is a morphism between \code{I d}, which is equal to
-\code{d}, and \code{(R ◦ L) d}; which, in the picture, is called
+\code{d}, and \code{(R  \ensuremath{\circ} L) d}; which, in the picture, is called
 \code{d'}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-η\textsubscript{d} :: d -> (R ◦ L) d
+η\textsubscript{d} :: d -> (R  \ensuremath{\circ} L) d
 \end{Verbatim}
-Notice that the composition \code{R◦L} is an endofunctor in \emph{D}.
+Notice that the composition \code{R \ensuremath{\circ}L} is an endofunctor in \emph{D}.
 
 This equation tells us that we can pick any object \code{d} in
 \emph{D} as our starting point, and use the round trip functor
-\code{R ◦ L} to pick our target object \code{d'}. Then we
+\code{R  \ensuremath{\circ} L} to pick our target object \code{d'}. Then we
 shoot an arrow --- the morphism \code{η\textsubscript{d}} --- to our target.
 
 \begin{figure}[H]
@@ -147,28 +147,28 @@ shoot an arrow --- the morphism \code{η\textsubscript{d}} --- to our target.
 By the same token, the component of of the counit ε can be described as:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-ε\textsubscript{c'} :: (L ◦ R) c -> c
+ε\textsubscript{c'} :: (L  \ensuremath{\circ} R) c -> c
 \end{Verbatim}
-where \code{c'} is \code{(L ◦ R) c}. It tells us that we
+where \code{c'} is \code{(L  \ensuremath{\circ} R) c}. It tells us that we
 can pick any object \code{c} in \emph{C} as our target, and use the
-round trip functor \code{L ◦ R} to pick the source
+round trip functor \code{L  \ensuremath{\circ} R} to pick the source
 \code{c'}. Then we shoot the arrow --- the morphism
 \code{ε\textsubscript{c'}} --- from the source to the target.
 
 Another way of looking at unit and counit is that unit lets us
-\emph{introduce} the composition \code{R ◦ L} anywhere we could
+\emph{introduce} the composition \code{R  \ensuremath{\circ} L} anywhere we could
 insert an identity functor on \emph{D}; and counit lets us
-\emph{eliminate} the composition \code{L ◦ R}, replacing it with the
+\emph{eliminate} the composition \code{L  \ensuremath{\circ} R}, replacing it with the
 identity on \emph{C}. That leads to some ``obvious'' consistency
 conditions, which make sure that introduction followed by elimination
 doesn't change anything:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-L = L ◦ I\textsubscript{D} -> L ◦ R ◦ L -> I\textsubscript{C} ◦ L = L
+L = L  \ensuremath{\circ} I\textsubscript{D} -> L  \ensuremath{\circ} R  \ensuremath{\circ} L -> I\textsubscript{C}  \ensuremath{\circ} L = L
 \end{Verbatim}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-R = I\textsubscript{D} ◦ R -> R ◦ L ◦ R -> R ◦ I\textsubscript{C} = R
+R = I\textsubscript{D}  \ensuremath{\circ} R -> R  \ensuremath{\circ} L  \ensuremath{\circ} R -> R  \ensuremath{\circ} I\textsubscript{C} = R
 \end{Verbatim}
 These are called triangular identities because they make the following
 diagrams commute:
@@ -192,8 +192,8 @@ transformations, and their composition is the horizontal composition of
 natural transformations. In components, these identities become:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-ε \textsubscript{L d} ◦ L η \textsubscript{d} = id \textsubscript{L d}
-R ε c ◦ η \textsubscript{R c} = id \textsubscript{R c}
+ε \textsubscript{L d}  \ensuremath{\circ} L η \textsubscript{d} = id \textsubscript{L d}
+R ε c  \ensuremath{\circ} η \textsubscript{R c} = id \textsubscript{R c}
 \end{Verbatim}
 We often see unit and counit in Haskell under different names. Unit is
 known as \code{return} (or \code{pure}, in the definition of
@@ -207,8 +207,8 @@ and counint as \code{extract}:
 \begin{Verbatim}[commandchars=\\\{\}]
 extract :: w c -> c
 \end{Verbatim}
-Here, \code{m} is the (endo-) functor corresponding to \code{R◦L},
-and \code{w} is the (endo-) functor corresponding to \code{L◦R}. As
+Here, \code{m} is the (endo-) functor corresponding to \code{R \ensuremath{\circ} L},
+and \code{w} is the (endo-) functor corresponding to \code{L \ensuremath{\circ} R}. As
 we'll see later, they are part of the definition of a monad and a
 comonad, respectively.
 
@@ -338,19 +338,19 @@ Since this isomorphism works for any object \code{c}, it must also
 work for \code{c = L d}:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-C(L d, L d) \ensuremath{\cong} D(d, (R ◦ L) d)
+C(L d, L d) \ensuremath{\cong} D(d, (R  \ensuremath{\circ} L) d)
 \end{Verbatim}
 We know that the left hand side must contain at least one morphism, the
 identity. The natural transformation will map this morphism to an
-element of \code{D(d, (R ◦ L) d)} or, inserting the identity
+element of \code{D(d, (R  \ensuremath{\circ} L) d)} or, inserting the identity
 functor \code{I}, a morphism in:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-D(I d, (R ◦ L) d)
+D(I d, (R  \ensuremath{\circ} L) d)
 \end{Verbatim}
 We get a family of morphisms parameterized by \code{d}. They form a
 natural transformation between the functor \code{I} and the functor
-\code{R ◦ L} (the naturality condition is easy to verify). This is
+\code{R  \ensuremath{\circ} L} (the naturality condition is easy to verify). This is
 exactly our unit, \code{η}.
 
 Conversely, starting from the existence of the unit and co-unit, we can
@@ -362,15 +362,15 @@ morphism in \code{D(d, R c)}.
 There isn't really much choice. One thing we can try is to lift
 \code{f} using \code{R}. That will produce a morphism \code{R f}
 from \code{R (L d)} to \code{R c} --- a morphism that's an
-element of \code{D((R ◦ L) d, R c)}.
+element of \code{D((R  \ensuremath{\circ} L) d, R c)}.
 
 What we need for a component of \code{φ}, is a morphism from
 \code{d} to \code{R c}. That's not a problem, since we can use a
 component of \code{η\textsubscript{d}} to get from \code{d} to
-\code{(R ◦ L) d}. We get:
+\code{(R  \ensuremath{\circ} L) d}. We get:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-φ\textsubscript{f} = R f ◦ η\textsubscript{d}
+φ\textsubscript{f} = R f  \ensuremath{\circ} η\textsubscript{d}
 \end{Verbatim}
 The other direction is analogous, and so is the derivation of
 \code{ψ}.
@@ -584,8 +584,8 @@ In Haskell, we can always construct the inverse of the
 \code{fst} and \code{snd}.
 
 \begin{Verbatim}[commandchars=\\\{\}]
-p = fst ◦ m
-q = snd ◦ m
+p = fst  \ensuremath{\circ} m
+q = snd  \ensuremath{\circ} m
 \end{Verbatim}
 To complete the proof of the equivalence of the two ways of defining a
 product we also need to show that the mapping between hom-sets is
@@ -664,7 +664,7 @@ this adjunction:
 where:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-(a\ensuremath{\Rightarrow}b) × a = (L ◦ R) b
+(a\ensuremath{\Rightarrow}b) × a = (L  \ensuremath{\circ} R) b
 \end{Verbatim}
 I have previously mentioned that a universal construction defines a
 unique object, up to isomorphism. That's why we have ``the'' product and
