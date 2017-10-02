@@ -51,7 +51,7 @@ morphisms are 2-cells.
 \end{figure}
 
 \noindent
-The category of categories \textbf{Cat} is an immediate example. We have
+The category of categories $\Cat$ is an immediate example. We have
 categories as 0-cells, functors as 1-cells, and natural transformations
 as 2-cells. The laws of a 2-category tell us that 1-cells between any
 two 0-cells form a category (in other words, \code{C(a, b)} is a
@@ -73,7 +73,7 @@ composition of 1-cells. Associativity and unit laws simply fall out from
 the corresponding category laws.
 
 Let's see what this means in our canonical example of a 2-category
-\textbf{Cat}. The hom-category \code{Cat(a, a)} is the category of
+$\Cat$. The hom-category \code{Cat(a, a)} is the category of
 endofunctors on \code{a}. Endofunctor composition plays the role of a
 tensor product in it. The identity functor is the unit with respect to
 this product. We've seen before that endofunctors form a monoidal
@@ -202,7 +202,7 @@ coend.
 By now you should be pretty familiar with the definition of a monad as a
 monoid in the category of endofunctors. Let's revisit this definition
 with the new understanding that the category of endofunctors is just one
-small hom-category of endo-1-cells in the bicategory \textbf{Cat}. We
+small hom-category of endo-1-cells in the bicategory $\Cat$. We
 know it's a monoidal category: the tensor product comes from the
 composition of endofunctors. A monoid is defined as an object in a
 monoidal category --- here it will be an endofunctor \code{T} ---
@@ -251,7 +251,7 @@ satisfying the monoid laws. We call \emph{this} a monad.
 \noindent
 That's a much more general definition of a monad using only 0-cells,
 1-cells, and 2-cells. It reduces to the usual monad when applied to the
-bicategory \textbf{Cat}. But let's see what happens in other
+bicategory $\Cat$. But let's see what happens in other
 bicategories.
 
 Let's construct a monad in \textbf{Span}. We pick a 0-cell, which is a

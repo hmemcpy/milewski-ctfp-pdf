@@ -539,8 +539,8 @@ Let's have a look at the hierarchy of abstractions that we've been
 building so far. We started with a category, which is a collection of
 objects and morphisms. Categories themselves (or, strictly speaking
 \emph{small} categories, whose objects form sets) are themselves objects
-in a higher-level category \textbf{Cat}. Morphisms in that category are
-functors. A Hom-set in \textbf{Cat} is a set of functors. For instance
+in a higher-level category $\Cat$. Morphisms in that category are
+functors. A Hom-set in $\Cat$ is a set of functors. For instance
 Cat(C, D) is a set of functors between two categories C and D.
 
 \begin{figure}
@@ -551,15 +551,15 @@ Cat(C, D) is a set of functors between two categories C and D.
 A functor category {[}C, D{]} is also a set of functors between two
 categories (plus natural transformations as morphisms). Its objects are
 the same as the members of Cat(C, D). Moreover, a functor category,
-being a category, must itself be an object of \textbf{Cat} (it so
+being a category, must itself be an object of $\Cat$ (it so
 happens that the functor category between two small categories is itself
 small). We have a relationship between a Hom-set in a category and an
 object in the same category. The situation is exactly like the
 exponential object that we've seen in the last section. Let's see how we
-can construct the latter in \textbf{Cat}.
+can construct the latter in $\Cat$.
 
 As you may remember, in order to construct an exponential, we need to
-first define a product. In \textbf{Cat}, this turns out to be relatively
+first define a product. In $\Cat$, this turns out to be relatively
 easy, because small categories are \emph{sets} of objects, and we know
 how to define cartesian products of sets. So an object in a product
 category C × D is just a pair of objects, \code{(c, d)}, one from C
@@ -570,19 +570,19 @@ morphisms, \code{(f, g)}, where
 \code{g :: d -> d'}. These pairs of morphisms
 compose component-wise, and there is always an identity pair that is
 just a pair of identity morphisms. To make the long story short,
-\textbf{Cat} is a full-blown cartesian closed category in which there is
+$\Cat$ is a full-blown cartesian closed category in which there is
 an exponential object D\textsuperscript{C} for any pair of categories.
-And by ``object'' in \textbf{Cat} I mean a category, so
+And by ``object'' in $\Cat$ I mean a category, so
 D\textsuperscript{C} is a category, which we can identify with the
 functor category between C and D.
 
 \section{2-Categories}\label{categories}
 
-With that out of the way, let's have a closer look at \textbf{Cat}. By
-definition, any Hom-set in \textbf{Cat} is a set of functors. But, as we
+With that out of the way, let's have a closer look at $\Cat$. By
+definition, any Hom-set in $\Cat$ is a set of functors. But, as we
 have seen, functors between two objects have a richer structure than
 just a set. They form a category, with natural transformations acting as
-morphisms. Since functors are considered morphisms in \textbf{Cat},
+morphisms. Since functors are considered morphisms in $\Cat$,
 natural transformations are morphisms between morphisms.
 
 This richer structure is an example of a 2-category, a generalization of
@@ -590,7 +590,7 @@ a category where, besides objects and morphisms (which might be called
 1-morphisms in this context), there are also 2-morphisms, which are
 morphisms between morphisms.
 
-In the case of \textbf{Cat} seen as a 2-category we have:
+In the case of $\Cat$ seen as a 2-category we have:
 
 \begin{itemize}
 \tightlist
@@ -620,7 +620,7 @@ Hom-category --- vertical composition of natural transformations, or
 With two kinds of composition in a 2-category, the question arises: How
 do they interact with each other?
 
-Let's pick two functors, or 1-morphisms, in \textbf{Cat}:
+Let's pick two functors, or 1-morphisms, in $\Cat$:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 F :: C -> D
@@ -719,7 +719,7 @@ should look for a category. We have vertical composition of natural
 transformations, and it's part of the functor category. But what about
 the horizontal composition? What category does that live in?
 
-The way to figure this out is to look at \textbf{Cat} sideways. Look at
+The way to figure this out is to look at $\Cat$ sideways. Look at
 natural transformations not as arrows between functors but as arrows
 between categories. A natural transformation sits between two
 categories, the ones that are connected by the functors it transforms.
@@ -731,7 +731,7 @@ We can think of it as connecting these two categories.
 \end{figure}
 
 \noindent
-Let's focus on two objects of \textbf{Cat} --- categories C and D. There
+Let's focus on two objects of $\Cat$ --- categories C and D. There
 is a set of natural transformations that go between functors that
 connect C to D. These natural transformations are our new arrows from C
 to D. By the same token, there are natural transformations going between
@@ -753,7 +753,7 @@ I will quote Saunders Mac Lane here: The reader may enjoy writing down
 the evident diagrams needed to prove this fact.
 
 There is one more piece of notation that might come in handy in the
-future. In this new sideways interpretation of \textbf{Cat} there are
+future. In this new sideways interpretation of $\Cat$ there are
 two ways of getting from object to object: using a functor or using a
 natural transformation. We can, however, re-interpret the functor arrow
 as a special kind of natural transformation: the identity natural
