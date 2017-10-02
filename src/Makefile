@@ -17,6 +17,6 @@ clean:
 	latexmk -CA
 
 clean-all: clean
-	${RM} ${FIG} ctfp.tex coverpage.pdf ctfp.fls
+	${RM} ${FIG} coverpage.pdf ctfp.fls
 
 .PHONY: all clean clean-all
