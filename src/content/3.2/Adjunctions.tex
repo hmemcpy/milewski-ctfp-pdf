@@ -311,7 +311,7 @@ that is natural both in \code{d} and \code{c}.
 Naturality means that the source \code{d} can be varied smoothly
 across \emph{D}; and the target \code{c}, across \emph{C}. More
 precisely, we have a natural transformation \code{φ} between the
-following two (covariant) functors from \emph{C} to \textbf{Set}. Here's
+following two (covariant) functors from \emph{C} to $\Set$. Here's
 the action of these functors on objects:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -406,12 +406,12 @@ automatically a \hyperref[chap-representable-functors]{representable
 functor}. The reason for this is that, to the first approximation, we
 can treat the category of Haskell types as the category of sets.
 
-When the right category \emph{D} is \textbf{Set}, the right adjoint
-\code{R} is a functor from \emph{C} to \textbf{Set}. Such a functor is
+When the right category \emph{D} is $\Set$, the right adjoint
+\code{R} is a functor from \emph{C} to $\Set$. Such a functor is
 representable if we can find an object \code{rep} in \emph{C} such
 that the hom-functor \code{C(rep, \_)} is naturally isomorphic to
 \code{R}. It turns out that, if \code{R} is the right adjoint of
-some functor \code{L} from \textbf{Set} to \emph{C}, such an object
+some functor \code{L} from $\Set$ to \emph{C}, such an object
 always exists --- it's the image of the singleton set \code{()} under
 \code{L}:
 

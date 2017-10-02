@@ -210,7 +210,7 @@ transformation? It most certainly does!
 But what are the functors that are related by this transformation?
 
 One functor is the mapping of \code{c} to the set
-\code{C(c, Lim D)}. It's a functor from \mathtext{C} to \textbf{Set} ---
+\code{C(c, Lim D)}. It's a functor from \mathtext{C} to $\Set$ ---
 it maps objects to sets. In fact it's a contravariant functor. Here's
 how we define its action on morphisms: Let's take a morphism \code{f}
 from \code{c'} to \code{c}:
@@ -311,13 +311,13 @@ natural transformations, component-wise. This mapping defines
 c -> Nat(\ensuremath{\Delta_c}, D)
 \end{Verbatim}
 What I have just done is to show you that we have two (contravariant)
-functors from \mathtext{C} to \textbf{Set}. I haven't made any assumptions
+functors from \mathtext{C} to $\Set$. I haven't made any assumptions
 --- these functors always exist.
 
 Incidentally, the first of these functors plays an important role in
 category theory, and we'll see it again when we talk about Yoneda's
 lemma. There is a name for contravariant functors from any category
-\mathtext{C} to \textbf{Set}: they are called ``presheaves''. This one is
+\mathtext{C} to $\Set$: they are called ``presheaves''. This one is
 called a \newterm{representable presheaf}. The second functor is also a
 presheaf.
 
@@ -337,7 +337,7 @@ an invertible morphism.
 I'm not going to go through the proof of this statement. The procedure
 is pretty straightforward if not tedious. When dealing with natural
 transformations, you usually focus on components, which are morphisms.
-In this case, since the target of both functors is \textbf{Set}, the
+In this case, since the target of both functors is $\Set$, the
 components of the natural isomorphism will be functions. These are
 higher order functions, because they go from the hom-set to the set of
 natural transformations. Again, you can analyze a function by
@@ -409,7 +409,7 @@ picture. So we are left with just one condition:
 f . p = g . p
 \end{Verbatim}
 The way to think about it is that, if we restrict our attention to
-\textbf{Set}, the image of the function \code{p} selects a subset of
+$\Set$, the image of the function \code{p} selects a subset of
 \code{a}. When restricted to this subset, the functions \code{f} and
 \code{g} are equal.
 
@@ -680,7 +680,7 @@ C\textsuperscript{op} \times C -> Set
 \end{Verbatim}
 When its second argument is fixed, the hom-set functor (which becomes
 the representable presheaf) maps colimits in \mathtext{C} to limits in
-\textbf{Set}; and when its first argument is fixed, it maps limits to
+$\Set$; and when its first argument is fixed, it maps limits to
 limits.
 
 In Haskell, a hom-functor is the mapping of any two types to a function
