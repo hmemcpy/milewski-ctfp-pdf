@@ -9,14 +9,14 @@ type is different from other types.
 
 Take \code{Integer}, for instance: It's just a set of integers.
 \code{Bool} is a two element set. But a function type
-\code{a->b} is more than that: it's a set of morphisms
-between objects \code{a} and \code{b}. A set of morphisms between
+$a\to b$ is more than that: it's a set of morphisms
+between objects $a$ and $b$. A set of morphisms between
 two objects in any category is called a hom-set. It just so happens that
 in the category $\Set$ every hom-set is itself an object in the
-same category ---because it is, after all, a \newterm{set}.
+same category ---because it is, after all, a \emph{set}.
 
 The same is not true of other categories where hom-sets are external to
-a category. They are even called \newterm{external} hom-sets.
+a category. They are even called \emph{external} hom-sets.
 
 \pagebreak
 \begin{wrapfigure}[11]{R}{0pt}
@@ -51,38 +51,37 @@ result type.
 
 The obvious pattern that connects these three types is called
 \newterm{function application} or \newterm{evaluation}. Given a candidate for
-a function type, let's call it \code{z} (notice that, if we are not in
+a function type, let's call it $z$ (notice that, if we are not in
 the category $\Set$, this is just an object like any other
-object), and the argument type \code{a} (an object), the application
-maps this pair to the result type \code{b} (an object). We have three
+object), and the argument type $a$ (an object), the application
+maps this pair to the result type $b$ (an object). We have three
 objects, two of them fixed (the ones representing the argument type and
 the result type).
 
 We also have the application, which is a mapping. How do we incorporate
 this mapping into our pattern? If we were allowed to look inside
-objects, we could pair a function \code{f} (an element of \code{z})
-with an argument \code{x} (an element of \code{a}) and map it to
-\code{f\ x} (the application of \code{f} to \code{x}, which is an
-element of \code{b}).
+objects, we could pair a function $f$ (an element of $z$)
+with an argument $x$ (an element of $a$) and map it to
+$f x$ (the application of $f$ to $x$, which is an
+element of $b$).
 
 \begin{figure}
 \centering
 \fbox{\includegraphics[width=60mm]{images/functionset.jpg}}
-\caption{In Set we can pick a function f from a set of functions z and we can
-pick an argument x from the set (type) a. We get an element f x in the
-set (type) b.}
+\caption{In Set we can pick a function $f$ from a set of functions $z$ and we can
+pick an argument $x$ from the set (type) $a$. We get an element $f x$ in the
+set (type) $b$.}
 \end{figure}
 
-But instead of dealing with individual pairs \code{(f,\ x)}, we can as
-well talk about the whole \newterm{product} of the function type \code{z}
-and the argument type \code{a}. The product \code{z×a} is an object,
-and we can pick, as our application morphism, an arrow \code{g} from
-that object to \code{b}. In $\Set$, \code{g} would be the
-function that maps every pair \code{(f,\ x)} to \code{f\ x}.
+But instead of dealing with individual pairs $(f, x)$, we can as
+well talk about the whole \emph{product} of the function type $z$
+and the argument type $a$. The product $z\times{}a$ is an object,
+and we can pick, as our application morphism, an arrow $g$ from
+that object to $b$. In $\Set$, $g$ would be the
+function that maps every pair $(f, x)$ to $f x$.
 
-So that's the pattern: a product of two objects \code{z} and
-\code{a} connected to another object \code{b} by a morphism
-\code{g}.
+So that's the pattern: a product of two objects $z$ and
+$a$ connected to another object $b$ by a morphism $g$.
 
 \begin{figure}
 \centering
@@ -104,18 +103,18 @@ Let's review the universal construction. We start with a pattern of
 objects and morphisms. That's our imprecise query, and it usually yields
 lots and lots of hits. In particular, in $\Set$, pretty much
 everything is connected to everything. We can take any object
-\code{z}, form its product with \code{a}, and there's going to be a
-function from it to \code{b} (except when \code{b} is an empty set).
+$z$, form its product with $a$, and there's going to be a
+function from it to $b$ (except when $b$ is an empty set).
 
 That's when we apply our secret weapon: ranking. This is usually done by
 requiring that there be a unique mapping between candidate objects --- a
 mapping that somehow factorizes our construction. In our case, we'll
-decree that \code{z} together with the morphism \code{g} from
-\code{z×a} to \code{b} is \emph{better} than some other
-\code{z'} with its own application \code{g'}, if and
-only if there is a unique mapping \code{h} from \code{z'} to
-\code{z} such that the application of \code{g'} factors
-through the application of \code{g}. (Hint: Read this sentence while
+decree that $z$ together with the morphism $g$ from
+$z\times a$ to $b$ is \emph{better} than some other
+$z'$ with its own application $g'$, if and
+only if there is a unique mapping $h$ from $z'$ to
+$z$ such that the application of $g'$ factors
+through the application of $g$. (Hint: Read this sentence while
 looking at the picture.)
 
 \begin{figure}
@@ -126,10 +125,10 @@ looking at the picture.)
 
 Now here's the tricky part, and the main reason I postponed this
 particular universal construction till now. Given the morphism\\
-\code{h :: z'-> z}, we want to close the diagram
-that has both \code{z'} and \code{z} crossed with \code{a}.
-What we really need, given the mapping \code{h} from \code{z'}
-to \code{z}, is a mapping from \code{z'×a} to \code{z×a}.
+$h \Colon z'\to z$, we want to close the diagram
+that has both $z'$ and $z$ crossed with $a$.
+What we really need, given the mapping $h$ from $z'$
+to $z$, is a mapping from $z'\times a$ to $z\times a$.
 And now, after discussing the \hyperref[functoriality]{functoriality
 of the product}, we know how to do it. Because the product itself is a
 functor (more precisely an endo-bi-functor), it's possible to lift pairs
@@ -137,34 +136,31 @@ of morphisms. In other words, we can define not only products of objects
 but also products of morphisms.
 
 Since we are not touching the second component of the product
-\code{z'×a}, we will lift the pair of morphisms
-\code{(h, id)}, where \code{id} is an identity on \code{a}.
+$z'\times a$, we will lift the pair of morphisms
+$(h, \id)$, where $\id$ is an identity on $a$.
 
-So, here's how we can factor one application, \code{g}, out of another
-application \code{g'}:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-g' = g ◦ (h × id)
-\end{Verbatim}
+So, here's how we can factor one application, $g$, out of another
+application $g'$:
+\[g' = g \circ (h \times \id)\]
 The key here is the action of the product on morphisms.
 
 The third part of the universal construction is selecting the object
-that is universally the best. Let's call this object \code{a\ensuremath{\Rightarrow}b} (think
+that is universally the best. Let's call this object $a{\Rightarrow} b$ (think
 of this as a symbolic name for one object, not to be confused with a
 Haskell typeclass constraint --- I'll discuss different ways of naming
 it later). This object comes with its own application --- a morphism
-from \code{(a\ensuremath{\Rightarrow}b)×a} to \code{b} --- which we will call
-\code{eval}. The object \code{a\ensuremath{\Rightarrow}b} is the best if any other
+from $(a{\Rightarrow}b)\stimes a$ to $b$ --- which we will call
+$eval$ The object \code{$a{\Rightarrow}b$} is the best if any other
 candidate for a function object can be uniquely mapped to it in such a
-way that its application morphism \code{g} factorizes through
-\code{eval}. This object is better than any other object according to
+way that its application morphism $g$ factorizes through
+$eval$. This object is better than any other object according to
 our ranking.
 
 \begin{figure}[H]
 \centering
 \fbox{\includegraphics{images/universalfunctionobject.jpg}}
 \caption{The definition of the universal function object. This is the same
-diagram as above, but now the object \code{a\ensuremath{\Rightarrow}b} is \newterm{universal}.}
+diagram as above, but now the object $a{\Rightarrow}b$ is \emph{universal}.}
 \end{figure}
 
 \noindent
@@ -173,98 +169,73 @@ Formally:
 \begin{longtable}[]{@{}l@{}}
 \toprule
 \begin{minipage}[t]{0.97\columnwidth}\raggedright\strut
-A \textbf{function object} from \code{a} to \code{b} is an object
-\code{a\ensuremath{\Rightarrow}b} together with the morphism
-
-\begin{minted}[escapeinside=||,mathescape=true]{text}
-eval :: ((a|\ensuremath{\Rightarrow}|b) × a) -> b
-\end{minted}
-such that for any other object \code{z} with a morphism
-
-\begin{Verbatim}[commandchars=\\\{\}]
-g :: z × a -> b
-\end{Verbatim}
+A \emph{function object} from $a$ to $b$ is an object
+$a{\Rightarrow}b$ together with the morphism
+\[eval \Colon ((a \Rightarrow b) \times a) \to b\]
+such that for any other object $z$ with a morphism
+\[g \Colon z \times a \to b\]
 there is a unique morphism
-
-\begin{minted}[escapeinside=||,mathescape=true]{text}
-h :: z -> (a|\ensuremath{\Rightarrow}|b)
-\end{minted}
-that factors \code{g} through \code{eval}:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-g = eval ◦ (h × id)
-\end{Verbatim}
-\strut
+\[h \Colon z \to (a \Rightarrow b)\]
+that factors $g$ through $eval$:
+\[g = eval \circ (h \times \id)\]
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
 \noindent
-Of course, there is no guarantee that such an object \code{a\ensuremath{\Rightarrow}b} exists
-for any pair of objects \code{a} and \code{b} in a given category.
+Of course, there is no guarantee that such an object $a{\Rightarrow} b$ exists
+for any pair of objects $a$ and $b$ in a given category.
 But it always does in $\Set$. Moreover, in $\Set$, this
-object is isomorphic to the hom-set \emph{Set(a, b)}.
+object is isomorphic to the hom-set $\Set(a, b)$.
 
 This is why, in Haskell, we interpret the function type
-\code{a->b} as the categorical function object
-\code{a\ensuremath{\Rightarrow}b}.
+\code{a -> b} as the categorical function object $a{\Rightarrow} b$.
 
 \section{Currying}\label{currying}
 
 Let's have a second look at all the candidates for the function object.
-This time, however, let's think of the morphism \code{g} as a function
-of two variables, \code{z} and \code{a}.
-
-\begin{Verbatim}[commandchars=\\\{\}]
-g :: z × a -> b
-\end{Verbatim}
+This time, however, let's think of the morphism $g$ as a function
+of two variables, $z$ and $a$.
+\[g \Colon z \times a \to b\]
 Being a morphism from a product comes as close as it gets to being a
-function of two variables. In particular, in $\Set$, \code{g} is
-a function from pairs of values, one from the set \code{z} and one
-from the set \code{a}.
+function of two variables. In particular, in $\Set$, $g$ is
+a function from pairs of values, one from the set $z$ and one
+from the set $a$.
 
 On the other hand, the universal property tells us that for each such
-\code{g} there is a unique morphism \code{h} that maps \code{z} to
-a function object \code{a\ensuremath{\Rightarrow}b}.
-
-\begin{Verbatim}[commandchars=\\\{\}]
-h :: z -> (a⇒b)
-\end{Verbatim}
-In $\Set$, this just means that \code{h} is a function that
-takes one variable of type \code{z} and returns a function from
-\code{a} to \code{b}. That makes \code{h} a higher order function.
+$g$ there is a unique morphism $h$ that maps $z$ to
+a function object $a{\Rightarrow} b$.
+\[h \Colon z \to (a \Rightarrow b)\]
+In $\Set$, this just means that $h$ is a function that
+takes one variable of type $z$ and returns a function from
+$a$ to $b$. That makes $h$ a higher order function.
 Therefore the universal construction establishes a one-to-one
 correspondence between functions of two variables and functions of one
 variable returning functions. This correspondence is called
-\newterm{currying}, and \code{h} is called the curried version of
-\code{g}.
+\newterm{currying}, and $h$ is called the curried version of $g$.
 
-This correspondence is one-to-one, because given any \code{g} there is
-a unique \code{h}, and given any \code{h} you can always recreate
-the two-argument function \code{g} using the formula:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-g = eval ◦ (h × id)
-\end{Verbatim}
-The function \code{g} can be called the \newterm{uncurried} version of
-\code{h}.
+This correspondence is one-to-one, because given any $g$ there is
+a unique $h$, and given any $h$ you can always recreate
+the two-argument function $g$ using the formula:
+\[g = eval \circ (h \times \id)\]
+The function $g$ can be called the \emph{uncurried} version of $h$.
 
 Currying is essentially built into the syntax of Haskell. A function
 returning a function:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 a -> (b -> c)
 \end{Verbatim}
 is often thought of as a function of two variables. That's how we read
 the un-parenthesized signature:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 a -> b -> c
 \end{Verbatim}
 This interpretation is apparent in the way we define multi-argument
 functions. For instance:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 catstr :: String -> String -> String
 catstr s s' = s ++ s'
 \end{Verbatim}
@@ -277,27 +248,27 @@ catstr' s = \s' -> s ++ s'
 These two definitions are equivalent, and either can be partially
 applied to just one argument, producing a one-argument function, as in:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 greet :: String -> String
 greet = catstr "Hello "
 \end{Verbatim}
 Strictly speaking, a function of two variables is one that takes a pair
 (a product type):
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 (a, b) -> c
 \end{Verbatim}
 It's trivial to convert between the two representations, and the two
 (higher-order) functions that do it are called, unsurprisingly,
 \code{curry} and \code{uncurry}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 curry :: ((a, b)->c) -> (a->b->c)
 curry f a b = f (a, b)
 \end{Verbatim}
 and
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 uncurry :: (a->b->c) -> ((a, b)->c)
 uncurry f (a, b) = f a b
 \end{Verbatim}
@@ -348,8 +319,8 @@ part of a library writer.
 \section{Exponentials}\label{exponentials}
 
 In mathematical literature, the function object, or the internal
-hom-object between two objects \code{a} and \code{b}, is often
-called the \newterm{exponential} and denoted by \code{ba}. Notice that
+hom-object between two objects $a$ and $b$, is often
+called the \newterm{exponential} and denoted by $b^{a}$. Notice that
 the argument type is in the exponent. This notation might seem strange
 at first, but it makes perfect sense if you think of the relationship
 between functions and products. We've already seen that we have to use
@@ -368,12 +339,12 @@ For instance a (pure) function from \code{Bool} is completely
 specified by a pair of values: one corresponding to \code{False}, and
 one corresponding to \code{True}. The set of all possible functions
 from \code{Bool} to, say, \code{Int} is the set of all pairs of
-\code{Int}s. This is the same as the product \code{Int × Int} or,
-being a little creative with notation, \code{Int2}.
+\code{Int}s. This is the same as the product $Int \times Int$ or,
+being a little creative with notation, $Int^{2}$.
 
 For another example, let's look at the C++ type \code{char}, which
 contains 256 values (Haskell \code{Char} is larger, because Haskell
-uses Unicode). There are several functions in the \code{} part of the
+uses Unicode). There are several functions in the part of the
 C++ Standard Library that are usually implemented using lookups.
 Functions like \code{isupper} or \code{isspace} are implemented
 using tables, which are equivalent to tuples of 256 Boolean values. A
@@ -381,14 +352,14 @@ tuple is a product type, so we are dealing with products of 256
 Booleans: \code{bool × bool × bool × ... × bool}. We know from
 arithmetics that an iterated product defines a power. If you
 ``multiply'' \code{bool} by itself 256 (or \code{char}) times, you
-get \code{bool} to the power of \code{char}, or \code{boolchar}.
+get \code{bool} to the power of \code{char}, or \code{bool\textsuperscript{char}}.
 
 How many values are there in the type defined as 256-tuples of
-\code{bool}? Exactly 2\textsuperscript{256}. This is also the number
+\code{bool}? Exactly $2^{256}$. This is also the number
 of different functions from \code{char} to \code{bool}, each
 function corresponding to a unique 256-tuple. You can similarly
 calculate that the number of functions from \code{bool} to
-\code{char} is 256\textsuperscript{2}, and so on. The exponential
+\code{char} is $256^{2}$, and so on. The exponential
 notation for function types makes perfect sense in these cases.
 
 We probably wouldn't want to fully memoize a function from \code{int}
@@ -436,11 +407,10 @@ programming languages.
 The terminal object and the product have their duals: the initial object
 and the coproduct. A cartesian closed category that also supports those
 two, and in which product can be distributed over coproduct
-
-\begin{Verbatim}[commandchars=\\\{\}]
-a × (b + c) = a × b + a × c
-(b + c) × a = b × a + c × a
-\end{Verbatim}
+\begin{gather*}
+a \times (b + c) = a \times b + a \times c \\
+(b + c) \times a = b \times a + c \times a
+\end{gather*}
 is called a \newterm{bicartesian closed} category. We'll see in the next
 section that bicartesian closed categories, of which $\Set$ is a
 prime example, have some interesting properties.
@@ -459,15 +429,13 @@ here nevertheless as a source of valuable intuitions.
 
 \subsection{Zeroth Power}\label{zeroth-power}
 
-\begin{Verbatim}[commandchars=\\\{\}]
-a\textsuperscript{0} = 1
-\end{Verbatim}
+\[a^{0} = 1\]
 In the categorical interpretation, we replace 0 with the initial object,
 1 with the final object, and equality with isomorphism. The exponential
 is the internal hom-object. This particular exponential represents the
 set of morphisms going from the initial object to an arbitrary object
-\code{a}. By the definition of the initial object, there is exactly
-one such morphism, so the hom-set \emph{C(0, a)} is a singleton set. A
+$a$. By the definition of the initial object, there is exactly
+one such morphism, so the hom-set $\cat{C}(0, a)$ is a singleton set. A
 singleton set is the terminal object in $\Set$, so this identity
 trivially works in $\Set$. What we are saying is that it works in
 any bicartesian closed category.
@@ -476,7 +444,7 @@ In Haskell, we replace 0 with \code{Void}; 1 with the unit type
 \code{()}; and the exponential with function type. The claim is that
 the set of functions from \code{Void} to any type \code{a} is
 equivalent to the unit type --- which is a singleton. In other words,
-there is only one function \code{Void->a}. We've seen
+there is only one function \code{Void -> a}. We've seen
 this function before: it's called \code{absurd}.
 
 This is a little bit tricky, for two reasons. One is that in Haskell we
@@ -489,12 +457,10 @@ never ending calculation, it will never return!)
 
 \subsection{Powers of One}\label{powers-of-one}
 
-\begin{Verbatim}[commandchars=\\\{\}]
-1\textsuperscript{a} = 1
-\end{Verbatim}
+\[1^{a} = 1\]
 This identity, when interpreted in $\Set$, restates the definition
 of the terminal object: There is a unique morphism from any object to
-the terminal object. In general, the internal hom-object from \code{a}
+the terminal object. In general, the internal hom-object from $a$
 to the terminal object is isomorphic to the terminal object itself.
 
 In Haskell, there is only one function from any type \code{a} to unit.
@@ -504,21 +470,17 @@ also think of it as the function \code{const} partially applied to
 
 \subsection{First Power}\label{first-power}
 
-\begin{Verbatim}[commandchars=\\\{\}]
-a\textsuperscript{1} = a
-\end{Verbatim}
+\[a^{1} = a\]
 This is a restatement of the observation that morphisms from the
 terminal object can be used to pick ``elements'' of the object
 \code{a}. The set of such morphisms is isomorphic to the object
 itself. In $\Set$, and in Haskell, the isomorphism is between
 elements of the set \code{a} and functions that pick those elements,
-\code{()->a}.
+\code{() -> a}.
 
 \subsection{Exponentials of Sums}\label{exponentials-of-sums}
 
-\begin{Verbatim}[commandchars=\\\{\}]
-a\textsuperscript{b+c} = a\textsuperscript{b} × a\textsuperscript{c}
-\end{Verbatim}
+\[a^{b+c} = a^{b} \times a^{c}\]
 Categorically, this says that the exponential from a coproduct of two
 objects is isomorphic to a product of two exponentials. In Haskell, this
 algebraic identity has a very practical, interpretation. It tells us
@@ -530,24 +492,24 @@ definition with a \code{case} statement, we usually split it into two
 instance, take a function from the sum type
 \code{(Either Int Double)}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 f :: Either Int Double -> String
 \end{Verbatim}
 It may be defined as a pair of functions from, respectively,
 \code{Int} and \code{Double}:
 
-\begin{minted}[breaklines, breakbefore=Positive]{text}
-f (Left n) = if n < 0 then "Negative int" else "Positive int"
-f (Right x) = if x < 0.0 then "Negative double" else "Positive double"
+\begin{minted}[breaklines]{text}
+f (Left n) = if n < 0 then "Negative int" 
+                      else "Positive int"
+f (Right x) = if x < 0.0 then "Negative double"
+                         else "Positive double"
 \end{minted}
 Here, \code{n} is an \code{Int} and \code{x} is a \code{Double}.
 
 \subsection{Exponentials of
 Exponentials}\label{exponentials-of-exponentials}
 
-\begin{Verbatim}[commandchars=\\\{\}]
-(a\textsuperscript{b})\textsuperscript{c} = a\textsuperscript{b×c}
-\end{Verbatim}
+\[(a^{b})^{c} = a^{b \times c}\]
 This is just a way of expressing currying purely in terms of exponential
 objects. A function returning a function is equivalent to a function
 from a product (a two-argument function).
@@ -555,9 +517,7 @@ from a product (a two-argument function).
 \subsection{Exponentials over
 Products}\label{exponentials-over-products}
 
-\begin{Verbatim}[commandchars=\\\{\}]
-(a × b)\textsuperscript{c} = a\textsuperscript{c} × b\textsuperscript{c}
-\end{Verbatim}
+\[(a \times b)^{c} = a^{c} \times b^{c}\]
 In Haskell: A function returning a pair is equivalent to a pair of
 functions, each producing one element of the pair.
 
@@ -587,30 +547,26 @@ proving theorems. Let's see a few examples.
 Let's take the function \code{eval} we have introduced in the
 definition of the function object. Its signature is:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 eval :: ((a -> b), a) -> b
 \end{Verbatim}
 It takes a pair consisting of a function and its argument and produces a
 result of the appropriate type. It's the Haskell implementation of the
 morphism:
 
-\begin{Verbatim}[commandchars=\\\{\}]
-eval :: (a\ensuremath{\Rightarrow}b) × a -> b
-\end{Verbatim}
-which defines the function type \code{a\ensuremath{\Rightarrow}b} (or the exponential object
-\code{ba}). Let's translate this signature to a logical predicate
+\[eval \Colon (a \Rightarrow b) \times a \to b\]
+which defines the function type $a \Rightarrow b$ (or the exponential object
+$b^{a}$). Let's translate this signature to a logical predicate
 using the Curry-Howard isomorphism:
 
-\begin{Verbatim}[commandchars=\\\{\}]
-((a \ensuremath{\Rightarrow} b) \ensuremath{\wedge} a) \ensuremath{\Rightarrow} b
-\end{Verbatim}
-Here's how you can read this statement: If it's true that \code{b}
-follows from \code{a}, and \code{a} is true, then \code{b} must be
+\[((a \Rightarrow b) \wedge a) \Rightarrow b\]
+Here's how you can read this statement: If it's true that $b$
+follows from $a$, and $a$ is true, then $b$ must be
 true. This makes perfect intuitive sense and has been known since
 antiquity as \newterm{modus ponens}. We can prove this theorem by
 implementing the function:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 eval :: ((a -> b), a) -> b
 eval (f, x) = f x
 \end{Verbatim}
@@ -623,18 +579,16 @@ this function I have just shown that the type
 Therefore \newterm{modus ponens} is true in our logic.
 
 How about a predicate that is blatantly false? For instance: if
-\code{a} or \code{b} is true then \code{a} must be true.
+$a$ or $b$ is true then $a$ must be true.
 
-\begin{Verbatim}[commandchars=\\\{\}]
-a \ensuremath{\vee} b \ensuremath{\Rightarrow} a
-\end{Verbatim}
-This is obviously wrong because you can chose an \code{a} that is
-false and a \code{b} that is true, and that's a counter-example.
+\[a \vee b \Rightarrow a\]
+This is obviously wrong because you can chose an $a$ that is
+false and a $b$ that is true, and that's a counter-example.
 
 Mapping this predicate into a function signature using the Curry-Howard
 isomorphism, we get:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 Either a b -> a
 \end{Verbatim}
 Try as you may, you can't implement this function --- you can't produce
@@ -643,23 +597,21 @@ value. (Remember, we are talking about \emph{pure} functions.)
 
 Finally, we come to the meaning of the \code{absurd} function:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 absurd :: Void -> a
 \end{Verbatim}
 Considering that \code{Void} translates into false, we get:
 
-\begin{Verbatim}[commandchars=\\\{\}]
-false \ensuremath{\Rightarrow} a
-\end{Verbatim}
+\[false \Rightarrow a\]
 Anything follows from falsehood (\emph{ex falso quodlibet}). Here's one
 possible proof (implementation) of this statement (function) in Haskell:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 absurd (Void a) = absurd a
 \end{Verbatim}
 where \code{Void} is defined as:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 newtype Void = Void Void
 \end{Verbatim}
 As always, the type \code{Void} is tricky. This definition makes it

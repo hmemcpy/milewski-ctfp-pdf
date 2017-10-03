@@ -415,11 +415,11 @@ To create a pair you need two values. Although you can easily come up
 with an integer, there is no value of type \code{Void}. Therefore, for
 any type \code{a}, the type \code{(a, Void)} is uninhabited --- has
 no values --- and is therefore equivalent to \code{Void}. In other
-words, $a \cdot 0 = 0$.
+words, $a \times 0 = 0$.
 
 Another thing that links addition and multiplication is the distributive
 property:
-\[a \cdot (b + c) = a \cdot b + a \cdot c\]
+\[a \times (b + c) = a \times b + a \times c\]
 Does it also hold for product and sum types? Yes, it does --- up to
 isomorphisms, as usual. The left hand side corresponds to the type:
 
@@ -486,7 +486,7 @@ Numbers & Types\tabularnewline
 $0$ & \code{Void}\tabularnewline
 $1$ & \code{()}\tabularnewline
 $a + b$ & \code{Either a b = Left a | Right b}\tabularnewline
-$a \cdot b$ & \code{(a, b)} or \code{Pair a b = Pair a b}\tabularnewline
+$a \times b$ & \code{(a, b)} or \code{Pair a b = Pair a b}\tabularnewline
 $2 = 1 + 1$ & \code{data Bool = True | False}\tabularnewline
 $1 + a$ & \code{data Maybe = Nothing | Just a}\tabularnewline
 \bottomrule
@@ -601,7 +601,7 @@ circ (Rect d h) = 2.0 * (d + h)
   have to touch in Haskell vs. C++ or Java? (Even if you're not a
   Haskell programmer, the modifications should be pretty obvious.)
 \item
-  Show that $a + a = 2 \cdot a$ holds for types (up to
+  Show that $a + a = 2 \times a$ holds for types (up to
   isomorphism). Remember that $2$ corresponds to \code{Bool},
   according to our translation table.
 \end{enumerate}
