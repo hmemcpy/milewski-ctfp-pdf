@@ -7,22 +7,22 @@ the computer what to do, or by telling it how to do it. One is called
 declarative and the other imperative.
 
 You can see this even at the most basic level. Composition itself may be
-defined declaratively; as in, \code{h} is a composite of \code{g}
-after \code{f}:
+defined declaratively; as in, $h$ is a composite of $g$
+after $f$:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 h = g . f
 \end{Verbatim}
-or imperatively; as in, call \code{f} first, remember the result of
-that call, then call \code{g} with the result:
+or imperatively; as in, call $f$ first, remember the result of
+that call, then call $g$ with the result:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 h x = let y = f x 
       in g y
 \end{Verbatim}
 The imperative version of a program is usually described as a sequence
-of actions ordered in time. In particular, the call to \code{g} cannot
-happen before the execution of \code{f} completes. At least, that's
+of actions ordered in time. In particular, the call to $g$ cannot
+happen before the execution of $f$ completes. At least, that's
 the conceptual picture --- in a lazy language, with \emph{call-by-need}
 argument passing, the actual execution may proceed differently.
 
@@ -107,7 +107,7 @@ of refraction:
 \end{equation}
 
 \noindent
-where \ensuremath{v_1} is the speed of light in the air and \ensuremath{v_2} is
+where $v_1$ is the speed of light in the air and $v_2$ is
 the speed of light in the water.
 
 \begin{figure}[H]
@@ -171,9 +171,9 @@ shared mutable state, FRP treats external events as an infinite list,
 and applies a series of transformations to it. Conceptually, the list of
 all our future actions is there, available as the input data to our
 program. From a program's perspective there's no difference between the
-list of digits of \ensuremath{\pi}, a list of pseudo-random numbers, or a list of mouse
+list of digits of $\pi$, a list of pseudo-random numbers, or a list of mouse
 positions coming through computer hardware. In each case, if you want to
-get the nth item, you have to first go through the first \ensuremath{n-1} items. When
+get the nth item, you have to first go through the first $n-1$ items. When
 applied to temporal events, we call this property \emph{causality}.
 
 So what does it have to do with category theory? I will argue that
