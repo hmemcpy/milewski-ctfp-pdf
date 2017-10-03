@@ -1,4 +1,4 @@
-\lettrine[lhang=0.17]{N}{ow that you} know what a functor is, and have seen a few examples, let's
+\lettrine[lhang=0.17]{N}{ow that you know} what a functor is, and have seen a few examples, let's
 see how we can build larger functors from smaller ones. In particular
 it's interesting to see which type constructors (which correspond to
 mappings between objects in a category) can be extended to functors
@@ -6,36 +6,33 @@ mappings between objects in a category) can be extended to functors
 
 \section{Bifunctors}\label{bifunctors}
 
-Since functors are morphisms in \newterm{Cat} (the category of categories),
+Since functors are morphisms in $\Cat$ (the category of categories),
 a lot of intuitions about morphisms --- and functions in particular ---
 apply to functors as well. For instance, just like you can have a
 function of two arguments, you can have a functor of two arguments, or a
 \newterm{bifunctor}. On objects, a bifunctor maps every pair of objects,
-one from category C, and one from category D, to an object in category
-E. Notice that this is just saying that it's a mapping from a
-\newterm{cartesian product} of categories C×D to E.
+one from category $\cat{C}$, and one from category $\cat{D}$, to an object in category
+$\cat{E}$. Notice that this is just saying that it's a mapping from a
+\newterm{cartesian product} of categories $\medmuskip=0mu \cat{C}\times{}\cat{D}$ to $\cat{E}$. % https://tex.stackexchange.com/questions/41913/how-to-get-less-spacing-in-math-mode
 
-\begin{figure}
-\centering
-\fbox{\includegraphics[width=70mm]{images/bifunctor.jpg}}
-\end{figure}
+\begin{wrapfigure}[11]{R}{0pt}
+\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
+\includegraphics[width=50mm]{images/bifunctor.jpg}}
+\end{wrapfigure}
 
 \noindent
 That's pretty straightforward. But functoriality means that a bifunctor
 has to map morphisms as well. This time, though, it must map a pair of
-morphisms, one from C and one from D, to a morphism in E.
+morphisms, one from $\cat{C}$ and one from $\cat{D}$, to a morphism in $\cat{E}$.
 
 Again, a pair of morphisms is just a single morphism in the product
-category C×D. We define a morphism in a cartesian product of categories
+category $\medmuskip=0mu \cat{C}\times{}\cat{D}$ to $\cat{E}$. We define a morphism in a cartesian product of categories
 as a pair of morphisms which goes from one pair of objects to another
 pair of objects. These pairs of morphisms can be composed in the obvious
 way:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-(f, g) ◦ (f', g') = (f ◦ f', g ◦ g')
-\end{Verbatim}
+\[(f, g) \circ (f', g') = (f \circ f', g \circ g')\]
 The composition is associative and it has an identity --- a pair of
-identity morphisms \emph{(id, id)}. So a cartesian product of categories
+identity morphisms $(\id, \id)$. So a cartesian product of categories
 is indeed a category.
 
 But an easier way to think about bifunctors is that they are functors in
@@ -54,7 +51,7 @@ constructor that takes two type arguments. Here's the definition of the
 \code{Bifunctor} typeclass taken directly from the library
 \code{Control.Bifunctor}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 class Bifunctor f where 
     bimap :: (a -> c) -> (b -> d) -> f a b -> f c d
     bimap g h = first g . second h
@@ -75,7 +72,7 @@ each argument separately to be able to define a bifunctor.
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=60mm]{images/bimap.jpg}}
+\fbox{\includegraphics[width=40mm]{images/bimap.jpg}}
 \caption{bimap}
 \end{figure}
 
@@ -94,7 +91,7 @@ first\strut
 \hypertarget{attachment_4072}{}
 \includegraphics[width=1.56250in]{images/second.jpg}
 
-second\strut
+~second\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
@@ -120,7 +117,7 @@ mapping from those objects to the product is bifunctorial. This is true
 in general, and in Haskell in particular. Here's the \code{Bifunctor}
 instance for a pair constructor --- the simplest product type:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 instance Bifunctor (,) where 
     bimap f g (x, y) = (f x, g y)
 \end{Verbatim}
@@ -129,13 +126,13 @@ function to the first component, and the second function to the second
 component of a pair. The code pretty much writes itself, given the
 types:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 bimap :: (a -> c) -> (b -> d) -> (a, b) -> (c, d)
 \end{Verbatim}
 The action of the bifunctor here is to make pairs of types, for
 instance:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 (,) a b = (a, b)
 \end{Verbatim}
 By duality, a coproduct, if it's defined for every pair of objects in a
@@ -143,7 +140,7 @@ category, is also a bifunctor. In Haskell, this is exemplified by the
 \code{Either} type constructor being an instance of
 \code{Bifunctor}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 instance Bifunctor Either where
     bimap f _ (Left x) = Left (f x)
     bimap _ g (Right y) = Right (g y)
@@ -152,7 +149,7 @@ This code also writes itself.
 
 Now, remember when we talked about monoidal categories? A monoidal
 category defines a binary operator acting on objects, together with a
-unit object. I mentioned that \code{Set} is a monoidal category with
+unit object. I mentioned that $\Set$ is a monoidal category with
 respect to cartesian product, with the singleton set as a unit. And it's
 also a monoidal category with respect to disjoint union, with the empty
 set as a unit. What I haven't mentioned is that one of the requirements
@@ -169,11 +166,11 @@ Types}\label{functorial-algebraic-data-types}
 We've seen several examples of parameterized data types that turned out
 to be functors --- we were able to define \code{fmap} for them.
 Complex data types are constructed from simpler data types. In
-particular, algebraic data types (ADTs) are created using sums and
+particular, algebraic data types (\acronym{ADT}s) are created using sums and
 products. We have just seen that sums and products are functorial. We
 also know that functors compose. So if we can show that the basic
-building blocks of ADTs are functorial, we'll know that parameterized
-ADTs are functorial too.
+building blocks of \acronym{ADT}s are functorial, we'll know that parameterized
+\acronym{ADT}s are functorial too.
 
 So what are the building blocks of parameterized algebraic data types?
 First, there are the items that have no dependency on the type parameter
@@ -189,11 +186,11 @@ identity functor. I mentioned the identity functor previously, as the
 identity morphism in \emph{Cat}, but didn't give its definition in
 Haskell. Here it is:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data Identity a = Identity a
 \end{Verbatim}
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 instance Functor Identity where
     fmap f (Identity x) = Identity (f x)
 \end{Verbatim}
@@ -206,7 +203,7 @@ two primitives using products and sums.
 With this new knowledge, let's have a fresh look at the \code{Maybe}
 type constructor:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data Maybe a = Nothing | Just a
 \end{Verbatim}
 It's a sum of two types, and we now know that the sum is functorial. The
@@ -216,7 +213,7 @@ to unit --- later we'll see more interesting uses of \code{Const}).
 The second part is just a different name for the identity functor. We
 could have defined \code{Maybe}, up to isomorphism, as:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 type Maybe a = Either (Const () a) (Identity a)
 \end{Verbatim}
 So \code{Maybe} is the composition of the bifunctor \code{Either}
@@ -239,7 +236,7 @@ type variable each), and two regular types \code{a} and \code{b}. We
 apply \code{fu} to \code{a} and \code{gu} to \code{b}, and then
 apply \code{bf} to the resulting two types:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 newtype BiComp bf fu gu a b = BiComp (bf (fu a) (gu b))
 \end{Verbatim}
 That's the composition on objects, or types. Notice how in Haskell we
@@ -273,7 +270,7 @@ types and picks the correct overloaded functions whenever
 
 The \code{x} in the definition of \code{bimap} has the type:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 bf (fu a) (gu b)
 \end{Verbatim}
 which is quite a mouthful. The outer \code{bimap} breaks through the
@@ -281,14 +278,14 @@ outer \code{bf} layer, and the two \code{fmap}s dig under
 \code{fu} and \code{gu}, respectively. If the types of \code{f1}
 and \code{f2} are:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 f1 :: a -> a'
 f2 :: b -> b'
 \end{Verbatim}
 then the final result is of the type
 \code{bf (fu a') (gu b')}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 bimap (fu a -> fu a') -> (gu b -> gu b')
   -> bf (fu a) (gu b) -> bf (fu a') (gu b')
 \end{Verbatim}
@@ -305,12 +302,12 @@ can't it be automated and performed by the compiler? Indeed, it can, and
 it is. You need to enable a particular Haskell extension by including
 this line at the top of your source file:
 
-\begin{minted}{haskell}
+\begin{Verbatim}
 {-# LANGUAGE DeriveFunctor #-}
-\end{minted}
+\end{Verbatim}
 and then add \code{deriving Functor} to your data structure:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data Maybe a = Nothing | Just a deriving Functor
 \end{Verbatim}
 and the corresponding \code{fmap} will be implemented for you.
@@ -419,7 +416,7 @@ category} I described earlier. Morphisms in that category were
 represented as ``embellished'' functions returning the \code{Writer}
 data structure.
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 type Writer a = (a, String)
 \end{Verbatim}
 I said that the embellishment was somehow related to endofunctors. And,
@@ -441,7 +438,7 @@ m1 >=> m2 = \x ->
 \end{Verbatim}
 and the identity morphism by a function called \code{return}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 return :: a -> Writer a return x = (x, "")
 \end{Verbatim}
 It turns out that, if you look at the types of these two functions long
@@ -493,17 +490,17 @@ Now that we've reviewed the writer functor, let's go back to the reader
 functor. It was based on the partially applied function-arrow type
 constructor:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 (->) r
 \end{Verbatim}
 We can rewrite it as a type synonym:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 type Reader r a = r -> a
 \end{Verbatim}
 for which the \code{Functor} instance, as we've seen before, reads:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 instance Functor (Reader r) where
    fmap f g = f . g
 \end{Verbatim}
@@ -516,7 +513,7 @@ Let's try to make it functorial in the first argument. We'll start with
 a type synonym --- it's just like the \code{Reader} but with the
 arguments flipped:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 type Op r a = a -> r
 \end{Verbatim}
 This time we fix the return type, \code{r}, and vary the argument
@@ -524,7 +521,7 @@ type, \code{a}. Let's see if we can somehow match the types in order
 to implement \code{fmap}, which would have the following type
 signature:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 fmap :: (a -> b) -> (a -> r) -> (b -> r)
 \end{Verbatim}
 With just two functions taking \code{a} and returning, respectively,
@@ -534,33 +531,29 @@ could somehow invert the first function, so that it took \code{b} and
 returned \code{a} instead. We can't invert an arbitrary function, but
 we can go to the opposite category.
 
-A short recap: For every category \emph{C} there is a dual category
-\emph{C\textsuperscript{op}}. It's a category with the same objects as
-\emph{C}, but with all the arrows reversed.
+A short recap: For every category $\cat{C}$ there is a dual category
+$\cat{C}^{op}$. It's a category with the same objects as
+$\cat{C}$, but with all the arrows reversed.
 
-Consider a functor that goes between \emph{C\textsuperscript{op}} and
-some other category \emph{D}:\\
-\emph{F :: C\textsuperscript{op} \to\ D}\\
-Such a functor maps a morphism \emph{f\textsuperscript{op} :: a \to\ b} in
-\emph{C\textsuperscript{op}} to the morphism \emph{F
-f\textsuperscript{op} :: F a \to\ F b} in \emph{D}. But the morphism
-\emph{f\textsuperscript{op}} secretly corresponds to some morphism
-\emph{f :: b \to\ a} in the original category \emph{C}. Notice the
+Consider a functor that goes between $\cat{C}^{op}$ and
+some other category $\cat{D}$:
+\[F \Colon \cat{C}^{op} \to \cat{D}\]
+Such a functor maps a morphism $f^{op} \Colon a \to b$ in
+$\cat{C}^{op}$ to the morphism $F f^{op} \Colon F a \to F b$ in $\cat{D}$. But the morphism
+$f^{op}$ secretly corresponds to some morphism
+$f \Colon b \to a$ in the original category $\cat{C}$. Notice the
 inversion.
 
-Now, \emph{F} is a regular functor, but there is another mapping we can
-define based on \emph{F}, which is not a functor --- let's call it
-\emph{G}. It's a mapping from \emph{C} to \emph{D}. It maps objects the
-same way \emph{F} does, but when it comes to mapping morphisms, it
-reverses them. It takes a morphism \emph{f :: b \to\ a} in \emph{C}, maps
-it first to the opposite morphism \emph{f\textsuperscript{op} :: a \to\ b}
-and then uses the functor F on it, to get \emph{F f\textsuperscript{op}
-:: F a \to\ F b}.
+Now, $F$ is a regular functor, but there is another mapping we can
+define based on $F$, which is not a functor --- let's call it
+$G$. It's a mapping from $\cat{C}$ to $\cat{D}$. It maps objects the
+same way $F$ does, but when it comes to mapping morphisms, it
+reverses them. It takes a morphism $f \Colon b \to a$ in $\cat{C}$, maps
+it first to the opposite morphism $f^{op} \Colon a \to b$
+and then uses the functor $F$ on it, to get $F f^{op} \Colon F a \to F b$.
 
-Considering that \emph{F a} is the same as \emph{G a} and \emph{F b} is
-the same as \emph{G b}, the whole trip can be described as:\\
-\emph{G f :: (b → a) → (G a → G b)}
-
+Considering that $F a$ is the same as $G a$ and $F b$ is
+the same as $G b$, the whole trip can be described as: $G f \Colon (b \to a) \to (G a \to G b)$
 It's a ``functor with a twist.'' A mapping of categories that inverts
 the direction of morphisms in this manner is called a
 \emph{contravariant functor}. Notice that a contravariant functor is
@@ -597,13 +590,13 @@ terser, if you notice that it's just the function composition operator
 with the arguments flipped. There is a special function for flipping
 arguments, called \code{flip}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 flip :: (a -> b -> c) -> (b -> a -> c)
 flip f y x = f x y
 \end{Verbatim}
 With it, we get:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 contramap = flip (.)
 \end{Verbatim}
 
@@ -614,9 +607,8 @@ first argument and covariant in the second. Is there a name for such a
 beast? It turns out that, if the target category is $\Set$, such a
 beast is called a \newterm{profunctor}. Because a contravariant functor is
 equivalent to a covariant functor from the opposite category, a
-profunctor is defined as:\\
-\emph{C\textsuperscript{op} × D \to\ Set}
-
+profunctor is defined as:
+\[\cat{C}^{op} \times \cat{D} \to \Set\]
 Since, to first approximation, Haskell types are sets, we apply the name
 \code{Profunctor} to a type constructor \code{p} of two arguments,
 which is contra-functorial in the first argument and functorial in the
@@ -665,7 +657,7 @@ see them again when we talk about ends and coends.
 \item
   Show that the data type:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data Pair a b = Pair a b
 \end{Verbatim}
 
@@ -689,7 +681,7 @@ type Maybe' a = Either (Const () a) (Identity a)
   it's a precursor to a \code{List}. It replaces recursion with a type
   parameter \code{b}.
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data PreList a b = Nil | Cons a b
 \end{Verbatim}
 
@@ -702,15 +694,15 @@ data PreList a b = Nil | Cons a b
   Show that the following data types define bifunctors in \code{a} and
   \code{b}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data K2 c a b = K2 c
 \end{Verbatim}
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data Fst a b = Fst a
 \end{Verbatim}
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data Snd a b = Snd b
 \end{Verbatim}
 
