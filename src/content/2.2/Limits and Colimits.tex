@@ -1,4 +1,4 @@
-\lettrine[lhang=0.17]{I}{seems like} in category theory everything is related to everything and
+\lettrine[lhang=0.17]{I}{seems like in category theory} everything is related to everything and
 everything can be viewed from many angles. Take for instance the
 universal construction of the \hyperref[products-and-coproducts]{product}.
 Now that we know more about \hyperref[chap-functors]{functors} and
@@ -7,7 +7,7 @@ try.
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=1.56250in]{images/productpattern.jpg}}
+\includegraphics[width=1.56250in]{images/productpattern.jpg}
 \end{figure}
 
 \noindent
@@ -17,7 +17,7 @@ does it mean to \emph{select objects}? Can we rephrase this action in
 more categorical terms? Two objects form a pattern --- a very simple
 pattern. We can abstract this pattern into a category --- a very simple
 category, but a category nevertheless. It's a category that we'll call
-$2$. It contains just two objects, 1 and 2, and no morphisms
+$\cat{2}$. It contains just two objects, $1$ and $2$, and no morphisms
 other than the two obligatory identities. Now we can rephrase the
 selection of two objects in $\cat{C}$ as the act of defining a functor $D$
 from the category $\cat{2}$ to $\cat{C}$. A functor maps objects to
@@ -28,7 +28,7 @@ morphisms.
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=1.56250in]{images/two.jpg}}
+\includegraphics[width=1.56250in]{images/two.jpg}
 \end{figure}
 
 \noindent
@@ -94,7 +94,7 @@ cone. We use it to define the constant functor $\Delta_c$ from
 $\cat{I}$ to $\cat{C}$. A natural transformation from $\Delta_c$
 to $D$ is then our cone. For a finite $\cat{I}$ it's just a bunch of
 morphisms connecting $c$ to the diagram: the image of $\cat{I}$
-under $\cat{D}$.
+under $D$.
 
 \begin{figure}[H]
 \centering
@@ -113,7 +113,7 @@ triangle are the components of the natural transformation.
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=1.56250in]{images/conenaturality.jpg}}
+\includegraphics[width=1.56250in]{images/conenaturality.jpg}
 \end{figure}
 
 \noindent
@@ -140,8 +140,8 @@ q' = q . m
 \end{Verbatim}
 
 \begin{figure}[H]
-    \centering
-    \fbox{\includegraphics[width=1.56250in]{images/productranking.jpg}}
+\centering
+\includegraphics[width=1.56250in]{images/productranking.jpg}
 \end{figure}
 
 This condition translates, in the general case, to the condition that
@@ -149,10 +149,10 @@ the triangles whose one side is the factorizing morphism all commute.
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=2.48958in]{images/conecommutativity.jpg}}
+\includegraphics[width=2.48958in]{images/conecommutativity.jpg}
 \caption{The commuting triangle connecting two cones, with the factorizing
 morphism $h$ (here, the lower cone is the universal one, with
-$Lim D$ as its apex)}
+$\Lim[D]$ as its apex)}
 \end{figure}
 
 \noindent
@@ -166,9 +166,9 @@ the category of cones. The definition of the terminal object states that
 there is a unique morphism from any other object to that object. In our
 case it means that there is a unique factorizing morphism from the apex
 of any other cone to the apex of the universal cone. We call this
-universal cone the \emph{limit} of the diagram $D$, $Lim D$ (in
-the literature, you'll often see a left arrow pointing towards $\cat{I}$
-under the \mathtext{Lim} sign). Often, as a shorthand, we call the apex of
+universal cone the \emph{limit} of the diagram $D$, $\Lim[D]$ (in
+the literature, you'll often see a left arrow pointing towards $I$
+under the $\Lim$ sign). Often, as a shorthand, we call the apex of
 this cone the limit (or the limit object).
 
 The intuition is that the limit embodies the properties of the whole
@@ -190,57 +190,45 @@ fact, a category) of cones. If the limit exists (and --- let's make it
 clear --- there's no guarantee of that), one of those cones is the
 universal cone. For every other cone we have a unique factorizing
 morphism that maps its apex, let's call it $c$, to the apex of
-the universal cone, which we named $Lim D$. (In fact, I can skip
+the universal cone, which we named $\Lim[D]$. (In fact, I can skip
 the word ``other'', because the identity morphism maps the universal
 cone to itself and it trivially factorizes through itself.) Let me
 repeat the important part: given any cone, there is a unique morphism of
 a special kind. We have a mapping of cones to special morphisms, and
 it's a one-to-one mapping.
 
-This special morphism is a member of the hom-set $\cat{C}(c, LimD)$.
+This special morphism is a member of the hom-set $\cat{C}(c, \Lim[D])$.
 The other members of this hom-set are less fortunate, in the sense that
 they don't factorize the mapping of cones. What we want is to be able to
 pick, for each $c$, one morphism from the set
-$\cat{C}(c, LimD)$ --- a morphism that satisfies the particular
+$\cat{C}(c, \Lim[D])$ --- a morphism that satisfies the particular
 commutativity condition. Does that sound like defining a natural
 transformation? It most certainly does!
 
 But what are the functors that are related by this transformation?
 
 One functor is the mapping of $c$ to the set
-$\cat{C}(c, Lim D)$. It's a functor from $\cat{C}$ to $\Set$ ---
+$\cat{C}(c, \Lim[D])$. It's a functor from $\cat{C}$ to $\Set$ ---
 it maps objects to sets. In fact it's a contravariant functor. Here's
 how we define its action on morphisms: Let's take a morphism $f$
 from $c'$ to $c$:
-
-\begin{Verbatim}
-f :: c' -> c
-\end{Verbatim}
-
+\[f \Colon c' \to c\]
 Our functor maps $c'$ to the set
-$\cat{C}(c', Lim D)$. To define the action of this functor on
+$\cat{C}(c', \Lim[D])$. To define the action of this functor on
 $f$ (in other words, to lift $f$), we have to define the
-corresponding mapping between $\cat{C}(c, Lim D)$ and
-$\cat{C}(c', Lim D)$. So let's pick one element $u$ of
-$\cat{C}(c, Lim D)$ and see if we can map it to some element of
-$\cat{C}(c', Lim D)$. An element of a hom-set is a morphism, so
+corresponding mapping between $\cat{C}(c, \Lim[D])$ and
+$\cat{C}(c', \Lim[D])$. So let's pick one element $u$ of
+$\cat{C}(c, \Lim[D])$ and see if we can map it to some element of
+$\cat{C}(c', \Lim[D])$. An element of a hom-set is a morphism, so
 we have:
-
-\begin{Verbatim}
-u :: c -> Lim D
-\end{Verbatim}
-
+\[u \Colon c \to \Lim[D]\]
 We can precompose $u$ with $f$ to get:
-
-\begin{Verbatim}
-u . f :: c' -> Lim D
-\end{Verbatim}
-
-And that's an element of $\cat{C}(c', Lim D)$--- so indeed, we
+\[u . f \Colon c' \to \Lim[D]\]
+And that's an element of $\cat{C}(c', \Lim[D])$--- so indeed, we
 have found a mapping of morphisms:
 
 \begin{Verbatim}
-contramap :: (c' -> c) -> (c -> Lim D) -> (c' -> Lim D) 
+contramap :: (c' -> c) -> (c -> LimD) -> (c' -> LimD) 
 contramap f u = u . f
 \end{Verbatim}
 
@@ -260,65 +248,37 @@ at the set of natural transformations $Nat(\Delta_c, D)$. The mapping
 from \code{c} to this particular set of natural transformations is a
 (contravariant) functor. How can we show that? Again, let's define its
 action on a morphism:
-
-\begin{Verbatim}
-f :: c' -> c
-\end{Verbatim}
-
+\[f \Colon c' \to c\]
 The lifting of $f$ should be a mapping of natural transformations
 between two functors that go from $\cat{I}$ to $\cat{C}$:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-Nat(\ensuremath{\Delta_c}, D) -> Nat(\ensuremath{\Delta_{c'}}, D)
-\end{Verbatim}
-
+\[Nat(\Delta_c, D) \to Nat(\Delta_{c'}, D)\]
 How do we map natural transformations? Every natural transformation is a
 selection of morphisms --- its components --- one morphism per element
-of \mathtext{I}. A component of some $\alpha$ (a member of $Nat(\Delta_c, D)$) at
+of $\cat{I}$. A component of some $\alpha$ (a member of $Nat(\Delta_c, D)$) at
 $a$ (an object in $\cat{I}$) is a morphism:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-\ensuremath{\alpha_a}:: \ensuremath{\Delta_c a} -> D a
-\end{Verbatim}
-
+\[\alpha_a \Colon \Delta_c a \to D a\]
 or, using the definition of the constant functor $\Delta$,
-
-\begin{Verbatim}[commandchars=\\\{\}]
-\ensuremath{\alpha_a} :: c -> D a
-\end{Verbatim}
-
+\[\alpha_a \Colon c \to D a\]
 Given $f$ and $\alpha$, we have to construct a $\beta$, a member of
 $Nat(\Delta_{c'}, D)$. Its component at $a$ should be a
 morphism:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-\ensuremath{\beta_a} :: c' -> D a
-\end{Verbatim}
-
-We can easily get the latter from the former by precomposing it with
+\[\beta_a \Colon c' \to D a\]
+We can easily get the latter ($\beta_a$) from the former ($\alpha_a$) by precomposing it with
 $f$:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-\ensuremath{\beta_a} = \ensuremath{\alpha_a} . f
-\end{Verbatim}
-
+\[\beta_a = \alpha_a . f\]
 It's relatively easy to show that those components indeed add up to a
 natural transformation.
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=1.56250in]{images/natmapping.jpg}}
+\includegraphics[width=50mm]{images/natmapping.jpg}
 \end{figure}
 
 \noindent
-Given our morphism \code{f}, we have thus built a mapping between two
+Given our morphism $f$, we have thus built a mapping between two
 natural transformations, component-wise. This mapping defines
 \code{contramap} for the functor:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-c -> Nat(\ensuremath{\Delta_c}, D)
-\end{Verbatim}
-
+\[c \to Nat(\Delta_c, D)\]
 What I have just done is to show you that we have two (contravariant)
 functors from $\cat{C}$ to $\Set$. I haven't made any assumptions
 --- these functors always exist.
@@ -332,14 +292,10 @@ presheaf.
 
 Now that we have two functors, we can talk about natural transformations
 between them. So without further ado, here's the conclusion: A functor
-$D$ from $\cat{I}$ to $\cat{C}$ has a limit $Lim D$ if and
+$D$ from $\cat{I}$ to $\cat{C}$ has a limit $\Lim[D]$ if and
 only if there is a natural isomorphism between the two functors I have
 just defined:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-C(c, Lim D) \ensuremath{\backsimeq} Nat(\ensuremath{\Delta_c}, D)
-\end{Verbatim}
-
+\[\cat{C}(c, \Lim[D]) \simeq Nat(\Delta_c, D)\]
 Let me remind you what a natural isomorphism is. It's a natural
 transformation whose every component is an isomorphism, that is to say
 an invertible morphism.
@@ -352,7 +308,7 @@ components of the natural isomorphism will be functions. These are
 higher order functions, because they go from the hom-set to the set of
 natural transformations. Again, you can analyze a function by
 considering what it does to its argument: here the argument will be a
-morphism --- a member of $\cat{C}(c, Lim D)$ --- and the result will
+morphism --- a member of $\cat{C}(c, \Lim[D])$ --- and the result will
 be a natural transformation --- a member of $Nat(\Delta_c, D)$, or
 what we have called a cone. This natural transformation, in turn, has
 its own components, which are morphisms. So it's morphisms all the way
@@ -402,7 +358,7 @@ q :: c -> b
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=2.27083in]{images/equalizercone.jpg}}
+\includegraphics[width=50mm]{images/equalizercone.jpg}
 \end{figure}
 
 \noindent
@@ -414,7 +370,7 @@ q = g . p
 \end{Verbatim}
 
 This tells us that $q$ is uniquely determined by one of these
-equations, say, $q = f \circ p$, and we can omit it from the
+equations, say, \code{q = f . p}, and we can omit it from the
 picture. So we are left with just one condition:
 
 \begin{Verbatim}
@@ -442,7 +398,7 @@ apex, $c$) and the function:
 p t = (t, (-2) * t)
 \end{Verbatim}
 
-Notice that $(p t)$ defines a straight line in the
+Notice that $(p~t)$ defines a straight line in the
 two-dimensional plane. Along this line, the two functions are equal.
 
 Of course, there are other sets $c'$ and functions
@@ -453,7 +409,7 @@ f . p' = g . p'
 \end{Verbatim}
 
 but they all uniquely factor out through $p$. For instance, we
-can take the singleton set $()$ as $c'$ and the
+can take the singleton set $\cat{()}$ as $c'$ and the
 function:
 
 \begin{Verbatim}
@@ -475,12 +431,12 @@ h () = 0
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=2.19792in]{images/equilizerlimit.jpg}}
+\includegraphics[width=50mm]{images/equilizerlimit.jpg}
 \end{figure}
 
 \noindent
 An equalizer can thus be used to solve equations of the type
-$f \quad x = g \quad x$. But it's much more general, because it's defined
+$f~x = g~x$. But it's much more general, because it's defined
 in terms of objects and morphisms rather than algebraically.
 
 An even more general idea of solving an equation is embodied in another
@@ -509,7 +465,7 @@ r :: d -> b
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=2.47917in]{images/pullbackcone.jpg}}
+\includegraphics[width=50mm]{images/pullbackcone.jpg}
 \end{figure}
 
 \noindent
@@ -524,7 +480,7 @@ A pullback is a universal cone of this shape.
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=2.12500in]{images/pullbacklimit.jpg}}
+\includegraphics[width=50mm]{images/pullbacklimit.jpg}
 \end{figure}
 
 \noindent
@@ -533,7 +489,7 @@ object $d$ as consisting of pairs of elements from $a$ and
 $c$ for which $f$ acting on the first component is equal
 to $g$ acting on the second component. If this is still too
 general, consider the special case in which $g$ is a constant
-function, say $g \quad \_ = 1.23$ (assuming that $b$ is a set
+function, say $g~\_ = 1.23$ (assuming that $b$ is a set
 of real numbers). Then you are really solving the equation:
 
 \begin{Verbatim}
@@ -545,37 +501,37 @@ not an empty set), so we can take it to be a singleton set. The set
 $a$ could, for instance, be the set of three-dimensional vectors,
 and $f$ the vector length. Then the pullback is the set of pairs
 $(v, ())$, where $v$ is a vector of length 1.23 (a
-solution to the equation $sqrt(x^{2}+y^{2}+z^{2}) = 1.23$), and
+solution to the equation $\sqrt{(x^{2}+y^{2}+z^{2})} = 1.23$), and
 $()$ is the dummy element of the singleton set.
 
 But pullbacks have more general applications, also in programming. For
 instance, consider C++ classes as a category in which morphism are
 arrows that connect subclasses to superclasses. We'll consider
-inheritance a transitive property, so if C inherits from B and B
-inherits from A then we'll say that C inherits from A (after all, you
-can pass a pointer to C where a pointer to A is expected). Also, we'll
-assume that C inherits from C, so we have the identity arrow for every
+inheritance a transitive property, so if \code{C} inherits from \code{B} and \code{B}
+inherits from \code{A} then we'll say that \code{C} inherits from \code{A} (after all, you
+can pass a pointer to \code{C} where a pointer to \code{A} is expected). Also, we'll
+assume that \code{C} inherits from \code{C}, so we have the identity arrow for every
 class. This way subclassing is aligned with subtyping. C++ also supports
 multiple inheritance, so you can construct a diamond inheritance diagram
-with two classes B and C inheriting from A, and a fourth class D
-multiply inheriting from B and C. Normally, D would get two copies of A,
+with two classes \code{B} and \code{C} inheriting from \code{A}, and a fourth class \code{D}
+multiply inheriting from \code{B} and \code{C}. Normally, \code{D} would get two copies of \code{A},
 which is rarely desirable; but you can use virtual inheritance to have
-just one copy of A in D.
+just one copy of \code{A} in \code{D}.
 
-What would it mean to have D be a pullback in this diagram? It would
-mean that any class E that multiply inherits from B and C is also a
-subclass of D. This is not directly expressible in C++, where subtyping
+What would it mean to have \code{D} be a pullback in this diagram? It would
+mean that any class \code{E} that multiply inherits from \code{B} and \code{C} is also a
+subclass of \code{D}. This is not directly expressible in C++, where subtyping
 is nominal (the C++ compiler wouldn't infer this kind of class
 relationship --- it would require ``duck typing''). But we could go
 outside of the subtyping relationship and instead ask whether a cast
-from E to D would be safe or not. This cast would be safe if D were the
-bare-bone combination of B and C, with no additional data and no
+from \code{E} to \code{D} would be safe or not. This cast would be safe if \code{D} were the
+bare-bone combination of \code{B} and \code{C}, with no additional data and no
 overriding of methods. And, of course, there would be no pullback if
-there is a name conflict between some methods of B and C.
+there is a name conflict between some methods of \code{B} and \code{C}.
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=1.61458in]{images/classes.jpg}}
+\includegraphics[width=40mm]{images/classes.jpg}
 \end{figure}
 
 \noindent
@@ -625,7 +581,7 @@ twice :: (t -> t) -> t -> t
 \end{Verbatim}
 with \code{t} a free type variable.
 
-\section{Colimits}\label{colimits}
+\section{Colimits}
 
 Just like all constructions in category theory, limits have their dual
 image in opposite categories. When you invert the direction of all
@@ -636,19 +592,18 @@ co-cone.
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics{images/colimit.jpg}}
+\includegraphics[width=40mm]{images/colimit.jpg}
+\caption{Cocone with a factorizing morphism $h$ connecting two apexes.}
 \end{figure}
 
 \noindent
-Cocone with a factorizing morphism $h$ connecting two apexes.
-
 A typical example of a colimit is a coproduct, which corresponds to the
 diagram generated by $\cat{2}$, the category we've used in the
 definition of the product.
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=1.56250in]{images/coproductranking.jpg}}
+\includegraphics[width=40mm]{images/coproductranking.jpg}
 \end{figure}
 
 \noindent
@@ -671,13 +626,13 @@ functor} $F$ from a category $\cat{C}$ to $\cat{C'}$ includes the
 requirement that the functor preserve limits. Every diagram $D$
 in $\cat{C}$ can be mapped to a diagram $F \circ D$ in $\cat{C'}$ by
 simply composing two functors. The continuity condition for $F$
-states that, if the diagram $D$ has a limit $Lim D$, then
+states that, if the diagram $D$ has a limit $\Lim[D]$, then
 the diagram $F \circ D$ also has a limit, and it is equal to
-$F (Lim D)$.
+$F (\Lim[D])$.
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=3.12500in]{images/continuity.jpg}}
+\includegraphics[width=3.12500in]{images/continuity.jpg}
 \end{figure}
 
 \noindent
@@ -694,10 +649,7 @@ not available in $\cat{C}$.
 A hom-functor is an example of a continuous functor. Recall that the
 hom-functor, $\cat{C}(a, b)$, is contravariant in the first variable
 and covariant in the second. In other words, it's a functor:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-C\textsuperscript{op} \times C -> Set
-\end{Verbatim}
+\[\cat{C}^{op} \times \cat{C} \to \Set\]
 When its second argument is fixed, the hom-set functor (which becomes
 the representable presheaf) maps colimits in $\cat{C}$ to limits in
 $\Set$; and when its first argument is fixed, it maps limits to
@@ -752,7 +704,7 @@ poset).
   How would you describe a pushout in the category of C++ classes?
 \item
   Show that the limit of the identity functor
-  \code{Id :: C -> C} is the initial object.
+  $\mathbf{Id} \Colon \cat{C} \to \cat{C}$ is the initial object.
 \item
   Subsets of a given set form a category. A morphism in that category is
   defined to be an arrow connecting two sets if the first is the subset
