@@ -10,13 +10,13 @@ You can see this even at the most basic level. Composition itself may be
 defined declaratively; as in, $h$ is a composite of $g$
 after $f$:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 h = g . f
 \end{Verbatim}
 or imperatively; as in, call $f$ first, remember the result of
 that call, then call $g$ with the result:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 h x = let y = f x 
       in g y
 \end{Verbatim}
