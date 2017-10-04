@@ -499,10 +499,8 @@ It may be defined as a pair of functions from, respectively,
 \code{Int} and \code{Double}:
 
 \begin{minted}[breaklines]{text}
-f (Left n) = if n < 0 then "Negative int" 
-                      else "Positive int"
-f (Right x) = if x < 0.0 then "Negative double"
-                         else "Positive double"
+f (Left n) = if n < 0 then "Negative int" else "Positive int"
+f (Right x) = if x < 0.0 then "Negative double" else "Positive double"
 \end{minted}
 Here, \code{n} is an \code{Int} and \code{x} is a \code{Double}.
 
