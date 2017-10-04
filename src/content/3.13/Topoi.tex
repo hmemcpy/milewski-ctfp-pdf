@@ -25,7 +25,7 @@ usually associated with spaces is topology, which is necessary to define
 things like continuity. And the conventional approach to topology is,
 you guessed it, through set theory. In particular, the notion of a
 subset is central to topology. Not surprisingly, category theorists
-generalized this idea to categories other than \textbf{Set}. The type of
+generalized this idea to categories other than $\Set$. The type of
 category that has just the right properties to serve as a replacement
 for set theory is called a \newterm{topos} (plural: topoi), and it
 provides, among other things, a generalized notion of a subset.
@@ -128,7 +128,7 @@ These definitions can be combined in such a way that they not only
 define what a subobject is, but also define the special object
 \code{Ω} without talking about elements. The idea is that we want the
 morphism \code{true} to represent a ``generic'' subobject. In
-\textbf{Set}, it picks a single-element subset from a two-element set
+$\Set$, it picks a single-element subset from a two-element set
 \code{Ω}. This is as generic as it gets. It's clearly a proper subset,
 because \code{Ω} has one more element that's \emph{not} in that
 subset.
@@ -137,7 +137,7 @@ In a more general setting, we define \code{true} to be a monomorphism
 from the terminal object to the \emph{classifying object} \code{Ω}.
 But we have to define the classifying object. We need a universal
 property that links this object to the characteristic function. It turns
-out that, in \textbf{Set}, the pullback of \code{true} along the
+out that, in $\Set$, the pullback of \code{true} along the
 characteristic function \code{χ} defines both the subset \code{a}
 and the injective function that embeds it in \code{b}. Here's the
 pullback diagram:
@@ -162,7 +162,7 @@ the subset in question. The universality of the pullback guarantees that
 \code{f} is injective.
 
 This pullback diagram can be used to define the classifying object in
-categories other than \textbf{Set}. Such a category must have a terminal
+categories other than $\Set$. Such a category must have a terminal
 object, which will let us define the monomorphism \code{true}. It must
 also have pullbacks --- the actual requirement is that it must have all
 finite limits (a pullback is an example of a finite limit). Under those
@@ -220,14 +220,14 @@ A topos is a category that:
   Has a subobject classifier \code{Ω}.
 \end{enumerate}
 
-This set of properties makes a topos a shoe-in for \textbf{Set} in most
+This set of properties makes a topos a shoe-in for $\Set$ in most
 applications. It also has additional properties that follow from its
 definition. For instance, a topos has all finite colimits, including the
 initial object.
 
 It would be tempting to define the subobject classifier as a coproduct
 (sum) of two copies of the terminal object --that's what it is in
-\textbf{Set}--- but we want to be more general than that. Topoi in which
+$\Set$--- but we want to be more general than that. Topoi in which
 this is true are called Boolean.
 
 \section{Topoi and Logic}\label{topoi-and-logic}

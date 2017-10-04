@@ -155,7 +155,7 @@ to a set. It's just the set of its elements. This set is called the
 \textbf{Mon} to sets, but we can also map morphisms of \textbf{Mon}
 (homomorphisms) to functions. Again, this seems sort of trivial, but it
 will become useful soon. This mapping of objects and morphisms from
-\textbf{Mon} to \textbf{Set} is in fact a functor. Since this functor
+\textbf{Mon} to $\Set$ is in fact a functor. Since this functor
 ``forgets'' the monoidal structure --- once we are inside a plain set,
 we no longer distinguish the unit element or care about multiplication
 --- it's called a \newterm{forgetful functor}. Forgetful functors come up
@@ -183,17 +183,17 @@ X-ray our monoids. We can identify the generators in the X-ray images of
 those blobs. Here's how it works:
 
 We start with a set of generators, \code{x}. That's a set in
-\textbf{Set}.
+$\Set$.
 
 The pattern we are going to match consists of a monoid \code{m} --- an
-object of \textbf{Mon} --- and a function \code{p} in \textbf{Set}:
+object of \textbf{Mon} --- and a function \code{p} in $\Set$:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 p :: x -> U m
 \end{Verbatim}
 where \code{U} is our forgetful functor from \textbf{Mon} to
-\textbf{Set}. This is a weird heterogeneous pattern --- half in
-\textbf{Mon} and half in \textbf{Set}.
+$\Set$. This is a weird heterogeneous pattern --- half in
+\textbf{Mon} and half in $\Set$.
 
 The idea is that the function \code{p} will identify the set of
 generators inside the X-ray image of \code{m}. It doesn't matter that

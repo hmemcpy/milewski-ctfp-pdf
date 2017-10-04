@@ -1,11 +1,11 @@
 \lettrine[lhang=0.17]{W}{e've seen previously} that, when we fix an object \code{a} in the
 category \emph{C}, the mapping \code{C(a, -)} is a (covariant)
-functor from \emph{C} to \textbf{Set}.
+functor from \emph{C} to $\Set$.
 
 \begin{Verbatim}[commandchars=\\\{\}]
 x -> C(a, x)
 \end{Verbatim}
-(The codomain is \textbf{Set} because the hom-set C(a, x) is a
+(The codomain is $\Set$ because the hom-set C(a, x) is a
 \emph{set}.) We call this mapping a hom-functor --- we have previously
 defined its action on morphisms as well.
 
@@ -20,7 +20,7 @@ It's a mapping of objects from category \emph{C} to functors, which are
 categories in
 \hyperref[natural-transformations]{Natural
 Transformations}). Let's use the notation \code{{[}C, Set{]}} for the
-functor category from \emph{C} to \textbf{Set}. You may also recall that
+functor category from \emph{C} to $\Set$. You may also recall that
 hom-functors are the prototypical
 \hyperref[chap-representable-functors]{representable
 functors}.
@@ -109,14 +109,14 @@ functors, but also faithfully preserves all connections between them.
 
 This is a very useful result because mathematicians know a lot about the
 category of functors, especially functors whose codomain is
-\textbf{Set}. We can get a lot of insight about an arbitrary category
+$\Set$. We can get a lot of insight about an arbitrary category
 \emph{C} by embedding it in the functor category.
 
 Of course there is a dual version of the Yoneda embedding, sometimes
 called the co-Yoneda embedding. Observe that we could have started by
 fixing the target object (rather than the source object) of each
 hom-set, \code{C(-, a)}. That would give us a contravariant
-hom-functor. Contravariant functors from \emph{C} to \textbf{Set} are
+hom-functor. Contravariant functors from \emph{C} to $\Set$ are
 our familiar presheaves (see, for instance,
 \hyperref[limits-and-colimits]{Limits
 and Colimits}). The co-Yoneda embedding defines the embedding of a
@@ -259,7 +259,7 @@ result through the Yoneda embedding is much more exciting.
 \section{Naturality}\label{naturality}
 
 The Yoneda lemma establishes the isomorphism between the set of natural
-transformations and an object in \textbf{Set}. Natural transformations
+transformations and an object in $\Set$. Natural transformations
 are morphisms in the functor category \code{{[}C, Set{]}}. The set of
 natural transformation between any two functors is a hom-set in that
 category. The Yoneda lemma is the isomorphism:
@@ -276,7 +276,7 @@ category.
 Let's think for a moment what this means. A natural isomorphism is an
 invertible \newterm{natural transformation} between two functors. And
 indeed, the right hand side of our isomorphism is a functor. It's a
-functor from \code{{[}C, Set{]} × C} to \textbf{Set}. Its action on
+functor from \code{{[}C, Set{]} × C} to $\Set$. Its action on
 a pair \code{(F, a)} is a set --- the result of evaluating the
 functor \code{F} at the object \code{a}. This is called the
 evaluation functor.

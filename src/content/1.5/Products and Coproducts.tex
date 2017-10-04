@@ -31,8 +31,8 @@ disposal are morphisms. If you think of morphisms as arrows, then it's
 possible that there is an overall net flow of arrows from one end of the
 category to another. This is true in ordered categories, for instance in
 partial orders. We could generalize that notion of object precedence by
-saying that object \emph{a} is ``more initial'' than object \emph{b} if
-there is an arrow (a morphism) going from \emph{a} to \emph{b}. We would
+saying that object $a$ is ``more initial'' than object $b$, if
+there is an arrow (a morphism) going from $a$ to $b$. We would
 then define \emph{the} initial object as one that has arrows going to
 all other objects. Obviously there is no guarantee that such an object
 exists, and that's okay. A bigger problem is that there may be too many
@@ -55,7 +55,7 @@ morphism going to any object in the category.
 \noindent
 However, even that doesn't guarantee the uniqueness of the initial
 object (if one exists). But it guarantees the next best thing:
-uniqueness \newterm{up to isomorphism}. Isomorphisms are very important in
+uniqueness \emph{up to isomorphism}. Isomorphisms are very important in
 category theory, so I'll talk about them shortly. For now, let's just
 agree that uniqueness up to isomorphism justifies the use of ``the'' in
 the definition of the initial object.
@@ -71,7 +71,7 @@ set. Remember, an empty set corresponds to the Haskell type
 polymorphic function from \code{Void} to any other type is called
 \code{absurd}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 absurd :: Void -> a
 \end{Verbatim}
 It's this family of morphisms that makes \code{Void} the initial
@@ -80,9 +80,9 @@ object in the category of types.
 \section{Terminal Object}\label{terminal-object}
 
 Let's continue with the single-object pattern, but let's change the way
-we rank the objects. We'll say that object \emph{a} is ``more terminal''
-than object \emph{b} if there is a morphism going from \emph{b} to
-\emph{a} (notice the reversal of direction). We'll be looking for an
+we rank the objects. We'll say that object $a$ is ``more terminal''
+than object $b$ if there is a morphism going from $b$ to
+$a$ (notice the reversal of direction). We'll be looking for an
 object that's more terminal than any other object in the category.
 Again, we will insist on uniqueness:
 
@@ -107,7 +107,7 @@ one value --- implicit in C++ and explicit in Haskell, denoted by
 \code{()}. We've also established that there is one and only one pure
 function from any type to the unit type:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 unit :: a -> ()
 unit _ = ()
 \end{Verbatim}
@@ -118,14 +118,14 @@ there are other sets (actually, all of them, except for the empty set)
 that have incoming morphisms from every set. For instance, there is a
 Boolean-valued function (a predicate) defined for every type:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 yes :: a -> Bool
 yes _ = True
 \end{Verbatim}
 But \code{Bool} is not a terminal object. There is at least one more
 \code{Bool}-valued function from every type:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 no :: a -> Bool
 no _ = False
 \end{Verbatim}
@@ -137,15 +137,14 @@ the definition of the terminal object to just one type.
 You can't help but to notice the symmetry between the way we defined the
 initial object and the terminal object. The only difference between the
 two was the direction of morphisms. It turns out that for any category C
-we can define the \newterm{opposite category} C\textsuperscript{op} just by
+we can define the \newterm{opposite category} $\cat{C}^{op}$ just by
 reversing all the arrows. The opposite category automatically satisfies
 all the requirements of a category, as long as we simultaneously
 redefine composition. If original morphisms
-\code{f::a->b} and \code{g::b->c} composed
-to \code{h::a->c} with \code{h=g◦f}, then the reversed
-morphisms \code{f\textsuperscript{op}::b->a} and
-\code{g\textsuperscript{op}::c->b} will compose to
-\code{h\textsuperscript{op}::c->a} with \code{h\textsuperscript{op}=f\textsuperscript{op}◦g\textsuperscript{op}}. And reversing
+$f\Colon{}a\to b$ and $g\Colon{}b\to c$ composed
+to $h\Colon{}a\to c$ with $h=g \circ f$, then the reversed
+morphisms $f^{op}\Colon{}b\to a$ and $g^{op}\Colon{}c\to b$ will compose to
+$h^{op}\Colon{}c\to a$ with $h^{op}=f^{op} \circ g^{op}$. And reversing
 the identity arrows is a (pun alert!) no-op.
 
 Duality is a very important property of categories because it doubles
@@ -178,30 +177,30 @@ The intuition is that isomorphic objects look the same --- they have the
 same shape. It means that every part of one object corresponds to some
 part of another object in a one-to-one mapping. As far as our
 instruments can tell, the two objects are a perfect copy of each other.
-Mathematically it means that there is a mapping from object \emph{a} to
-object \emph{b}, and there is a mapping from object \emph{b} back to
-object \emph{a}, and they are the inverse of each other. In category
+Mathematically it means that there is a mapping from object $a$ to
+object $b$, and there is a mapping from object $b$ back to
+object $a$, and they are the inverse of each other. In category
 theory we replace mappings with morphisms. An isomorphism is an
 invertible morphism; or a pair of morphisms, one being the inverse of
 the other.
 
 We understand the inverse in terms of composition and identity: Morphism
-\emph{g} is the inverse of morphism \emph{f} if their composition is the
+$g$ is the inverse of morphism $f$ if their composition is the
 identity morphism. These are actually two equations because there are
 two ways of composing two morphisms:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 f . g = id
 g . f = id
 \end{Verbatim}
 When I said that the initial (terminal) object was unique up to
 isomorphism, I meant that any two initial (terminal) objects are
 isomorphic. That's actually easy to see. Let's suppose that we have two
-initial objects i\textsubscript{1} and i\textsubscript{2}. Since
-i\textsubscript{1} is initial, there is a unique morphism \emph{f} from
-i\textsubscript{1} to i\textsubscript{2}. By the same token, since
-i\textsubscript{2} is initial, there is a unique morphism \emph{g} from
-i\textsubscript{2} to i\textsubscript{1}. What's the composition of
+initial objects $i_{1}$ and $i_{2}$. Since
+$i_{1}$ is initial, there is a unique morphism $f$ from
+$i_{1}$ to $i_{2}$. By the same token, since
+$i_{2}$ is initial, there is a unique morphism $g$ from
+$i_{2}$ to $i_{1}$. What's the composition of
 these two morphisms?
 
 \begin{figure}[H]
@@ -211,21 +210,21 @@ these two morphisms?
 \end{figure}
 
 \noindent
-The composition \emph{g◦f} must be a morphism from i\textsubscript{1} to
-i\textsubscript{1}. But i\textsubscript{1} is initial so there can only
-be one morphism going from i\textsubscript{1} to i\textsubscript{1}.
+The composition $g \circ f$ must be a morphism from $i_{1}$ to
+$i_{1}$. But $i_{1}$ is initial so there can only
+be one morphism going from $i_{1}$ to $i_{1}$.
 Since we are in a category, we know that there is an identity morphism
-from i\textsubscript{1} to i\textsubscript{1}, and since there is room
-for only one, that must be it. Therefore \emph{g◦f} is equal to
-identity. Similarly, \emph{f◦g} must be equal to identity, because there
-can be only one morphism from i\textsubscript{2} back to
-i\textsubscript{2}. This proves that \emph{f} and \emph{g} must be the
+from $i_{1}$ to $i_{1}$, and since there is room
+for only one, that must be it. Therefore $g \circ f$ is equal to
+identity. Similarly, $f \circ g$ must be equal to identity, because there
+can be only one morphism from $i_{2}$ back to
+$i_{2}$. This proves that $f$ and $g$ must be the
 inverse of each other. Therefore any two initial objects are isomorphic.
 
 Notice that in this proof we used the uniqueness of the morphism from
 the initial object to itself. Without that we couldn't prove the ``up to
-isomorphism'' part. But why do we need the uniqueness of \emph{f} and
-\emph{g}? Because not only is the initial object unique up to
+isomorphism'' part. But why do we need the uniqueness of $f$ and
+$g$? Because not only is the initial object unique up to
 isomorphism, it is unique up to \emph{unique} isomorphism. In principle,
 there could be more than one isomorphism between two objects, but that's
 not the case here. This ``uniqueness up to unique isomorphism'' is the
@@ -243,12 +242,12 @@ the product to each of the constituents. In Haskell, these two functions
 are called \code{fst} and \code{snd} and they pick, respectively,
 the first and the second component of a pair:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 fst :: (a, b) -> a
 fst (x, y) = x
 \end{Verbatim}
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 snd :: (a, b) -> b
 snd (x, y) = y
 \end{Verbatim}
@@ -259,7 +258,7 @@ components into variables \code{x} and \code{y}.
 These definitions can be simplified even further with the use of
 wildcards:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 fst (x, _) = x
 snd (_, y) = y
 \end{Verbatim}
@@ -273,12 +272,12 @@ fst(pair<A, B> const & p) {
 \end{Verbatim}
 Equipped with this seemingly very limited knowledge, let's try to define
 a pattern of objects and morphisms in the category of sets that will
-lead us to the construction of a product of two sets, \emph{a} and
-\emph{b}. This pattern consists of an object \emph{c} and two morphisms
-\emph{p} and \emph{q} connecting it to \emph{a} and \emph{b},
+lead us to the construction of a product of two sets, $a$ and
+$b$. This pattern consists of an object $c$ and two morphisms
+$p$ and $q$ connecting it to $a$ and $b$,
 respectively:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 p :: c -> a
 q :: c -> b
 \end{Verbatim}
@@ -289,7 +288,7 @@ q :: c -> b
 \end{figure}
 
 \noindent
-All \emph{c}s that fit this pattern will be considered candidates for
+All $c$s that fit this pattern will be considered candidates for
 the product. There may be lots of them.
 
 \begin{figure}[H]
@@ -306,7 +305,7 @@ Here's one: \code{Int}. Can \code{Int} be considered a candidate for
 the product of \code{Int} and \code{Bool}? Yes, it can --- and here
 are its projections:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 p :: Int -> Int
 p x = x
 
@@ -319,7 +318,7 @@ Here's another one: \code{(Int, Int, Bool)}. It's a tuple of three
 elements, or a triple. Here are two morphisms that make it a legitimate
 candidate (we are using pattern matching on triples):
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 p :: (Int, Int, Bool) -> Int
 p (x, _, _) = x
 
@@ -640,7 +639,7 @@ seen from the direction of the initial object than it does when seen
 from the terminal end.
 
 This is not an intrinsic property of sets, it's a property of functions,
-which we use as morphisms in \textbf{Set}. Functions are, in general,
+which we use as morphisms in $\Set$. Functions are, in general,
 asymmetric. Let me explain.
 
 A function must be defined for every element of its domain set (in
@@ -690,7 +689,7 @@ isomorphism is the same as a bijection.
 
 \begin{Verbatim}
 int i(int n) { return n; }
-int j(bool b) { return b? 0: 1; }
+int j(bool b) { return b ? 0: 1; }
 \end{Verbatim}
 
   Hint: Define a function
@@ -713,7 +712,7 @@ int i(int n) {
     return n + 2;
 }
 
-int j(bool b) { return b? 0: 1; }
+int j(bool b) { return b ? 0: 1; }
 \end{Verbatim}
 \item
   Come up with an inferior candidate for a coproduct of \code{int} and

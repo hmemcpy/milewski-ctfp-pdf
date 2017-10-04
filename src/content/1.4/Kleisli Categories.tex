@@ -36,12 +36,12 @@ if necessary. However, considering the cumulative nature of the log,
 you'd have to memoize all possible histories that can lead to a given
 call. There would be a separate memo entry for:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 negate(true, "It was the best of times. ");
 \end{Verbatim}
 and
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 negate(true, "It was the worst of times. ");
 \end{Verbatim}
 and so on.
@@ -106,7 +106,7 @@ vector<string> words(string s) {
 
 \begin{wrapfigure}[11]{R}{0pt}
 \raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\fbox{\includegraphics[width=1.83333in]{images/piggyback.jpg}}}%
+\includegraphics[width=1.83333in]{images/piggyback.jpg}}%
 \end{wrapfigure}
 
 We want to modify the functions \code{toUpper} and \code{toWords} so
@@ -306,7 +306,7 @@ The same thing in Haskell is a little more terse, and we also get a lot
 more help from the compiler. Let's start by defining the \code{Writer}
 type:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 type Writer a = (a, String)
 \end{Verbatim}
 Here I'm just defining a type alias, an equivalent of a \code{typedef}
@@ -318,7 +318,7 @@ parentheses, separated by a comma.
 Our morphisms are functions from an arbitrary type to some
 \code{Writer} type:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 a -> Writer b
 \end{Verbatim}
 We'll declare the composition as a funny infix operator, sometimes
@@ -366,19 +366,19 @@ I will also define the identity morphism for our category, but for
 reasons that will become clear much later, I will call it
 \code{return}.
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 return :: a -> Writer a
 return x = (x, "")
 \end{Verbatim}
 For completeness, let's have the Haskell versions of the embellished
 functions \code{upCase} and \code{toWords}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 upCase :: String -> Writer String
 upCase s = (map toUpper s, "upCase ")
 \end{Verbatim}
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 toWords :: String -> Writer [String]
 toWords s = (words s, "toWords ")
 \end{Verbatim}
@@ -402,8 +402,8 @@ spot. It's an example of the so called Kleisli category --- a category
 based on a monad. We are not ready to discuss monads yet, but I wanted
 to give you a taste of what they can do. For our limited purposes, a
 Kleisli category has, as objects, the types of the underlying
-programming language. Morphisms from type A to type B are functions that
-go from A to a type derived from B using the particular embellishment.
+programming language. Morphisms from type $A$ to type $B$ are functions that
+go from $A$ to a type derived from $B$ using the particular embellishment.
 Each Kleisli category defines its own way of composing such morphisms,
 as well as the identity morphisms with respect to that composition.
 (Later we'll see that the imprecise term ``embellishment'' corresponds
