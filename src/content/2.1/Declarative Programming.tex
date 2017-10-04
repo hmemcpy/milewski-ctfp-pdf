@@ -1,4 +1,4 @@
-\lettrine[lhang=0.17]{I}{n the first} part of the book I argued that both category theory and
+\lettrine[lhang=0.17]{I}{n the first part} of the book I argued that both category theory and
 programming are about composability. In programming, you keep
 decomposing a problem until you reach the level of detail that you can
 deal with, solve each subproblem in turn, and re-compose the solutions
@@ -7,22 +7,22 @@ the computer what to do, or by telling it how to do it. One is called
 declarative and the other imperative.
 
 You can see this even at the most basic level. Composition itself may be
-defined declaratively; as in, $h$ is a composite of $g$
-after $f$:
+defined declaratively; as in, \code{h} is a composite of \code{g}
+after \code{f}:
 
 \begin{Verbatim}
 h = g . f
 \end{Verbatim}
-or imperatively; as in, call $f$ first, remember the result of
-that call, then call $g$ with the result:
+or imperatively; as in, call \code{f} first, remember the result of
+that call, then call \code{g} with the result:
 
 \begin{Verbatim}
 h x = let y = f x 
       in g y
 \end{Verbatim}
 The imperative version of a program is usually described as a sequence
-of actions ordered in time. In particular, the call to $g$ cannot
-happen before the execution of $f$ completes. At least, that's
+of actions ordered in time. In particular, the call to \code{g} cannot
+happen before the execution of \code{f} completes. At least, that's
 the conceptual picture --- in a lazy language, with \emph{call-by-need}
 argument passing, the actual execution may proceed differently.
 
@@ -69,18 +69,13 @@ which is given by force divided by mass.
 
 These are the direct encodings of the differential equations
 corresponding to Newton's laws of motion:
-
-\begin{equation}
-\begin{split}
+\begin{align*}
 F = m \frac{dv}{dt} \\
 v = \frac{dx}{dt}
-\end{split}
-\end{equation}
-
-\noindent
+\end{align*}
 Similar methods may be applied to more complex problems, like the
 propagation of electromagnetic fields using Maxwell's equations, or even
-the behavior of quarks and gluons inside a proton using lattice QCD
+the behavior of quarks and gluons inside a proton using lattice \acronym{QCD}
 (quantum chromodynamics).
 
 This local thinking combined with discretization of space and time that
@@ -93,7 +88,7 @@ of the system, and calculate a trajectory that connects them by
 minimizing a certain functional. The simplest example is the Fermat's
 principle of least time. It states that light rays propagate along paths
 that minimize their flight time. In particular, in the absence of
-reflecting or refracting objects, a light ray from point A to point B
+reflecting or refracting objects, a light ray from point $A$ to point $B$
 will take the shortest path, which is a straight line. But light
 propagates slower in dense (transparent) materials, like water or glass.
 So if you pick the starting point in the air, and the ending point under
@@ -101,12 +96,9 @@ water, it's more advantageous for light to travel longer in the air and
 then take a shortcut through water. The path of minimum time makes the
 ray refract at the boundary of air and water, resulting in Snell's law
 of refraction:
-
-\begin{equation}
+\begin{equation*}
 \frac{sin(\theta_1)}{sin(\theta_2)} = \frac{v_1}{v_2}
-\end{equation}
-
-\noindent
+\end{equation*}
 where $v_1$ is the speed of light in the air and $v_2$ is
 the speed of light in the water.
 
@@ -165,15 +157,15 @@ preordained, and we were only analyzing the properties of some eternal
 universe.
 
 Nowhere is it better illustrated than in the Functional Reactive
-Programming approach to user interaction. Instead of writing separate
+Programming (\acronym{FRP}) approach to user interaction. Instead of writing separate
 handlers for every possible user action, all having access to some
-shared mutable state, FRP treats external events as an infinite list,
+shared mutable state, \acronym{FRP} treats external events as an infinite list,
 and applies a series of transformations to it. Conceptually, the list of
 all our future actions is there, available as the input data to our
 program. From a program's perspective there's no difference between the
 list of digits of $\pi$, a list of pseudo-random numbers, or a list of mouse
 positions coming through computer hardware. In each case, if you want to
-get the nth item, you have to first go through the first $n-1$ items. When
+get the $n^\text{th}$ item, you have to first go through the first $n-1$ items. When
 applied to temporal events, we call this property \emph{causality}.
 
 So what does it have to do with category theory? I will argue that
@@ -181,7 +173,7 @@ category theory encourages a global approach and therefore supports
 declarative programming. First of all, unlike calculus, it has no
 built-in notion of distance, or neighborhood, or time. All we have is
 abstract objects and abstract connections between them. If you can get
-from A to B through a series of steps, you can also get there in one
+from $A$ to $B$ through a series of steps, you can also get there in one
 leap. Moreover, the major tool of category theory is the universal
 construction, which is the epitome of a global approach. We've seen it
 in action, for instance, in the definition of the categorical product.
@@ -190,9 +182,9 @@ approach. It's an object equipped with two projections, and it's the
 best such object --- it optimizes a certain property: the property of
 factorizing the projections of other such objects.
 
-\begin{figure}
+\begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=1.56250in]{images/productranking.jpg}}
+\includegraphics[width=1.56250in]{images/productranking.jpg}
 \end{figure}
 
 Compare this with Fermat's principle of minimum time, or the principle
