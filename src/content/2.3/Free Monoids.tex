@@ -26,19 +26,19 @@ identify some of the pairs --- just enough to support the unit and
 associativity laws.
 
 Let's see how this works in a simple example. Let's start with a set of
-two elements, \code{\{a, b\}}. We'll call them the generators of the
-free monoid. First, we'll add a special element \code{e} to serve as
+two elements, $\{a, b\}$. We'll call them the generators of the
+free monoid. First, we'll add a special element $e$ to serve as
 the unit. Next we'll add all the pairs of elements and call them
-``products''. The product of \code{a} and \code{b} will be the pair
-\code{(a, b)}. The product of \code{b} and \code{a} will be the
-pair \code{(b, a)}, the product of \code{a} with \code{a} will be
-\code{(a, a)}, the product of \code{b} with \code{b} will be
-\code{(b, b)}. We can also form pairs with \code{e}, like
-\code{(a, e)}, \code{(e, b)}, etc., but we'll identify them with
-\code{a}, \code{b}, etc. So in this round we'll only add
-\code{(a, a)}, \code{(a, b)} and \code{(b, a)} and
-\code{(b, b)}, and end up with the set
-\code{\{e, a, b, (a, a), (a, b), (b, a), (b, b)\}}.
+``products''. The product of $a$ and $b$ will be the pair
+$(a, b)$. The product of $b$ and $a$ will be the
+pair $(b, a)$, the product of $a$ with $a$ will be
+$(a, a)$, the product of $b$ with $b$ will be
+$(b, b)$. We can also form pairs with $e$, like
+$(a, e)$, $(e, b)$, etc., but we'll identify them with
+$a$, $b$, etc. So in this round we'll only add
+$(a, a)$, $(a, b)$ and $(b, a)$ and
+$(b, b)$, and end up with the set
+$\{e, a, b, (a, a), (a, b), (b, a), (b, b)\}$.
 
 \begin{figure}[H]
 \centering
@@ -47,21 +47,21 @@ pair \code{(b, a)}, the product of \code{a} with \code{a} will be
 
 \noindent
 In the next round we'll keep adding elements like:
-\code{(a, (a, b))}, \code{((a, b), a)}, etc. At this point we'll
+$(a, (a, b))$, $((a, b), a)$, etc. At this point we'll
 have to make sure that associativity holds, so we'll identify
-\code{(a, (b, a))} with \code{((a, b), a)}, etc. In other words,
+$(a, (b, a))$ with $((a, b), a)$, etc. In other words,
 we won't be needing internal parentheses.
 
 You can guess what the final result of this process will be: we'll
-create all possible lists of \code{a}s and \code{b}s. In fact, if we
-represent \code{e} as an empty list, we can see that our
+create all possible lists of $a$s and $b$s. In fact, if we
+represent $e$ as an empty list, we can see that our
 ``multiplication'' is nothing but list concatenation.
 
 This kind of construction, in which you keep generating all possible
 combinations of elements, and perform the minimum number of
 identifications --- just enough to uphold the laws --- is called a free
 construction. What we have just done is to construct a \newterm{free
-monoid} from the set of generators \code{\{a, b\}}.
+monoid} from the set of generators $\{a, b\}$.
 
 \section{Free Monoid in Haskell}\label{free-monoid-in-haskell}
 
@@ -72,7 +72,7 @@ problems with infinite lists.)
 
 A monoid in Haskell is defined by the type class:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 class Monoid m where
     mempty :: m
     mappend :: m -> m -> m
@@ -86,7 +86,7 @@ monoid is instantiated.
 The fact that a list of any type forms a monoid is described by this
 instance definition:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 instance Monoid [a] where
     mempty = []
     mappend = (++)
@@ -99,7 +99,7 @@ with the set \code{a} serving as generators. The set of natural
 numbers with multiplication is not a free monoid, because we identify
 lots of products. Compare for instance:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 2 * 3 = 6
 [2] ++ [3] = [2, 3] // not the same as [6]
 \end{Verbatim}
@@ -128,43 +128,44 @@ structure-preserving functions are called \newterm{homomorphisms}. A monoid
 homomorphism must map the product of two elements to the product of the
 mapping of the two elements:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 h (a * b) = h a * h b
 \end{Verbatim}
+
 and it must map unit to unit.\\
 For instance, consider a homomorphism from lists of integers to
 integers. If we map \code{{[}2{]}} to 2 and \code{{[}3{]}} to 3, we
 have to map \code{{[}2, 3{]}} to 6, because concatenation
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 [2] ++ [3] = [2, 3]
 \end{Verbatim}
 becomes multiplication
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 2 * 3 = 6
 \end{Verbatim}
 Now let's forget about the internal structure of individual monoids, and
 only look at them as objects with corresponding morphisms. You get a
-category \textbf{Mon} of monoids.
+category $\cat{Mon}$ of monoids.
 
 Okay, maybe before we forget about internal structure, let us notice an
-important property. Every object of \textbf{Mon} can be trivially mapped
+important property. Every object of $\cat{Mon}$ can be trivially mapped
 to a set. It's just the set of its elements. This set is called the
 \newterm{underlying} set. In fact, not only can we map objects of
-\textbf{Mon} to sets, but we can also map morphisms of \textbf{Mon}
+$\cat{Mon}$ to sets, but we can also map morphisms of $\cat{Mon}$
 (homomorphisms) to functions. Again, this seems sort of trivial, but it
 will become useful soon. This mapping of objects and morphisms from
-\textbf{Mon} to $\Set$ is in fact a functor. Since this functor
+$\cat{Mon}$ to $\Set$ is in fact a functor. Since this functor
 ``forgets'' the monoidal structure --- once we are inside a plain set,
 we no longer distinguish the unit element or care about multiplication
 --- it's called a \newterm{forgetful functor}. Forgetful functors come up
 regularly in category theory.
 
-We now have two different views of \textbf{Mon}. We can treat it just
+We now have two different views of $\cat{Mon}$. We can treat it just
 like any other category with objects and morphisms. In that view, we
 don't see the internal structure of monoids. All we can say about a
-particular object in \textbf{Mon} is that it connects to itself and to
+particular object in $\cat{Mon}$ is that it connects to itself and to
 other objects through morphisms. The ``multiplication'' table of
 morphisms --- the composition rules --- are derived from the other view:
 monoids-as-sets. By going to category theory we haven't lost this view
@@ -182,21 +183,21 @@ That's where the forgetful functor comes into play. We can use it to
 X-ray our monoids. We can identify the generators in the X-ray images of
 those blobs. Here's how it works:
 
-We start with a set of generators, \code{x}. That's a set in
+We start with a set of generators, $x$. That's a set in
 $\Set$.
 
-The pattern we are going to match consists of a monoid \code{m} --- an
-object of \textbf{Mon} --- and a function \code{p} in $\Set$:
+The pattern we are going to match consists of a monoid $m$ --- an
+object of $\cat{Mon}$ --- and a function $p$ in $\Set$:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 p :: x -> U m
 \end{Verbatim}
-where \code{U} is our forgetful functor from \textbf{Mon} to
+where $U$ is our forgetful functor from $\cat{Mon}$ to
 $\Set$. This is a weird heterogeneous pattern --- half in
-\textbf{Mon} and half in $\Set$.
+$\cat{Mon}$ and half in $\Set$.
 
-The idea is that the function \code{p} will identify the set of
-generators inside the X-ray image of \code{m}. It doesn't matter that
+The idea is that the function $p$ will identify the set of
+generators inside the X-ray image of $m$. It doesn't matter that
 functions may be lousy at identifying points inside sets (they may
 collapse them). It will all be sorted out by the universal construction,
 which will pick the best representative of this pattern.
@@ -208,28 +209,28 @@ which will pick the best representative of this pattern.
 
 \noindent
 We also have to define the ranking among candidates. Suppose we have
-another candidate: a monoid \code{n} and a function that identifies
+another candidate: a monoid $n$ and a function that identifies
 the generators in its X-ray image:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 q :: x -> U n
 \end{Verbatim}
-We'll say that \code{m} is better than \code{n} if there is a
+We'll say that $m$ is better than $n$ if there is a
 morphism of monoids (that's a structure-preserving homomorphism):
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 h :: m -> n
 \end{Verbatim}
-whose image under \code{U} (remember, \code{U} is a functor, so it
-maps morphisms to functions) factorizes through \code{p}:
+whose image under $U$ (remember, $U$ is a functor, so it
+maps morphisms to functions) factorizes through $p$:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 q = U h . p
 \end{Verbatim}
-If you think of \code{p} as selecting the generators in \code{m};
-and \code{q} as selecting ``the same'' generators in \code{n}; then
-you can think of \code{h} as mapping these generators between the two
-monoids. Remember that \code{h}, by definition, preserves the monoidal
+If you think of $p$ as selecting the generators in $m$;
+and $q$ as selecting ``the same'' generators in $n$; then
+you can think of $h$ as mapping these generators between the two
+monoids. Remember that $h$, by definition, preserves the monoidal
 structure. It means that a product of two generators in one monoid will
 be mapped to a product of the corresponding two generators in the second
 monoid, and so on.
@@ -244,18 +245,18 @@ This ranking may be used to find the best candidate --- the free monoid.
 Here's the definition:
 
 \begin{quote}
-We'll say that \code{m} (together with the function \code{p}) is the
-\textbf{free monoid} with the generators \code{x} if and only if there
-is a \emph{unique} morphism \code{h} from \code{m} to any other
-monoid \code{n} (together with the function \code{q}) that satisfies
+We'll say that $m$ (together with the function $p$) is the
+\textbf{free monoid} with the generators $x$ if and only if there
+is a \emph{unique} morphism $h$ from $m$ to any other
+monoid $n$ (together with the function $q$) that satisfies
 the above factorization property.
 \end{quote}
 Incidentally, this answers our second question. The function
-\code{U h} is the one that has the power to collapse multiple
-elements of \code{U m} to a single element of \code{U n}. This
+$U h$ is the one that has the power to collapse multiple
+elements of $U m$ to a single element of $U n$. This
 collapse corresponds to identifying some elements of the free monoid.
-Therefore any monoid with generators \code{x} can be obtained from the
-free monoid based on \code{x} by identifying some of the elements. The
+Therefore any monoid with generators $x$ can be obtained from the
+free monoid based on $x$ by identifying some of the elements. The
 free monoid is the one where only the bare minimum of identifications
 have been made.
 
@@ -268,15 +269,15 @@ We'll come back to free monoids when we talk about adjunctions.
 \item
   You might think (as I did, originally) that the requirement that a
   homomorphism of monoids preserve the unit is redundant. After all, we
-  know that for all \code{a}
+  know that for all $a$
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 h a * h e = h (a * e) = h a
 \end{Verbatim}
-  So \code{h e} acts like a right unit (and, by analogy, as a left
-  unit). The problem is that \code{h a}, for all \code{a} might
+  So $h e$ acts like a right unit (and, by analogy, as a left
+  unit). The problem is that $h a$, for all $a$ might
   only cover a sub-monoid of the target monoid. There may be a ``true''
-  unit outside of the image of \code{h}. Show that an isomorphism
+  unit outside of the image of $h$. Show that an isomorphism
   between monoids that preserves multiplication must automatically
   preserve unit.
 \item
