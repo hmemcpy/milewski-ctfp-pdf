@@ -36,8 +36,8 @@ various other (co-)limits, exponential objects, free monoids, etc.
 \end{wrapfigure}
 
 The product is a simple example of a universal construction. We pick two
-objects \code{a} and \code{b} and see if there exists an object
-\code{c}, together with a pair of morphisms \code{p} and \code{q},
+objects $a$ and $b$ and see if there exists an object
+$c$, together with a pair of morphisms $p$ and $q$,
 that has the universal property of being their product.
 
 A product is a special case of a limit. A limit is defined in terms of
@@ -51,8 +51,8 @@ transformations.
 
 In general, natural transformations are very convenient whenever we need
 a mapping from morphisms to commuting squares. Two opposing sides of a
-naturality square are the mappings of some morphism \code{f} under two
-functors \code{F} and \code{G}. The other sides are the components
+naturality square are the mappings of some morphism $f$ under two
+functors $F$ and $G$. The other sides are the components
 of the natural transformation (which are also morphisms).
 
 \begin{figure}[H]
@@ -94,23 +94,17 @@ instance, the triangles in the definition of the product must commute.)
 These conditions, too, may be replaced by naturality. You may recall
 that the \emph{universal} cone, or the limit, is defined as a natural
 transformation between the (contravariant) hom-functor:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-F :: c -> C(c, Lim D)
-\end{Verbatim}
+\[F \Colon c \to \cat{C}(c, \Lim[D])\]
 and the (also contravariant) functor that maps objects in \emph{C} to
 cones, which themselves are natural transformations:
+\[G \Colon c \to \cat{Nat}(\Delta_c, D)\]
+Here, $\Delta_c$ is the constant functor, and $D$ is the functor
+that defines the diagram in $\cat{C}$. Both functors $F$ and
+$G$ have well defined actions on morphisms in $\cat{C}$. It so
+happens that this particular natural transformation between $F$
+and $G$ is an \emph{isomorphism}.
 
-\begin{Verbatim}[commandchars=\\\{\}]
-G :: c -> Nat(\ensuremath{\Delta}\textsubscript{c}, D)
-\end{Verbatim}
-Here, \code{\ensuremath{\Delta}\textsubscript{c}} is the constant functor, and \code{D} is the functor
-that defines the diagram in \emph{C}. Both functors \code{F} and
-\code{G} have well defined actions on morphisms in \emph{C}. It so
-happens that this particular natural transformation between \code{F}
-and \code{G} is an \newterm{isomorphism}.
-
-\section{Natural Isomorphisms}\label{natural-isomorphisms}
+\section{Natural Isomorphisms}
 
 A natural isomorphism --- which is a natural transformation whose every
 component is reversible --- is category theory's way of saying that
@@ -119,40 +113,31 @@ be an isomorphism between objects --- a morphism that has the inverse.
 If you visualize functor images as sheets, a natural isomorphism is a
 one-to-one invertible mapping between those sheets.
 
-\section{Hom-Sets}\label{hom-sets}
+\section{Hom-Sets}
 
 But what are morphisms? They do have more structure than objects: unlike
 objects, morphisms have two ends. But if you fix the source and the
 target objects, the morphisms between the two form a boring set (at
 least for locally small categories). We can give elements of this set
-names like \code{f} or \code{g}, to distinguish one from another ---
+names like $f$ or $g$, to distinguish one from another ---
 but what is it, really, that makes them different?
 
 The essential difference between morphisms in a given hom-set lies in
 the way they compose with other morphisms (from abutting hom-sets). If
-there is a morphism \code{h} whose composition (either pre- or post-)
-with \code{f} is different than that with \code{g}, for instance:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-h ◦ f ≠ h ◦ g
-\end{Verbatim}
-then we can directly ``observe'' the difference between \code{f} and
-\code{g}. But even if the difference is not directly observable, we
-might use functors to zoom in on the hom-set. A functor \code{F} may
+there is a morphism $h$ whose composition (either pre- or post-)
+with $f$ is different than that with $g$, for instance:
+\[h \circ f \neq h \circ g\]
+then we can directly ``observe'' the difference between $f$ and
+$g$. But even if the difference is not directly observable, we
+might use functors to zoom in on the hom-set. A functor $F$ may
 map the two morphisms to distinct morphisms:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-F f ≠ F g
-\end{Verbatim}
+\[F f \neq F g\]
 in a richer category, where the abutting hom-sets provide more
 resolution, e.g.,
+\[h' \circ F f \neq h' \circ F g\]
+where $h'$ is not in the image of $F$.
 
-\begin{Verbatim}[commandchars=\\\{\}]
-h' ◦ F f ≠ h' ◦ F g
-\end{Verbatim}
-where \code{h'} is not in the image of \code{F}.
-
-\section{Hom-Set Isomorphisms}\label{hom-set-isomorphisms}
+\section{Hom-Set Isomorphisms}
 
 A lot of categorical constructions rely on isomorphisms between
 hom-sets. But since hom-sets are just sets, a plain isomorphism between
@@ -174,17 +159,14 @@ hom-functors using either pre- or post-composition (depending on the
 covariance of the functor).
 
 The Yoneda embedding is one example of such an isomorphism. It maps
-hom-sets in \emph{C} to hom-sets in the functor category; and it's
+hom-sets in $\cat{C}$ to hom-sets in the functor category; and it's
 natural. One functor in the Yoneda embedding is the hom-functor in
-\emph{C} and the other maps objects to sets of natural transformations
+$\cat{C}$ and the other maps objects to sets of natural transformations
 between hom-sets.
 
 The definition of a limit is also a natural isomorphism between hom-sets
 (the second one, again, in the functor category):
-
-\begin{Verbatim}[commandchars=\\\{\}]
-C(c, Lim D) \ensuremath{\simeq} Nat(\ensuremath{\Delta}\textsubscript{c}, D)
-\end{Verbatim}
+\[\cat{C}(c, \Lim[D]) \simeq \cat{Nat}(\Delta_c, D)\]
 It turns out that our construction of an exponential object, or that of
 a free monoid, can also be rewritten as a natural isomorphism between
 hom-sets.
@@ -193,19 +175,19 @@ This is no coincidence --- we'll see next that these are just different
 examples of adjunctions, which are defined as natural isomorphisms of
 hom-sets.
 
-\section{Asymmetry of Hom-Sets}\label{asymmetry-of-hom-sets}
+\section{Asymmetry of Hom-Sets}
 
 There is one more observation that will help us understand adjunctions.
-Hom-sets are, in general, not symmetric. A hom-set \code{C(a, b)} is
-often very different from the hom-set \code{C(b, a)}. The ultimate
+Hom-sets are, in general, not symmetric. A hom-set $\cat{C}(a, b)$ is
+often very different from the hom-set $\cat{C}(b, a)$. The ultimate
 demonstration of this asymmetry is a partial order viewed as a category.
-In a partial order, a morphism from \code{a} to \code{b} exists if
-and only if \code{a} is less than or equal to \code{b}. If
-\code{a} and \code{b} are different, then there can be no morphism
-going the other way, from \code{b} to \code{a}. So if the hom-set
-\code{C(a, b)} is non-empty, which in this case means it's a
-singleton set, then \code{C(b, a)} must be empty, unless
-\code{a = b}. The arrows in this category have a definite flow in
+In a partial order, a morphism from $a$ to $b$ exists if
+and only if $a$ is less than or equal to $b$. If
+$a$ and $b$ are different, then there can be no morphism
+going the other way, from $b$ to $a$. So if the hom-set
+$\cat{C}(a, b)$ is non-empty, which in this case means it's a
+singleton set, then $\cat{C}(b, a)$ must be empty, unless
+$a = b$. The arrows in this category have a definite flow in
 one direction.
 
 A preorder, which is based on a relation that's not necessarily
@@ -223,11 +205,11 @@ empty. We can visualize a general category as a ``thick'' preorder.
 \item
   Consider some degenerate cases of a naturality condition and draw the
   appropriate diagrams. For instance, what happens if either functor
-  \code{F} or \code{G} map both objects \code{a} and \code{b}
-  (the ends of\\ \code{f :: a -> b}) to the same
-  object, e.g., \code{F a = F b} or \code{G a = G b}?
+  $F$ or $G$ map both objects $a$ and $b$
+  (the ends of\\ $f \Colon a \to b$) to the same
+  object, e.g., $F a = F b$ or $G a = G b$?
   (Notice that you get a cone or a co-cone this way.) Then consider
-  cases where either \code{F a = G a} or \code{F b = G b}.
+  cases where either $F a = G a$ or $F b = G b$.
   Finally, what if you start with a morphism that loops on itself ---
-  \code{f :: a -> a}?
+  $f \Colon a \to a$?
 \end{enumerate}
