@@ -7,8 +7,7 @@
 \renewcommand{\baselinestretch}{1.05}
 
 % Font settings
-\usepackage{minted} %----------------------------------%  Note:
-\usepackage[no-math]{fontspec}                         %  This exact order
+\usepackage[no-math]{fontspec} %-----------------------%  This exact order
 \defaultfontfeatures{%                                 %  of declarations
   Scale=MatchLowercase, % needed here ...              %  is important for
 }                                                      %  single quotes not
@@ -25,13 +24,7 @@
 \usepackage{polyglossia}
 \setdefaultlanguage[variant=american]{english}
 \setotherlanguages{greek}
-\usemintedstyle{emacs}
 \usepackage[all]{nowidow}
-
-% To be able to use '\-/' in place of '-' inside \code{}
-% so that long function names containing hyphens
-% can be broken up after the hyphen:
-\usepackage[shortcuts]{extdash}
 
 % So that file names with multiple dots don't confuse
 % graphicx package when using \includegraphics command:
@@ -42,10 +35,10 @@
 \captionsetup{labelformat=empty,font=scriptsize}
 
 \usepackage[usenames,dvipsnames,x11names]{xcolor}
-\usepackage{amsmath}
 \usepackage{longtable}
 \usepackage{booktabs}
 
+\usepackage{amsmath}
 % To use Libertine letters and numbers,
 % but tx-style operators in math environment:
 \usepackage[libertine]{newtxmath}
@@ -78,7 +71,7 @@
 ]{geometry}
 
 \usepackage{titlesec}  % to change the appearance of section titles
-\usepackage{listings}  % for syntax highlighted code listings
+\usepackage{minted}    % for syntax highlighted code listings
 \usepackage{verbatim}  % for simple verbatim and comment environments
 \usepackage{enumerate} % allows customized labels in enumerations
 \usepackage{enumitem}  % allows nested enumeration with numbers
@@ -87,7 +80,7 @@
 \hypersetup{
   pdfauthor={Bartosz Milewski},
   pdftitle={Category Theory for Programmers},
-  pdfsubject={category theory, computer science, programming, abstraction},
+  pdfsubject={category theory, computer science, programming, abstraction, haskell},
   colorlinks=true,
   linkcolor=LinkRed,
   urlcolor=LinkRed,
@@ -150,14 +143,6 @@
 \newenvironment{smallexample}%
   {\verbatim\footnotesize}%
   {\endverbatim}
-
-\lstnewenvironment{scheme}[1][]
-{\lstset{basicstyle=\ttfamily\small\color{SchemeLight},#1}}
-{}
-
-\lstnewenvironment{smallscheme}[1][]
-{\lstset{basicstyle=\ttfamily\footnotesize\color{SchemeLight},#1}}
-{}
 
 \titleformat{\chapter}[display]
   {\color{SchemeDark}\normalfont\sffamily\bfseries\LARGE}
