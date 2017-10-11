@@ -43,7 +43,7 @@ categories, but you can compare sets of apples against sets of oranges.
 Often transforming a categorical problem into a set-theoretical problem
 gives us the necessary insight or even lets us prove valuable theorems.
 
-\section{The Hom Functor}\label{the-hom-functor}
+\section{The Hom Functor}
 
 Every category comes equipped with a canonical family of mappings to
 $\Set$. Those mappings are in fact functors, so they preserve the
@@ -62,11 +62,7 @@ mapping from $x$ to $\Set$.
 
 \noindent
 If we want to stress the fact that we are considering the hom-set as a
-mapping in its second argument, we use the notation:
-
-\begin{Verbatim}
-C(a, -)
-\end{Verbatim}
+mapping in its second argument, we use the notation $\cat{C}(a, -)$
 with the dash serving as the placeholder for the argument.
 
 This mapping of objects is easily extended to the mapping of morphisms.
@@ -75,37 +71,28 @@ objects $x$ and $y$. The object $x$ is mapped to
 the set $\cat{C}(a, x)$, and the object $y$ is mapped to
 $\cat{C}(a, y)$, under the mapping we have just defined. If this
 mapping is to be a functor, $f$ must be mapped to a function
-between the two sets:
+between the two sets: $\cat{C}(a, x) \to \cat{C}(a, y)$
 
-\begin{Verbatim}
-C(a, x) -> C(a, y)
-\end{Verbatim}
 Let's define this function point-wise, that is for each argument
 separately. For the argument we should pick an arbitrary element of
 $\cat{C}(a, x)$ --- let's call it $h$. Morphisms are
 composable, if they match end to end. It so happens that the target of
 $h$ matches the source of $f$, so their composition:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-f \ensuremath{\circ} h :: a -> y
-\end{Verbatim}
+\[f \circ h \Colon a \to y\]
 is a morphism going from $a$ to $y$. It is therefore a
 member of $\cat{C}(a, y)$.
 
+\begin{figure}[H]
+\centering
 \includegraphics[width=3.12500in]{images/hom-functor.jpg}
+\end{figure}
 
+\noindent
 We have just found our function from $\cat{C}(a, x)$ to
 $\cat{C}(a, y)$, which can serve as the image of $f$. If there
-is no danger of confusion, we'll write this lifted function as:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-C(a, f)
-\end{Verbatim}
+is no danger of confusion, we'll write this lifted function as: $\cat{C}(a, f)$
 and its action on a morphism $h$ as:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-C(a, f) h = f \ensuremath{\circ} h
-\end{Verbatim}
+\[\cat{C}(a, f) h = f \circ h\]
 Since this construction works in any category, it must also work in the
 category of Haskell types. In Haskell, the hom-functor is better known
 as the \code{Reader} functor:
@@ -119,12 +106,7 @@ instance Functor (Reader a) where
 \end{Verbatim}
 Now let's consider what happens if, instead of fixing the source of the
 hom-set, we fix the target. In other words, we're asking the question if
-the mapping
-
-\begin{Verbatim}
-C(-, a)
-\end{Verbatim}
-is also a functor. It is, but instead of being covariant, it's
+the mapping $\cat{C}(-, a)$ is also a functor. It is, but instead of being covariant, it's
 contravariant. That's because the same kind of matching of morphisms end
 to end results in postcomposition by $f$; rather than
 precomposition, as was the case with $\cat{C}(a, -)$.
@@ -155,12 +137,9 @@ The important lesson is that this observation holds in any category: the
 mapping of objects to hom-sets is functorial. Since contravariance is
 equivalent to a mapping from the opposite category, we can state this
 fact succintly as:
+\[C(-, =) \Colon \cat{C}^{op} \times \cat{C} \to \Set\]
 
-\begin{Verbatim}
-C(-, =) :: Cop × C -> Set
-\end{Verbatim}
-
-\section{Representable Functors}\label{representable-functors}
+\section{Representable Functors}
 
 We've seen that, for every choice of an object $a$ in $\cat{C}$,
 we get a functor from $\cat{C}$ to $\Set$. This kind of
@@ -175,7 +154,7 @@ the hom-functor, for some choice of $a$, is called
 $\Set$-valued, since $\cat{C}(a, -)$ is.
 
 I said before that we often think of isomorphic sets as identical. More
-generally, we think of isomorphic \newterm{objects} in a category as
+generally, we think of isomorphic \emph{objects} in a category as
 identical. That's because objects have no structure other than their
 relation to other objects (and themselves) through morphisms.
 
@@ -204,17 +183,11 @@ natural transformation.
 
 Let's look at the component of α at some object $x$. It's a
 function in $\Set$:
-
-\begin{Verbatim}
-α\textsubscript{x} :: C(a, x) -> F x
-\end{Verbatim}
+\[\alpha_x \Colon \cat{C}(a, x) \to F x\]
 The naturality condition for this transformation tells us that, for any
 morphism $f$ from $x$ to $y$, the following diagram
 commutes:
-
-\begin{Verbatim}
-F f ◦ α\textsubscript{x} = α\textsubscript{y} ◦ C(a, f)
-\end{Verbatim}
+\[F f \circ \alpha_x = \alpha_y \circ \cat{C}(a, f)\]
 In Haskell, we would replace natural transformations with polymorphic
 functions:
 
@@ -237,30 +210,31 @@ the naturality condition simplifies to:
 \begin{Verbatim}
 fmap f (alpha h) = alpha (f . h)
 \end{Verbatim}
-The other transformation, $beta$, goes the opposite way:
+The other transformation, \code{beta}, goes the opposite way:
 
 \begin{Verbatim}
 beta :: forall x. F x -> (a -> x)
 \end{Verbatim}
-It must respect naturality conditions, and it must be the inverse of α:
+It must respect naturality conditions, and it must be the inverse of \code{alpha}:
 
 \begin{Verbatim}
-α ◦ β = id = β ◦ α
+alpha . beta = id = beta . alpha
 \end{Verbatim}
 We will see later that a natural transformation from $\cat{C}(a, -)$
 to any $\Set$-valued functor always exists (Yoneda's lemma) but it
 is not necessarily invertible.
 
 Let me give you an example in Haskell with the list functor and
-\code{Int} as $a$. Here's a natural transformation that does
+\code{Int} as \code{a}. Here's a natural transformation that does
 the job:
 
 \begin{Verbatim}
-alpha :: forall x. (Int -> x) -> [x] alpha h = map h [12]
+alpha :: forall x. (Int -> x) -> [x]
+alpha h = map h [12]
 \end{Verbatim}
 I have arbitrarily picked the number 12 and created a singleton list
-with it. I can then \code{fmap} the function $h$ over this list
-and get a list of the type returned by $h$. (There are actually
+with it. I can then \code{fmap} the function \code{h} over this list
+and get a list of the type returned by \code{h}. (There are actually
 as many such transformations as there are list of integers.)
 
 The naturality condition is equivalent to the composability of
@@ -270,15 +244,15 @@ The naturality condition is equivalent to the composability of
 map f (map h [12]) = map (f . h) [12]
 \end{Verbatim}
 But if we tried to find the inverse transformation, we would have to go
-from a list of arbitrary type $x$ to a function returning
-$x$:
+from a list of arbitrary type \code{x} to a function returning
+\code{x}:
 
 \begin{Verbatim}
 beta :: forall x. [x] -> (Int -> x)
 \end{Verbatim}
-You might think of retrieving an $x$ from the list, e.g., using
+You might think of retrieving an \code{x} from the list, e.g., using
 \code{head}, but that won't work for an empty list. Notice that there
-is no choice for the type $a$ (in place of \code{Int}) that
+is no choice for the type \code{a} (in place of \code{Int}) that
 would work here. So the list functor is not representable.
 
 Remember when we talked about Haskell (endo-) functors being a little
@@ -287,8 +261,8 @@ as containers for storing memoized results of function calls (the
 members of hom-sets in Haskell are just functions). The representing
 object, the type $a$ in $\cat{C}(a, -)$, is thought of as the
 key type, with which we can access the tabulated values of a function.
-The transformation we called α is called \code{tabulate}, and its
-inverse, β, is called \code{index}. Here's a (slightly simplified)
+The transformation we called \code{alpha} is called \code{tabulate}, and its
+inverse, \code{beta}, is called \code{index}. Here's a (slightly simplified)
 \code{Representable} class definition:
 
 \begin{Verbatim}
@@ -297,7 +271,7 @@ class Representable f where
     tabulate :: (Rep f -> x) -> f x
     index    :: f x -> Rep f -> x
 \end{Verbatim}
-Notice that the representing type, our \code{a}, which is called
+Notice that the representing type, our $a$, which is called
 \code{Rep f} here, is part of the definition of
 \code{Representable}. The star just means that \code{Rep f} is a
 type (as opposed to a type constructor, or other more exotic kinds).
@@ -334,16 +308,10 @@ $\cat{C}(-, a)$.
 There is an interesting twist to representability. Remember that
 hom-sets can internally be treated as exponential objects, in cartesian
 closed categories. The hom-set $\cat{C}(a, x)$ is equivalent to
-$xa$, and for a representable functor $F$ we can write:
+$x^a$, and for a representable functor $F$ we can write: $-a = F$.
 
-\begin{Verbatim}
--a = F
-\end{Verbatim}
-Let's take the logarithm of both sides, just for kicks:
+Let's take the logarithm of both sides, just for kicks: $a = \mathbf{log}F$
 
-\begin{Verbatim}
-a = log F
-\end{Verbatim}
 Of course, this is a purely formal transformation, but if you know some
 of the properties of logarithms, it is quite helpful. In particular, it
 turns out that functors that are based on product types can be
@@ -398,5 +366,5 @@ Pair a = Pair a a
 \item
   The Catsters video about
   \href{https://www.youtube.com/watch?v=4QgjKUzyrhM}{representable
-  functors}.
+  functors}.\urlfootnote{https://www.youtube.com/watch?v=4QgjKUzyrhM}
 \end{enumerate}

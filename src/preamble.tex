@@ -7,7 +7,8 @@
 \renewcommand{\baselinestretch}{1.05}
 
 % Font settings
-\usepackage[no-math]{fontspec} %-----------------------%  This exact order
+\usepackage{minted} %----------------------------------%  Note:
+\usepackage[no-math]{fontspec}                         %  This exact order
 \defaultfontfeatures{%                                 %  of declarations
   Scale=MatchLowercase, % needed here ...              %  is important for
 }                                                      %  single quotes not
@@ -35,10 +36,10 @@
 \captionsetup{labelformat=empty,font=scriptsize}
 
 \usepackage[usenames,dvipsnames,x11names]{xcolor}
+\usepackage{amsmath}
 \usepackage{longtable}
 \usepackage{booktabs}
 
-\usepackage{amsmath}
 % To use Libertine letters and numbers,
 % but tx-style operators in math environment:
 \usepackage[libertine]{newtxmath}
@@ -71,7 +72,7 @@
 ]{geometry}
 
 \usepackage{titlesec}  % to change the appearance of section titles
-\usepackage{minted}    % for syntax highlighted code listings
+\usepackage{listings}  % for syntax highlighted code listings
 \usepackage{verbatim}  % for simple verbatim and comment environments
 \usepackage{enumerate} % allows customized labels in enumerations
 \usepackage{enumitem}  % allows nested enumeration with numbers
@@ -80,7 +81,7 @@
 \hypersetup{
   pdfauthor={Bartosz Milewski},
   pdftitle={Category Theory for Programmers},
-  pdfsubject={category theory, computer science, programming, abstraction, haskell},
+  pdfsubject={category theory, computer science, programming, abstraction},
   colorlinks=true,
   linkcolor=LinkRed,
   urlcolor=LinkRed,
