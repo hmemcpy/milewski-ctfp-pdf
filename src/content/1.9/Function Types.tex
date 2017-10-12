@@ -145,12 +145,12 @@ application $g'$:
 The key here is the action of the product on morphisms.
 
 The third part of the universal construction is selecting the object
-that is universally the best. Let's call this object $a{\Rightarrow} b$ (think
+that is universally the best. Let's call this object $a \Rightarrow b$ (think
 of this as a symbolic name for one object, not to be confused with a
 Haskell typeclass constraint --- I'll discuss different ways of naming
 it later). This object comes with its own application --- a morphism
-from $(a{\Rightarrow}b)\stimes a$ to $b$ --- which we will call
-$eval$ The object \code{$a{\Rightarrow}b$} is the best if any other
+from $(a \Rightarrow b)\stimes a$ to $b$ --- which we will call
+$eval$ The object \code{$a \Rightarrow b$} is the best if any other
 candidate for a function object can be uniquely mapped to it in such a
 way that its application morphism $g$ factorizes through
 $eval$. This object is better than any other object according to
@@ -160,7 +160,7 @@ our ranking.
 \centering
 \fbox{\includegraphics{images/universalfunctionobject.jpg}}
 \caption{The definition of the universal function object. This is the same
-diagram as above, but now the object $a{\Rightarrow}b$ is \emph{universal}.}
+diagram as above, but now the object $a \Rightarrow b$ is \emph{universal}.}
 \end{figure}
 
 \noindent
@@ -170,7 +170,7 @@ Formally:
 \toprule
 \begin{minipage}[t]{0.97\columnwidth}\raggedright\strut
 A \emph{function object} from $a$ to $b$ is an object
-$a{\Rightarrow}b$ together with the morphism
+$a \Rightarrow b$ together with the morphism
 \[eval \Colon ((a \Rightarrow b) \times a) \to b\]
 such that for any other object $z$ with a morphism
 \[g \Colon z \times a \to b\]
@@ -183,13 +183,13 @@ that factors $g$ through $eval$:
 \end{longtable}
 
 \noindent
-Of course, there is no guarantee that such an object $a{\Rightarrow} b$ exists
+Of course, there is no guarantee that such an object $a \Rightarrow b$ exists
 for any pair of objects $a$ and $b$ in a given category.
 But it always does in $\Set$. Moreover, in $\Set$, this
 object is isomorphic to the hom-set $\Set(a, b)$.
 
 This is why, in Haskell, we interpret the function type
-\code{a -> b} as the categorical function object $a{\Rightarrow} b$.
+\code{a -> b} as the categorical function object $a \Rightarrow b$.
 
 \section{Currying}\label{currying}
 
@@ -204,7 +204,7 @@ from the set $a$.
 
 On the other hand, the universal property tells us that for each such
 $g$ there is a unique morphism $h$ that maps $z$ to
-a function object $a{\Rightarrow} b$.
+a function object $a \Rightarrow b$.
 \[h \Colon z \to (a \Rightarrow b)\]
 In $\Set$, this just means that $h$ is a function that
 takes one variable of type $z$ and returns a function from
