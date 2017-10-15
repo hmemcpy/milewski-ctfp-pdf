@@ -1,4 +1,4 @@
-\lettrine[lhang=0.17]{I}{ realize that} we might be getting away from programming and diving into
+\lettrine[lhang=0.17]{I}{ realize that we might} be getting away from programming and diving into
 hard-core math. But you never know what the next big revolution in
 programming might bring and what kind of math might be necessary to
 understand it. There are some very interesting ideas going around, like
@@ -6,9 +6,9 @@ functional reactive programming with its continuous time, the extention
 of Haskell's type system with dependent types, or the exploration on
 homotopy type theory in programming.
 
-So far I've been casually identifying types with \newterm{sets} of values.
+So far I've been casually identifying types with \emph{sets} of values.
 This is not strictly correct, because such approach doesn't take into
-account the fact that, in programming, we \newterm{compute} values, and the
+account the fact that, in programming, we \emph{compute} values, and the
 computation is a process that takes time and, in extreme cases, might
 not terminate. Divergent computations are part of every Turing-complete
 language.
@@ -30,12 +30,12 @@ category that has just the right properties to serve as a replacement
 for set theory is called a \newterm{topos} (plural: topoi), and it
 provides, among other things, a generalized notion of a subset.
 
-\section{Subobject Classifier}\label{subobject-classifier}
+\section{Subobject Classifier}
 
 Let's start by trying to express the idea of a subset using functions
-rather than elements. Any function \code{f} from some set \code{a}
-to \code{b} defines a subset of \code{b}--that of the image of
-\code{a} under \code{f}. But there are many functions that define
+rather than elements. Any function $f$ from some set $a$
+to $b$ defines a subset of $b$--that of the image of
+$a$ under $f$. But there are many functions that define
 the same subset. We need to be more specific. To begin with, we might
 focus on functions that are injective --- ones that don't smush multiple
 elements into one. Injective functions ``inject'' one set into another.
@@ -43,28 +43,21 @@ For finite sets, you may visualize injective functions as parallel
 arrows connecting elements of one set to elements of another. Of course,
 the first set cannot be larger than the second set, or the arrows would
 necessarily converge. There is still some ambiguity left: there may be
-another set \code{a\'} and another injective function
-\code{f\'} from that set to \code{b} that picks the same
+another set $a'$ and another injective function
+$f'$ from that set to $b$ that picks the same
 subset. But you can easily convince yourself that such a set would have
-to be isomorphic to \code{a}. We can use this fact to define a subset
+to be isomorphic to $a$. We can use this fact to define a subset
 as a family of injective functions that are related by isomorphisms of
 their domains. More precisely, we say that two injective functions:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-f :: a -> b
-f':: a'-> b
-\end{Verbatim}
+\begin{align*}
+f &\Colon a \to b \\
+f' &\Colon a' \to b
+\end{align*}
 are equivalent if there is an isomorphism:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-h :: a -> a'
-\end{Verbatim}
+\[h \Colon a \to a'\]
 such that:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-f = f' . h
-\end{Verbatim}
-Such a family of equivalent injections defines a subset of \code{b}.
+\[f = f'\ .\ h\]
+Such a family of equivalent injections defines a subset of $b$.
 
 \begin{figure}[H]
 \centering
@@ -74,19 +67,15 @@ Such a family of equivalent injections defines a subset of \code{b}.
 \noindent
 This definition can be lifted to an arbitrary category if we replace
 injective functions with monomorphism. Just to remind you, a
-monomorphism \code{m} from \code{a} to \code{b} is defined by its
-universal property. For any object \code{c} and any pair of morphisms:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-g :: c -> a
-g':: c -> a
-\end{Verbatim}
+monomorphism $m$ from $a$ to $b$ is defined by its
+universal property. For any object $c$ and any pair of morphisms:
+\begin{align*}
+g &\Colon c \to a \\
+g' &\Colon c \to a
+\end{align*}
 such that:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-m . g = m . g'
-\end{Verbatim}
-it must be that \code{g = g'}.
+\[m\ .\ g = m\ .\ g'\]
+it must be that $g = g'$.
 
 \begin{figure}[H]
 \centering
@@ -95,11 +84,11 @@ it must be that \code{g = g'}.
 
 \noindent
 On sets, this definition is easier to understand if we consider what it
-would mean for a function \code{m} \emph{not} to be a monomorphism. It
-would map two different elements of \code{a} to a single element of
-\code{b}. We could then find two functions \code{g} and
-\code{g'} that differ only at those two elements. The
-postcomposition with \code{m} would then mask this difference.
+would mean for a function $m$ \emph{not} to be a monomorphism. It
+would map two different elements of $a$ to a single element of
+$b$. We could then find two functions $g$ and
+$g'$ that differ only at those two elements. The
+postcomposition with $m$ would then mask this difference.
 
 \begin{figure}[H]
 \centering
@@ -108,104 +97,100 @@ postcomposition with \code{m} would then mask this difference.
 
 \noindent
 There is another way of defining a subset: using a single function
-called the characteristic function. It's a function \code{χ} from the
-set \code{b} to a two-element set \code{Ω}. One element of this set
+called the characteristic function. It's a function $\chi$ from the
+set $b$ to a two-element set $\Omega$. One element of this set
 is designated as ``true'' and the other as ``false.'' This function
-assigns ``true'' to those elements of \code{b} that are members of the
+assigns ``true'' to those elements of $b$ that are members of the
 subset, and ``false'' to those that aren't.
 
 It remains to specify what it means to designate an element of
-\code{Ω} as ``true.'' We can use the standard trick: use a function
-from a singleton set to \code{Ω}. We'll call this function
-\code{true}:
+$\Omega$ as ``true.'' We can use the standard trick: use a function
+from a singleton set to $\Omega$. We'll call this function
+$true$:
+\[true \Colon 1 \to \Omega\]
 
-\begin{Verbatim}[commandchars=\\\{\}]
-true :: 1 -> Ω
-\end{Verbatim}
-\includegraphics[width=1.97917in]{images/true.jpg}
+\begin{figure}[H]
+\centering
+\includegraphics[width=60mm]{images/true.jpg}
+\end{figure}
 
+\noindent
 These definitions can be combined in such a way that they not only
 define what a subobject is, but also define the special object
-\code{Ω} without talking about elements. The idea is that we want the
-morphism \code{true} to represent a ``generic'' subobject. In
+$\Omega$ without talking about elements. The idea is that we want the
+morphism $true$ to represent a ``generic'' subobject. In
 $\Set$, it picks a single-element subset from a two-element set
-\code{Ω}. This is as generic as it gets. It's clearly a proper subset,
-because \code{Ω} has one more element that's \emph{not} in that
+$\Omega$. This is as generic as it gets. It's clearly a proper subset,
+because $\Omega$ has one more element that's \emph{not} in that
 subset.
 
-In a more general setting, we define \code{true} to be a monomorphism
-from the terminal object to the \emph{classifying object} \code{Ω}.
+In a more general setting, we define $true$ to be a monomorphism
+from the terminal object to the \emph{classifying object} $\Omega$.
 But we have to define the classifying object. We need a universal
 property that links this object to the characteristic function. It turns
-out that, in $\Set$, the pullback of \code{true} along the
-characteristic function \code{χ} defines both the subset \code{a}
-and the injective function that embeds it in \code{b}. Here's the
+out that, in $\Set$, the pullback of $true$ along the
+characteristic function $\chi$ defines both the subset $a$
+and the injective function that embeds it in $b$. Here's the
 pullback diagram:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=2.41667in]{images/pullback.jpg}
+\includegraphics[width=60mm]{images/pullback.jpg}
 \end{figure}
 
 \noindent
 Let's analyze this diagram. The pullback equation is:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-true . unit = χ . f
-\end{Verbatim}
-The function \code{true . unit} maps every element of \code{a} to
-``true.'' Therefore \code{f} must map all elements of \code{a} to
-those elements of \code{b} for which \code{χ} is ``true.'' These
+\[true\ .\ unit = \chi\ .\ f\]
+The function $true\ .\ unit$ maps every element of $a$ to
+``true.'' Therefore $f$ must map all elements of $a$ to
+those elements of $b$ for which $\chi$ is ``true.'' These
 are, by definition, the elements of the subset that is specified by the
-characteristic function \code{χ}. So the image of \code{f} is indeed
+characteristic function $\chi$. So the image of $f$ is indeed
 the subset in question. The universality of the pullback guarantees that
-\code{f} is injective.
+$f$ is injective.
 
 This pullback diagram can be used to define the classifying object in
 categories other than $\Set$. Such a category must have a terminal
-object, which will let us define the monomorphism \code{true}. It must
+object, which will let us define the monomorphism $true$. It must
 also have pullbacks --- the actual requirement is that it must have all
 finite limits (a pullback is an example of a finite limit). Under those
-assumptions, we define the classifying object \code{Ω} by the property
-that, for every monomorphism \code{f} there is a unique morphism
-\code{χ} that completes the pullback diagram.
+assumptions, we define the classifying object $\Omega$ by the property
+that, for every monomorphism $f$ there is a unique morphism
+$\chi$ that completes the pullback diagram.
 
 Let's analyze the last statement. When we construct a pullback, we are
-given three objects \code{Ω}, \code{b} and \code{1}; and two
-morphisms, \code{true} and \code{χ}. The existence of a pullback
-means that we can find the best such object \code{a}, equipped with
-two morphisms \code{f} and \code{unit} (the latter is uniquely
+given three objects $\Omega$, $b$ and $1$; and two
+morphisms, $true$ and $\chi$. The existence of a pullback
+means that we can find the best such object $a$, equipped with
+two morphisms $f$ and $unit$ (the latter is uniquely
 determined by the definition of the terminal object), that make the
 diagram commute.
 
 Here we are solving a different system of equations. We are solving for
-\code{Ω} and \code{true} while varying both \code{a} \emph{and}
-\code{b}. For a given \code{a} and \code{b} there may or may not
-be a monomorphism \code{f::a->b}. But if there is one, we
-want it to be a pullback of some \code{χ}. Moreover, we want this
-\code{χ} to be uniquely determined by \code{f}.
+$\Omega$ and $true$ while varying both $a$ \emph{and}
+$b$. For a given $a$ and $b$ there may or may not
+be a monomorphism $f \Colon a \to b$. But if there is one, we
+want it to be a pullback of some $\chi$. Moreover, we want this
+$\chi$ to be uniquely determined by $f$.
 
 We can't say that there is a one-to-one correspondence between
-monomorphisms \code{f} and characteristic functions \code{χ},
+monomorphisms $f$ and characteristic functions $\chi$,
 because a pullback is only unique up to isomorphism. But remember our
 earlier definition of a subset as a family of equivalent injections. We
-can generalize it by defining a subobject of \code{b} as a family of
-equivalent monomorphisms to \code{b}. This family of monomorphisms is
+can generalize it by defining a subobject of $b$ as a family of
+equivalent monomorphisms to $b$. This family of monomorphisms is
 in one-to-one corrpespondence with the family of equivalent pullbacks of
 our diagram.
 
-We can thus define a set of subobjects of \code{b}, \code{Sub(b)},
+We can thus define a set of subobjects of $b$, $Sub(b)$,
 as a family of monomorphisms, and see that it is isomorphic to the set
-of morphisms from \code{b} to \code{Ω}:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-Sub(b) \ensuremath{\cong} C(b, Ω)
-\end{Verbatim}
+of morphisms from $b$ to $\Omega$:
+\[Sub(b) \cong \code{C}(b, \Omega)\]
 This happens to be a natural isomorphism of two functors. In other
-words, \code{Sub(-)} is a representable (contravariant) functor whose
-representation is the object Ω.
+words, $Sub(-)$ is a representable (contravariant) functor whose
+representation is the object $\Omega$.
 
-\section{Topos}\label{topos}
+\section{Topos}
 
 A topos is a category that:
 
@@ -217,7 +202,7 @@ A topos is a category that:
 \item
   Has limits for all finite diagrams,
 \item
-  Has a subobject classifier \code{Ω}.
+  Has a subobject classifier $\Omega$.
 \end{enumerate}
 
 This set of properties makes a topos a shoe-in for $\Set$ in most
@@ -230,14 +215,14 @@ It would be tempting to define the subobject classifier as a coproduct
 $\Set$--- but we want to be more general than that. Topoi in which
 this is true are called Boolean.
 
-\section{Topoi and Logic}\label{topoi-and-logic}
+\section{Topoi and Logic}
 
 In set theory, a characteristic function may be interpreted as defining
 a property of the elements of a set --- a \newterm{predicate} that is true
-for some elements and false for others. The predicate \code{isEven}
+for some elements and false for others. The predicate $isEven$
 selects a subset of even numbers from the set of natural numbers. In a
 topos, we can generalize the idea of a predicate to be a morphism from
-object \code{a} to \code{Ω}. This is why \code{Ω} is sometimes
+object $a$ to $\Omega$. This is why $\Omega$ is sometimes
 called the truth object.
 
 Predicates are the building blocks of logic. A topos contains all the
@@ -266,6 +251,6 @@ logics.
 \begin{enumerate}
 \tightlist
 \item
-  Show that the function \code{f} that is the pullback of
-  \code{true} along the characteristic function must be injective.
+  Show that the function $f$ that is the pullback of
+  $true$ along the characteristic function must be injective.
 \end{enumerate}
