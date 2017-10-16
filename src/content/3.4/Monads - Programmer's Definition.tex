@@ -64,7 +64,7 @@ double vlen(double * v) {
 Compare this with the (stylized) Haskell version that makes function
 composition explicit:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 vlen = sqrt . sum . fmap (flip (^) 2)
 \end{Verbatim}
 (Here, to make things even more cryptic, I partially applied the
@@ -79,7 +79,7 @@ called the \code{do} notation for monadic composition. We'll see its
 use later. But first, let me explain why we need monadic composition in
 the first place.
 
-\section{The Kleisli Category}\label{the-kleisli-category}
+\section{The Kleisli Category}
 
 We have previously arrived at the
 \hyperref[kleisli-categories]{writer
@@ -88,7 +88,7 @@ was done by pairing their return values with strings or, more generally,
 with elements of a monoid. We can now recognize that such embellishment
 is a functor:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 newtype Writer w a = Writer (a, w)
 
 instance Functor (Writer w) where
@@ -97,33 +97,29 @@ instance Functor (Writer w) where
 We have subsequently found a way of composing embellished functions, or
 Kleisli arrows, which are functions of the form:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 a -> Writer w b
 \end{Verbatim}
-
 It was inside the composition that we implemented the accumulation of
 the log.
 
 We are now ready for a more general definition of the Kleisli category.
-We start with a category \emph{C} and an endofunctor \code{m}. The
-corresponding Kleisli category \emph{K} has the same objects as
-\emph{C}, but its morphisms are different. A morphism between two
-objects \code{a} and \code{b} in \emph{K} is implemented as a
+We start with a category $\cat{C}$ and an endofunctor $m$. The
+corresponding Kleisli category $\cat{K}$ has the same objects as
+$\cat{C}$, but its morphisms are different. A morphism between two
+objects $a$ and $b$ in $\cat{K}$ is implemented as a
 morphism:
+\[a \to m\ b\]
+in the original category $\cat{C}$. It's important to keep in mind that
+we treat a Kleisli arrow in $\cat{K}$ as a morphism between $a$
+and $b$, and not between $a$ and $m\ b$.
 
-\begin{Verbatim}[commandchars=\\\{\}]
-a -> m b
-\end{Verbatim}
-in the original category \emph{C}. It's important to keep in mind that
-we treat a Kleisli arrow in \emph{K} as a morphism between \code{a}
-and \code{b}, and not between \code{a} and \code{m b}.
-
-In our example, \code{m} was specialized to \code{Writer w}, for
+In our example, $m$ was specialized to \code{Writer w}, for
 some fixed monoid \code{w}.
 
 Kleisli arrows form a category only if we can define proper composition
 for them. If there is a composition, which is associative and has an
-identity arrow for every object, then the functor \code{m} is called a
+identity arrow for every object, then the functor $m$ is called a
 \newterm{monad}, and the resulting category is called the Kleisli category.
 
 In Haskell, Kleisli composition is defined using the fish operator
@@ -131,7 +127,7 @@ In Haskell, Kleisli composition is defined using the fish operator
 polymorphic function called \code{return}. Here's the definition of a
 monad using Kleisli composition:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 class Monad m where 
     (>=>) :: (a -> m b) -> (b -> m c) -> (a -> m c)
     return :: a -> m a
@@ -146,7 +142,7 @@ In this formulation, monad laws are very easy to express. They cannot be
 enforced in Haskell, but they can be used for equational reasoning. They
 are simply the standard composition laws for the Kleisli category:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 (f >=> g) >=> h = f >=> (g >=> h) -- associativity
 return >=> f = f                  -- left
 unit f >=> return = f             -- right unit
@@ -178,13 +174,13 @@ There's a useful Kleisli arrow defined for the \code{Writer} monad
 called \code{tell}. It's sole purpose is to add its argument to the
 log:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 tell :: w -> Writer w ()
 tell s = Writer ((), s)
 \end{Verbatim}
 We'll use it later as a building block for other monadic functions.
 
-\section{Fish Anatomy}\label{fish-anatomy}
+\section{Fish Anatomy}
 
 When implementing the fish operator for different monads you quickly
 realize that a lot of code is repeated and can be easily factored out.
@@ -208,21 +204,21 @@ having at our disposal an object of type \code{m b} and a function
 does that for us. This function is called \emph{bind} and is usually written in
 the form of an infix operator:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 (>>=) :: m a -> (a -> m b) -> m b
 \end{Verbatim}
 For every monad, instead of defining the fish operator, we may instead
 define bind. In fact the standard Haskell definition of a monad uses
 bind:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 class Monad m where
     (>>=) :: m a -> (a -> m b) -> m b
     return :: a -> m a
 \end{Verbatim}
 Here's the definition of bind for the \code{Writer} monad:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 (Writer (a, w)) >>= f = let Writer (b, w') = f a 
                         in Writer (b, w `mappend` w')
 \end{Verbatim}
@@ -237,17 +233,17 @@ want --- we need the result of type \code{m b} --- but we're close.
 All we need is a function that collapses or flattens the double
 application of \code{m}. Such function is called \code{join}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 join :: m (m a) -> m a
 \end{Verbatim}
 Using \code{join}, we can rewrite bind as:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 ma >>= f = join (fmap f ma)
 \end{Verbatim}
 That leads us to the third option for defining a monad:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 class Functor m => Monad m where
     join :: m (m a) -> m a
     return :: a -> m a
@@ -263,13 +259,13 @@ fmap f ma = ma >>= \a -> return (f a)
 \end{Verbatim}
 For completeness, here's \code{join} for the \code{Writer} monad:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 join :: Monoid w => Writer w (Writer w a) -> Writer w a
 join (Writer ((Writer (a, w')), w)) = Writer (a, w `mappend` w')
 \end{Verbatim}
 
 \section{\texorpdfstring{The \code{do}
-Notation}{The do Notation}}\label{the-do-notation}
+Notation}{The do Notation}}
 
 One way of writing code using monads is to work with Kleisli arrows ---
 composing them using the fish operator. This mode of programming is the
@@ -304,7 +300,7 @@ For instance, take the example we used previously to illustrate the
 composition of Kleisli arrows in the \code{Writer} monad. Using our
 current definitions, it could be rewritten as:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 process :: String -> Writer String [String]
 process = upCase >=> toWords
 \end{Verbatim}
@@ -313,7 +309,7 @@ splits it into words, all the while producing a log of its actions.
 
 In the \code{do} notation it would look like this:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 process s = do 
     upStr <- upCase s
     toWords upStr
@@ -321,7 +317,7 @@ process s = do
 Here, \code{upStr} is just a \code{String}, even though
 \code{upCase} produces a \code{Writer}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 upCase :: String -> Writer String String
 upCase s = Writer (map toUpper s, "upCase ")
 \end{Verbatim}
@@ -336,7 +332,7 @@ The monadic result of \code{upCase} is bound to a lambda that takes a
 \code{String}. It's the name of this string that shows up in the
 \code{do} block. When reading the line:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 upStr <- upCase s
 \end{Verbatim}
 we say that \code{upStr} \emph{gets} the result of \code{upCase s}.
@@ -348,7 +344,7 @@ logs the string \code{"toWords "}, followed by the call to
 using \code{words}. Notice that \code{words} is a regular function
 working on strings.
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 process s = do
     upStr <- upStr s
     tell "toWords "
@@ -369,7 +365,7 @@ result (but not its effect --- here, the contribution to the log) is
 quite common, so there is a special operator to replace bind in that
 case:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 (>>) :: m a -> m b -> m b m
 >> k = m >>= (\_ -> k)
 \end{Verbatim}
@@ -398,7 +394,7 @@ instance to simulate exceptions.
 Interestingly, the equivalent of the \code{do} notation has found its
 application in imperative languages, C++ in particular. I'm talking
 about resumable functions or coroutines. It's not a secret that C++
-\href{https://bartoszmilewski.com/2014/02/26/c17-i-see-a-monad-in-your-future/}{futures
+\urlref{https://bartoszmilewski.com/2014/02/26/c17-i-see-a-monad-in-your-future/}{futures
 form a monad}. It's an example of the continuation monad, which we'll
 discuss shortly. The problem with continuations is that they are very
 hard to compose. In Haskell, we use the \code{do} notation to turn the
@@ -406,7 +402,7 @@ spaghetti of ``my handler will call your handler'' into something that
 looks very much like sequential code. Resumable functions make the same
 transformation possible in C++. And the same mechanism can be applied to
 turn the
-\href{https://bartoszmilewski.com/2014/04/21/getting-lazy-with-c/}{spaghetti
+\urlref{https://bartoszmilewski.com/2014/04/21/getting-lazy-with-c/}{spaghetti
 of nested loops} into list comprehensions or ``generators,'' which are
 essentially the \code{do} notation for the list monad. Without the
 unifying abstraction of the monad, each of these problems is typically

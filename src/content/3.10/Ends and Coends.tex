@@ -1,6 +1,6 @@
-\lettrine[lhang=0.17]{T}{here are many} intuitions that we may attach to morphisms in a category,
+\lettrine[lhang=0.17]{T}{here are many intuitions} that we may attach to morphisms in a category,
 but we can all agree that if there is a morphism from the object
-\code{a} to the object \code{b} than the two objects are in some way
+$a$ to the object $b$ than the two objects are in some way
 ``related.'' A morphism is, in a sense, the proof of this relation. This
 is clearly visible in any poset category, where a morphism \emph{is} a
 relation. In general, there may be many ``proofs'' of the same relation
@@ -10,41 +10,32 @@ of ``proofs.'' This mapping is functorial --- contravariant in the first
 argument and covariant in the second. We can look at it as establishing
 a global relationship between objects in the category. This relationship
 is described by the hom-functor:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-C(-, =) :: C\textsuperscript{op} × C -> Set
-\end{Verbatim}
+\[\cat{C}(-, =) \Colon \cat{C}^{op}\times{}\cat{C} \to \Set\]
 In general, any functor like this may be interpreted as establishing a
 relation between objects in a category. A relation may also involve two
 different categories \emph{C} and \emph{D}. A functor, which describes
 such a relation, has the following signature and is called a profunctor:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-p :: D\textsuperscript{op} × C -> Set
-\end{Verbatim}
-Mathematicians say that it's a profunctor from \code{C} to \code{D}
+\[p \Colon \cat{D}^{op}\times{}\cat{C} \to \Set\]
+Mathematicians say that it's a profunctor from $\cat{C}$ to $\cat{D}$
 (notice the inversion), and use a slashed arrow as a symbol for it:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-C \ensuremath{\mathrel{\nrightarrow}} D
-\end{Verbatim}
+\[\cat{C} \nrightarrow \cat{D}\]
 You may think of a profunctor as a \newterm{proof-relevant relation}
-between objects of \emph{C} and objects of \emph{D}, where the elements
-of the set symbolize proofs of the relation. Whenever \code{p a b}
-is empty, there is no relation between \code{a} and \code{b}. Keep
+between objects of $\cat{C}$ and objects of $\cat{D}$, where the elements
+of the set symbolize proofs of the relation. Whenever $p\ a\ b$
+is empty, there is no relation between $a$ and $b$. Keep
 in mind that relations don't have to be symmetric.
 
 Another useful intuition is the generalization of the idea that an
 endofunctor is a container. A profunctor value of the type
-\code{p a b} could then be considered a container of \code{b}s
-that are keyed by elements of type \code{a}. In particular, an element
-of the hom-profunctor is a function from \code{a} to \code{b}.
+$p\ a\ b$ could then be considered a container of $b$s
+that are keyed by elements of type $a$. In particular, an element
+of the hom-profunctor is a function from $a$ to $b$.
 
 In Haskell, a profunctor is defined as a two-argument type constructor
 \code{p} equipped with the method called \code{dimap}, which lifts a
 pair of functions, the first going in the ``wrong'' direction:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 class Profunctor p where
     dimap :: (c -> a) -> (b -> d) -> p a b -> p c d
 \end{Verbatim}
@@ -57,26 +48,26 @@ keys, and the second function as modifying the contents of the
 container.
 
 For profunctors acting within one category, we can extract quite a lot
-of information from diagonal elements of the type \code{p a a}. We
-can prove that \code{b} is related to \code{c} as long as we have a
-pair of morphisms \code{b->a} and
-\code{a->c}. Even better, we can use a single morphism to
+of information from diagonal elements of the type $p\ a\ a$. We
+can prove that $b$ is related to $c$ as long as we have a
+pair of morphisms $b \to a$ and
+$a \to c$. Even better, we can use a single morphism to
 reach off-diagonal values. For instance, if we have a morphism
-\code{f::a->b}, we can lift the pair
-\code{<f, id\textsubscript{b}>} to go from \code{p b b} to
-\code{p a b}:
+$f \Colon a \to b$, we can lift the pair
+$\langle f, \idarrow[b] \rangle$ to go from $p\ b\ b$ to
+$p\ a\ b$:
 
-\begin{Verbatim}[commandchars=\\\{\}]
-dimap f id pbb :: p a b
+\begin{Verbatim}
+dimap f id (p b b) :: p a b
 \end{Verbatim}
-Or we can lift the pair \code{<id\textsubscript{a}, f>} to go
-from \code{p a a} to \code{p a b}:
+Or we can lift the pair $\langle \idarrow[a], f \rangle$ to go
+from $p\ a\ a$ to $p\ a\ b$:
 
-\begin{Verbatim}[commandchars=\\\{\}]
-dimap id f paa :: p a b
+\begin{Verbatim}
+dimap id f (p a a) :: p a b
 \end{Verbatim}
 
-\section{Dinatural Transformations}\label{dinatural-transformations}
+\section{Dinatural Transformations}
 
 Since profunctors are functors, we can define natural transformations
 between them in the standard way. In many cases, though, it's enough to
@@ -84,41 +75,37 @@ define the mapping between diagonal elements of two profunctors. Such a
 transformation is called a dinatural transformation, provided it
 satisfies the commuting conditions that reflect the two ways we can
 connect diagonal elements to non-diagonal ones. A dinatural
-transformation between two profunctors \code{p} and \code{q}, which
-are members of the functor category \code{{[}C\textsuperscript{op} × C, Set{]}}, is a
+transformation between two profunctors $p$ and $q$, which
+are members of the functor category ${[}\cat{C}^{op}\times{}\cat{C}, \Set{]}$, is a
 family of morphisms:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-α\textsubscript{a} :: p a a -> q a a
-\end{Verbatim}
-for which the following diagram commutes, for any
-\code{f::a->b}:
+\[\alpha_a \Colon p\ a\ a \to q\ a\ a\]
+for which the following diagram commutes, for any $f \Colon a \to b$:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/end.jpg}
+\includegraphics[width=50mm]{images/end.jpg}
 \end{figure}
 
 \noindent
 Notice that this is strictly weaker than the naturality condition. If
-\code{α} were a natural transformation in
-\code{{[}C\textsuperscript{op} × C, Set{]}}, the above diagram could be constructed
+$\alpha$ were a natural transformation in
+${[}\cat{C}^{op}\times{}\cat{C}, \Set{]}$, the above diagram could be constructed
 from two naturality squares and one functoriality condition (profunctor
-\code{q} preserving composition):
+$q$ preserving composition):
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/end-1.jpg}
+\includegraphics[width=50mm]{images/end-1.jpg}
 \end{figure}
 
 \noindent
-Notice that a component of a natural transformation \code{α} in
-\code{{[}C\textsuperscript{op} × C, Set{]}} is indexed by a pair of objects
-\code{α\ a\ b}. A dinatural transformation, on the other hand, is
+Notice that a component of a natural transformation $\alpha$ in
+${[}\cat{C}^{op}\times{}\cat{C}, \Set{]}$ is indexed by a pair of objects
+$\alpha_{a\ b}$. A dinatural transformation, on the other hand, is
 indexed by one object, since it only maps diagonal elements of the
 respective profunctors.
 
-\section{Ends}\label{ends}
+\section{Ends}
 
 We are now ready to advance from ``algebra'' to what could be considered
 the ``calculus'' of category theory. The calculus of ends (and coends)
@@ -129,86 +116,69 @@ even something that resembles the Dirac delta function.
 
 An end is a genaralization of a limit, with the functor replaced by a
 profunctor. Instead of a cone, we have a wedge. The base of a wedge is
-formed by diagonal elements of a profunctor \code{p}. The apex of the
+formed by diagonal elements of a profunctor $p$. The apex of the
 wedge is an object (here, a set, since we are considering
 $\Set$-valued profunctors), and the sides are a family of
 functions mapping the apex to the sets in the base. You may think of
 this family as one polymorphic function --- a function that's
 polymorphic in its return type:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-α :: forall a . apex -> p a a
-\end{Verbatim}
+\[\alpha \Colon \forall a\ .\ apex -> p\ a\ a\]
 Unlike in cones, within a wedge we don't have any functions that would
 connect vertices of the base. However, as we've seen earlier, given any
-morphism \code{f::a->b} in \emph{C}, we can connect both
-\code{p a a} and \code{p b b} to the common set
-\code{p a b}. We therefore insist that the following diagram
+morphism $f \Colon a \to b$ in $\cat{C}$, we can connect both
+$p\ a\ a$ and $p\ b\ b$ to the common set
+$p\ a\ b$. We therefore insist that the following diagram
 commute:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=2.69792in]{images/end-2.jpg}
+\includegraphics[width=40mm]{images/end-2.jpg}
 \end{figure}
 
 \noindent
-This is called the wedge condition. It can be written as:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-p id\textsubscript{a} f ◦ α\textsubscript{a} = p f id\textsubscript{b} ◦ α\textsubscript{b}
-\end{Verbatim}
+This is called the \newterm{wedge condition}. It can be written as:
+\[p\ \idarrow[a]\ f \circ \alpha_a = p\ f\ \idarrow[b] \circ \alpha_b\]
 Or, using Haskell notation:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 dimap id f . alpha = dimap f id . alpha
 \end{Verbatim}
 We can now proceed with the universal construction and define the end of
-\code{p} as the uinversal wedge --- a set \code{e} together with a
-family of functions \code{π} such that for any other wedge with the
-apex \code{a} and a family \code{α} there is a unique function
-\code{h::a->e} that makes all triangles commute:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-π\textsubscript{a} ◦ h = α\textsubscript{a}
-\end{Verbatim}
+$p$ as the uinversal wedge --- a set $e$ together with a
+family of functions $\pi$ such that for any other wedge with the
+apex $a$ and a family $\alpha$ there is a unique function
+$h \Colon a \to e$ that makes all triangles commute:
+\[\pi_a \circ h = \alpha_a\]
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/end-21.jpg}
+\includegraphics[width=50mm]{images/end-21.jpg}
 \end{figure}
 
 \noindent
 The symbol for the end is the integral sign, with the ``integration
 variable'' in the subscript position:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-∫\textsubscript{c} p c c
-\end{Verbatim}
-Components of \code{π} are called projection maps for the end:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-π\textsubscript{a} :: ∫\textsubscript{c} p c c -> p a a
-\end{Verbatim}
-Note that if \emph{C} is a discrete category (no morphisms other than
+\[\int_c p\ c\ c\]
+Components of $\pi$ are called projection maps for the end:
+\[\pi_a \Colon \int_c p\ c\ c \to p\ a\ a\]
+Note that if $\cat{C}$ is a discrete category (no morphisms other than
 the identities) the end is just a global product of all diagonal entries
-of \code{p} across the whole category \emph{C}. Later I'll show you
+of $p$ across the whole category $\cat{C}$. Later I'll show you
 that, in the more general case, there is a relationship between the end
 and this product through an equalizer.
 
 In Haskell, the end formula translates directly to the universal
 quantifier:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 forall a. p a a
 \end{Verbatim}
 Strictly speaking, this is just a product of all diagonal elements of
-\code{p}, but the wedge condition is satisfied automatically due to
-parametricity (I'll explain it in a
-\href{https://bartoszmilewski.com/2017/04/11/profunctor-parametricity/}{separate
-blog post}). For any function \code{f :: a -> b}, the
-wedge condition reads:
+$p$, but the wedge condition is satisfied automatically due to
+\urlref{https://bartoszmilewski.com/2017/04/11/profunctor-parametricity/}{parametricity}. For any function
+$f \Colon a \to b$, the wedge condition reads:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 dimap f id . pi = dimap id f . pi
 \end{Verbatim}
 or, with type annotations:
@@ -218,12 +188,12 @@ dimap f id\textsubscript{b} . pi\textsubscript{b} = dimap id\textsubscript{a} f 
 \end{Verbatim}
 where both sides of the equation have the type:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 Profunctor p => (forall c. p c c) -> p a b
 \end{Verbatim}
 and \code{pi} is the polymorphic projection:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 pi :: Profunctor p => forall c. (forall a. p a a) -> p c c
 pi e = e
 \end{Verbatim}
@@ -233,19 +203,19 @@ Here, type inference automatically picks the right component of
 Just as we were able to express the whole set of commutation conditions
 for a cone as one natural transformation, likewise we can group all the
 wedge conditions into one dinatural transformation. For that we need the
-generalization of the constant functor \code{\ensuremath{\Delta}\textsubscript{c}} to a constant
-profunctor that maps all pairs of objects to a single object \code{c},
+generalization of the constant functor $\Delta_c$ to a constant
+profunctor that maps all pairs of objects to a single object $c$,
 and all pairs of morphisms to the identity morphism for this object. A
 wedge is a dinatural transformation from that functor to the profunctor
-\code{p}. Indeed, the dinaturality hexagon shrinks down to the wedge
-diamond when we realize that \code{\ensuremath{\Delta}\textsubscript{c}} lifts all morphisms to one
+$p$. Indeed, the dinaturality hexagon shrinks down to the wedge
+diamond when we realize that $\Delta_c$ lifts all morphisms to one
 identity function.
 
 Ends can also be defined for target categories other than $\Set$,
 but here we'll only consider $\Set$-valued profunctors and their
 ends.
 
-\section{Ends as Equalizers}\label{ends-as-equalizers}
+\section{Ends as Equalizers}
 
 The commutation condition in the definition of the end can be written
 using an equalizer. First, let's define two functions (I'm using Haskell
@@ -253,7 +223,7 @@ notation, because mathematical notation seems to be less user-friendly
 in this case). These functions correspond to the two converging branches
 of the wedge condition:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 lambda :: Profunctor p => p a a -> (a -> b) -> p a b
 lambda paa f = dimap id f paa
 
@@ -263,20 +233,20 @@ rho pbb f = dimap f id pbb
 Both functions map diagonal elements of the profunctor \code{p} to
 polymorphic functions of the type:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 type ProdP p = forall a b. (a -> b) -> p a b
 \end{Verbatim}
 These functions have different types. However, we can unify their types,
 if we form one big product type, gathering together all diagonal
 elements of \code{p}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 newtype DiaProd p = DiaProd (forall a. p a a)
 \end{Verbatim}
 The functions \code{lambda} and \code{rho} induce two mappings from
 this product type:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 lambdaP :: Profunctor p => DiaProd p -> ProdP p
 lambdaP (DiaProd paa) = lambda paa
 
@@ -288,61 +258,50 @@ that the equalizer picks the largest subset on which two functions are
 equal. In this case it picks the subset of the product of all diagonal
 elements for which the wedge diagrams commute.
 
-\section{Natural Transformations as
-Ends}\label{natural-transformations-as-ends}
+\section{Natural Transformations as Ends}
 
 The most important example of an end is the set of natural
 transformations. A natural transformation between two functors
-\code{F} and \code{G} is a family of morphisms picked from hom-sets
-of the form \code{C(F a, G a)}. If it weren't for the naturality
+$F$ and $G$ is a family of morphisms picked from hom-sets
+of the form $\cat{C}(F\ a, G\ a)$. If it weren't for the naturality
 condition, the set of natural transformations would be just the product
 of all these hom-sets. In fact, in Haskell, it is:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 forall a. f a -> g a
 \end{Verbatim}
 The reason it works in Haskell is because naturality follows from
 parametricity. Outside of Haskell, though, not all diagonal sections
 across such hom-sets will yield natural transformations. But notice that
 the mapping:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-<a, b> -> C(F a, G b)
-\end{Verbatim}
+\[\langle a, b \rangle \to \cat{C}(F\ a, G\ b)\]
 is a profunctor, so it makes sense to study its end. This is the wedge
 condition:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=80mm]{images/end1.jpg}
+\includegraphics[width=60mm]{images/end1.jpg}
 \end{figure}
 
 \noindent
-Let's just pick one element from the set \code{∫\textsubscript{c} C(F c, G c)}.
+Let's just pick one element from the set $\int_c \cat{C}(F\ c, G\ c)$.
 The two projections will map this element to two components of a
 particular transformation, let's call them:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-τ\textsubscript{a} :: F a -> G a
-τ\textsubscript{b} :: F b -> G b
-\end{Verbatim}
+\begin{align*}
+\tau_a &\Colon F\ a \to G\ a \\
+\tau_b &\Colon F\ b \to G\ b
+\end{align*}
 In the left branch, we lift a pair of morphisms
-\code{<id\textsubscript{a}, G f>} using the hom-functor. You
+$\langle \idarrow[a], G\ f \rangle$ using the hom-functor. You
 may recall that such lifting is implemented as simultaneous pre- and
-post-composition. When acting on \code{τ\textsubscript{a}} the lifted pair gives us:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-G f ◦ τ\textsubscript{a} ◦ id\textsubscript{a}
-\end{Verbatim}
+post-composition. When acting on $\tau_a$ the lifted pair gives us:
+\[G\ f \circ \tau_a \circ \idarrow[a]\]
 The other branch of the diagram gives us:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-id\textsubscript{b} ◦ τ\textsubscript{b} ◦ F f
-\end{Verbatim}
+\[\idarrow[b] \circ \tau_b \circ F\ f\]
 Their equality, demanded by the wedge condition, is nothing but the
-naturality condition for \code{τ}.
+naturality condition for $\tau$.
 
-\section{Coends}\label{coends}
+\section{Coends}
 As expected, the dual to an end is called a coend. It is constructed
 from a dual to a wedge called a cowedge (pronounced co-wedge, not
 cow-edge).
@@ -355,64 +314,61 @@ cow-edge).
 
 The symbol for a coend is the integral sign with the ``integration
 variable'' in the superscript position:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-∫ \textsuperscript{c} p c c
-\end{Verbatim}
+\[\int^c p\ c\ c\]
 Just like the end is related to a product, the coend is related to a
 coproduct, or a sum (in this respect, it resembles an integral, which is
 a limit of a sum). Rather than having projections, we have injections
 going from the diagonal elements of the profunctor down to the coend. If
 it weren't for the cowedge conditions, we could say that the coend of
-the profunctor \code{p} is either \code{p a a}, or
-\code{p b b}, or \code{p c c}, and so on. Or we could say that
-there exists such an \code{a} for which the coend is just the set
-\code{p a a}. The universal quantifier that we used in the
+the profunctor $p$ is either $p\ a\ a$, or
+$p\ b\ b$, or $p\ c\ c$, and so on. Or we could say that
+there exists such an $a$ for which the coend is just the set
+$p\ a\ a$. The universal quantifier that we used in the
 definition of the end turns into an existential quantifier for the
 coend.
 
 This is why, in pseudo-Haskell, we would define the coend as:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 exists a. p a a
 \end{Verbatim}
 The standard way of encoding existential quantifiers in Haskell is to
 use universally quantified data constructors. We can thus define:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data Coend p = forall a. Coend (p a a)
 \end{Verbatim}
 The logic behind this is that it should be possible to construct a coend
-using a value of any of the family of types \code{p a a}, no matter
-what \code{a} we chose.
+using a value of any of the family of types $p\ a\ a$, no matter
+what $a$ we chose.
 
 Just like an end can be defined using an equalizer, a coend can be
 described using a \newterm{coequalizer}. All the cowedge conditions can be
-summarized by taking one gigantic coproduct of \code{p a b} for all
-possible functions \code{b->a}. In Haskell, that would be
+summarized by taking one gigantic coproduct of $p\ a\ b$ for all
+possible functions $b \to a$. In Haskell, that would be
 expressed as an existential type:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data SumP p = forall a b. SumP (b -> a) (p a b)
 \end{Verbatim}
 There are two ways of evaluating this sum type, by lifting the function
-using \code{dimap} and applying it to the profunctor \code{p}:
+using \code{dimap} and applying it to the profunctor $p$:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 lambda, rho :: Profunctor p => SumP p -> DiagSum p
 lambda (SumP f pab) = DiagSum (dimap f id pab)
 rho    (SumP f pab) = DiagSum (dimap id f pab)
 \end{Verbatim}
-where \code{DiagSum} is the sum of diagonal elements of \code{p}:
+where \code{DiagSum} is the sum of diagonal elements of $p$:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data DiagSum p = forall a. DiagSum (p a a)
 \end{Verbatim}
 The coequalizer of these two functions is the coend. A coequilizer is
 obtained from \code{DiagSum p} by identifying values that are
 obtained by applying \code{lambda} or \code{rho} to the same
 argument. Here, the argument is a pair consisting of a function
-\code{b->a} and an element of \code{p a b}. The
+$b \to a$ and an element of $p\ a\ b$. The
 application of \code{lambda} and \code{rho} produces two potentially
 different values of the type \code{DiagSum p}. In the coend, these
 two values are identified, making the cowedge condition automatically
@@ -420,25 +376,21 @@ satisfied.
 
 The process of identification of related elements in a set is formally
 known as taking a quotient. To define a quotient we need an
-\newterm{equivalence relation} \code{\textasciitilde{}}, a relation that
+\newterm{equivalence relation} $\sim$, a relation that
 is reflexive, symmetric, and transitive:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-a ~ a
-if a ~ b then b ~ a
-if a ~ b and b ~ c then a ~ c
-\end{Verbatim}
+\begin{align*}
+&a \sim a \\
+&\text{if}\ a \sim b\ \text{then}\ b \sim a \\
+&\text{if}\ a \sim b\ \text{and}\ b \sim c\ \text{then}\ a \sim c
+\end{align*}
 Such a relation splits the set into equivalence classes. Each class
 consists of elements that are related to each other. We form a quotient
 set by picking one representative from each class. A classic example is
 the definition of rational numbers as pairs of whole numbers with the
 following equivalence relation:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-(a, b) ~ (c, d) iff a * d = b * c
-\end{Verbatim}
+\[(a, b) \sim (c, d)\ \text{iff}\ a * d = b * c\]
 It's easy to check that this is an equivalence relation. A pair
-\code{(a, b)} is interpreted as a fraction \code{a/b}, and
+$(a, b)$ is interpreted as a fraction $\frac{a}{b}$, and
 fractions that have a common divisor are identified. A rational number
 is an equivalence class of such fractions.
 
@@ -448,10 +400,7 @@ contravariant hom-functor turns colimits into limits. These properties
 can be generalized to ends and coends, which are a generalization of
 limits and colimits, respectively. In particular, we get a very useful
 identity for converting coends to ends:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-Set(∫ \textsuperscript{x} p x x, c) \ensuremath{\cong} ∫\textsubscript{x} Set(p x x, c)
-\end{Verbatim}
+\[\Set(\int^x p\ x\ x, c) \cong \int_x \Set(p\ x\ x, c)\]
 Let's have a look at it in pseudo-Haskell:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -466,22 +415,16 @@ statement, with a tuple of handlers, one for every type present in the
 sum. Here, the sum type is replaced by a coend, and a family of handlers
 becomes an end, or a polymorphic function.
 
-\section{Ninja Yoneda Lemma}\label{ninja-yoneda-lemma}
+\section{Ninja Yoneda Lemma}
 
 The set of natural transformations that appears in the Yoneda lemma may
 be encoded using an end, resulting in the following formulation:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-∫\textsubscript{z} Set(C(a, z), F z) \ensuremath{\cong} F a
-\end{Verbatim}
+\[\int_z \Set(\cat{C}(a, z), F\ z) \cong F\ a\]
 There is also a dual formula:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-∫ \textsuperscript{z} C(a, z) × F z \ensuremath{\cong} F a
-\end{Verbatim}
+\[\int^z \cat{C}(a, z)\times{}F\ z \cong F\ a\]
 This identity is strongly reminiscent of the formula for the Dirac delta
-function (a function \code{δ(a - z)}, or rather a distribution, that
-has an infinite peak at \code{a = z}). Here, the hom-functor plays
+function (a function $\delta(a - z)$, or rather a distribution, that
+has an infinite peak at $a = z$). Here, the hom-functor plays
 the role of the delta function.
 
 Together these two identities are sometimes called the Ninja Yoneda
@@ -489,72 +432,48 @@ lemma.
 
 To prove the second formula, we will use the consequence of the Yoneda
 embedding, which states that two objects are isomorphic if and only if
-their hom-functors are isomorphic. In other words \code{a \ensuremath{\cong} b} if
+their hom-functors are isomorphic. In other words $a \cong b$ if
 and only if there is a natural transformation of the type:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-[C, Set](C(a, -), C(b, =))
-\end{Verbatim}
+\[[\cat{C}, \Set](\cat{C}(a, -), \cat{C}(b, =))\]
 that is an isomorphism.
 
 We start by inserting the left-hand side of the identity we want to
 prove inside a hom-functor that's going to some arbitrary object
-\code{c}:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-Set(∫ \textsuperscript{z} C(a, z) × F z, c)
-\end{Verbatim}
+$c$:
+\[\Set(\int^z \cat{C}(a, z)\times{}F\ z, c)\]
 Using the continuity argument, we can replace the coend with the end:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-∫\textsubscript{z} Set(C(a, z) × F z, c)
-\end{Verbatim}
+\[\int_z \Set(\cat{C}(a, z)\times{}F\ z, c)\]
 We can now take advantage of the adjunction between the product and the
 exponential:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-∫\textsubscript{z} Set(C(a, z), c(F z))
-\end{Verbatim}
+\[\int_z \Set(\cat{C}(a, z), c^{(F\ z)})\]
 We can ``perform the integration'' by using the Yoneda lemma to get:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-c\textsuperscript{(F a)}
-\end{Verbatim}
+\[c^{(F\ a)}\]
 This exponential object is isomorphic to the hom-set:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-Set(F a, c)
-\end{Verbatim}
+\[\Set(F\ a, c)\]
 Finally, we take advantage of the Yoneda embedding to arrive at the
 isomorphism:
+\[\int^z \cat{C}(a, z)\times{}F\ z \cong F\ a\]
 
-\begin{Verbatim}[commandchars=\\\{\}]
-∫ \textsuperscript{z} C(a, z) × F z \ensuremath{\cong} F a
-\end{Verbatim}
-
-\section{Profunctor Composition}\label{profunctor-composition}
+\section{Profunctor Composition}
 
 Let's explore further the idea that a profunctor describes a relation
 --- more precisely, a proof-relevant relation, meaning that the set
-\code{p a b} represents the set of proofs that \code{a} is related
-to \code{b}. If we have two relations \code{p} and \code{q} we can
-try to compose them. We'll say that \code{a} is related to \code{b}
-through the composition of \code{q} after \code{p} if there exist an
-intermediary object \code{c} such that both \code{q b c} and
-\code{p c a} are non-empty. The proofs of this new relation are all
+$p\ a\ b$ represents the set of proofs that $a$ is related
+to $b$. If we have two relations $p$ and $q$ we can
+try to compose them. We'll say that $a$ is related to $b$
+through the composition of $q$ after $p$ if there exist an
+intermediary object $c$ such that both $q\ b\ c$ and
+$p\ c\ a$ are non-empty. The proofs of this new relation are all
 pairs of proofs of individual relations. Therefore, with the
 understanding that the existential quantifier corresponds to a coend,
 and the cartesian product of two sets corresponds to ``pairs of
 proofs,'' we can define composition of profunctors using the following
 formula:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-(q ◦ p) a b = ∫ \textsuperscript{c} p c a × q b c
-\end{Verbatim}
-Here's the equivalent Haskell definition from
+\[(q \circ p)\ a\ b = \int^c p\ c\ a\times{}q\ b\ c\]
+Here's the equivalent Haskell definition from\\
 \code{Data.Profunctor.Composition}, after some renaming:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data Procompose q p a b where
     Procompose :: q a c -> p c b -> Procompose q p a b 
 \end{Verbatim}
@@ -563,7 +482,7 @@ a free type variable (here \code{c}) is automatically existentially
 quanitified. The (uncurried) data constructor \code{Procompose} is
 thus equivalent to:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 exists c. (q a c, p c b)
 \end{Verbatim}
 The unit of so defined composition is the hom-functor --- this
@@ -573,7 +492,7 @@ profunctors serve as morphisms. The answer is positive, with the caveat
 that both associativity and identity laws for profunctor composition
 hold only up to natural isomorphism. Such a category, where laws are
 valid up to isomorphism, is called a bicategory (which is more general
-than a 2-category). So we have a bicategory \textbf{Prof}, in which
+than a $\cat{2}$-category). So we have a bicategory $\cat{Prof}$, in which
 objects are categories, morphisms are profunctors, and morphisms between
 morphisms (a.k.a., two-cells) are natural transformations. In fact, one
 can go even further, because beside profunctors, we also have regular

@@ -1,36 +1,36 @@
-\lettrine[lhang=0.17]{N}{ow that we have} covered monads, we can reap the benefits of duality and
+\lettrine[lhang=0.17]{N}{ow that we have covered} monads, we can reap the benefits of duality and
 get comonads for free simply by reversing the arrows and working in the
 opposite category.
 
 Recall that, at the most basic level, monads are about composing Kleisli
 arrows:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 a -> m b
 \end{Verbatim}
 where \code{m} is a functor that is a monad. If we use the letter
 \code{w} (upside down \code{m}) for the comonad, we can define
 co-Kleisli arrows as morphism of the type:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 w a -> b
 \end{Verbatim}
 The analog of the fish operator for co-Kleisli arrows is defined as:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 (=>=) :: (w a -> b) -> (w b -> c) -> (w a -> c)
 \end{Verbatim}
 For co-Kleisli arrows to form a category we also have to have an
 identity co-Kleisli arrow, which is called \code{extract}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 extract :: w a -> a
 \end{Verbatim}
 This is the dual of \code{return}. We also have to impose the laws of
 associativity as well as left- and right-identity. Putting it all
 together, we could define a comonad in Haskell as:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 class Functor w => Comonad w where
     (=>=) :: (w a -> b) -> (w b -> c) -> (w a -> c)
     extract :: w a -> a
@@ -39,7 +39,7 @@ In practice, we use slightly different primitives, as we'll see shortly.
 
 The question is, what's the use for comonads in programming?
 
-\section{Programming with Comonads}\label{programming-with-comonads}
+\section{Programming with Comonads}
 
 Let's compare the monad with the comonad. A monad provides a way of
 putting a value in a container using \code{return}. It doesn't give
@@ -59,32 +59,32 @@ result --- it embellishes it with context --- a co-Kleisli arrow takes a
 value together with a whole context and produces a result. It's an
 embodiment of \newterm{contextual computation}.
 
-\section{The Product Comonad}\label{the-product-comonad}
+\section{The Product Comonad}
 
 Remember the reader monad? We introduced it to tackle the problem of
 implementing computations that need access to some read-only environment
 \code{e}. Such computations can be represented as pure functions of
 the form:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 (a, e) -> b
 \end{Verbatim}
 We used currying to turn them into Kleisli arrows:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 a -> (e -> b)
 \end{Verbatim}
 But notice that these functions already have the form of co-Kleisli
 arrows. Let's massage their arguments into the more convenient functor
 form:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data Product e a = P e a deriving Functor
 \end{Verbatim}
 We can easily define the composition operator by making the same
 environment available to the arrows that we are composing:
 
-\begin{minted}[breaklines, breakafter=->]{text}
+\begin{minted}[breaklines]{text}
 (=>=) :: (Product e a -> b) -> (Product e b -> c) -> (Product e a -> c)
 f =>= g = \(P e a) -> let b = f (P e a)
                           c = g (P e b) 
@@ -92,7 +92,7 @@ f =>= g = \(P e a) -> let b = f (P e a)
 \end{minted}
 The implementation of \code{extract} simply ignores the environment:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 extract (P e a) = a
 \end{Verbatim}
 Not surprisingly, the product comonad can be used to perform exactly the
@@ -110,8 +110,7 @@ later.
 It's easy to generalize the \code{Product} comonad to arbitrary
 product types including tuples and records.
 
-\section{Dissecting the
-Composition}\label{dissecting-the-composition}
+\section{Dissecting the Composition}
 
 Continuing the process of dualization, we could go ahead and dualize
 monadic bind and join. Alternatively, we can repeat the process we used
@@ -123,7 +122,7 @@ produce a co-Kleisli arrow that takes \code{w a} and produces a
 \code{c}. The only way to produce a \code{c} is to apply the second
 function to an argument of the type \code{w b}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 (=>=) :: (w a -> b) -> (w b -> c) -> (w a -> c)
 f =>= g = g ... 
 \end{Verbatim}
@@ -132,12 +131,12 @@ to \code{g}? We have at our disposal the argument of type
 \code{w a} and the function\\ \code{f :: w a -> b}.
 The solution is to define the dual of bind, which is called extend:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 extend :: (w a -> b) -> w a -> w b
 \end{Verbatim}
 Using \code{extend} we can implement composition:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 f =>= g = g . extend f
 \end{Verbatim}
 Can we next dissect \code{extend}? You might be tempted to say, why
@@ -151,7 +150,7 @@ we could use \code{fmap} here would be if we had something of the type
 into\\ \code{w (w a)}. And, conveniently, that would be exactly the
 dual of \code{join}. We call it \code{duplicate}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 duplicate :: w a -> w (w a)
 \end{Verbatim}
 So, just like with the definitions of the monad, we have three
@@ -159,7 +158,7 @@ equivalent definitions of the comonad: using co-Kleisli arrows,
 \code{extend}, or \code{duplicate}. Here's the Haskell definition
 taken directly from\\ \code{Control.Comonad} library:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 class Functor w => Comonad w where
     extract :: w a -> a
     duplicate :: w a -> w (w a)
@@ -202,32 +201,32 @@ new state of the current cell. To do that, it would look at its context
 \code{duplicate} to produce all possible foci and then we apply
 \code{f} to each of them.
 
-\section{The Stream Comonad}\label{the-stream-comonad}
+\section{The Stream Comonad}
 
 This process of shifting the focus from one element of the container to
 another is best illustrated with the example of an infinite stream. Such
 a stream is just like a list, except that it doesn't have the empty
 constructor:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data Stream a = Cons a (Stream a)
 \end{Verbatim}
 It's trivially a \code{Functor}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 instance Functor Stream where
     fmap f (Cons a as) = Cons (f a) (fmap f as)
 \end{Verbatim}
 The focus of a stream is its first element, so here's the implementation
 of \code{extract}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 extract (Cons a _) = a
 \end{Verbatim}
 \code{duplicate} produces a stream of streams, each focused on a
 different element.
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 duplicate (Cons a as) = Cons (Cons a as) (duplicate as)
 \end{Verbatim}
 The first element is the original stream, the second element is the tail
@@ -236,7 +235,7 @@ infinitum.
 
 Here's the complete instance:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 instance Comonad Stream where
     extract (Cons a _) = a 
     duplicate (Cons a as) = Cons (Cons a as) (duplicate as)
@@ -248,7 +247,7 @@ shifted streams in one fell swoop. Haskell's laziness makes this
 possible and even desirable. Of course, to make a \code{Stream}
 practical, we would also implement the analog of \code{advance}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 tail :: Stream a -> Stream a
 tail (Cons a as) = as
 \end{Verbatim}
@@ -261,21 +260,21 @@ filter, and \code{extend} produces a filtered stream.
 As a simple example, let's implement the moving average filter. Here's a
 function that sums \code{n} elements of a stream:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 sumS :: Num a => Int -> Stream a -> a
 sumS n (Cons a as) = if n <= 0 then 0 else a + sumS (n - 1) as
 \end{Verbatim}
 Here's the function that calculates the average of the first \code{n}
 elements of the stream:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 average :: Fractional a => Int -> Stream a -> a
 average n stm = (sumS n stm) / (fromIntegral n)
 \end{Verbatim}
 Partially applied \code{average n} is a co-Kleisli arrow, so we can
 \code{extend} it over the whole stream:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 movingAvg :: Fractional a => Int -> Stream a -> Stream a
 movingAvg n = extend (average n)
 \end{Verbatim}
@@ -284,39 +283,32 @@ The result is the stream of running averages.
 A stream is an example of a unidirectional, one-dimensional comonad. It
 can be easily made bidirectional or extended to two or more dimensions.
 
-\section{Comonad Categorically}\label{comonad-categorically}
+\section{Comonad Categorically}
 
 Defining a comonad in category theory is a straightforward exercise in
 duality. As with the monad, we start with an endofunctor \code{T}. The
 two natural transformations, η and μ, that define the monad are simply
 reversed for the comonad:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-ε :: T -> I
-δ :: T -> T\textsuperscript{2}
-\end{Verbatim}
+\begin{align*}
+\varepsilon &\Colon T \to I \\
+\delta &\Colon T \to T^2
+\end{align*}
 The components of these transformations correspond to \code{extract}
 and \code{duplicate}. Comonad laws are the mirror image of monad laws.
 No big surprise here.
 
 Then there is the derivation of the monad from an adjunction. Duality
 reverses an adjunction: the left adjoint becomes the right adjoint and
-vice versa. And, since the composition \code{R ◦ L} defines a monad,
-\code{L ◦ R} must define a comonad. The counit of the adjunction:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-ε :: L ◦ R -> I
-\end{Verbatim}
+vice versa. And, since the composition $R \circ L$ defines a monad,
+$L \circ R$ must define a comonad. The counit of the adjunction:
+\[\varepsilon \Colon L \circ R \to I\]
 is indeed the same ε that we see in the definition of the comonad ---
 or, in components, as Haskell's \code{extract}. We can also use the
 unit of the adjunction:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-η :: I -> R ◦ L
-\end{Verbatim}
-to insert an \code{R ◦ L} in the middle of \code{L ◦ R} and
-produce \code{L ◦ R ◦ L ◦ R}. Making \code{T\textsuperscript{2}} from \code{T}
-defines the δ, and that completes the definition of the comonad.
+\[\eta \Colon I \to R \circ L\]
+to insert an $R \circ L$ in the middle of $L \circ R$ and
+produce $L \circ R \circ L \circ R$. Making $T^2$ from $T$
+defines the $\delta$, and that completes the definition of the comonad.
 
 We've also seen that the monad is a monoid. The dual of this statement
 would require the use of a comonoid, so what's a comonoid? The original
@@ -326,21 +318,19 @@ endomorphisms, you get another monoid. Recall, however, that in our
 approach to a monad, we used a more general definition of a monoid as an
 object in a monoidal category. The construction was based on two
 morphisms:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-μ :: m \ensuremath{\otimes} m -> m
-η :: i -> m
-\end{Verbatim}
+\begin{align*}
+\mu &\Colon m \otimes m \to m \\
+\eta &\Colon i \to m
+\end{align*}
 The reversal of these morphisms produces a comonoid in a monoidal
 category:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-δ :: m -> m \ensuremath{\otimes} m
-ε :: m -> i
-\end{Verbatim}
+\begin{align*}
+\delta &\Colon m \to m \otimes m \\
+\varepsilon &\Colon m \to i
+\end{align*}
 One can write a definition of a comonoid in Haskell:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 class Comonoid m where
     split :: m -> (m, m)
     destroy :: m -> ()
@@ -348,17 +338,17 @@ class Comonoid m where
 but it is rather trivial. Obviously \code{destroy} ignores its
 argument.
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 destroy _ = ()
 \end{Verbatim}
 \code{split} is just a pair of functions:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 split x = (f x, g x)
 \end{Verbatim}
 Now consider comonoid laws that are dual to the monoid unit laws.
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 lambda . bimap destroy id . split = id
 rho . bimap id destroy . split = id
 \end{Verbatim}
@@ -367,16 +357,16 @@ respectively (see the definition of
 \hyperref[monads-categorically]{monoidal
 categories}). Plugging in the definitions, we get:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 lambda (bimap destroy id (split x))
 = lambda (bimap destroy id (f x, g x))
 = lambda ((), g x)
 = g x
 \end{Verbatim}
 which proves that \code{g = id}. Similarly, the second law expands
-to \code{f\ =\ id}. In conclusion:
+to \code{f = id}. In conclusion:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 split x = (x, x)
 \end{Verbatim}
 which shows that in Haskell (and, in general, in the category
@@ -391,46 +381,39 @@ of endofunctors,
 The comonad is a comonoid in the category of endofunctors.
 \end{quote}
 
-\section{The Store Comonad}\label{the-store-comonad}
+\section{The Store Comonad}
 
 Another important example of a comonad is the dual of the state monad.
 It's called the costate comonad or, alternatively, the store comonad.
 
 We've seen before that the state monad is generated by the adjunction
 that defines the exponentials:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-L z = z × s
-R a = s \ensuremath{\Rightarrow} a
-\end{Verbatim}
+\begin{align*}
+L\ z &= z\times{}s \\
+R\ a &= s \Rightarrow a
+\end{align*}
 We'll use the same adjunction to define the costate comonad. A comonad
-is defined by the composition \code{L ◦ R}:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-L (R a) = (s ⇒ a) × s
-\end{Verbatim}
+is defined by the composition $L \circ R$:
+\[L\ (R\ a) = (s \Rightarrow a)\times{}s\]
 Translating this to Haskell, we start with the adjunction between the
 \code{Prod} functor on the left and the \code{Reader} functor or the
 right. Composing \code{Prod} after \code{Reader} is equivalent to
 the following definition:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data Store s a = Store (s -> a) s
 \end{Verbatim}
-The counit of the adjunction taken at the object \code{a} is the
+The counit of the adjunction taken at the object $a$ is the
 morphism:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-ε\textsubscript{a} :: ((s \ensuremath{\Rightarrow} a) × s) -> a
-\end{Verbatim}
+\[\varepsilon_a \Colon ((s \Rightarrow a)\times{}s) \to a\]
 or, in Haskell notation:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 counit (Prod (Reader f, s)) = f s
 \end{Verbatim}
 This becomes our \code{extract}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 extract (Store f s) = f s
 \end{Verbatim}
 The unit of the adjunction:
@@ -440,30 +423,29 @@ unit a = Reader (\s -> Prod (a, s))
 \end{Verbatim}
 can be rewritten as partially applied data constructor:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 Store f :: s -> Store f s
 \end{Verbatim}
-We construct δ, or \code{duplicate}, as the horizontal composition:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-δ :: L ◦ R -> L ◦ R ◦ L ◦ R
-δ = L ◦ η ◦ R
-\end{Verbatim}
-We have to sneak η through the leftmost \code{L}, which is the
-\code{Prod} functor. It means acting with η, or \code{Store f}, on
+We construct $\delta$, or \code{duplicate}, as the horizontal composition:
+\begin{align*}
+\delta &\Colon L \circ R \to L \circ R \circ L \circ R \\
+\delta &= L \circ \eta \circ R
+\end{align*}
+We have to sneak $\eta$ through the leftmost $L$, which is the
+\code{Prod} functor. It means acting with $\eta$, or \code{Store f}, on
 the left component of the pair (that's what \code{fmap} for
 \code{Prod} would do). We get:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 duplicate (Store f s) = Store (Store f) s
 \end{Verbatim}
-(Remember that, in the formula for δ, \code{L} and \code{R} stand
+(Remember that, in the formula for $\delta$, $L$ and $R$ stand
 for identity natural transformations whose components are identity
 morphisms.)
 
 Here's the complete definition of the \code{Store} comonad:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 instance Comonad (Store s) where
     extract (Store f s) = f s
     duplicate (Store f s) = Store (Store f) s
@@ -496,12 +478,12 @@ basis for the \code{Lens} library. Conceptually, the
 a lens) on a particular substructure of the date type \code{a} using
 the type \code{s} as an index. In particular, a function of the type:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 a -> Store s a
 \end{Verbatim}
 is equivalent to a pair of functions:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 set :: a -> s -> a
 get :: a -> s
 \end{Verbatim}
