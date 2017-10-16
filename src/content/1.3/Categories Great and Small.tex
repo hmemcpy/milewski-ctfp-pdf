@@ -2,7 +2,7 @@
 examples. Categories come in all shapes and sizes and often pop up in
 unexpected places. We'll start with something really simple.
 
-\section{No Objects}\label{no-objects}
+\section{No Objects}
 
 The most trivial category is one with zero objects and, consequently,
 zero morphisms. It's a very sad category by itself, but it may be
@@ -10,7 +10,7 @@ important in the context of other categories, for instance, in the
 category of all categories (yes, there is one). If you think that an
 empty set makes sense, then why not an empty category?
 
-\section{Simple Graphs}\label{simple-graphs}
+\section{Simple Graphs}
 
 You can build categories just by connecting objects with arrows. You can
 imagine starting with any directed graph and making it into a category
@@ -34,18 +34,18 @@ given structure by extending it with a minimum number of items to
 satisfy its laws (here, the laws of a category). We'll see more examples
 of it in the future.
 
-\section{Orders}\label{orders}
+\section{Orders}
 
 And now for something completely different! A category where a morphism
 is a relation between objects: the relation of being less than or equal.
 Let's check if it indeed is a category. Do we have identity morphisms?
 Every object is less than or equal to itself: check! Do we have
-composition? If $a \leq b$ and $b \leq c$ then $a \leq c$: check! Is composition associative? Check! A set with a
+composition? If $a \leqslant b$ and $b \leqslant c$ then $a \leqslant c$: check! Is composition associative? Check! A set with a
 relation like this is called a \newterm{preorder}, so a preorder is indeed
 a category.
 
 You can also have a stronger relation, that satisfies an additional
-condition that, if $a \leq b$ and $b \leq a$ then $a$ must be
+condition that, if $a \leqslant b$ and $b \leqslant a$ then $a$ must be
 the same as $b$. That's called a \newterm{partial order}.
 
 Finally, you can impose the condition that any two objects are in a
@@ -59,7 +59,7 @@ is a thin category.
 
 A set of morphisms from object a to object b in a category $\cat{C}$ is called a
 \newterm{hom-set} and is written as $\cat{C}(a, b)$ (or, sometimes,
-$\cat{Hom_C}(a, b)$). So every hom-set in a preorder is either
+$\mathbf{Hom}_{\cat{C}}(a, b)$). So every hom-set in a preorder is either
 empty or a singleton. That includes the hom-set $\cat{C}(a, a)$, the set of
 morphisms from a to a, which must be a singleton, containing only the
 identity, in any preorder. You may, however, have cycles in a preorder.
@@ -70,7 +70,7 @@ and total orders because of sorting. Sorting algorithms, such as
 quicksort, bubble sort, merge sort, etc., can only work correctly on
 total orders. Partial orders can be sorted using topological sort.
 
-\section{Monoid as Set}\label{monoid-as-set}
+\section{Monoid as Set}
 
 Monoid is an embarrassingly simple but amazingly powerful concept. It's
 the concept behind basic arithmetics: Both addition and multiplication
@@ -109,14 +109,14 @@ class Monoid m where
     mappend :: m -> m -> m
 \end{Verbatim}
 The type signature for a two-argument function,
-\code{m->m->m}, might look strange at first,
+\code{m -> m -> m}, might look strange at first,
 but it will make perfect sense after we talk about currying. You may
 interpret a signature with multiple arrows in two basic ways: as a
 function of multiple arguments, with the rightmost type being the return
 type; or as a function of one argument (the leftmost one), returning a
 function. The latter interpretation may be emphasized by adding
 parentheses (which are redundant, because the arrow is
-right-associative), as in: \code{m->(m->m)}.
+right-associative), as in: \code{m -> (m -> m)}.
 We'll come back to this interpretation in a moment.
 
 Notice that, in Haskell, there is no way to express the monoidal
@@ -222,7 +222,7 @@ std::string mappend(std::string s1, std::string s2) {
 }
 \end{Verbatim}
 
-\section{Monoid as Category}\label{monoid-as-category}
+\section{Monoid as Category}
 
 That was the ``familiar'' definition of the monoid in terms of elements
 of a set. But as you know, in category theory we try to get away from
@@ -253,7 +253,7 @@ corresponding to the identity function.
 
 An astute reader might have noticed that the mapping from integers to
 adders follows from the second interpretation of the type signature of
-\code{mappend} as \code{m->(m->m)}. It
+\code{mappend} as \code{m -> (m -> m)}. It
 tells us that \code{mappend} maps an element of a monoid set to a
 function acting on that set.
 
@@ -310,7 +310,7 @@ follow the rules of composition, and as points in a set. Here,
 composition of morphisms in M translates into monoidal product in the
 set $\cat{M}(m, m)$.
 
-\section{Challenges}\label{challenges}
+\section{Challenges}
 
 \begin{enumerate}
 \tightlist

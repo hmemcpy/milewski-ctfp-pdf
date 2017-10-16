@@ -4,7 +4,7 @@ it's interesting to see which type constructors (which correspond to
 mappings between objects in a category) can be extended to functors
 (which include mappings between morphisms).
 
-\section{Bifunctors}\label{bifunctors}
+\section{Bifunctors}
 
 Since functors are morphisms in $\Cat$ (the category of categories),
 a lot of intuitions about morphisms --- and functions in particular ---
@@ -106,8 +106,7 @@ and \code{second} and accepting the default for \code{bimap} (of
 course, you may implement all three of them, but then it's up to you to
 make sure they are related to each other in this manner).
 
-\section{Product and Coproduct
-Bifunctors}\label{product-and-coproduct-bifunctors}
+\section{Product and Coproduct Bifunctors}
 
 An important example of a bifunctor is the categorical product --- a
 product of two objects that is defined by a \hyperref[products-and-coproducts]{universal
@@ -159,8 +158,7 @@ morphisms. We are now one step closer to the full definition of a
 monoidal category (we still need to learn about naturality, before we
 can get there).
 
-\section{Functorial Algebraic Data
-Types}\label{functorial-algebraic-data-types}
+\section{Functorial Algebraic Data Types}
 
 We've seen several examples of parameterized data types that turned out
 to be functors --- we were able to define \code{fmap} for them.
@@ -319,7 +317,7 @@ own typeclasses, but that's a bit more advanced. The idea though is the
 same: You provide the behavior for the basic building blocks and sums
 and products, and let the compiler figure out the rest.
 
-\section{Functors in C++}\label{functors-in-c}
+\section{Functors in C++}
 
 If you are a C++ programmer, you obviously are on your own as far as
 implementing functors goes. However, you should be able to recognize
@@ -408,7 +406,7 @@ instance Functor Tree where
 \end{Verbatim}
 This implementation can also be automatically derived by the compiler.
 
-\section{The Writer Functor}\label{the-writer-functor}
+\section{The Writer Functor}
 
 I promised that I would come back to the \hyperref[kleisli-categories-page]{Kleisli
 category} I described earlier. Morphisms in that category were
@@ -482,8 +480,7 @@ the way Haskell implements polymorphic functions. It's called
 an implementation of \code{fmap} for a given type constructor, one
 that preserves identity, then it must be unique.
 
-\section{Covariant and Contravariant
-Functors}\label{covariant-and-contravariant-functors}
+\section{Covariant and Contravariant Functors}
 
 Now that we've reviewed the writer functor, let's go back to the reader
 functor. It was based on the partially applied function-arrow type
@@ -549,7 +546,7 @@ $G$. It's a mapping from $\cat{C}$ to $\cat{D}$. It maps objects the
 same way $F$ does, but when it comes to mapping morphisms, it
 reverses them. It takes a morphism $f \Colon b \to a$ in $\cat{C}$, maps
 it first to the opposite morphism $f^{op} \Colon a \to b$
-and then uses the functor $F$ on it, to get $F f^{op} \Colon F a \to F b$.
+and then uses the functor $F$ on it, to get $F f^{op} \Colon F\ a \to F\ b$.
 
 Considering that $F a$ is the same as $G a$ and $F b$ is
 the same as $G b$, the whole trip can be described as: $G f \Colon (b \to a) \to (G a \to G b)$
@@ -562,7 +559,7 @@ by the way --- the kind we've been studying thus far --- are called
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=60mm]{images/contravariant.jpg}}
+\includegraphics[width=60mm]{images/contravariant.jpg}
 \end{figure}
 
 \noindent
@@ -599,7 +596,7 @@ With it, we get:
 contramap = flip (.)
 \end{Verbatim}
 
-\section{Profunctors}\label{profunctors}
+\section{Profunctors}
 
 We've seen that the function-arrow operator is contravariant in its
 first argument and covariant in the second. Is there a name for such a
@@ -632,7 +629,7 @@ the defaults for \code{lmap} and \code{rmap}, or implementing both
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=60mm]{images/dimap.jpg}}
+\includegraphics[width=60mm]{images/dimap.jpg}
 \caption{dimap}
 \end{figure}
 
@@ -649,7 +646,7 @@ instance Profunctor (->) where
 Profunctors have their application in the Haskell lens library. We'll
 see them again when we talk about ends and coends.
 
-\section{Challenges}\label{challenges}
+\section{Challenges}
 
 \begin{enumerate}
 \tightlist

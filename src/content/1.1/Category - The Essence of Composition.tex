@@ -3,7 +3,7 @@ A category consists of \newterm{objects} and \newterm{arrows} that go between th
 why categories are so easy to represent pictorially. An object can be
 drawn as a circle or a point, and an arrow\ldots{} is an arrow. (Just
 for variety, I will occasionally draw objects as piggies and arrows as
-fireworks.) But the essence of a category is \newterm{composition}. Or, if you
+fireworks.) But the essence of a category is \emph{composition}. Or, if you
 prefer, the essence of composition is a category. Arrows compose, so
 if you have an arrow from object $A$ to object $B$, and another arrow from
 object $B$ to object $C$, then there must be an arrow --- their composition
@@ -17,17 +17,17 @@ then there must also be a direct arrow from $A$ to $C$ that is their composition
 category because it’s missing identity morphisms (see later).}
 \end{figure}
 
-\section{Arrows as Functions}\label{arrows-as-functions}
+\section{Arrows as Functions}
 
 Is this already too much abstract nonsense? Do not despair. Let's talk
 concretes. Think of arrows, which are also called \newterm{morphisms}, as
-functions. You have a function \code{f} that takes an argument of type $A$ and
-returns a $B$. You have another function \code{g} that takes a $B$ and returns a $C$.
+functions. You have a function $f$ that takes an argument of type $A$ and
+returns a $B$. You have another function $g$ that takes a $B$ and returns a $C$.
 You can compose them by passing the result of $f$ to $g$. You have just
 defined a new function that takes an $A$ and returns a $C$.
 
 In math, such composition is denoted by a small circle between
-functions: \ensuremath{g \circ f}. Notice the right to left order of composition. For some
+functions: $g \circ f$. Notice the right to left order of composition. For some
 people this is confusing. You may be familiar with the pipe notation in
 Unix, as in:
 
@@ -36,7 +36,7 @@ lsof | grep Chrome
 \end{Verbatim}
 or the chevron \code{>>} in F\#, which both
 go from left to right. But in mathematics and in Haskell functions
-compose right to left. It helps if you read \(g \circ f\) as ``g \emph{after} f.''
+compose right to left. It helps if you read $g \circ f$ as ``g \emph{after} f.''
 
 Let's make this even more explicit by writing some C code. We have one
 function \code{f} that takes an argument of type \code{A} and
@@ -83,12 +83,12 @@ Once you see how simple things are in Haskell, the inability to express
 straightforward functional concepts in C++ is a little embarrassing. In
 fact, Haskell will let you use Unicode characters so you can write
 composition as:
-
+% don't 'mathify' this block
 \begin{Verbatim}
 g ◦ f
 \end{Verbatim}
 You can even use Unicode double colons and arrows:
-
+% don't 'mathify' this block
 \begin{Verbatim}[commandchars=\\\{\}]
 f \ensuremath{\Colon} A → B
 \end{Verbatim}
@@ -97,7 +97,7 @@ of\ldots{}'' A function type is created by inserting an arrow between
 two types. You compose two functions by inserting a period between them
 (or a Unicode circle).
 
-\section{Properties of Composition}\label{properties-of-composition}
+\section{Properties of Composition}
 
 There are two extremely important properties that the composition in any
 category must satisfy.
@@ -108,7 +108,7 @@ Composition is associative. If you have three morphisms, $f$, $g$, and $h$,
 that can be composed (that is, their objects match end-to-end), you
 don't need parentheses to compose them. In math notation this is
 expressed as:
-\[h\circ{}(g\circ{}f) = (h\circ{}g)\circ{}f = h\circ{}g\circ{}f\]
+\[h \circ (g \circ f) = (h \circ g) \circ f = h \circ g \circ f\]
 In (pseudo) Haskell:
 
 \begin{Verbatim}
@@ -186,7 +186,7 @@ do we bother with the number zero? Zero is a symbol for nothing. Ancient
 Romans had a number system without a zero and they were able to build
 excellent roads and aqueducts, some of which survive to this day.
 
-Neutral values like zero or \code{id} are extremely useful when
+Neutral values like zero or $\id$ are extremely useful when
 working with symbolic variables. That's why Romans were not very good at
 algebra, whereas the Arabs and the Persians, who were familiar with the
 concept of zero, were. So the identity function becomes very handy as an
@@ -198,8 +198,7 @@ To summarize: A category consists of objects and arrows (morphisms).
 Arrows can be composed, and the composition is associative. Every object
 has an identity arrow that serves as a unit under composition.
 
-\section{Composition is the Essence of
-Programming}\label{composition-is-the-essence-of-programming}
+\section{Composition is the Essence of Programming}
 
 Functional programmers have a peculiar way of approaching problems. They
 start by asking very Zen-like questions. For instance, when designing an
@@ -223,7 +222,7 @@ This process of hierarchical decomposition and recomposition is not
 imposed on us by computers. It reflects the limitations of the human
 mind. Our brains can only deal with a small number of concepts at a
 time. One of the most cited papers in psychology,
-\href{http://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two}{The
+\urlref{http://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two}{The
 Magical Number Seven, Plus or Minus Two}, postulated that we can only
 keep $7 \pm 2$ ``chunks'' of information in our minds. The details of our
 understanding of the human short-term memory might be changing, but we
@@ -263,7 +262,7 @@ you have to dig into the implementation of the object in order to
 understand how to compose it with other objects, you've lost the
 advantages of your programming paradigm.
 
-\section{Challenges}\label{challenges}
+\section{Challenges}
 
 \begin{enumerate}
 \tightlist

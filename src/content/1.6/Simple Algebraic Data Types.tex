@@ -12,7 +12,7 @@ large subset of composite types.
 Let's have a closer look at product and sum types as they appear in
 programming.
 
-\section{Product Types}\label{product-types}
+\section{Product Types}
 
 The canonical implementation of a product of two types in a programming
 language is a pair. In Haskell, a pair is a primitive type constructor;
@@ -165,7 +165,7 @@ and error prone --- keeping track of which component represents what.
 It's often preferable to give names to components. A product type with
 named fields is called a record in Haskell, and a \code{struct} in C.
 
-\section{Records}\label{records}
+\section{Records}
 
 Let's have a look at a simple example. We want to describe chemical
 elements by combining two strings, name and symbol; and an integer, the
@@ -226,7 +226,7 @@ startsWithSymbol e = symbol e `isPrefixOf` name e
 The parentheses could be omitted in this case, because an infix operator
 has lower precedence than a function call.
 
-\section{Sum Types}\label{sum-types}
+\section{Sum Types}
 
 Just as the product in the category of sets gives rise to product types,
 the coproduct gives rise to sum types. The canonical implementation of a
@@ -392,7 +392,7 @@ You will rarely see \code{union} used as a sum type in C++ because of
 severe limitations on what can go into a union. You can't even put a
 \code{std::string} into a union because it has a copy constructor.
 
-\section{Algebra of Types}\label{algebra-of-types}
+\section{Algebra of Types}
 
 Taken separately, product and sum types can be used to define a variety
 of useful data structures, but the real strength comes from combining
@@ -512,7 +512,7 @@ where we keep replacing \code{x} on the right hand side with
 \code{(1 + a*x)}, and use the distributive property. This leads to
 the following series:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 x = 1 + a*x
 x = 1 + a*(1 + a*x) = 1 + a + a*a*x
 x = 1 + a + a*a*(1 + a*x) = 1 + a + a*a + a*a*a*x
@@ -558,7 +558,7 @@ This analogy goes deeper, and is the basis of the Curry-Howard
 isomorphism between logic and type theory. We'll come back to it when we
 talk about function types.
 
-\section{Challenges}\label{challenges}
+\section{Challenges}
 
 \begin{enumerate}
 \tightlist

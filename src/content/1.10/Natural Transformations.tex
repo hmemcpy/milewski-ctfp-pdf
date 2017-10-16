@@ -3,7 +3,7 @@ their structure.
 
 \begin{wrapfigure}[13]{R}{0pt}
 \raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\fbox{\includegraphics[width=60mm]{images/1_functors.jpg}}}%
+\includegraphics[width=60mm]{images/1_functors.jpg}}%
 \end{wrapfigure}
 
 \noindent
@@ -29,7 +29,7 @@ $G a$.
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=80mm]{images/2_natcomp.jpg}}
+\includegraphics[width=80mm]{images/2_natcomp.jpg}
 \end{figure}
 
 \noindent
@@ -131,7 +131,7 @@ like saying they are the same. \newterm{Natural isomorphism} is defined as
 a natural transformation whose components are all isomorphisms
 (invertible morphisms).
 
-\section{Polymorphic Functions}\label{polymorphic-functions}
+\section{Polymorphic Functions}
 
 We talked about the role of functors (or, more specifically,
 endofunctors) in programming. They correspond to type constructors that
@@ -355,7 +355,7 @@ alpha :: Reader () a -> Maybe a
 \end{Verbatim}
 There are only two of these, \code{dumb} and \code{obvious}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 dumb (Reader _) = Nothing
 \end{Verbatim}
 and
@@ -371,7 +371,7 @@ two elements of the \code{Maybe ()} type, which are \code{Nothing}
 and \code{Just ()}. We'll come back to the Yoneda lemma later ---
 this was just a little teaser.
 
-\section{Beyond Naturality}\label{beyond-naturality}
+\section{Beyond Naturality}
 
 A parametrically polymorphic function between two functors (including
 the edge case of the \code{Const} functor) is always a natural
@@ -441,7 +441,7 @@ transformation. Interestingly, there is a generalization of natural
 transformations, called dinatural transformations, that deals with such
 cases. We'll get to them when we discuss ends.
 
-\section{Functor Category}\label{functor-category}
+\section{Functor Category}
 
 Now that we have mappings between functors --- natural transformations
 --- it's only natural to ask the question whether functors form a
@@ -550,7 +550,7 @@ And by ``object'' in $\Cat$ I mean a category, so
 $\cat{D^C}$ is a category, which we can identify with the
 functor category between $\cat{C}$ and $\cat{D}$.
 
-\section{2-Categories}\label{categories}
+\section{2-Categories}
 
 With that out of the way, let's have a closer look at $\Cat$. By
 definition, any Hom-set in $\Cat$ is a set of functors. But, as we
@@ -748,7 +748,7 @@ Functors may be looked upon as objects in the functor category. As such,
 they become sources and targets of morphisms: natural transformations. A
 natural transformation is a special type of polymorphic function.
 
-\section{Challenges}\label{challenges}
+\section{Challenges}
 
 \begin{enumerate}
 \tightlist
@@ -780,7 +780,7 @@ op = Op (\x -> x > 0)
 \end{Verbatim}
 and
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 f :: String -> Int
 f x = read x
 \end{Verbatim}

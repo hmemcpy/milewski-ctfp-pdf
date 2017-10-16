@@ -21,7 +21,7 @@ hits, you refine your query. That increases its \emph{precision}.
 Finally, the search engine will rank the hits and, hopefully, the one
 result that you're interested in will be at the top of the list.
 
-\section{Initial Object}\label{initial-object}
+\section{Initial Object}
 
 The simplest shape is a single object. Obviously, there are as many
 instances of this shape as there are objects in a given category. That's
@@ -49,13 +49,13 @@ morphism going to any object in the category.
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=60mm]{images/initial.jpg}}
+\includegraphics[width=60mm]{images/initial.jpg}
 \end{figure}
 
 \noindent
 However, even that doesn't guarantee the uniqueness of the initial
 object (if one exists). But it guarantees the next best thing:
-uniqueness \emph{up to isomorphism}. Isomorphisms are very important in
+uniqueness \newterm{up to isomorphism}. Isomorphisms are very important in
 category theory, so I'll talk about them shortly. For now, let's just
 agree that uniqueness up to isomorphism justifies the use of ``the'' in
 the definition of the initial object.
@@ -77,7 +77,7 @@ absurd :: Void -> a
 It's this family of morphisms that makes \code{Void} the initial
 object in the category of types.
 
-\section{Terminal Object}\label{terminal-object}
+\section{Terminal Object}
 
 Let's continue with the single-object pattern, but let's change the way
 we rank the objects. We'll say that object $a$ is ``more terminal''
@@ -93,7 +93,7 @@ morphism coming to it from any object in the category.
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=60mm]{images/final.jpg}}
+\includegraphics[width=60mm]{images/final.jpg}
 \end{figure}
 
 \noindent
@@ -132,7 +132,7 @@ no _ = False
 Insisting on uniqueness gives us just the right precision to narrow down
 the definition of the terminal object to just one type.
 
-\section{Duality}\label{duality}
+\section{Duality}
 
 You can't help but to notice the symmetry between the way we defined the
 initial object and the terminal object. The only difference between the
@@ -141,10 +141,10 @@ we can define the \newterm{opposite category} $\cat{C}^{op}$ just by
 reversing all the arrows. The opposite category automatically satisfies
 all the requirements of a category, as long as we simultaneously
 redefine composition. If original morphisms
-$f\Colon{}a\to b$ and $g\Colon{}b\to c$ composed
-to $h\Colon{}a\to c$ with $h=g \circ f$, then the reversed
-morphisms $f^{op}\Colon{}b\to a$ and $g^{op}\Colon{}c\to b$ will compose to
-$h^{op}\Colon{}c\to a$ with $h^{op}=f^{op} \circ g^{op}$. And reversing
+$f \Colon a \to b$ and $g \Colon b \to c$ composed
+to $h \Colon a \to c$ with $h = g \circ f$, then the reversed
+morphisms $f^{op} \Colon b \to a$ and $g^{op} \Colon c \to b$ will compose to
+$h^{op} \Colon c \to a$ with $h^{op} = f^{op} \circ g^{op}$. And reversing
 the identity arrows is a (pun alert!) no-op.
 
 Duality is a very important property of categories because it doubles
@@ -159,7 +159,7 @@ the arrows twice gets us back to the original state.
 It follows then that a terminal object is the initial object in the
 opposite category.
 
-\section{Isomorphisms}\label{isomorphisms}
+\section{Isomorphisms}
 
 As programmers, we are well aware that defining equality is a nontrivial
 task. What does it mean for two objects to be equal? Do they have to
@@ -188,11 +188,10 @@ We understand the inverse in terms of composition and identity: Morphism
 $g$ is the inverse of morphism $f$ if their composition is the
 identity morphism. These are actually two equations because there are
 two ways of composing two morphisms:
-
-\begin{Verbatim}
-f . g = id
-g . f = id
-\end{Verbatim}
+\begin{gather*}
+f \circ g = \id \\
+g \circ f = \id
+\end{gather*}
 When I said that the initial (terminal) object was unique up to
 isomorphism, I meant that any two initial (terminal) objects are
 isomorphic. That's actually easy to see. Let's suppose that we have two
@@ -205,7 +204,7 @@ these two morphisms?
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=1.56250in]{images/uniqueness.jpg}}
+\includegraphics[width=40mm]{images/uniqueness.jpg}
 \caption{All morphisms in this diagram are unique.}
 \end{figure}
 
@@ -230,7 +229,7 @@ there could be more than one isomorphism between two objects, but that's
 not the case here. This ``uniqueness up to unique isomorphism'' is the
 important property of all universal constructions.
 
-\section{Products}\label{products}
+\section{Products}
 
 The next universal construction is that of a product. We know what a
 cartesian product of two sets is: it's a set of pairs. But what's the
@@ -284,7 +283,7 @@ q :: c -> b
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=1.56250in]{images/productpattern.jpg}}
+\includegraphics[width=40mm]{images/productpattern.jpg}
 \end{figure}
 
 \noindent
@@ -293,7 +292,7 @@ the product. There may be lots of them.
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=1.56250in]{images/productcandidates.jpg}}
+\includegraphics[width=40mm]{images/productcandidates.jpg}
 \end{figure}
 
 \noindent
@@ -331,31 +330,31 @@ too big --- it spuriously duplicated the \code{Int} dimension.
 
 But we haven't explored yet the other part of the universal
 construction: the ranking. We want to be able to compare two instances
-of our pattern. We want to compare one candidate object \emph{c} and its
+of our pattern. We want to compare one candidate object $c$ and its
 two projections \emph{p} and \emph{q} with another candidate object
-\emph{c'} and its two projections \emph{p'} and \emph{q'}. We would like
-to say that \emph{c} is ``better'' than \emph{c'} if there is a morphism
-\emph{m} from \emph{c'} to \emph{c} --- but that's too weak. We also
+$c'$ and its two projections \emph{p'} and \emph{q'}. We would like
+to say that $c$ is ``better'' than $c'$ if there is a morphism
+$m$ from $c'$ to $c$ --- but that's too weak. We also
 want its projections to be ``better,'' or ``more universal,'' than the
-projections of \emph{c'}. What it means is that the projections
+projections of $c'$. What it means is that the projections
 \emph{p'} and \emph{q'} can be reconstructed from \emph{p} and \emph{q}
-using \emph{m}:
+using $m$:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 p' = p . m
 q' = q . m
 \end{Verbatim}
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=1.56250in]{images/productranking.jpg}}
+\includegraphics[width=40mm]{images/productranking.jpg}
 \end{figure}
 
 \noindent
-Another way of looking at these equation is that \emph{m}
+Another way of looking at these equation is that $m$
 \emph{factorizes} \emph{p'} and \emph{q'}. Just pretend that these
 equations are in natural numbers, and the dot is multiplication:
-\emph{m} is a common factor shared by \emph{p'} and \emph{q'}.
+$m$ is a common factor shared by \emph{p'} and \emph{q'}.
 
 Just to build some intuitions, let me show you that the pair
 \code{(Int, Bool)} with the two canonical projections, \code{fst}
@@ -364,26 +363,26 @@ presented before.
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=2.20833in]{images/not-a-product.jpg}}
+\includegraphics[width=50mm]{images/not-a-product.jpg}
 \end{figure}
 
 \noindent
 The mapping \code{m} for the first candidate is:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 m :: Int -> (Int, Bool)
 m x = (x, True)
 \end{Verbatim}
 Indeed, the two projections, \code{p} and \code{q} can be
 reconstructed as:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 p x = fst (m x) = x
 q x = snd (m x) = True
 \end{Verbatim}
 The \code{m} for the second example is similarly uniquely determined:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 m (x, _, b) = (x, b)
 \end{Verbatim}
 We were able to show that \code{(Int, Bool)} is better than either of
@@ -391,7 +390,7 @@ the two candidates. Let's see why the opposite is not true. Could we
 find some \code{m'} that would help us reconstruct \code{fst}
 and \code{snd} from \code{p} and \code{q}?
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 fst = p . m'
 snd = q . m'
 \end{Verbatim}
@@ -405,12 +404,12 @@ to factorize \code{fst} and \code{snd}. Because both \code{p} and
 \code{q} ignore the second component of the triple, our \code{m'}
 can put anything in it. We can have:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 m' (x, b) = (x, x, b)
 \end{Verbatim}
 or
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 m' (x, b) = (x, 42, b)
 \end{Verbatim}
 and so on.
@@ -420,7 +419,7 @@ Putting it all together, given any type \code{c} with two projections
 to the cartesian product \code{(a, b)} that factorizes them. In fact,
 it just combines \code{p} and \code{q} into a pair.
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 m :: c -> (a, b)
 m x = (p x, q x)
 \end{Verbatim}
@@ -433,10 +432,10 @@ category using the same universal construction. Such product doesn't
 always exist, but when it does, it is unique up to a unique isomorphism.
 
 \begin{quote}
-A \textbf{product} of two objects \emph{a} and \emph{b} is the object
-\emph{c} equipped with two projections such that for any other object
-\emph{c'} equipped with two projections there is a unique morphism
-\emph{m} from \emph{c'} to \emph{c} that factorizes those projections.
+A \textbf{product} of two objects $a$ and $b$ is the object
+$c$ equipped with two projections such that for any other object
+$c'$ equipped with two projections there is a unique morphism
+$m$ from $c'$ to $c$ that factorizes those projections.
 \end{quote}
 
 \noindent
@@ -449,38 +448,38 @@ factorizer :: (c -> a) -> (c -> b) -> (c -> (a, b))
 factorizer p q = \x -> (p x, q x)
 \end{Verbatim}
 
-\section{Coproduct}\label{coproduct}
+\section{Coproduct}
 
 Like every construction in category theory, the product has a dual,
 which is called the coproduct. When we reverse the arrows in the product
-pattern, we end up with an object \emph{c} equipped with two
-\emph{injections}, \code{i} and \code{j}: morphisms from \emph{a}
-and \emph{b} to \emph{c}.
+pattern, we end up with an object $c$ equipped with two
+\emph{injections}, \code{i} and \code{j}: morphisms from $a$
+and $b$ to $c$.
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 i :: a -> c
 j :: b -> c
 \end{Verbatim}
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=1.56250in]{images/coproductpattern.jpg}}
+\includegraphics[width=40mm]{images/coproductpattern.jpg}
 \end{figure}
 
 \noindent
-The ranking is also inverted: object \emph{c} is ``better'' than object
-\emph{c'} that is equipped with the injections \emph{i'} and \emph{j'}
-if there is a morphism \emph{m} from \emph{c} to \emph{c'} that
+The ranking is also inverted: object $c$ is ``better'' than object
+$c'$ that is equipped with the injections $i'$ and $j'$
+if there is a morphism $m$ from $c$ to $c'$ that
 factorizes the injections:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 i' = m . i
 j' = m . j
 \end{Verbatim}
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=1.56250in]{images/coproductranking.jpg}}
+\includegraphics[width=40mm]{images/coproductranking.jpg}
 \end{figure}
 
 \noindent
@@ -489,16 +488,16 @@ any other pattern, is called a coproduct and, if it exists, is unique up
 to unique isomorphism.
 
 \begin{quote}
-A \textbf{coproduct} of two objects \emph{a} and \emph{b} is the object
-\emph{c} equipped with two injections such that for any other object
-\emph{c'} equipped with two injections there is a unique morphism
-\emph{m} from \emph{c} to \emph{c'} that factorizes those injections.
+A \textbf{coproduct} of two objects $a$ and $b$ is the object
+$c$ equipped with two injections such that for any other object
+$c'$ equipped with two injections there is a unique morphism
+$m$ from $c$ to $c'$ that factorizes those injections.
 \end{quote}
 
 \noindent
 In the category of sets, the coproduct is the \emph{disjoint union} of
-two sets. An element of the disjoint union of \emph{a} and \emph{b} is
-either an element of \emph{a} or an element of \emph{b}. If the two sets
+two sets. An element of the disjoint union of $a$ and $b$ is
+either an element of $a$ or an element of $b$. If the two sets
 overlap, the disjoint union contains two copies of the common part. You
 can think of an element of a disjoint union as being tagged with an
 identifier that specifies its origin.
@@ -539,7 +538,7 @@ In Haskell, you can combine any data types into a tagged union by
 separating data constructors with a vertical bar. The \code{Contact}
 example translates into the declaration:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 data Contact = PhoneNum Int | EmailAddr String
 \end{Verbatim}
 Here, \code{PhoneNum} and \code{EmailAddr} serve both as
@@ -547,7 +546,7 @@ constructors (injections), and as tags for pattern matching (more about
 this later). For instance, this is how you would construct a contact
 using a phone number:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 helpdesk :: Contact;
 helpdesk = PhoneNum 2222222
 \end{Verbatim}
@@ -556,7 +555,7 @@ Haskell as the primitive pair, the canonical implementation of the
 coproduct is a data type called \code{Either}, which is defined in the
 standard Prelude as:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 Either a b = Left a | Right b
 \end{Verbatim}
 It is parameterized by two types, \code{a} and \code{b} and has two
@@ -568,13 +567,13 @@ for the coproduct. Given a candidate type \code{c} and two candidate
 injections \code{i} and \code{j}, the factorizer for \code{Either}
 produces the factoring function:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 factorizer :: (a -> c) -> (b -> c) -> Either a b -> c
 factorizer i j (Left a)  = i a
 factorizer i j (Right b) = j b
 \end{Verbatim}
 
-\section{Asymmetry}\label{asymmetry}
+\section{Asymmetry}
 
 We've seen two set of dual definitions: The definition of a terminal
 object can be obtained from the definition of the initial object by
@@ -610,14 +609,14 @@ Because the product is universal, there is also a (unique) morphism
 morphism selects an element from the product set --- it selects a
 concrete pair. It also factorizes the two projections:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 p = fst . m
 q = snd . m
 \end{Verbatim}
 When acting on the singleton value \code{()}, the only element of the
 singleton set, these two equations become:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{Verbatim}
 p () = fst (m ())
 q () = snd (m ())
 \end{Verbatim}
@@ -669,7 +668,7 @@ collapsing. They are called \newterm{bijections} and they are truly
 symmetric, because they are invertible. In the category of sets, an
 isomorphism is the same as a bijection.
 
-\section{Challenges}\label{challenges}
+\section{Challenges}
 
 \begin{enumerate}
 \tightlist
@@ -720,12 +719,12 @@ int j(bool b) { return b ? 0: 1; }
   allows multiple acceptable morphisms from it to \code{Either}.
 \end{enumerate}
 
-\section{Bibliography}\label{bibliography}
+\section{Bibliography}
 
 \begin{enumerate}
 \tightlist
 \item
   The Catsters,
-  \href{https://www.youtube.com/watch?v=upCSDIO9pjc}{Products and
+  \urlref{https://www.youtube.com/watch?v=upCSDIO9pjc}{Products and
   Coproducts} video.
 \end{enumerate}

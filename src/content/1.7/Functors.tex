@@ -78,7 +78,7 @@ $\idarrow[c]$. It acts like a black hole, compacting
 everything into one singularity. We'll see more of this functor when we
 discuss limits and colimits.
 
-\section{Functors in Programming}\label{functors-in-programming}
+\section{Functors in Programming}
 
 Let's get down to earth and talk about programming. We have our category
 of types and functions. We can talk about functors that map this
@@ -88,7 +88,7 @@ types to types. We've seen examples of such mappings, maybe without
 realizing that they were just that. I'm talking about definitions of
 types that were parameterized by other types. Let's see a few examples.
 
-\subsection{The Maybe Functor}\label{the-maybe-functor}
+\subsection{The Maybe Functor}
 
 The definition of \code{Maybe} is a mapping from type \code{a} to
 type \code{Maybe a}:
@@ -134,7 +134,7 @@ fmap :: (a -> b) -> (Maybe a -> Maybe b)
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics[width=3.12500in]{images/functormaybe.jpg}}
+\includegraphics[width=3.12500in]{images/functormaybe.jpg}
 \end{figure}
 
 \noindent
@@ -162,7 +162,7 @@ function \code{fmap} form a functor, we have to prove that
 functor laws,'' but they simply ensure the preservation of the structure
 of the category.
 
-\subsection{Equational Reasoning}\label{equational-reasoning}
+\subsection{Equational Reasoning}
 
 To prove the functor laws, I will use \newterm{equational reasoning}, which
 is a common proof technique in Haskell. It takes advantage of the fact
@@ -275,7 +275,7 @@ the same result. Despite that, the C++ compiler will try to use
 equational reasoning if you implement \code{square} as a macro, with
 disastrous results.
 
-\subsection{Optional}\label{optional}
+\subsection{Optional}
 
 Functors are easily expressed in Haskell, but they can be defined in any
 language that supports generic programming and higher-order functions.
@@ -341,7 +341,7 @@ auto g = fmap(f);
 especially if, in the future, there are multiple functors overloading
 \code{fmap}? (We'll see more functors soon.)
 
-\subsection{Typeclasses}\label{typeclasses}
+\subsection{Typeclasses}
 
 So how does Haskell deal with abstracting the functor? It uses the
 typeclass mechanism. A typeclass defines a family of types that support
@@ -407,7 +407,7 @@ By the way, the \code{Functor} class, as well as its instance
 definitions for a lot of simple data types, including \code{Maybe},
 are part of the standard Prelude library.
 
-\subsection{Functor in C++}\label{functor-in-c}
+\subsection{Functor in C++}
 
 Can we try the same approach in C++? A type constructor corresponds to a
 template class, like \code{optional}, so by analogy, we would
@@ -442,7 +442,7 @@ This definition works, but only because the second argument of
 \code{fmap} selects the overload. It totally ignores the more generic
 definition of \code{fmap}.
 
-\subsection{The List Functor}\label{the-list-functor}
+\subsection{The List Functor}
 
 To get some intuition as to the role of functors in programming, we need
 to look at more examples. Any type that is parameterized by another type
@@ -529,7 +529,7 @@ functor is lost under the usual clutter of iterators and temporaries
 the new proposed C++ range library makes the functorial nature of ranges
 much more pronounced.
 
-\subsection{The Reader Functor}\label{the-reader-functor}
+\subsection{The Reader Functor}
 
 Now that you might have developed some intuitions --- for instance,
 functors being some kind of containers --- let me show you an example
@@ -600,7 +600,7 @@ This combination of the type constructor \code{(->) r}
 with the above implementation of \code{fmap} is called the reader
 functor.
 
-\section{Functors as Containers}\label{functors-as-containers}
+\section{Functors as Containers}
 
 We've seen some examples of functors in programming languages that
 define general-purpose containers, or at least objects that contain some
@@ -700,7 +700,7 @@ role in many constructions. In category theory, it's a special case of
 the $\Delta_c$ functor I mentioned earlier --- the endo-functor
 case of a black hole. We'll be seeing more of it in the future.
 
-\section{Functor Composition}\label{functor-composition}
+\section{Functor Composition}
 
 It's not hard to convince yourself that functors between categories
 compose, just like functions between sets compose. A composition of two
@@ -793,7 +793,7 @@ these things because I find it pretty amazing that we can recognize the
 same structures repeating themselves at many levels of abstraction.
 We'll see later that functors form categories as well.
 
-\section{Challenges}\label{challenges}
+\section{Challenges}
 
 \begin{enumerate}
 \tightlist

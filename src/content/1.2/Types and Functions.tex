@@ -1,7 +1,7 @@
 \lettrine[lhang=0.17]{T}{he category of types and functions} plays an important role in
 programming, so let's talk about what types are and why we need them.
 
-\section{Who Needs Types?}\label{who-needs-types}
+\section{Who Needs Types?}
 
 There seems to be some controversy about the advantages of static vs.
 dynamic and strong vs. weak typing. Let me illustrate these choices with
@@ -35,8 +35,7 @@ The analog of a type checker would go even further by making sure that,
 once Romeo is declared a human being, he doesn't sprout leaves or trap
 photons in his powerful gravitational field.
 
-\section{Types Are About
-Composability}\label{types-are-about-composability}
+\section{Types Are About Composability}
 
 Category theory is about composing arrows. But not any two arrows can be
 composed. The target object of one arrow must be the same as the source
@@ -95,7 +94,7 @@ sites. Unit testing may catch some of the mismatches, but testing is
 almost always a probabilistic rather than a deterministic process.
 Testing is a poor substitute for proof.
 
-\section{What Are Types?}\label{what-are-types}
+\section{What Are Types?}
 
 The simplest intuition for types is that they are sets of values. The
 type \code{Bool} (remember, concrete types start with a capital letter
@@ -147,7 +146,7 @@ undecidable --- the famous halting problem. That's why computer
 scientists came up with a brilliant idea, or a major hack, depending on
 your point of view, to extend every type by one more special value
 called the \newterm{bottom} and denoted by \code{\_|\_}, or
-Unicode \ensuremath{\bot}. This ``value'' corresponds to a non-terminating computation.
+Unicode $\bot$. This ``value'' corresponds to a non-terminating computation.
 So a function declared as:
 
 \begin{Verbatim}
@@ -180,7 +179,7 @@ Functions that may return bottom are called partial, as opposed to total
 functions, which return valid results for every possible argument.
 
 Because of the bottom, you'll see the category of Haskell types and
-functions referred to as \textbf{Hask} rather than $\Set$. From
+functions referred to as $\cat{Hask}$ rather than $\Set$. From
 the theoretical point of view, this is the source of never-ending
 complications, so at this point I will use my butcher's knife and
 terminate this line of reasoning. From the pragmatic point of view, it's
@@ -189,8 +188,7 @@ okay to ignore non-terminating functions and bottoms, and treat
 John Hughes, Patrik Jansson, Jeremy Gibbons, \href{http://www.cs.ox.ac.uk/jeremy.gibbons/publications/fast+loose.pdf}{
 Fast and Loose Reasoning is Morally Correct}. This paper provides justification for ignoring bottoms in most contexts.}
 
-\section{Why Do We Need a Mathematical
-Model?}\label{why-do-we-need-a-mathematical-model}
+\section{Why Do We Need a Mathematical Model?}
 
 As a programmer you are intimately familiar with the syntax and grammar
 of your programming language. These aspects of the language are usually
@@ -283,7 +281,7 @@ even when writing web applications for the health system, you may
 appreciate the thought that functions and algorithms from the Haskell
 standard library come with proofs of correctness.
 
-\section{Pure and Dirty Functions}\label{pure-and-dirty-functions}
+\section{Pure and Dirty Functions}
 
 The things we call functions in C++ or any other imperative language,
 are not the same things mathematicians call functions. A mathematical
@@ -311,7 +309,7 @@ about side effects separately. Later we'll see how monads let us model
 all kinds of effects using only pure functions. So we really don't lose
 anything by restricting ourselves to mathematical functions.
 
-\section{Examples of Types}\label{examples-of-types}
+\section{Examples of Types}
 
 Once you realize that types are sets, you can think of some rather
 exotic types. For instance, what's the type corresponding to an empty
@@ -384,8 +382,8 @@ effects, but we know that these are not real functions in the
 mathematical sense of the word. A pure function that returns unit does
 nothing: it discards its argument.
 
-Mathematically, a function from a set A to a singleton set maps every
-element of A to the single element of that singleton set. For every A
+Mathematically, a function from a set $A$ to a singleton set maps every
+element of $A$ to the single element of that singleton set. For every $A$
 there is exactly one such function. Here's this function for
 \code{Integer}:
 
@@ -458,7 +456,7 @@ Boolean. The actual predicates are defined in \code{std::ctype} and
 have the form \code{ctype::is(alpha, c)},
 \code{ctype::is(digit, c)}, etc.
 
-\section{Challenges}\label{challenges}
+\section{Challenges}
 
 \begin{enumerate}
 \tightlist

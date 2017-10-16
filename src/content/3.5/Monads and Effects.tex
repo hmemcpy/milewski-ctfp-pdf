@@ -310,7 +310,7 @@ instance (Monoid w) => Monad (Writer w) where
     return a = Writer (a, mempty)
 \end{Verbatim}
 
-\subsection{State}\label{state}
+\subsection{State}
 
 Functions that have read/write access to state combine the
 embellishments of the \code{Reader} and the \code{Writer}. You may
@@ -599,7 +599,7 @@ the action that prints ``World!'' receives, as input, the Universe in
 which ``Hello '' is already on the screen. It outputs a new Universe,
 with ``Hello World!'' on the screen.
 
-\section{Conclusion}\label{conclusion}
+\section{Conclusion}
 
 Of course I have just scratched the surface of monadic programming.
 Monads not only accomplish, with pure functions, what normally is done

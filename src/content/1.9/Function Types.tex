@@ -3,7 +3,7 @@ type is different from other types.
 
 \begin{wrapfigure}[12]{R}{0pt}
 \raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\fbox{\includegraphics[width=40mm]{images/set-hom-set.jpg}}}%
+\includegraphics[width=40mm]{images/set-hom-set.jpg}}%
 \caption{Hom-set in Set is just a set}
 \end{wrapfigure}
 
@@ -21,7 +21,7 @@ a category. They are even called \emph{external} hom-sets.
 \pagebreak
 \begin{wrapfigure}[11]{R}{0pt}
 \raisebox{0pt}[\dimexpr\height]{
-\fbox{\includegraphics[width=40mm]{images/hom-set.jpg}}}%
+\includegraphics[width=40mm]{images/hom-set.jpg}}%
 \caption{Hom-set in category C is an external set}
 \end{wrapfigure}
 
@@ -31,7 +31,7 @@ function types special. But there is a way, at least in some categories,
 to construct objects that represent hom-sets. Such objects are called
 \newterm{internal} hom-sets.
 
-\section{Universal Construction}\label{universal-construction}
+\section{Universal Construction}
 
 Let's forget for a moment that function types are sets and try to
 construct a function type, or more generally, an internal hom-set, from
@@ -67,7 +67,7 @@ element of $b$).
 
 \begin{figure}
 \centering
-\fbox{\includegraphics[width=60mm]{images/functionset.jpg}}
+\includegraphics[width=60mm]{images/functionset.jpg}
 \caption{In Set we can pick a function $f$ from a set of functions $z$ and we can
 pick an argument $x$ from the set (type) $a$. We get an element $f x$ in the
 set (type) $b$.}
@@ -85,7 +85,7 @@ $a$ connected to another object $b$ by a morphism $g$.
 
 \begin{figure}
 \centering
-\fbox{\includegraphics[width=60mm]{images/functionpattern.jpg}}
+\includegraphics[width=60mm]{images/functionpattern.jpg}
 \caption{A pattern of objects and morphisms that is the starting point of the
 universal construction}
 \end{figure}
@@ -110,7 +110,7 @@ That's when we apply our secret weapon: ranking. This is usually done by
 requiring that there be a unique mapping between candidate objects --- a
 mapping that somehow factorizes our construction. In our case, we'll
 decree that $z$ together with the morphism $g$ from
-$z\times a$ to $b$ is \emph{better} than some other
+$z \times a$ to $b$ is \emph{better} than some other
 $z'$ with its own application $g'$, if and
 only if there is a unique mapping $h$ from $z'$ to
 $z$ such that the application of $g'$ factors
@@ -119,7 +119,7 @@ looking at the picture.)
 
 \begin{figure}
 \centering
-\fbox{\includegraphics[width=60mm]{images/functionranking.jpg}}
+\includegraphics[width=60mm]{images/functionranking.jpg}
 \caption{Establishing a ranking between candidates for the function object}
 \end{figure}
 
@@ -128,7 +128,7 @@ particular universal construction till now. Given the morphism\\
 $h \Colon z'\to z$, we want to close the diagram
 that has both $z'$ and $z$ crossed with $a$.
 What we really need, given the mapping $h$ from $z'$
-to $z$, is a mapping from $z'\times a$ to $z\times a$.
+to $z$, is a mapping from $z' \times a$ to $z \times a$.
 And now, after discussing the \hyperref[functoriality]{functoriality
 of the product}, we know how to do it. Because the product itself is a
 functor (more precisely an endo-bi-functor), it's possible to lift pairs
@@ -136,7 +136,7 @@ of morphisms. In other words, we can define not only products of objects
 but also products of morphisms.
 
 Since we are not touching the second component of the product
-$z'\times a$, we will lift the pair of morphisms
+$z' \times a$, we will lift the pair of morphisms
 $(h, \id)$, where $\id$ is an identity on $a$.
 
 So, here's how we can factor one application, $g$, out of another
@@ -149,7 +149,7 @@ that is universally the best. Let's call this object $a \Rightarrow b$ (think
 of this as a symbolic name for one object, not to be confused with a
 Haskell typeclass constraint --- I'll discuss different ways of naming
 it later). This object comes with its own application --- a morphism
-from $(a \Rightarrow b)\times{}a$ to $b$ --- which we will call
+from $(a \Rightarrow b) \times a$ to $b$ --- which we will call
 $eval$ The object \code{$a \Rightarrow b$} is the best if any other
 candidate for a function object can be uniquely mapped to it in such a
 way that its application morphism $g$ factorizes through
@@ -158,7 +158,7 @@ our ranking.
 
 \begin{figure}[H]
 \centering
-\fbox{\includegraphics{images/universalfunctionobject.jpg}}
+\includegraphics{images/universalfunctionobject.jpg}
 \caption{The definition of the universal function object. This is the same
 diagram as above, but now the object $a \Rightarrow b$ is \emph{universal}.}
 \end{figure}
@@ -191,7 +191,7 @@ object is isomorphic to the hom-set $\Set(a, b)$.
 This is why, in Haskell, we interpret the function type
 \code{a -> b} as the categorical function object $a \Rightarrow b$.
 
-\section{Currying}\label{currying}
+\section{Currying}
 
 Let's have a second look at all the candidates for the function object.
 This time, however, let's think of the morphism $g$ as a function
@@ -316,7 +316,7 @@ def catstr(s1: String)(s2: String) = s1 + s2
 Of course that requires some amount of foresight or prescience on the
 part of a library writer.
 
-\section{Exponentials}\label{exponentials}
+\section{Exponentials}
 
 In mathematical literature, the function object, or the internal
 hom-object between two objects $a$ and $b$, is often
@@ -373,8 +373,7 @@ explains the identification of Haskell's function type with the
 categorical exponential object --- which corresponds more to our idea of
 \emph{data}.
 
-\section{Cartesian Closed
-Categories}\label{cartesian-closed-categories}
+\section{Cartesian Closed Categories}
 
 Although I will continue using the category of sets as a model for types
 and functions, it's worth mentioning that there is a larger family of
@@ -415,8 +414,7 @@ is called a \newterm{bicartesian closed} category. We'll see in the next
 section that bicartesian closed categories, of which $\Set$ is a
 prime example, have some interesting properties.
 
-\section{Exponentials and Algebraic Data
-Types}\label{exponentials-and-algebraic-data-types}
+\section{Exponentials and Algebraic Data Types}
 
 The interpretation of function types as exponentials fits very well into
 the scheme of algebraic data types. It turns out that all the basic
@@ -427,7 +425,7 @@ coproducts, products, and exponentials. We don't have the tools yet to
 prove them (such as adjunctions or the Yoneda lemma), but I'll list them
 here nevertheless as a source of valuable intuitions.
 
-\subsection{Zeroth Power}\label{zeroth-power}
+\subsection{Zeroth Power}
 
 \[a^{0} = 1\]
 In the categorical interpretation, we replace 0 with the initial object,
@@ -455,7 +453,7 @@ matter what they do, nobody can ever execute them. There is no value
 that can be passed to \code{absurd}. (And if you manage to pass it a
 never ending calculation, it will never return!)
 
-\subsection{Powers of One}\label{powers-of-one}
+\subsection{Powers of One}
 
 \[1^{a} = 1\]
 This identity, when interpreted in $\Set$, restates the definition
@@ -468,7 +466,7 @@ We've seen this function before --- it's called \code{unit}. You can
 also think of it as the function \code{const} partially applied to
 \code{()}.
 
-\subsection{First Power}\label{first-power}
+\subsection{First Power}
 
 \[a^{1} = a\]
 This is a restatement of the observation that morphisms from the
@@ -478,7 +476,7 @@ itself. In $\Set$, and in Haskell, the isomorphism is between
 elements of the set \code{a} and functions that pick those elements,
 \code{() -> a}.
 
-\subsection{Exponentials of Sums}\label{exponentials-of-sums}
+\subsection{Exponentials of Sums}
 
 \[a^{b+c} = a^{b} \times a^{c}\]
 Categorically, this says that the exponential from a coproduct of two
@@ -504,16 +502,14 @@ f (Right x) = if x < 0.0 then "Negative double" else "Positive double"
 \end{minted}
 Here, \code{n} is an \code{Int} and \code{x} is a \code{Double}.
 
-\subsection{Exponentials of
-Exponentials}\label{exponentials-of-exponentials}
+\subsection{Exponentials of Exponentials}
 
 \[(a^{b})^{c} = a^{b \times c}\]
 This is just a way of expressing currying purely in terms of exponential
 objects. A function returning a function is equivalent to a function
 from a product (a two-argument function).
 
-\subsection{Exponentials over
-Products}\label{exponentials-over-products}
+\subsection{Exponentials over Products}
 
 \[(a \times b)^{c} = a^{c} \times b^{c}\]
 In Haskell: A function returning a pair is equivalent to a pair of
@@ -523,14 +519,14 @@ It's pretty incredible how those simple high-school algebraic identities
 can be lifted to category theory and have practical application in
 functional programming.
 
-\section{Curry-Howard Isomorphism}\label{curry-howard-isomorphism}
+\section{Curry-Howard Isomorphism}
 
 I have already mentioned the correspondence between logic and algebraic
 data types. The \code{Void} type and the unit type \code{()}
 correspond to false and true. Product types and sum types correspond to
-logical conjunction \ensuremath{\wedge} (AND) and disjunction \ensuremath{\vee} (OR). In this scheme, the
-function type we have just defined corresponds to logical implication \ensuremath{\Rightarrow}.
-In other words, the type \code{a->b} can be read as ``if
+logical conjunction $\wedge$ (AND) and disjunction $\vee$ (OR). In this scheme, the
+function type we have just defined corresponds to logical implication $\Rightarrow$.
+In other words, the type \code{$a -> b$} can be read as ``if
 a then b.''
 
 According to the Curry-Howard isomorphism, every type can be interpreted
@@ -630,13 +626,13 @@ coproducts, function types, and so on. And, as if to dispel any doubts,
 the theory is being formulated in Coq and Agda. Computers are
 revolutionizing the world in more than one way.
 
-\section{Bibliography}\label{bibliography}
+\section{Bibliography}
 
 \begin{enumerate}
 \tightlist
 \item
   Ralph Hinze, Daniel W. H. James,
-  \href{http://www.cs.ox.ac.uk/ralf.hinze/publications/WGP10.pdf}{Reason
+  \urlref{http://www.cs.ox.ac.uk/ralf.hinze/publications/WGP10.pdf}{Reason
   Isomorphically!}. This paper contains proofs of all those high-school
   algebraic identities in category theory that I mentioned in this
   chapter.
