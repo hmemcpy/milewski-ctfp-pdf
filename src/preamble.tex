@@ -22,6 +22,14 @@
 \setmainfont{Linux Libertine O}                        %  the REPL without
 \setsansfont{Linux Biolinum O} %-----------------------%  giving errors.
 
+% To use Libertine letters and numbers,
+% but tx-style operators in math environment:
+\usepackage[libertine]{newtxmath}
+\usepackage{amsmath}
+% Needed to display additional math unicode symbols (like double-colon)
+\usepackage{unicode-math}
+\setmathfont{Libertinus Math}
+
 \usepackage{polyglossia}
 \setdefaultlanguage[variant=american]{english}
 \setotherlanguages{greek}
@@ -36,16 +44,8 @@
 \captionsetup{labelformat=empty,font=scriptsize}
 
 \usepackage[usenames,dvipsnames,x11names]{xcolor}
-\usepackage{amsmath}
 \usepackage{longtable}
 \usepackage{booktabs}
-
-% To use Libertine letters and numbers,
-% but tx-style operators in math environment:
-\usepackage[libertine]{newtxmath}
-% Needed to display additional math unicode symbols (like double-colon)
-\usepackage{unicode-math}
-
 % Workaround to fix mismatched left and right math delimiters. Taken from:
 % http://tex.stackexchange.com/questions/63410/parentheses-differ-xelatex-fontspec-newtxmath-libertine
 \DeclareSymbolFont{parenthesis}{T1}{fxl}{m}{n}
@@ -177,5 +177,3 @@
 %====================%
 
 \begin{document}
-
-\VerbatimFootnotes
