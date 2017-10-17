@@ -1,79 +1,45 @@
 % !TEX TS-program = xelatex
 % !TEX encoding = UTF-8 Unicode
-
 \documentclass[11pt,oneside]{book}
-
-% New line height: 1.05 * 1.2 = 1.26
-\renewcommand{\baselinestretch}{1.05}
 
 % Font settings
 \usepackage{minted} %----------------------------------%  Note:
 \usepackage[no-math]{fontspec}                         %  This exact order
-\defaultfontfeatures{%                                 %  of declarations
-  Scale=MatchLowercase, % needed here ...              %  is important for
-}                                                      %  single quotes not
-\setmonofont{Inconsolata LGC}                          %  to turn out curly
-                                                       %  ("typographic")
-\defaultfontfeatures{%                                 %  in verbatim blocks
-  Scale=MatchLowercase, % ... and here again           %  of Haskell code.
-  Mapping=tex-text,                                    %  Now the quote is
-  SmallCapsFeatures={LetterSpace=2.5,WordSpace=1.05},  %  upright and safely
-}                                                      %  copy-pasteable to
-\setmainfont{Linux Libertine O}                        %  the REPL without
-\setsansfont{Linux Biolinum O} %-----------------------%  giving errors.
-
-% To use Libertine letters and numbers,
-% but tx-style operators in math environment:
+\usepackage{libertine}
+\setmonofont{Inconsolata}
 \usepackage[libertine]{newtxmath}
 \usepackage{amsmath}
-% Needed to display additional math unicode symbols (like double-colon)
 \usepackage{unicode-math}
 \setmathfont{Libertinus Math}
 
 \usepackage{polyglossia}
 \setdefaultlanguage[variant=american]{english}
-\setotherlanguages{greek}
-\usepackage[all]{nowidow}
 
 % So that file names with multiple dots don't confuse
 % graphicx package when using \includegraphics command:
-\usepackage[multidot]{grffile}
+\usepackage[multidot]{grffile}                   % Possibly need -Jared
 \usepackage{graphicx}
-\usepackage{caption, wrapfig, framed, subfigure}
-\usepackage[export]{adjustbox}
-\captionsetup{labelformat=empty,font=scriptsize}
+\usepackage{caption,
+  wrapfig,
+  framed,    % Probably don't need -Jared
+  subfigure} % Probably don't need -Jared
+\usepackage[export]{adjustbox}                   % Probably don't need -Jared
+\captionsetup{labelformat=empty,font=scriptsize} % Probably don't need -Jared
 
 \usepackage[usenames,dvipsnames,x11names]{xcolor}
 \usepackage{longtable}
 \usepackage{booktabs}
-% Workaround to fix mismatched left and right math delimiters. Taken from:
-% http://tex.stackexchange.com/questions/63410/parentheses-differ-xelatex-fontspec-newtxmath-libertine
-\DeclareSymbolFont{parenthesis}{T1}{fxl}{m}{n}
-\DeclareMathDelimiter{(}{\mathopen}{parenthesis}{"28}{largesymbols}{"00}
-\DeclareMathDelimiter{)}{\mathclose}{parenthesis}{"29}{largesymbols}{"01}
-\DeclareMathDelimiter{[}{\mathopen}{parenthesis}{"5B}{largesymbols}{"02}
-\DeclareMathDelimiter{]}{\mathclose}{parenthesis}{"5D}{largesymbols}{"03}
-\DeclareMathDelimiter{\lbrace}{\mathopen}{parenthesis}{"7B}{largesymbols}{"08}
-\DeclareMathDelimiter{\rbrace}{\mathclose}{parenthesis}{"7D}{largesymbols}{"09}
 
-\usepackage{fancyvrb}
+\usepackage{fancyvrb} % We can likely obsolete this with the usage of minted -Jared
 \usepackage{imakeidx}
 \usepackage[totoc,font=footnotesize]{idxlayout}
 \usepackage{fancyhdr}
 \pagestyle{plain}
-\usepackage[final]{pdfpages} % inserts pages from a pdf file
-
-% Page geometry for 10-inch tablets:
-\usepackage[papersize={148mm,197mm},
-            top=21mm,
-            textwidth=111mm,  % increase one or both of these by 1mm or so to
-            textheight=148mm, % make the source compile with TeX Live 2013
-            hcentering,       % if you get "Too many unprocessed floats" error
-]{geometry}
+\usepackage[final]{pdfpages} % inserts pages from a pdf file % Probably need for now, but we don't have to need it. -Jared0
 
 \usepackage{titlesec}  % to change the appearance of section titles
-\usepackage{listings}  % for syntax highlighted code listings
-\usepackage{verbatim}  % for simple verbatim and comment environments
+\usepackage{listings}  % for syntax highlighted code listings          % To be obsoleted with minted -Jared
+\usepackage{verbatim}  % for simple verbatim and comment environments  % To be obsoleted with minted -Jared
 \usepackage{enumerate} % allows customized labels in enumerations
 \usepackage{enumitem}  % allows nested enumeration with numbers
 \usepackage{hyperref}  % makes cross references and URLs clickable
@@ -86,7 +52,9 @@
   linkcolor=LinkRed,
   urlcolor=LinkRed,
 }
-\usepackage{subfiles}
+
+\usepackage{subfiles} % Not sure if we need all this or not but it seems a bit overly complicated for our needed usecase -Jared
+% It allows each individual subfile to be compiled separately but we likely don't need or care about this feature -Jared
 \makeatletter
 \let\org@subfile\subfile
 \renewcommand*{\subfile}[1]{%
@@ -119,22 +87,24 @@
 \setlength{\DefaultFindent}{1pt}
 \setlength{\DefaultNindent}{0em}
 
-\newcommand{\acronym}[1]{\textsc{\fontspec[Numbers={OldStyle}]{Linux Libertine O}\MakeLowercase{#1}}}
-\newcommand{\uppersc}[1]{{\fontspec[Letters=UppercaseSmallCaps]{Linux Libertine O}#1}}
+\newcommand{\acronym}[1]{\textsc{\fontspec[Numbers={OldStyle}]{Linux Libertine O}\MakeLowercase{#1}}} % Why do we use this? -Jared
+\newcommand{\uppersc}[1]{{\fontspec[Letters=UppercaseSmallCaps]{Linux Libertine O}#1}}                % Why do we use this? -Jared
 \newcommand{\newterm}[1]{\index{#1}\emph{#1}}
-\newcommand{\var}[1]{\textsl{#1}}
-\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\var}[1]{\textsl{#1}}  % Why do we use this? We should use minted for inline code instead -Jared
+\newcommand{\code}[1]{\texttt{#1}} % Why do we use this? We should use minted for inline code instead -Jared
 \newcommand{\heading}[1]{{\sffamily\bfseries #1}}
-\newcommand{\mono}[1]{\hbox{\ttfamily\scriptsize #1}}
+\newcommand{\mono}[1]{\hbox{\ttfamily\scriptsize #1}} % Not sure why we use any of these mono or mathtext commands -Jared
 \newcommand{\monoit}[1]{\hbox{\ttfamily\itshape\scriptsize #1}}
 \newcommand{\mathtext}[1]{\ensuremath{\pmb{#1}}}
 \newcommand{\urlref}[2]{\href{#1}{#2}\urlfootnote{#1}}
 
+% Seems like an unnecessary command -Jared
 \makeatletter
 \newcommand\urlfootnote@[1]{\footnote{\url@{#1}}}
 \DeclareRobustCommand{\urlfootnote}{\hyper@normalise\urlfootnote@}
 \makeatother
 
+% It seems more logical to get rid of example and smallexample and have a haskell, pseudo, and C++ environments? -Jared
 \newenvironment{example}%
   {\verbatim\small}%
   {\endverbatim}
@@ -166,9 +136,9 @@
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 
-\frenchspacing
 \makeindex
 
+% There's a better way to do this with the enumitem package -Jared
 \providecommand{\tightlist}{%
 \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 

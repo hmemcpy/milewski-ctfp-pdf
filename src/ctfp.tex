@@ -23,10 +23,12 @@
 
 \frontmatter
 
+% We shouldn't need the *.svg then. -Jared
 \includepdf[scale=0.92]{coverpage.pdf}
 
 \pagebreak
 
+% Extract into a new copywrite.tex file:  From here..... -Jared
 \vspace*{\fill}
 \thispagestyle{empty}
 
@@ -53,7 +55,7 @@ Version 0.2, October 2017\\
 \vspace{0.4em}
 \noindent
 This work is licensed under a Creative Commons\\
-Attribution-ShareAlike 4.0 International License 
+Attribution-ShareAlike 4.0 International License
 (\href{http://creativecommons.org/licenses/by-sa/4.0/}{\acronym{CC BY-SA 4.0}}).
 
 \vspace{1.26em}
@@ -63,6 +65,7 @@ PDF compiled by \href{https://github.com/hmemcpy/milewski-ctfp-pdf}{Igal Tabachn
 
 \end{center}
 \end{small}
+% Extract into a new tex file:  Until here -Jared
 
 \pagebreak
 \tableofcontents
@@ -75,7 +78,8 @@ PDF compiled by \href{https://github.com/hmemcpy/milewski-ctfp-pdf}{Igal Tabachn
 
 \mainmatter
 
-\part{Part One}
+\part*{Part One}
+\addcontentsline{toc}{part}{Part One}
 
 \chapter{Category: The Essence of Composition}\label{category-the-essence-of-composition}
 \subfile{content/1.1/Category - The Essence of Composition}
@@ -107,7 +111,8 @@ PDF compiled by \href{https://github.com/hmemcpy/milewski-ctfp-pdf}{Igal Tabachn
 \chapter{Natural Transformations}\label{natural-transformations}
 \subfile{content/1.10/Natural Transformations}
 
-\part{Part Two}
+\part*{Part Two}
+\addcontentsline{toc}{part}{Part Two}
 
 \chapter{Declarative Programming}\label{declarative-programming}
 \subfile{content/2.1/Declarative Programming}
@@ -127,9 +132,10 @@ PDF compiled by \href{https://github.com/hmemcpy/milewski-ctfp-pdf}{Igal Tabachn
 \chapter{Yoneda Embedding}\label{yoneda-embedding}
 \subfile{content/2.6/Yoneda Embedding}
 
-\part{Part Three}
+\part*{Part Three}
+\addcontentsline{toc}{part}{Part Three}
 
-\chapter{It's All About Morphisms}
+\chapter{It's All About Morphisms} % Missing label -Jared
 \subfile{content/3.1/It's All About Morphisms}
 
 \chapter{Adjunctions}\label{adjunctions}
@@ -176,9 +182,10 @@ PDF compiled by \href{https://github.com/hmemcpy/milewski-ctfp-pdf}{Igal Tabachn
 
 \backmatter
 
-\chapter*{Acknowledgments}
+\chapter*{Acknowledgments} % Missing Label -Jared
 \addcontentsline{toc}{chapter}{Acknowledgments}
 
+% Extract into acknowledgments file: From here -Jared
 \noindent
 I’d like to thank Edward Kmett and Gershom Bazerman for checking my math
 and logic, and André van Meulebrouck, who has been volunteering his editing
@@ -197,6 +204,7 @@ C++14 to drive type inference. I was able to cut the whole section of
 old fashioned template magic that did the same thing using type traits.
 Good riddance! I'm also grateful to Gershom Bazerman for useful comments
 that helped me clarify some important points.
+% Extract into acknowledgments file: To here -Jared
 
 \setindexprenote{\normalsize
 \begin{quote} Any inaccuracies in this index may be explained by the fact
@@ -208,8 +216,9 @@ that it has been prepared with the help of a computer.
 
 \printindex
 
-\chapter*{Colophon}
+\chapter*{Colophon} % Missing Label -Jared
 \addcontentsline{toc}{chapter}{Colophon}
+% Extract into new file: From here -Jared
 \lettrine[lraise=-0.03,loversize=0.08]{T}{his book} was compiled by converting the original text by Bartosz Milewski into \LaTeX{} format, by
 first scraping the original WordPress blog posts using Mercury Web Parser\urlfootnote{https://mercury.postlight.com/web-parser/}
 to get a clean HTML content, modifying and tweaking with Beautiful Soup\urlfootnote{https://www.crummy.com/software/BeautifulSoup/}, finally, converting to LaTeX with Pandoc\urlfootnote{https://pandoc.org/}.
@@ -219,17 +228,20 @@ created by Raph Levien and supplemented by Dimosthenis Kaponis and Takashi Tanig
 typeface is Alegreya, designed by Juan Pablo del Peral.
 
 Graphic design and typography are done by Andres Raba. Diagrams are drawn with Inkscape.
+% Extract into new file: To here -Jared
 
-\chapter*{Copyleft notice}
+\chapter*{Copyleft notice} % Missing Label -Jared
 \addcontentsline{toc}{chapter}{Copyleft notice}
-\lettrine[lraise=-0.03,loversize=0.08]{T}{his book} is \textbf{Libre} and follows the philosophy of Free Software\urlfootnote{https://www.gnu.org/philosophy/free-sw.en.html}: 
+% Extract into new file: From here -Jared
+\lettrine[lraise=-0.03,loversize=0.08]{T}{his book} is \textbf{Libre} and follows the philosophy of Free Software\urlfootnote{https://www.gnu.org/philosophy/free-sw.en.html}:
 you can use this book as you like, the source is available, you can redistribute
 this book and you can distribute your own version. That means you can print it,
 photocopy it, e-mail it, upload it to websites, change it, translate it, remix it, delete bits,
 and draw all over it.
 
 This book is Copyleft: if you change the book and distribute your own version, you must also pass these freedoms to its recipients.
-This book uses the Creative Commons Attribution-ShareAlike 4.0 International License 
+This book uses the Creative Commons Attribution-ShareAlike 4.0 International License
 (\href{http://creativecommons.org/licenses/by-sa/4.0/}{\acronym{CC BY-SA 4.0}}).
+% Extract into new file: To here -Jared
 
 \input{postamble.tex}
