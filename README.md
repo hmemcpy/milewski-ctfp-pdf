@@ -53,6 +53,11 @@ The book content is taken, with permission, from Bartosz Milewski's blogpost ser
 Thanks to the following people for contributing corrections/conversions:
 
 * Oleg Rakitskiy
+* Jared Weakly
+* Paolo G. Giarrusso
+* Adi Shavit
+* Mico from the TeX.StackExchange community
+* ...and many others!
 
 License
 -------
