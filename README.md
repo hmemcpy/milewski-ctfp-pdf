@@ -28,7 +28,7 @@ $ make
 
 The file `preamble.tex` contains all the configuration and style declarations.
 
-Chances for successful compilation are increased if you have almost complete installation of recent [TeX Live](https://www.tug.org/texlive/) distribution (the PDF here is compiled with 2017 release). The needed OpenType fonts must be installed in the operating system. You also need [Inkscape](https://inkscape.org/en/download/mac-os/) to recreate image PDFs from SVGs.
+Chances for successful compilation are increased if you have almost complete installation of recent [TeX Live](https://www.tug.org/texlive/) distribution (the PDF here is compiled with 2017 release). The needed OpenType fonts must be installed in the operating system.
 
 To remove all the generated PDFs and auxiliary files in the whole `src` tree:
 
