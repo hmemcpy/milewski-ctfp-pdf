@@ -9,10 +9,10 @@ a thought experiment. Imagine millions of monkeys at computer keyboards
 happily hitting random keys, producing programs, compiling, and running
 them.
 
-\begin{wrapfigure}[10]{R}{0pt}
-\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=40mm]{images/img_1329.jpg}}
-\end{wrapfigure}
+\begin{figure}
+\centering
+\includegraphics[width=40mm]{images/img_1329.jpg}
+\end{figure}
 
 With machine language, any combination of bytes produced by monkeys
 would be accepted and run. But with higher level languages, we do
@@ -173,7 +173,7 @@ f :: Bool -> Bool
 f = undefined
 \end{Verbatim}
 (without the \code{x}) because the bottom is also a member of the type\\
-\code{Bool->Bool}.
+\code{Bool -> Bool}.
 
 Functions that may return bottom are called partial, as opposed to total
 functions, which return valid results for every possible argument.

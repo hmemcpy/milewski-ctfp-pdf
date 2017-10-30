@@ -3,7 +3,7 @@ their structure.
 
 \begin{wrapfigure}[13]{R}{0pt}
 \raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=60mm]{images/1_functors.jpg}}%
+\fbox{\includegraphics[width=60mm]{images/1_functors.jpg}}}%
 \end{wrapfigure}
 
 \noindent
@@ -55,11 +55,11 @@ Of course that's only half of the story, because functors not only map
 objects, they map morphisms as well. So what does a natural
 transformation do with those mappings? It turns out that the mapping of
 morphisms is fixed --- under any natural transformation between $F$ and $G$,
-$F f$ must be transformed into $G f$. What's more, the
+$F\ f$ must be transformed into $G\ f$. What's more, the
 mapping of morphisms by the two functors drastically restricts the
 choices we have in defining a natural transformation that's compatible
 with it. Consider a morphism $f$ between two objects $a$
-and $b$ in $\cat{C}$. It's mapped to two morphisms, $F f$
+and $b$ in $\cat{C}$. It's mapped to two morphisms, $F\ f$
 and $G f$ in $\cat{D}$:
 
 \begin{gather*}
@@ -74,11 +74,10 @@ that complete the diagram in \emph{D}:
 \alpha_b \Colon F b \to G b
 \end{gather*}
 
-\begin{wrapfigure}[5]{R}{0pt}
-\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=40mm]{images/3_naturality.jpg}}%
-\end{wrapfigure}
-\noindent
+\begin{figure}[H]
+\centering
+\includegraphics[width=40mm]{images/3_naturality.jpg}
+\end{figure}
 
 \noindent
 Now we have two ways of getting from $F a$ to $G b$. To
@@ -93,10 +92,10 @@ $\alpha_a$ along $f$:
 
 \[\alpha_b = (G f) \circ \alpha_a \circ (F f)^{-1}\]
 
-\begin{wrapfigure}[7]{R}{0pt}
-\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=40mm]{images/4_transport.jpg}}%
-\end{wrapfigure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=40mm]{images/4_transport.jpg}
+\end{figure}
 
 \noindent
 If there is more than one invertible morphism between two objects, all
@@ -272,9 +271,9 @@ and a non-empty list:
 \begin{Verbatim}
 fmap f (safeHead (x:xs)) = fmap f (Just x) = Just (f x)
 \end{Verbatim}
-\begin{minted}[breaklines]{text}
+\begin{Verbatim}
 safeHead (fmap f (x:xs)) = safeHead (f x : fmap f xs) = Just (f x)
-\end{minted}
+\end{Verbatim}
 I used the implementation of \code{fmap} for lists:
 
 \begin{Verbatim}

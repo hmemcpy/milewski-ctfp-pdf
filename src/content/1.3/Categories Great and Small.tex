@@ -57,11 +57,11 @@ category where there is at most one morphism going from any object $a$ to
 any object $b$. Another name for such a category is ``thin.'' A preorder
 is a thin category.
 
-A set of morphisms from object a to object b in a category $\cat{C}$ is called a
+A set of morphisms from object $a$ to object $b$ in a category $\cat{C}$ is called a
 \newterm{hom-set} and is written as $\cat{C}(a, b)$ (or, sometimes,
 $\mathbf{Hom}_{\cat{C}}(a, b)$). So every hom-set in a preorder is either
 empty or a singleton. That includes the hom-set $\cat{C}(a, a)$, the set of
-morphisms from a to a, which must be a singleton, containing only the
+morphisms from $a$ to $a$, which must be a singleton, containing only the
 identity, in any preorder. You may, however, have cycles in a preorder.
 Cycles are forbidden in a partial order.
 
@@ -307,7 +307,7 @@ subtleties, but I thought I should mention them for the record.
 A lot of interesting phenomena in category theory have their root in the
 fact that elements of a hom-set can be seen both as morphisms, which
 follow the rules of composition, and as points in a set. Here,
-composition of morphisms in M translates into monoidal product in the
+composition of morphisms in $\cat{M}$ translates into monoidal product in the
 set $\cat{M}(m, m)$.
 
 \section{Challenges}
@@ -344,11 +344,11 @@ set $\cat{M}(m, m)$.
     pointer to \code{T2} without triggering a compilation error.
   \end{enumerate}
 \item
-  Considering that Bool is a set of two values True and False, show that
+  Considering that \code{Bool} is a set of two values \code{True} and \code{False}, show that
   it forms two (set-theoretical) monoids with respect to, respectively,
   operator \code{\&\&} (AND) and \code{||} (OR).
 \item
-  Represent the Bool monoid with the AND operator as a category: List
+  Represent the \code{Bool} monoid with the AND operator as a category: List
   the morphisms and their rules of composition.
 \item
   Represent addition modulo 3 as a monoid category.
