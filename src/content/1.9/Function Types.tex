@@ -496,7 +496,7 @@ f :: Either Int Double -> String
 It may be defined as a pair of functions from, respectively,
 \code{Int} and \code{Double}:
 
-\begin{minted}[breaklines]{text}
+\begin{minted}[breaklines,fontsize=\small]{text}
 f (Left n) = if n < 0 then "Negative int" else "Positive int"
 f (Right x) = if x < 0.0 then "Negative double" else "Positive double"
 \end{minted}

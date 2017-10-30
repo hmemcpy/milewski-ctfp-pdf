@@ -254,7 +254,7 @@ know that there will be a definition of \code{bimap} available for
 instance declaration: a set of class constraints followed by a double
 arrow:
 
-\begin{minted}[breaklines]{text}
+\begin{minted}[breaklines,fontsize=\small]{text}
 instance (Bifunctor bf, Functor fu, Functor gu) =>
   Bifunctor (BiComp bf fu gu) where
     bimap f1 f2 (BiComp x) = BiComp ((bimap (fmap f1) (fmap f2)) x) 

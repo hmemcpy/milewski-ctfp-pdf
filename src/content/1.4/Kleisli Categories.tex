@@ -109,6 +109,7 @@ vector<string> words(string s) {
 \includegraphics[width=1.83333in]{images/piggyback.jpg}}%
 \end{wrapfigure}
 
+\noindent
 We want to modify the functions \code{toUpper} and \code{toWords} so
 that they piggyback a message string on top of their regular return
 values.
@@ -239,7 +240,7 @@ function<Writer<C>(A)> compose(function<Writer<B>(A)> m1,
 Now we can go back to our earlier example and implement the composition
 of \code{toUpper} and \code{toWords} using this new template:
 
-\begin{minted}[breaklines, breakafter=>>]{text}
+\begin{minted}[breaklines,fontsize=\small]{text}
 Writer<vector<string>> process(string s) { 
     return compose<string, string, vector<string>>(toUpper, toWords)(s);
 }

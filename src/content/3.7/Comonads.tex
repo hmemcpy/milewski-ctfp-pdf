@@ -84,7 +84,7 @@ data Product e a = P e a deriving Functor
 We can easily define the composition operator by making the same
 environment available to the arrows that we are composing:
 
-\begin{minted}[breaklines]{text}
+\begin{minted}[breaklines,fontsize=\small]{text}
 (=>=) :: (Product e a -> b) -> (Product e b -> c) -> (Product e a -> c)
 f =>= g = \(P e a) -> let b = f (P e a)
                           c = g (P e b) 
