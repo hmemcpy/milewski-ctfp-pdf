@@ -264,8 +264,7 @@ join :: Monoid w => Writer w (Writer w a) -> Writer w a
 join (Writer ((Writer (a, w')), w)) = Writer (a, w `mappend` w')
 \end{Verbatim}
 
-\section{\texorpdfstring{The \code{do}
-Notation}{The do Notation}}
+\section{The \texttt{do} Notation}
 
 One way of writing code using monads is to work with Kleisli arrows ---
 composing them using the fish operator. This mode of programming is the

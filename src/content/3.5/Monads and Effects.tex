@@ -454,11 +454,11 @@ As you can see, continuations are composed inside out. The final handler
 \code{hb} is called from the innermost layer of the computation.
 Here's the full instance:
 
-\begin{Verbatim}
+\begin{minted}[breaklines,fontsize=\small]{text}
 instance Monad (Cont r) where
     ka >>= kab = Cont (\hb -> runCont ka (\a -> runCont (kab a) hb))
     return a = Cont (\ha -> ha a)
-\end{Verbatim}
+\end{minted}
 
 \subsection{Interactive Input}
 
