@@ -55,6 +55,7 @@
 
 \usepackage{fancyvrb}
 \fvset{fontsize=\small}
+
 \usepackage{imakeidx}
 \usepackage[totoc,font=footnotesize]{idxlayout}
 \usepackage{fancyhdr}
@@ -96,14 +97,7 @@
 \makeatother
 
 % Document colors
-\definecolor{SchemeLight}   {HTML} {686868}
-\definecolor{SchemeSteel}   {HTML} {888888}
-\definecolor{SchemeDark}    {HTML} {262626}
-\definecolor{SchemeBlue}    {HTML} {4172A3}
-\definecolor{SchemeGreen}   {HTML} {487818}
-\definecolor{SchemeBrown}   {HTML} {A07040}
-\definecolor{SchemeRed}     {HTML} {AD4D3A}
-\definecolor{SchemeViolet}  {HTML} {7040A0}
+\definecolor{Dark}          {HTML} {262626}
 \definecolor{DropCapGray}   {HTML} {B8B8B8}
 \definecolor{ChapterGray}   {HTML} {C8C8C8}
 \definecolor{ChapterViolet} {HTML} {AEAECE}
@@ -117,8 +111,12 @@
 \setlength{\DefaultFindent}{1pt}
 \setlength{\DefaultNindent}{0em}
 
+% removes the "Part X" text from \part
 \renewcommand{\partname}{}
 \renewcommand{\thepart}{}
+
+\newminted{cpp}{}
+\newminted{haskell}{}
 
 \newcommand{\acronym}[1]{\textsc{\fontspec[Numbers={OldStyle}]{Linux Libertine O}\MakeLowercase{#1}}}
 \newcommand{\newterm}[1]{\index{#1}\emph{#1}}
@@ -135,7 +133,7 @@
 \makeatother
 
 \titleformat{\chapter}[display]
-  {\color{SchemeDark}\normalfont\sffamily\bfseries\LARGE}
+  {\color{Dark}\normalfont\sffamily\bfseries\LARGE}
   {\filright \color{ChapterViolet}\sffamily\mdseries
     \fontsize{6em}{0em}\selectfont
     \oldstylenums{\thechapter}}
@@ -143,11 +141,11 @@
   {\filright}
 
 \titleformat{\section}
-{\color{SchemeDark}\normalfont\Large\sffamily\bfseries}
+{\color{Dark}\normalfont\Large\sffamily\bfseries}
 {\color{DropCapViolet}\thesection}{0.8em}{}
 
 \titleformat{\subsection}
-{\color{SchemeDark}\normalfont\large\sffamily\bfseries}
+{\color{Dark}\normalfont\large\sffamily\bfseries}
 {\color{DropCapViolet}\thesubsection}{0.8em}{}
 
 \titleformat{\subsubsection}
