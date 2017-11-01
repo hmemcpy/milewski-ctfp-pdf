@@ -283,7 +283,7 @@ then the final result is of the type
 \code{bf (fu a') (gu b')}:
 
 \begin{Verbatim}
-bimap (fu a -> fu a') -> (gu b -> gu b')
+bimap :: (fu a -> fu a') -> (gu b -> gu b')
   -> bf (fu a) (gu b) -> bf (fu a') (gu b')
 \end{Verbatim}
 If you like jigsaw puzzles, these kinds of type manipulations can
