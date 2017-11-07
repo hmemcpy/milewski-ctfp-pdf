@@ -232,7 +232,7 @@ important property of all universal constructions.
 \section{Products}
 
 The next universal construction is that of a product. We know what a
-cartesian product of two sets is: it's a set of pairs. But what's the
+Cartesian product of two sets is: it's a set of pairs. But what's the
 pattern that connects the product set with its constituent sets? If we
 can figure that out, we'll be able to generalize it to other categories.
 
@@ -416,14 +416,14 @@ and so on.
 
 Putting it all together, given any type \code{c} with two projections
 \code{p} and \code{q}, there is a unique \code{m} from \code{c}
-to the cartesian product \code{(a, b)} that factorizes them. In fact,
+to the Cartesian product \code{(a, b)} that factorizes them. In fact,
 it just combines \code{p} and \code{q} into a pair.
 
 \begin{Verbatim}
 m :: c -> (a, b)
 m x = (p x, q x)
 \end{Verbatim}
-That makes the cartesian product \code{(a, b)} our best match, which
+That makes the Cartesian product \code{(a, b)} our best match, which
 means that this universal construction works in the category of sets. It
 picks the product of any two sets.
 

@@ -378,10 +378,10 @@ categorical exponential object --- which corresponds more to our idea of
 Although I will continue using the category of sets as a model for types
 and functions, it's worth mentioning that there is a larger family of
 categories that can be used for that purpose. These categories are
-called \newterm{cartesian closed}, and $\Set$ is just one example of
+called \newterm{Cartesian closed}, and $\Set$ is just one example of
 such a category.
 
-A cartesian closed category must contain:
+A Cartesian closed category must contain:
 
 \begin{enumerate}
 \tightlist
@@ -393,18 +393,18 @@ A cartesian closed category must contain:
   An exponential for any pair of objects.
 \end{enumerate}
 If you consider an exponential as an iterated product (possibly
-infinitely many times), then you can think of a cartesian closed
+infinitely many times), then you can think of a Cartesian closed
 category as one supporting products of an arbitrary arity. In
 particular, the terminal object can be thought of as a product of zero
 objects --- or the zero-th power of an object.
 
-What's interesting about cartesian closed categories from the
+What's interesting about Cartesian closed categories from the
 perspective of computer science is that they provide models for the
 simply typed lambda calculus, which forms the basis of all typed
 programming languages.
 
 The terminal object and the product have their duals: the initial object
-and the coproduct. A cartesian closed category that also supports those
+and the coproduct. A Cartesian closed category that also supports those
 two, and in which product can be distributed over coproduct
 \begin{gather*}
 a \times (b + c) = a \times b + a \times c \\

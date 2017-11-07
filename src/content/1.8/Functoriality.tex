@@ -13,7 +13,7 @@ function of two arguments, you can have a functor of two arguments, or a
 \newterm{bifunctor}. On objects, a bifunctor maps every pair of objects,
 one from category $\cat{C}$, and one from category $\cat{D}$, to an object in category
 $\cat{E}$. Notice that this is just saying that it's a mapping from a
-\newterm{cartesian product} of categories $\cat{C}\times{}\cat{D}$ to $\cat{E}$. 
+\newterm{Cartesian product} of categories $\cat{C}\times{}\cat{D}$ to $\cat{E}$. 
 \begin{wrapfigure}[11]{R}{0pt}
 \raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
 \includegraphics[width=50mm]{images/bifunctor.jpg}}
@@ -25,13 +25,13 @@ has to map morphisms as well. This time, though, it must map a pair of
 morphisms, one from $\cat{C}$ and one from $\cat{D}$, to a morphism in $\cat{E}$.
 
 Again, a pair of morphisms is just a single morphism in the product
-category $\cat{C}\times{}\cat{D}$ to $\cat{E}$. We define a morphism in a cartesian product of categories
+category $\cat{C}\times{}\cat{D}$ to $\cat{E}$. We define a morphism in a Cartesian product of categories
 as a pair of morphisms which goes from one pair of objects to another
 pair of objects. These pairs of morphisms can be composed in the obvious
 way:
 \[(f, g) \circ (f', g') = (f \circ f', g \circ g')\]
 The composition is associative and it has an identity --- a pair of
-identity morphisms $(\id, \id)$. So a cartesian product of categories
+identity morphisms $(\id, \id)$. So a Cartesian product of categories
 is indeed a category.
 
 But an easier way to think about bifunctors is that they are functors in
@@ -148,7 +148,7 @@ This code also writes itself.
 Now, remember when we talked about monoidal categories? A monoidal
 category defines a binary operator acting on objects, together with a
 unit object. I mentioned that $\Set$ is a monoidal category with
-respect to cartesian product, with the singleton set as a unit. And it's
+respect to Cartesian product, with the singleton set as a unit. And it's
 also a monoidal category with respect to disjoint union, with the empty
 set as a unit. What I haven't mentioned is that one of the requirements
 for a monoidal category is that the binary operator be a bifunctor. This
