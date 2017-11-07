@@ -100,7 +100,7 @@ rho_inv x = (x, ())
 These observations can be formalized by saying that $\Set$ (the
 category of sets) is a \newterm{monoidal category}. It's a category that's
 also a monoid, in the sense that you can multiply objects (here, take
-their cartesian product). I'll talk more about monoidal categories, and
+their Cartesian product). I'll talk more about monoidal categories, and
 give the full definition in the future.
 
 There is a more general way of defining product types in Haskell ---
@@ -111,7 +111,7 @@ can be defined alternatively as:
 \begin{Verbatim}
 data Pair a b = P a b
 \end{Verbatim}
-Here, \code{Pair a b} is the name of the type paremeterized by two
+Here, \code{Pair a b} is the name of the type parameterized by two
 other types, \code{a} and \code{b}; and \code{P} is the name of
 the data constructor. You define a pair type by passing two types to the
 \code{Pair} type constructor. You construct a pair value by passing

@@ -15,15 +15,15 @@ $m$. Not every choice of two functions with these signatures
 results in a monoid. For that we need to impose additional conditions:
 associativity and unit laws. But let's forget about that for a moment
 and just consider ``potential monoids.'' A pair of functions is an
-element of a cartesian product of two sets of functions. We know that
+element of a Cartesian product of two sets of functions. We know that
 these sets may be represented as exponential objects:
 \begin{align*}
 \mu &\in m^{m\times{}m} \\
 \eta &\in m^1
 \end{align*}
-The cartesian product of these two sets is:
+The Cartesian product of these two sets is:
 \[m^{m\times{}m}\times{}m^1\]
-Using some high-school algebra (which works in every cartesian closed
+Using some high-school algebra (which works in every Cartesian closed
 category), we can rewrite it as:
 \[m^{m\times{}m + 1}\]
 The $+$ sign stands for the coproduct in $\Set$. We have just
@@ -61,9 +61,9 @@ Now we can go crazy with generalizations. First of all, we can replace
 sets with objects and functions with morphisms. We can define n-ary
 operators as morphisms from n-ary products. It means that we need a
 category that supports finite products. For nullary operators we require
-the existence of the terminal object. So we need a cartesian category.
+the existence of the terminal object. So we need a Cartesian category.
 In order to combine these operators we need exponentials, so that's a
-cartesian closed category. Finally, we need coproducts to complete our
+Cartesian closed category. Finally, we need coproducts to complete our
 algebraic shenanigans.
 
 Alternatively, we can just forget about the way we derived our formulas
@@ -359,7 +359,7 @@ is known as the Peano representation for natural numbers.
 \section{Catamorphisms}
 
 Let's rewrite the initiality condition using Haskell notation. We call
-the initial algebra \code{Fix f}. Its evaluator is the contructor
+the initial algebra \code{Fix f}. Its evaluator is the constructor
 \code{Fix}. There is a unique morphism \code{m} from the initial
 algebra to any other algebra over the same functor. Let's pick an
 algebra whose carrier is \code{a} and the evaluator is \code{alg}.

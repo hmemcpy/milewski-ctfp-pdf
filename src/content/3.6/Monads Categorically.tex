@@ -199,11 +199,11 @@ started with a different definition of multiplication:
 \begin{Verbatim}
 mu :: (m, m) -> m
 \end{Verbatim}
-Here, the cartesian product \code{(m, m)} becomes the source of pairs
+Here, the Cartesian product \code{(m, m)} becomes the source of pairs
 to be multiplied.
 
 This definition suggests a different path to generalization: replacing
-the cartesian product with categorical product. We could start with a
+the Cartesian product with categorical product. We could start with a
 category where products are globally defined, pick an object \code{m}
 there, and define multiplication as a morphism:
 \[\mu \Colon m\times{}m \to m\]
@@ -238,7 +238,7 @@ mu x (mu y z) = mu (mu x y) z
 Before we can generalize it to other categories, we have to rewrite it
 as an equality of functions (morphisms). We have to abstract it away
 from its action on individual variables --- in other words, we have to
-use point-free notation. Knowning that the cartesian product is a
+use point-free notation. Knowing that the Cartesian product is a
 bifunctor, we can write the left hand side as:
 
 \begin{Verbatim}
@@ -249,7 +249,7 @@ and the right hand side as:
 \begin{Verbatim}
 (mu . bimap mu id)((x, y), z)
 \end{Verbatim}
-This is almost what we want. Unfortunately, the cartesian product is not
+This is almost what we want. Unfortunately, the Cartesian product is not
 strictly associative --- \code{(x, (y, z))} is not the same as
 \code{((x, y), z)} --- so we can't just write point-free:
 
@@ -283,7 +283,7 @@ They can be rewritten as:
 \end{Verbatim}
 The isomorphisms \code{lambda} and \code{rho} are called the left
 and right unitor, respectively. They witness the fact that the unit
-\code{()} is the identity of the cartesian product up to isomorphism:
+\code{()} is the identity of the Cartesian product up to isomorphism:
 
 \begin{Verbatim}
 lambda :: ((), a) -> a
@@ -300,9 +300,9 @@ mu . bimap id eta = lambda
 mu . bimap eta id = rho
 \end{Verbatim}
 We have formulated point-free monoidal laws for \code{mu} and
-\code{eta} using the fact that the underlying cartesian product itself
+\code{eta} using the fact that the underlying Cartesian product itself
 acts like a monoidal multiplication in the category of types. Keep in
-mind though that the associativity and unit laws for the cartesian
+mind though that the associativity and unit laws for the Cartesian
 product are valid only up to isomorphism.
 
 It turns out that these laws can be generalized to any category with
