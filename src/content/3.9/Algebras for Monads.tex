@@ -121,7 +121,7 @@ we can use the monadic $\mu_a$ (\code{join} in Haskell) as the
 evaluator.
 
 We still have to show that this is a T-algebra. For that, two coherence
-conditions must be satisified:
+conditions must be satisfied:
 \begin{align*}
 alg &\circ \eta_{Ta} = \id_{Ta} \\
 alg &\circ \mu_a = alg \circ T\ alg
@@ -177,7 +177,7 @@ $\varepsilon$ at $(a, f)$ (an object in the category of T-algebras)
 to be $f$.
 
 To complete the adjunction we also need to show that the unit and the
-counit satisfy triangular identites. These are:
+counit satisfy triangular identities. These are:
 
 \begin{figure}[H]
 \centering
@@ -200,7 +200,7 @@ $F^T$ drops the evaluator. So, indeed, we have:
 As expected, the unit of the adjunction is the unit of the monad $T$.
 
 You may remember that the counint of the adjunction produces monadic
-muliplication through the following formula:
+multiplication through the following formula:
 \[\mu = R \circ \varepsilon \circ L\]
 This is a horizontal composition of three natural transformations, two
 of them being identity natural transformations mapping, respectively,

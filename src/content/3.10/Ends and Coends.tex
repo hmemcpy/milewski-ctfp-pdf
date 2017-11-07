@@ -114,7 +114,7 @@ particular, the coend may be understood as an infinite sum or an
 integral, whereas the end is similar to an infinite product. There is
 even something that resembles the Dirac delta function.
 
-An end is a genaralization of a limit, with the functor replaced by a
+An end is a generalization of a limit, with the functor replaced by a
 profunctor. Instead of a cone, we have a wedge. The base of a wedge is
 formed by diagonal elements of a profunctor $p$. The apex of the
 wedge is an object (here, a set, since we are considering
@@ -144,7 +144,7 @@ Or, using Haskell notation:
 dimap id f . alpha = dimap f id . alpha
 \end{Verbatim}
 We can now proceed with the universal construction and define the end of
-$p$ as the uinversal wedge --- a set $e$ together with a
+$p$ as the universal wedge --- a set $e$ together with a
 family of functions $\pi$ such that for any other wedge with the
 apex $a$ and a family $\alpha$ there is a unique function
 $h \Colon a \to e$ that makes all triangles commute:
@@ -479,7 +479,7 @@ data Procompose q p a b where
 \end{Verbatim}
 This is using generalized algebraic data type, or \acronym{GADT} syntax, in which
 a free type variable (here \code{c}) is automatically existentially
-quanitified. The (uncurried) data constructor \code{Procompose} is
+quantified. The (uncurried) data constructor \code{Procompose} is
 thus equivalent to:
 
 \begin{Verbatim}
