@@ -345,7 +345,7 @@ working on strings.
 
 \begin{Verbatim}
 process s = do
-    upStr <- upStr s
+    upStr <- upCase s
     tell "toWords "
     return (words upStr)
 \end{Verbatim}
