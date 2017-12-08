@@ -233,7 +233,7 @@ We start with associativity. In Haskell, the corresponding equational
 law is:
 
 \begin{Verbatim}
-mu x (mu y z) = mu (mu x y) z
+mu (x, mu (y, z)) = mu (mu (x, y), z)
 \end{Verbatim}
 Before we can generalize it to other categories, we have to rewrite it
 as an equality of functions (morphisms). We have to abstract it away
