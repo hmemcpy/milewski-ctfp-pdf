@@ -436,7 +436,8 @@ m1 >=> m2 = \x ->
 and the identity morphism by a function called \code{return}:
 
 \begin{Verbatim}
-return :: a -> Writer a return x = (x, "")
+return :: a -> Writer a
+return x = (x, "")
 \end{Verbatim}
 It turns out that, if you look at the types of these two functions long
 enough (and I mean, \emph{long} enough), you can find a way to combine
