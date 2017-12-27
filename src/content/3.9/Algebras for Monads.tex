@@ -44,13 +44,25 @@ diagrams describe the two conditions (I replaced $m$ with
 $T$ in anticipation of what follows):
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=1.81250in]{images/talg1.png}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=2.40625in]{images/talg2.png}
+  \centering
+  \begin{subfigure}
+    \centering
+    \begin{tikzcd}[column sep=large, row sep=large]
+      a \arrow[rd, equal] \arrow[r, "\eta_a"] 
+          & Ta \arrow[d, "alg"] \\
+          & a
+    \end{tikzcd}
+  \end{subfigure}
+  \hspace{1cm}
+  \begin{subfigure}
+    \centering
+    \begin{tikzcd}[column sep=large, row sep=large]
+      T(Ta) \arrow[r, "T\ alg"] \arrow[d, "\mu_a"]
+          & Ta \arrow[d, "alg"] \\
+      Ta \arrow[r, "alg"]
+          & a
+    \end{tikzcd}
+  \end{subfigure}
 \end{figure}
 
 \noindent
@@ -168,7 +180,12 @@ that it's a homomorphism of T-algebras:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=2.57292in]{images/talg31.png}
+\begin{tikzcd}[column sep=large, row sep=large]
+  T(Ta) \arrow[r, "T f"] \arrow[d, "\mu_a"]
+      & Ta \arrow[d, "f"] \\
+  Ta \arrow[r, "f"]
+      & a
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -180,8 +197,24 @@ To complete the adjunction we also need to show that the unit and the
 counit satisfy triangular identities. These are:
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{images/talg4.png}
+  \centering
+  \begin{subfigure}
+    \centering
+    \begin{tikzcd}[column sep=large, row sep=large]
+      Ta \arrow[rd, equal] \arrow[r, "T \eta_a"] 
+          & T(Ta) \arrow[d, "\mu_a"] \\
+          & Ta
+    \end{tikzcd}
+  \end{subfigure}%
+  \hspace{1cm}
+  \begin{subfigure}
+    \centering
+    \begin{tikzcd}[column sep=large, row sep=large]
+      a \arrow[rd, equal] \arrow[r, "\eta_a"] 
+          & Ta \arrow[d, "f"] \\
+          & a
+    \end{tikzcd}
+  \end{subfigure}
 \end{figure}
 
 \noindent
@@ -301,8 +334,25 @@ $W$. We can define a category of coalgebras that are compatible
 with a comonad. They make the following diagrams commute:
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{images/talg5.png}
+  \centering
+  \begin{subfigure}
+    \centering
+    \begin{tikzcd}[column sep=large, row sep=large]
+      a \arrow[rd, equal] 
+          & Wa \arrow[l, "\epsilon_a"'] \\
+          & a \arrow[u, "coa"']
+    \end{tikzcd}
+  \end{subfigure}%
+  \hspace{1cm}
+  \begin{subfigure}
+    \centering
+    \begin{tikzcd}[column sep=large, row sep=large]
+      W(Wa)
+          & Wa \arrow[l, "W\ coa"'] \\
+      Wa \arrow[u, "\delta_a"]
+          & a \arrow[u, "coa"] \arrow[l, "coa"']
+    \end{tikzcd}
+  \end{subfigure}
 \end{figure}
 
 \noindent
