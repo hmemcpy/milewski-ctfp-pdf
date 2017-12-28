@@ -92,13 +92,13 @@ The associator and the unitors must satisfy coherence conditions:
 \begin{tikzcd}[row sep=large]
 ((a \otimes b) \otimes c) \otimes d
 \arrow[d, "\alpha_{(a \otimes b)cd}"]
-\arrow[rr, "\alpha_{abc} \otimes \rm{id}_d"]
+\arrow[rr, "\alpha_{abc} \otimes \id_d"]
   & & (a \otimes (b \otimes c)) \otimes d
       \arrow[d, "\alpha_{a(b \otimes c)d}"] \\
 (a \otimes b) \otimes (c \otimes d)
 \arrow[rd, "\alpha_{ab(c \otimes d)}"]
   & & a \otimes ((b \otimes c) \otimes d)
-      \arrow[ld, "\rm{id}_a \otimes \alpha_{bcd}"] \\
+      \arrow[ld, "\id_a \otimes \alpha_{bcd}"] \\
   & a \otimes (b \otimes (c \otimes d))
 \end{tikzcd}
 \end{figure}
@@ -107,10 +107,10 @@ The associator and the unitors must satisfy coherence conditions:
 \centering
 \begin{tikzcd}[row sep=large]
 (a \otimes i) \otimes b
-\arrow[dr, "\rho_{a} \otimes \rm{id}_b"']
+\arrow[dr, "\rho_{a} \otimes \id_b"']
 \arrow[rr, "\alpha_{aib}"]
   & & a \otimes (i \otimes b)
-      \arrow[dl, "\rm{id}_a \otimes \lambda_b"] \\
+      \arrow[dl, "\id_a \otimes \lambda_b"] \\
   & a \otimes b
 \end{tikzcd}
 \end{figure}
@@ -185,13 +185,13 @@ $\cat{V}$:
 \centering
 \begin{tikzcd}[column sep=large]
 (\cat{C}(c,d) \otimes \cat{C}(b,c)) \otimes \cat{C}(a,b)
-\arrow[r, "\circ\otimes\rm{id}"]
+\arrow[r, "\circ\otimes\id"]
 \arrow[dd, "\alpha"]
   & \cat{C}(b,d) \otimes \cat{C}(a,b)
     \arrow[dr, "\circ"] \\
   & & \cat{C}(a,d) \\
 \cat{C}(c,d) \otimes (\cat{C}(b,c) \otimes \cat{C}(a,b))
-\arrow[r, "\rm{id}\otimes\circ"]
+\arrow[r, "\id\otimes\circ"]
   & \cat{C}(c,d) \otimes \cat{C}(a,c)
     \arrow[ur, "\circ"]
 \end{tikzcd}
@@ -206,7 +206,7 @@ Unit laws are likewise expressed in terms of unitors:
     \centering
     \begin{tikzcd}[row sep=large]
       \cat{C}(a,b) \otimes i
-      \arrow[rr, "\rm{id} \otimes j_a"]
+      \arrow[rr, "\id \otimes j_a"]
       \arrow[dr, "\rho"]
         & & \cat{C}(a,b) \otimes \cat{C}(a,a)
             \arrow[dl, "\circ"] \\
@@ -218,7 +218,7 @@ Unit laws are likewise expressed in terms of unitors:
     \centering
     \begin{tikzcd}[row sep=large]
       i \otimes \cat{C}(a,b)
-      \arrow[rr, "j_b \otimes \rm{id}"]
+      \arrow[rr, "j_b \otimes \id"]
       \arrow[dr, "\rho"]
         & & \cat{C}(b,b) \otimes \cat{C}(a,b)
             \arrow[dl, "\circ"] \\
