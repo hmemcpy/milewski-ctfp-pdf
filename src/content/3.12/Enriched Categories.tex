@@ -89,12 +89,30 @@ The associator and the unitors must satisfy coherence conditions:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=80mm]{images/assoc.jpg}
+\begin{tikzcd}[row sep=large]
+((a \otimes b) \otimes c) \otimes d
+\arrow[d, "\alpha_{(a \otimes b)cd}"]
+\arrow[rr, "\alpha_{abc} \otimes \id_d"]
+  & & (a \otimes (b \otimes c)) \otimes d
+      \arrow[d, "\alpha_{a(b \otimes c)d}"] \\
+(a \otimes b) \otimes (c \otimes d)
+\arrow[rd, "\alpha_{ab(c \otimes d)}"]
+  & & a \otimes ((b \otimes c) \otimes d)
+      \arrow[ld, "\id_a \otimes \alpha_{bcd}"] \\
+  & a \otimes (b \otimes (c \otimes d))
+\end{tikzcd}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/idcoherence.jpg}
+\begin{tikzcd}[row sep=large]
+(a \otimes i) \otimes b
+\arrow[dr, "\rho_{a} \otimes \id_b"']
+\arrow[rr, "\alpha_{aib}"]
+  & & a \otimes (i \otimes b)
+      \arrow[dl, "\id_a \otimes \lambda_b"] \\
+  & a \otimes b
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -156,7 +174,7 @@ where $i$ is the tensor unit in $\cat{V}$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/id.jpg}
+\includegraphics[width=40mm]{images/id.jpg}
 \end{figure}
 
 \noindent
@@ -165,20 +183,48 @@ $\cat{V}$:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=80mm]{images/compcoherence.jpg}
+\begin{tikzcd}[column sep=large]
+(\cat{C}(c,d) \otimes \cat{C}(b,c)) \otimes \cat{C}(a,b)
+\arrow[r, "\circ\otimes\id"]
+\arrow[dd, "\alpha"]
+  & \cat{C}(b,d) \otimes \cat{C}(a,b)
+    \arrow[dr, "\circ"] \\
+  & & \cat{C}(a,d) \\
+\cat{C}(c,d) \otimes (\cat{C}(b,c) \otimes \cat{C}(a,b))
+\arrow[r, "\id\otimes\circ"]
+  & \cat{C}(c,d) \otimes \cat{C}(a,c)
+    \arrow[ur, "\circ"]
+\end{tikzcd}
 \end{figure}
 
 \noindent
 Unit laws are likewise expressed in terms of unitors:
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=70mm]{images/rightid.jpg}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=70mm]{images/leftid.jpg}
+  \centering
+  \begin{subfigure}
+    \centering
+    \begin{tikzcd}[row sep=large]
+      \cat{C}(a,b) \otimes i
+      \arrow[rr, "\id \otimes j_a"]
+      \arrow[dr, "\rho"]
+        & & \cat{C}(a,b) \otimes \cat{C}(a,a)
+            \arrow[dl, "\circ"] \\
+        & \cat{C}(a,b)
+    \end{tikzcd}
+  \end{subfigure}
+  \hspace{1cm}
+  \begin{subfigure}
+    \centering
+    \begin{tikzcd}[row sep=large]
+      i \otimes \cat{C}(a,b)
+      \arrow[rr, "j_b \otimes \id"]
+      \arrow[dr, "\lambda"]
+        & & \cat{C}(b,b) \otimes \cat{C}(a,b)
+            \arrow[dl, "\circ"] \\
+        & \cat{C}(a,b)
+    \end{tikzcd}
+  \end{subfigure}
 \end{figure}
 
 \section{Preorders}
@@ -265,9 +311,9 @@ us that the distance from $a$ to $a$ is always zero.
 Check!
 
 Now let's talk about composition. We start with the tensor product of
-two abutting hom-objects, $cat{C}(b, c) \otimes \cat{C}(a, b)$. We have defined
+two abutting hom-objects, $\cat{C}(b, c) \otimes \cat{C}(a, b)$. We have defined
 the tensor product as the sum of the two distances. Composition is a
-morphism in $\cat{V}$ from this product to $cat{C}(a, c)$. A morphism
+morphism in $\cat{V}$ from this product to $\cat{C}(a, c)$. A morphism
 in $\cat{V}$ is defined as the greater-or-equal relation. In other words,
 the sum of distances from $a$ to $b$ and from $b$
 to $c$ is greater than or equal to the distance from $a$
@@ -297,7 +343,16 @@ preservation of composition means that the following diagram commute:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=80mm]{images/functorcomp.jpg}
+\begin{tikzcd}[column sep=large, row sep=large]
+  \cat{C}(b,c) \otimes \cat{C}(a,b)
+  \arrow[r, "\circ"]
+  \arrow[d, "F_{bc} \otimes F_{ab}"]
+    & \cat{C}(a,c)
+      \arrow[d, "F_{ac}"] \\
+  \cat{D}(F\ b, F\ c) \otimes \cat{D}(F\ a, F\ b)
+  \arrow[r,  "\circ"]
+    & \cat{D}(F\ a, F\ c)
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -306,7 +361,12 @@ morphisms in $\cat{V}$ that ``select'' the identity:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=70mm]{images/functorid.jpg}
+\begin{tikzcd}[row sep=large]
+    & i \arrow[dl, "j_a"'] \arrow[dr, "j_{F\ a}"] & \\
+  \cat{C}(a,a)
+  \arrow[rr, "F_{aa}"]
+    & & \cat{D}(F\ a, F\ a)
+\end{tikzcd}
 \end{figure}
 
 \section{Self Enrichment}

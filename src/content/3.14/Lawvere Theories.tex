@@ -463,7 +463,10 @@ $\cat{L}(n, 1)$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/liftl.png}
+\begin{tikzcd}[column sep=large]
+\cat{L}(m, 1) \arrow[r] & \cat{L}(n, 1)\\
+{}^m \bullet \arrow[r, "f"'] & \bullet^n
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -490,7 +493,16 @@ identified.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=80mm]{images/equalize1.png}
+\begin{tikzcd}
+  & a^n \times \cat{L}(m, 1)
+    \arrow[dl, "\langle f {,} \id \rangle"']
+    \arrow[dr, "\langle \id {,} f \rangle"] 
+    & \\
+a^n \times \cat{L}(m, 1)
+  & \scalebox{2.5}[1]{\sim}
+    & a^n \times \cat{L}(n, 1) \\
+    & f \Colon m \to n &
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -566,7 +578,16 @@ by lifting $0 \to n$ in two different ways.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/equalize2.png}
+\begin{tikzcd}
+  & a^n \times \cat{L}(0, 1)
+    \arrow[dl, "\langle f {,} \id \rangle"']
+    \arrow[dr, "\langle \id {,} f \rangle"] 
+    & \\
+a^0 \times \cat{L}(0, 1)
+  & \scalebox{2.5}[1]{\sim}
+    & a^n \times \cat{L}(n, 1) \\
+    & f \Colon 0 \to n &
+\end{tikzcd}
 \end{figure}
 
 \noindent
