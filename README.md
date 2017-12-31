@@ -57,6 +57,7 @@ Thanks to the following people for contributing corrections/conversions:
 * Paolo G. Giarrusso
 * Adi Shavit
 * Mico from the TeX.StackExchange community
+* Marcello Seri
 * ...and many others!
 
 License
