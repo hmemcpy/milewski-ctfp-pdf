@@ -4,8 +4,8 @@ Category Theory for Programmers
 <img src="https://user-images.githubusercontent.com/601206/31094980-ba6af4a4-a7bf-11e7-8857-870346890b44.png"
  alt="Category Theory for Programmers" width=256 align="right" />
 
-<b>Direct link: [category-theory-for-programmers.pdf](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/download/v0.5.1/category-theory-for-programmers.pdf)</b>  
-(Latest release: v0.5.1, January 2018)
+<b>Direct link: [category-theory-for-programmers.pdf](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/download/v0.6.0/category-theory-for-programmers.pdf)</b>  
+(Latest release: v0.6.0, January 2018)
 
 This is an *unofficial* PDF version of "Category Theory for Programmers" by Bartosz Milewski, converted from his [blogpost series](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/).
 
