@@ -556,7 +556,7 @@ coproduct is a data type called \code{Either}, which is defined in the
 standard Prelude as:
 
 \begin{Verbatim}
-Either a b = Left a | Right b
+data Either a b = Left a | Right b
 \end{Verbatim}
 It is parameterized by two types, \code{a} and \code{b} and has two
 constructors: \code{Left} that takes a value of type \code{a}, and
