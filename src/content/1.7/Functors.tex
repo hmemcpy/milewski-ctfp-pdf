@@ -37,7 +37,7 @@ and $g$:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/functorcompos.jpg}
+\includegraphics[width=40mm]{images/functorcompos.jpg}
 \end{figure}
 
 \noindent
@@ -45,16 +45,15 @@ Finally, we want all identity morphisms in $\cat{C}$ to be mapped to identity mo
 $\cat{D}$:
 \[F \idarrow[a] = \idarrow[F a]\]
 
-\begin{wrapfigure}[12]{R}{0pt}
-\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
+\begin{wrapfigure}[11]{R}{0pt}
+\raisebox{0pt}[\dimexpr\height-0\baselineskip\relax]{
 \includegraphics[width=40mm]{images/functorid.jpg}}
 \end{wrapfigure}
-Here, $\idarrow[a]$ is the identity at the object $a$,
-and $\idarrow[F a]$ the identity at $F a$.
 
 \noindent
-Note that these
-conditions make functors much more restrictive than regular functions.
+Here, $\idarrow[a]$ is the identity at the object $a$,
+and $\idarrow[F a]$ the identity at $F a$.
+Note that these conditions make functors much more restrictive than regular functions.
 Functors must preserve the structure of a category. If you picture a
 category as a collection of objects held together by a network of
 morphisms, a functor is not allowed to introduce any tears into this
@@ -134,7 +133,7 @@ fmap :: (a -> b) -> (Maybe a -> Maybe b)
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=3.12500in]{images/functormaybe.jpg}
+\includegraphics[width=40mm]{images/functormaybe.jpg}
 \end{figure}
 
 \noindent
@@ -142,7 +141,7 @@ We often say
 that \code{fmap} \emph{lifts} a function. The lifted function acts on
 \code{Maybe} values. As usual, because of currying, this signature may
 be interpreted in two ways: as a function of one argument --- which
-itself is a function \code{(a->b)} --- returning a
+itself is a function \code{(a -> b)} --- returning a
 function \code{(Maybe a -> Maybe b)}; or as a
 function of two arguments returning \code{Maybe b}:
 
