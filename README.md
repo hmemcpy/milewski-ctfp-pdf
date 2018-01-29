@@ -18,7 +18,7 @@ Please [report](https://github.com/hmemcpy/milewski-ctfp-pdf/issues) any formatt
 Building
 --------
 
-*For macOS Users:* The Inconsolata LGC and Linux Libertine fonts are not included in MacTex. You need to install them separately. Download the Inconsolata LGC fonts [here](https://github.com/MihailJP/Inconsolata-LGC/downloads) and the Linux Libertine fonts [here](http://sourceforge.net/projects/linuxlibertine/files/linuxlibertine/5.3.0/LinLibertineOTF_5.3.0_2012_07_02.tgz/download). To install the fonts system-wide, move all the downloaded `.otf` files into the `/Library/Fonts` folder. After completing these tasks, continue with the instructions below.
+*For macOS Users:* The Inconsolata LGC, Linux Libertine, and Libertinus Math fonts are not included in MacTex. You need to install them separately. Download the Inconsolata LGC fonts [here](https://github.com/MihailJP/Inconsolata-LGC/downloads), the Linux Libertine fonts [here](http://sourceforge.net/projects/linuxlibertine/files/linuxlibertine/5.3.0/LinLibertineOTF_5.3.0_2012_07_02.tgz/download), and the Libertinus Math font [here](https://fontlibrary.org/en/font/libertinus-math). To install the fonts system-wide, move all the downloaded `.otf` files into the `/Library/Fonts` folder. After completing these tasks, continue with the instructions below.
 
 The `src` directory contains the LaTeX sources. To recompile the book, go there and enter:
 
