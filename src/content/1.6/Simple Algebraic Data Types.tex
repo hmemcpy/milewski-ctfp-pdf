@@ -319,7 +319,7 @@ can be either null, or point to a value of specific type. For instance,
 a Haskell list type, which can be defined as a (recursive) sum type:
 
 \begin{Verbatim}
-List a = Nil | Cons a (List a)
+data List a = Nil | Cons a (List a)
 \end{Verbatim}
 can be translated to C++ using the null pointer trick to implement the
 empty list:
