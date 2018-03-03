@@ -1,0 +1,143 @@
+<div class="post-content"> <br><blockquote><p>This is part 26 of Categories for Programmers. Previously: <a href="https://bartoszmilewski.com/2017/03/14/algebras-for-monads/">Algebras for Monads</a>. See the <a href="https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/">Table of Contents</a>.</p></blockquote>
+<p>There are many intuitions that we may attach to morphisms in a category, but we can all agree that if there is a morphism from the object <code>a</code> to the object <code>b</code> than the two objects are in some way &#x201C;related.&#x201D; A morphism is, in a sense, the proof of this relation. This is clearly visible in any poset category, where a morphism <em>is</em> a relation. In general, there may be many &#x201C;proofs&#x201D; of the same relation between two objects. These proofs form a set that we call the hom-set. When we vary the objects, we get a mapping from pairs of objects to sets of &#x201C;proofs.&#x201D; This mapping is functorial &#x2014; contravariant in the first argument and covariant in the second. We can look at it as establishing a global relationship between objects in the category. This relationship is described by the hom-functor:</p>
+<pre>C(-, =) :: C<sup>op</sup> &#xD7; C -&gt; Set</pre>
+<p>In general, any functor like this may be interpreted as establishing a relation between objects in a category. A relation may also involve two different categories <i>C</i> and <i>D</i>. A functor, which describes such a relation, has the following signature and is called a profunctor:</p>
+<pre>p :: D<sup>op</sup> &#xD7; C -&gt; Set</pre>
+<p>Mathematicians say that it&#x2019;s a profunctor from <code>C</code> to <code>D</code> (notice the inversion), and use a slashed arrow as a symbol for it:</p>
+<pre>C &#x219B; D</pre>
+<p>You may think of a profunctor as a <em>proof-relevant relation</em> between objects of <i>C</i> and objects of <i>D</i>, where the elements of the set symbolize proofs of the relation. Whenever <code>p a b</code> is empty, there is no relation between <code>a</code> and <code>b</code>. Keep in mind that relations don&#x2019;t have to be symmetric.</p>
+<p>Another useful intuition is the generalization of the idea that an endofunctor is a container. A profunctor value of the type <code>p a b</code> could then be considered a container of <code>b</code>s that are keyed by elements of type <code>a</code>. In particular, an element of the hom-profunctor is a function from <code>a</code> to <code>b</code>.</p>
+<p>In Haskell, a profunctor is defined as a two-argument type constructor <code>p</code> equipped with the method called <code>dimap</code>, which lifts a pair of functions, the first going in the &#x201C;wrong&#x201D; direction:</p>
+<pre>class Profunctor p where dimap :: (c -&gt; a) -&gt; (b -&gt; d) -&gt; p a b -&gt; p c d</pre>
+<p>The functoriality of the profunctor tells us that if we have a proof that <code>a</code> is related to <code>b</code>, then we get the proof that <code>c</code> is related to <code>d</code>, as long as there is a morphism from <code>c</code> to <code>a</code> and another from <code>b</code> to <code>d</code>. Or, we can think of the first function as translating new keys to the old keys, and the second function as modifying the contents of the container.</p>
+<p>For profunctors acting within one category, we can extract quite a lot of information from diagonal elements of the type <code>p a a</code>. We can prove that <code>b</code> is related to <code>c</code> as long as we have a pair of morphisms <code>b-&gt;a</code> and <code>a-&gt;c</code>. Even better, we can use a single morphism to reach off-diagonal values. For instance, if we have a morphism <code>f::a-&gt;b</code>, we can lift the pair <code>&lt;f, id<sub>b</sub>&gt;</code> to go from <code>p b b</code> to <code>p a b</code>:</p>
+<pre>dimap f id pbb :: p a b</pre>
+<p>Or we can lift the pair <code>&lt;id<sub>a</sub>, f&gt;</code> to go from <code>p a a</code> to <code>p a b</code>:</p>
+<pre>dimap id f paa :: p a b</pre>
+<h2>Dinatural Transformations</h2>
+<p>Since profunctors are functors, we can define natural transformations between them in the standard way. In many cases, though, it&#x2019;s enough to define the mapping between diagonal elements of two profunctors. Such a transformation is called a dinatural transformation, provided it satisfies the commuting conditions that reflect the two ways we can connect diagonal elements to non-diagonal ones. A dinatural transformation between two profunctors <code>p</code> and <code>q</code>, which are members of the functor category <code>[C<sup>op</sup> &#xD7; C, Set]</code>, is a family of morphisms:</p>
+<pre>&#x3B1;<sub>a</sub> :: p a a -&gt; q a a</pre>
+<p>for which the following diagram commutes, for any <code>f::a-&gt;b</code>:</p>
+<p><a href="https://bartoszmilewski.files.wordpress.com/2017/03/end.jpg"><img class="alignnone size-medium wp-image-8521" src="https://bartoszmilewski.files.wordpress.com/2017/03/end.jpg?w=266&amp;h=300%20266w,%20https://bartoszmilewski.files.wordpress.com/2017/03/end.jpg?w=532&amp;h=600%20532w,%20https://bartoszmilewski.files.wordpress.com/2017/03/end.jpg?w=133&amp;h=150%20133w" alt="" width="266" srcset="https://bartoszmilewski.files.wordpress.com/2017/03/end.jpg?w=266&amp;h=300 266w, https://bartoszmilewski.files.wordpress.com/2017/03/end.jpg?w=532&amp;h=600 532w, https://bartoszmilewski.files.wordpress.com/2017/03/end.jpg?w=133&amp;h=150 133w"></a></p>
+<p>Notice that this is strictly weaker than the naturality condition. If <code>&#x3B1;</code> were a natural transformation in <code>[C<sup>op</sup> &#xD7; C, Set]</code>, the above diagram could be constructed from two naturality squares and one functoriality condition (profunctor <code>q</code> preserving composition):</p>
+<p><a href="https://bartoszmilewski.files.wordpress.com/2017/03/end-1.jpg"><img class="alignnone wp-image-8518" src="https://bartoszmilewski.files.wordpress.com/2017/03/end-1.jpg?w=323&amp;h=347%20323w,%20https://bartoszmilewski.files.wordpress.com/2017/03/end-1.jpg?w=646&amp;h=694%20646w,%20https://bartoszmilewski.files.wordpress.com/2017/03/end-1.jpg?w=140&amp;h=150%20140w,%20https://bartoszmilewski.files.wordpress.com/2017/03/end-1.jpg?w=279&amp;h=300%20279w" alt="" width="323" srcset="https://bartoszmilewski.files.wordpress.com/2017/03/end-1.jpg?w=323&amp;h=347 323w, https://bartoszmilewski.files.wordpress.com/2017/03/end-1.jpg?w=646&amp;h=694 646w, https://bartoszmilewski.files.wordpress.com/2017/03/end-1.jpg?w=140&amp;h=150 140w, https://bartoszmilewski.files.wordpress.com/2017/03/end-1.jpg?w=279&amp;h=300 279w"></a></p>
+<p>Notice that a component of a natural transformation <code>&#x3B1;</code> in <code>[C<sup>op</sup> &#xD7; C, Set]</code> is indexed by a pair of objects <code>&#x3B1;<sub> a b</sub></code>. A dinatural transformation, on the other hand, is indexed by one object, since it only maps diagonal elements of the respective profunctors.</p>
+<h2>Ends</h2>
+<p>We are now ready to advance from &#x201C;algebra&#x201D; to what could be considered the &#x201C;calculus&#x201D; of category theory. The calculus of ends (and coends) borrows ideas and even some notation from traditional calculus. In particular, the coend may be understood as an infinite sum or an integral, whereas the end is similar to an infinite product. There is even something that resembles the Dirac delta function.</p>
+<p>An end is a generalization of a limit, with the functor replaced by a profunctor. Instead of a cone, we have a wedge. The base of a wedge is formed by diagonal elements of a profunctor <code>p</code>. The apex of the wedge is an object (here, a set, since we are considering <b>Set</b>-valued profunctors), and the sides are a family of functions mapping the apex to the sets in the base. You may think of this family as one polymorphic function &#x2014; a function that&#x2019;s polymorphic in its return type:</p>
+<pre>&#x3B1; :: forall a . apex -&gt; p a a</pre>
+<p>Unlike in cones, within a wedge we don&#x2019;t have any functions that would connect the vertices that form the base. However, as we&#x2019;ve seen earlier, given any morphism <code>f::a-&gt;b</code> in <i>C</i>, we can connect both <code>p a a</code> and <code>p b b</code> to the common set <code>p a b</code>. We therefore insist that the following diagram commute:</p>
+<p><a href="https://bartoszmilewski.files.wordpress.com/2017/03/end-2.jpg"><img class="alignnone wp-image-8519" src="https://bartoszmilewski.files.wordpress.com/2017/03/end-2.jpg?w=259&amp;h=211%20259w,%20https://bartoszmilewski.files.wordpress.com/2017/03/end-2.jpg?w=150&amp;h=122%20150w,%20https://bartoszmilewski.files.wordpress.com/2017/03/end-2.jpg?w=300&amp;h=244%20300w,%20https://bartoszmilewski.files.wordpress.com/2017/03/end-2.jpg%20507w" alt="" width="259" srcset="https://bartoszmilewski.files.wordpress.com/2017/03/end-2.jpg?w=259&amp;h=211 259w, https://bartoszmilewski.files.wordpress.com/2017/03/end-2.jpg?w=150&amp;h=122 150w, https://bartoszmilewski.files.wordpress.com/2017/03/end-2.jpg?w=300&amp;h=244 300w, https://bartoszmilewski.files.wordpress.com/2017/03/end-2.jpg 507w"></a></p>
+<p>This is called the wedge condition. It can be written as:</p>
+<pre>p id<sub>a</sub> f &#x2218; &#x3B1;<sub>a</sub> = p f id<sub>b</sub> &#x2218; &#x3B1;<sub>b</sub></pre>
+<p>Or, using Haskell notation:</p>
+<pre>dimap id f . alpha = dimap f id . alpha</pre>
+<p>We can now proceed with the universal construction and define the end of <code>p</code> as the uinversal wedge &#x2014; a set <code>e</code> together with a family of functions <code>&#x3C0;</code> such that for any other wedge with the apex <code>a</code> and a family <code>&#x3B1;</code> there is a unique function <code>h::a-&gt;e</code> that makes all triangles commute:</p>
+<pre>&#x3C0;<sub>a</sub> &#x2218; h = &#x3B1;<sub>a</sub></pre>
+<p><a href="https://bartoszmilewski.files.wordpress.com/2017/03/end-21.jpg"><img class="alignnone wp-image-8532" src="https://bartoszmilewski.files.wordpress.com/2017/03/end-21.jpg?w=263&amp;h=231%20263w,%20https://bartoszmilewski.files.wordpress.com/2017/03/end-21.jpg?w=526&amp;h=462%20526w,%20https://bartoszmilewski.files.wordpress.com/2017/03/end-21.jpg?w=150&amp;h=131%20150w,%20https://bartoszmilewski.files.wordpress.com/2017/03/end-21.jpg?w=300&amp;h=263%20300w" alt="" width="263" srcset="https://bartoszmilewski.files.wordpress.com/2017/03/end-21.jpg?w=263&amp;h=231 263w, https://bartoszmilewski.files.wordpress.com/2017/03/end-21.jpg?w=526&amp;h=462 526w, https://bartoszmilewski.files.wordpress.com/2017/03/end-21.jpg?w=150&amp;h=131 150w, https://bartoszmilewski.files.wordpress.com/2017/03/end-21.jpg?w=300&amp;h=263 300w"></a></p>
+<p>The symbol for the end is the integral sign, with the &#x201C;integration variable&#x201D; in the subscript position:</p>
+<pre>&#x222B;<sub>c</sub> p c c</pre>
+<p>Components of <code>&#x3C0;</code> are called projection maps for the end:</p>
+<pre>&#x3C0;<sub>a</sub> :: &#x222B;<sub>c</sub> p c c -&gt; p a a</pre>
+<p>Note that if <i>C</i> is a discrete category (no morphisms other than the identities) the end is just a global product of all diagonal entries of <code>p</code> across the whole category <i>C</i>. Later I&#x2019;ll show you that, in the more general case, there is a relationship between the end and this product through an equalizer.</p>
+<p>In Haskell, the end formula translates directly to the universal quantifier:</p>
+<pre>forall a. p a a</pre>
+<p>Strictly speaking, this is just a product of all diagonal elements of <code>p</code>, but the wedge condition is satisfied automatically due to parametricity (I&#x2019;ll explain it in a <a href="https://bartoszmilewski.com/2017/04/11/profunctor-parametricity/">separate blog post</a>). For any function <code>f :: a -&gt; b</code>, the wedge condition reads:</p>
+<pre>dimap f id . pi = dimap id f . pi</pre>
+<p>or, with type annotations:</p>
+<pre>dimap f id<sub>b</sub> . pi<sub>b</sub> = dimap id<sub>a</sub> f . pi<sub>a</sub></pre>
+<p>where both sides of the equation have the type:</p>
+<pre>Profunctor p =&gt; (forall c. p c c) -&gt; p a b</pre>
+<p>and <code>pi</code> is the polymorphic projection:</p>
+<pre>pi :: Profunctor p =&gt; forall c. (forall a. p a a) -&gt; p c c pi e = e</pre>
+<p>Here, type inference automatically picks the right component of <code>e</code>.</p>
+<p>Just as we were able to express the whole set of commutation conditions for a cone as one natural transformation, likewise we can group all the wedge conditions into one dinatural transformation. For that we need the generalization of the constant functor <code>&#x394;<sub>c</sub></code> to a constant profunctor that maps all pairs of objects to a single object <code>c</code>, and all pairs of morphisms to the identity morphism for this object. A wedge is a dinatural transformation from that functor to the profunctor <code>p</code>. Indeed, the dinaturality hexagon shrinks down to the wedge diamond when we realize that <code>&#x394;<sub>c</sub></code> lifts all morphisms to one identity function.</p>
+<p>Ends can also be defined for target categories other than <b>Set</b>, but here we&#x2019;ll only consider <b>Set</b>-valued profunctors and their ends.</p>
+<h2>Ends as Equalizers</h2>
+<p>The commutation condition in the definition of the end can be written using an equalizer. First, let&#x2019;s define two functions (I&#x2019;m using Haskell notation, because mathematical notation seems to be less user-friendly in this case). These functions correspond to the two converging branches of the wedge condition:</p>
+<pre>lambda :: Profunctor p =&gt; p a a -&gt; (a -&gt; b) -&gt; p a b lambda paa f = dimap id f paa rho :: Profunctor p =&gt; p b b -&gt; (a -&gt; b) -&gt; p a b rho pbb f = dimap f id pbb</pre>
+<p>Both functions map diagonal elements of the profunctor <code>p</code> to polymorphic functions of the type:</p>
+<pre>type ProdP p = forall a b. (a -&gt; b) -&gt; p a b</pre>
+<p>These functions have different types. However, we can unify their types, if we form one big product type, gathering together all diagonal elements of <code>p</code>:</p>
+<pre>newtype DiaProd p = DiaProd (forall a. p a a)</pre>
+<p>The functions <code>lambda</code> and <code>rho</code> induce two mappings from this product type:</p>
+<pre>lambdaP :: Profunctor p =&gt; DiaProd p -&gt; ProdP p lambdaP (DiaProd paa) = lambda paa rhoP :: Profunctor p =&gt; DiaProd p -&gt; ProdP p rhoP (DiaProd paa) = rho paa</pre>
+<p>The end of <code>p</code> is the equalizer of these two functions. Remember that the equalizer picks the largest subset on which two functions are equal. In this case it picks the subset of the product of all diagonal elements for which the wedge diagrams commute.</p>
+<h2>Natural Transformations as Ends</h2>
+<p>The most important example of an end is the set of natural transformations. A natural transformation between two functors <code>F</code> and <code>G</code> is a family of morphisms picked from hom-sets of the form <code>C(F a, G a)</code>. If it weren&#x2019;t for the naturality condition, the set of natural transformations would be just the product of all these hom-sets. In fact, in Haskell, it is:</p>
+<pre>forall a. f a -&gt; g a</pre>
+<p>The reason it works in Haskell is because naturality follows from parametricity. Outside of Haskell, though, not all diagonal sections across such hom-sets will yield natural transformations. But notice that the mapping:</p>
+<pre>&lt;a, b&gt; -&gt; C(F a, G b)</pre>
+<p>is a profunctor, so it makes sense to study its end. This is the wedge condition:</p>
+<p><a href="https://bartoszmilewski.files.wordpress.com/2017/03/end1.jpg"><img class="alignnone size-medium wp-image-8534" src="https://bartoszmilewski.files.wordpress.com/2017/03/end1.jpg?w=300&amp;h=264%20300w,%20https://bartoszmilewski.files.wordpress.com/2017/03/end1.jpg?w=600&amp;h=528%20600w,%20https://bartoszmilewski.files.wordpress.com/2017/03/end1.jpg?w=150&amp;h=132%20150w" alt="" width="300" srcset="https://bartoszmilewski.files.wordpress.com/2017/03/end1.jpg?w=300&amp;h=264 300w, https://bartoszmilewski.files.wordpress.com/2017/03/end1.jpg?w=600&amp;h=528 600w, https://bartoszmilewski.files.wordpress.com/2017/03/end1.jpg?w=150&amp;h=132 150w"></a></p>
+<p>Let&#x2019;s just pick one element from the set <code>&#x222B;<sub>c </sub>C(F c, G c)</code>. The two projections will map this element to two components of a particular transformation, let&#x2019;s call them:</p>
+<pre>&#x3C4;<sub>a</sub> :: F a -&gt; G a &#x3C4;<sub>b</sub> :: F b -&gt; G b</pre>
+<p>In the left branch, we lift a pair of morphisms <code>&lt;id<sub>a</sub>, G f&gt;</code> using the hom-functor. You may recall that such lifting is implemented as simultaneous pre- and post-composition. When acting on <code>&#x3C4;<sub>a</sub></code> the lifted pair gives us:</p>
+<pre>G f &#x2218; &#x3C4;<sub>a</sub> &#x2218; id<sub>a</sub></pre>
+<p>The other branch of the diagram gives us:</p>
+<pre>id<sub>b</sub> &#x2218; &#x3C4;<sub>b</sub> &#x2218; F f</pre>
+<p>Their equality, demanded by the wedge condition, is nothing but the naturality condition for <code>&#x3C4;</code>.</p>
+<h2>Coends</h2>
+<p>As expected, the dual to an end is called a coend. It is constructed from a dual to a wedge called a cowedge (pronounced co-wedge, not cow-edge).</p>
+<div id="attachment_8533" class="wp-caption alignnone"><a href="https://bartoszmilewski.files.wordpress.com/2017/03/end-31.jpg"><img class="wp-image-8533" src="https://bartoszmilewski.files.wordpress.com/2017/03/end-31.jpg?w=175&amp;h=211%20175w,%20https://bartoszmilewski.files.wordpress.com/2017/03/end-31.jpg?w=350&amp;h=422%20350w,%20https://bartoszmilewski.files.wordpress.com/2017/03/end-31.jpg?w=125&amp;h=150%20125w,%20https://bartoszmilewski.files.wordpress.com/2017/03/end-31.jpg?w=249&amp;h=300%20249w" alt="" width="175" srcset="https://bartoszmilewski.files.wordpress.com/2017/03/end-31.jpg?w=175&amp;h=211 175w, https://bartoszmilewski.files.wordpress.com/2017/03/end-31.jpg?w=350&amp;h=422 350w, https://bartoszmilewski.files.wordpress.com/2017/03/end-31.jpg?w=125&amp;h=150 125w, https://bartoszmilewski.files.wordpress.com/2017/03/end-31.jpg?w=249&amp;h=300 249w"></a><p class="wp-caption-text"><i>An edgy cow?</i></p></div>
+<p>The symbol for a coend is the integral sign with the &#x201C;integration variable&#x201D; in the superscript position:</p>
+<pre>&#x222B;<sup> c </sup>p c c</pre>
+<p>Just like the end is related to a product, the coend is related to a coproduct, or a sum (in this respect, it resembles an integral, which is a limit of a sum). Rather than having projections, we have injections going from the diagonal elements of the profunctor down to the coend. If it weren&#x2019;t for the cowedge conditions, we could say that the coend of the profunctor <code>p</code> is either <code>p a a</code>, or <code>p b b</code>, or <code>p c c</code>, and so on. Or we could say that there exists such an <code>a</code> for which the coend is just the set <code>p a a</code>. The universal quantifier that we used in the definition of the end turns into an existential quantifier for the coend.</p>
+<p>This is why, in pseudo-Haskell, we would define the coend as:</p>
+<pre>exists a. p a a</pre>
+<p>The standard way of encoding existential quantifiers in Haskell is to use universally quantified data constructors. We can thus define:</p>
+<pre>data Coend p = forall a. Coend (p a a)</pre>
+<p>The logic behind this is that it should be possible to construct a coend using a value of any of the family of types <code>p a a</code>, no matter what <code>a</code> we chose.</p>
+<p>Just like an end can be defined using an equalizer, a coend can be described using a <em>coequalizer</em>. All the cowedge conditions can be summarized by taking one gigantic coproduct of <code>p a b</code> for all possible functions <code>b-&gt;a</code>. In Haskell, that would be expressed as an existential type:</p>
+<pre>data SumP p = forall a b. SumP (b -&gt; a) (p a b)</pre>
+<p>There are two ways of evaluating this sum type, by lifting the function using <code>dimap</code> and applying it to the profunctor <code>p</code>:</p>
+<pre>lambda, rho :: Profunctor p =&gt; SumP p -&gt; DiagSum p lambda (SumP f pab) = DiagSum (dimap f id pab) rho (SumP f pab) = DiagSum (dimap id f pab)</pre>
+<p>where <code>DiagSum</code> is the sum of diagonal elements of <code>p</code>:</p>
+<pre>data DiagSum p = forall a. DiagSum (p a a)</pre>
+<p>The coequalizer of these two functions is the coend. A coequilizer is obtained from <code>DiagSum p</code> by identifying values that are obtained by applying <code>lambda</code> or <code>rho</code> to the same argument. Here, the argument is a pair consisting of a function <code>b-&gt;a</code> and an element of <code>p a b</code>. The application of <code>lambda</code> and <code>rho</code> produces two potentially different values of the type <code>DiagSum p</code>. In the coend, these two values are identified, making the cowedge condition automatically satisfied. </p>
+<p>The process of identification of related elements in a set is formally known as taking a quotient. To define a quotient we need an <em>equivalence relation</em> <code>~</code>, a relation that is reflexive, symmetric, and transitive:</p>
+<pre>a ~ a if a ~ b then b ~ a if a ~ b and b ~ c then a ~ c</pre>
+<p>Such a relation splits the set into equivalence classes. Each class consists of elements that are related to each other. We form a quotient set by picking one representative from each class. A classic example is the definition of rational numbers as pairs of whole numbers with the following equivalence relation:</p>
+<pre>(a, b) ~ (c, d) iff a * d = b * c</pre>
+<p>It&#x2019;s easy to check that this is an equivalence relation. A pair <code>(a, b)</code> is interpreted as a fraction <code>a/b</code>, and fractions that have a common divisor are identified. A rational number is an equivalence class of such fractions.</p>
+<p>You might recall from our earlier discussion of limits and colimits that the hom-functor is continuous, that is, it preserves limits. Dually, the contravariant hom-functor turns colimits into limits. These properties can be generalized to ends and coends, which are a generalization of limits and colimits, respectively. In particular, we get a very useful identity for converting coends to ends:</p>
+<pre>Set(&#x222B;<sup> x </sup>p x x, c) &#x2245; &#x222B;<sub>x </sub>Set(p x x, c)</pre>
+<p>Let&#x2019;s have a look at it in pseudo-Haskell:</p>
+<pre>(exists x. p x x) -&gt; c &#x2245; forall x. p x x -&gt; c</pre>
+<p>It tells us that a function that takes an existential type is equivalent to a polymorphic function. This makes perfect sense, because such a function must be prepared to handle any one of the types that may be encoded in the existential type. It&#x2019;s the same principle that tells us that a function that accepts a sum type must be implemented as a case statement, with a tuple of handlers, one for every type present in the sum. Here, the sum type is replaced by a coend, and a family of handlers becomes an end, or a polymorphic function.</p>
+<h2>Ninja Yoneda Lemma</h2>
+<p>The set of natural transformations that appears in the Yoneda lemma may be encoded using an end, resulting in the following formulation:</p>
+<pre>&#x222B;<sub>z </sub>Set(C(a, z), F z) &#x2245; F a</pre>
+<p>There is also a dual formula:</p>
+<pre>&#x222B;<sup> z </sup>C(a, z) &#xD7; F z &#x2245; F a</pre>
+<p>This identity is strongly reminiscent of the formula for the Dirac delta function (a function <code>&#x3B4;(a - z)</code>, or rather a distribution, that has an infinite peak at <code>a = z</code>). Here, the hom-functor plays the role of the delta function.</p>
+<p>Together these two identities are sometimes called the Ninja Yoneda lemma.</p>
+<p>To prove the second formula, we will use the consequence of the Yoneda embedding, which states that two objects are isomorphic if and only if their hom-functors are isomorphic. In other words <code>a &#x2245; b</code> if and only if there is a natural transformation of the type:</p>
+<pre>[C, Set](C(a, -), C(b, =))</pre>
+<p>that is an isomorphism.</p>
+<p>We start by inserting the left-hand side of the identity we want to prove inside a hom-functor that&#x2019;s going to some arbitrary object <code>c</code>:</p>
+<pre>Set(&#x222B;<sup> z </sup>C(a, z) &#xD7; F z, c)</pre>
+<p>Using the continuity argument, we can replace the coend with the end:</p>
+<pre>&#x222B;<sub>z </sub>Set(C(a, z) &#xD7; F z, c)</pre>
+<p>We can now take advantage of the adjunction between the product and the exponential:</p>
+<pre>&#x222B;<sub>z </sub>Set(C(a, z), c<sup>(F z)</sup>)</pre>
+<p>We can &#x201C;perform the integration&#x201D; by using the Yoneda lemma to get:</p>
+<pre>c<sup>(F a)</sup></pre>
+<p>This exponential object is isomorphic to the hom-set:</p>
+<pre>Set(F a, c)</pre>
+<p>Finally, we take advantage of the Yoneda embedding to arrive at the isomorphism:</p>
+<pre>&#x222B;<sup> z </sup>C(a, z) &#xD7; F z &#x2245; F a</pre>
+<h2>Profunctor Composition</h2>
+<p>Let&#x2019;s explore further the idea that a profunctor describes a relation &#x2014; more precisely, a proof-relevant relation, meaning that the set <code>p a b</code> represents the set of proofs that <code>a</code> is related to <code>b</code>. If we have two relations <code>p</code> and <code>q</code> we can try to compose them. We&#x2019;ll say that <code>a</code> is related to <code>b</code> through the composition of <code>q</code> after <code>p</code> if there exist an intermediary object <code>c</code> such that both <code>q b c</code> and <code>p c a</code> are non-empty. The proofs of this new relation are all pairs of proofs of individual relations. Therefore, with the understanding that the existential quantifier corresponds to a coend, and the cartesian product of two sets corresponds to &#x201C;pairs of proofs,&#x201D; we can define composition of profunctors using the following formula:</p>
+<pre>(q &#x2218; p) a b = &#x222B;<sup> c </sup>p c a &#xD7; q b c</pre>
+<p>Here&#x2019;s the equivalent Haskell definition from <code>Data.Profunctor.Composition</code>, after some renaming:</p>
+<pre>data Procompose q p a b where Procompose :: q a c -&gt; p c b -&gt; Procompose q p a b </pre>
+<p>This is using generalized algebraic data type, or GADT syntax, in which a free type variable (here <code>c</code>) is automatically existentially quanitified. The (uncurried) data constructor <code>Procompose</code> is thus equivalent to:</p>
+<pre>exists c. (q a c, p c b)</pre>
+<p>The unit of so defined composition is the hom-functor &#x2014; this immediately follows from the Ninja Yoneda lemma. It makes sense, therefore, to ask the question if there is a category in which profunctors serve as morphisms. The answer is positive, with the caveat that both associativity and identity laws for profunctor composition hold only up to natural isomorphism. Such a category, where laws are valid up to isomorphism, is called a bicategory (which is more general than a 2-category). So we have a bicategory <b>Prof</b>, in which objects are categories, morphisms are profunctors, and morphisms between morphisms (a.k.a., two-cells) are natural transformations. In fact, one can go even further, because beside profunctors, we also have regular functors as morphisms between categories. A category which has two types of morphisms is called a double category.</p>
+<p>Profunctors play an important role in the Haskell lens library and in the arrow library.</p>
+<h2>Challenge</h2>
+<ol>
+<li>Write explicitly the cowedge condition for a coend.</li>
+</ol>
+<p>Next: <a href="https://bartoszmilewski.com/2017/04/17/kan-extensions/">Kan extensions</a>.</p> </div>

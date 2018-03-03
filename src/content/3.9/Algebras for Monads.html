@@ -1,0 +1,145 @@
+<div class="post-content"> <br><blockquote><p>This is part 25 of Categories for Programmers. Previously: <a href="https://bartoszmilewski.com/2017/02/28/f-algebras/">F-Algebras</a>. See the <a href="https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/">Table of Contents</a>.</p></blockquote>
+<p>If we interpret endofunctors as ways of defining expressions, algebras let us evaluate them and monads let us form and manipulate them. By combining algebras with monads we not only gain a lot of functionality but we can also answer a few interesting questions. One such question concerns the relation between monads and adjunctions. As we&#x2019;ve seen, every adjunction <a href="https://bartoszmilewski.com/2016/12/27/monads-categorically/">defines a monad</a> (and a comonad). The question is: Can every monad (comonad) be derived from an adjunction? The answer is positive. There is a whole family of adjunctions that generate a given monad. I&#x2019;ll show you two such adjunction.<br>
+<a href="https://bartoszmilewski.files.wordpress.com/2017/03/pigalg.png"><img class="alignnone wp-image-8438" src="https://bartoszmilewski.files.wordpress.com/2017/03/pigalg.png?w=122&amp;h=133%20122w,%20https://bartoszmilewski.files.wordpress.com/2017/03/pigalg.png?w=244&amp;h=266%20244w,%20https://bartoszmilewski.files.wordpress.com/2017/03/pigalg.png?w=138&amp;h=150%20138w" alt="" width="122" srcset="https://bartoszmilewski.files.wordpress.com/2017/03/pigalg.png?w=122&amp;h=133 122w, https://bartoszmilewski.files.wordpress.com/2017/03/pigalg.png?w=244&amp;h=266 244w, https://bartoszmilewski.files.wordpress.com/2017/03/pigalg.png?w=138&amp;h=150 138w"></a><br>
+Let&#x2019;s review the definitions. A monad is an endofunctor <code>m</code> equipped with two natural transformations that satisfy some coherence conditions. The components of these transformations at <code>a</code> are:</p>
+<pre>&#x3B7;<sub>a</sub> :: a -&gt; m a &#x3BC;<sub>a</sub> :: m (m a) -&gt; m a</pre>
+<p>An algebra for the same endofunctor is a selection of a particular object &#x2014; the carrier <code>a</code> &#x2014; together with the morphism:</p>
+<pre>alg :: m a -&gt; a</pre>
+<p>The first thing to notice is that the algebra goes in the opposite direction to <code>&#x3B7;<sub>a</sub></code>. The intuition is that <code>&#x3B7;<sub>a</sub></code> creates a trivial expression from a value of type <code>a</code>. The first coherence condition that makes the algebra compatible with the monad ensures that evaluating this expression using the algebra whose carrier is <code>a</code> gives us back the original value:</p>
+<pre>alg &#x2218; &#x3B7;<sub>a</sub> = id<sub>a</sub></pre>
+<p>The second condition arises from the fact that there are two ways of evaluating the doubly nested expression <code>m (m a)</code>. We can first apply <code>&#x3BC;<sub>a</sub></code> to flatten the expression, and then use the evaluator of the algebra; or we can apply the lifted evaluator to evaluate the inner expressions, and then apply the evaluator to the result. We&#x2019;d like the two strategies to be equivalent:</p>
+<pre>alg &#x2218; &#x3BC;<sub>a</sub> = alg &#x2218; m alg</pre>
+<p>Here, <code>m alg</code> is the morphism resulting from lifting <code>alg</code> using the functor <code>m</code>. The following commuting diagrams describe the two conditions (I replaced <code>m</code> with <code>T</code> in anticipation of what follows):</p>
+<p><a href="https://bartoszmilewski.files.wordpress.com/2017/03/talg1.png"><img class="alignnone wp-image-8430" src="https://bartoszmilewski.files.wordpress.com/2017/03/talg1.png?w=174&amp;h=128%20174w,%20https://bartoszmilewski.files.wordpress.com/2017/03/talg1.png?w=348&amp;h=256%20348w,%20https://bartoszmilewski.files.wordpress.com/2017/03/talg1.png?w=150&amp;h=111%20150w,%20https://bartoszmilewski.files.wordpress.com/2017/03/talg1.png?w=300&amp;h=221%20300w" alt="" width="174" srcset="https://bartoszmilewski.files.wordpress.com/2017/03/talg1.png?w=174&amp;h=128 174w, https://bartoszmilewski.files.wordpress.com/2017/03/talg1.png?w=348&amp;h=256 348w, https://bartoszmilewski.files.wordpress.com/2017/03/talg1.png?w=150&amp;h=111 150w, https://bartoszmilewski.files.wordpress.com/2017/03/talg1.png?w=300&amp;h=221 300w"></a></p>
+<p><a href="https://bartoszmilewski.files.wordpress.com/2017/03/talg2.png"><img class="alignnone wp-image-8431" src="https://bartoszmilewski.files.wordpress.com/2017/03/talg2.png?w=231&amp;h=127%20231w,%20https://bartoszmilewski.files.wordpress.com/2017/03/talg2.png?w=460&amp;h=254%20460w,%20https://bartoszmilewski.files.wordpress.com/2017/03/talg2.png?w=150&amp;h=83%20150w,%20https://bartoszmilewski.files.wordpress.com/2017/03/talg2.png?w=300&amp;h=165%20300w" alt="" width="231" srcset="https://bartoszmilewski.files.wordpress.com/2017/03/talg2.png?w=231&amp;h=127 231w, https://bartoszmilewski.files.wordpress.com/2017/03/talg2.png?w=460&amp;h=254 460w, https://bartoszmilewski.files.wordpress.com/2017/03/talg2.png?w=150&amp;h=83 150w, https://bartoszmilewski.files.wordpress.com/2017/03/talg2.png?w=300&amp;h=165 300w"></a></p>
+<p>We can also express these condition in Haskell:</p>
+<pre>alg . return = id alg . join = alg . fmap alg</pre>
+<p>Let&#x2019;s look at a small example. An algebra for a list endofunctor consists of some type <code>a</code> and a function that produces an <code>a</code> from a list of <code>a</code>. We can express this function using <code>foldr</code> by choosing both the element type and the accumulator type to be equal to <code>a</code>:</p>
+<pre>foldr :: (a -&gt; a -&gt; a) -&gt; a -&gt; [a] -&gt; a</pre>
+<p>This particular algebra is specified by a two-argument function, let&#x2019;s call it <code>f</code>, and a value <code>z</code>. The list functor happens to also be a monad, with <code>return</code> turning a value into a singleton list. The composition of the algebra, here <code>foldr f z</code>, after <code>return</code> takes <code>x</code> to:</p>
+<pre>foldr f z [x] = x `f` z</pre>
+<p>where the action of <code>f</code> is written in the infix notation. The algebra is compatible with the monad if the following coherence condition is satisfied for every <code>x</code>:</p>
+<pre>x `f` z = x</pre>
+<p>If we look at <code>f</code> as a binary operator, this condition tells us that <code>z</code> is the right unit.</p>
+<p>The second coherence condition operates on a list of lists. The action of <code>join</code> concatenates the individual lists. We can then fold the resulting list. On the other hand, we can first fold the individual lists, and then fold the resulting list. Again, if we interpret <code>f</code> as a binary operator, this condition tells us that this binary operation is associative. These conditions are certainly fulfilled when <code>(a, f, z)</code> is a monoid.</p>
+<h2>T-algebras</h2>
+<p>Since mathematicians prefer to call their monads <code>T</code>, they call algebras compatible with them T-algebras. T-algebras for a given monad T in a category <i>C</i> form a category called the Eilenberg-Moore category, often denoted by C<sup>T</sup>. Morphisms in that category are homomorphisms of algebras. These are the same homomorphisms we&#x2019;ve seen defined for F-algebras.</p>
+<p>A T-algebra is a pair consisting of a carrier object and an evaluator, <code>(a, f)</code>. There is an obvious forgetful functor <code>U<sup>T</sup></code> from C<sup>T</sup> to C, which maps <code>(a, f)</code> to <code>a</code>. It also maps a homomorphism of T-algebras to a corresponding morphism between carrier objects in C. You may remember from our discussion of adjunctions that the left adjoint to a forgetful functor is called a free functor.</p>
+<p>The left adjoint to <code>U<sup>T</sup></code> is called <code>F<sup>T</sup></code>. It maps an object <code>a</code> in C to a free algebra in C<sup>T</sup>. The carrier of this free algebra is <code>T a</code>. Its evaluator is a morphism from <code>T (T a)</code> back to <code>T a</code>. Since <code>T</code> is a monad, we can use the monadic <code>&#x3BC;<sub>a</sub></code> (Haskell <code>join</code>) as the evaluator.</p>
+<p>We still have to show that this is a T-algebra. For that, two coherence conditions must be satisified:</p>
+<pre>alg &#x2218; &#x3B7;<sub>Ta</sub> = id<sub>Ta</sub></pre>
+<pre>alg &#x2218; &#x3BC;<sub>a</sub> = alg &#x2218; T alg</pre>
+<p>But these are just monadic laws, if you plug in <code>&#x3BC;</code> for the algebra.</p>
+<p>As you may recall, every adjunction defines a monad. It turns out that the adjunction between F<sup>T</sup> and U<sup>T</sup> defines the very monad <code>T</code> that was used in the construction of the Eilenberg-Moore category. Since we can perform this construction for every monad, we conclude that every monad can be generated from an adjunction. Later I&#x2019;ll show you that there is another adjunction that generates the same monad.</p>
+<p>Here&#x2019;s the plan: First I&#x2019;ll show you that <code>F<sup>T</sup></code> is indeed the left adjoint of <code>U<sup>T</sup></code>. I&#x2019;ll do it by defining the unit and the counit of this adjunction and proving that the corresponding triangular identities are satisfied. Then I&#x2019;ll show you that the monad generated by this adjunction is indeed our original monad.</p>
+<p>The unit of the adjunction is the natural transformation:</p>
+<pre>&#x3B7; :: I -&gt; U<sup>T</sup> &#x2218; F<sup>T</sup></pre>
+<p>Let&#x2019;s calculate the <code>a</code> component of this transformation. The identity functor gives us <code>a</code>. The free functor produces the free algebra <code>(T a, &#x3BC;<sub>a</sub>)</code>, and the forgetful functor reduces it to <code>T a</code>. Altogether we get a mapping from <code>a</code> to <code>T a</code>. We&#x2019;ll simply use the unit of the monad <code>T</code> as the unit of this adjunction.</p>
+<p>Let&#x2019;s look at the counit:</p>
+<pre>&#x3B5; :: F<sup>T</sup> &#x2218; U<sup>T</sup> -&gt; I</pre>
+<p>Let&#x2019;s calculate its component at some T-algebra <code>(a, f)</code>. The forgetful functor forgets the <code>f</code>, and the free functor produces the pair <code>(T a, &#x3BC;<sub>a</sub>)</code>. So in order to define the component of the counit <code>&#x3B5;</code> at <code>(a, f)</code>, we need the right morphism in the Eilenberg-Moore category, or a homomorphism of T-algebras:</p>
+<pre>(T a, &#x3BC;<sub>a</sub>) -&gt; (a, f)</pre>
+<p>Such homomorphism should map the carrier <code>T a</code> to <code>a</code>. Let&#x2019;s just resurrect the forgotten evaluator <code>f</code>. This time we&#x2019;ll use it as a homomorphism of T-algebras. Indeed, the same commuting diagram that makes <code>f</code> a T-algebra may be re-interpreted to show that it&#x2019;s a homomorphism of T-algebras:</p>
+<p><a href="https://bartoszmilewski.files.wordpress.com/2017/03/talg31.png"><img class="alignnone wp-image-8441" src="https://bartoszmilewski.files.wordpress.com/2017/03/talg31.png?w=247&amp;h=153%20247w,%20https://bartoszmilewski.files.wordpress.com/2017/03/talg31.png?w=494&amp;h=306%20494w,%20https://bartoszmilewski.files.wordpress.com/2017/03/talg31.png?w=150&amp;h=93%20150w,%20https://bartoszmilewski.files.wordpress.com/2017/03/talg31.png?w=300&amp;h=186%20300w" alt="" width="247" srcset="https://bartoszmilewski.files.wordpress.com/2017/03/talg31.png?w=247&amp;h=153 247w, https://bartoszmilewski.files.wordpress.com/2017/03/talg31.png?w=494&amp;h=306 494w, https://bartoszmilewski.files.wordpress.com/2017/03/talg31.png?w=150&amp;h=93 150w, https://bartoszmilewski.files.wordpress.com/2017/03/talg31.png?w=300&amp;h=186 300w"></a><br>
+We have thus defined the component of the counit natural transformation <code>&#x3B5;</code> at <code>(a, f)</code> (an object in the category of T-algebras) to be <code>f</code>.</p>
+<p>To complete the adjunction we also need to show that the unit and the counit satisfy triangular identites. These are:</p>
+<p><a href="https://bartoszmilewski.files.wordpress.com/2017/03/talg4.png"><img class="alignnone wp-image-8433" src="https://bartoszmilewski.files.wordpress.com/2017/03/talg4.png?w=446&amp;h=156%20446w,%20https://bartoszmilewski.files.wordpress.com/2017/03/talg4.png?w=889&amp;h=312%20889w,%20https://bartoszmilewski.files.wordpress.com/2017/03/talg4.png?w=150&amp;h=53%20150w,%20https://bartoszmilewski.files.wordpress.com/2017/03/talg4.png?w=300&amp;h=105%20300w,%20https://bartoszmilewski.files.wordpress.com/2017/03/talg4.png?w=768&amp;h=269%20768w" alt="" width="446" srcset="https://bartoszmilewski.files.wordpress.com/2017/03/talg4.png?w=446&amp;h=156 446w, https://bartoszmilewski.files.wordpress.com/2017/03/talg4.png?w=889&amp;h=312 889w, https://bartoszmilewski.files.wordpress.com/2017/03/talg4.png?w=150&amp;h=53 150w, https://bartoszmilewski.files.wordpress.com/2017/03/talg4.png?w=300&amp;h=105 300w, https://bartoszmilewski.files.wordpress.com/2017/03/talg4.png?w=768&amp;h=269 768w"></a></p>
+<p>The first one holds because of the unit law for the monad <code>T</code>. The second is just the law of the T-algebra <code>(a, f)</code>.</p>
+<p>We have established that the two functors form an adjunction:</p>
+<pre>F<sup>T</sup> &#x22A3; U<sup>T</sup></pre>
+<p>Every adjunction gives rise to a monad. The round trip</p>
+<pre>U<sup>T</sup> &#x2218; F<sup>T</sup></pre>
+<p>is the endofunctor in C that gives rise to the corresponding monad. Let&#x2019;s see what its action on an object <code>a</code> is. The free algebra created by <code>F<sup>T</sup></code> is <code>(T a, &#x3BC;<sub>a</sub>)</code>. The forgetful functor <code>F<sup>T</sup></code> drops the evaluator. So, indeed, we have:</p>
+<pre>U<sup>T</sup> &#x2218; F<sup>T</sup> = T</pre>
+<p>As expected, the unit of the adjunction is the unit of the monad <code>T</code>.</p>
+<p>You may remember that the counint of the adjunction produces monadic muliplication through the following formula:</p>
+<pre>&#x3BC; = R &#x2218; &#x3B5; &#x2218; L</pre>
+<p>This is a horizontal composition of three natural transformations, two of them being identity natural transformations mapping, respectively, <code>L</code> to <code>L</code> and <code>R</code> to <code>R</code>. The one in the middle, the counit, is a natural transformation whose component at an algebra <code>(a, f)</code> is <code>f</code>.</p>
+<p>Let&#x2019;s calculate the component <code>&#x3BC;<sub>a</sub></code>. We first horizontally compose <code>&#x3B5;</code> after <code>F<sup>T</sup></code>, which results in the component of <code>&#x3B5;</code> at <code>F<sup>T</sup>a</code>. Since <code>F<sup>T</sup></code> takes <code>a</code> to the algebra <code>(T a, &#x3BC;<sub>a</sub>)</code>, and <code>&#x3B5;</code> picks the evaluator, we end up with <code>&#x3BC;<sub>a</sub></code>. Horizontal composition on the left with <code>U<sup>T</sup></code> doesn&#x2019;t change anything, since the action of <code>U<sup>T</sup></code> on morphisms is trivial. So, indeed, the <code>&#x3BC;</code> obtained from the adjunction is the same as the <code>&#x3BC;</code> of the original monad <code>T</code>.</p>
+<h2>The Kleisli Category</h2>
+<p>We&#x2019;ve seen the Kleisli category before. It&#x2019;s a category constructed from another category <i>C</i> and a monad <code>T</code>. We&#x2019;ll call this category <i>C<sub>T</sub></i>. The objects in the Kleisli category <i>C<sub>T</sub></i> are the objects of <i>C</i>, but the morphisms are different. A morphism <code>f<sub>K</sub></code> from <code>a</code> to <code>b</code> in the Kleisli category corresponds to a morphism <code>f</code> from <code>a</code> to <code>T b</code> in the original category. We call this morphism a Kleisli arrow from <code>a</code> to <code>b</code>.</p>
+<p>Composition of morphisms in the Kleisli category is defined in terms of monadic composition of Kleisli arrows. For instance, let&#x2019;s compose <code>g<sub>K</sub></code> after <code>f<sub>K</sub></code>. In the Kleisli category we have:</p>
+<pre>f<sub>K</sub> :: a -&gt; b g<sub>K</sub> :: b -&gt; c</pre>
+<p>which, in the category <i>C</i>, corresponds to:</p>
+<pre>f :: a -&gt; T b g :: b -&gt; T c</pre>
+<p>We define the composition:</p>
+<pre>h<sub>K</sub> = g<sub>K</sub> &#x2218; f<sub>K</sub></pre>
+<p>as a Kleisli arrow in <i>C</i></p>
+<pre>h :: a -&gt; T c h = &#x3BC; &#x2218; (T g) &#x2218; f</pre>
+<p>In Haskell we would write it as:</p>
+<pre>h = join . fmap g . f</pre>
+<p>There is a functor <code>F</code> from <i>C</i> to <i>C<sub>T</sub></i> which acts trivially on objects. On morphims, it maps <code>f</code> in <i>C</i> to a morphism in <i>C<sub>T</sub></i> by creating a Kleisli arrow that embellishes the return value of <code>f</code>. Given a morphism:</p>
+<pre>f :: a -&gt; b</pre>
+<p>it creates a morphism in <i>C<sub>T</sub></i> with the corresponding Kleisli arrow:</p>
+<pre>&#x3B7; &#x2218; f</pre>
+<p>In Haskell we&#x2019;d write it as:</p>
+<pre>return . f</pre>
+<p>We can also define a functor <code>G</code> from <i>C<sub>T</sub></i> back to <i>C</i>. It takes an object <code>a</code> from the Kleisli category and maps it to an object <code>T a</code> in <i>C</i>. Its action on a morphism <code>f<sub>K</sub></code> corresponding to a Kleisli arrow:</p>
+<pre>f :: a -&gt; T b</pre>
+<p>is a morphism in <i>C</i>:</p>
+<pre>T a -&gt; T b</pre>
+<p>given by first lifting <code>f</code> and then applying <code>&#x3BC;</code>:</p>
+<pre>&#x3BC;<sub>T b</sub> &#x2218; T f</pre>
+<p>In Haskell notation this would read:</p>
+<pre>G f<sub>T</sub> = join . fmap f</pre>
+<p>You may recognize this as the definition of monadic bind in terms of <code>join</code>.</p>
+<p>It&#x2019;s easy to see that the two functors form an adjunction:</p>
+<pre>F &#x22A3; G</pre>
+<p>and their composition <code>G &#x2218; F</code> reproduces the original monad <code>T</code>.</p>
+<p>So this is the second adjunction that produces the same monad. In fact there is a whole category of adjunctions <code>Adj(C, T)</code> that result in the same monad <code>T</code> on <i>C</i>. The Kleisli adjunction we&#x2019;ve just seen is the initial object in this category, and the Eilenberg-Moore adjunction is the terminal object.</p>
+<h2>Coalgebras for Comonads</h2>
+<p>Analogous constructions can be done for any <a href="https://bartoszmilewski.com/2017/01/02/comonads/">comonad</a> <code>W</code>. We can define a category of coalgebras that are compatible with a comonad. They make the following diagrams commute:</p>
+<p><a href="https://bartoszmilewski.files.wordpress.com/2017/03/talg5.png"><img class="alignnone wp-image-8434" src="https://bartoszmilewski.files.wordpress.com/2017/03/talg5.png?w=446&amp;h=130%20446w,%20https://bartoszmilewski.files.wordpress.com/2017/03/talg5.png?w=892&amp;h=260%20892w,%20https://bartoszmilewski.files.wordpress.com/2017/03/talg5.png?w=150&amp;h=44%20150w,%20https://bartoszmilewski.files.wordpress.com/2017/03/talg5.png?w=300&amp;h=87%20300w,%20https://bartoszmilewski.files.wordpress.com/2017/03/talg5.png?w=768&amp;h=224%20768w" alt="" width="449" srcset="https://bartoszmilewski.files.wordpress.com/2017/03/talg5.png?w=446&amp;h=130 446w, https://bartoszmilewski.files.wordpress.com/2017/03/talg5.png?w=892&amp;h=260 892w, https://bartoszmilewski.files.wordpress.com/2017/03/talg5.png?w=150&amp;h=44 150w, https://bartoszmilewski.files.wordpress.com/2017/03/talg5.png?w=300&amp;h=87 300w, https://bartoszmilewski.files.wordpress.com/2017/03/talg5.png?w=768&amp;h=224 768w"></a></p>
+<p>where <code>coa</code> is the coevaluation morphism of the coalgebra whose carrier is <code>a</code>:</p>
+<pre>coa :: a -&gt; W a</pre>
+<p>and <code>&#x3B5;</code> and <code>&#x3B4;</code> are the two natural transformations defining the comonad (in Haskell, their components are called <code>extract</code> and <code>duplicate</code>).</p>
+<p>There is an obvious forgetful functor <code>U<sup>W</sup></code> from the category of these coalgebras to <i>C</i>. It just forgets the coevaluation. We&#x2019;ll consider its right adjoint <code>F<sup>W</sup></code>.</p>
+<pre>U<sup>W</sup> &#x22A3; F<sup>W</sup></pre>
+<p>The right adjoint to a forgetful functor is called a cofree functor. <code>F<sup>W</sup></code> generates cofree coalgebras. It assigns, to an object <code>a</code> in <i>C</i>, the coalgebra <code>(W a, &#x3B4;<sub>a</sub>)</code>. The adjunction reproduces the original comonad as the composite <code>F<sup>W</sup> &#x2218; U<sup>W</sup></code>.</p>
+<p>Similarly, we can construct a co-Kleisli category with co-Kleisli arrows and regenerate the comonad from the corresponding adjunction.</p>
+<h2>Lenses</h2>
+<p>Let&#x2019;s go back to our discussion of lenses. A lens can be written as a coalgebra:</p>
+<pre>coalg<sub>s</sub> :: a -&gt; Store s a</pre>
+<p>for the functor <code>Store s</code>:</p>
+<pre>data Store s a = Store (s -&gt; a) s</pre>
+<p>This coalgebra can be also expressed as a pair of functions:</p>
+<pre>set :: a -&gt; s -&gt; a get :: a -&gt; s</pre>
+<p>(Think of <code>a</code> as standing for &#x201C;all,&#x201D; and <code>s</code> as a &#x201C;small&#x201D; part of it.) In terms of this pair, we have:</p>
+<pre>coalg<sub>s</sub> a = Store (set a) (get a)</pre>
+<p>Here, <code>a</code> is a value of type <code>a</code>. Notice that partially applied <code>set</code> is a function <code>s-&gt;a</code>.</p>
+<p>We also know that <code>Store s</code> is a comonad:</p>
+<pre>instance Comonad (Store s) where extract (Store f s) = f s duplicate (Store f s) = Store (Store f) s</pre>
+<p>The question is: Under what conditions is a lens a coalgebra for this comonad? The first coherence condition:</p>
+<pre>&#x3B5;<sub>a</sub> &#x2218; coalg = id<sub>a</sub></pre>
+<p>translates to:</p>
+<pre>set a (get a) = a</pre>
+<p>This is the lens law that expresses the fact that if you set a field of the structure <code>a</code> to its previous value, nothing changes.</p>
+<p>The second condition:</p>
+<pre>fmap coalg &#x2218; coalg = &#x3B4;<sub>a</sub> &#x2218; coalg</pre>
+<p>requires a little more work. First, recall the definition of <code>fmap</code> for the <code>Store</code> functor:</p>
+<pre>fmap g (Store f s) = Store (g . f) s</pre>
+<p>Applying <code>fmap coalg</code> to the result of <code>coalg</code> gives us:</p>
+<pre>Store (coalg . set a) (get a)</pre>
+<p>On the other hand, applying <code>duplicate</code> to the result of <code>coalg</code> produces:</p>
+<pre>Store (Store (set a)) (get a)</pre>
+<p>For these two expressions to be equal, the two functions under <code>Store</code> must be equal when acting on an arbitrary <code>s</code>:</p>
+<pre>coalg (set a s) = Store (set a) s</pre>
+<p>Expanding <code>coalg</code>, we get:</p>
+<pre>Store (set (set a s)) (get (set a s)) = Store (set a) s</pre>
+<p>This is equivalent to two remaining lens laws. The first one:</p>
+<pre>set (set a s) = set a</pre>
+<p>tells us that setting the value of a field twice is the same as setting it once. The second law:</p>
+<pre>get (set a s) = s</pre>
+<p>tells us that getting a value of a field that was set to <code>s</code> gives <code>s</code> back.</p>
+<p>In other words, a well-behaved lens is indeed a comonad coalgebra for the <code>Store</code> functor.</p>
+<h2>Challenges</h2>
+<ol>
+<li>What is the action of the free functor <code>F :: C -&gt; C<sup>T</sup></code> on morphisms. Hint: use the naturality condition for monadic <code>&#x3BC;</code>.</li>
+<li>Define the adjunction:
+<pre>U<sup>W</sup> &#x22A3; F<sup>W</sup></pre>
+</li>
+<li>Prove that the above adjunction reproduces the original comonad.</li>
+</ol>
+<h2>Acknowledgment</h2>
+<p>I&#x2019;d like to thank Gershom Bazerman for helpful comments.</p>
+<p>Next: <a href="https://bartoszmilewski.com/2017/03/29/ends-and-coends/">Ends and Coends</a>.</p> </div>

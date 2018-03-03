@@ -1,0 +1,101 @@
+<div class="post-content"> <br><blockquote><p>In the previous installment of Categories for Programmers, <a href="https://bartoszmilewski.com/2014/12/05/categories-great-and-small/">Categories Great and Small</a>, I gave a few examples of simple categories. In this installment we&#x2019;ll work through a more advanced example. If you&#x2019;re new to the series, here&#x2019;s the <a href="https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/">Table of Contents</a>.</p></blockquote> <p>You&#x2019;ve seen how to model types and pure functions as a category. I also mentioned that there is a way to model side effects, or non-pure functions, in category theory. Let&#x2019;s have a look at one such example: functions that log or trace their execution. Something that, in an imperative language, would likely be implemented by mutating some global state, as in:</p>
+<pre><span class="red">string logger;</span> bool negate(bool b) { <span class="red">logger += &quot;Not so! &quot;;</span> return !b; }</pre>
+<p>You know that this is not a pure function, because its memoized version would fail to produce a log. This function has <em>side effects</em>.</p>
+<p>In modern programming, we try to stay away from global mutable state as much as possible &#x2014; if only because of the complications of concurrency. And you would never put code like this in a library.</p>
+<p>Fortunately for us, it&#x2019;s possible to make this function pure. You just have to pass the log explicitly, in and out. Let&#x2019;s do that by adding a string argument, and pairing regular output with a string that contains the updated log:</p>
+<pre>pair&lt;bool, <span class="red">string</span>&gt; negate(bool b, <span class="red">string logger</span>) { return make_pair(!b, logger + &quot;Not so! &quot;); }</pre>
+<p>This function is pure, it has no side effects, it returns the same pair every time it&#x2019;s called with the same arguments, and it can be memoized if necessary. However, considering the cumulative nature of the log, you&#x2019;d have to memoize all possible histories that can lead to a given call. There would be a separate memo entry for:</p>
+<pre>negate(true, &quot;It was the best of times. &quot;);</pre>
+<p>and</p>
+<pre>negate(true, &quot;It was the worst of times. &quot;);</pre>
+<p>and so on.</p>
+<p>It&#x2019;s also not a very good interface for a library function. The callers are free to ignore the string in the return type, so that&#x2019;s not a huge burden; but they are forced to pass a string as input, which might be inconvenient.</p>
+<p>Is there a way to do the same thing less intrusively? Is there a way to separate concerns? In this simple example, the main purpose of the function <code>negate</code> is to turn one Boolean into another. The logging is secondary. Granted, the message that is logged is specific to the function, but the task of aggregating the messages into one continuous log is a separate concern. We still want the function to produce a string, but we&#x2019;d like to unburden it from producing a log. So here&#x2019;s the compromise solution:</p>
+<pre>pair&lt;bool, string&gt; negate(bool b) { return make_pair(!b, &quot;Not so! &quot;); }</pre>
+<p>The idea is that the log will be aggregated <em>between</em> function calls.</p>
+<p>To see how this can be done, let&#x2019;s switch to a slightly more realistic example. We have one function from string to string that turns lower case characters to upper case:</p>
+<pre>string toUpper(string s) { string result; int (*toupperp)(int) = &amp;toupper; // toupper is overloaded transform(begin(s), end(s), back_inserter(result), toupperp); return result; }</pre>
+<p>and another that splits a string into a vector of strings, breaking it on whitespace boundaries:</p>
+<pre>vector&lt;string&gt; toWords(string s) { return words(s); }</pre>
+<p>The actual work is done in the auxiliary function <code>words</code>:</p>
+<pre>vector&lt;string&gt; words(string s) { vector&lt;string&gt; result{&quot;&quot;}; for (auto i = begin(s); i != end(s); ++i) { if (isspace(*i)) result.push_back(&quot;&quot;); else result.back() += *i; } return result; }</pre>
+<p><a href="https://bartoszmilewski.files.wordpress.com/2014/12/piggyback.jpg"><img class=" alignright wp-image-3712" src="https://bartoszmilewski.files.wordpress.com/2014/12/piggyback.jpg?w=176&amp;h=188%20176w,%20https://bartoszmilewski.files.wordpress.com/2014/12/piggyback.jpg?w=141&amp;h=150%20141w,%20https://bartoszmilewski.files.wordpress.com/2014/12/piggyback.jpg?w=281&amp;h=300%20281w,%20https://bartoszmilewski.files.wordpress.com/2014/12/piggyback.jpg%20300w" alt="PiggyBack" width="176" srcset="https://bartoszmilewski.files.wordpress.com/2014/12/piggyback.jpg?w=176&amp;h=188 176w, https://bartoszmilewski.files.wordpress.com/2014/12/piggyback.jpg?w=141&amp;h=150 141w, https://bartoszmilewski.files.wordpress.com/2014/12/piggyback.jpg?w=281&amp;h=300 281w, https://bartoszmilewski.files.wordpress.com/2014/12/piggyback.jpg 300w"></a></p>
+<p>We want to modify the functions <code>toUpper</code> and <code>toWords</code> so that they piggyback a message string on top of their regular return values.</p>
+<p>We will &#x201C;embellish&#x201D; the return values of these functions. Let&#x2019;s do it in a generic way by defining a template <code>Writer</code> that encapsulates a pair whose first component is a value of arbitrary type <code>A</code> and the second component is a string:</p>
+<pre>template&lt;class A&gt; using Writer = pair&lt;A, string&gt;;</pre>
+<p>Here are the embellished functions:</p>
+<pre>Writer&lt;string&gt; toUpper(string s) { string result; int (*toupperp)(int) = &amp;toupper; transform(begin(s), end(s), back_inserter(result), toupperp); return make_pair(result, &quot;toUpper &quot;); } Writer&lt;vector&lt;string&gt;&gt; toWords(string s) { return make_pair(words(s), &quot;toWords &quot;); }</pre>
+<p>We want to compose these two functions into another embellished function that uppercases a string and splits it into words, all the while producing a log of those actions. Here&#x2019;s how we may do it:</p>
+<pre>Writer&lt;vector&lt;string&gt;&gt; process(string s) { auto p1 = toUpper(s); auto p2 = toWords(p1.first); return make_pair(p2.first, <span class="red">p1.second + p2.second</span>); }</pre>
+<p>We have accomplished our goal: The aggregation of the log is no longer the concern of the individual functions. They produce their own messages, which are then, externally, concatenated into a larger log.</p>
+<p>Now imagine a whole program written in this style. It&#x2019;s a nightmare of repetitive, error-prone code. But we are programmers. We know how to deal with repetitive code: we abstract it! This is, however, not your run of the mill abstraction &#x2014; we have to abstract <em>function composition</em> itself. But composition is the essence of category theory, so before we write more code, let&#x2019;s analyze the problem from the categorical point of view.</p>
+<h2>The Writer Category</h2>
+<p>The idea of embellishing the return types of a bunch of functions in order to piggyback some additional functionality turns out to be very fruitful. We&#x2019;ll see many more examples of it. The starting point is our regular category of types and functions. We&#x2019;ll leave the types as objects, but redefine our morphisms to be the embellished functions.</p>
+<p>For instance, suppose that we want to embellish the function <code>isEven</code> that goes from <code>int</code> to <code>bool</code>. We turn it into a morphism that is represented by an embellished function. The important point is that this morphism is still considered an arrow between the objects <code>int</code> and <code>bool</code>, even though the embellished function returns a pair:</p>
+<pre>pair&lt;bool, string&gt; isEven(int n) { return make_pair(n % 2 == 0, &quot;isEven &quot;); }</pre>
+<p>By the laws of a category, we should be able to compose this morphism with another morphism that goes from the object <code>bool</code> to whatever. In particular, we should be able to compose it with our earlier <code>negate</code>:</p>
+<pre>pair&lt;bool, string&gt; negate(bool b) { return make_pair(!b, &quot;Not so! &quot;); }</pre>
+<p>Obviously, we cannot compose these two morphisms the same way we compose regular functions, because of the input/output mismatch. Their composition should look more like this:</p>
+<pre>pair&lt;bool, string&gt; isOdd(int n) { pair&lt;bool, string&gt; p1 = isEven(n); pair&lt;bool, string&gt; p2 = negate(p1.first); return make_pair(p2.first, p1.second + p2.second); }</pre>
+<p>So here&#x2019;s the recipe for the composition of two morphisms in this new category we are constructing:</p>
+<ol>
+<li>Execute the embellished function corresponding to the first morphism</li>
+<li>Extract the first component of the result pair and pass it to the embellished function corresponding to the second morphism</li>
+<li>Concatenate the second component (the string) of of the first result and the second component (the string) of the second result</li>
+<li>Return a new pair combining the first component of the final result with the concatenated string.</li>
+</ol>
+<p>If we want to abstract this composition as a higher order function in C++, we have to use a template parameterized by three types corresponding to three objects in our category. It should take two embellished functions that are composable according to our rules, and return a third embellished function:</p>
+<pre>template&lt;class A, class B, class C&gt; function&lt;Writer&lt;C&gt;(A)&gt; compose(function&lt;Writer&lt;B&gt;(A)&gt; m1, function&lt;Writer&lt;C&gt;(B)&gt; m2) { return [m1, m2](A x) { auto p1 = m1(x); auto p2 = m2(p1.first); return make_pair(p2.first, p1.second + p2.second); }; }</pre>
+<p>Now we can go back to our earlier example and implement the composition of <code>toUpper</code> and <code>toWords</code> using this new template:</p>
+<pre>Writer&lt;vector&lt;string&gt;&gt; process(string s) { return compose&lt;string, string, vector&lt;string&gt;&gt;(toUpper, toWords)(s); }</pre>
+<p>There is still a lot of noise with the passing of types to the <code>compose</code> template. This can be avoided as long as you have a C++14-compliant compiler that supports generalized lambda functions with return type deduction (credit for this code goes to Eric Niebler):</p>
+<pre>auto const compose = [](auto m1, auto m2) { return [m1, m2](auto x) { auto p1 = m1(x); auto p2 = m2(p1.first); return make_pair(p2.first, p1.second + p2.second); }; };</pre>
+<p>In this new definition, the implementation of <code>process</code> simplifies to:</p>
+<pre>Writer&lt;vector&lt;string&gt;&gt; process(string s){ return compose(toUpper, toWords)(s); }</pre>
+<p>But we are not finished yet. We have defined composition in our new category, but what are the identity morphisms? These are not our regular identity functions! They have to be morphisms from type A back to type A, which means they are embellished functions of the form:</p>
+<pre>Writer&lt;A&gt; identity(A);</pre>
+<p>They have to behave like units with respect to composition. If you look at our definition of composition, you&#x2019;ll see that an identity morphism should pass its argument without change, and only contribute an empty string to the log:</p>
+<pre>template&lt;class A&gt; Writer&lt;A&gt; identity(A x) { return make_pair(x, &quot;&quot;); }</pre>
+<p>You can easily convince yourself that the category we have just defined is indeed a legitimate category. In particular, our composition is trivially associative. If you follow what&#x2019;s happening with the first component of each pair, it&#x2019;s just a regular function composition, which is associative. The second components are being concatenated, and concatenation is also associative.</p>
+<p>An astute reader may notice that it would be easy to generalize this construction to any monoid, not just the string monoid. We would use <code>mappend</code> inside <code>compose</code> and <code>mempty</code> inside <code>identity</code> (in place of <code>+</code> and <code>&quot;&quot;</code>). There really is no reason to limit ourselves to logging just strings. A good library writer should be able to identify the bare minimum of constraints that make the library work &#x2014; here the logging library&#x2019;s only requirement is that the log have monoidal properties.</p>
+<h2>Writer in Haskell</h2>
+<p>The same thing in Haskell is a little more terse, and we also get a lot more help from the compiler. Let&#x2019;s start by defining the <code>Writer</code> type:</p>
+<pre>type Writer a = (a, String)</pre>
+<p>Here I&#x2019;m just defining a type alias, an equivalent of a <code>typedef</code> (or <code>using</code>) in C++. The type <code>Writer</code> is parameterized by a type variable <code>a</code> and is equivalent to a pair of <code>a</code> and <code>String</code>. The syntax for pairs is minimal: just two items in parentheses, separated by a comma.</p>
+<p>Our morphisms are functions from an arbitrary type to some <code>Writer</code> type:</p>
+<pre>a -&gt; Writer b</pre>
+<p>We&#x2019;ll declare the composition as a funny infix operator, sometimes called the &#x201C;fish&#x201D;:</p>
+<pre>(&gt;=&gt;) :: (a -&gt; Writer b) -&gt; (b -&gt; Writer c) -&gt; (a -&gt; Writer c)</pre>
+<p>It&#x2019;s a function of two arguments, each being a function on its own, and returning a function. The first argument is of the type <code>(a-&gt;Writer b)</code>, the second is <code>(b-&gt;Writer c)</code>, and the result is <code>(a-&gt;Writer c)</code>.</p>
+<p>Here&#x2019;s the definition of this infix operator &#x2014; the two arguments <code>m1</code> and <code>m2</code> appearing on either side of the fishy symbol:</p>
+<pre>m1 &gt;=&gt; m2 = \x -&gt; let (y, s1) = m1 x (z, s2) = m2 y in (z, s1 ++ s2)</pre>
+<p>The result is a lambda function of one argument <code>x</code>. The lambda is written as a backslash &#x2014; think of it as the Greek letter &#x3BB; with an amputated leg.</p>
+<p>The <code>let</code> expression lets you declare auxiliary variables. Here the result of the call to <code>m1</code> is pattern matched to a pair of variables <code>(y, s1)</code>; and the result of the call to <code>m2</code>, with the argument <code>y</code> from the first pattern, is matched to <code>(z, s2)</code>.</p>
+<p>It is common in Haskell to pattern match pairs, rather than use accessors, as we did in C++. Other than that there is a pretty straightforward correspondence between the two implementations.</p>
+<p>The overall value of the <code>let</code> expression is specified in its <code>in</code> clause: here it&#x2019;s a pair whose first component is <code>z</code> and the second component is the concatenation of two strings, <code>s1++s2</code>.</p>
+<p>I will also define the identity morphism for our category, but for reasons that will become clear much later, I will call it <code>return</code>.</p>
+<pre>return :: a -&gt; Writer a return x = (x, &quot;&quot;)</pre>
+<p>For completeness, let&#x2019;s have the Haskell versions of the embellished functions <code>upCase</code> and <code>toWords</code>:</p>
+<pre>upCase :: String -&gt; Writer String upCase s = (map toUpper s, &quot;upCase &quot;)</pre>
+<pre>toWords :: String -&gt; Writer [String] toWords s = (words s, &quot;toWords &quot;)</pre>
+<p>The function <code>map</code> corresponds to the C++ <code>transform</code>. It applies the character function <code>toUpper</code> to the string <code>s</code>. The auxiliary function <code>words</code> is defined in the standard Prelude library.</p>
+<p>Finally, the composition of the two functions is accomplished with the help of the fish operator:</p>
+<pre>process :: String -&gt; Writer [String] process = upCase &gt;=&gt; toWords</pre>
+<h2>Kleisli Categories</h2>
+<p>You might have guessed that I haven&#x2019;t invented this category on the spot. It&#x2019;s an example of the so called Kleisli category &#x2014; a category based on a monad. We are not ready to discuss monads yet, but I wanted to give you a taste of what they can do. For our limited purposes, a Kleisli category has, as objects, the types of the underlying programming language. Morphisms from type A to type B are functions that go from A to a type derived from B using the particular embellishment. Each Kleisli category defines its own way of composing such morphisms, as well as the identity morphisms with respect to that composition. (Later we&#x2019;ll see that the imprecise term &#x201C;embellishment&#x201D; corresponds to the notion of an endofunctor in a category.)</p>
+<p>The particular monad that I used as the basis of the category in this post is called the <em>writer monad</em> and it&#x2019;s used for logging or tracing the execution of functions. It&#x2019;s also an example of a more general mechanism for embedding effects in pure computations. You&#x2019;ve seen previously that we could model programming-language types and functions in the category of sets (disregarding bottoms, as usual). Here we have extended this model to a slightly different category, a category where morphisms are represented by embellished functions, and their composition does more than just pass the output of one function to the input of another. We have one more degree of freedom to play with: the composition itself. It turns out that this is exactly the degree of freedom which makes it possible to give simple denotational semantics to programs that in imperative languages are traditionally implemented using side effects.</p>
+<h2>Challenge</h2>
+<p>A function that is not defined for all possible values of its argument is called a partial function. It&#x2019;s not really a function in the mathematical sense, so it doesn&#x2019;t fit the standard categorical mold. It can, however, be represented by a function that returns an embellished type <code>optional</code>:</p>
+<pre>template&lt;class A&gt; class optional { bool _isValid; A _value; public: optional() : _isValid(false) {} optional(A v) : _isValid(true), _value(v) {} bool isValid() const { return _isValid; } A value() const { return _value; } };</pre>
+<p>As an example, here&#x2019;s the implementation of the embellished function <code>safe_root</code>:</p>
+<pre>optional&lt;double&gt; safe_root(double x) { if (x &gt;= 0) return optional&lt;double&gt;{sqrt(x)}; else return optional&lt;double&gt;{}; }</pre>
+<p>Here&#x2019;s the challenge:</p>
+<ol>
+<li>Construct the Kleisli category for partial functions (define composition and identity).</li>
+<li>Implement the embellished function <code>safe_reciprocal</code> that returns a valid reciprocal of its argument, if it&#x2019;s different from zero.</li>
+<li>Compose <code>safe_root</code> and <code>safe_reciprocal</code> to implement <code>safe_root_reciprocal</code> that calculates <code>sqrt(1/x)</code> whenever possible.</li>
+</ol>
+<h2>Acknowledgments</h2>
+<p>I&#x2019;m grateful to Eric Niebler for reading the draft and providing the clever implementation of <code>compose</code> that uses advanced features of C++14 to drive type inference. I was able to cut the whole section of old fashioned template magic that did the same thing using type traits. Good riddance! I&#x2019;m also grateful to Gershom Bazerman for useful comments that helped me clarify some important points.</p>
+<p>Next: <a href="https://bartoszmilewski.com/2015/01/07/products-and-coproducts/">Products and Coproducts</a>.</p>
+<a href="https://twitter.com/BartoszMilewski" class="twitter-follow-button">Follow @BartoszMilewski</a> </div>

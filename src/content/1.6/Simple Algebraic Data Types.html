@@ -1,0 +1,195 @@
+<div class="post-content"> <br><blockquote><p>Categories for Programmers. Previously <a href="https://bartoszmilewski.com/2015/01/07/products-and-coproducts/">Products and Coproducts</a>. See the <a href="https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/">Table of Contents</a>.</p></blockquote>
+<p>We&#x2019;ve seen two basic ways of combining types: using a product and a coproduct. It turns out that a lot of data structures in everyday programming can be built using just these two mechanisms. This fact has important practical consequences. Many properties of data structures are composable. For instance, if you know how to compare values of basic types for equality, and you know how to generalize these comparisons to product and coproduct types, you can automate the derivation of equality operators for composite types. In Haskell you can automatically derive equality, comparison, conversion to and from string, and more, for a large subset of composite types.</p>
+<p>Let&#x2019;s have a closer look at product and sum types as they appear in programming.</p>
+<h2>Product Types</h2>
+<p>The canonical implementation of a product of two types in a programming language is a pair. In Haskell, a pair is a primitive type constructor; in C++ it&#x2019;s a relatively complex template defined in the Standard Library. </p>
+<p><a href="https://bartoszmilewski.files.wordpress.com/2015/01/pair.jpg"><img src="https://bartoszmilewski.files.wordpress.com/2015/01/pair.jpg?w=150&amp;h=102%20150w,%20https://bartoszmilewski.files.wordpress.com/2015/01/pair.jpg?w=300&amp;h=204%20300w" alt="Pair" width="150" class="aligncenter size-thumbnail wp-image-3942" srcset="https://bartoszmilewski.files.wordpress.com/2015/01/pair.jpg?w=150&amp;h=102 150w, https://bartoszmilewski.files.wordpress.com/2015/01/pair.jpg?w=300&amp;h=204 300w"></a></p>
+<p>Pairs are not strictly commutative: a pair <code>(Int, Bool)</code> cannot be substituted for a pair <code>(Bool, Int)</code>, even though they carry the same information. They are, however, commutative up to isomorphism &#x2014; the isomorphism being given by the <code>swap</code> function (which is its own inverse):</p>
+<pre>swap :: (a, b) -&gt; (b, a) swap (x, y) = (y, x)</pre>
+<p>You can think of the two pairs as simply using a different format for storing the same data. It&#x2019;s just like big endian vs. little endian. </p>
+<p>You can combine an arbitrary number of types into a product by nesting pairs inside pairs, but there is an easier way: nested pairs are equivalent to tuples. It&#x2019;s the consequence of the fact that different ways of nesting pairs are isomorphic. If you want to combine three types in a product, <code>a</code>, <code>b</code>, and <code>c</code>, in this order, you can do it in two ways:</p>
+<pre>((a, b), c)</pre>
+<p>or</p>
+<pre>(a, (b, c))</pre>
+<p>These types are different &#x2014; you can&#x2019;t pass one to a function that expects the other &#x2014; but their elements are in one-to-one correspondence. There is a function that maps one to another:</p>
+<pre>alpha :: ((a, b), c) -&gt; (a, (b, c)) alpha ((x, y), z) = (x, (y, z))</pre>
+<p>and this function is invertible:</p>
+<pre>alpha_inv :: (a, (b, c)) -&gt; ((a, b), c) alpha_inv (x, (y, z)) = ((x, y), z)</pre>
+<p>so it&#x2019;s an isomorphism. These are just different ways of repackaging the same data.</p>
+<p>You can interpret the creation of a product type as a binary operation on types. From that perspective, the above isomorphism looks very much like the associativity law we&#x2019;ve seen in monoids: </p>
+<pre>(a * b) * c = a * (b * c)</pre>
+<p>Except that, in the monoid case, the two ways of composing products were equal, whereas here they are only equal &#x201C;up to isomorphism.&#x201D; </p>
+<p>If we can live with isomorphisms, and don&#x2019;t insist on strict equality, we can go even further and show that the unit type, <code>()</code>, is the unit of the product the same way 1 is the unit of multiplication. Indeed, the pairing of a value of some type <code>a</code> with a unit doesn&#x2019;t add any information. The type:</p>
+<pre>(a, ())</pre>
+<p>is isomorphic to <code>a</code>. Here&#x2019;s the isomorphism:</p>
+<pre>rho :: (a, ()) -&gt; a rho (x, ()) = x</pre>
+<pre>rho_inv :: a -&gt; (a, ()) rho_inv x = (x, ())</pre>
+<p>These observations can be formalized by saying that <b>Set</b> (the category of sets) is a <em>monoidal category</em>. It&#x2019;s a category that&#x2019;s also a monoid, in the sense that you can multiply objects (here, take their cartesian product). I&#x2019;ll talk more about monoidal categories, and give the full definition in the future.</p>
+<p>There is a more general way of defining product types in Haskell &#x2014; especially, as we&#x2019;ll see soon, when they are combined with sum types. It uses named constructors with multiple arguments. A pair, for instance, can be defined alternatively as:</p>
+<pre>data Pair a b = P a b</pre>
+<p>Here, <code>Pair a b</code> is the name of the type paremeterized by two other types, <code>a</code> and <code>b</code>; and <code>P</code> is the name of the data constructor. You define a pair type by passing two types to the <code>Pair</code> type constructor. You construct a pair value by passing two values of appropriate types to the constructor <code>P</code>. For instance, let&#x2019;s define a value <code>stmt</code> as a pair of <code>String</code> and <code>Bool</code>:</p>
+<pre>stmt :: Pair String Bool stmt = P &quot;This statements is&quot; False</pre>
+<p>The first line is the type declaration. It uses the type constructor <code>Pair</code>, with <code>String</code> and <code>Bool</code> replacing <code>a</code> and the <code>b</code> in the generic definition of <code>Pair</code>. The second line defines the actual value by passing a concrete string and a concrete Boolean to the data constructor <code>P</code>. Type constructors are used to construct types; data constructors, to construct values.</p>
+<p>Since the name spaces for type and data constructors are separate in Haskell, you will often see the same name used for both, as in:</p>
+<pre>data Pair a b = Pair a b</pre>
+<p>And if you squint hard enough, you may even view the built-in pair type as a variation on this kind of declaration, where the name <code>Pair</code> is replaced with the binary operator <code>(,)</code>. In fact you can use <code>(,)</code> just like any other named constructor and create pairs using prefix notation:</p>
+<pre>stmt = (,) &quot;This statement is&quot; False</pre>
+<p>Similarly, you can use <code>(,,)</code> to create triples, and so on.</p>
+<p>Instead of using generic pairs or tuples, you can also define specific named product types, as in:</p>
+<pre>data Stmt = Stmt String Bool</pre>
+<p>which is just a product of <code>String</code> and <code>Bool</code>, but it&#x2019;s given its own name and constructor. The advantage of this style of declaration is that you may define many types that have the same content but different meaning and functionality, and which cannot be substituted for each other. </p>
+<p>Programming with tuples and multi-argument constructors can get messy and error prone &#x2014; keeping track of which component represents what. It&#x2019;s often preferable to give names to components. A product type with named fields is called a record in Haskell, and a <code>struct</code> in C. </p>
+<h3>Records</h3>
+<p>Let&#x2019;s have a look at a simple example. We want to describe chemical elements by combining two strings, name and symbol; and an integer, the atomic number; into one data structure. We can use a tuple <code>(String, String, Int)</code> and remember which component represents what. We would extract components by pattern matching, as in this function that checks if the symbol of the element is the prefix of its name (as in <strong>He</strong> being the prefix of <strong>Helium</strong>):</p>
+<pre>startsWithSymbol :: (String, String, Int) -&gt; Bool startsWithSymbol (name, symbol, _) = isPrefixOf symbol name</pre>
+<p>This code is error prone, and is hard to read and maintain. It&#x2019;s much better to define a record:</p>
+<pre>data Element = Element { name :: String , symbol :: String , atomicNumber :: Int }</pre>
+<p>The two representations are isomorphic, as witnessed by these two conversion functions, which are the inverse of each other:</p>
+<pre>tupleToElem :: (String, String, Int) -&gt; Element tupleToElem (n, s, a) = Element { name = n , symbol = s , atomicNumber = a }</pre>
+<pre>elemToTuple :: Element -&gt; (String, String, Int) elemToTuple e = (name e, symbol e, atomicNumber e)</pre>
+<p>Notice that the names of record fields also serve as functions to access these fields. For instance, <code>atomicNumber e</code> retrieves the <code>atomicNumber</code> field from <code>e</code>. We use <code>atomicNumber</code> as a function of the type:</p>
+<pre>atomicNumber :: Element -&gt; Int</pre>
+<p>With the record syntax for <code>Element</code>, our function <code>startsWithSymbol</code> becomes more readable:</p>
+<pre>startsWithSymbol :: Element -&gt; Bool startsWithSymbol e = isPrefixOf (symbol e) (name e)</pre>
+<p>We could even use the Haskell trick of turning the function <code>isPrefixOf</code> into an infix operator by surrounding it with backquotes, and make it read almost like a sentence:</p>
+<pre>startsWithSymbol e = symbol e `isPrefixOf` name e</pre>
+<p>The parentheses could be omitted in this case, because an infix operator has lower precedence than a function call.</p>
+<h2>Sum Types</h2>
+<p>Just as the product in the category of sets gives rise to product types, the coproduct gives rise to sum types. The canonical implementation of a sum type in Haskell is:</p>
+<pre>data Either a b = Left a | Right b</pre>
+<p>And like pairs, <code>Either</code>s are commutative (up to isomorphism), can be nested, and the nesting order is irrelevant (up to isomorphism). So we can, for instance, define a sum equivalent of a triple:</p>
+<pre>data OneOfThree a b c = Sinistral a | Medial b | Dextral c</pre>
+<p>and so on.</p>
+<p>It turns out that <b>Set</b> is also a (symmetric) monoidal category with respect to coproduct. The role of the binary operation is played by the disjoint sum, and the role of the unit element is played by the initial object. In terms of types, we have <code>Either</code> as the monoidal operator and <code>Void</code>, the uninhabited type, as its neutral element. You can think of <code>Either</code> as plus, and <code>Void</code> as zero. Indeed, adding <code>Void</code> to a sum type doesn&#x2019;t change its content. For instance:</p>
+<pre>Either a Void</pre>
+<p>is isomorphic to <code>a</code>. That&#x2019;s because there is no way to construct a <code>Right</code> version of this type &#x2014; there isn&#x2019;t a value of type <code>Void</code>. The only inhabitants of <code>Either a Void</code> are constructed using the <code>Left</code> constructors and they simply encapsulate a value of type <code>a</code>. So, symbolically, <code>a + 0 = a</code>.</p>
+<p>Sum types are pretty common in Haskell, but their C++ equivalents, unions or variants, are much less common. There are several reasons for that.</p>
+<p>First of all, the simplest sum types are just enumerations and are implemented using <code>enum</code> in C++. The equivalent of the Haskell sum type:</p>
+<pre>data Color = Red | Green | Blue</pre>
+<p>is the C++:</p>
+<pre>enum { Red, Green, Blue };</pre>
+<p>An even simpler sum type:</p>
+<pre>data Bool = True | False</pre>
+<p>is the primitive <code>bool</code> in C++.</p>
+<p>Simple sum types that encode the presence or absence of a value are variously implemented in C++ using special tricks and &#x201C;impossible&#x201D; values, like empty strings, negative numbers, null pointers, etc. This kind of optionality, if deliberate, is expressed in Haskell using the <code>Maybe</code> type:</p>
+<pre>data Maybe a = Nothing | Just a</pre>
+<p>The <code>Maybe</code> type is a sum of two types. You can see this if you separate the two constructors into individual types. The first one would look like this:</p>
+<pre>data NothingType = Nothing</pre>
+<p>It&#x2019;s an enumeration with one value called <code>Nothing</code>. In other words, it&#x2019;s a singleton, which is equivalent to the unit type <code>()</code>. The second part:</p>
+<pre>data JustType a = Just a</pre>
+<p>is just an encapsulation of the type <code>a</code>. We could have encoded <code>Maybe</code> as:</p>
+<pre>data Maybe a = Either () a</pre>
+<p>More complex sum types are often faked in C++ using pointers. A pointer can be either null, or point to a value of specific type. For instance, a Haskell list type, which can be defined as a (recursive) sum type:</p>
+<pre>List a = Nil | Cons a (List a)</pre>
+<p>can be translated to C++ using the null pointer trick to implement the empty list:</p>
+<pre>template&lt;class A&gt; class List { Node&lt;A&gt; * _head; public: List() : _head(nullptr) {} // Nil List(A a, List&lt;A&gt; l) // Cons : _head(new Node&lt;A&gt;(a, l)) {} };</pre>
+<p>Notice that the two Haskell constructors <code>Nil</code> and <code>Cons</code> are translated into two overloaded <code>List</code> constructors with analogous arguments (none, for <code>Nil</code>; and a value and a list for <code>Cons</code>). The <code>List</code> class doesn&#x2019;t need a tag to distinguish between the two components of the sum type. Instead it uses the special <code>nullptr</code> value for <code>_head</code> to encode <code>Nil</code>.</p>
+<p>The main difference, though, between Haskell and C++ types is that Haskell data structures are immutable. If you create an object using one particular constructor, the object will forever remember which constructor was used and what arguments were passed to it. So a <code>Maybe</code> object that was created as <code>Just &quot;energy&quot;</code> will never turn into <code>Nothing</code>. Similarly, an empty list will forever be empty, and a list of three elements will always have the same three elements. </p>
+<p>It&#x2019;s this immutability that makes construction reversible. Given an object, you can always disassemble it down to parts that were used in its construction. This deconstruction is done with pattern matching and it reuses constructors as patterns. Constructor arguments, if any, are replaced with variables (or other patterns). </p>
+<p>The <code>List</code> data type has two constructors, so the deconstruction of an arbitrary <code>List</code> uses two patterns corresponding to those constructors. One matches the empty <code>Nil</code> list, and the other a <code>Cons</code>-constructed list. For instance, here&#x2019;s the definition of a simple function on <code>List</code>s:</p>
+<pre>maybeTail :: List a -&gt; Maybe (List a) maybeTail Nil = Nothing maybeTail (Cons _ t) = Just t</pre>
+<p>The first part of the definition of <code>maybeTail</code> uses the <code>Nil</code> constructor as pattern and returns <code>Nothing</code>. The second part uses the <code>Cons</code> constructor as pattern. It replaces the first constructor argument with a wildcard, because we are not interested in it. The second argument to <code>Cons</code> is bound to the variable <code>t</code> (I will call these things variables even though, strictly speaking, they never vary: once bound to an expression, a variable never changes). The return value is <code>Just t</code>. Now, depending on how your <code>List</code> was created, it will match one of the clauses. If it was created using <code>Cons</code>, the two arguments that were passed to it will be retrieved (and the first discarded). </p>
+<p>Even more elaborate sum types are implemented in C++ using polymorphic class hierarchies. A family of classes with a common ancestor may be understood as one variant type, in which the vtable serves as a hidden tag. What in Haskell would be done by pattern matching on the constructor, and by calling specialized code, in C++ is accomplished by dispatching a call to a virtual function based on the vtable pointer.</p>
+<p>You will rarely see <code>union</code> used as a sum type in C++ because of severe limitations on what can go into a union. You can&#x2019;t even put a <code>std::string</code> into a union because it has a copy constructor. </p>
+<h2>Algebra of Types</h2>
+<p>Taken separately, product and sum types can be used to define a variety of useful data structures, but the real strength comes from combining the two. Once again we are invoking the power of composition. </p>
+<p>Let&#x2019;s summarize what we&#x2019;ve discovered so far. We&#x2019;ve seen two commutative monoidal structures underlying the type system: We have the sum types with <code>Void</code> as the neutral element, and the product types with the unit type, <code>()</code>, as the neutral element. We&#x2019;d like to think of them as analogous to addition and multiplication. In this analogy, <code>Void</code> would correspond to zero, and unit, <code>()</code>, to one. </p>
+<p>Let&#x2019;s see how far we can stretch this analogy. For instance, does multiplication by zero give zero? In other words, is a product type with one component being <code>Void</code> isomorphic to <code>Void</code>? For example, is it possible to create a pair of, say <code>Int</code> and <code>Void</code>? </p>
+<p>To create a pair you need two values. Although you can easily come up with an integer, there is no value of type <code>Void</code>. Therefore, for any type <code>a</code>, the type <code>(a, Void)</code> is uninhabited &#x2014; has no values &#x2014; and is therefore equivalent to <code>Void</code>. In other words, <code>a*0 = 0</code>.</p>
+<p>Another thing that links addition and multiplication is the distributive property:</p>
+<pre>a * (b + c) = a * b + a * c</pre>
+<p>Does it also hold for product and sum types? Yes, it does &#x2014; up to isomorphisms, as usual. The left hand side corresponds to the type:</p>
+<pre>(a, Either b c)</pre>
+<p>and the right hand side corresponds to the type:</p>
+<pre>Either (a, b) (a, c)</pre>
+<p>Here&#x2019;s the function that converts them one way:</p>
+<pre>prodToSum :: (a, Either b c) -&gt; Either (a, b) (a, c) prodToSum (x, e) = case e of Left y -&gt; Left (x, y) Right z -&gt; Right (x, z)</pre>
+<p>and here&#x2019;s one that goes the other way:</p>
+<pre>sumToProd :: Either (a, b) (a, c) -&gt; (a, Either b c) sumToProd e = case e of Left (x, y) -&gt; (x, Left y) Right (x, z) -&gt; (x, Right z)</pre>
+<p>The <code>case of</code> statement is used for pattern matching inside functions. Each pattern is followed by an arrow and the expression to be evaluated when the pattern matches. For instance, if you call <code>prodToSum</code> with the value:</p>
+<pre>prod1 :: (Int, Either String Float) prod1 = (2, Left &quot;Hi!&quot;)</pre>
+<p>the <code>e</code> in <code>case e of</code> will be equal to <code>Left &quot;Hi!&quot;</code>. It will match the pattern <code>Left y</code>, substituting <code>&quot;Hi!&quot;</code> for <code>y</code>. Since the <code>x</code> has already been matched to <code>2</code>, the result of the <code>case of</code> clause, and the whole function, will be <code>Left (2, &quot;Hi!&quot;)</code>, as expected.</p>
+<p>I&#x2019;m not going to prove that these two functions are the inverse of each other, but if you think about it, they must be! They are just trivially re-packing the contents of the two data structures. It&#x2019;s the same data, only different format.</p>
+<p>Mathematicians have a name for such two intertwined monoids: it&#x2019;s called a <em>semiring</em>. It&#x2019;s not a full <em>ring</em>, because we can&#x2019;t define subtraction of types. That&#x2019;s why a semiring is sometimes called a <em>rig</em>, which is a pun on &#x201C;ring without an <em>n</em>&#x201D; (negative). But barring that, we can get a lot of mileage from translating statements about, say, natural numbers, which form a rig, to statements about types. Here&#x2019;s a translation table with some entries of interest:</p>
+<table>
+<tr>
+<th>Numbers</th>
+<th>Types</th>
+</tr>
+<tr>
+<td>0</td>
+<td><code>Void</code></td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>()</code></td>
+</tr>
+<tr>
+<td>a + b</td>
+<td><code>Either a b = Left a | Right b</code></td>
+</tr>
+<tr>
+<td>a * b</td>
+<td><code>(a, b) </code> or <code> Pair a b = Pair a b</code></td>
+</tr>
+<tr>
+<td>2 = 1 + 1</td>
+<td><code>data Bool = True | False</code></td>
+</tr>
+<tr>
+<td>1 + a</td>
+<td><code>data Maybe = Nothing | Just a</code></td>
+</tr>
+</table>
+<p>The list type is quite interesting, because it&#x2019;s defined as a solution to an equation. The type we are defining appears on both sides of the equation:</p>
+<pre>List a = Nil | Cons a (List a)</pre>
+<p>If we do our usual substitutions, and also replace <code>List a</code> with <code>x</code>, we get the equation:</p>
+<pre>x = 1 + a * x</pre>
+<p>We can&#x2019;t solve it using traditional algebraic methods because we can&#x2019;t subtract or divide types. But we can try a series of substitutions, where we keep replacing <code>x</code> on the right hand side with <code>(1 + a*x)</code>, and use the distributive property. This leads to the following series:</p>
+<pre>x = 1 + a*<span class="red">x</span> x = 1 + a*(1 + a*<span class="red">x</span>) = 1 + a + a*a*<span class="red">x</span> x = 1 + a + a*a*(1 + a*<span class="red">x</span>) = 1 + a + a*a + a*a*a*<span class="red">x</span> ... x = 1 + a + a*a + a*a*a + a*a*a*a...</pre>
+<p>We end up with an infinite sum of products (tuples), which can be interpreted as: A list is either empty, <code>1</code>; or a singleton, <code>a</code>; or a pair, <code>a*a</code>; or a triple, <code>a*a*a</code>; etc&#x2026; Well, that&#x2019;s exactly what a list is &#x2014; a string of <code>a</code>s! </p>
+<p>There&#x2019;s much more to lists than that, and we&#x2019;ll come back to them and other recursive data structures after we learn about functors and fixed points.</p>
+<p>Solving equations with symbolic variables &#x2014; that&#x2019;s algebra! It&#x2019;s what gives these types their name: algebraic data types.</p>
+<p>Finally, I should mention one very important interpretation of the algebra of types. Notice that a product of two types <code>a</code> and <code>b</code> must contain both a value of type <code>a</code> <em>and</em> a value of type <code>b</code>, which means both types must be inhabited. A sum of two types, on the other hand, contains either a value of type <code>a</code> <em>or</em> a value of type <code>b</code>, so it&#x2019;s enough if one of them is inhabited. Logical <em>and</em> and <em>or</em> also form a semiring, and it too can be mapped into type theory:</p>
+<table>
+<tr>
+<th>Logic</th>
+<th>Types</th>
+</tr>
+<tr>
+<td>false</td>
+<td><code>Void</code></td>
+</tr>
+<tr>
+<td>true</td>
+<td><code>()</code></td>
+</tr>
+<tr>
+<td>a || b</td>
+<td><code>Either a b = Left a | Right b</code></td>
+</tr>
+<tr>
+<td>a &amp;&amp; b</td>
+<td><code>(a, b)</code></td>
+</tr>
+</table>
+<p>This analogy goes deeper, and is the basis of the Curry-Howard isomorphism between logic and type theory. We&#x2019;ll come back to it when we talk about function types.</p>
+<h2>Challenges</h2>
+<ol>
+<li>Show the isomorphism between <code>Maybe a</code> and <code>Either () a</code>.</li>
+<li>Here&#x2019;s a sum type defined in Haskell:
+<pre>data Shape = Circle Float | Rect Float Float</pre>
+<p>When we want to define a function like <code>area</code> that acts on a <code>Shape</code>, we do it by pattern matching on the two constructors:</p>
+<pre>area :: Shape -&gt; Float area (Circle r) = pi * r * r area (Rect d h) = d * h</pre>
+<p>Implement <code>Shape</code> in C++ or Java as an interface and create two classes: <code>Circle</code> and <code>Rect</code>. Implement <code>area</code> as a virtual function.
+</p></li>
+<li>Continuing with the previous example: We can easily add a new function <code>circ</code> that calculates the circumference of a <code>Shape</code>. We can do it without touching the definition of <code>Shape</code>:
+<pre>circ :: Shape -&gt; Float circ (Circle r) = 2.0 * pi * r circ (Rect d h) = 2.0 * (d + h)</pre>
+<p>Add <code>circ</code> to your C++ or Java implementation. What parts of the original code did you have to touch?</p></li>
+<li>Continuing further: Add a new shape, <code>Square</code>, to <code>Shape</code> and make all the necessary updates. What code did you have to touch in Haskell vs. C++ or Java? (Even if you&#x2019;re not a Haskell programmer, the modifications should be pretty obvious.)</li>
+<li>Show that <code>a + a = 2 * a</code> holds for types (up to isomorphism). Remember that <code>2</code> corresponds to <code>Bool</code>, according to our translation table.</li>
+</ol>
+<a href="https://twitter.com/BartoszMilewski" class="twitter-follow-button">Follow @BartoszMilewski</a>
+<p>Next: <a href="https://bartoszmilewski.com/2015/01/20/functors/">Functors</a>.</p>
+<h3>Acknowledments</h3>
+<p>Thanks go to Gershom Bazerman for reviewing this post and helpful comments.</p> </div>
