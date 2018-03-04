@@ -1,461 +1,557 @@
-\lettrine[lhang=0.17]{S}{o far we've been} mostly working with a single category or a pair of
-categories. In some cases that was a little too constraining.
+\begin{quote}
+This is part 27 of Categories for Programmers. Previously:
+\href{https://bartoszmilewski.com/2017/03/29/ends-and-coends/}{Ends and
+Coends}. See the
+\href{https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/}{Table
+of Contents}.
+\end{quote}
 
-\begin{wrapfigure}[8]{R}{0pt}
-\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=1.70833in]{images/kan2.jpg}}%
-\end{wrapfigure}
-
-For instance, when defining a limit in a category $\cat{C}$, we introduced an
-index category $\cat{I}$ as the template for the pattern that would
+So far we've been mostly working with a single category or a pair of
+categories. In some cases that was a little too constraining. For
+instance, when defining a limit in a category \emph{C}, we introduced an
+index category \texttt{I} as the template for the pattern that would
 form the basis for our cones. It would have made sense to introduce
 another category, a trivial one, to serve as a template for the apex of
-the cone. Instead we used the constant functor $\Delta_c$ from
-$\cat{I}$ to $\cat{C}$.
+the cone. Instead we used the constant functor \texttt{Δc} from
+\texttt{I} to \texttt{C}.
 
 It's time to fix this awkwardness. Let's define a limit using three
-categories. Let's start with the functor $D$ from the index
-category $\cat{I}$ to $\cat{C}$. This is the functor that selects the base
+categories. Let's start with the functor \texttt{D} from the index
+category \emph{I} to \emph{C}. This is the functor that selects the base
 of the cone --- the diagram functor.
 
-The new addition is the category $\cat{1}$ that contains a single
+\includegraphics[width=1.70833in]{images/kan2.jpg}
+
+The new addition is the category \textbf{1} that contains a single
 object (and a single identity morphism). There is only one possible
-functor $K$ from $\cat{I}$ to this category. It maps all objects
-to the only object in $\cat{1}$, and all morphisms to the identity
-morphism. Any functor $F$ from $\cat{1}$ to $\cat{C}$ picks a
+functor \texttt{K} from \emph{I} to this category. It maps all objects
+to the only object in \textbf{1}, and all morphisms to the identity
+morphism. Any functor \texttt{F} from \textbf{1} to \emph{C} picks a
 potential apex for our cone.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=50mm]{images/kan15.jpg}
-\end{figure}
+\includegraphics[width=3.12500in]{images/kan15.jpg}
 
-\noindent
-A cone is a natural transformation $\varepsilon$ from $F \circ K$ to
-$D$. Notice that $F \circ K$ does exactly the same thing as
-our original $\Delta_c$. The following diagram shows this
+A cone is a natural transformation \texttt{ε} from \texttt{F\ ∘\ K} to
+\texttt{D}. Notice that \texttt{F\ ∘\ K} does exactly the same thing as
+our original \texttt{Δc}. The following diagram shows this
 transformation.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=40mm]{images/kan3-e1492120491591.jpg}
-\end{figure}
+\includegraphics[width=2.31250in]{images/kan3-e1492120491591.jpg}
 
-\noindent
 We can now define a universal property that picks the ``best'' such
-functor $F$. This $F$ will map $\cat{1}$ to the object
-that is the limit of $D$ in $\cat{C}$, and the natural
-transformation $\varepsilon$ from $F \circ K$ to $D$ will
+functor \texttt{F}. This \texttt{F} will map \textbf{1} to the object
+that is the limit of \texttt{D} in \emph{C}, and the natural
+transformation \texttt{ε} from \texttt{F\ ∘\ K} to \texttt{D} will
 provide the corresponding projections. This universal functor is called
-the right Kan extension of $D$ along $K$ and is denoted by
-$\Ran_{K}D$.
+the right Kan extension of \texttt{D} along \texttt{K} and is denoted by
+\texttt{RanKD}.
 
 Let's formulate the universal property. Suppose we have another cone ---
-that is another functor $F'$ together with a natural
-transformation $\varepsilon'$ from $F' \circ K$ to
-$D$.
+that is another functor \texttt{F\&apos;} together with a natural
+transformation \texttt{ε\&apos;} from \texttt{F\&apos;\ ∘\ K} to
+\texttt{D}.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=50mm]{images/kan31-e1492120512209.jpg}
-\end{figure}
+\includegraphics[width=2.36458in]{images/kan31-e1492120512209.jpg}
 
-\noindent
-If the Kan extension $F = Ran_{K}D$ exists, there must be a unique
-natural transformation $\sigma$ from $F'$ to it, such
-that $\varepsilon'$ factorizes through $\varepsilon$, that is:
-\[\varepsilon' = \varepsilon\ .\ (σ \circ K)\]
-Here, $\sigma \circ K$ is the horizontal composition of two natural
+If the Kan extension \texttt{F\ =\ RanKD} exists, there must be a unique
+natural transformation \texttt{σ} from \texttt{F\&apos;} to it, such
+that \texttt{ε\&apos;} factorizes through \texttt{ε}, that is:
+
+\begin{verbatim}
+ε&apos; = ε . (σ ∘ K)
+\end{verbatim}
+
+Here, \texttt{σ\ ∘\ K} is the horizontal composition of two natural
 transformations (one of them being the identity natural transformation
-on $K$). This transformation is then vertically composed with
-$\varepsilon$.
+on \texttt{K}). This transformation is then vertically composed with
+\texttt{ε}.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=50mm]{images/kan5.jpg}
-\end{figure}
+\includegraphics[width=2.46875in]{images/kan5.jpg}
 
-\noindent
-In components, when acting on an object $i$ in $\cat{I}$, we get:
-\[\varepsilon'_i = \varepsilon_i \circ \sigma_{K\ i}\]
-In our case, $\sigma$ has only one component corresponding to the
-single object of $\cat{1}$. So, indeed, this is the unique morphism
-from the apex of the cone defined by $F'$ to the apex of
-the universal cone defined by $\Ran_{K}D$. The commuting conditions
+In components, when acting on an object \texttt{i} in \emph{I}, we get:
+
+\begin{verbatim}
+ε&apos;i = εi ∘ σ K i
+\end{verbatim}
+
+In our case, \texttt{σ} has only one component corresponding to the
+single object of \textbf{1}. So, indeed, this is the unique morphism
+from the apex of the cone defined by \texttt{F\&apos;} to the apex of
+the universal cone defined by \texttt{RanKD}. The commuting conditions
 are exactly the ones required by the definition of a limit.
 
-But, importantly, we are free to replace the trivial category $\cat{1}$
-with an arbitrary category $\cat{A}$, and the definition of the right Kan
+But, importantly, we are free to replace the trivial category \textbf{1}
+with an arbitrary category \emph{A}, and the definition of the right Kan
 extension remains valid.
 
-\section{Right Kan Extension}
+\subsection{Right Kan Extension}\label{right-kan-extension}
 
-The right Kan extension of the functor $D \Colon \cat{I} \to \cat{C}$
-along the functor $K \Colon \cat{I} \to \cat{A}$ is a functor
-$F \Colon \cat{A} \to \cat{C}$ (denoted $\Ran_{K}D$) together with a
+The right Kan extension of the functor \texttt{D::I-\textgreater{}C}
+along the functor \texttt{K::I-\textgreater{}A} is a functor
+\texttt{F::A-\textgreater{}C} (denoted \texttt{RanKD}) together with a
 natural transformation
-\[\varepsilon \Colon F \circ K \to D\]
-such that for any other functor $F' \Colon \cat{A} \to \cat{C}$ and
+
+\begin{verbatim}
+ε :: F ∘ K -> D
+\end{verbatim}
+
+such that for any other functor \texttt{F\&apos;::A-\textgreater{}C} and
 a natural transformation
-\[\varepsilon' \Colon F' \circ K \to D\]
+
+\begin{verbatim}
+ε&apos; :: F&apos; ∘ K -> D
+\end{verbatim}
+
 there is a unique natural transformation
-\[\sigma \Colon F' \to F\]
-that factorizes $\varepsilon'$:
-\[\varepsilon' = \varepsilon\ .\ (\sigma \circ K)\]
+
+\begin{verbatim}
+σ :: F&apos; -> F
+\end{verbatim}
+
+that factorizes \texttt{ε\&apos;}:
+
+\begin{verbatim}
+ε&apos; = ε . (σ ∘ K)
+\end{verbatim}
+
 This is quite a mouthful, but it can be visualized in this nice diagram:
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=40mm]{images/kan7.jpg}
-\end{figure}
+\includegraphics[width=1.95833in]{images/kan7.jpg}
 
-\noindent
 An interesting way of looking at this is to notice that, in a sense, the
 Kan extension acts like the inverse of ``functor multiplication.'' Some
-authors go as far as use the notation $D/K$ for $\Ran_{K}D$.
-Indeed, in this notation, the definition of $\varepsilon$, which is also
+authors go as far as use the notation \texttt{D/K} for \texttt{RanKD}.
+Indeed, in this notation, the definition of \texttt{ε}, which is also
 called the counit of the right Kan extension, looks like simple
 cancellation:
-\[\varepsilon \Colon D/K \circ K \to D\]
+
+\begin{verbatim}
+ε :: D/K ∘ K -> D
+\end{verbatim}
+
 There is another interpretation of Kan extensions. Consider that the
-functor $K$ embeds the category $\cat{I}$ inside $\cat{A}$. In the
-simplest case $\cat{I}$ could just be a subcategory of $\cat{A}$. We have
-a functor $D$ that maps $\cat{I}$ to $\cat{C}$. Can we extend
-$D$ to a functor $F$ that is defined on the whole of
-$\cat{A}$? Ideally, such an extension would make the composition
-$F \circ K$ be isomorphic to $D$. In other words, $F$
-would be extending the domain of $D$ to $\cat{A}$. But a
+functor \texttt{K} embeds the category \emph{I} inside \emph{A}. In the
+simplest case \emph{I} could just be a subcategory of \emph{A}. We have
+a functor \texttt{D} that maps \emph{I} to \emph{C}. Can we extend
+\texttt{D} to a functor \texttt{F} that is defined on the whole of
+\emph{A}? Ideally, such an extension would make the composition
+\texttt{F\ ∘\ K} be isomorphic to \texttt{D}. In other words, \texttt{F}
+would be extending the domain of \texttt{D} to \texttt{A}. But a
 full-blown isomorphism is usually too much to ask, and we can do with
-just half of it, namely a one-way natural transformation $\varepsilon$ from
-$F \circ K$ to $D$. (The left Kan extension picks the other direction.)
+just half of it, namely a one-way natural transformation \texttt{ε} from
+\texttt{F\ ∘\ K} to \texttt{D}. (The left Kan extension picks the other
+direction.)
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=80mm]{images/kan6.jpg}
-\end{figure}
-
-\noindent
-Of course, the embedding picture breaks down when the functor $K$
+\includegraphics[width=3.12500in]{images/kan6.jpg}\\
+Of course, the embedding picture breaks down when the functor \texttt{K}
 is not injective on objects or not faithful on hom-sets, as in the
 example of the limit. In that case, the Kan extension tries its best to
 extrapolate the lost information.
 
-\section{Kan Extension as Adjunction}
+\subsection{Kan Extension as
+Adjunction}\label{kan-extension-as-adjunction}
 
-Now suppose that the right Kan extension exists for any $D$ (and
-a fixed $K$). In that case $\Ran_{K}-$ (with the dash
-replacing $D$) is a functor from the functor category
-${[}\cat{I}, \cat{C}{]}$ to the functor category ${[}\cat{A}, \cat{C}{]}$. It
+Now suppose that the right Kan extension exists for any \texttt{D} (and
+a fixed \texttt{K}). In that case \texttt{RanK\ -} (with the dash
+replacing \texttt{D}) is a functor from the functor category
+\texttt{{[}I,\ C{]}} to the functor category \texttt{{[}A,\ C{]}}. It
 turns out that this functor is the right adjoint to the precomposition
-functor $- \circ K$. The latter maps functors in ${[}\cat{A}, \cat{C}{]}$
-to functors in ${[}\cat{I}, \cat{C}{]}$. The adjunction is:
-\[[\cat{I}, \cat{C}](F' \circ K, D) \cong [\cat{A}, \cat{C}](F', \Ran_{K}D)\]
+functor \texttt{-∘K}. The latter maps functors in \texttt{{[}A,\ C{]}}
+to functors in \texttt{{[}I,\ C{]}}. The adjunction is:
+
+\begin{verbatim}
+[I, C](F&apos; ∘ K, D) ≅ [A, C](F&apos;, RanKD)
+\end{verbatim}
+
 It is just a restatement of the fact that to every natural
-transformation we called $\varepsilon'$ corresponds a unique natural
-transformation we called $\sigma$.
+transformation we called \texttt{ε\&apos;} corresponds a unique natural
+transformation we called \texttt{σ}.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=60mm]{images/kan92.jpg}
-\end{figure}
+\includegraphics[width=3.12500in]{images/kan92.jpg}
 
-\noindent
-Furthermore, if we chose the category $\cat{I}$ to be the same as
-$\cat{C}$, we can substitute the identity functor $I_{\cat{C}}$ for
-$D$. We get the following identity:
-\[[\cat{C}, \cat{C}](F' \circ K, I_{\cat{C}}) \cong [\cat{A}, \cat{C}](F', \Ran_{K}I_{\cat{C}})\]
-We can now chose $F'$ to be the same as $\Ran_{K}I_{\cat{C}}$. In
+Furthermore, if we chose the category \emph{I} to be the same as
+\emph{C}, we can substitute the identity functor \texttt{IC} for
+\texttt{D}. We get the following identity:
+
+\begin{verbatim}
+[C, C](F&apos; ∘ K, IC) ≅ [A, C](F&apos;, RanKIC)
+\end{verbatim}
+
+We can now chose \texttt{F\&apos;} to be the same as \texttt{RanKIC}. In
 that case the right hand side contains the identity natural
 transformation and, corresponding to it, the left hand side gives us the
 following natural transformation:
-\[\varepsilon \Colon \Ran_{K}I_{\cat{C}} \circ K \to I_{\cat{C}}\]
+
+\begin{verbatim}
+ε :: RanKIC ∘ K -> IC
+\end{verbatim}
+
 This looks very much like the counit of an adjunction:
-\[\Ran_{K}I_{\cat{C}} \dashv K\]
+
+\begin{verbatim}
+RanKIC ⊣ K
+\end{verbatim}
+
 Indeed, the right Kan extension of the identity functor along a functor
-$K$ can be used to calculate the left adjoint of $K$. For
+\texttt{K} can be used to calculate the left adjoint of \texttt{K}. For
 that, one more condition is necessary: the right Kan extension must be
-preserved by the functor $K$. The preservation of the extension
+preserved by the functor \texttt{K}. The preservation of the extension
 means that, if we calculate the Kan extension of the functor precomposed
-with $K$, we should get the same result as precomposing the
-original Kan extension with $K$. In our case, this condition
+with \texttt{K}, we should get the same result as precomposing the
+original Kan extesion with \texttt{K}. In our case, this condition
 simplifies to:
-\[K \circ \Ran_{K}I_{\cat{C}} \cong \Ran_{K}K\]
-Notice that, using the division-by-$K$ notation, the adjunction can be
+
+\begin{verbatim}
+K ∘ RanKIC ≅ RanKK
+\end{verbatim}
+
+Notice that, using the division-by-K notation, the adjunction can be
 written as:
-\[I/K \dashv K\]
+
+\begin{verbatim}
+I/K ⊣ K
+\end{verbatim}
+
 which confirms our intuition that an adjunction describes some kind of
 an inverse. The preservation condition becomes:
-\[K \circ I/K \cong K/K\]
-The right Kan extension of a functor along itself, $K/K$, is
+
+\begin{verbatim}
+K ∘ I/K ≅ K/K
+\end{verbatim}
+
+The right Kan extension of a functor along itself, \texttt{K/K}, is
 called a codensity monad.
 
 The adjunction formula is an important result because, as we'll see
 soon, we can calculate Kan extensions using ends (coends), thus giving
 us practical means of finding right (and left) adjoints.
 
-\section{Left Kan Extension}
+\subsection{Left Kan Extension}\label{left-kan-extension}
 
 There is a dual construction that gives us the left Kan extension. To
 build some intuition, we'll can start with the definition of a colimit
-and restructure it to use the singleton category $\cat{1}$. We build a
-cocone by using the functor $D \Colon \cat{I} \to \cat{C}$ to form its
-base, and the functor $F \Colon \cat{1} \to \cat{C}$ to select its apex.
+and restructure it to use the singleton category \textbf{1}. We build a
+cocone by using the functor \texttt{D::I-\textgreater{}C} to form its
+base, and the functor \texttt{F::1-\textgreater{}C} to select its apex.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=40mm]{images/kan81.jpg}
-\end{figure}
+\includegraphics[width=1.90625in]{images/kan81.jpg}
 
-\noindent
 The sides of the cocone, the injections, are components of a natural
-transformation $\eta$ from $D$ to $F \circ K$.
+transformation \texttt{η} from \texttt{D} to \texttt{F\ ∘\ K}.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=40mm]{images/kan10a.jpg}
-\end{figure}
+\includegraphics[width=2.33333in]{images/kan10a.jpg}
 
-\noindent
 The colimit is the universal cocone. So for any other functor
-$F'$ and a natural transformation
-\[\eta' \Colon D \to F' \circ K\]
+\texttt{F\&apos;} and a natural transformation
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=40mm]{images/kan10b.jpg}
-\end{figure}
+\begin{verbatim}
+η&apos; :: D -> F&apos;∘ K
+\end{verbatim}
 
-\noindent
-there is a unique natural transformation $\sigma$ from $F$ to $F'$
+\includegraphics[width=2.40625in]{images/kan10b.jpg}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=40mm]{images/kan14.jpg}
-\end{figure}
+there is a unique natural transformation \texttt{σ} from \texttt{F} to
+\texttt{F\&apos;}
 
-\noindent
+\includegraphics[width=2.08333in]{images/kan14.jpg}
+
 such that:
-\[\eta' = (\sigma \circ K)\ .\ \eta\]
-This is illustrated in the following diagram:
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=40mm]{images/kan112.jpg}
-\end{figure}
+\begin{verbatim}
+η&apos; = (σ ∘ K) . η
+\end{verbatim}
 
-\noindent
-Replacing the singleton category $\cat{1}$ with $\cat{A}$, this
+This is illustrated in the following diagram:\\
+\includegraphics[width=2.19792in]{images/kan112.jpg}
+
+Replacing the singleton category \textbf{1} with \emph{A}, this
 definition naturally generalized to the definition of the left Kan
-extension, denoted by $\Lan_{K}D$.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=40mm]{images/kan12.jpg}
-\end{figure}
-
-\noindent
+extension, denoted by \texttt{LanKD}.\\
+\includegraphics[width=2.06250in]{images/kan12.jpg}\\
 The natural transformation:
-\[\eta \Colon D \to \Lan_{K}D \circ K\]
+
+\begin{verbatim}
+η :: D -> LanKD ∘ K
+\end{verbatim}
+
 is called the unit of the left Kan extension.
 
 As before, we can recast the one-to-one correspondence between natural
 transformations:
-\[\eta' = (\sigma \circ K)\ .\ \eta\]
+
+\begin{verbatim}
+η&apos; = (σ ∘ K) . η
+\end{verbatim}
+
 in terms of the adjunction:
-\[[\cat{A}, \cat{C}](\Lan_{K}D, F') \cong [\cat{I}, \cat{C}](D, F' \circ K)\]
+
+\begin{verbatim}
+[A, C](LanKD, F&apos;) ≅ [I, C](D, F&apos; ∘ K)
+\end{verbatim}
+
 In other words, the left Kan extension is the left adjoint, and the
 right Kan extension is the right adjoint of the postcomposition with
-$K$.
+\texttt{K}.
 
 Just like the right Kan extension of the identity functor could be used
-to calculate the left adjoint of $K$, the left Kan extension of
-the identity functor turns out to be the right adjoint of $K$
-(with $\eta$ being the unit of the adjunction):
-\[K \dashv \Lan_{K}I_{\cat{C}}\]
-Combining the two results, we get:
-\[\Ran_{K}I_{\cat{C}} \dashv K \dashv \Lan_{K}I_{\cat{C}}\]
+to calculate the left adjoint of \texttt{K}, the left Kan extension of
+the identity functor turns out to be the right adjoint of \texttt{K}
+(with \texttt{η} being the unit of~ the adjunction):
 
-\section{Kan Extensions as Ends}
+\begin{verbatim}
+K ⊣ LanKIC
+\end{verbatim}
+
+Combining the two results, we get:
+
+\begin{verbatim}
+RanKIC ⊣ K ⊣ LanKIC
+\end{verbatim}
+
+\subsection{Kan Extensions as Ends}\label{kan-extensions-as-ends}
 
 The real power of Kan extensions comes from the fact that they can be
 calculated using ends (and coends). For simplicity, we'll restrict our
-attention to the case where the target category $\cat{C}$ is
-$\Set$, but the formulas can be extended to any category.
+attention to the case where the target category \emph{C} is
+\textbf{Set}, but the formulas can be extended to any category.
 
 Let's revisit the idea that a Kan extension can be used to extend the
 action of a functor outside of its original domain. Suppose that
-$K$ embeds $\cat{I}$ inside $\cat{A}$. Functor $D$ maps
-$\cat{I}$ to $\Set$. We could just say that for any object
-$a$ in the image of $K$, that is $a = K\ i$, the
-extended functor maps $a$ to $D\ i$. The problem is, what
-to do with those objects in $\cat{A}$ that are outside of the image of
-$K$? The idea is that every such object is potentially connected
-through lots of morphisms to every object in the image of $K$. A
+\texttt{K} embeds \emph{I} inside \emph{A}. Functor \texttt{D} maps
+\emph{I} to \textbf{Set}. We could just say that for any object
+\texttt{a} in the image of \texttt{K}, that is \texttt{a\ =\ K\ i}, the
+extended functor maps \texttt{a} to \texttt{D\ i}. The problem is, what
+to do with those objects in \emph{A} that are outside of the image of
+\texttt{K}? The idea is that every such object is potentially connected
+through lots of morphisms to every object in the image of \texttt{K}. A
 functor must preserve these morphisms. The totality of morphisms from an
-object $a$ to the image of $K$ is characterized by the
+object \texttt{a} to the image of \texttt{K} is characterized by the
 hom-functor:
-\[\cat{A}(a, K\ -)\]
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=60mm]{images/kan13.jpg}
-\end{figure}
+\begin{verbatim}
+A(a, K -)
+\end{verbatim}
 
-\noindent
+\includegraphics[width=3.12500in]{images/kan13.jpg}\\
 Notice that this hom-functor is a composition of two functors:
-\[\cat{A}(a, K\ -) = \cat{A}(a, -) \circ K\]
+
+\begin{verbatim}
+A(a, K -) = A(a, -) ∘ K
+\end{verbatim}
+
 The right Kan extension is the right adjoint of functor composition:
-\[[\cat{I}, \Set](F' \circ K, D) \cong [\cat{A}, \Set](F', \Ran_{K}D)\]
-Let's see what happens when we replace $F'$ with the hom
+
+\begin{verbatim}
+[I, Set](F&apos; ∘ K, D) ≅ [A, Set](F&apos;, RanKD)
+\end{verbatim}
+
+Let's see what happens when we replace \texttt{F\&apos;} with the hom
 functor:
-\[[\cat{I}, \Set](\cat{A}(a, -) \circ K, D) \cong [\cat{A}, \Set](\cat{A}(a, -), \Ran_{K}D)\]
+
+\begin{verbatim}
+[I, Set](A(a, -) ∘ K, D) ≅ [A, Set](A(a, -), RanKD)
+\end{verbatim}
+
 and then inline the composition:
-\[[\cat{I}, \Set](\cat{A}(a, K\ -), D) \cong [\cat{A}, \Set](\cat{A}(a, -), \Ran_{K}D)\]
+
+\begin{verbatim}
+[I, Set](A(a, K -), D) ≅ [A, Set](A(a, -), RanKD)
+\end{verbatim}
+
 The right hand side can be reduced using the Yoneda lemma:
-\[[\cat{I}, \Set](\cat{A}(a, K\ -), D) \cong \Ran_{K}D\ a\]
+
+\begin{verbatim}
+[I, Set](A(a, K -), D) ≅ RanKD a
+\end{verbatim}
+
 We can now rewrite the set of natural transformations as the end to get
 this very convenient formula for the right Kan extension:
-\[\Ran_{K}D\ a \cong \int_i \Set(\cat{A}(a, K\ i), D\ i)\]
+
+\begin{verbatim}
+RanKD a ≅ ∫i Set(A(a, K i), D i)
+\end{verbatim}
+
 There is an analogous formula for the left Kan extension in terms of a
 coend:
-\[\Lan_{K}D\ a = \int^i \cat{A}(K\ i, a)\times{}D\ i\]
+
+\begin{verbatim}
+LanKD a = ∫i A(K i, a) × D i
+\end{verbatim}
+
 To see that this is the case, we'll show that this is indeed the left
 adjoint to functor composition:
-\[[\cat{A}, \Set](\Lan_{K}D, F') \cong [\cat{I}, \Set](D, F' \circ K)\]
+
+\begin{verbatim}
+[A, Set](LanKD, F&apos;) ≅ [I, Set](D, F&apos;∘ K)
+\end{verbatim}
+
 Let's substitute our formula in the left hand side:
-\[[\cat{A}, \Set](\int^i \cat{A}(K\ i, -)\times{}D\ i, F')\]
+
+\begin{verbatim}
+[A, Set](∫i A(K i, -) × D i, F&apos;)
+\end{verbatim}
+
 This is a set of natural transformations, so it can be rewritten as an
 end:
-\[\int_a \Set(\int^i \cat{A}(K\ i, a)\times{}D\ i, F'\ a)\]
+
+\begin{verbatim}
+∫a Set(∫i A(K i, a) × D i, F&apos;a)
+\end{verbatim}
+
 Using the continuity of the hom-functor, we can replace the coend with
 the end:
-\[\int_a \int_i \Set(\cat{A}(K\ i, a)\times{}D\ i, F'\ a)\]
+
+\begin{verbatim}
+∫a ∫i Set(A(K i, a) × D i, F&apos;a)
+\end{verbatim}
+
 We can use the product-exponential adjunction:
-\[\int_a \int_i \Set(\cat{A}(K\ i, a),\ (F'\ a)^{D\ i})\]
+
+\begin{verbatim}
+∫a ∫i Set(A(K i, a), (F&apos;a)D i)
+\end{verbatim}
+
 The exponential is isomorphic to the corresponding hom-set:
-\[\int_a \int_i \Set(\cat{A}(K\ i, a),\ \cat{A}(D\ i, F'\ a))\]
+
+\begin{verbatim}
+∫a ∫i Set(A(K i, a), A(D i, F&apos;a))
+\end{verbatim}
+
 There is a theorem called the Fubini theorem that allows us to swap the
 two ends:
-\[\int_i \int_a \Set(\cat{A}(K\ i, a),\ A(D\ i, F'\ a))\]
+
+\begin{verbatim}
+∫i ∫a Set(A(K i, a), A(D i, F&apos;a))
+\end{verbatim}
+
 The inner end represents the set of natural transformations between two
 functors, so we can use the Yoneda lemma:
-\[\int_i \cat{A}(D\ i, F'\ (K\ i))\]
+
+\begin{verbatim}
+∫i A(D i, F&apos;(K i))
+\end{verbatim}
+
 This is indeed the set of natural transformations that forms the right
 hand side of the adjunction we set out to prove:
-\[[\cat{I}, \Set](D, F' \circ K)\]
+
+\begin{verbatim}
+[I, Set](D, F&apos;∘ K)
+\end{verbatim}
+
 These kinds of calculations using ends, coends, and the Yoneda lemma are
 pretty typical for the ``calculus'' of ends.
 
-\section{Kan Extensions in Haskell}
+\subsection{Kan Extensions in Haskell}\label{kan-extensions-in-haskell}
 
 The end/coend formulas for Kan extensions can be easily translated to
 Haskell. Let's start with the right extension:
-\[\Ran_{K}D\ a \cong \int_i \Set(\cat{A}(a, K\ i), D\ i)\]
+
+\begin{verbatim}
+RanKD a ≅ ∫i Set(A(a, K i), D i)
+\end{verbatim}
+
 We replace the end with the universal quantifier, and hom-sets with
 function types:
 
-\begin{Verbatim}
+\begin{verbatim}
 newtype Ran k d a = Ran (forall i. (a -> k i) -> d i)
-\end{Verbatim}
-Looking at this definition, it's clear that \code{Ran} must contain a
-value of type \code{a} to which the function can be applied, and a
-natural transformation between the two functors \code{k} and
-\code{d}. For instance, suppose that \code{k} is the tree functor,
-and \code{d} is the list functor, and you were given a
-\code{Ran Tree {[}{]} String}. If you pass it a function:
+\end{verbatim}
 
-\begin{Verbatim}
+Looking at this definition, it's clear that \texttt{Ran} must contain a
+value of type \texttt{a} to which the function can be applied, and a
+natural transformation between the two functors \texttt{k} and
+\texttt{d}. For instance, suppose that \texttt{k} is the tree functor,
+and \texttt{d} is the list functor, and you were given a
+\texttt{Ran\ Tree\ {[}{]}\ String}. If you pass it a function:
+
+\begin{verbatim}
 f :: String -> Tree Int
-\end{Verbatim}
-you'll get back a list of \code{Int}, and so on. The right Kan
+\end{verbatim}
+
+you'll get back a list of \texttt{Int}, and so on. The right Kan
 extension will use your function to produce a tree and then repackage it
 into a list. For instance, you may pass it a parser that generates a
 parsing tree from a string, and you'll get a list that corresponds to
 the depth-first traversal of this tree.
 
 The right Kan extension can be used to calculate the left adjoint of a
-given functor by replacing the functor \code{d} with the identity
-functor. This leads to the left adjoint of a functor \code{k} being
+given functor by replacing the functor \texttt{d} with the identity
+functor. This leads to the left adjoint of a functor \texttt{k} being
 represented by the set of polymorphic functions of the type:
 
-\begin{Verbatim}
+\begin{verbatim}
 forall i. (a -> k i) -> i
-\end{Verbatim}
-Suppose that \code{k} is the forgetful functor from the category of
+\end{verbatim}
+
+Suppose that \texttt{k} is the forgetful functor from the category of
 monoids. The universal quantifier then goes over all monoids. Of course,
 in Haskell we cannot express monoidal laws, but the following is a
 decent approximation of the resulting free functor (the forgetful
-functor \code{k} is an identity on objects):
+functor \texttt{k} is an identity on objects):
 
-\begin{Verbatim}
+\begin{verbatim}
 type Lst a = forall i. Monoid i => (a -> i) -> i
-\end{Verbatim}
+\end{verbatim}
+
 As expected, it generates free monoids, or Haskell lists:
 
-\begin{Verbatim}
-toLst :: [a] -> Lst a
-toLst as = \f -> foldMap f as
+\begin{verbatim}
+toLst :: [a] -> Lst a toLst as = \f -> foldMap f as fromLst :: Lst a -> [a] fromLst f = f (\a -> [a])
+\end{verbatim}
 
-fromLst :: Lst a -> [a]
-fromLst f = f (\a -> [a])
-\end{Verbatim}
 The left Kan extension is a coend:
-\[\Lan_{K}D\ a = \int^i \cat{A}(K\ i, a)\times{}D\ i\]
+
+\begin{verbatim}
+LanKD a = ∫i A(K i, a) × D i
+\end{verbatim}
+
 so it translates to an existential quantifier. Symbolically:
 
-\begin{Verbatim}
+\begin{verbatim}
 Lan k d a = exists i. (k i -> a, d i)
-\end{Verbatim}
-This can be encoded in Haskell using \acronym{GADT}s, or using a universally
+\end{verbatim}
+
+This can be encoded in Haskell using GADTs, or using a universally
 quantified data constructor:
 
-\begin{Verbatim}
+\begin{verbatim}
 data Lan k d a = forall i. Lan (k i -> a) (d i)
-\end{Verbatim}
+\end{verbatim}
+
 The interpretation of this data structure is that it contains a function
-that takes a container of some unspecified \code{i}s and produces an
-\code{a}. It also has a container of those \code{i}s. Since you have
-no idea what \code{i}s are, the only thing you can do with this data
-structure is to retrieve the container of \code{i}s, repack it into
-the container defined by the functor \code{k} using a natural
-transformation, and call the function to obtain the \code{a}. For
-instance, if \code{d} is a tree, and \code{k} is a list, you can
+that takes a container of some unspecified \texttt{i}s and produces an
+\texttt{a}. It also has a container of those \texttt{i}s. Since you have
+no idea what \texttt{i}s are, the only thing you can do with this data
+structure is to retrieve the container of \texttt{i}s, repack it into
+the container defined by the functor \texttt{k} using a natural
+transformation, and call the function to obtain the \texttt{a}. For
+instance, if \texttt{d} is a tree, and \texttt{k} is a list, you can
 serialize the tree, call the function with the resulting list, and
-obtain an \code{a}.
+obtain an \texttt{a}.
 
 The left Kan extension can be used to calculate the right adjoint of a
 functor. We know that the right adjoint of the product functor is the
 exponential, so let's try to implement it using the Kan extension:
 
-\begin{Verbatim}
+\begin{verbatim}
 type Exp a b = Lan ((,) a) I b
-\end{Verbatim}
+\end{verbatim}
+
 This is indeed isomorphic to the function type, as witnessed by the
 following pair of functions:
 
-\begin{Verbatim}
-toExp :: (a -> b) -> Exp a b
-toExp f = Lan (f . fst) (I ())
+\begin{verbatim}
+toExp :: (a -> b) -> Exp a b toExp f = Lan (f . fst) (I ()) fromExp :: Exp a b -> (a -> b) fromExp (Lan f (I x)) = \a -> f (a, x)
+\end{verbatim}
 
-fromExp :: Exp a b -> (a -> b)
-fromExp (Lan f (I x)) = \a -> f (a, x)
-\end{Verbatim}
 Notice that, as described earlier in the general case, we performed the
-following steps:
+following steps: (1) retrieved the container of \texttt{x} (here, it's
+just a trivial identity container), and the function \texttt{f}, (2)
+repackaged the container using the natural transformation between the
+identity functor and the pair functor, and (3) called the function
+\texttt{f}.
 
-\begin{enumerate}
-\tightlist
-\item
-Retrieved the container of \code{x} (here, it's
-just a trivial identity container), and the function \code{f}.
-\item
-Repackaged the container using the natural transformation between the
-identity functor and the pair functor.
-\item
-Called the function \code{f}.
-\end{enumerate}
-
-\section{Free Functor}
+\subsection{Free Functor}\label{free-functor}
 
 An interesting application of Kan extensions is the construction of a
 free functor. It's the solution to the following practical problem:
@@ -466,45 +562,54 @@ constructor to a full-blown endofunctor?
 
 The key observation is that a type constructor can be described as a
 functor whose domain is a discrete category. A discrete category has no
-morphisms other than the identity morphisms. Given a category $\cat{C}$,
-we can always construct a discrete category $\cat{|C|}$
-by simply discarding all non-identity morphisms. A functor $F$
-from $\cat{|C|}$ to $\cat{C}$ is then a simple mapping
+morphisms other than the identity morphisms. Given a category \emph{C},
+we can always construct a discrete category \emph{\textbar{}C\textbar{}}
+by simply discarding all non-identity morphisms. A functor \texttt{F}
+from \emph{\textbar{}C\textbar{}} to \emph{C} is then a simple mapping
 of objects, or what we call a type constructor in Haskell. There is also
-a canonical functor $J$ that injects $\cat{|C|}$
-into $\cat{C}$: it's an identity on objects (and on identity morphisms).
-The left Kan extension of $F$ along $J$, if it exists, is
-then a functor for $\cat{C}$ to $\cat{C}$:
-\[\Lan_{J}F\ a = \int^i \cat{C}(J\ i, a)\times{}F\ i\]
-It's called a free functor based on $F$.
+a canonical functor \texttt{J} that injects \emph{\textbar{}C\textbar{}}
+into \emph{C}: it's an identity on objects (and on identity morphisms).
+The left Kan extension of \texttt{F} along \texttt{J}, if it exists, is
+then a functor for \emph{C} to \emph{C}:
+
+\begin{verbatim}
+LanJ F a = ∫i C(J i, a) × F i
+\end{verbatim}
+
+It's called a free functor based on \texttt{F}.
 
 In Haskell, we would write it as:
 
-\begin{Verbatim}
+\begin{verbatim}
 data FreeF f a = forall i. FMap (i -> a) (f i)
-\end{Verbatim}
-Indeed, for any type constructor \code{f}, \code{FreeF f} is a
+\end{verbatim}
+
+Indeed, for any type constructor \texttt{f}, \texttt{FreeF\ f} is a
 functor:
 
-\begin{Verbatim}
-instance Functor (FreeF f) where
-    fmap g (FMap h fi) = FMap (g . h) fi
-\end{Verbatim}
+\begin{verbatim}
+instance Functor (FreeF f) where fmap g (FMap h fi) = FMap (g . h) fi
+\end{verbatim}
+
 As you can see, the free functor fakes the lifting of a function by
 recording both the function and its argument. It accumulates the lifted
 functions by recording their composition. Functor rules are
 automatically satisfied. This construction was used in a paper
-\urlref{http://okmij.org/ftp/Haskell/extensible/more.pdf}{Freer Monads,
+\href{http://okmij.org/ftp/Haskell/extensible/more.pdf}{Freer Monads,
 More Extensible Effects}.
 
 Alternatively, we can use the right Kan extension for the same purpose:
 
-\begin{Verbatim}
+\begin{verbatim}
 newtype FreeF f a = FreeF (forall i. (a -> i) -> f i)
-\end{Verbatim}
+\end{verbatim}
+
 It's easy to check that this is indeed a functor:
 
-\begin{Verbatim}
-instance Functor (FreeF f) where
-    fmap g (FreeF r) = FreeF (\bi -> r (bi . g))
-\end{Verbatim}
+\begin{verbatim}
+instance Functor (FreeF f) where fmap g (FreeF r) = FreeF (\bi -> r (bi . g))
+\end{verbatim}
+
+Next:
+\href{https://bartoszmilewski.com/2017/05/13/enriched-categories/}{Enriched
+Categories}.

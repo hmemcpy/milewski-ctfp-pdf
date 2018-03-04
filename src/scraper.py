@@ -1,9 +1,26 @@
 import os
+
+# sudo apt-get install pandoc
+# pip install pypandoc requests get bs4 mercury_parser
+
 import pypandoc
+
+
 import pathlib
 from requests import get
 from bs4 import BeautifulSoup
+
+
+# in case of a compile error in mercury_parser - in the
+#     ./py3env/lib/python3.6/site-packages/mercury_parser.py line 36
+# try to change:
+#     d.iteritems():
+# to:
+#     iter(d.items()):
+
 from mercury_parser import ParserAPI
+
+
 
 # get the API key at https://mercury.postlight.com/web-parser/
 mercury = ParserAPI(api_key='<your API key>')
@@ -51,15 +68,17 @@ def save_images(markup, path):
 
 
 def save_url(chapter, title, url):
-    file_name = '{}.tex'.format(title.replace('/', '\\').replace(':', ' -'))
     path = pathlib.Path(os.path.join('content', chapter, 'images'))
     path.mkdir(parents=True, exist_ok=True)
-
     p = mercury.parse(url)
     html = save_images(p.content, path)
 
-    content = pypandoc.convert_text(html, 'tex', format='html')
-    write_content(path.parent.joinpath(file_name), content)
+    tex_file_name = '{}.tex'.format(title.replace('/', '\\').replace(':', ' -'))
+    tex_content = pypandoc.convert_text(html, 'tex', format='html')
+    write_content(path.parent.joinpath(tex_file_name), tex_content)
+
+    html_file_name = '{}.html'.format(title.replace('/', '\\').replace(':', ' -'))
+    write_content(path.parent.joinpath(html_file_name), p.content)
 
 
 for toc in get_toc():
