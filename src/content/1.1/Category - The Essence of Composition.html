@@ -1,67 +1,176 @@
-<div class="post-content"> <br><blockquote><p>I was overwhelmed by the positive response to my previous post, the <a href="https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/">Preface to Category Theory for Programmers</a>. At the same time, it scared the heck out of me because I realized what high expectations people were placing in me. I&#x2019;m afraid that no matter what I&#x2019;ll write, a lot of readers will be disappointed. Some readers would like the book to be more practical, others more abstract. Some hate C++ and would like all examples in Haskell, others hate Haskell and demand examples in Java. And I know that the pace of exposition will be too slow for some and too fast for others. This will not be the perfect book. It will be a compromise. All I can hope is that I&#x2019;ll be able to share some of my aha! moments with my readers. Let&#x2019;s start with the basics.</p></blockquote>
-<p>A category is an embarrassingly simple concept. A category consists of objects and arrows that go between them. That&#x2019;s why categories are so easy to represent pictorially. An object can be drawn as a circle or a point, and an arrow&#x2026; is an arrow. (Just for variety, I will occasionally draw objects as piggies and arrows as fireworks.) But the essence of a category is composition. Or, if you prefer, the essence of composition is a category. Arrows compose, so if you have an arrow from object A to object B, and another arrow from object B to object C, then there must be an arrow &#x2014; their composition &#x2014; that goes from A to C.</p>
-<div id="attachment_3483" class="wp-caption aligncenter"><a href="https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg"><img class="wp-image-3483 size-large" src="https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=508&amp;h=218%20508w,%20https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=1016&amp;h=436%201016w,%20https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=150&amp;h=64%20150w,%20https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=300&amp;h=129%20300w,%20https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=768&amp;h=330%20768w" alt="IMG_1330" width="510" srcset="https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=508&amp;h=218 508w, https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=1016&amp;h=436 1016w, https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=150&amp;h=64 150w, https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=300&amp;h=129 300w, https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=768&amp;h=330 768w"></a><p class="wp-caption-text">In a category, if there is an arrow going from A to B and an arrow going from B to C then there must also be a direct arrow from A to C that is their composition. This diagram is not a full category because it&#x2019;s missing identity morphisms (see later).</p></div> <h2>Arrows as Functions</h2>
-<p>Is this already too much abstract nonsense? Do not despair. Let&#x2019;s talk concretes. Think of arrows, which are also called <em>morphisms</em>, as functions. You have a function f that takes an argument of type A and returns a B. You have another function g that takes a B and returns a C. You can compose them by passing the result of f to g. You have just defined a new function that takes an A and returns a C.</p>
-<p>In math, such composition is denoted by a small circle between functions: g&#x2218;f. Notice the right to left order of composition. For some people this is confusing. You may be familiar with the pipe notation in Unix, as in:</p>
-<pre>lsof | grep Chrome</pre>
-<p>or the chevron <code>&gt;&gt;</code> in F#, which both go from left to right. But in mathematics and in Haskell functions compose right to left. It helps if you read g&#x2218;f as &#x201C;g <em>after</em> f.&#x201D;</p>
-<p>Let&#x2019;s make this even more explicit by writing some C code. We have one function <code>f</code> that takes an argument of type <code>A</code> and returns a value of type <code>B</code>:</p>
-<pre>B f(A a);</pre>
-<p>and another:</p>
-<pre>C g(B b);</pre>
-<p>Their composition is:</p>
-<pre>C g_after_f(A a) { return g(f(a)); }</pre>
-<p>Here, again, you see right-to-left composition: <code>g(f(a))</code>; this time in C.</p>
-<p>I wish I could tell you that there is a template in the C++ Standard Library that takes two functions and returns their composition, but there isn&#x2019;t one. So let&#x2019;s try some Haskell for a change. Here&#x2019;s the declaration of a function from A to B:</p>
-<pre>f :: A -&gt; B</pre>
-<p>Similarly:</p>
-<pre>g :: B -&gt; C</pre>
-<p>Their composition is:</p>
-<pre>g . f</pre>
-<p>Once you see how simple things are in Haskell, the inability to express straightforward functional concepts in C++ is a little embarrassing. In fact, Haskell will let you use Unicode characters so you can write composition as:</p>
-<pre>g &#x2218; f</pre>
-<p>You can even use Unicode double colons and arrows:</p>
-<pre>f &#x2237; A &#x2192; B</pre>
-<p>So here&#x2019;s the first Haskell lesson: Double colon means &#x201C;has the type of&#x2026;&#x201D; A function type is created by inserting an arrow between two types. You compose two functions by inserting a period between them (or a Unicode circle).</p>
-<h2>Properties of Composition</h2>
-<p>There are two extremely important properties that the composition in any category must satisfy.</p>
-<p>1. Composition is associative. If you have three morphisms, f, g, and h, that can be composed (that is, their objects match end-to-end), you don&#x2019;t need parentheses to compose them. In math notation this is expressed as:</p>
-<pre>h&#x2218;(g&#x2218;f) = (h&#x2218;g)&#x2218;f = h&#x2218;g&#x2218;f</pre>
-<p>In (pseudo) Haskell:</p>
-<pre>f :: A -&gt; B g :: B -&gt; C h :: C -&gt; D h . (g . f) == (h . g) . f == h . g . f</pre>
-<p>(I said &#x201C;pseudo,&#x201D; because equality is not defined for functions.)</p>
-<p>Associativity is pretty obvious when dealing with functions, but it may be not as obvious in other categories.</p>
-<p>2. For every object A there is an arrow which is a unit of composition. This arrow loops from the object to itself. Being a unit of composition means that, when composed with any arrow that either starts at A or ends at A, respectively, it gives back the same arrow. The unit arrow for object A is called id<sub>A</sub> (identity on A). In math notation, if f goes from A to B then</p>
-<pre>f&#x2218;id<sub>A</sub> = f</pre>
-<p>and</p>
-<pre>id<sub>B</sub>&#x2218;f = f</pre>
-<p>When dealing with functions, the identity arrow is implemented as the identity function that just returns back its argument. The implementation is the same for every type, which means this function is universally polymorphic. In C++ we could define it as a template:</p>
-<pre>template&lt;class T&gt; T id(T x) { return x; }</pre>
-<p>Of course, in C++ nothing is that simple, because you have to take into account not only what you&#x2019;re passing but also how (that is, by value, by reference, by const reference, by move, and so on).</p>
-<p>In Haskell, the identity function is part of the standard library (called Prelude). Here&#x2019;s its declaration and definition:</p>
-<pre>id :: a -&gt; a id x = x</pre>
-<p>As you can see, polymorphic functions in Haskell are a piece of cake. In the declaration, you just replace the type with a type variable. Here&#x2019;s the trick: names of concrete types always start with a capital letter, names of type variables start with a lowercase letter. So here <code>a</code> stands for all types.</p>
-<p>Haskell function definitions consist of the name of the function followed by formal parameters &#x2014; here just one, <code>x</code>. The body of the function follows the equal sign. This terseness is often shocking to newcomers but you will quickly see that it makes perfect sense. Function definition and function call are the bread and butter of functional programming so their syntax is reduced to the bare minimum. Not only are there no parentheses around the argument list but there are no commas between arguments (you&#x2019;ll see that later, when we define functions of multiple arguments).</p>
-<p>The body of a function is always an expression &#x2014; there are no statements in functions. The result of a function is this expression &#x2014; here, just <code>x</code>.</p>
-<p>This concludes our second Haskell lesson.</p>
-<p>The identity conditions can be written (again, in pseudo-Haskell) as:</p>
-<pre>f . id == f id . f == f</pre>
-<p>You might be asking yourself the question: Why would anyone bother with the identity function &#x2014; a function that does nothing? Then again, why do we bother with the number zero? Zero is a symbol for nothing. Ancient Romans had a number system without a zero and they were able to build excellent roads and aqueducts, some of which survive to this day.</p>
-<p>Neutral values like zero or <code>id</code> are extremely useful when working with symbolic variables. That&#x2019;s why Romans were not very good at algebra, whereas the Arabs and the Persians, who were familiar with the concept of zero, were. So the identity function becomes very handy as an argument to, or a return from, a higher-order function. Higher order functions are what make symbolic manipulation of functions possible. They are the algebra of functions.</p>
-<p>To summarize: A category consists of objects and arrows (morphisms). Arrows can be composed, and the composition is associative. Every object has an identity arrow that serves as a unit under composition.</p>
-<h2>Composition is the Essence of Programming</h2>
-<p>Functional programmers have a peculiar way of approaching problems. They start by asking very Zen-like questions. For instance, when designing an interactive program, they would ask: What is interaction? When implementing Conway&#x2019;s Game of Life, they would probably ponder about the meaning of life. In this spirit, I&#x2019;m going to ask: What is programming? At the most basic level, programming is about telling the computer what to do. &#x201C;Take the contents of memory address x and add it to the contents of the register EAX.&#x201D; But even when we program in assembly, the instructions we give the computer are an expression of something more meaningful. We are solving a non-trivial problem (if it were trivial, we wouldn&#x2019;t need the help of the computer). And how do we solve problems? We decompose bigger problems into smaller problems. If the smaller problems are still too big, we decompose them further, and so on. Finally, we write code that solves all the small problems. And then comes the essence of programming: we compose those pieces of code to create solutions to larger problems. Decomposition wouldn&#x2019;t make sense if we weren&#x2019;t able to put the pieces back together.</p>
-<p>This process of hierarchical decomposition and recomposition is not imposed on us by computers. It reflects the limitations of the human mind. Our brains can only deal with a small number of concepts at a time. One of the most cited papers in psychology, <a href="http://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two">The Magical Number Seven, Plus or Minus Two</a>, postulated that we can only keep 7 &#xB1; 2 &#x201C;chunks&#x201D; of information in our minds. The details of our understanding of the human short-term memory might be changing, but we know for sure that it&#x2019;s limited. The bottom line is that we are unable to deal with the soup of objects or the spaghetti of code. We need structure not because well-structured programs are pleasant to look at, but because otherwise our brains can&#x2019;t process them efficiently. We often describe some piece of code as elegant or beautiful, but what we really mean is that it&#x2019;s easy to process by our limited human minds. Elegant code creates chunks that are just the right size and come in just the right number for our mental digestive system to assimilate them.</p>
-<p>So what are the right chunks for the composition of programs? Their surface area has to increase slower than their volume. (I like this analogy because of the intuition that the surface area of a geometric object grows with the square of its size &#x2014; slower than the volume, which grows with the cube of its size.) The surface area is the information we need in order to compose chunks. The volume is the information we need in order to implement them. The idea is that, once a chunk is implemented, we can forget about the details of its implementation and concentrate on how it interacts with other chunks. In object-oriented programming, the surface is the class declaration of the object, or its abstract interface. In functional programming, it&#x2019;s the declaration of a function. (I&#x2019;m simplifying things a bit, but that&#x2019;s the gist of it.)</p>
-<p>Category theory is extreme in the sense that it actively discourages us from looking inside the objects. An object in category theory is an abstract nebulous entity. All you can ever know about it is how it relates to other object &#x2014; how it connects with them using arrows. This is how internet search engines rank web sites by analyzing incoming and outgoing links (except when they cheat). In object-oriented programming, an idealized object is only visible through its abstract interface (pure surface, no volume), with methods playing the role of arrows. The moment you have to dig into the implementation of the object in order to understand how to compose it with other objects, you&#x2019;ve lost the advantages of your programming paradigm.</p>
-<h2>Challenges</h2>
-<ol>
-<li>Implement, as best as you can, the identity function in your favorite language (or the second favorite, if your favorite language happens to be Haskell).</li>
-<li>Implement the composition function in your favorite language. It takes two functions as arguments and returns a function that is their composition.</li>
-<li>Write a program that tries to test that your composition function respects identity.</li>
-<li>Is the world-wide web a category in any sense? Are links morphisms?</li>
-<li>Is Facebook a category, with people as objects and friendships as morphisms?</li>
-<li>When is a directed graph a category?</li>
-</ol>
-<p>Next: <a href="https://bartoszmilewski.com/2014/11/24/types-and-functions/">Types and Functions</a>.<br>
-<a href="https://twitter.com/BartoszMilewski" class="twitter-follow-button">Follow @BartoszMilewski</a></p> </div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css">
+        <script>
+         window.klipse_settings = {
+             selector: '.language-klipse', // css selector for the html elements you want to klipsify
+             codemirror_options_in: {
+                 indentUnit: 4,
+                 lineWrapping: true,
+                 lineNumbers: true,
+                 autoCloseBrackets: true
+             },
+             codemirror_options_out: {
+                 lineWrapping: true,
+                 lineNumbers: true
+             }
+         }
+        </script>
+        <style>
+         body {
+		         /* margin: 40px; */
+             font-family: 'Open Sans', sans-serif;
+             color: #444;
+             font-size: 16px;
+             line-height: 25px;
+             font-weight: 400;
+         }
+         .wrapper {
+		         display: grid;
+             grid-template-columns: minmax(800px, 1fr) 800px;
+         }
+
+         .box {
+		         border-radius: 5px;
+         }
+
+         .c {
+		         grid-column: 1 / 2;
+		         grid-row: 1 / 2;
+         }
+
+         .d {
+		         grid-column: 2 / 3;
+		         grid-row: 1 / 2;
+		         display: grid;
+             grid-template-rows: 1900px 310px 300px;
+         }
+
+         .e {
+		         grid-column: 1;
+		         grid-row: 1;
+         }
+
+         .f {
+		         grid-column: 1;
+		         grid-row: 2;
+         }
+
+         .g {
+		         grid-column: 1;
+		         grid-row: 3;
+         }
+
+        </style>
+        <body>
+            <div class="wrapper">
+                <div class="box c">
+                    <div class="post-content"> <br>
+                        <blockquote>
+                            <p>I was overwhelmed by the positive response to my previous post, the <a href="https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/">Preface to Category Theory for Programmers</a>. At the same time, it scared the heck out of me because I realized what high expectations people were placing in me. I&#x2019;m afraid that no matter what I&#x2019;ll write, a lot of readers will be disappointed. Some readers would like the book to be more practical, others more abstract. Some hate C++ and would like all examples in Haskell, others hate Haskell and demand examples in Java. And I know that the pace of exposition will be too slow for some and too fast for others. This will not be the perfect book. It will be a compromise. All I can hope is that I&#x2019;ll be able to share some of my aha! moments with my readers. Let&#x2019;s start with the basics.</p>
+                        </blockquote>
+                        <p>A category is an embarrassingly simple concept. A category consists of objects and arrows that go between them. That&#x2019;s why categories are so easy to represent pictorially. An object can be drawn as a circle or a point, and an arrow&#x2026; is an arrow. (Just for variety, I will occasionally draw objects as piggies and arrows as fireworks.) But the essence of a category is composition. Or, if you prefer, the essence of composition is a category. Arrows compose, so if you have an arrow from object A to object B, and another arrow from object B to object C, then there must be an arrow &#x2014; their composition &#x2014; that goes from A to C.</p>
+                        <div id="attachment_3483" class="wp-caption aligncenter"><a href="https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg"><img class="wp-image-3483 size-large" src="https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=508&amp;h=218%20508w,%20https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=1016&amp;h=436%201016w,%20https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=150&amp;h=64%20150w,%20https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=300&amp;h=129%20300w,%20https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=768&amp;h=330%20768w" alt="IMG_1330" width="510" srcset="https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=508&amp;h=218 508w, https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=1016&amp;h=436 1016w, https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=150&amp;h=64 150w, https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=300&amp;h=129 300w, https://bartoszmilewski.files.wordpress.com/2014/10/img_1330.jpg?w=768&amp;h=330 768w"></a><p class="wp-caption-text">In a category, if there is an arrow going from A to B and an arrow going from B to C then there must also be a direct arrow from A to C that is their composition. This diagram is not a full category because it&#x2019;s missing identity morphisms (see later).</p></div> <h2>Arrows as Functions</h2>
+                        <p>Is this already too much abstract nonsense? Do not despair. Let&#x2019;s talk concretes. Think of arrows, which are also called <em>morphisms</em>, as functions. You have a function f that takes an argument of type A and returns a B. You have another function g that takes a B and returns a C. You can compose them by passing the result of f to g. You have just defined a new function that takes an A and returns a C.</p>
+                        <p>In math, such composition is denoted by a small circle between functions: g&#x2218;f. Notice the right to left order of composition. For some people this is confusing. You may be familiar with the pipe notation in Unix, as in:</p>
+                        <pre>lsof | grep Chrome</pre>
+                        <p>or the chevron <code>&gt;&gt;</code> in F#, which both go from left to right. But in mathematics and in Haskell functions compose right to left. It helps if you read g&#x2218;f as &#x201C;g <em>after</em> f.&#x201D;</p>
+                        <p>Let&#x2019;s make this even more explicit by writing some C code. We have one function <code>f</code> that takes an argument of type <code>A</code> and returns a value of type <code>B</code>:</p>
+                        <pre>B f(A a);</pre>
+                        <p>and another:</p>
+                        <pre>C g(B b);</pre>
+                        <p>Their composition is:</p>
+                        <pre>C g_after_f(A a) { return g(f(a)); }</pre>
+                        <p>Here, again, you see right-to-left composition: <code>g(f(a))</code>; this time in C.</p>
+                        <p>I wish I could tell you that there is a template in the C++ Standard Library that takes two functions and returns their composition, but there isn&#x2019;t one. So let&#x2019;s try some Haskell for a change. Here&#x2019;s the declaration of a function from A to B:</p>
+                        <pre>f :: A -&gt; B</pre>
+                        <p>Similarly:</p>
+                        <pre>g :: B -&gt; C</pre>
+                        <p>Their composition is:</p>
+                        <pre>g . f</pre>
+                        <p>Once you see how simple things are in Haskell, the inability to express straightforward functional concepts in C++ is a little embarrassing. In fact, Haskell will let you use Unicode characters so you can write composition as:</p>
+                        <pre>g &#x2218; f</pre>
+                        <p>You can even use Unicode double colons and arrows:</p>
+                        <pre>f &#x2237; A &#x2192; B</pre>
+                        <p>So here&#x2019;s the first Haskell lesson: Double colon means &#x201C;has the type of&#x2026;&#x201D; A function type is created by inserting an arrow between two types. You compose two functions by inserting a period between them (or a Unicode circle).</p>
+                        <h2>Properties of Composition</h2>
+                        <p>There are two extremely important properties that the composition in any category must satisfy.</p>
+                        <p>1. Composition is associative. If you have three morphisms, f, g, and h, that can be composed (that is, their objects match end-to-end), you don&#x2019;t need parentheses to compose them. In math notation this is expressed as:</p>
+                        <pre>h&#x2218;(g&#x2218;f) = (h&#x2218;g)&#x2218;f = h&#x2218;g&#x2218;f</pre>
+                        <p>In (pseudo) Haskell:</p>
+                        <pre>f :: A -&gt; B g :: B -&gt; C h :: C -&gt; D h . (g . f) == (h . g) . f == h . g . f</pre>
+                        <p>(I said &#x201C;pseudo,&#x201D; because equality is not defined for functions.)</p>
+                        <p>Associativity is pretty obvious when dealing with functions, but it may be not as obvious in other categories.</p>
+                        <p>2. For every object A there is an arrow which is a unit of composition. This arrow loops from the object to itself. Being a unit of composition means that, when composed with any arrow that either starts at A or ends at A, respectively, it gives back the same arrow. The unit arrow for object A is called id<sub>A</sub> (identity on A). In math notation, if f goes from A to B then</p>
+                        <pre>f&#x2218;id<sub>A</sub> = f</pre>
+                        <p>and</p>
+                        <pre>id<sub>B</sub>&#x2218;f = f</pre>
+                        <p>When dealing with functions, the identity arrow is implemented as the identity function that just returns back its argument. The implementation is the same for every type, which means this function is universally polymorphic. In C++ we could define it as a template:</p>
+                        <pre>template&lt;class T&gt; T id(T x) { return x; }</pre>
+                        <p>Of course, in C++ nothing is that simple, because you have to take into account not only what you&#x2019;re passing but also how (that is, by value, by reference, by const reference, by move, and so on).</p>
+                        <p>In Haskell, the identity function is part of the standard library (called Prelude). Here&#x2019;s its declaration and definition:</p>
+                        <pre>id :: a -&gt; a id x = x</pre>
+                        <p>As you can see, polymorphic functions in Haskell are a piece of cake. In the declaration, you just replace the type with a type variable. Here&#x2019;s the trick: names of concrete types always start with a capital letter, names of type variables start with a lowercase letter. So here <code>a</code> stands for all types.</p>
+                        <p>Haskell function definitions consist of the name of the function followed by formal parameters &#x2014; here just one, <code>x</code>. The body of the function follows the equal sign. This terseness is often shocking to newcomers but you will quickly see that it makes perfect sense. Function definition and function call are the bread and butter of functional programming so their syntax is reduced to the bare minimum. Not only are there no parentheses around the argument list but there are no commas between arguments (you&#x2019;ll see that later, when we define functions of multiple arguments).</p>
+                        <p>The body of a function is always an expression &#x2014; there are no statements in functions. The result of a function is this expression &#x2014; here, just <code>x</code>.</p>
+                        <p>This concludes our second Haskell lesson.</p>
+                        <p>The identity conditions can be written (again, in pseudo-Haskell) as:</p>
+                        <pre>f . id == f id . f == f</pre>
+                        <p>You might be asking yourself the question: Why would anyone bother with the identity function &#x2014; a function that does nothing? Then again, why do we bother with the number zero? Zero is a symbol for nothing. Ancient Romans had a number system without a zero and they were able to build excellent roads and aqueducts, some of which survive to this day.</p>
+                        <p>Neutral values like zero or <code>id</code> are extremely useful when working with symbolic variables. That&#x2019;s why Romans were not very good at algebra, whereas the Arabs and the Persians, who were familiar with the concept of zero, were. So the identity function becomes very handy as an argument to, or a return from, a higher-order function. Higher order functions are what make symbolic manipulation of functions possible. They are the algebra of functions.</p>
+                        <p>To summarize: A category consists of objects and arrows (morphisms). Arrows can be composed, and the composition is associative. Every object has an identity arrow that serves as a unit under composition.</p>
+                        <h2>Composition is the Essence of Programming</h2>
+                        <p>Functional programmers have a peculiar way of approaching problems. They start by asking very Zen-like questions. For instance, when designing an interactive program, they would ask: What is interaction? When implementing Conway&#x2019;s Game of Life, they would probably ponder about the meaning of life. In this spirit, I&#x2019;m going to ask: What is programming? At the most basic level, programming is about telling the computer what to do. &#x201C;Take the contents of memory address x and add it to the contents of the register EAX.&#x201D; But even when we program in assembly, the instructions we give the computer are an expression of something more meaningful. We are solving a non-trivial problem (if it were trivial, we wouldn&#x2019;t need the help of the computer). And how do we solve problems? We decompose bigger problems into smaller problems. If the smaller problems are still too big, we decompose them further, and so on. Finally, we write code that solves all the small problems. And then comes the essence of programming: we compose those pieces of code to create solutions to larger problems. Decomposition wouldn&#x2019;t make sense if we weren&#x2019;t able to put the pieces back together.</p>
+                        <p>This process of hierarchical decomposition and recomposition is not imposed on us by computers. It reflects the limitations of the human mind. Our brains can only deal with a small number of concepts at a time. One of the most cited papers in psychology, <a href="http://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two">The Magical Number Seven, Plus or Minus Two</a>, postulated that we can only keep 7 &#xB1; 2 &#x201C;chunks&#x201D; of information in our minds. The details of our understanding of the human short-term memory might be changing, but we know for sure that it&#x2019;s limited. The bottom line is that we are unable to deal with the soup of objects or the spaghetti of code. We need structure not because well-structured programs are pleasant to look at, but because otherwise our brains can&#x2019;t process them efficiently. We often describe some piece of code as elegant or beautiful, but what we really mean is that it&#x2019;s easy to process by our limited human minds. Elegant code creates chunks that are just the right size and come in just the right number for our mental digestive system to assimilate them.</p>
+                        <p>So what are the right chunks for the composition of programs? Their surface area has to increase slower than their volume. (I like this analogy because of the intuition that the surface area of a geometric object grows with the square of its size &#x2014; slower than the volume, which grows with the cube of its size.) The surface area is the information we need in order to compose chunks. The volume is the information we need in order to implement them. The idea is that, once a chunk is implemented, we can forget about the details of its implementation and concentrate on how it interacts with other chunks. In object-oriented programming, the surface is the class declaration of the object, or its abstract interface. In functional programming, it&#x2019;s the declaration of a function. (I&#x2019;m simplifying things a bit, but that&#x2019;s the gist of it.)</p>
+                        <p>Category theory is extreme in the sense that it actively discourages us from looking inside the objects. An object in category theory is an abstract nebulous entity. All you can ever know about it is how it relates to other object &#x2014; how it connects with them using arrows. This is how internet search engines rank web sites by analyzing incoming and outgoing links (except when they cheat). In object-oriented programming, an idealized object is only visible through its abstract interface (pure surface, no volume), with methods playing the role of arrows. The moment you have to dig into the implementation of the object in order to understand how to compose it with other objects, you&#x2019;ve lost the advantages of your programming paradigm.</p>
+                        <h2>Challenges</h2>
+                        <ol>
+                            <li>Implement, as best as you can, the identity function in your favorite language (or the second favorite, if your favorite language happens to be Haskell).</li>
+                            <li>Implement the composition function in your favorite language. It takes two functions as arguments and returns a function that is their composition.</li>
+                            <li>Write a program that tries to test that your composition function respects identity.</li>
+                            <li>Is the world-wide web a category in any sense? Are links morphisms?</li>
+                            <li>Is Facebook a category, with people as objects and friendships as morphisms?</li>
+                            <li>When is a directed graph a category?</li>
+                        </ol>
+                        <p>Next: <a href="https://bartoszmilewski.com/2014/11/24/types-and-functions/">Types and Functions</a>.<br>
+                            <a href="https://twitter.com/BartoszMilewski" class="twitter-follow-button">Follow @BartoszMilewski</a></p>
+                    </div>
+                </div>
+                <div class="box d">
+                    <div class="box e">
+                        <pre><code class="language-klipse">(str "E")
+                        </code></pre>
+                    </div>
+                    <div class="box f">
+                        <pre><code class="language-klipse">
+;; Composition is associative
+(defn f [x] (str "f" x "f"))
+(defn g [x] (str "g" x "g"))
+(defn h [x] (str "h" x "h"))
+
+;; TODO compute as a test
+(let [x 1]
+	(= ((comp h (comp g f)) x) ((comp (comp h g) f) x)))
+                        </code></pre>
+                    </div>
+                    <div class="box g">
+                        <pre><code class="language-klipse">
+;; Identity
+(defn f [x] identity)
+(defn ida [a] a)
+(defn idb [b] b)
+
+(let [x 1]
+    (= ((comp f ida) x) (f x)))
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
+            <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
+        </body>
+    </head>
+</html>
+
