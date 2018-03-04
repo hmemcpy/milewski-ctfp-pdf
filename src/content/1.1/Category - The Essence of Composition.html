@@ -164,7 +164,7 @@
 (defn idb [b] b)
 
 (let [x 1]
-    (= ((comp f ida) x) (f x)))
+  (= ((comp f ida) x) (f x) ((comp idb f) x)))
                         </code></pre>
                     </div>
                 </div>
