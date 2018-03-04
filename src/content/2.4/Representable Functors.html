@@ -1,0 +1,100 @@
+<div class="post-content"> <br><blockquote><p>This is part 14 of Categories for Programmers. Previously: <a href="https://bartoszmilewski.com/2015/07/21/free-monoids/">Free Monoids</a>. See the <a href="https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/">Table of Contents</a>.</p></blockquote>
+<p>It&#x2019;s about time we had a little talk about sets. Mathematicians have a love/hate relationship with set theory. It&#x2019;s the assembly language of mathematics &#x2014; at least it used to be. Category theory tries to step away from set theory, to some extent. For instance, it&#x2019;s a known fact that the set of all sets doesn&#x2019;t exist, but the category of all sets, <b>Set</b>, does. So that&#x2019;s good. On the other hand, we assume that morphisms between any two objects in a category form a set. We even called it a hom-set. To be fair, there is a branch of category theory where morphisms don&#x2019;t form sets. Instead they are objects in another category. Those categories that use hom-objects rather than hom-sets, are called <i>enriched</i> categories. In what follows, though, we&#x2019;ll stick to categories with good old-fashioned hom-sets.</p>
+<p>A set is the closest thing to a featureless blob you can get outside of categorical objects. A set has elements, but you can&#x2019;t say much about these elements. If you have a finite set, you can count the elements. You can kind of count the elements of an inifinite set using cardinal numbers. The set of natural numbers, for instance, is smaller than the set of real numbers, even though both are infinite. But, maybe surprisingly, a set of rational numbers is the same size as the set of natural numbers. </p>
+<p>Other than that, all the information about sets can be encoded in functions between them &#x2014; especially the invertible ones called isomorphisms. For all intents and purposes isomorphic sets are identical. Before I summon the wrath of foundational mathematicians, let me explain that the distinction between equality and isomorphism is of fundamental importance. In fact it is one of the main concerns of the latest branch of mathematics, the Homotopy Type Theory (HoTT). I&#x2019;m mentioning HoTT because it&#x2019;s a pure mathematical theory that takes inspiration from computation, and one of its main proponents, Vladimir Voevodsky, had a major epiphany while studying the Coq theorem prover. The interaction between mathematics and programming goes both ways.</p>
+<p>The important lesson about sets is that it&#x2019;s okay to compare sets of unlike elements. For instance, we can say that a given set of natural transformations is isomorphic to some set of morphisms, because a set is just a set. Isomorphism in this case just means that for every natural transformation from one set there is a unique morphism from the other set and vice versa. They can be paired against each other. You can&#x2019;t compare apples with oranges, if they are objects from different categories, but you can compare sets of apples against sets of oranges. Often transforming a categorical problem into a set-theoretical problem gives us the necessary insight or even lets us prove valuable theorems. </p>
+<h2>The Hom Functor</h2>
+<p>Every category comes equipped with a canonical family of mappings to <b>Set</b>. Those mappings are in fact functors, so they preserve the structure of the category. Let&#x2019;s build one such mapping. </p>
+<p>Let&#x2019;s fix one object <code>a</code> in <i>C</i> and pick another object <code>x</code> also in <i>C</i>. The hom-set <code>C(a, x)</code> is a set, an object in <b>Set</b>. When we vary <code>x</code>, keeping <code>a</code> fixed, <code>C(a, x)</code> will also vary in <b>Set</b>. Thus we have a mapping from <code>x</code> to <b>Set</b>.<br>
+<a href="https://bartoszmilewski.files.wordpress.com/2015/07/hom-set.jpg"><img src="https://bartoszmilewski.files.wordpress.com/2015/07/hom-set.jpg?w=300&amp;h=181%20300w,%20https://bartoszmilewski.files.wordpress.com/2015/07/hom-set.jpg?w=150&amp;h=90%20150w,%20https://bartoszmilewski.files.wordpress.com/2015/07/hom-set.jpg%20484w" alt="Hom-Set" width="300" class="alignnone size-medium wp-image-4780" srcset="https://bartoszmilewski.files.wordpress.com/2015/07/hom-set.jpg?w=300&amp;h=181 300w, https://bartoszmilewski.files.wordpress.com/2015/07/hom-set.jpg?w=150&amp;h=90 150w, https://bartoszmilewski.files.wordpress.com/2015/07/hom-set.jpg 484w"></a></p>
+<p>If we want to stress the fact that we are considering the hom-set as a mapping in its second argument, we use the notation:</p>
+<pre>C(a, -)</pre>
+<p>with the dash serving as the placeholder for the argument. </p>
+<p>This mapping of objects is easily extended to the mapping of morphisms. Let&#x2019;s take a morphism <code>f</code> in <i>C</i> between two arbitrary objects <code>x</code> and <code>y</code>. The object <code>x</code> is mapped to the set <code>C(a, x)</code>, and the object <code>y</code> is mapped to <code>C(a, y)</code>, under the mapping we have just defined. If this mapping is to be a functor, <code>f</code> must be mapped to a function between the two sets:</p>
+<pre>C(a, x) -&gt; C(a, y)</pre>
+<p>Let&#x2019;s define this function point-wise, that is for each argument separately. For the argument we should pick an arbitrary element of <code>C(a, x)</code> &#x2014; let&#x2019;s call it <code>h</code>. Morphisms are composable, if they match end to end. It so happens that the target of <code>h</code> matches the source of <code>f</code>, so their composition:</p>
+<pre>f &#x2218; h :: a -&gt; y</pre>
+<p>is a morphism going from <code>a</code> to <code>y</code>. It is therefore a member of <code>C(a, y)</code>. </p>
+<p><a href="https://bartoszmilewski.files.wordpress.com/2015/07/hom-functor.jpg"><img src="https://bartoszmilewski.files.wordpress.com/2015/07/hom-functor.jpg?w=300&amp;h=189%20300w,%20https://bartoszmilewski.files.wordpress.com/2015/07/hom-functor.jpg?w=150&amp;h=94%20150w,%20https://bartoszmilewski.files.wordpress.com/2015/07/hom-functor.jpg%20592w" alt="Hom Functor" width="300" class="alignnone size-medium wp-image-4781" srcset="https://bartoszmilewski.files.wordpress.com/2015/07/hom-functor.jpg?w=300&amp;h=189 300w, https://bartoszmilewski.files.wordpress.com/2015/07/hom-functor.jpg?w=150&amp;h=94 150w, https://bartoszmilewski.files.wordpress.com/2015/07/hom-functor.jpg 592w"></a></p>
+<p>We have just found our function from <code>C(a, x)</code> to <code>C(a, y)</code>, which can serve as the image of <code>f</code>. If there is no danger of confusion, we&#x2019;ll write this lifted function as:</p>
+<pre>C(a, f)</pre>
+<p>and its action on a morphism <code>h</code> as:</p>
+<pre>C(a, f) h = f &#x2218; h</pre>
+<p>Since this construction works in any category, it must also work in the category of Haskell types. In Haskell, the hom-functor is better known as the <code>Reader</code> functor:</p>
+<pre>type Reader a x = a -&gt; x</pre>
+<pre>instance Functor (Reader a) where fmap f h = f . h</pre>
+<p>Now let&#x2019;s consider what happens if, instead of fixing the source of the hom-set, we fix the target. In other words, we&#x2019;re asking the question if the mapping </p>
+<pre>C(-, a)</pre>
+<p> is also a functor. It is, but instead of being covariant, it&#x2019;s contravariant. That&#x2019;s because the same kind of matching of morphisms end to end results in postcomposition by <code>f</code>; rather than precomposition, as was the case with <code>C(a, -)</code>.</p>
+<p>We have already seen this contravariant functor in Haskell. We called it <code>Op</code>:</p>
+<pre>type Op a x = x -&gt; a</pre>
+<pre>instance Contravariant (Op a) where contramap f h = h . f</pre>
+<p>Finally, if we let both objects vary, we get a profunctor <code>C(-, =)</code>, which is contravariant in the first argument and covariant in the second (to underline the fact that the two arguments may vary independently, we use a double dash as the second placeholder). We have seen this profunctor before, when we talked about functoriality:</p>
+<pre>instance Profunctor (-&gt;) where dimap ab cd bc = cd . bc . ab lmap = flip (.) rmap = (.)</pre>
+<p>The important lesson is that this observation holds in any category: the mapping of objects to hom-sets is functorial. Since contravariance is equivalent to a mapping from the opposite category, we can state this fact succintly as:</p>
+<pre>C(-, =) :: C<sup>op</sup> &#xD7; C -&gt; Set</pre>
+<h2>Representable Functors</h2>
+<p>We&#x2019;ve seen that, for every choice of an object <code>a</code> in <i>C</i>, we get a functor from <i>C</i> to <b>Set</b>. This kind of structure-preserving mapping to <b>Set</b> is often called a <em>representation</em>. We are representing objects and morphisms of <i>C</i> as sets and functions in <b>Set</b>. </p>
+<p>The functor <code>C(a, -)</code> itself is sometimes called representable. More generally, any functor <code>F</code> that is naturally isomorphic to the hom-functor, for some choice of <code>a</code>, is called <em>representable</em>. Such functor must necessarily be <b>Set</b>-valued, since <code>C(a, -)</code> is.</p>
+<p>I said before that we often think of isomorphic sets as identical. More generally, we think of isomorphic <em>objects</em> in a category as identical. That&#x2019;s because objects have no structure other than their relation to other objects (and themselves) through morphisms. </p>
+<p>For instance, we&#x2019;ve previously talked about the category of monoids, <b>Mon</b>, that was initially modeled with sets. But we were careful to pick as morphisms only those functions that preserved the monoidal structure of those sets. So if two objects in <b>Mon</b> are isomorphic, meaning there is an invertible morphism between them, they have exactly the same structure. If we peeked at the sets and functions that they were based upon, we&#x2019;d see that the unit element of one monoid was mapped to the unit element of another, and that a product of two elements was mapped to the product of their mappings. </p>
+<p>The same reasoning can be applied to functors. Functors between two categories form a category in which natural transformations play the role of morphisms. So two functors are isomorphic, and can be thought of as identical, if there is an invertible natural transformation between them. </p>
+<p>Let&#x2019;s analyze the definition of the representable functor from this perspective. For <code>F</code> to be representable we require that: There be an object <code>a</code> in <i>C</i>; one natural transformation &#x3B1; from <code>C(a, -)</code> to <code>F</code>; another natural transformation, &#x3B2;, in the opposite direction; and that their composition be the identity natural transformation. </p>
+<p>Let&#x2019;s look at the component of &#x3B1; at some object <code>x</code>. It&#x2019;s a function in <b>Set</b>:</p>
+<pre>&#x3B1;<sub>x</sub> :: C(a, x) -&gt; F x</pre>
+<p>The naturality condition for this transformation tells us that, for any morphism <code>f</code> from <code>x</code> to <code>y</code>, the following diagram commutes:</p>
+<pre>F f &#x2218; &#x3B1;<sub>x</sub> = &#x3B1;<sub>y</sub> &#x2218; C(a, f)</pre>
+<p>In Haskell, we would replace natural transformations with polymorphic functions:</p>
+<pre>alpha :: forall x. (a -&gt; x) -&gt; F x</pre>
+<p>with the optional <code>forall</code> quantifier. The naturality condition </p>
+<pre>fmap f . alpha = alpha . fmap f</pre>
+<p>is automatically satisfied due to parametricity (it&#x2019;s one of those theorems for free I mentioned earlier), with the understanding that <code>fmap</code> on the left is defined by the functor <code>F</code>, whereas the one on the right is defined by the reader functor. Since <code>fmap</code> for reader is just function precomposition, we can be even more explicit. Acting on <code>h</code>, an element of <code>C(a, x)</code>, the naturality condition simplifies to:</p>
+<pre>fmap f (alpha h) = alpha (f . h)</pre>
+<p>The other transformation, <code>beta</code>, goes the opposite way:</p>
+<pre>beta :: forall x. F x -&gt; (a -&gt; x)</pre>
+<p>It must respect naturality conditions, and it must be the inverse of &#x3B1;:</p>
+<pre>&#x3B1; &#x2218; &#x3B2; = id = &#x3B2; &#x2218; &#x3B1;</pre>
+<p>We will see later that a natural transformation from <code>C(a, -)</code> to any <b>Set</b>-valued functor always exists (Yoneda&#x2019;s lemma) but it is not necessarily invertible. </p>
+<p>Let me give you an example in Haskell with the list functor and <code>Int</code> as <code>a</code>. Here&#x2019;s a natural transformation that does the job:</p>
+<pre>alpha :: forall x. (Int -&gt; x) -&gt; [x] alpha h = map h [12]</pre>
+<p>I have arbitrarily picked the number 12 and created a singleton list with it. I can then <code>fmap</code> the function <code>h</code> over this list and get a list of the type returned by <code>h</code>. (There are actually as many such transformations as there are list of integers.) </p>
+<p>The naturality condition is equivalent to the composability of <code>map</code> (the list version of <code>fmap</code>):</p>
+<pre>map f (map h [12]) = map (f . h) [12]</pre>
+<p>But if we tried to find the inverse transformation, we would have to go from a list of arbitrary type <code>x</code> to a function returning <code>x</code>:</p>
+<pre>beta :: forall x. [x] -&gt; (Int -&gt; x)</pre>
+<p>You might think of retrieving an <code>x</code> from the list, e.g., using <code>head</code>, but that won&#x2019;t work for an empty list. Notice that there is no choice for the type <code>a</code> (in place of <code>Int</code>) that would work here. So the list functor is not representable.</p>
+<p>Remember when we talked about Haskell (endo-) functors being a little like containers? In the same vein we can think of representable functors as containers for storing memoized results of function calls (the members of hom-sets in Haskell are just functions). The representing object, the type <code>a</code> in <code>C(a, -)</code>, is thought of as the key type, with which we can access the tabulated values of a function. The transformation we called &#x3B1; is called <code>tabulate</code>, and its inverse, &#x3B2;, is called <code>index</code>. Here&#x2019;s a (slightly simplified) <code>Representable</code> class definition:</p>
+<pre>class Representable f where type Rep f :: * tabulate :: (Rep f -&gt; x) -&gt; f x index :: f x -&gt; Rep f -&gt; x</pre>
+<p>Notice that the representing type, our <code>a</code>, which is called <code>Rep f</code> here, is part of the definition of <code>Representable</code>. The star just means that <code>Rep f</code> is a type (as opposed to a type constructor, or other more exotic kinds).</p>
+<p>Infinite lists, or streams, which cannot be empty, are representable. </p>
+<pre>data Stream x = Cons x (Stream x)</pre>
+<p>You can think of them as memoized values of a function taking an <code>Integer</code> as an argument. (Strictly speaking, I should be using non-negative natural numbers, but I didn&#x2019;t want to complicate the code.) </p>
+<p>To <code>tabulate</code> such a function, you create an infinite stream of values. Of course, this is only possible because Haskell is lazy. The values are evaluated on demand. You access the memoized values using <code>index</code>:</p>
+<pre>instance Representable Stream where type Rep Stream = Integer tabulate f = Cons (f 0) (tabulate (f . (+1))) index (Cons b bs) n = if n == 0 then b else index bs (n - 1)</pre>
+<p>It&#x2019;s interesting that you can implement a single memoization scheme to cover a whole family of functions with arbitrary return types.</p>
+<p>Representability for contravariant functors is similarly defined, except that we keep the second argument of <code>C(-, a)</code> fixed. Or, equivalently, we may consider functors from <i>C</i><sup>op</sup> to <b>Set</b>, because <code>C<sup>op</sup>(a, -)</code> is the same as <code>C(-, a)</code>.</p>
+<p>There is an interesting twist to representability. Remember that hom-sets can internally be treated as exponential objects, in cartesian closed categories. The hom-set <code>C(a, x)</code> is equivalent to <code>x<sup>a</sup></code>, and for a representable functor <code>F</code> we can write:</p>
+<pre>-<sup>a</sup> = F</pre>
+<p>Let&#x2019;s take the logarithm of both sides, just for kicks:</p>
+<pre>a = log F</pre>
+<p>Of course, this is a purely formal transformation, but if you know some of the properties of logarithms, it is quite helpful. In particular, it turns out that functors that are based on product types can be represented with sum types, and that sum-type functors are not in general representable (example: the list functor).</p>
+<p>Finally, notice that a representable functor gives us two different implementations of the same thing &#x2014; one a function, one a data structure. They have exactly the same content &#x2014; the same values are retrieved using the same keys. That&#x2019;s the sense of &#x201C;sameness&#x201D; I was talking about. Two naturally isomorphic functors are identical as far as their contents are involved. On the other hand, the two representations are often implemented differently and may have different performance characteristics. Memoization is used as a performance enhancement and may lead to substantially reduced run times. Being able to generate different representations of the same underlying computation is very valuable in practice. So, surprisingly, even though it&#x2019;s not concerned with performance at all, category theory provides ample opportunities to explore alternative implementations that have practical value.</p>
+<h2>Challenges</h2>
+<ol>
+<li>Show that the hom-functors map identity morphisms in <i>C</i> to corresponding identity functions in <b>Set</b>.</li>
+<li>Show that <code>Maybe</code> is not representable.</li>
+<li>Is the <code>Reader</code> functor representable?</li>
+<li>Using <code>Stream</code> representation, memoize a function that squares its argument.</li>
+<li>Show that <code>tabulate</code> and <code>index</code> for <code>Stream</code> are indeed the inverse of each other. (Hint: use induction.)</li>
+<li>The functor:
+<pre>Pair a = Pair a a</pre>
+<p>is representable. Can you guess the type that represents it? Implement <code>tabulate</code> and <code>index</code>.</p></li>
+</ol>
+<h2>Bibliography</h2>
+<ol>
+<li>The Catsters video about <a href="https://www.youtube.com/watch?v=4QgjKUzyrhM">representable functors</a>.	</li>
+</ol>
+<p>Next: <a href="https://bartoszmilewski.com/2015/09/01/the-yoneda-lemma/">The Yoneda Lemma</a>.</p>
+<h2>Acknowledgments</h2>
+<p>I&#x2019;d like to thank Gershom Bazerman for checking my math and logic, and Andr&#xE9; van Meulebrouck, who has been volunteering his editing help throughout this series of posts.<br>
+<a href="https://twitter.com/BartoszMilewski" class="twitter-follow-button">Follow @BartoszMilewski</a></p> </div>
