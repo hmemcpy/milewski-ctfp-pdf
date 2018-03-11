@@ -3,3 +3,4 @@ _minted*
 *.fdb_latexmk
 category-theory-for-programmers.pdf
 .vscode/
+*~
