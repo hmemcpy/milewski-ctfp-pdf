@@ -1,6 +1,7 @@
 #tl 2015:
-FROM thomasweise/texlive
-#FROM sumdoc/texlive-2017 # tl 2017; large
+# FROM thomasweise/texlive
+# tl 2017; large
+FROM sumdoc/texlive-2017
 #FROM themoosemind/texlive-docker # Doesn't use dependencies latexmk kills it
 
 RUN apt-get update -y && apt-get install -y --no-install-recommends \
