@@ -648,6 +648,29 @@ instance Profunctor (->) where
 Profunctors have their application in the Haskell lens library. We'll
 see them again when we talk about ends and coends.
 
+\section{The Hom-Functor}
+
+The above examples are the reflection of a more general statement that
+the mapping that takes a pair of objects $a$ and $b$ and
+assigns to it the set of morphisms between them, the hom-set
+$\cat{C}(a, b)$, is a functor. It is a functor from the product
+category $\cat{C}^{op}\times{}\cat{C}$ to the category of sets, $\Set$.
+
+Let's define its action on morphisms. A morphism in
+$\cat{C}^{op}\times{}\cat{C}$ is a pair of morphisms from $\cat{C}$:
+\begin{gather*}
+f \Colon a' \to a \\
+g \Colon b \to b'
+\end{gather*}
+The lifting of this pair must be a morphism (a function) from the set
+$\cat{C}(a, b)$ to the set $\cat{C}(a', b')$. Just pick
+any element $h$ of $\cat{C}(a, b)$ (it's a morphism from
+$a$ to $b$) and assign to it:
+\[g \circ h \circ f\]
+which is an element of $\cat{C}(a', b')$.
+
+As you can see, the hom-functor is a special case of a profunctor.
+
 \section{Challenges}
 
 \begin{enumerate}
