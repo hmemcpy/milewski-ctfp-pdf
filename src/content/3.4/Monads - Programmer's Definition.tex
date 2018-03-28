@@ -144,8 +144,8 @@ are simply the standard composition laws for the Kleisli category:
 
 \begin{Verbatim}
 (f >=> g) >=> h = f >=> (g >=> h) -- associativity
-return >=> f = f                  -- left
-unit f >=> return = f             -- right unit
+return >=> f = f                  -- left unit
+f >=> return = f                  -- right unit
 \end{Verbatim}
 This kind of a definition also expresses what a monad really is: it's a
 way of composing embellished functions. It's not about side effects or
