@@ -3,6 +3,8 @@ dist: trusty
 before_install:
 - wget https://github.com/scottkosty/install-tl-ubuntu/raw/master/install-tl-ubuntu && chmod +x ./install-tl-ubuntu
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends latexmk texlive-xetex
+- tlmgr init-usertree
+- tlmgr install minted
 script:
 - cd src
 - make
