@@ -2,7 +2,7 @@ sudo: required
 dist: trusty
 before_install:
 - wget https://github.com/scottkosty/install-tl-ubuntu/raw/master/install-tl-ubuntu && chmod +x ./install-tl-ubuntu
-- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends latexmk
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends latexmk texlive-xetex
 script:
 - cd src
 - make
