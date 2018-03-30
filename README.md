@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/marulitua/milewski-ctfp-pdf.svg?branch=master)](https://travis-ci.org/marulitua/milewski-ctfp-pdf)
 Category Theory for Programmers
 ====
 
