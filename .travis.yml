@@ -1,7 +1,7 @@
-sudo: false
+sudo: required
 dist: trusty
 before_install:
-- apt-get -qq update && apt-get install -y --no-install-recommends texlive-fonts-recommended \
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended \
   texlive-latex-extra dvipng texlive-latex-recommended
 script:
 - cd src
