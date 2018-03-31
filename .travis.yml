@@ -12,8 +12,7 @@ before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends python-pygments texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-latex-recommended dvipng latex-xcolor texlive-xetex latexmk texlive-generic-recommended texlive-math-extra pgf
 script:
 - cd src
-- latexmk -shell-escape -f -interaction=nonstopmode -norc -pdflatex="xelatex %O %S" -pdf -dvi- -ps-
-- mv ctfp.pdf ../category-theory-for-programmers.pdf
+- make
 deploy:
   provider: releases
   api_key:
