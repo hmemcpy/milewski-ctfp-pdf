@@ -51,7 +51,7 @@ Acknowledgements
 PDF LaTeX source and the tools to create it are based on the work by Andres Raba et al., available here: https://github.com/sarabander/sicp-pdf.  
 The book content is taken, with permission, from Bartosz Milewski's blogpost series, and adapted to the LaTeX format.
 
-Thanks to the following people for contributing corrections/conversions:
+Thanks to the following people for contributing corrections/conversions and misc:
 
 * Oleg Rakitskiy
 * Jared Weakly
@@ -59,6 +59,7 @@ Thanks to the following people for contributing corrections/conversions:
 * Adi Shavit
 * Mico from the TeX.StackExchange community
 * Marcello Seri
+* Erwin Maruli Tua Pakpahan
 * ...and many others!
 
 Note from Bartosz: I really appreciate all your contributions. You made this book much better than I could have imagined. Thank you!
