@@ -1,7 +1,6 @@
 sudo: required
 dist: trusty
 before_install:
-- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends python-pygments texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-latex-recommended dvipng texlive-xetex latexmk texlive-generic-recommended texlive-math-extra fonts-lmodern
 - wget https://github.com/MihailJP/Inconsolata-LGC/releases/download/LGC-1.3.0/InconsolataLGC-1.3.0.tar.xz
 - tar -xvf InconsolataLGC-1.3.0.tar.xz
 - sudo mkdir -p /usr/share/fonts/truetype/inconsolatalgc/
@@ -10,7 +9,7 @@ before_install:
 - unzip libertinus-6.5.zip
 - sudo mkdir -p /usr/share/fonts/truetype/libertinus/
 - sudo cp libertinus-6.5/*.otf /usr/share/fonts/truetype/libertinus/
-- sudo fc-cache -fv
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-full python-pygments
 script:
 - cd src
 - make
