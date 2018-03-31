@@ -9,15 +9,19 @@ before_install:
 - unzip libertinus-6.5.zip
 - sudo mkdir -p /usr/share/fonts/truetype/libertinus/
 - sudo cp libertinus-6.5/*.otf /usr/share/fonts/truetype/libertinus/
-- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends python-pygments texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-latex-recommended dvipng latex-xcolor texlive-xetex latexmk texlive-generic-recommended texlive-math-extra pgf
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends python-pygments
+  texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-latex-recommended
+  dvipng latex-xcolor texlive-xetex latexmk texlive-generic-recommended texlive-math-extra
+  pgf
 script:
 - cd src
 - make
 deploy:
   provider: releases
   api_key:
-    secure: yoKy/ZoEJ8uPpsFaD755U2lYglSXW1Ftp+MPX1Rtrt0QLkuFFMpVld1/BDQ7PY3N4buGTBdoOQpifneSrHTVvUuCTuW/C1nQ4CAWlMwT6LULPn5u6zt3m+626sO/yPpsAxat8uTfBBftzsjfbkNbqCM+CbXZFbYovitIt5ewkHqFVJJgIKfh8xLLgVHfQqFeITEfvBg3DojzfCFyXQlyFZlvIgYzII9qh+sPm1wRY169h6gbWnlVO29sFsQGgy4eKyXhWv3bt1rwUJ095yYaL8EER+b/0rmquxQoLwXC+aKfk7shqmjy6IwMr1MYIsDnBW6kl6kaeca7AYdXQCM/g+UQx3nAPvPWGqwY6F03pImLwgwHW99pZEeFmV89HnRSrdS0fDms675fjL/cSK71EClINqqTfcRKOMunZhXYoVUyIuCISJ2szT9jPrtIyF40zY3lB0u/tS9Tof0GQTToLGdbtc9/qabEUX4xLEjjvERWz1n5BFpXejXmKUTZL4Dkjsi/oKW29xt69gVgj8mU44D+2YVo9i17U1lfrEzHlvbQNTL0g+cmK0EFdJLcHMCxpi4nSrY52/fvHV9b0iv666JhPhKE7vAc/QuI7SpMARef7xgZu/dhjYsJGExHn3Hz4aQ8qf7hbJgRChp3V0dYpX/Pqvyx/hj3DL779o9wyEg=
+    secure: XIHB7JJMi1+VcoiIfCPxJ+XsTQZ1xG17VXJ0xrHma2PsQhGtT0vK/rdRE1wAjw1kwEKGe6fP6cVf36QPBA8EuUJYN2pU27AUTB0Wp6aZ1kmaY/cIsyMo340qXQnB28o9clIzufn7ouuiEjgCCAahAvweAsYf/mv6EpZTzl3UAD/WrryyaabfEsiR+6Am0mw+r1zeXXiiappA4rLHjdBgTnF6AXZf/fKzwEm53vIjzcVOTrqIaPCevvf0UUP1D4iD435jov7my7ZZc6zGEwUoDeuKthk3xFmQ5e7gw0FvjUXyqhjOQmc5myX8XSfzG4SlY8jmz9bgFyKTPB1sja8lV738N2HN0tfY9HcCQDXCLCOSJOtEa833p5rIhfHnKy0gQw3K9LvOQnMjiM/0Ik9uWuYIAQW1rtnI8iPClEF8hXshXewGNU+WmxGfQ82OYey8wHPXg4FZj50p7djFr2l0GLG4ngbrFcp9U9msXCVVDDa+0vO09LpGZ6WDWYH4inaK4catJT8vrfSprx1BbiJG+EuzjgvTFKNoxydTiM4EYW3QkVTRkUCa2ZO7ARg5caT0fL12csHGBXlPN3L5RWnTIHg8mWmz3jzBWYKs3IFLMvwKPF3y4Gbq7Ippmj9OwSyR7/V8ozNux5Wb8mFyPdFaW0PsU1SqdNpEy0ry7yFptWI=
   file: category-theory-for-programmers.pdf
+  skip_cleanup: true
   on:
-    repo: marulitua/milewski-ctfp-pdf
+    repo: hmemcpy/milewski-ctfp-pdf
     tags: true

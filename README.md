@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/marulitua/milewski-ctfp-pdf.svg?branch=master)](https://travis-ci.org/marulitua/milewski-ctfp-pdf)
-Category Theory for Programmers
+Category Theory for Programmers [![Build Status](https://travis-ci.org/hmemcpy/milewski-ctfp-pdf.svg?branch=master)](https://travis-ci.org/hmemcpy/milewski-ctfp-pdf)
 ====
 
 <img src="https://user-images.githubusercontent.com/601206/31094980-ba6af4a4-a7bf-11e7-8857-870346890b44.png"
@@ -51,7 +50,7 @@ Acknowledgements
 PDF LaTeX source and the tools to create it are based on the work by Andres Raba et al., available here: https://github.com/sarabander/sicp-pdf.  
 The book content is taken, with permission, from Bartosz Milewski's blogpost series, and adapted to the LaTeX format.
 
-Thanks to the following people for contributing corrections/conversions:
+Thanks to the following people for contributing corrections/conversions and misc:
 
 * Oleg Rakitskiy
 * Jared Weakly
@@ -59,6 +58,7 @@ Thanks to the following people for contributing corrections/conversions:
 * Adi Shavit
 * Mico from the TeX.StackExchange community
 * Marcello Seri
+* Erwin Maruli Tua Pakpahan
 * ...and many others!
 
 Note from Bartosz: I really appreciate all your contributions. You made this book much better than I could have imagined. Thank you!
