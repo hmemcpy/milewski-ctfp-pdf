@@ -1,7 +1,7 @@
 sudo: required
 dist: trusty
 before_install:
-- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends python-pygments texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-latex-recommended dvipng latex-xcolor texlive-xetex latexmk
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends python-pygments texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-latex-recommended dvipng latex-xcolor texlive-xetex latexmk texlive-generic-recommended
 - wget https://github.com/MihailJP/Inconsolata-LGC/releases/download/LGC-1.3.0/InconsolataLGC-1.3.0.tar.xz
 - tar -xvf InconsolataLGC-1.3.0.tar.xz
 - sudo mkdir -p /usr/share/fonts/truetype/inconsolatalgc/
