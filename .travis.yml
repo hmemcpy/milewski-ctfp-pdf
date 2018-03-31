@@ -2,7 +2,7 @@ sudo: required
 dist: trusty
 before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra dvipng texlive-latex-recommended latexmk texlive-xetex
-- which tlmgr
+- tlmgr install xcolor
 script:
 - cd src
 - make
