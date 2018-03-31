@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/marulitua/milewski-ctfp-pdf.svg?branch=master)](https://travis-ci.org/marulitua/milewski-ctfp-pdf)
-Category Theory for Programmers
+Category Theory for Programmers [![Build Status](https://travis-ci.org/hmemcpy/milewski-ctfp-pdf.svg?branch=master)](https://travis-ci.org/hmemcpy/milewski-ctfp-pdf)
 ====
 
 <img src="https://user-images.githubusercontent.com/601206/31094980-ba6af4a4-a7bf-11e7-8857-870346890b44.png"
