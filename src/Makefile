@@ -6,7 +6,7 @@ DIR := $(shell pwd)
 all: ctfp.pdf
 
 ctfp.pdf: ctfp.tex
-	latexmk -shell-escape -interaction=nonstopmode -norc -pdflatex="xelatex %O %S" -pdf -dvi- -ps- $<; \
+	latexmk -shell-escape -interaction=nonstopmode -halt-on-error -norc -pdflatex="xelatex %O %S" -pdf -dvi- -ps- $<; \
 	mv ctfp.pdf ../category-theory-for-programmers.pdf
 
 clean:
