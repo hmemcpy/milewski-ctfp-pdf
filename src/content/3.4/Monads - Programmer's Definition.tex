@@ -365,8 +365,8 @@ quite common, so there is a special operator to replace bind in that
 case:
 
 \begin{Verbatim}
-(>>) :: m a -> m b -> m b m
->> k = m >>= (\_ -> k)
+(>>) :: m a -> m b -> m b
+m >> k = m >>= (\_ -> k)
 \end{Verbatim}
 The actual desugaring of our code looks like this:
 
