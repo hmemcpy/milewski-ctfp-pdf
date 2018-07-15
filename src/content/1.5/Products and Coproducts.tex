@@ -123,7 +123,7 @@ yes :: a -> Bool
 yes _ = True
 \end{Verbatim}
 But \code{Bool} is not a terminal object. There is at least one more
-\code{Bool}-valued function from every type:
+\code{Bool}-valued function from every type (except \code{Void}, for which both functions are equal to \code{absurd}):
 
 \begin{Verbatim}
 no :: a -> Bool
