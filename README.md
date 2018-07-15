@@ -59,6 +59,7 @@ Thanks to the following people for contributing corrections/conversions and misc
 * Mico from the TeX.StackExchange community
 * Marcello Seri
 * Erwin Maruli Tua Pakpahan
+* Markus Hauck
 * ...and many others!
 
 Note from Bartosz: I really appreciate all your contributions. You made this book much better than I could have imagined. Thank you!
