@@ -22,6 +22,7 @@ mkShell {
         subfiles
         lettrine
         upquote
+        fontspec
 
         scheme-medium
         listings
