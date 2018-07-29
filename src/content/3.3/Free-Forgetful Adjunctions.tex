@@ -118,7 +118,9 @@ each other, witnessing this isomorphism:
 
 \begin{Verbatim}
 toNat :: [()] -> Int
-toNat = length toLst :: Int -> [()]
+toNat = length
+
+toLst :: Int -> [()]
 toLst n = replicate n ()
 \end{Verbatim}
 For simplicity I used the type \code{Int} rather than
