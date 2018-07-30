@@ -1,0 +1,140 @@
+<div class="post-content"> <br><blockquote><p>This is part 23 of Categories for Programmers. Previously: <a href="https://bartoszmilewski.com/2016/12/27/monads-categorically/">Monads Categorically</a>. See the <a href="https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/">Table of Contents</a>.</p></blockquote>
+<p>Now that we have covered monads, we can reap the benefits of duality and get comonads for free simply by reversing the arrows and working in the opposite category.</p>
+<p>Recall that, at the most basic level, monads are about composing Kleisli arrows:</p>
+<pre>a -&gt; m b</pre>
+<p>where <code>m</code> is a functor that is a monad. If we use the letter <code>w</code> (upside down <code>m</code>) for the comonad, we can define co-Kleisli arrows as morphism of the type:</p>
+<pre>w a -&gt; b</pre>
+<p>The analog of the fish operator for co-Kleisli arrows is defined as:</p>
+<pre>(=&gt;=) :: (w a -&gt; b) -&gt; (w b -&gt; c) -&gt; (w a -&gt; c)</pre>
+<p>For co-Kleisli arrows to form a category we also have to have an identity co-Kleisli arrow, which is called <code>extract</code>:</p>
+<pre>extract :: w a -&gt; a</pre>
+<p>This is the dual of <code>return</code>. We also have to impose the laws of associativity as well as left- and right-identity. Putting it all together, we could define a comonad in Haskell as:</p>
+<pre>class Functor w =&gt; Comonad w where (=&gt;=) :: (w a -&gt; b) -&gt; (w b -&gt; c) -&gt; (w a -&gt; c) extract :: w a -&gt; a</pre>
+<p>In practice, we use slightly different primitives, as we&#x2019;ll see shortly.</p>
+<p>The question is, what&#x2019;s the use for comonads in programming?</p>
+<h2>Programming with Comonads</h2>
+<p>Let&#x2019;s compare the monad with the comonad. A monad provides a way of putting a value in a container using <code>return</code>. It doesn&#x2019;t give you access to a value or values stored inside. Of course, data structures that implement monads might provide access to their contents, but that&#x2019;s considered a bonus. There is no common interface for extracting values from a monad. And we&#x2019;ve seen the example of the <code>IO</code> monad that prides itself in never exposing its contents.</p>
+<p>A comonad, on the other hand, provides the means of extracting a single value from it. It does not give the means to insert values. So if you want to think of a comonad as a container, it always comes pre-filled with contents, and it lets you peek at it.</p>
+<p>Just as a Kleisli arrow takes a value and produces some embellished result &#x2014; it embellishes it with context &#x2014; a co-Kleisli arrow takes a value together with a whole context and produces a result. It&#x2019;s an embodiment of <i>contextual computation</i>.</p>
+<h2>The Product Comonad</h2>
+<p>Remember the reader monad? We introduced it to tackle the problem of implementing computations that need access to some read-only environment <code>e</code>. Such computations can be represented as pure functions of the form:</p>
+<pre>(a, e) -&gt; b</pre>
+<p>We used currying to turn them into Kleisli arrows:</p>
+<pre>a -&gt; (e -&gt; b)</pre>
+<p>But notice that these functions already have the form of co-Kleisli arrows. Let&#x2019;s massage their arguments into the more convenient functor form:</p>
+<pre>data Product e a = P e a deriving Functor</pre>
+<p>We can easily define the composition operator by making the same environment available to the arrows that we are composing:</p>
+<pre>(=&gt;=) :: (Product e a -&gt; b) -&gt; (Product e b -&gt; c) -&gt; (Product e a -&gt; c) f =&gt;= g = \(P e a) -&gt; let b = f (P e a) c = g (P e b) in c</pre>
+<p>The implementation of <code>extract</code> simply ignores the environment:</p>
+<pre>extract (P e a) = a</pre>
+<p>Not surprisingly, the product comonad can be used to perform exactly the same computations as the reader monad. In a way, the comonadic implementation of the environment is more natural &#x2014; it follows the spirit of &#x201C;computation in context.&#x201D; On the other hand, monads come with the convenient syntactic sugar of the <code>do</code> notation.</p>
+<p>The connection between the reader monad and the product comonad goes deeper, having to do with the fact that the reader functor is the right adjoint of the product functor. In general, though, comonads cover different notions of computation than monads. We&#x2019;ll see more examples later.</p>
+<p>It&#x2019;s easy to generalize the <code>Product</code> comonad to arbitrary product types including tuples and records.</p>
+<h2>Dissecting the Composition</h2>
+<p>Continuing the process of dualization, we could go ahead and dualize monadic bind and join. Alternatively, we can repeat the process we used with monads, where we studied the anatomy of the fish operator. This approach seems more enlightening.</p>
+<p>The starting point is the realization that the composition operator must produce a co-Kleisli arrow that takes <code>w a</code> and produces a <code>c</code>. The only way to produce a <code>c</code> is to apply the second function to an argument of the type <code>w b</code>:</p>
+<pre>(=&gt;=) :: (w a -&gt; b) -&gt; (w b -&gt; c) -&gt; (w a -&gt; c) f =&gt;= g = g ... </pre>
+<p>But how can we produce a value of type <code>w b</code> that could be fed to <code>g</code>? We have at our disposal the argument of type <code>w a</code> and the function <code>f :: w a -&gt; b</code>. The solution is to define the dual of bind, which is called extend:</p>
+<pre>extend :: (w a -&gt; b) -&gt; w a -&gt; w b</pre>
+<p>Using <code>extend</code> we can implement composition:</p>
+<pre>f =&gt;= g = g . extend f</pre>
+<p>Can we next dissect <code>extend</code>? You might be tempted to say, why not just apply the function <code>w a -&gt; b</code> to the argument <code>w a</code>, but then you quickly realize that you&#x2019;d have no way of converting the resulting <code>b</code> to <code>w b</code>. Remember, the comonad provides no means of lifting values. At this point, in the analogous construction for monads, we used <code>fmap</code>. The only way we could use <code>fmap</code> here would be if we had something of the type <code>w (w a)</code> at our disposal. If we coud only turn <code>w a</code> into <code>w (w a)</code>. And, conveniently, that would be exactly the dual of <code>join</code>. We call it <code>duplicate</code>:</p>
+<pre>duplicate :: w a -&gt; w (w a)</pre>
+<p>So, just like with the definitions of the monad, we have three equivalent definitions of the comonad: using co-Kleisli arrows, <code>extend</code>, or <code>duplicate</code>. Here&#x2019;s the Haskell definition taken directly from <code>Control.Comonad</code> library:</p>
+<pre>class Functor w =&gt; Comonad w where extract :: w a -&gt; a duplicate :: w a -&gt; w (w a) duplicate = extend id extend :: (w a -&gt; b) -&gt; w a -&gt; w b extend f = fmap f . duplicate</pre>
+<p>Provided are the default implementations of <code>extend</code> in terms of <code>duplicate</code> and vice versa, so you only need to override one of them.</p>
+<p>The intuition behind these functions is based on the idea that, in general, a comonad can be thought of as a container filled with values of type <code>a</code> (the product comonad was a special case of just one value). There is a notion of the &#x201C;current&#x201D; value, one that&#x2019;s easily accessible through <code>extract</code>. A co-Kleisli arrow performs some computation that is focused on the current value, but it has access to all the surrounding values. Think of the Conway&#x2019;s game of life. Each cell contains a value (usually just <code>True</code> or <code>False</code>). A comonad corresponding to the game of life would be a grid of cells focused on the &#x201C;current&#x201D; cell.</p>
+<p>So what does <code>duplicate</code> do? It takes a comonadic container <code>w a</code> and produces a container of containers <code>w (w a)</code>. The idea is that each of these containers is focused on a different <code>a</code> inside <code>w a</code>. In the game of life, you would get a grid of grids, each cell of the outer grid containing an inner grid that&#x2019;s focused on a different cell.</p>
+<p>Now look at <code>extend</code>. It takes a co-Kleisli arrow and a comonadic container <code>w a</code> filled with <code>a</code>s. It applies the computation to all of these <code>a</code>s, replacing them with <code>b</code>s. The result is a comonadic container filled with <code>b</code>s. <code>extend</code> does it by shifting the focus from one <code>a</code> to another and applying the co-Kleisli arrow to each of them in turn. In the game of life, the co-Kleisli arrow would calculate the new state of the current cell. To do that, it would look at its context &#x2014; presumably its nearest neighbors. The default implementation of <code>extend</code> illustrates this process. First we call <code>duplicate</code> to produce all possible foci and then we apply <code>f</code> to each of them.</p>
+<h2>The Stream Comonad</h2>
+<p>This process of shifting the focus from one element of the container to another is best illustrated with the example of an infinite stream. Such a stream is just like a list, except that it doesn&#x2019;t have the empty constructor:</p>
+<pre>data Stream a = Cons a (Stream a)</pre>
+<p>It&#x2019;s trivially a <code>Functor</code>:</p>
+<pre>instance Functor Stream where fmap f (Cons a as) = Cons (f a) (fmap f as)</pre>
+<p>The focus of a stream is its first element, so here&#x2019;s the implementation of <code>extract</code>:</p>
+<pre>extract (Cons a _) = a</pre>
+<p><code>duplicate</code> produces a stream of streams, each focused on a different element.</p>
+<pre>duplicate (Cons a as) = Cons (Cons a as) (duplicate as)</pre>
+<p>The first element is the original stream, the second element is the tail of the original stream, the third element is its tail, and so on, ad infinitum.</p>
+<p>Here&#x2019;s the complete instance:</p>
+<pre>instance Comonad Stream where extract (Cons a _) = a duplicate (Cons a as) = Cons (Cons a as) (duplicate as)</pre>
+<p>This is a very functional way of looking at streams. In an imperative language, we would probably start with a method <code>advance</code> that shifts the stream by one position. Here, <code>duplicate</code> produces all shifted streams in one fell swoop. Haskell&#x2019;s laziness makes this possible and even desirable. Of course, to make a <code>Stream</code> practical, we would also implement the analog of <code>advance</code>:</p>
+<pre>tail :: Stream a -&gt; Stream a tail (Cons a as) = as</pre>
+<p>but it&#x2019;s never part of the comonadic interface.</p>
+<p>If you had any experience with digital signal processing, you&#x2019;ll see immediately that a co-Kleisli arrow for a stream is just a digital filter, and <code>extend</code> produces a filtered stream.</p>
+<p>As a simple example, let&#x2019;s implement the moving average filter. Here&#x2019;s a function that sums <code>n</code> elements of a stream:</p>
+<pre>sumS :: Num a =&gt; Int -&gt; Stream a -&gt; a sumS n (Cons a as) = if n &lt;= 0 then 0 else a + sumS (n - 1) as</pre>
+<p>Here&#x2019;s the function that calculates the average of the first <code>n</code> elements of the stream:</p>
+<pre>average :: Fractional a =&gt; Int -&gt; Stream a -&gt; a average n stm = (sumS n stm) / (fromIntegral n)</pre>
+<p>Partially applied <code>average n</code> is a co-Kleisli arrow, so we can <code>extend</code> it over the whole stream:</p>
+<pre>movingAvg :: Fractional a =&gt; Int -&gt; Stream a -&gt; Stream a movingAvg n = extend (average n)</pre>
+<p>The result is the stream of running averages.</p>
+<p>A stream is an example of a unidirectional, one-dimensional comonad. It can be easily made bidirectional or extended to two or more dimensions.</p>
+<h2>Comonad Categorically</h2>
+<p>Defining a comonad in category theory is a straightforward exercise in duality. As with the monad, we start with an endofunctor <code>T</code>. The two natural transformations, &#x3B7; and &#x3BC;, that define the monad are simply reversed for the comonad:</p>
+<pre>&#x3B5; :: T -&gt; I &#x3B4; :: T -&gt; T<sup>2</sup></pre>
+<p>The components of these transformations correspond to <code>extract</code> and <code>duplicate</code>. Comonad laws are the mirror image of monad laws. No big surprise here.</p>
+<p>Then there is the derivation of the monad from an adjunction. Duality reverses an adjunction: the left adjoint becomes the right adjoint and vice versa. And, since the composition <code>R &#x2218; L</code> defines a monad, <code>L &#x2218; R</code> must define a comonad. The counit of the adjunction:</p>
+<pre>&#x3B5; :: L &#x2218; R -&gt; I</pre>
+<p>is indeed the same &#x3B5; that we see in the definition of the comonad &#x2014; or, in components, as Haskell&#x2019;s <code>extract</code>. We can also use the unit of the adjunction:</p>
+<pre>&#x3B7; :: I -&gt; R &#x2218; L</pre>
+<p>to insert an <code>R &#x2218; L</code> in the middle of <code>L &#x2218; R</code> and produce <code>L &#x2218; R &#x2218; L &#x2218; R</code>. Making <code>T<sup>2</sup></code> from <code>T</code> defines the &#x3B4;, and that completes the definition of the comonad.</p>
+<p>We&#x2019;ve also seen that the monad is a monoid. The dual of this statement would require the use of a comonoid, so what&#x2019;s a comonoid? The original definition of a monoid as a single-object category doesn&#x2019;t dualize to anything interesting. When you reverse the direction of all endomorphisms, you get another monoid. Recall, however, that in our approach to a monad, we used a more general definition of a monoid as an object in a monoidal category. The construction was based on two morphisms:</p>
+<pre>&#x3BC; :: m &#x2297; m -&gt; m &#x3B7; :: i -&gt; m</pre>
+<p>The reversal of these morphisms produces a comonoid in a monoidal category:</p>
+<pre>&#x3B4; :: m -&gt; m &#x2297; m &#x3B5; :: m -&gt; i</pre>
+<p>One can write a definition of a comonoid in Haskell:</p>
+<pre>class Comonoid m where split :: m -&gt; (m, m) destroy :: m -&gt; ()</pre>
+<p>but it is rather trivial. Obviously <code>destroy</code> ignores its argument.</p>
+<pre>destroy _ = ()</pre>
+<p><code>split</code> is just a pair of functions:</p>
+<pre>split x = (f x, g x)</pre>
+<p>Now consider comonoid laws that are dual to the monoid unit laws.</p>
+<pre>lambda . bimap destroy id . split = id rho . bimap id destroy . split = id</pre>
+<p>Here, <code>lambda</code> and <code>rho</code> are the left and right unitors, respectively (see the definition of <a href="https://bartoszmilewski.com/2016/12/27/monads-categorically/">monoidal categories</a>). Plugging in the definitions, we get:</p>
+<pre>lambda (bimap destroy id (split x)) = lambda (bimap destroy id (f x, g x)) = lambda ((), g x) = g x</pre>
+<p>which proves that <code>g = id</code>. Similarly, the second law expands to <code>f = id</code>. In conclusion:</p>
+<pre>split x = (x, x)</pre>
+<p>which shows that in Haskell (and, in general, in the category <b>Set</b>) every object is a trivial comonoid.</p>
+<p>Fortunately there are other more interesting monoidal categories in which to define comonoids. One of them is the category of endofunctors. And it turns out that, just like the monad is a monoid in the category of endofunctors,</p>
+<p class="box">The comonad is a comonoid in the category of endofunctors.</p>
+<h2>The Store Comonad</h2>
+<p>Another important example of a comonad is the dual of the state monad. It&#x2019;s called the costate comonad or, alternatively, the store comonad.</p>
+<p>We&#x2019;ve seen before that the state monad is generated by the adjunction that defines the exponentials:</p>
+<pre>L z = z &#xD7; s R a = s &#x21D2; a</pre>
+<p>We&#x2019;ll use the same adjunction to define the costate comonad. A comonad is defined by the composition <code>L &#x2218; R</code>:</p>
+<pre>L (R a) = (s &#x21D2; a) &#xD7; s</pre>
+<p>Translating this to Haskell, we start with the adjunction between the <code>Prod</code> functor on the left and the <code>Reader</code> functor or the right. Composing <code>Prod</code> after <code>Reader</code> is equivalent to the following definition:</p>
+<pre>data Store s a = Store (s -&gt; a) s</pre>
+<p>The counit of the adjunction taken at the object <code>a</code> is the morphism:</p>
+<pre>&#x3B5;<sub>a</sub> :: ((s &#x21D2; a) &#xD7; s) -&gt; a</pre>
+<p>or, in Haskell notation:</p>
+<pre>counit (Prod (Reader f, s)) = f s</pre>
+<p>This becomes our <code>extract</code>:</p>
+<pre>extract (Store f s) = f s</pre>
+<p>The unit of the adjunction:</p>
+<pre>unit a = Reader (\s -&gt; Prod (a, s))</pre>
+<p>can be rewritten as partially applied data constructor:</p>
+<pre>Store f :: s -&gt; Store f s</pre>
+<p>We construct &#x3B4;, or <code>duplicate</code>, as the horizontal composition:</p>
+<pre>&#x3B4; :: L &#x2218; R -&gt; L &#x2218; R &#x2218; L &#x2218; R &#x3B4; = L &#x2218; &#x3B7; &#x2218; R</pre>
+<p>We have to sneak &#x3B7; through the leftmost <code>L</code>, which is the <code>Prod</code> functor. It means acting with &#x3B7;, or <code>Store f</code>, on the left component of the pair (that&#x2019;s what <code>fmap</code> for <code>Prod</code> would do). We get:</p>
+<pre>duplicate (Store f s) = Store (Store f) s</pre>
+<p>(Remember that, in the formula for &#x3B4;, <code>L</code> and <code>R</code> stand for identity natural transformations whose components are identity morphisms.)</p>
+<p>Here&#x2019;s the complete definition of the <code>Store</code> comonad:</p>
+<pre>instance Comonad (Store s) where extract (Store f s) = f s duplicate (Store f s) = Store (Store f) s</pre>
+<p>You may think of the <code>Reader</code> part of <code>Store</code> as a generalized container of <code>a</code>s that are keyed using elements of the type <code>s</code>. For instance, if <code>s</code> is <code>Int</code>, <code>Reader Int a</code> is an infinite bidirectional stream of <code>a</code>s. <code>Store</code> pairs this container with a value of the key type. For instance, <code>Reader Int a</code> is paired with an <code>Int</code>. In this case, <code>extract</code> uses this integer to index into the infinite stream. You may think of the second component of <code>Store</code> as the current position.</p>
+<p>Continuing with this example, <code>duplicate</code> creates a new infinite stream indexed by an <code>Int</code>. This stream contains streams as its elements. In particular, at the current position, it contains the original stream. But if you use some other <code>Int</code> (positive or negative) as the key, you&#x2019;d obtain a shifted stream positioned at that new index.</p>
+<p>In general, you can convince yourself that when <code>extract</code> acts on the <code>duplicate</code>d <code>Store</code> it produces the original <code>Store</code> (in fact, the identity law for the comonad states that <code>extract . duplicate = id</code>).</p>
+<p>The <code>Store</code> comonad plays an important role as the theoretical basis for the <code>Lens</code> library. Conceptually, the <code>Store s a</code> comonad encapsulates the idea of &#x201C;focusing&#x201D; (like a lens) on a particular substructure of the date type <code>a</code> using the type <code>s</code> as an index. In particular, a function of the type:</p>
+<pre>a -&gt; Store s a</pre>
+<p>is equivalent to a pair of functions:</p>
+<pre>set :: a -&gt; s -&gt; a get :: a -&gt; s</pre>
+<p>If <code>a</code> is a product type, <code>set</code> could be implemented as setting the field of type <code>s</code> inside of <code>a</code> while returning the modified version of <code>a</code>. Similarly, <code>get</code> could be implemented to read the value of the <code>s</code> field from <code>a</code>. We&#x2019;ll explore these ideas more in the next section.</p>
+<h2>Challenges</h2>
+<ol>
+<li>Implement the Conway&#x2019;s Game of Life using the <code>Store</code> comonad. Hint: What type do you pick for <code>s</code>?</li>
+</ol>
+<h2>Acknowledgments</h2>
+<p>I&#x2019;m grateful to Edward Kmett for reading the draft of this post and pointing out flaws in my reasoning.</p>
+<p>Next: <a href="https://bartoszmilewski.com/2017/02/28/f-algebras/">F-Algebras</a>.</p> </div>

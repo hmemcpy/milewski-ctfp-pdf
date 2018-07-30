@@ -4,3 +4,4 @@ _minted*
 out/*
 category-theory-for-programmers.pdf
 .vscode/
+/src/py3env/
