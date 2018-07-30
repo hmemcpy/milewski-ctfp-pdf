@@ -1,6 +1,8 @@
+.vscode/
 *.fls
 _minted*
 *.fdb_latexmk
 out/*
-category-theory-for-programmers.pdf
-.vscode/
+*.pdf
+*.xdv
+*.gz
