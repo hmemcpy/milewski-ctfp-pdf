@@ -8,7 +8,8 @@
 \renewcommand{\baselinestretch}{1.05}
 
 % Font settings
-%--------------------------------------------------------------%  This exact order
+%--------------------------------------------------------------%  Note:
+\usepackage[no-math]{fontspec}                                 %  This exact order
 \usepackage{libertine}                                         %  of declarations
 \defaultfontfeatures{%                                         %  is important for
   Scale=MatchLowercase, % needed here ...                      %  single quotes not
@@ -20,7 +21,7 @@
   Mapping=tex-text,                                            %  upright and safely
   SmallCapsFeatures={LetterSpace=2.5,WordSpace=1.05},          %  copy-pasteable to
 }                                                              %  the REPL without
-\setsansfont{Linux Biolinum O} %-------------------------------%  giving errors.
+%--------------------------------------------------------------%  giving errors.
 
 % To use Libertine letters and numbers,
 % but tx-style operators in math environment:
@@ -142,7 +143,7 @@
   {\color{Dark}\normalfont\sffamily\bfseries\LARGE}
   {\filright \color{ChapterViolet}\sffamily\mdseries
     \fontsize{6em}{0em}\selectfont
-    \oldstylenums{\thechapter}}
+    {\addfontfeature{Numbers=OldStyle}\thechapter}}
   {1em}
   {\filright}
 
