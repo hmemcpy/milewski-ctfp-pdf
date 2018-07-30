@@ -1,5 +1,6 @@
 % !TEX TS-program = xelatex
 % !TEX encoding = UTF-8 Unicode
+% !TEX root = ctfp.tex
 
 \documentclass[11pt,twoside]{book}
 
@@ -7,19 +8,18 @@
 \renewcommand{\baselinestretch}{1.05}
 
 % Font settings
-\usepackage{minted} %---------------------------------------%  Note:
-\usepackage[no-math]{fontspec}                                 %  This exact order
-\defaultfontfeatures{%                                         %  of declarations
-  Scale=MatchLowercase, % needed here ...                      %  is important for
-}                                                              %  single quotes not
-\setmonofont[BoldFont={Inconsolata LGC Bold}]{Inconsolata LGC} %  to turn out curly
-                                                               %  ("typographic")
-\defaultfontfeatures{%                                         %  in verbatim blocks
-  Scale=MatchLowercase, % ... and here again                   %  of Haskell code.
-  Mapping=tex-text,                                            %  Now the quote is
-  SmallCapsFeatures={LetterSpace=2.5,WordSpace=1.05},          %  upright and safely
-}                                                              %  copy-pasteable to
-\setmainfont{Linux Libertine O}                                %  the REPL without
+%--------------------------------------------------------------%  This exact order
+\usepackage{libertine}                                         %  of declarations
+\defaultfontfeatures{%                                         %  is important for
+  Scale=MatchLowercase, % needed here ...                      %  single quotes not
+}                                                              %  to turn out curly
+\setmonofont[BoldFont={Inconsolata LGC Bold}]{Inconsolata LGC} %  ("typographic")
+                                                               %  in verbatim blocks
+\defaultfontfeatures{%                                         %  of Haskell code.
+  Scale=MatchLowercase, % ... and here again                   %  Now the quote is
+  Mapping=tex-text,                                            %  upright and safely
+  SmallCapsFeatures={LetterSpace=2.5,WordSpace=1.05},          %  copy-pasteable to
+}                                                              %  the REPL without
 \setsansfont{Linux Biolinum O} %-------------------------------%  giving errors.
 
 % To use Libertine letters and numbers,
@@ -119,6 +119,7 @@
 \renewcommand{\partname}{}
 \renewcommand{\thepart}{}
 
+\usepackage{minted}
 \usemintedstyle{bw}
 \newminted{cpp}{}
 \newminted{haskell}{}
