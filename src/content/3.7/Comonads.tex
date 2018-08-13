@@ -79,21 +79,21 @@ arrows. Let's massage their arguments into the more convenient functor
 form:
 
 \begin{Verbatim}
-data Product e a = P e a deriving Functor
+data Product e a = Prod e a deriving Functor
 \end{Verbatim}
 We can easily define the composition operator by making the same
 environment available to the arrows that we are composing:
 
 \begin{minted}[breaklines,fontsize=\small]{text}
 (=>=) :: (Product e a -> b) -> (Product e b -> c) -> (Product e a -> c)
-f =>= g = \(P e a) -> let b = f (P e a)
-                          c = g (P e b) 
+f =>= g = \(Prod e a) -> let b = f (Prod e a)
+                          c = g (Prod e b) 
                       in c
 \end{minted}
 The implementation of \code{extract} simply ignores the environment:
 
 \begin{Verbatim}
-extract (P e a) = a
+extract (Prod e a) = a
 \end{Verbatim}
 Not surprisingly, the product comonad can be used to perform exactly the
 same computations as the reader monad. In a way, the comonadic
@@ -396,8 +396,8 @@ We'll use the same adjunction to define the costate comonad. A comonad
 is defined by the composition $L \circ R$:
 \[L\ (R\ a) = (s \Rightarrow a)\times{}s\]
 Translating this to Haskell, we start with the adjunction between the
-\code{Prod} functor on the left and the \code{Reader} functor or the
-right. Composing \code{Prod} after \code{Reader} is equivalent to
+\code{Product} functor on the left and the \code{Reader} functor or the
+right. Composing \code{Product} after \code{Reader} is equivalent to
 the following definition:
 
 \begin{Verbatim}
@@ -409,7 +409,7 @@ morphism:
 or, in Haskell notation:
 
 \begin{Verbatim}
-counit (Prod (Reader f, s)) = f s
+counit (Prod (Reader f) s) = f s
 \end{Verbatim}
 This becomes our \code{extract}:
 
@@ -419,7 +419,8 @@ extract (Store f s) = f s
 The unit of the adjunction:
 
 \begin{Verbatim}
-unit a = Reader (\s -> Prod (a, s))
+unit :: a -> Reader s (Product a s)
+unit a = Reader (\s -> Prod a s)
 \end{Verbatim}
 can be rewritten as partially applied data constructor:
 
@@ -432,9 +433,9 @@ We construct $\delta$, or \code{duplicate}, as the horizontal composition:
 \delta &= L \circ \eta \circ R
 \end{align*}
 We have to sneak $\eta$ through the leftmost $L$, which is the
-\code{Prod} functor. It means acting with $\eta$, or \code{Store f}, on
+\code{Product} functor. It means acting with $\eta$, or \code{Store f}, on
 the left component of the pair (that's what \code{fmap} for
-\code{Prod} would do). We get:
+\code{Product} would do). We get:
 
 \begin{Verbatim}
 duplicate (Store f s) = Store (Store f) s
