@@ -1,7 +1,8 @@
 Category Theory for Programmers
 ====
 
-<img src="https://user-images.githubusercontent.com/601206/31094980-ba6af4a4-a7bf-11e7-8857-870346890b44.png"
+
+<img src="https://user-images.githubusercontent.com/601206/44096015-e3edb674-9fe2-11e8-8bfb-2b59cf857876.png"
  alt="Category Theory for Programmers" width=256 align="right" />
 
 ![image](https://user-images.githubusercontent.com/601206/43392303-f770d7be-93fb-11e8-8db8-b7e915b435ba.png)
