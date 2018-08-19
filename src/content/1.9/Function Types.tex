@@ -263,13 +263,13 @@ It's trivial to convert between the two representations, and the two
 \code{curry} and \code{uncurry}:
 
 \begin{Verbatim}
-curry :: ((a, b)->c) -> (a->b->c)
+curry :: ((a, b) -> c) -> (a -> b -> c)
 curry f a b = f (a, b)
 \end{Verbatim}
 and
 
 \begin{Verbatim}
-uncurry :: (a->b->c) -> ((a, b)->c)
+uncurry :: (a -> b -> c) -> ((a, b) -> c)
 uncurry f (a, b) = f a b
 \end{Verbatim}
 Notice that \code{curry} is the \newterm{factorizer} for the universal
@@ -277,7 +277,7 @@ construction of the function object. This is especially apparent if it's
 rewritten in this form:
 
 \begin{Verbatim}
-factorizer :: ((a, b)->c) -> (a->(b->c))
+factorizer :: ((a, b) -> c) -> (a -> (b -> c))
 factorizer g = \a -> (\b -> g (a, b))
 \end{Verbatim}
 (As a reminder: A factorizer produces the factorizing function from a
