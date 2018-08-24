@@ -6,3 +6,4 @@ out/*
 *.pdf
 *.xdv
 *.gz
+src/version.tex
