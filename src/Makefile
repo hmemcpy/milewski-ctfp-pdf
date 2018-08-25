@@ -4,9 +4,10 @@
 .PHONY: default all clean version.tex
 
 DIR := $(shell pwd)
+GIT_VER := $(shell git describe --always --long | tr -d '\n')
 
 # Default top-level LaTeX to generate
-DEFAULTTOPTEX = ctfp-reader.tex
+DEFAULTTOPTEX = ctfp-reader.tex ctfp-print.tex
 
 # Top-level LaTeX files from which CTFP book can be generated
 TOPTEXFILES = version.tex $(DEFAULTTOPTEX)
@@ -23,9 +24,9 @@ OPTFILES = opt-print-ustrade.tex \
 # All the LaTeX files for the CTFP book in order of dependency
 TEXFILES = $(TOPTEXFILES) $(OPTFILES)
 
-default: $(DEFAULTPDF)
+default: $(DEFAULTPDF) copy
 
-all: $(TOPPDFFILES) # todo cover
+all default: copy# todo cover
 
 # Main targets
 $(TOPPDFFILES) : %.pdf : %.tex $(TEXFILES) 
@@ -34,19 +35,19 @@ $(TOPPDFFILES) : %.pdf : %.tex $(TEXFILES)
 	else echo "Error: unable to find latexmk. Is it installed?" ;\
 	fi
 
-
-# ctfp.pdf: ctfp.tex
-# 	latexmk -shell-escape -interaction=nonstopmode -halt-on-error -norc -pdflatex="xelatex %O %S" -pdf -dvi- -ps- $<; \
-# 	mkdir -p ../out && mv ctfp.pdf ../out/category-theory-for-programmers.pdf
-
 version.tex:
 	/bin/echo -n '\newcommand{\OPTversion}{' > version.tex
 	git describe --always --long | tr -d '\n' >> version.tex
 	/bin/echo -n '}' >> version.tex
 
-clean:
-	latexmk -CA
+copy:
+	echo 'Creating output directory: $(GIT_VER)'
+	mkdir -p ../out/$(GIT_VER)
+	mv ctfp-reader.pdf ../out/$(GIT_VER)/category-theory-for-programmers.pdf
+	mv ctfp-print.pdf ../out/$(GIT_VER)/category-theory-for-programmers-print.pdf
 
-clean-all: clean
-	${RM} ctfp.fls ../out/category-theory-for-programmers.pdf
+clean:
+	rm -f *~ *.aux {ctfp-*}.{out,log,pdf,dvi,fls,fdb_latexmk,aux,brf,bbl,idx,ilg,ind,toc,sed}
 	rm -rf _minted-ctfp
+	if which latexmk > /dev/null 2>&1 ; then latexmk -CA; fi
+	rm -rf ../out
