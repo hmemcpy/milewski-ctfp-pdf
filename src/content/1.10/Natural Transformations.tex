@@ -408,7 +408,7 @@ We can write a polymorphic function from, say, \code{Op Bool} to
 predToStr (Op f) = Op (\x -> if f x then "T" else "F")
 \end{Verbatim}
 But since the two functors are not covariant, this is not a natural
-transformation in \textbf{Hask}. However, because they are both
+transformation in $\Hask$. However, because they are both
 contravariant, they satisfy the ``opposite'' naturality condition:
 
 \begin{Verbatim}
