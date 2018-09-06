@@ -30,6 +30,10 @@
 % Needed to display additional math unicode symbols (like double-colon)
 \usepackage{unicode-math}
 \setmathfont{Libertinus Math}
+\DeclareFontFamily{U}{mathc}{}
+\DeclareFontShape{U}{mathc}{m}{it}%
+{<->s*[1.03] mathc10}{}
+\DeclareMathAlphabet{\mathcal}{U}{mathc}{m}{it}
 
 \usepackage[all]{nowidow}
 \usepackage{emptypage}
