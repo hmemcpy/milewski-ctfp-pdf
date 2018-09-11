@@ -1,9 +1,9 @@
-\lettrine[lhang=0.17]{S}{o far I've} been glossing over the meaning of function types. A function
+\lettrine[lhang=0.17]{S}{o far} I've been glossing over the meaning of function types. A function
 type is different from other types.
 
-\begin{wrapfigure}[11]{R}{0pt}
+\begin{wrapfigure}[9]{R}{0pt}
 \raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=40mm]{images/set-hom-set.jpg}}%
+\includegraphics[width=32mm]{images/set-hom-set.jpg}}%
 \caption{Hom-set in Set is just a set}
 \end{wrapfigure}
 
@@ -18,14 +18,12 @@ same category ---because it is, after all, a \emph{set}.
 The same is not true of other categories where hom-sets are external to
 a category. They are even called \emph{external} hom-sets.
 
-\pagebreak
-\begin{wrapfigure}[9]{R}{0pt}
-\raisebox{0pt}[\dimexpr\height]{
-\includegraphics[width=40mm]{images/hom-set.jpg}}%
-\caption{Hom-set in category C is an external set}
-\end{wrapfigure}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=50mm]{images/hom-set.jpg}
+  \caption{Hom-set in category C is an external set}
+\end{figure}
 
-\noindent
 It's the self-referential nature of the category $\Set$ that makes
 function types special. But there is a way, at least in some categories,
 to construct objects that represent hom-sets. Such objects are called
@@ -65,9 +63,9 @@ with an argument $x$ (an element of $a$) and map it to
 $f x$ (the application of $f$ to $x$, which is an
 element of $b$).
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[width=40mm]{images/functionset.jpg}
+\includegraphics[width=50mm]{images/functionset.jpg}
 \caption{In Set we can pick a function $f$ from a set of functions $z$ and we can
 pick an argument $x$ from the set (type) $a$. We get an element $f x$ in the
 set (type) $b$.}
@@ -83,9 +81,9 @@ function that maps every pair $(f, x)$ to $f x$.
 So that's the pattern: a product of two objects $z$ and
 $a$ connected to another object $b$ by a morphism $g$.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[width=40mm]{images/functionpattern.jpg}
+\includegraphics[width=50mm]{images/functionpattern.jpg}
 \caption{A pattern of objects and morphisms that is the starting point of the
 universal construction}
 \end{figure}
@@ -117,9 +115,9 @@ $z$ such that the application of $g'$ factors
 through the application of $g$. (Hint: Read this sentence while
 looking at the picture.)
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[width=40mm]{images/functionranking.jpg}
+\includegraphics[width=50mm]{images/functionranking.jpg}
 \caption{Establishing a ranking between candidates for the function object}
 \end{figure}
 
@@ -156,9 +154,9 @@ way that its application morphism $g$ factorizes through
 $eval$. This object is better than any other object according to
 our ranking.
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
-\includegraphics[width=40mm]{images/universalfunctionobject.jpg}
+\includegraphics[width=50mm]{images/universalfunctionobject.jpg}
 \caption{The definition of the universal function object. This is the same
 diagram as above, but now the object $a \Rightarrow b$ is \emph{universal}.}
 \end{figure}
@@ -272,7 +270,7 @@ and
 uncurry :: (a -> b -> c) -> ((a, b) -> c)
 uncurry f (a, b) = f a b
 \end{Verbatim}
-Notice that \code{curry} is the \newterm{factorizer} for the universal
+Notice that \code{curry} is the \emph{factorizer} for the universal
 construction of the function object. This is especially apparent if it's
 rewritten in this form:
 
@@ -349,7 +347,7 @@ C++ Standard Library that are usually implemented using lookups.
 Functions like \code{isupper} or \code{isspace} are implemented
 using tables, which are equivalent to tuples of 256 Boolean values. A
 tuple is a product type, so we are dealing with products of 256
-Booleans: \code{bool × bool × bool × ... × bool}. We know from
+Booleans: {\small\texttt{bool × bool × bool × ... × bool}}. We know from
 arithmetics that an iterated product defines a power. If you
 ``multiply'' \code{bool} by itself 256 (or \code{char}) times, you
 get \code{bool} to the power of \code{char}, or \code{bool\textsuperscript{char}}.

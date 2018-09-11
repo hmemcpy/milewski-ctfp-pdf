@@ -1,8 +1,16 @@
-% !TEX TS-program = xelatex
-% !TEX encoding = UTF-8 Unicode
 % !TEX root = ctfp.tex
 
-\documentclass[11pt,twoside]{book}
+\documentclass[11pt,\OPTmodes]{book}
+
+\usepackage[papersize={\OPTpagesize},
+            top=\OPTtopmargin,
+            bottom=\OPTbottommargin,
+            inner=\OPTinnermargin,
+            outer=\OPToutermargin,
+            textwidth=\OPTtextwidth,
+            textheight=\OPTtextheight,
+            bindingoffset=\OPTbindingoffset
+            ]{geometry}
 
 % New line height: 1.05 * 1.2 = 1.26
 \renewcommand{\baselinestretch}{1.05}
@@ -66,14 +74,6 @@
 \usepackage{fancyhdr}
 \pagestyle{plain}
 \usepackage[final]{pdfpages} % inserts pages from a pdf file
-
-% Page geometry for 10-inch tablets:
-\usepackage[papersize={148mm,197mm},
-            top=21mm,
-            textwidth=111mm,  % increase one or both of these by 1mm or so to
-            textheight=148mm, % make the source compile with TeX Live 2013
-            hcentering,       % if you get "Too many unprocessed floats" error
-]{geometry}
 
 \usepackage{titlesec}  % to change the appearance of section titles
 \usepackage{listings}  % for syntax highlighted code listings
