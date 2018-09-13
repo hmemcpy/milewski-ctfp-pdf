@@ -1,8 +1,10 @@
 \includepdf[scale=0.92]{coverpage.pdf}
 \input{copyright}
-\frontmatter
+\afterpage{\blankpage}
 
+\frontmatter
 \tableofcontents
+\afterpage{\blankpage}
 
 \chapter*{Preface}
 \addcontentsline{toc}{chapter}{Preface}
@@ -114,10 +116,14 @@
 \subfile{content/3.15/Monads, Monoids, and Categories}
 
 \backmatter
+\afterpage{\blankpage}
+
 \appendix
 \addcontentsline{toc}{part}{Appendices}
 \input{index}
+\afterpage{\blankpage}
 
+\makeatletter\@openrightfalse
 \chapter*{Acknowledgments}\label{acknowledgments}
 \addcontentsline{toc}{chapter}{Acknowledgments}
 \input{acknowledgments}
@@ -129,5 +135,7 @@
 \chapter*{Copyleft notice} % Missing Label -Jared
 \addcontentsline{toc}{chapter}{Copyleft notice}
 \input{free-software}
+\@openrighttrue\makeatother
+\afterpage{\blankpage}
 
 \input{postamble}

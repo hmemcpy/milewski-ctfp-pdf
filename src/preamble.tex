@@ -90,6 +90,13 @@
   linkcolor=LinkRed,
   urlcolor=LinkRed,
 }
+\usepackage{afterpage}
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
 \usepackage{subfiles}
 \makeatletter
 \let\org@subfile\subfile
