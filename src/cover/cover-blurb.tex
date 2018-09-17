@@ -1,11 +1,9 @@
 \documentclass[
     coverheight=9.249in,
-    coverwidth=6.334in,
-    spinewidth=1.194in,
+    coverwidth=6.319in, % (pagesize - spinewidth) / 2
+    spinewidth=1.8in,
     bleedwidth=0.306in,
     11pt,
-    flapwidth=0pt,
-    markthick=0pt,
     marklength=0pt,
   ]{bookcover}
   
@@ -69,22 +67,22 @@
     \bookcovercomponent{normal}{back}{%
     \begin{minipage}[b][\coverheight][t]{\coverwidth}
       \begin{center}
-        \includegraphics[width=.9\coverwidth]{bunnies}
-        \begin{minipage}[t]{.9\coverwidth}
+        \includegraphics[width=.8\coverwidth]{bunnies}
+        \begin{minipage}[t]{.8\coverwidth}
           \input{blurb}
           \vspace{.5cm}
         \end{minipage}
         
-        \begin{minipage}{.9\textwidth}
+        \begin{minipage}{.85\textwidth}
           \rule{\textwidth}{0.4pt}
 
-          \begin{tabular}[h]{p{4cm} p{12cm}}
+          \begin{tabular}[h]{p{4cm} p{\textwidth}}
             \bartosz
             &
             \vspace{5pt}
-            \begin{minipage}[b]{.6\coverwidth}
+            \begin{minipage}[b]{.55\coverwidth}
               \fontsize{11pt}{1.4em}\selectfont\textit{Category Theory for Programmers}
-                is a compilation of blog posts by Bartosz Milewski, originally at bartoszmilewski.com.\\
+                is a compilation of blog posts by Bartosz Milewski, at bartoszmilewski.com.\\
                 Edited by Igal Tabachnik. Licenced under CC BY-SA 4.0.
           \end{minipage}
         \end{tabular}
