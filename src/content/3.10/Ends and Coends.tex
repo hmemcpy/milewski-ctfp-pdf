@@ -236,7 +236,7 @@ polymorphic functions of the type:
 \begin{Verbatim}
 type ProdP p = forall a b. (a -> b) -> p a b
 \end{Verbatim}
-These functions have different types. However, we can unify their types,
+Functions \code{lambda} and \code{rho} have different types. However, we can unify their types,
 if we form one big product type, gathering together all diagonal
 elements of \code{p}:
 
