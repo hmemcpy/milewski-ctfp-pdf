@@ -23,7 +23,7 @@ Please [report](https://github.com/hmemcpy/milewski-ctfp-pdf/issues) any formatt
 Building
 --------
 
-*For macOS Users:* The Inconsolata LGC, Linux Libertine, and Libertinus Math fonts are not included in MacTex. You need to install them separately. Download the Inconsolata LGC fonts [here](https://github.com/MihailJP/Inconsolata-LGC/downloads), the Linux Libertine fonts [here](http://sourceforge.net/projects/linuxlibertine/files/linuxlibertine/5.3.0/LinLibertineOTF_5.3.0_2012_07_02.tgz/download), and the Libertinus Math font [here](https://fontlibrary.org/en/font/libertinus-math). To install the fonts system-wide, move all the downloaded `.otf` files into the `/Library/Fonts` folder. After completing these tasks, continue with the instructions below.
+Chances for successful compilation are increased if you have almost complete installation of recent [TeX Live 2017](https://www.tug.org/texlive/) distribution (the PDF here is compiled with 2017 release). The needed OpenType fonts must be installed in the operating system. In addition, [pygments](http://pygments.org/) for Python must be installed as well.
 
 The `src` directory contains the LaTeX sources. To recompile the book, go there and enter:
 
@@ -31,23 +31,9 @@ The `src` directory contains the LaTeX sources. To recompile the book, go there 
 $ make
 ```
 
+Upon successful compilation, the files will be placed in the `out` directory next to `src`. 
+
 The file `preamble.tex` contains all the configuration and style declarations.
-
-Chances for successful compilation are increased if you have almost complete installation of recent [TeX Live](https://www.tug.org/texlive/) distribution (the PDF here is compiled with 2017 release). The needed OpenType fonts must be installed in the operating system.
-
-To remove all the generated PDFs and auxiliary files in the whole `src` tree:
-
-```bash
-$ make clean-all
-```
-
-**Tip**: you can use a utility like [entr](http://entrproject.org/) to run a command after any `*.tex` file changes, e.g.:
-
-```bash
-$ ls **/*.tex | entr make
-```
-
-This will monitor all the `*.tex` files for changes, and will execute the `make` command if any of them changes. This speeds up development significantly, as you can freely modify any of the files, and get almost instant feedback!
 
 Acknowledgements
 ----------------
