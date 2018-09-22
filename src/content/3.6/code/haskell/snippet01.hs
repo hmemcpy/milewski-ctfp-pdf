@@ -1,0 +1,1 @@
+f >=> g = join . fmap g . f

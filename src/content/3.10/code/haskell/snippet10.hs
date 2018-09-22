@@ -1,0 +1,1 @@
+type ProdP p = forall a b. (a -> b) -> p a b

@@ -1,0 +1,1 @@
+dimap id f (p a a) :: p a b

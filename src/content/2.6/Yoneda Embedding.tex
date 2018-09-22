@@ -1,3 +1,5 @@
+% !TEX root = ../../ctfp-reader.tex
+
 \lettrine[lhang=0.17]{W}{e've seen previously} that, when we fix an object $a$ in the
 category $\cat{C}$, the mapping $\cat{C}(a, -)$ is a (covariant)
 functor from $\cat{C}$ to $\Set$.
@@ -134,16 +136,11 @@ dropping the parentheses around --- the function
 Given such a converter, \code{btoa}, one can define the left hand
 side, call it\code{fromY}, as:
 
-\begin{Verbatim}
-fromY :: (a -> x) -> b -> x
-fromY f b = f (btoa b)
-\end{Verbatim}
+\src{code/haskell/snippet01.hs}
 Conversely, given a function \code{fromY} we can recover the converter
 by calling \code{fromY} with the identity:
 
-\begin{Verbatim}
-fromY id :: b -> a
-\end{Verbatim}
+\src{code/haskell/snippet02.hs}
 This establishes the bijection between functions of the type
 \code{fromY} and \code{btoa}.
 

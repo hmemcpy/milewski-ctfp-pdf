@@ -1,0 +1,1 @@
+forall a. p a a

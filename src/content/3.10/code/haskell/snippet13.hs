@@ -1,0 +1,1 @@
+forall a. f a -> g a

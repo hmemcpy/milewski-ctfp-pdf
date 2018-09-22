@@ -1,3 +1,5 @@
+% !TEX root = ../../ctfp-reader.tex
+
 \lettrine[lhang=0.17]{Y}{ou've seen how to model} types and pure functions as a category. I also
 mentioned that there is a way to model side effects, or non-pure
 functions, in category theory. Let's have a look at one such example:
@@ -307,9 +309,7 @@ The same thing in Haskell is a little more terse, and we also get a lot
 more help from the compiler. Let's start by defining the \code{Writer}
 type:
 
-\begin{Verbatim}
-type Writer a = (a, String)
-\end{Verbatim}
+\src{code/haskell/snippet01.hs}
 Here I'm just defining a type alias, an equivalent of a \code{typedef}
 (or \code{using}) in C++. The type \code{Writer} is parameterized by
 a type variable \code{a} and is equivalent to a pair of \code{a} and
@@ -319,15 +319,11 @@ parentheses, separated by a comma.
 Our morphisms are functions from an arbitrary type to some
 \code{Writer} type:
 
-\begin{Verbatim}
-a -> Writer b
-\end{Verbatim}
+\src{code/haskell/snippet02.hs}
 We'll declare the composition as a funny infix operator, sometimes
 called the ``fish'':
 
-\begin{Verbatim}
-(>=>) :: (a -> Writer b) -> (b -> Writer c) -> (a -> Writer c)
-\end{Verbatim}
+\src{code/haskell/snippet03.hs}
 It's a function of two arguments, each being a function on its own, and
 returning a function. The first argument is of the type
 \code{(a -> Writer b)}, the second is
@@ -338,12 +334,7 @@ Here's the definition of this infix operator --- the two arguments
 \code{m1} and \code{m2} appearing on either side of the fishy
 symbol:
 
-\begin{Verbatim}
-m1 >=> m2 = \x ->
-    let (y, s1) = m1 x
-        (z, s2) = m2 y
-    in (z, s1 ++ s2)
-\end{Verbatim}
+\src{code/haskell/snippet04.hs}
 The result is a lambda function of one argument \code{x}. The lambda
 is written as a backslash --- think of it as the Greek letter λ with an
 amputated leg.
@@ -367,22 +358,13 @@ I will also define the identity morphism for our category, but for
 reasons that will become clear much later, I will call it
 \code{return}.
 
-\begin{Verbatim}
-return :: a -> Writer a
-return x = (x, "")
-\end{Verbatim}
+\src{code/haskell/snippet05.hs}
 For completeness, let's have the Haskell versions of the embellished
 functions \code{upCase} and \code{toWords}:
 
-\begin{Verbatim}
-upCase :: String -> Writer String
-upCase s = (map toUpper s, "upCase ")
-\end{Verbatim}
+\src{code/haskell/snippet06.hs}
 
-\begin{Verbatim}
-toWords :: String -> Writer [String]
-toWords s = (words s, "toWords ")
-\end{Verbatim}
+\src{code/haskell/snippet07.hs}
 The function \code{map} corresponds to the C++ \code{transform}. It
 applies the character function \code{toUpper} to the string
 \code{s}. The auxiliary function \code{words} is defined in the
@@ -391,10 +373,7 @@ standard Prelude library.
 Finally, the composition of the two functions is accomplished with the
 help of the fish operator:
 
-\begin{Verbatim}
-process :: String -> Writer [String]
-process = upCase >=> toWords
-\end{Verbatim}
+\src{code/haskell/snippet08.hs}
 
 \section{Kleisli Categories}
 

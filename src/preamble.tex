@@ -126,10 +126,40 @@
 \renewcommand{\partname}{}
 \renewcommand{\thepart}{}
 
+\usepackage{xifthen}
+\newcommand{\ifequals}[3]{\ifthenelse{\equal{#1}{#2}}{#3}{}}
+\newcommand{\case}[2]{#1 #2} % Dummy, so \renewcommand has something to overwrite...
+\newenvironment{switch}[1]{\renewcommand{\case}{\ifequals{#1}}}{}
+\usepackage[abspath]{currfile}
 \usepackage{minted}
-\usemintedstyle{bw}
-\newminted{cpp}{}
-\newminted{haskell}{}
+\usepackage{noindentafter}
+\setminted[text]{fontsize=\small,breaklines}
+\makeatletter
+\newcommand{\src}[1]{
+  \filename@parse{#1}
+  \begin{switch}{\filename@ext}
+    \case{hs}{
+      % \mdfsetup{%
+        % frametitle={%
+        %   \tikz[baseline=(current bounding box.east),outer sep=0pt]
+        %   \node[anchor=east,rectangle,fill=blue!20]
+        %   {\includegraphics[height=8pt]{fig/icons/haskell-2.png}};},
+        % linecolor=blue!20,%
+        % innertopmargin=0pt,
+        % linewidth=.5pt,
+        % topline=true,
+        % frametitleaboveskip=-9pt,
+      % }
+      % \begin{mdframed}
+        \inputminted[autogobble]{text}{\currfileabsdir#1}
+      % \end{mdframed}
+    }
+  \end{switch}
+
+  % based on https://texblog.org/2015/09/30/fancy-boxes-for-theorem-lemma-and-proof-with-mdframed/
+  \NoIndentAfterThis
+}
+\makeatother
 
 \newcommand{\acronym}[1]{\textsc{\fontspec[Numbers={OldStyle}]{Linux Libertine O}\MakeLowercase{#1}}}
 \newcommand{\newterm}[1]{\index{#1}\emph{#1}}

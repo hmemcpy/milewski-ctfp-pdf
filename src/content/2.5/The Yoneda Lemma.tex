@@ -1,3 +1,5 @@
+% !TEX root = ../../ctfp-reader.tex
+
 \lettrine[lhang=0.17]{M}{ost constructions in} category theory are generalizations of results
 from other more specific areas of mathematics. Things like products,
 coproducts, monoids, exponentials, etc., have been known long before
@@ -215,24 +217,17 @@ the image of the functor $F$ in $\Set$.
 We have already encountered the hom-functor in Haskell under the guise
 of the reader functor:
 
-\begin{Verbatim}
-type Reader a x = a -> x
-\end{Verbatim}
+\src{code/haskell/snippet01.hs}
 The reader maps morphisms (here, functions) by precomposition:
 
-\begin{Verbatim}
-instance Functor (Reader a) where
-    fmap f h = f . h
-\end{Verbatim}
+\src{code/haskell/snippet02.hs}
 The Yoneda lemma tells us that the reader functor can be naturally
 mapped to any other functor.
 
 A natural transformation is a polymorphic function. So given a functor
 \code{F}, we have a mapping to it from the reader functor:
 
-\begin{Verbatim}
-alpha :: forall x . (a -> x) -> F x
-\end{Verbatim}
+\src{code/haskell/snippet03.hs}
 As usual, \code{forall} is optional, but I like to write it explicitly
 to emphasize parametric polymorphism of natural transformations.
 
@@ -252,26 +247,18 @@ equivalent --- they contain the same information.
 Another way of saying this is: Give me a polymorphic function of the
 type:
 
-\begin{Verbatim}
-alpha :: forall x . (a -> x) -> F x
-\end{Verbatim}
+\src{code/haskell/snippet04.hs}
 and I'll produce a container of \code{a}. The trick is the one we used
 in the proof of the Yoneda lemma: we call this function with \code{id}
 to get an element of \code{F a}:
 
-\begin{Verbatim}
-alpha id :: F a
-\end{Verbatim}
+\src{code/haskell/snippet05.hs}
 The converse is also true: Given a value of the type \code{F a}:
 
-\begin{Verbatim}
-fa :: F a
-\end{Verbatim}
+\src{code/haskell/snippet06.hs}
 one can define a polymorphic function:
 
-\begin{Verbatim}
-alpha h = fmap h fa
-\end{Verbatim}
+\src{code/haskell/snippet07.hs}
 of the correct type. You can easily go back and forth between the two
 representations.
 

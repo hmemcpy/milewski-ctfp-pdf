@@ -1,3 +1,5 @@
+% !TEX root = ../../ctfp-reader.tex
+
 \lettrine[lhang=0.17]{M}{onoids are an important} concept in both category theory and in
 programming. Categories correspond to strongly typed languages, monoids
 to untyped languages. That's because in a monoid you can compose any two
@@ -72,11 +74,7 @@ problems with infinite lists.)
 
 A monoid in Haskell is defined by the type class:
 
-\begin{Verbatim}
-class Monoid m where
-    mempty :: m
-    mappend :: m -> m -> m
-\end{Verbatim}
+\src{code/haskell/snippet01.hs}
 This just says that every \code{Monoid} must have a neutral element,
 which is called \code{mempty}, and a binary function (multiplication)
 called \code{mappend}. The unit and associativity laws cannot be
@@ -86,11 +84,7 @@ monoid is instantiated.
 The fact that a list of any type forms a monoid is described by this
 instance definition:
 
-\begin{Verbatim}
-instance Monoid [a] where
-    mempty = []
-    mappend = (++)
-\end{Verbatim}
+\src{code/haskell/snippet02.hs}
 It states that an empty list \code{{[}{]}} is the unit element, and
 list concatenation \code{(++)} is the binary operation.
 
@@ -99,10 +93,7 @@ with the set \code{a} serving as generators. The set of natural
 numbers with multiplication is not a free monoid, because we identify
 lots of products. Compare for instance:
 
-\begin{Verbatim}
-2 * 3 = 6
-[2] ++ [3] = [2, 3] // not the same as [6]
-\end{Verbatim}
+\src{code/haskell/snippet03.hs}
 That was easy, but the question is, can we perform this free
 construction in category theory, where we are not allowed to look inside
 objects? We'll use our workhorse: the universal construction.
@@ -128,23 +119,17 @@ structure-preserving functions are called \newterm{homomorphisms}. A monoid
 homomorphism must map the product of two elements to the product of the
 mapping of the two elements:
 
-\begin{Verbatim}
-h (a * b) = h a * h b
-\end{Verbatim}
+\src{code/haskell/snippet04.hs}
 and it must map unit to unit.
 
 For instance, consider a homomorphism from lists of integers to
 integers. If we map \code{{[}2{]}} to 2 and \code{{[}3{]}} to 3, we
 have to map \code{{[}2, 3{]}} to 6, because concatenation
 
-\begin{Verbatim}
-[2] ++ [3] = [2, 3]
-\end{Verbatim}
+\src{code/haskell/snippet05.hs}
 becomes multiplication
 
-\begin{Verbatim}
-2 * 3 = 6
-\end{Verbatim}
+\src{code/haskell/snippet06.hs}
 Now let's forget about the internal structure of individual monoids, and
 only look at them as objects with corresponding morphisms. You get a
 category $\cat{Mon}$ of monoids.
@@ -189,9 +174,7 @@ $\Set$.
 The pattern we are going to match consists of a monoid $m$ --- an
 object of $\cat{Mon}$ --- and a function $p$ in $\Set$:
 
-\begin{Verbatim}
-p :: x -> U m
-\end{Verbatim}
+\src{code/haskell/snippet07.hs}
 where $U$ is our forgetful functor from $\cat{Mon}$ to
 $\Set$. This is a weird heterogeneous pattern --- half in
 $\cat{Mon}$ and half in $\Set$.
@@ -212,21 +195,15 @@ We also have to define the ranking among candidates. Suppose we have
 another candidate: a monoid $n$ and a function that identifies
 the generators in its X-ray image:
 
-\begin{Verbatim}
-q :: x -> U n
-\end{Verbatim}
+\src{code/haskell/snippet08.hs}
 We'll say that $m$ is better than $n$ if there is a
 morphism of monoids (that's a structure-preserving homomorphism):
 
-\begin{Verbatim}
-h :: m -> n
-\end{Verbatim}
+\src{code/haskell/snippet09.hs}
 whose image under $U$ (remember, $U$ is a functor, so it
 maps morphisms to functions) factorizes through $p$:
 
-\begin{Verbatim}
-q = U h . p
-\end{Verbatim}
+\src{code/haskell/snippet10.hs}
 If you think of $p$ as selecting the generators in $m$;
 and $q$ as selecting ``the same'' generators in $n$; then
 you can think of $h$ as mapping these generators between the two

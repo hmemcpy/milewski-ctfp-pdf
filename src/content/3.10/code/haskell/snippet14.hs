@@ -1,0 +1,1 @@
+data Coend p = forall a. Coend (p a a)

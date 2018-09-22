@@ -1,3 +1,5 @@
+% !TEX root = ../../ctfp-reader.tex
+
 \lettrine[lhang=0.17]{Y}{ou can get} real appreciation for categories by studying a variety of
 examples. Categories come in all shapes and sizes and often pop up in
 unexpected places. We'll start with something really simple.
@@ -103,11 +105,7 @@ In Haskell we can define a type class for monoids --- a type for which
 there is a neutral element called \code{mempty} and a binary operation
 called \code{mappend}:
 
-\begin{Verbatim}
-class Monoid m where
-    mempty  :: m
-    mappend :: m -> m -> m
-\end{Verbatim}
+\src{code/haskell/snippet01.hs}
 The type signature for a two-argument function,
 \code{m -> m -> m}, might look strange at first,
 but it will make perfect sense after we talk about currying. You may
@@ -133,11 +131,7 @@ be a monoid by providing the implementation of \code{mempty} and
 \code{mappend} (this is, in fact, done for you in the standard
 Prelude):
 
-\begin{Verbatim}
-instance Monoid String where
-    mempty = ""
-    mappend = (++)
-\end{Verbatim}
+\src{code/haskell/snippet02.hs}
 Here, we have reused the list concatenation operator \code{(++)},
 because a \code{String} is just a list of characters.
 

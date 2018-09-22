@@ -1,0 +1,1 @@
+sum = foldr (\e s -> e + s) 0.0

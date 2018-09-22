@@ -1,0 +1,1 @@
+fmap f = id >=> (\x -> return (f x))

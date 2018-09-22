@@ -1,0 +1,1 @@
+atomicNumber :: Element -> Int

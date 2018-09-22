@@ -1,0 +1,1 @@
+foldr f z [x] = x `f` z

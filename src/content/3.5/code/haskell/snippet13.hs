@@ -1,0 +1,1 @@
+newtype Writer w a = Writer (a, w)

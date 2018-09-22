@@ -1,3 +1,5 @@
+% !TEX root = ../../ctfp-reader.tex
+
 \lettrine[lhang=0.17]{I}{n mathematics we have} various ways of saying that one thing is like
 another. The strictest is equality. Two things are equal if there is no
 way to distinguish one from another. One can be substituted for the
@@ -17,10 +19,7 @@ means that it's part of a round trip that lands you in the same spot, no
 matter on which side you start. In the case of pairs, this isomorphism
 is called \code{swap}:
 
-\begin{Verbatim}
-swap :: (a,b) -> (b,a)
-swap (a,b) = (b,a)
-\end{Verbatim}
+\src{code/haskell/snippet01.hs}
 \code{swap} happens to be its own inverse.
 
 \section{Adjunction and Unit/Counit Pair}
@@ -185,14 +184,10 @@ We often see unit and counit in Haskell under different names. Unit is
 known as \code{return} (or \code{pure}, in the definition of
 \code{Applicative}):
 
-\begin{Verbatim}
-return :: d -> m d
-\end{Verbatim}
+\src{code/haskell/snippet02.hs}
 and counint as \code{extract}:
 
-\begin{Verbatim}
-extract :: w c -> c
-\end{Verbatim}
+\src{code/haskell/snippet03.hs}
 Here, \code{m} is the (endo-) functor corresponding to $R \circ L$,
 and \code{w} is the (endo-) functor corresponding to $L \circ R$. As
 we'll see later, they are part of the definition of a monad and a
@@ -215,12 +210,7 @@ We can however define adjunctions of \newterm{endofunctors} in Haskell.
 Here's part of the definition taken from
 \code{Data.Functor.Adjunction}:
 
-\begin{Verbatim}
-class (Functor f, Representable u) =>
-      Adjunction f u | f -> u, u -> f where
-    unit :: a -> u (f a)
-    counit :: f (u a) -> a
-\end{Verbatim}
+\src{code/haskell/snippet04.hs}
 This definition requires some explanation. First of all, it describes a
 multi-parameter type class --- the two parameters being \code{f} and
 \code{u}. It establishes a relation called \code{Adjunction} between
@@ -343,22 +333,12 @@ transformations $\varphi$ and $\psi$ are replaced by polymorphic
 \code{rightAdjunct}, respectively. The functors $L$ and
 $R$ are called \code{f} and \code{u}:
 
-\begin{Verbatim}
-class (Functor f, Representable u) => 
-  Adjunction f u | f -> u, u -> f where
-    leftAdjunct  :: (f a -> b) -> (a -> u b)
-    rightAdjunct :: (a -> u b) -> (f a -> b) 
-\end{Verbatim}
+\src{code/haskell/snippet05.hs}
 The equivalence between the \code{unit}/\code{counit} formulation
 and the\\ \code{leftAdjunct}/\code{rightAdjunct} formulation is
 witnessed by these mappings:
 
-\begin{Verbatim}
-unit           = leftAdjunct id
-counit         = rightAdjunct id
-leftAdjunct f  = fmap f . unit
-rightAdjunct f = counit . fmap f
-\end{Verbatim}
+\src{code/haskell/snippet06.hs}
 It's very instructive to follow the translation from the categorical
 description of the adjunction to Haskell code. I highly encourage this
 as an exercise.
@@ -407,16 +387,10 @@ factorizes $p$ and $q$ through $fst$ and $snd$.
 As we've seen earlier, in Haskell, we can implement a \code{factorizer} that generates this
 morphism from the two projections:
 
-\begin{Verbatim}
-factorizer :: (c -> a) -> (c -> b) -> (c -> (a, b))
-factorizer p q = \x -> (p x, q x)
-\end{Verbatim}
+\src{code/haskell/snippet07.hs}
 It's easy to verify that the factorization conditions hold:
 
-\begin{Verbatim}
-fst . factorizer p q = p
-snd . factorizer p q = q
-\end{Verbatim}
+\src{code/haskell/snippet08.hs}
 We have a mapping that takes a pair of morphisms \code{p} and
 \code{q} and produces another morphism
 \code{m = factorizer p q}.
@@ -537,9 +511,7 @@ Haskell, the $Product$ bifunctor is written simply as
 \code{(,)}. You can apply it to two types and get their product type,
 for instance:
 
-\begin{Verbatim}
-(,) Int Bool ~ (Int, Bool)
-\end{Verbatim}
+\src{code/haskell/snippet09.hs}
 
 \section{Exponential from Adjunction}
 

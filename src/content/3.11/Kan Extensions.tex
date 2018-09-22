@@ -1,3 +1,5 @@
+% !TEX root = ../../ctfp-reader.tex
+
 \lettrine[lhang=0.17]{S}{o far we've been} mostly working with a single category or a pair of
 categories. In some cases that was a little too constraining.
 
@@ -354,9 +356,7 @@ Haskell. Let's start with the right extension:
 We replace the end with the universal quantifier, and hom-sets with
 function types:
 
-\begin{Verbatim}
-newtype Ran k d a = Ran (forall i. (a -> k i) -> d i)
-\end{Verbatim}
+\src{code/haskell/snippet01.hs}
 Looking at this definition, it's clear that \code{Ran} must contain a
 value of type \code{a} to which the function can be applied, and a
 natural transformation between the two functors \code{k} and
@@ -364,9 +364,7 @@ natural transformation between the two functors \code{k} and
 and \code{d} is the list functor, and you were given a
 \code{Ran Tree {[}{]} String}. If you pass it a function:
 
-\begin{Verbatim}
-f :: String -> Tree Int
-\end{Verbatim}
+\src{code/haskell/snippet02.hs}
 you'll get back a list of \code{Int}, and so on. The right Kan
 extension will use your function to produce a tree and then repackage it
 into a list. For instance, you may pass it a parser that generates a
@@ -378,27 +376,17 @@ given functor by replacing the functor \code{d} with the identity
 functor. This leads to the left adjoint of a functor \code{k} being
 represented by the set of polymorphic functions of the type:
 
-\begin{Verbatim}
-forall i. (a -> k i) -> i
-\end{Verbatim}
+\src{code/haskell/snippet03.hs}
 Suppose that \code{k} is the forgetful functor from the category of
 monoids. The universal quantifier then goes over all monoids. Of course,
 in Haskell we cannot express monoidal laws, but the following is a
 decent approximation of the resulting free functor (the forgetful
 functor \code{k} is an identity on objects):
 
-\begin{Verbatim}
-type Lst a = forall i. Monoid i => (a -> i) -> i
-\end{Verbatim}
+\src{code/haskell/snippet04.hs}
 As expected, it generates free monoids, or Haskell lists:
 
-\begin{Verbatim}
-toLst :: [a] -> Lst a
-toLst as = \f -> foldMap f as
-
-fromLst :: Lst a -> [a]
-fromLst f = f (\a -> [a])
-\end{Verbatim}
+\src{code/haskell/snippet05.hs}
 The left Kan extension is a coend:
 \[\Lan_{K}D\ a = \int^i \cat{A}(K\ i, a)\times{}D\ i\]
 so it translates to an existential quantifier. Symbolically:
@@ -409,9 +397,7 @@ Lan k d a = exists i. (k i -> a, d i)
 This can be encoded in Haskell using \acronym{GADT}s, or using a universally
 quantified data constructor:
 
-\begin{Verbatim}
-data Lan k d a = forall i. Lan (k i -> a) (d i)
-\end{Verbatim}
+\src{code/haskell/snippet06.hs}
 The interpretation of this data structure is that it contains a function
 that takes a container of some unspecified \code{i}s and produces an
 \code{a}. It also has a container of those \code{i}s. Since you have
@@ -427,19 +413,11 @@ The left Kan extension can be used to calculate the right adjoint of a
 functor. We know that the right adjoint of the product functor is the
 exponential, so let's try to implement it using the Kan extension:
 
-\begin{Verbatim}
-type Exp a b = Lan ((,) a) I b
-\end{Verbatim}
+\src{code/haskell/snippet07.hs}
 This is indeed isomorphic to the function type, as witnessed by the
 following pair of functions:
 
-\begin{Verbatim}
-toExp :: (a -> b) -> Exp a b
-toExp f = Lan (f . fst) (I ())
-
-fromExp :: Exp a b -> (a -> b)
-fromExp (Lan f (I x)) = \a -> f (a, x)
-\end{Verbatim}
+\src{code/haskell/snippet08.hs}
 Notice that, as described earlier in the general case, we performed the
 following steps:
 
@@ -480,16 +458,11 @@ It's called a free functor based on $F$.
 
 In Haskell, we would write it as:
 
-\begin{Verbatim}
-data FreeF f a = forall i. FMap (i -> a) (f i)
-\end{Verbatim}
+\src{code/haskell/snippet09.hs}
 Indeed, for any type constructor \code{f}, \code{FreeF f} is a
 functor:
 
-\begin{Verbatim}
-instance Functor (FreeF f) where
-    fmap g (FMap h fi) = FMap (g . h) fi
-\end{Verbatim}
+\src{code/haskell/snippet10.hs}
 As you can see, the free functor fakes the lifting of a function by
 recording both the function and its argument. It accumulates the lifted
 functions by recording their composition. Functor rules are
@@ -499,12 +472,7 @@ More Extensible Effects}.
 
 Alternatively, we can use the right Kan extension for the same purpose:
 
-\begin{Verbatim}
-newtype FreeF f a = FreeF (forall i. (a -> i) -> f i)
-\end{Verbatim}
+\src{code/haskell/snippet11.hs}
 It's easy to check that this is indeed a functor:
 
-\begin{Verbatim}
-instance Functor (FreeF f) where
-    fmap g (FreeF r) = FreeF (\bi -> r (bi . g))
-\end{Verbatim}
+\src{code/haskell/snippet12.hs}

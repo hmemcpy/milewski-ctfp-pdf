@@ -1,0 +1,1 @@
+data Lan k d a = forall i. Lan (k i -> a) (d i)

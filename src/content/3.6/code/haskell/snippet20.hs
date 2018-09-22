@@ -1,0 +1,1 @@
+newtype Reader s a = Reader (s -> a)

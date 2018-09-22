@@ -1,0 +1,1 @@
+extract (Cons a _) = a

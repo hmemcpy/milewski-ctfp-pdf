@@ -1,0 +1,1 @@
+h = join . fmap g . f

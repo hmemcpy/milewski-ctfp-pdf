@@ -1,0 +1,1 @@
+a -> Store s a

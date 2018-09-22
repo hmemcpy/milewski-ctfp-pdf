@@ -1,0 +1,1 @@
+data Store s a = Store (s -> a) s

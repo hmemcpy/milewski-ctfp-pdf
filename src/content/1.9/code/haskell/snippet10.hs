@@ -1,0 +1,1 @@
+f :: Either Int Double -> String

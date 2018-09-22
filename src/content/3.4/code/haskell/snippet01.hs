@@ -1,0 +1,1 @@
+vlen = sqrt . sum . fmap (flip (^) 2)

@@ -1,0 +1,1 @@
+alpha :: Reader () a -> Maybe a

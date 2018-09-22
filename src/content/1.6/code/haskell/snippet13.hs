@@ -1,0 +1,1 @@
+data Stmt = Stmt String Bool

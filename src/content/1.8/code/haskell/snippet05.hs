@@ -1,0 +1,1 @@
+data Identity a = Identity a

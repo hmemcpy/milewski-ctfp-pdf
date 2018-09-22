@@ -1,3 +1,5 @@
+% !TEX root = ../../ctfp-reader.tex
+
 \lettrine[lhang=0.17]{W}{e talked about} functors as mappings between categories that preserve
 their structure.
 
@@ -150,16 +152,12 @@ alpha\textsubscript{a} :: F a -> G a
 A natural transformation is a polymorphic function that is defined for
 all types \code{a}:
 
-\begin{Verbatim}
-alpha :: forall a . F a -> G a
-\end{Verbatim}
+\src{code/haskell/snippet01.hs}
 The \code{forall a} is optional in Haskell (and in fact requires
 turning on the language extension \code{ExplicitForAll}). Normally,
 you would write it like this:
 
-\begin{Verbatim}
-alpha :: F a -> G a
-\end{Verbatim}
+\src{code/haskell/snippet02.hs}
 Keep in mind that it's really a family of functions parameterized by
 \code{a}. This is another example of the terseness of the Haskell
 syntax. A similar construct in C++ would be slightly more verbose:
@@ -188,9 +186,7 @@ classes and type families.
 Haskell's parametric polymorphism has an unexpected consequence: any
 polymorphic function of the type:
 
-\begin{Verbatim}
-alpha :: F a -> G a
-\end{Verbatim}
+\src{code/haskell/snippet03.hs}
 where \code{F} and \code{G} are functors, automatically satisfies
 the naturality condition. Here it is in categorical notation ($f$
 is a function $f \Colon a \to b$):
@@ -243,49 +239,30 @@ Let's see a few examples of natural transformations in Haskell. The
 first is between the list functor, and the \code{Maybe} functor. It
 returns the head of the list, but only if the list is non-empty:
 
-\begin{Verbatim}
-safeHead :: [a] -> Maybe a
-safeHead [] = Nothing
-safeHead (x:xs) = Just x
-\end{Verbatim}
+\src{code/haskell/snippet04.hs}
 It's a function polymorphic in \code{a}. It works for any type
 \code{a}, with no limitations, so it is an example of parametric
 polymorphism. Therefore it is a natural transformation between the two
 functors. But just to convince ourselves, let's verify the naturality
 condition.
 
-\begin{Verbatim}
-fmap f . safeHead = safeHead . fmap f
-\end{Verbatim}
+\src{code/haskell/snippet05.hs}
 We have two cases to consider; an empty list:
 
-\begin{Verbatim}
-fmap f (safeHead []) = fmap f Nothing = Nothing
-\end{Verbatim}
+\src{code/haskell/snippet06.hs}
 
-\begin{Verbatim}
-safeHead (fmap f []) = safeHead [] = Nothing
-\end{Verbatim}
+\src{code/haskell/snippet07.hs}
 and a non-empty list:
 
-\begin{Verbatim}
-fmap f (safeHead (x:xs)) = fmap f (Just x) = Just (f x)
-\end{Verbatim}
-\begin{Verbatim}
-safeHead (fmap f (x:xs)) = safeHead (f x : fmap f xs) = Just (f x)
-\end{Verbatim}
+\src{code/haskell/snippet08.hs}
+
+\src{code/haskell/snippet09.hs}
 I used the implementation of \code{fmap} for lists:
 
-\begin{Verbatim}
-fmap f [] = []
-fmap f (x:xs) = f x : fmap f xs
-\end{Verbatim}
+\src{code/haskell/snippet10.hs}
 and for \code{Maybe}:
 
-\begin{Verbatim}
-fmap f Nothing = Nothing
-fmap f (Just x) = Just (f x)
-\end{Verbatim}
+\src{code/haskell/snippet11.hs}
 An interesting case is when one of the functors is the trivial
 \code{Const} functor. A natural transformation from or to a
 \code{Const} functor looks just like a function that's either
@@ -294,47 +271,30 @@ polymorphic in its return type or in its argument type.
 For instance, \code{length} can be thought of as a natural
 transformation from the list functor to the \code{Const Int} functor:
 
-\begin{Verbatim}
-length :: [a] -> Const Int a
-length [] = Const 0
-length (x:xs) = Const (1 + unConst (length xs))
-\end{Verbatim}
+\src{code/haskell/snippet12.hs}
 Here, \code{unConst} is used to peel off the \code{Const}
 constructor:
 
-\begin{Verbatim}
-unConst :: Const c a -> c
-unConst (Const x) = x
-\end{Verbatim}
+\src{code/haskell/snippet13.hs}
 Of course, in practice \code{length} is defined as:
 
-\begin{Verbatim}
-length :: [a] -> Int
-\end{Verbatim}
+\src{code/haskell/snippet14.hs}
 which effectively hides the fact that it's a natural transformation.
 
 Finding a parametrically polymorphic function \emph{from} a
 \code{Const} functor is a little harder, since it would require the
 creation of a value from nothing. The best we can do is:
 
-\begin{Verbatim}
-scam :: Const Int a -> Maybe a
-scam (Const x) = Nothing
-\end{Verbatim}
+\src{code/haskell/snippet15.hs}
 Another common functor that we've seen already, and which will play an
 important role in the Yoneda lemma, is the \code{Reader} functor. I
 will rewrite its definition as a \code{newtype}:
 
-\begin{Verbatim}
-newtype Reader e a = Reader (e -> a)
-\end{Verbatim}
+\src{code/haskell/snippet16.hs}
 It is parameterized by two types, but is (covariantly) functorial only
 in the second one:
 
-\begin{Verbatim}
-instance Functor (Reader e) where
-    fmap f (Reader g) = Reader (\x -> f (g x))
-\end{Verbatim}
+\src{code/haskell/snippet17.hs}
 For every type \code{e}, you can define a family of natural
 transformations from \code{Reader e} to any other functor \code{f}.
 We'll see later that the members of this family are always in one to one
@@ -349,19 +309,13 @@ These are just all the functions that pick a single element from the set
 \code{a}. Now let's consider natural transformations from this functor
 to the \code{Maybe} functor:
 
-\begin{Verbatim}
-alpha :: Reader () a -> Maybe a
-\end{Verbatim}
+\src{code/haskell/snippet18.hs}
 There are only two of these, \code{dumb} and \code{obvious}:
 
-\begin{Verbatim}
-dumb (Reader _) = Nothing
-\end{Verbatim}
+\src{code/haskell/snippet19.hs}
 and
 
-\begin{Verbatim}
-obvious (Reader g) = Just (g ())
-\end{Verbatim}
+\src{code/haskell/snippet20.hs}
 (The only thing you can do with \code{g} is to apply it to the unit
 value \code{()}.)
 
@@ -392,49 +346,34 @@ opposite category to Haskell types.
 You might remember the example of a contravariant functor we've looked
 at before:
 
-\begin{Verbatim}
-newtype Op r a = Op (a -> r)
-\end{Verbatim}
+\src{code/haskell/snippet21.hs}
 This functor is contravariant in \code{a}:
 
-\begin{Verbatim}
-instance Contravariant (Op r) where
-    contramap f (Op g) = Op (g . f)
-\end{Verbatim}
+\src{code/haskell/snippet22.hs}
 We can write a polymorphic function from, say, \code{Op Bool} to
 \code{Op String}:
 
-\begin{Verbatim}
-predToStr (Op f) = Op (\x -> if f x then "T" else "F")
-\end{Verbatim}
+\src{code/haskell/snippet23.hs}
 But since the two functors are not covariant, this is not a natural
 transformation in $\Hask$. However, because they are both
 contravariant, they satisfy the ``opposite'' naturality condition:
 
-\begin{Verbatim}
-contramap f . predToStr = predToStr . contramap f
-\end{Verbatim}
+\src{code/haskell/snippet24.hs}
 Notice that the function \code{f} must go in the opposite direction
 than what you'd use with \code{fmap}, because of the signature of
 \code{contramap}:
 
-\begin{Verbatim}
-contramap :: (b -> a) -> (Op Bool a -> Op Bool b)
-\end{Verbatim}
+\src{code/haskell/snippet25.hs}
 Are there any type constructors that are not functors, whether covariant
 or contravariant? Here's one example:
 
-\begin{Verbatim}
-a -> a
-\end{Verbatim}
+\src{code/haskell/snippet26.hs}
 This is not a functor because the same type \code{a} is used both in
 the negative (contravariant) and positive (covariant) position. You
 can't implement \code{fmap} or \code{contramap} for this type.
 Therefore a function of the signature:
 
-\begin{Verbatim}
-(a -> a) -> f a
-\end{Verbatim}
+\src{code/haskell/snippet27.hs}
 where \code{f} is an arbitrary functor, cannot be a natural
 transformation. Interestingly, there is a generalization of natural
 transformations, called dinatural transformations, that deals with such

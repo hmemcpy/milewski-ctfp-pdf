@@ -1,0 +1,1 @@
+type IO a = RealWorld -> (a, RealWorld)

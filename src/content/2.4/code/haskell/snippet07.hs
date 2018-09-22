@@ -1,0 +1,1 @@
+fmap f . alpha = alpha . fmap f

@@ -1,0 +1,1 @@
+type Writer a = (a, String)

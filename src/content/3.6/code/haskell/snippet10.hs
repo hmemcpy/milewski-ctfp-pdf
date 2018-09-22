@@ -1,0 +1,1 @@
+mu . bimap id mu = mu . bimap mu id

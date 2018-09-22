@@ -1,0 +1,1 @@
+predToStr (Op f) = Op (\x -> if f x then "T" else "F")

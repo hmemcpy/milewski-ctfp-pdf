@@ -1,0 +1,1 @@
+data Const c a = Const c

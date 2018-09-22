@@ -1,0 +1,1 @@
+data NothingType = Nothing

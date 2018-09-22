@@ -1,3 +1,5 @@
+% !TEX root = ../../ctfp-reader.tex
+
 \lettrine[lhang=0.17]{I}{f we interpret} endofunctors as ways of defining expressions, algebras
 let us evaluate them and monads let us form and manipulate them. By
 combining algebras with monads we not only gain a lot of functionality
@@ -68,35 +70,26 @@ $T$ in anticipation of what follows):
 \noindent
 We can also express these conditions in Haskell:
 
-\begin{Verbatim}
-alg . return = id
-alg . join = alg . fmap alg
-\end{Verbatim}
+\src{code/haskell/snippet01.hs}
 Let's look at a small example. An algebra for a list endofunctor
 consists of some type \code{a} and a function that produces an
 \code{a} from a list of \code{a}. We can express this function using
 \code{foldr} by choosing both the element type and the accumulator
 type to be equal to \code{a}:
 
-\begin{Verbatim}
-foldr :: (a -> a -> a) -> a -> [a] -> a
-\end{Verbatim}
+\src{code/haskell/snippet02.hs}
 This particular algebra is specified by a two-argument function, let's
 call it \code{f}, and a value \code{z}. The list functor happens to
 also be a monad, with \code{return} turning a value into a singleton
 list. The composition of the algebra, here \code{foldr f z}, after
 \code{return} takes \code{x} to:
 
-\begin{Verbatim}
-foldr f z [x] = x `f` z
-\end{Verbatim}
+\src{code/haskell/snippet03.hs}
 where the action of \code{f} is written in the infix notation. The
 algebra is compatible with the monad if the following coherence
 condition is satisfied for every \code{x}:
 
-\begin{Verbatim}
-x `f` z = x
-\end{Verbatim}
+\src{code/haskell/snippet04.hs}
 If we look at \code{f} as a binary operator, this condition tells us
 that \code{z} is the right unit.
 
@@ -282,9 +275,7 @@ h &= \mu \circ (T\ g) \circ f
 \end{align*}
 In Haskell we would write it as:
 
-\begin{Verbatim}
-h = join . fmap g . f
-\end{Verbatim}
+\src{code/haskell/snippet05.hs}
 There is a functor $F$ from $\cat{C}$ to $\cat{C}_T$
 which acts trivially on objects. On morphims, it maps $f$ in
 $\cat{C}$ to a morphism in $\cat{C}_T$ by creating a
@@ -296,9 +287,7 @@ corresponding Kleisli arrow:
 \[\eta \circ f\]
 In Haskell we'd write it as:
 
-\begin{Verbatim}
-return . f
-\end{Verbatim}
+\src{code/haskell/snippet06.hs}
 We can also define a functor $G$ from $\cat{C}_T$
 back to $\cat{C}$. It takes an object $a$ from the Kleisli
 category and maps it to an object $T\ a$ in $\cat{C}$. Its action 
@@ -383,9 +372,7 @@ coalgebra:
 \[coalg_s \Colon a \to Store\ s\ a\]
 for the functor $Store\ s$:
 
-\begin{Verbatim}
-data Store s a = Store (s -> a) s
-\end{Verbatim}
+\src{code/haskell/snippet07.hs}
 This coalgebra can be also expressed as a pair of functions:
 \begin{align*}
 set &\Colon a \to s \to a \\
@@ -399,11 +386,7 @@ applied $\Set$ is a function $s \to a$.
 
 We also know that $Store\ s$ is a comonad:
 
-\begin{Verbatim}
-instance Comonad (Store s) where
-    extract (Store f s) = f s
-    duplicate (Store f s) = Store (Store f) s
-\end{Verbatim}
+\src{code/haskell/snippet08.hs}
 The question is: Under what conditions is a lens a coalgebra for this
 comonad? The first coherence condition:
 \[\varepsilon_a \circ coalg = \idarrow[a]\]
@@ -417,42 +400,28 @@ The second condition:
 requires a little more work. First, recall the definition of
 \code{fmap} for the \code{Store} functor:
 
-\begin{Verbatim}
-fmap g (Store f s) = Store (g . f) s
-\end{Verbatim}
+\src{code/haskell/snippet09.hs}
 Applying \code{fmap coalg} to the result of \code{coalg} gives us:
 
-\begin{Verbatim}
-Store (coalg . set a) (get a)
-\end{Verbatim}
+\src{code/haskell/snippet10.hs}
 On the other hand, applying \code{duplicate} to the result of
 \code{coalg} produces:
 
-\begin{Verbatim}
-Store (Store (set a)) (get a)
-\end{Verbatim}
+\src{code/haskell/snippet11.hs}
 For these two expressions to be equal, the two functions under
 \code{Store} must be equal when acting on an arbitrary \code{s}:
 
-\begin{Verbatim}
-coalg (set a s) = Store (set a) s
-\end{Verbatim}
+\src{code/haskell/snippet12.hs}
 Expanding \code{coalg}, we get:
 
-\begin{Verbatim}
-Store (set (set a s)) (get (set a s)) = Store (set a) s
-\end{Verbatim}
+\src{code/haskell/snippet13.hs}
 This is equivalent to two remaining lens laws. The first one:
 
-\begin{Verbatim}
-set (set a s) = set a
-\end{Verbatim}
+\src{code/haskell/snippet14.hs}
 tells us that setting the value of a field twice is the same as setting
 it once. The second law:
 
-\begin{Verbatim}
-get (set a s) = s
-\end{Verbatim}
+\src{code/haskell/snippet15.hs}
 tells us that getting a value of a field that was set to $s$
 gives $s$ back.
 

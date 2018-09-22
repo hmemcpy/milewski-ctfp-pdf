@@ -1,0 +1,1 @@
+beta :: forall x. [x] -> (Int -> x)

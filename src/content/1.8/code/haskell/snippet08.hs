@@ -1,0 +1,1 @@
+type Maybe a = Either (Const () a) (Identity a)
