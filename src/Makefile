@@ -48,6 +48,6 @@ copy:
 
 clean:
 	rm -f *~ *.aux {ctfp-*}.{out,log,pdf,dvi,fls,fdb_latexmk,aux,brf,bbl,idx,ilg,ind,toc,sed}
-	rm -rf _minted-ctfp
+	rm -rf _minted-*
 	if which latexmk > /dev/null 2>&1 ; then latexmk -CA; fi
 	rm -rf ../out
