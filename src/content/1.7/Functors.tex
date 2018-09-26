@@ -450,7 +450,7 @@ data List a = Nil | Cons a (List a)
 We have the type constructor \code{List}, which is a mapping from any
 type \code{a} to the type \code{List a}. To show that \code{List}
 is a functor we have to define the lifting of functions: Given a
-function \code{a->b} define a function\\
+function \code{a -> b} define a function\\
 \code{List a -> List b}:
 
 \begin{Verbatim}
@@ -534,7 +534,7 @@ treatment is coming --- but we have some understanding of those as
 programmers. In Haskell, a function type is constructed using the arrow
 type constructor \code{(->)} which takes two types: the
 argument type and the result type. You've already seen it in infix form,
-\code{a->b}, but it can equally well be used in prefix
+\code{a -> b}, but it can equally well be used in prefix
 form, when parenthesized:
 
 \begin{Verbatim}
@@ -548,16 +548,16 @@ argument to the arrow, it still expects another one. That's why:
 (->) a
 \end{Verbatim}
 is a type constructor. It needs one more type \code{b} to produce a
-complete type \code{a->b}. As it stands, it defines a
+complete type \code{a -> b}. As it stands, it defines a
 whole family of type constructors parameterized by \code{a}. Let's see
 if this is also a family of functors. Dealing with two type parameters
 can get a bit confusing, so let's do some renaming. Let's call the
 argument type \code{r} and the result type \code{a}, in line with
 our previous functor definitions. So our type constructor takes any type
-\code{a} and maps it into the type \code{r->a}. To show
+\code{a} and maps it into the type \code{r -> a}. To show
 that it's a functor, we want to lift a function
-\code{a->b} to a function that takes
-\code{r->a} and returns \code{r->b}. These
+\code{a -> b} to a function that takes
+\code{r -> a} and returns \code{r -> b}. These
 are the types that are formed using the type constructor
 \code{(->) r} acting on, respectively, \code{a} and
 \code{b}. Here's the type signature of \code{fmap} applied to this
@@ -567,9 +567,9 @@ case:
 fmap :: (a -> b) -> (r -> a) -> (r -> b)
 \end{Verbatim}
 We have to solve the following puzzle: given a function
-\code{f::a->b} and a function
-\code{g::r->a}, create a function
-\code{r->b}. There is only one way we can compose the two
+\code{f :: a -> b} and a function
+\code{g :: r -> a}, create a function
+\code{r -> b}. There is only one way we can compose the two
 functions, and the result is exactly what we need. So here's the
 implementation of our \code{fmap}:
 
