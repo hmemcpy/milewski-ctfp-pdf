@@ -498,7 +498,7 @@ to an equation. The type we are defining appears on both sides of the
 equation:
 
 \begin{Verbatim}
-List a = Nil | Cons a (List a)
+data List a = Nil | Cons a (List a)
 \end{Verbatim}
 If we do our usual substitutions, and also replace \code{List a} with
 \code{x}, we get the equation:
