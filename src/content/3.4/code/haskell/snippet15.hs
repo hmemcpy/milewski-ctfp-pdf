@@ -1,0 +1,1 @@
+fmap f ma = ma >>= \a -> return (f a)

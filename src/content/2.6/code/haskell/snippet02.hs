@@ -1,0 +1,1 @@
+fromY id :: b -> a

@@ -1,0 +1,1 @@
+alpha :: forall x . (a -> x) -> F x

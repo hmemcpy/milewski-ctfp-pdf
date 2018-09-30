@@ -1,0 +1,1 @@
+duplicate (Cons a as) = Cons (Cons a as) (duplicate as)

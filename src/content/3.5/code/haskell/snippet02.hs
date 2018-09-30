@@ -1,0 +1,1 @@
+as >>= k = concat (fmap k as)

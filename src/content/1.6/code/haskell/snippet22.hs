@@ -1,0 +1,1 @@
+data OneOfThree a b c = Sinistral a | Medial b | Dextral c

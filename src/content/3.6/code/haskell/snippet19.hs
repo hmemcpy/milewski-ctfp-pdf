@@ -1,0 +1,1 @@
+newtype Prod s a = Prod (a, s)

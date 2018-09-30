@@ -1,3 +1,5 @@
+% !TEX root = ../../ctfp-reader.tex
+
 \lettrine[lhang=0.17]{I}{f you mention monads} to a programmer, you'll probably end up talking
 about effects. To a mathematician, monads are about algebras. We'll talk
 about algebras later --- they play an important role in programming ---
@@ -84,14 +86,10 @@ Here $T$, being a functor, can be applied to the morphism
 $g$. It might be easier to recognize this formula in Haskell
 notation:
 
-\begin{Verbatim}
-f >=> g = join . fmap g . f
-\end{Verbatim}
+\src{code/haskell/snippet01.hs}
 or, in components:
 
-\begin{Verbatim}
-(f >=> g) a = join (fmap g (f a))
-\end{Verbatim}
+\src{code/haskell/snippet02.hs}
 In terms of the algebraic interpretation, we are just composing two
 successive substitutions.
 
@@ -176,11 +174,7 @@ Let's go back to the conventional definition of a monoid. It's a set
 with a binary operation and a special element called unit. In Haskell,
 this can be expressed as a typeclass:
 
-\begin{Verbatim}
-class Monoid m where
-    mappend :: m -> m -> m
-    mempty  :: m
-\end{Verbatim}
+\src{code/haskell/snippet03.hs}
 The binary operation \code{mappend} must be associative and unital
 (i.e., multiplication by the unit \code{mempty} is a no-op).
 
@@ -188,18 +182,14 @@ Notice that, in Haskell, the definition of \code{mappend} is curried.
 It can be interpreted as mapping every element of \code{m} to a
 function:
 
-\begin{Verbatim}
-mappend :: m -> (m -> m)
-\end{Verbatim}
+\src{code/haskell/snippet04.hs}
 It's this interpretation that gives rise to the definition of a monoid
 as a single-object category where endomorphisms
 \code{(m -> m)} represent the elements of the monoid.
 But because currying is built into Haskell, we could as well have
 started with a different definition of multiplication:
 
-\begin{Verbatim}
-mu :: (m, m) -> m
-\end{Verbatim}
+\src{code/haskell/snippet05.hs}
 Here, the Cartesian product \code{(m, m)} becomes the source of pairs
 to be multiplied.
 
@@ -214,9 +204,7 @@ to it. Remember how element selection is equivalent to a function from
 the singleton set? In Haskell, we could replace the definition of
 \code{mempty} with a function:
 
-\begin{Verbatim}
-eta :: () -> m
-\end{Verbatim}
+\src{code/haskell/snippet06.hs}
 The singleton is the terminal object in $\Set$, so it's natural to
 generalize this definition to any category that has a terminal object
 $t$:
@@ -233,74 +221,47 @@ recall how monoidal structure works in Haskell first.
 We start with associativity. In Haskell, the corresponding equational
 law is:
 
-\begin{Verbatim}
-mu (x, mu (y, z)) = mu (mu (x, y), z)
-\end{Verbatim}
+\src{code/haskell/snippet07.hs}
 Before we can generalize it to other categories, we have to rewrite it
 as an equality of functions (morphisms). We have to abstract it away
 from its action on individual variables --- in other words, we have to
 use point-free notation. Knowing that the Cartesian product is a
 bifunctor, we can write the left hand side as:
 
-\begin{Verbatim}
-(mu . bimap id mu)(x, (y, z))
-\end{Verbatim}
+\src{code/haskell/snippet08.hs}
 and the right hand side as:
 
-\begin{Verbatim}
-(mu . bimap mu id)((x, y), z)
-\end{Verbatim}
+\src{code/haskell/snippet09.hs}
 This is almost what we want. Unfortunately, the Cartesian product is not
 strictly associative --- \code{(x, (y, z))} is not the same as
 \code{((x, y), z)} --- so we can't just write point-free:
 
-\begin{Verbatim}
-mu . bimap id mu = mu . bimap mu id
-\end{Verbatim}
+\src{code/haskell/snippet10.hs}
 On the other hand, the two nestings of pairs are isomorphic. There is an
 invertible function called the associator that converts between them:
 
-\begin{Verbatim}
-alpha :: ((a, b), c) -> (a, (b, c))
-alpha ((x, y), z) = (x, (y, z))
-\end{Verbatim}
+\src{code/haskell/snippet11.hs}
 With the help of the associator, we can write the point-free
 associativity law for \code{mu}:
 
-\begin{Verbatim}
-mu . bimap id mu . alpha = mu . bimap mu id
-\end{Verbatim}
+\src{code/haskell/snippet12.hs}
 We can apply a similar trick to unit laws which, in the new notation,
 take the form:
 
-\begin{Verbatim}
-mu (eta (), x) = x
-mu (x, eta ()) = x
-\end{Verbatim}
+\src{code/haskell/snippet13.hs}
 They can be rewritten as:
 
-\begin{Verbatim}
-(mu . bimap eta id) ((), x) = lambda((), x)
-(mu . bimap id eta) (x, ()) = rho (x, ())
-\end{Verbatim}
+\src{code/haskell/snippet14.hs}
 The isomorphisms \code{lambda} and \code{rho} are called the left
 and right unitor, respectively. They witness the fact that the unit
 \code{()} is the identity of the Cartesian product up to isomorphism:
 
-\begin{Verbatim}
-lambda :: ((), a) -> a
-lambda ((), x) = x
-\end{Verbatim}
-\begin{Verbatim}
-rho :: (a, ()) -> a
-rho (x, ()) = x
-\end{Verbatim}
+\src{code/haskell/snippet15.hs}
+
+\src{code/haskell/snippet16.hs}
 The point-free versions of the unit laws are therefore:
 
-\begin{Verbatim}
-mu . bimap id eta = rho
-mu . bimap eta id = lambda
-\end{Verbatim}
+\src{code/haskell/snippet17.hs}
 We have formulated point-free monoidal laws for \code{mu} and
 \code{eta} using the fact that the underlying Cartesian product itself
 acts like a monoidal multiplication in the category of types. Keep in
@@ -513,43 +474,28 @@ You may recognize their composition as the familiar state monad:
 \[R\ (L\ z) = s \Rightarrow (z\times{}s)\]
 We've seen this monad before in Haskell:
 
-\begin{Verbatim}
-newtype State s a = State (s -> (a, s))
-\end{Verbatim}
+\src{code/haskell/snippet18.hs}
 Let's also translate the adjunction to Haskell. The left functor is the
 product functor:
 
-\begin{Verbatim}
-newtype Prod s a = Prod (a, s)
-\end{Verbatim}
+\src{code/haskell/snippet19.hs}
 and the right functor is the reader functor:
 
-\begin{Verbatim}
-newtype Reader s a = Reader (s -> a)
-\end{Verbatim}
+\src{code/haskell/snippet20.hs}
 They form the adjunction:
 
-\begin{Verbatim}
-instance Adjunction (Prod s) (Reader s) where
-    counit (Prod (Reader f, s)) = f s
-    unit a = Reader (\s -> Prod (a, s))
-\end{Verbatim}
+\src{code/haskell/snippet21.hs}
 You can easily convince yourself that the composition of the reader
 functor after the product functor is indeed equivalent to the state
 functor:
 
-\begin{Verbatim}
-newtype State s a = State (s -> (a, s))
-\end{Verbatim}
+\src{code/haskell/snippet22.hs}
 As expected, the \code{unit} of the adjunction is equivalent to the
 \code{return} function of the state monad. The \code{counit} acts by
 evaluating a function acting on its argument. This is recognizable as
 the uncurried version of the function \code{runState}:
 
-\begin{Verbatim}
-runState :: State s a -> s -> (a, s)
-runState (State f) s = f s
-\end{Verbatim}
+\src{code/haskell/snippet23.hs}
 (uncurried, because in \code{counit} it acts on a pair).
 
 We can now define \code{join} for the state monad as a component of
@@ -567,18 +513,12 @@ We have to first peel off the data constructor \code{State} to expose
 the function inside the \code{State} functor. This is done using
 \code{runState}:
 
-\begin{Verbatim}
-ssa :: State s (State s a)
-runState ssa :: s -> (State s a, s)
-\end{Verbatim}
+\src{code/haskell/snippet24.hs}
 Then we left-compose it with the counit, which is defined by
 \code{uncurry runState}. Finally, we clothe it back in the
 \code{State} data constructor:
 
-\begin{Verbatim}
-join :: State s (State s a) -> State s a
-join ssa = State (uncurry runState . runState ssa)
-\end{Verbatim}
+\src{code/haskell/snippet25.hs}
 This is indeed the implementation of \code{join} for the
 \code{State} monad.
 

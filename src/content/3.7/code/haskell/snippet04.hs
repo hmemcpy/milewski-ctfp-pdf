@@ -1,0 +1,1 @@
+extract :: w a -> a

@@ -1,0 +1,1 @@
+getChar :: () -> IO Char

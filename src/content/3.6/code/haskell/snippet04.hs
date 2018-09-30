@@ -1,0 +1,1 @@
+mappend :: m -> (m -> m)

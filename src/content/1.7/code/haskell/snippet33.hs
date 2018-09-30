@@ -1,0 +1,1 @@
+square :: Int -> Int

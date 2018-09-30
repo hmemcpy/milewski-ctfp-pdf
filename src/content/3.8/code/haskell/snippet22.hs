@@ -1,0 +1,1 @@
+length = foldr (\e n -> n + 1) 0

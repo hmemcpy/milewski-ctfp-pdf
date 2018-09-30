@@ -1,0 +1,1 @@
+data SumP p = forall a b. SumP (b -> a) (p a b)

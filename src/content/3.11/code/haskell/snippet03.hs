@@ -1,0 +1,1 @@
+forall i. (a -> k i) -> i

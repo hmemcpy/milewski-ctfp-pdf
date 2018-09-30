@@ -1,0 +1,1 @@
+catstr' s = \s' -> s ++ s'

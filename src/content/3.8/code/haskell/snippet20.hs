@@ -1,0 +1,1 @@
+data List e = Nil | Cons e (List e)

@@ -1,0 +1,1 @@
+beta :: forall x. F x -> (a -> x)

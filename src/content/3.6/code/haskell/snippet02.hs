@@ -1,0 +1,1 @@
+(f >=> g) a = join (fmap g (f a))

@@ -1,0 +1,1 @@
+duplicate (Store f s) = Store (Store f) s

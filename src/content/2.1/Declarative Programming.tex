@@ -1,3 +1,5 @@
+% !TEX root = ../../ctfp-reader.tex
+
 \lettrine[lhang=0.17]{I}{n the first part} of the book I argued that both category theory and
 programming are about composability. In programming, you keep
 decomposing a problem until you reach the level of detail that you can
@@ -10,16 +12,11 @@ You can see this even at the most basic level. Composition itself may be
 defined declaratively; as in, \code{h} is a composite of \code{g}
 after \code{f}:
 
-\begin{Verbatim}
-h = g . f
-\end{Verbatim}
+\src{code/haskell/snippet01.hs}
 or imperatively; as in, call \code{f} first, remember the result of
 that call, then call \code{g} with the result:
 
-\begin{Verbatim}
-h x = let y = f x 
-      in g y
-\end{Verbatim}
+\src{code/haskell/snippet02.hs}
 The imperative version of a program is usually described as a sequence
 of actions ordered in time. In particular, the call to \code{g} cannot
 happen before the execution of \code{f} completes. At least, that's

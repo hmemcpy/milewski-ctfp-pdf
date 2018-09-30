@@ -1,3 +1,5 @@
+% !TEX root = ../../ctfp-reader.tex
+
 \lettrine[lhang=0.17]{S}{o far} I've been glossing over the meaning of function types. A function
 type is different from other types.
 
@@ -221,63 +223,40 @@ The function $g$ can be called the \emph{uncurried} version of $h$.
 Currying is essentially built into the syntax of Haskell. A function
 returning a function:
 
-\begin{Verbatim}
-a -> (b -> c)
-\end{Verbatim}
+\src{code/haskell/snippet01.hs}
 is often thought of as a function of two variables. That's how we read
 the un-parenthesized signature:
 
-\begin{Verbatim}
-a -> b -> c
-\end{Verbatim}
+\src{code/haskell/snippet02.hs}
 This interpretation is apparent in the way we define multi-argument
 functions. For instance:
 
-\begin{Verbatim}
-catstr :: String -> String -> String
-catstr s s' = s ++ s'
-\end{Verbatim}
+\src{code/haskell/snippet03.hs}
 The same function can be written as a one-argument function returning a
 function --- a lambda:
 
-\begin{Verbatim}
-catstr' s = \s' -> s ++ s'
-\end{Verbatim}
+\src{code/haskell/snippet04.hs}
 These two definitions are equivalent, and either can be partially
 applied to just one argument, producing a one-argument function, as in:
 
-\begin{Verbatim}
-greet :: String -> String
-greet = catstr "Hello "
-\end{Verbatim}
+\src{code/haskell/snippet05.hs}
 Strictly speaking, a function of two variables is one that takes a pair
 (a product type):
 
-\begin{Verbatim}
-(a, b) -> c
-\end{Verbatim}
+\src{code/haskell/snippet06.hs}
 It's trivial to convert between the two representations, and the two
 (higher-order) functions that do it are called, unsurprisingly,
 \code{curry} and \code{uncurry}:
 
-\begin{Verbatim}
-curry :: ((a, b) -> c) -> (a -> b -> c)
-curry f a b = f (a, b)
-\end{Verbatim}
+\src{code/haskell/snippet07.hs}
 and
 
-\begin{Verbatim}
-uncurry :: (a -> b -> c) -> ((a, b) -> c)
-uncurry f (a, b) = f a b
-\end{Verbatim}
+\src{code/haskell/snippet08.hs}
 Notice that \code{curry} is the \emph{factorizer} for the universal
 construction of the function object. This is especially apparent if it's
 rewritten in this form:
 
-\begin{Verbatim}
-factorizer :: ((a, b) -> c) -> (a -> (b -> c))
-factorizer g = \a -> (\b -> g (a, b))
-\end{Verbatim}
+\src{code/haskell/snippet09.hs}
 (As a reminder: A factorizer produces the factorizing function from a
 candidate.)
 
@@ -488,16 +467,11 @@ definition with a \code{case} statement, we usually split it into two
 instance, take a function from the sum type
 \code{(Either Int Double)}:
 
-\begin{Verbatim}
-f :: Either Int Double -> String
-\end{Verbatim}
+\src{code/haskell/snippet10.hs}
 It may be defined as a pair of functions from, respectively,
 \code{Int} and \code{Double}:
 
-\begin{minted}[breaklines,fontsize=\small]{text}
-f (Left n) = if n < 0 then "Negative int" else "Positive int"
-f (Right x) = if x < 0.0 then "Negative double" else "Positive double"
-\end{minted}
+\src{code/haskell/snippet11.hs}
 Here, \code{n} is an \code{Int} and \code{x} is a \code{Double}.
 
 \subsection{Exponentials of Exponentials}
@@ -539,9 +513,7 @@ proving theorems. Let's see a few examples.
 Let's take the function \code{eval} we have introduced in the
 definition of the function object. Its signature is:
 
-\begin{Verbatim}
-eval :: ((a -> b), a) -> b
-\end{Verbatim}
+\src{code/haskell/snippet12.hs}
 It takes a pair consisting of a function and its argument and produces a
 result of the appropriate type. It's the Haskell implementation of the
 morphism:
@@ -558,10 +530,7 @@ true. This makes perfect intuitive sense and has been known since
 antiquity as \newterm{modus ponens}. We can prove this theorem by
 implementing the function:
 
-\begin{Verbatim}
-eval :: ((a -> b), a) -> b
-eval (f, x) = f x
-\end{Verbatim}
+\src{code/haskell/snippet13.hs}
 If you give me a pair consisting of a function \code{f} taking
 \code{a} and returning \code{b}, and a concrete value \code{x} of
 type \code{a}, I can produce a concrete value of type \code{b} by
@@ -580,18 +549,14 @@ false and a $b$ that is true, and that's a counter-example.
 Mapping this predicate into a function signature using the Curry-Howard
 isomorphism, we get:
 
-\begin{Verbatim}
-Either a b -> a
-\end{Verbatim}
+\src{code/haskell/snippet14.hs}
 Try as you may, you can't implement this function --- you can't produce
 a value of type \code{a} if you are called with the \code{Right}
 value. (Remember, we are talking about \emph{pure} functions.)
 
 Finally, we come to the meaning of the \code{absurd} function:
 
-\begin{Verbatim}
-absurd :: Void -> a
-\end{Verbatim}
+\src{code/haskell/snippet15.hs}
 Considering that \code{Void} translates into false, we get:
 
 \[false \Rightarrow a\]

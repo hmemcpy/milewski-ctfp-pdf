@@ -1,0 +1,1 @@
+type Op r a = a -> r

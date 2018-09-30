@@ -1,0 +1,1 @@
+newtype Ran k d a = Ran (forall i. (a -> k i) -> d i)

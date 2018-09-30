@@ -1,0 +1,1 @@
+newtype Fix f = Fix (f (Fix f))

@@ -1,0 +1,1 @@
+type Op a x = x -> a

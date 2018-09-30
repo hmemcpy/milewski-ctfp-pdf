@@ -1,0 +1,1 @@
+obvious (Reader g) = Just (g ())

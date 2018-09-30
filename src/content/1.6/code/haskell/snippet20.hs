@@ -1,0 +1,1 @@
+startsWithSymbol e = symbol e `isPrefixOf` name e

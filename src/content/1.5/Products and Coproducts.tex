@@ -1,3 +1,5 @@
+% !TEX root = ../../ctfp-reader.tex
+
 \lettrine[lhang=0.17]{T}{he Ancient Greek} playwright Euripides once said: ``Every man is like
 the company he is wont to keep.'' We are defined by our relationships.
 Nowhere is this more true than in category theory. If we want to single
@@ -71,9 +73,7 @@ set. Remember, an empty set corresponds to the Haskell type
 polymorphic function from \code{Void} to any other type is called
 \code{absurd}:
 
-\begin{Verbatim}
-absurd :: Void -> a
-\end{Verbatim}
+\src{code/haskell/snippet01.hs}
 It's this family of morphisms that makes \code{Void} the initial
 object in the category of types.
 
@@ -107,10 +107,7 @@ one value --- implicit in C++ and explicit in Haskell, denoted by
 \code{()}. We've also established that there is one and only one pure
 function from any type to the unit type:
 
-\begin{Verbatim}
-unit :: a -> ()
-unit _ = ()
-\end{Verbatim}
+\src{code/haskell/snippet02.hs}
 so all the conditions for the terminal object are satisfied.
 
 Notice that in this example the uniqueness condition is crucial, because
@@ -118,17 +115,11 @@ there are other sets (actually, all of them, except for the empty set)
 that have incoming morphisms from every set. For instance, there is a
 Boolean-valued function (a predicate) defined for every type:
 
-\begin{Verbatim}
-yes :: a -> Bool
-yes _ = True
-\end{Verbatim}
+\src{code/haskell/snippet03.hs}
 But \code{Bool} is not a terminal object. There is at least one more
 \code{Bool}-valued function from every type:
 
-\begin{Verbatim}
-no :: a -> Bool
-no _ = False
-\end{Verbatim}
+\src{code/haskell/snippet04.hs}
 Insisting on uniqueness gives us just the right precision to narrow down
 the definition of the terminal object to just one type.
 
@@ -189,10 +180,7 @@ $g$ is the inverse of morphism $f$ if their composition is the
 identity morphism. These are actually two equations because there are
 two ways of composing two morphisms:
 
-\begin{Verbatim}
-f . g = id
-g . f = id
-\end{Verbatim}
+\src{code/haskell/snippet05.hs}
 When I said that the initial (terminal) object was unique up to
 isomorphism, I meant that any two initial (terminal) objects are
 isomorphic. That's actually easy to see. Let's suppose that we have two
@@ -242,15 +230,9 @@ the product to each of the constituents. In Haskell, these two functions
 are called \code{fst} and \code{snd} and they pick, respectively,
 the first and the second component of a pair:
 
-\begin{Verbatim}
-fst :: (a, b) -> a
-fst (x, y) = x
-\end{Verbatim}
+\src{code/haskell/snippet06.hs}
 
-\begin{Verbatim}
-snd :: (a, b) -> b
-snd (x, y) = y
-\end{Verbatim}
+\src{code/haskell/snippet07.hs}
 Here, the functions are defined by pattern matching their arguments: the
 pattern that matches any pair is \code{(x, y)}, and it extracts its
 components into variables \code{x} and \code{y}.
@@ -258,10 +240,7 @@ components into variables \code{x} and \code{y}.
 These definitions can be simplified even further with the use of
 wildcards:
 
-\begin{Verbatim}
-fst (x, _) = x
-snd (_, y) = y
-\end{Verbatim}
+\src{code/haskell/snippet08.hs}
 In C++, we would use template functions, for instance:
 
 \begin{Verbatim}
@@ -277,10 +256,7 @@ $b$. This pattern consists of an object $c$ and two morphisms
 $p$ and $q$ connecting it to $a$ and $b$,
 respectively:
 
-\begin{Verbatim}
-p :: c -> a
-q :: c -> b
-\end{Verbatim}
+\src{code/haskell/snippet09.hs}
 
 \begin{figure}[H]
 \centering
@@ -305,26 +281,14 @@ Here's one: \code{Int}. Can \code{Int} be considered a candidate for
 the product of \code{Int} and \code{Bool}? Yes, it can --- and here
 are its projections:
 
-\begin{Verbatim}
-p :: Int -> Int
-p x = x
-
-q :: Int -> Bool
-q _ = True
-\end{Verbatim}
+\src{code/haskell/snippet10.hs}
 That's pretty lame, but it matches the criteria.
 
 Here's another one: \code{(Int, Int, Bool)}. It's a tuple of three
 elements, or a triple. Here are two morphisms that make it a legitimate
 candidate (we are using pattern matching on triples):
 
-\begin{Verbatim}
-p :: (Int, Int, Bool) -> Int
-p (x, _, _) = x
-
-q :: (Int, Int, Bool) -> Bool
-q (_, _, b) = b
-\end{Verbatim}
+\src{code/haskell/snippet11.hs}
 You may have noticed that while our first candidate was too small --- it
 only covered the \code{Int} dimension of the product; the second was
 too big --- it spuriously duplicated the \code{Int} dimension.
@@ -341,10 +305,7 @@ projections of $c'$. What it means is that the projections
 \emph{p'} and \emph{q'} can be reconstructed from \emph{p} and \emph{q}
 using $m$:
 
-\begin{Verbatim}
-p' = p . m
-q' = q . m
-\end{Verbatim}
+\src{code/haskell/snippet12.hs}
 
 \begin{figure}[H]
 \centering
@@ -370,31 +331,20 @@ presented before.
 \noindent
 The mapping \code{m} for the first candidate is:
 
-\begin{Verbatim}
-m :: Int -> (Int, Bool)
-m x = (x, True)
-\end{Verbatim}
+\src{code/haskell/snippet13.hs}
 Indeed, the two projections, \code{p} and \code{q} can be
 reconstructed as:
 
-\begin{Verbatim}
-p x = fst (m x) = x
-q x = snd (m x) = True
-\end{Verbatim}
+\src{code/haskell/snippet14.hs}
 The \code{m} for the second example is similarly uniquely determined:
 
-\begin{Verbatim}
-m (x, _, b) = (x, b)
-\end{Verbatim}
+\src{code/haskell/snippet15.hs}
 We were able to show that \code{(Int, Bool)} is better than either of
 the two candidates. Let's see why the opposite is not true. Could we
 find some \code{m'} that would help us reconstruct \code{fst}
 and \code{snd} from \code{p} and \code{q}?
 
-\begin{Verbatim}
-fst = p . m'
-snd = q . m'
-\end{Verbatim}
+\src{code/haskell/snippet16.hs}
 In our first example, \code{q} always returned \code{True} and we
 know that there are pairs whose second component is \code{False}. We
 can't reconstruct \code{snd} from \code{q}.
@@ -405,14 +355,10 @@ to factorize \code{fst} and \code{snd}. Because both \code{p} and
 \code{q} ignore the second component of the triple, our \code{m'}
 can put anything in it. We can have:
 
-\begin{Verbatim}
-m' (x, b) = (x, x, b)
-\end{Verbatim}
-or
+\src{code/haskell/snippet17.hs}
 
-\begin{Verbatim}
-m' (x, b) = (x, 42, b)
-\end{Verbatim}
+or
+\src{code/haskell/snippet18.hs}
 and so on.
 
 Putting it all together, given any type \code{c} with two projections
@@ -420,10 +366,7 @@ Putting it all together, given any type \code{c} with two projections
 to the Cartesian product \code{(a, b)} that factorizes them. In fact,
 it just combines \code{p} and \code{q} into a pair.
 
-\begin{Verbatim}
-m :: c -> (a, b)
-m x = (p x, q x)
-\end{Verbatim}
+\src{code/haskell/snippet19.hs}
 That makes the Cartesian product \code{(a, b)} our best match, which
 means that this universal construction works in the category of sets. It
 picks the product of any two sets.
@@ -444,10 +387,7 @@ A (higher order) function that produces the factorizing function
 \code{m} from two candidates is sometimes called the
 \newterm{factorizer}. In our case, it would be the function:
 
-\begin{Verbatim}
-factorizer :: (c -> a) -> (c -> b) -> (c -> (a, b))
-factorizer p q = \x -> (p x, q x)
-\end{Verbatim}
+\src{code/haskell/snippet20.hs}
 
 \section{Coproduct}
 
@@ -457,10 +397,7 @@ pattern, we end up with an object $c$ equipped with two
 \emph{injections}, \code{i} and \code{j}: morphisms from $a$
 and $b$ to $c$.
 
-\begin{Verbatim}
-i :: a -> c
-j :: b -> c
-\end{Verbatim}
+\src{code/haskell/snippet21.hs}
 
 \begin{figure}[H]
 \centering
@@ -473,10 +410,7 @@ $c'$ that is equipped with the injections $i'$ and $j'$
 if there is a morphism $m$ from $c$ to $c'$ that
 factorizes the injections:
 
-\begin{Verbatim}
-i' = m . i
-j' = m . j
-\end{Verbatim}
+\src{code/haskell/snippet22.hs}
 
 \begin{figure}[H]
 \centering
@@ -539,26 +473,19 @@ In Haskell, you can combine any data types into a tagged union by
 separating data constructors with a vertical bar. The \code{Contact}
 example translates into the declaration:
 
-\begin{Verbatim}
-data Contact = PhoneNum Int | EmailAddr String
-\end{Verbatim}
+\src{code/haskell/snippet23.hs}
 Here, \code{PhoneNum} and \code{EmailAddr} serve both as
 constructors (injections), and as tags for pattern matching (more about
 this later). For instance, this is how you would construct a contact
 using a phone number:
 
-\begin{Verbatim}
-helpdesk :: Contact
-helpdesk = PhoneNum 2222222
-\end{Verbatim}
+\src{code/haskell/snippet24.hs}
 Unlike the canonical implementation of the product that is built into
 Haskell as the primitive pair, the canonical implementation of the
 coproduct is a data type called \code{Either}, which is defined in the
 standard Prelude as:
 
-\begin{Verbatim}
-data Either a b = Left a | Right b
-\end{Verbatim}
+\src{code/haskell/snippet25.hs}
 It is parameterized by two types, \code{a} and \code{b} and has two
 constructors: \code{Left} that takes a value of type \code{a}, and
 \code{Right} that takes a value of type \code{b}.
@@ -568,11 +495,7 @@ for the coproduct. Given a candidate type \code{c} and two candidate
 injections \code{i} and \code{j}, the factorizer for \code{Either}
 produces the factoring function:
 
-\begin{Verbatim}
-factorizer :: (a -> c) -> (b -> c) -> Either a b -> c
-factorizer i j (Left a)  = i a
-factorizer i j (Right b) = j b
-\end{Verbatim}
+\src{code/haskell/snippet26.hs}
 
 \section{Asymmetry}
 
@@ -610,17 +533,11 @@ Because the product is universal, there is also a (unique) morphism
 morphism selects an element from the product set --- it selects a
 concrete pair. It also factorizes the two projections:
 
-\begin{Verbatim}
-p = fst . m
-q = snd . m
-\end{Verbatim}
+\src{code/haskell/snippet27.hs}
 When acting on the singleton value \code{()}, the only element of the
 singleton set, these two equations become:
 
-\begin{Verbatim}
-p () = fst (m ())
-q () = snd (m ())
-\end{Verbatim}
+\src{code/haskell/snippet28.hs}
 Since \code{m ()} is the element of the product picked by \code{m},
 these equations tell us that the element picked by \code{p} from the
 first set, \code{p ()}, is the first component of the pair picked by

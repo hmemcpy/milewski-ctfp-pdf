@@ -1,0 +1,1 @@
+alpha :: F a -> G a

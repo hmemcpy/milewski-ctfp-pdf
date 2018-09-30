@@ -1,3 +1,5 @@
+% !TEX root = ../../ctfp-reader.tex
+
 \lettrine[lhang=0.17]{T}{he category of types and functions} plays an important role in
 programming, so let's talk about what types are and why we need them.
 
@@ -107,9 +109,7 @@ synonym for a list of \code{Char}, is an example of an infinite set.
 
 When we declare \code{x} to be an \code{Integer}:
 
-\begin{Verbatim}
-x :: Integer
-\end{Verbatim}
+\src{code/haskell/snippet01.hs}
 we are saying that it's an element of the set of integers.
 \code{Integer} in Haskell is an infinite set, and it can be used to do
 arbitrary precision arithmetic. There is also a finite-set \code{Int}
@@ -149,9 +149,7 @@ called the \newterm{bottom} and denoted by \code{\_|\_}, or
 Unicode $\bot$. This ``value'' corresponds to a non-terminating computation.
 So a function declared as:
 
-\begin{Verbatim}
-f :: Bool -> Bool
-\end{Verbatim}
+\src{code/haskell/snippet02.hs}
 may return \code{True}, \code{False}, or \code{\_|\_};
 the latter meaning that it would never terminate.
 
@@ -160,18 +158,12 @@ is convenient to treat every runtime error as a bottom, and even allow
 functions to return the bottom explicitly. The latter is usually done
 using the expression \code{undefined}, as in:
 
-\begin{Verbatim}
-f :: Bool -> Bool
-f x = undefined
-\end{Verbatim}
+\src{code/haskell/snippet03.hs}
 This definition type checks because \code{undefined} evaluates to
 bottom, which is a member of any type, including \code{Bool}. You can
 even write:
 
-\begin{Verbatim}
-f :: Bool -> Bool
-f = undefined
-\end{Verbatim}
+\src{code/haskell/snippet04.hs}
 (without the \code{x}) because the bottom is also a member of the type\\
 \code{Bool -> Bool}.
 
@@ -179,7 +171,7 @@ Functions that may return bottom are called partial, as opposed to total
 functions, which return valid results for every possible argument.
 
 Because of the bottom, you'll see the category of Haskell types and
-functions referred to as $\cat{Hask}$ rather than $\Set$. From
+functions referred to as $\Hask$ rather than $\Set$. From
 the theoretical point of view, this is the source of never-ending
 complications, so at this point I will use my butcher's knife and
 terminate this line of reasoning. From the pragmatic point of view, it's
@@ -237,9 +229,7 @@ usually quite simple, if not trivial.
 Consider the definition of a factorial function in Haskell, which is a
 language quite amenable to denotational semantics:
 
-\begin{Verbatim}
-fact n = product [1..n]
-\end{Verbatim}
+\src{code/haskell/snippet05.hs}
 The expression \code{{[}1..n{]}} is a list of integers from \code{1} to \code{n}.
 The function \code{product} multiplies all elements of a list. That's
 just like a definition of factorial taken from a math text. Compare this
@@ -323,9 +313,7 @@ return, there are no restrictions whatsoever. It can return any type
 it's a function that's polymorphic in the return type. Haskellers have a
 name for it:
 
-\begin{Verbatim}
-absurd :: Void -> a
-\end{Verbatim}
+\src{code/haskell/snippet06.hs}
 (Remember, \code{a} is a type variable that can stand for any type.)
 The name is not coincidental. There is deeper interpretation of types
 and functions in terms of logic called the Curry-Howard isomorphism. The
@@ -355,10 +343,7 @@ because of the Haskell's love of terseness, the same symbol \code{()}
 is used for the type, the constructor, and the only value corresponding
 to a singleton set. So here's this function in Haskell:
 
-\begin{Verbatim}
-f44 :: () -> Integer
-f44 () = 44
-\end{Verbatim}
+\src{code/haskell/snippet07.hs}
 The first line declares that \code{f44} takes the type \code{()},
 pronounced ``unit,'' into the type \code{Integer}. The second line
 defines \code{f44} by pattern matching the only constructor for unit,
@@ -387,19 +372,13 @@ element of $A$ to the single element of that singleton set. For every $A$
 there is exactly one such function. Here's this function for
 \code{Integer}:
 
-\begin{Verbatim}
-fInt :: Integer -> ()
-fInt x = ()
-\end{Verbatim}
+\src{code/haskell/snippet08.hs}
 You give it any integer, and it gives you back a unit. In the spirit of
 terseness, Haskell lets you use the wildcard pattern, the underscore,
 for an argument that is discarded. This way you don't have to invent a
 name for it. So the above can be rewritten as:
 
-\begin{Verbatim}
-fInt :: Integer -> ()
-fInt _ = ()
-\end{Verbatim}
+\src{code/haskell/snippet09.hs}
 Notice that the implementation of this function not only doesn't depend
 on the value passed to it, but it doesn't even depend on the type of the
 argument.
@@ -410,10 +389,7 @@ such functions with one equation using a type parameter instead of a
 concrete type. What should we call a polymorphic function from any type
 to unit type? Of course we'll call it \code{unit}:
 
-\begin{Verbatim}
-unit :: a -> ()
-unit _ = ()
-\end{Verbatim}
+\src{code/haskell/snippet10.hs}
 In C++ you would write this function as:
 
 \begin{Verbatim}
@@ -425,9 +401,7 @@ Next in the typology of types is a two-element set. In C++ it's called
 is that in C++ \code{bool} is a built-in type, whereas in Haskell it
 can be defined as follows:
 
-\begin{Verbatim}
-data Bool = True | False
-\end{Verbatim}
+\src{code/haskell/snippet11.hs}
 (The way to read this definition is that \code{Bool} is either
 \code{True} or \code{False}.) In principle, one should also be able
 to define a Boolean type in C++ as an enumeration:

@@ -1,0 +1,1 @@
+absurd :: Void -> a

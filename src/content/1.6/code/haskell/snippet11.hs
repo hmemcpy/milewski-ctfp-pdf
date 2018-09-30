@@ -1,0 +1,1 @@
+data Pair a b = Pair a b

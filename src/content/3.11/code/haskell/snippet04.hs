@@ -1,0 +1,1 @@
+type Lst a = forall i. Monoid i => (a -> i) -> i

@@ -1,0 +1,1 @@
+f =>= g = g . extend f

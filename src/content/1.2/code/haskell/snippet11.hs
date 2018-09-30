@@ -1,0 +1,1 @@
+data Bool = True | False
