@@ -34,6 +34,11 @@
 \usepackage[libertine]{newtxmath}
 \usepackage{amsmath}
 % Needed to display additional math unicode symbols (like double-colon)
+
+% https://github.com/wspr/unicode-math/issues/469
+\expandafter\let\csname not=\endcsname\relax
+\expandafter\let\csname not<\endcsname\relax
+\expandafter\let\csname not>\endcsname\relax
 \usepackage{unicode-math}
 \setmathfont{Libertinus Math}
 
