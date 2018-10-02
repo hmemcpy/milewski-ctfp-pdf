@@ -40,6 +40,7 @@ mkShell {
         chngcntr
         ifplatform
         xstring
+        minifp
         enumitem;
       })
     gnumake
