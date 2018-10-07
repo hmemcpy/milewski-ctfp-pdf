@@ -131,6 +131,13 @@
 \renewcommand{\partname}{}
 \renewcommand{\thepart}{}
 
+% https://tex.stackexchange.com/questions/94699/absolutely-definitely-preventing-page-break
+\newenvironment{absolutelynopagebreak}
+  {\par\nobreak\vfil\penalty0\vfilneg
+   \vtop\bgroup}
+  {\par\xdef\tpd{\the\prevdepth}\egroup
+   \prevdepth=\tpd}
+
 \usepackage{xifthen}
 \newcommand{\ifequals}[3]{\ifthenelse{\equal{#1}{#2}}{#3}{}}
 \newcommand{\case}[2]{#1 #2} % Dummy, so \renewcommand has something to overwrite...
