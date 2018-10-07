@@ -37,7 +37,7 @@ $(TOPPDFFILES) : %.pdf : %.tex $(TEXFILES)
 
 version.tex:
 	/bin/echo -n '\newcommand{\OPTversion}{' > version.tex
-	git describe --always --long | tr -d '\n' >> version.tex
+	git describe --tags --always --long | tr -d '\n' >> version.tex
 	/bin/echo -n '}' >> version.tex
 
 copy:
