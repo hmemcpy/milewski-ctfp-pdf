@@ -4,7 +4,7 @@
 .PHONY: default all clean version.tex
 
 DIR := $(shell pwd)
-GIT_VER := $(shell git describe --always --long | tr -d '\n')
+GIT_VER := $(shell git describe --tags --always --long | tr -d '\n')
 
 # Default top-level LaTeX to generate
 DEFAULTTOPTEX = ctfp-reader.tex ctfp-print.tex
