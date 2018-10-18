@@ -316,8 +316,8 @@ For instance a (pure) function from \code{Bool} is completely
 specified by a pair of values: one corresponding to \code{False}, and
 one corresponding to \code{True}. The set of all possible functions
 from \code{Bool} to, say, \code{Int} is the set of all pairs of
-\code{Int}s. This is the same as the product $Int \times Int$ or,
-being a little creative with notation, $Int^{2}$.
+\code{Int}s. This is the same as the product \code{Int} × \code{Int} or,
+being a little creative with notation, \code{Int}\textsuperscript{2}.
 
 For another example, let's look at the C++ type \code{char}, which
 contains 256 values (Haskell \code{Char} is larger, because Haskell
@@ -329,7 +329,7 @@ tuple is a product type, so we are dealing with products of 256
 Booleans: {\small\texttt{bool × bool × bool × ... × bool}}. We know from
 arithmetics that an iterated product defines a power. If you
 ``multiply'' \code{bool} by itself 256 (or \code{char}) times, you
-get \code{bool} to the power of \code{char}, or \code{bool\textsuperscript{char}}.
+get \code{bool} to the power of \code{char}, or \code{bool}\textsuperscript{\code{char}}.
 
 How many values are there in the type defined as 256-tuples of
 \code{bool}? Exactly $2^{256}$. This is also the number
