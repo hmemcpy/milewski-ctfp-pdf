@@ -17,11 +17,11 @@
   
   \newcommand{\olpath}{../}
   \newcommand{\whitebg}[1]{%
-  \tikz\node[circle,draw,minimum size=.9cm,
+  \tikz\node[circle,draw,minimum size=1.1cm,
   fill=white,
   path picture={
       \node at (path picture bounding box){
-          \includegraphics[width=.9cm]{\olpath#1}
+          \includegraphics[width=1.1cm]{\olpath#1}
       };
   }]{};
   }
@@ -47,7 +47,7 @@
     \bookcovercomponent{color}{bg whole}{color=BackgroundColor}
     \bookcovercomponent{color}{spine}{color=SpineBackColor}
     \bookcovercomponent{normal}{front}{
-    \vspace{2.5cm}
+    \vspace{2cm}
     \begin{center}
       \fontsize{40pt}{7em}\selectfont\bfseries
           CATEGORY THEORY \\FOR PROGRAMMERS
@@ -87,15 +87,16 @@
           \end{minipage}
         \end{tabular}
         \begin{flushright}
-          \vspace{-2.5cm}
+          \vspace{-2.3cm}
           \begin{minipage}[b]{4cm}
           \raggedleft
           \whitebg{fig/icons/by}
           \whitebg{fig/icons/cc}
           \whitebg{fig/icons/sa}
-          \centering\footnotesize{\texttt{\OPTversion}}
           \end{minipage}
         \end{flushright}
+        \vspace{-6mm}
+        \centering\footnotesize{\texttt{\OPTversion}}
       \end{minipage}
     \end{center}
   \end{minipage}
