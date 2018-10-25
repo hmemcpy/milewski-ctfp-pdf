@@ -4,6 +4,10 @@
 
 * [#155](https://github.com/hmemcpy/milewski-ctfp-pdf/pull/155) - Typo (physicist -> physicists)
 
+### 10. Natural Transformations
+
+* [#157](https://github.com/hmemcpy/milewski-ctfp-pdf/pull/157) - Adding paragraph indent
+
 ### 19. Free/Forgetful Adjunctions
 
 * [#156](https://github.com/hmemcpy/milewski-ctfp-pdf/pull/156) - an instance of the category name **Mon** is appearing as **arg**.
