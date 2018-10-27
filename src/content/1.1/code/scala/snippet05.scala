@@ -1,0 +1,1 @@
+def identity[A](a: A): A = a
