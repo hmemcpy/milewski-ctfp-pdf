@@ -9,7 +9,8 @@ Category Theory for Programmers
 
 <img src="https://user-images.githubusercontent.com/601206/47271389-8eea0900-d581-11e8-8e81-5b932e336336.png"
  alt="Buy Category Theory for Programmers" width=410 />  
-**[Purchase now in full-color hardcover print on blurb.com](http://www.blurb.com/b/9008339-category-theory-for-programmers)**
+**[Purchase now in full-color hardcover print on blurb.com](http://www.blurb.com/b/9008339-category-theory-for-programmers)**  
+Publish date: 21 October, 2018. Based off release tag [v1.0.0](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/tag/v1.0.0). See [errata](errata.md) for changes and fixes since print.
 
 This is an *unofficial* PDF version of "Category Theory for Programmers" by Bartosz Milewski, converted from his [blogpost series](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/).
 
