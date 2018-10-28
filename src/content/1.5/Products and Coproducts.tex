@@ -296,14 +296,13 @@ too big --- it spuriously duplicated the \code{Int} dimension.
 But we haven't explored yet the other part of the universal
 construction: the ranking. We want to be able to compare two instances
 of our pattern. We want to compare one candidate object $c$ and its
-two projections \emph{p} and \emph{q} with another candidate object
-$c'$ and its two projections \emph{p'} and \emph{q'}. We would like
+two projections $p$ and $q$ with another candidate object
+$c'$ and its two projections $p'$ and $q'$. We would like
 to say that $c$ is ``better'' than $c'$ if there is a morphism
 $m$ from $c'$ to $c$ --- but that's too weak. We also
 want its projections to be ``better,'' or ``more universal,'' than the
 projections of $c'$. What it means is that the projections
-\emph{p'} and \emph{q'} can be reconstructed from \emph{p} and \emph{q}
-using $m$:
+$p'$ and $q'$ can be reconstructed from $p$ and $q$ using $m$:
 
 \src{code/haskell/snippet12.hs}
 
@@ -314,9 +313,9 @@ using $m$:
 
 \noindent
 Another way of looking at these equations is that $m$
-\emph{factorizes} \emph{p'} and \emph{q'}. Just pretend that these
+\emph{factorizes} $p'$ and $q'$. Just pretend that these
 equations are in natural numbers, and the dot is multiplication:
-$m$ is a common factor shared by \emph{p'} and \emph{q'}.
+$m$ is a common factor shared by $p'$ and $q'$.
 
 Just to build some intuitions, let me show you that the pair
 \code{(Int, Bool)} with the two canonical projections, \code{fst}
