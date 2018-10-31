@@ -11,3 +11,13 @@
 ### 19. Free/Forgetful Adjunctions
 
 * [#156](https://github.com/hmemcpy/milewski-ctfp-pdf/pull/156) - an instance of the category name **Mon** is appearing as **arg**.
+
+### 23. Comonads
+
+* [#158](https://github.com/hmemcpy/milewski-ctfp-pdf/pull/158) - fixed incorrect typesetting of `set`
+
+### 25. Algebras for Monads
+
+* [#158](https://github.com/hmemcpy/milewski-ctfp-pdf/pull/158) - fixed incorrect typesetting of `set`
+
+
