@@ -119,7 +119,7 @@ adjunctions that the left adjoint to a forgetful functor is called a
 free functor.
 
 The left adjoint to $U^T$ is called $F^T$. It maps an object
-$A$ in $\cat{C}$ to a free algebra in $\cat{C}^T$. The carrier
+$a$ in $\cat{C}$ to a free algebra in $\cat{C}^T$. The carrier
 of this free algebra is $T\ a$. Its evaluator is a morphism from
 $T\ (T\ a)$ back to $T\ a$. Since $T$ is a monad,
 we can use the monadic $\mu_a$ (\code{join} in Haskell) as the
@@ -247,8 +247,8 @@ same as the $\mu$ of the original monad $T$.
 
 We've seen the Kleisli category before. It's a category constructed from
 another category $\cat{C}$ and a monad $T$. We'll call this
-category $\cat{C}^T$. The objects in the Kleisli category
-$\cat{C}^T$ are the objects of $\cat{C}$, but the morphisms
+category $\cat{C}_T$. The objects in the Kleisli category
+$\cat{C}_T$ are the objects of $\cat{C}$, but the morphisms
 are different. A morphism $f_{\cat{K}}$ from $a$ to $b$ in
 the Kleisli category corresponds to a morphism $f$ from
 $a$ to $T\ b$ in the original category. We call this
@@ -292,7 +292,7 @@ We can also define a functor $G$ from $\cat{C}_T$
 back to $\cat{C}$. It takes an object $a$ from the Kleisli
 category and maps it to an object $T\ a$ in $\cat{C}$. Its action 
 on a morphism $f_{\cat{K}}$ corresponding to a Kleisli arrow:
-\[f \Colon a -> T\ b\]
+\[f \Colon a \to T\ b\]
 is a morphism in $\cat{C}$:
 \[T\ a \to T\ b\]
 given by first lifting $f$ and then applying $\mu$:
