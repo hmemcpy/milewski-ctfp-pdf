@@ -52,6 +52,7 @@ Thanks to the following people for contributing corrections/conversions and misc
 * Erwin Maruli Tua Pakpahan
 * Markus Hauck
 * Yevheniy Zelenskyy
+* Ross Kirsling
 * ...and many others!
 
 Note from Bartosz: I really appreciate all your contributions. You made this book much better than I could have imagined. Thank you!
