@@ -76,7 +76,7 @@ bifunctor:
 We want the tensor product to be associative, but it's enough to satisfy
 associativity up to natural isomorphism. This isomorphism is called the
 associator. Its components are:
-\[\alpha_{a\ b\ c} \Colon (a \otimes b) \otimes c \to a \otimes (b \otimes c)\]
+\[\alpha_{a b c} \Colon (a \otimes b) \otimes c \to a \otimes (b \otimes c)\]
 It must be natural in all three arguments.
 
 A monoidal category must also define a special unit object $i$
@@ -120,9 +120,9 @@ The associator and the unitors must satisfy coherence conditions:
 \noindent
 A monoidal category is called \newterm{symmetric} if there is a natural
 isomorphism with components:
-\[\gamma_{a\ b} \Colon a \otimes b \to b \otimes a\]
+\[\gamma_{a b} \Colon a \otimes b \to b \otimes a\]
 whose ``square is one'':
-\[\gamma_{b\ a} \circ \gamma_{a\ b} = \idarrow[a \otimes b]\]
+\[\gamma_{b a} \circ \gamma_{a b} = \idarrow[a \otimes b]\]
 and which is consistent with the monoidal structure.
 
 An interesting thing about monoidal categories is that you may be able
@@ -138,7 +138,7 @@ Following
 Kelly}, I'm using the notation ${[}b, c{]}$ for the internal
 hom. The counit of this adjunction is the natural transformation whose
 components are called evaluation morphisms:
-\[\varepsilon_{a\ b} \Colon ([a, b] \otimes a) \to b\]
+\[\varepsilon_{a b} \Colon ([a, b] \otimes a) \to b\]
 Notice that, if the tensor product is not symmetric, we may define
 another internal hom, denoted by ${[}{[}a, c{]}{]}$, using the
 following adjunction:
@@ -338,7 +338,7 @@ between two enriched categories.
 An \newterm{enriched functor} $F$ between two categories $\cat{C}$
 and $\cat{D}$, besides mapping objects to objects, also assigns, to every
 pair of objects in $\cat{C}$, a morphism in $\cat{V}$:
-\[F_{a\ b} \Colon \cat{C}(a, b) \to \cat{D}(F\ a, F\ b)\]
+\[F_{a b} \Colon \cat{C}(a, b) \to \cat{D}(F\ a, F\ b)\]
 A functor is a structure-preserving mapping. For regular functors it
 meant preserving composition and identity. In the enriched setting, the
 preservation of composition means that the following diagram commute:
@@ -364,7 +364,7 @@ morphisms in $\cat{V}$ that ``select'' the identity:
 \begin{figure}[H]
 \centering
 \begin{tikzcd}[row sep=large]
-    & i \arrow[dl, "j_a"'] \arrow[dr, "j_{F\ a}"] & \\
+    & i \arrow[dl, "j_a"'] \arrow[dr, "j_{F a}"] & \\
   \cat{C}(a,a)
   \arrow[rr, "F_{aa}"]
     & & \cat{D}(F\ a, F\ a)
@@ -393,11 +393,11 @@ several morphisms that are at our disposal. To begin with, we can use
 the associator $\alpha_{{[}b, c{]}\ {[}a, b{]}\ a}$ to reassociate the
 expression on the left:
 \[([b, c] \otimes [a, b]) \otimes a \to [b, c] \otimes ([a, b] \otimes a)\]
-We can follow it with the co-unit of the adjunction $\varepsilon_{a\ b}$:
+We can follow it with the counit of the adjunction $\varepsilon_{a b}$:
 \[[b, c] \otimes ([a, b] \otimes a) \to [b, c] \otimes b\]
-And use the counit $\varepsilon_{b\ c}$ again to get to $c$. We have
+And use the counit $\varepsilon_{b c}$ again to get to $c$. We have
 thus constructed a morphism:
-\[\varepsilon_{b\ c}\ .\ (\idarrow[{[b, c]}] \otimes \varepsilon_{a\ b})\ .\ \alpha_{[b, c]\ [a, b]\ a}\]
+\[\varepsilon_{b c}\ .\ (\idarrow[{[b, c]}] \otimes \varepsilon_{a b})\ .\ \alpha_{[b, c] [a, b] a}\]
 that is an element of the hom-set:
 \[\cat{V}(([b, c] \otimes [a, b]) \otimes a, c)\]
 The adjunction will give us the composition law we were looking for.

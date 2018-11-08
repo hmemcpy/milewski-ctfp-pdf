@@ -195,7 +195,7 @@ will turn \code{a} into \code{m b}. The result of the application
 is therefore of type \code{m (m b)}. This is not exactly what we
 want --- we need the result of type \code{m b} --- but we're close.
 All we need is a function that collapses or flattens the double
-application of \code{m}. Such function is called \code{join}:
+application of \code{m}. Such a function is called \code{join}:
 
 \src{code/haskell/snippet12.hs}
 Using \code{join}, we can rewrite bind as:
