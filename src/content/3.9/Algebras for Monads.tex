@@ -225,7 +225,7 @@ $F^T$ drops the evaluator. So, indeed, we have:
 \[U^T \circ F^T = T\]
 As expected, the unit of the adjunction is the unit of the monad $T$.
 
-You may remember that the counint of the adjunction produces monadic
+You may remember that the counit of the adjunction produces monadic
 multiplication through the following formula:
 \[\mu = R \circ \varepsilon \circ L\]
 This is a horizontal composition of three natural transformations, two
@@ -277,7 +277,7 @@ In Haskell we would write it as:
 
 \src{code/haskell/snippet05.hs}
 There is a functor $F$ from $\cat{C}$ to $\cat{C}_T$
-which acts trivially on objects. On morphims, it maps $f$ in
+which acts trivially on objects. On morphisms, it maps $f$ in
 $\cat{C}$ to a morphism in $\cat{C}_T$ by creating a
 Kleisli arrow that embellishes the return value of $f$. Given a
 morphism:

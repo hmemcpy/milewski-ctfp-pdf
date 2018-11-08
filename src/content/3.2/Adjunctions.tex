@@ -185,7 +185,7 @@ known as \code{return} (or \code{pure}, in the definition of
 \code{Applicative}):
 
 \src{code/haskell/snippet02.hs}
-and counint as \code{extract}:
+and counit as \code{extract}:
 
 \src{code/haskell/snippet03.hs}
 Here, \code{m} is the (endo-) functor corresponding to $R \circ L$,
@@ -309,7 +309,7 @@ natural transformation between the functor $I$ and the functor
 $R \circ L$ (the naturality condition is easy to verify). This is
 exactly our unit, $\eta$.
 
-Conversely, starting from the existence of the unit and co-unit, we can
+Conversely, starting from the existence of the unit and counit, we can
 define the transformations between hom-sets. For instance, let's pick an
 arbitrary morphism $f$ in the hom-set $\cat{C}(L d, c)$. We
 want to define a $\varphi$ that, acting on $f$, produces a
