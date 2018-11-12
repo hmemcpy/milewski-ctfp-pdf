@@ -1,0 +1,1 @@
+type RingF2[A] = RingF[RingF1[A]]

@@ -136,7 +136,7 @@ product, we imposed the condition that the morphisms between candidate
 objects (the apexes) must be common factors for the projections. For
 instance:
 
-\src{code/haskell/snippet01.hs}
+\src{snippet01}
 
 \begin{figure}[H]
 \centering
@@ -226,7 +226,7 @@ We can precompose $u$ with $f$ to get:
 And that's an element of $\cat{C}(c', \Lim[D])$--- so indeed, we
 have found a mapping of morphisms:
 
-\src{code/haskell/snippet02.hs}
+\src{snippet02}
 
 Notice the inversion in the order of $c$ and $c'$
 characteristic of a \emph{contravariant} functor.
@@ -339,12 +339,12 @@ between them (and, as always, the identity morphisms). This category
 selects a diagram in $\cat{C}$ consisting of two objects, $a$ and
 $b$, and two morphisms:
 
-\src{code/haskell/snippet03.hs}
+\src{snippet03}
 
 To build a cone over this diagram, we have to add the apex, $c$
 and two projections:
 
-\src{code/haskell/snippet04.hs}
+\src{snippet04}
 
 \begin{figure}[H]
 \centering
@@ -354,13 +354,13 @@ and two projections:
 \noindent
 We have two triangles that must commute:
 
-\src{code/haskell/snippet05.hs}
+\src{snippet05}
 
 This tells us that $q$ is uniquely determined by one of these
 equations, say, \code{q = f . p}, and we can omit it from the
 picture. So we are left with just one condition:
 
-\src{code/haskell/snippet06.hs}
+\src{snippet06}
 
 The way to think about it is that, if we restrict our attention to
 $\Set$, the image of the function $p$ selects a subset of
@@ -371,12 +371,12 @@ For instance, take $a$ to be the two-dimensional plane
 parameterized by coordinates $x$ and $y$. Take $b$
 to be the real line, and take:
 
-\src{code/haskell/snippet07.hs}
+\src{snippet07}
 
 The equalizer for these two functions is the set of real numbers (the
 apex, $c$) and the function:
 
-\src{code/haskell/snippet08.hs}
+\src{snippet08}
 
 Notice that $(p~t)$ defines a straight line in the
 two-dimensional plane. Along this line, the two functions are equal.
@@ -384,22 +384,22 @@ two-dimensional plane. Along this line, the two functions are equal.
 Of course, there are other sets $c'$ and functions
 $p'$ that may lead to the equality:
 
-\src{code/haskell/snippet09.hs}
+\src{snippet09}
 
 but they all uniquely factor out through $p$. For instance, we
 can take the singleton set $\cat{()}$ as $c'$ and the
 function:
 
-\src{code/haskell/snippet10.hs}
+\src{snippet10}
 
 It's a good cone, because $f (0, 0) = g (0, 0)$. But it's
 not universal, because of the unique factorization through $h$:
 
-\src{code/haskell/snippet11.hs}
+\src{snippet11}
 
 with
 
-\src{code/haskell/snippet12.hs}
+\src{snippet12}
 
 \begin{figure}[H]
 \centering
@@ -419,14 +419,14 @@ $1\rightarrow2\leftarrow3$. The diagram corresponding to
 this category consists of three objects, $a$, $b$, and
 $c$, and two morphisms:
 
-\src{code/haskell/snippet13.hs}
+\src{snippet13}
 
 This diagram is often called a \emph{cospan}.
 
 A cone built on top of this diagram consists of the apex, $d$,
 and three morphisms:
 
-\src{code/haskell/snippet14.hs}
+\src{snippet14}
 
 \begin{figure}[H]
 \centering
@@ -438,7 +438,7 @@ Commutativity conditions tell us that $r$ is completely
 determined by the other morphisms, and can be omitted from the picture.
 So we are only left with the following condition:
 
-\src{code/haskell/snippet15.hs}
+\src{snippet15}
 A pullback is a universal cone of this shape.
 
 \begin{figure}[H]
@@ -455,7 +455,7 @@ general, consider the special case in which $g$ is a constant
 function, say $g~\_ = 1.23$ (assuming that $b$ is a set
 of real numbers). Then you are really solving the equation:
 
-\src{code/haskell/snippet16.hs}
+\src{snippet16}
 
 In this case, the choice of $c$ is irrelevant (as long as it's
 not an empty set), so we can take it to be a singleton set. The set
@@ -621,13 +621,13 @@ type, so it's just a parameterized function type. When we fix the second
 parameter, let's say to \code{String}, we get the contravariant
 functor:
 
-\src{code/haskell/snippet17.hs}
+\src{snippet17}
 
 Continuity means that when \code{ToString} is applied to a colimit,
 for instance a coproduct \code{Either b c}, it will produce a limit;
 in this case a product of two function types:
 
-\src{code/haskell/snippet18.hs}
+\src{snippet18}
 Indeed, any function of \code{Either b c} is implemented as a case
 statement with the two cases being serviced by a pair of functions.
 
@@ -636,7 +636,7 @@ familiar reader functor. Its continuity means that, for instance, any
 function returning a product is equivalent to a product of functions; in
 particular:
 
-\src{code/haskell/snippet19.hs}
+\src{snippet19}
 I know what you're thinking: You don't need category theory to figure
 these things out. And you're right! Still, I find it amazing that such
 results can be derived from first principles with no recourse to bits

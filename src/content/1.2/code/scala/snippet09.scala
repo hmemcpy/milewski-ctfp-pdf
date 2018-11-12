@@ -1,0 +1,1 @@
+val fInt: BigInt => Unit = _ => ()

@@ -89,7 +89,7 @@ types that were parameterized by other types. Let's see a few examples.
 The definition of \code{Maybe} is a mapping from type \code{a} to
 type \code{Maybe a}:
 
-\src{code/haskell/snippet01.hs}
+\src{snippet01}
 Here's an important subtlety: \code{Maybe} itself is not a type, it's
 a \emph{type constructor}. You have to give it a type argument, like
 \code{Int} or \code{Bool}, in order to turn it into a type.
@@ -100,7 +100,7 @@ endofunctors.) A functor is not only a mapping of objects (here, types)
 but also a mapping of morphisms (here, functions). For any function from
 \code{a} to \code{b}:
 
-\src{code/haskell/snippet02.hs}
+\src{snippet02}
 we would like to produce a function from \code{Maybe a} to
 \code{Maybe b}. To define such a function, we'll have two cases to
 consider, corresponding to the two constructors of \code{Maybe}. The
@@ -109,14 +109,14 @@ back. And if the argument is \code{Just}, we'll apply the function
 \code{f} to its contents. So the image of \code{f} under
 \code{Maybe} is the function:
 
-\src{code/haskell/snippet03.hs}
+\src{snippet03}
 (By the way, in Haskell you can use apostrophes in variables names,
 which is very handy in cases like these.) In Haskell, we implement the
 morphism-mapping part of a functor as a higher order function called
 \code{fmap}. In the case of \code{Maybe}, it has the following
 signature:
 
-\src{code/haskell/snippet04.hs}
+\src{snippet04}
 
 \begin{figure}[H]
 \centering
@@ -132,11 +132,11 @@ itself is a function \code{(a -> b)} --- returning a
 function \code{(Maybe a -> Maybe b)}; or as a
 function of two arguments returning \code{Maybe b}:
 
-\src{code/haskell/snippet05.hs}
+\src{snippet05}
 Based on our previous discussion, this is how we implement \code{fmap}
 for \code{Maybe}:
 
-\src{code/haskell/snippet06.hs}
+\src{snippet06}
 To show that the type constructor \code{Maybe} together with the
 function \code{fmap} form a functor, we have to prove that
 \code{fmap} preserves identity and composition. These are called ``the
@@ -154,7 +154,7 @@ either inlining a function, or the other way around, refactoring an
 expression into a function. Let's take the identity function as an
 example:
 
-\src{code/haskell/snippet07.hs}
+\src{snippet07}
 If you see, for instance, \code{id y} in some expression, you can
 replace it with \code{y} (inlining). Further, if you see \code{id}
 applied to an expression, say \code{id (y + 2)}, you can replace it
@@ -167,7 +167,7 @@ given the above definition of \code{fmap} you can replace
 around. Let's see how this works in practice. Let's start with the
 preservation of identity:
 
-\src{code/haskell/snippet08.hs}
+\src{snippet08}
 There are two cases to consider: \code{Nothing} and \code{Just}.
 Here's the first case (I'm using Haskell pseudo-code to transform the
 left hand side to the right hand side):
@@ -197,7 +197,7 @@ easy:
 \end{Verbatim}
 Now, lets show that \code{fmap} preserves composition:
 
-\src{code/haskell/snippet09.hs}
+\src{snippet09}
 First the \code{Nothing} case:
 
 \begin{Verbatim}
@@ -323,7 +323,7 @@ typeclass mechanism. A typeclass defines a family of types that support
 a common interface. For instance, the class of objects that support
 equality is defined as follows:
 
-\src{code/haskell/snippet10.hs}
+\src{snippet10}
 This definition states that type \code{a} is of the class \code{Eq}
 if it supports the operator \code{(==)} that takes two arguments of
 type \code{a} and returns a \code{Bool}. If you want to tell Haskell
@@ -332,10 +332,10 @@ that a particular type is \code{Eq}, you have to declare it an
 \code{(==)}. For example, given the definition of a 2D \code{Point}
 (a product type of two \code{Float}s):
 
-\src{code/haskell/snippet11.hs}
+\src{snippet11}
 you can define the equality of points:
 
-\src{code/haskell/snippet12.hs}
+\src{snippet12}
 Here I used the operator \code{(==)} (the one I'm defining) in the
 infix position between the two patterns \code{(Pt x y)} and
 \code{(Pt x' y')}. The body of the function follows the
@@ -352,7 +352,7 @@ the case with \code{Eq}, but a family of type constructors.
 Fortunately a Haskell typeclass works with type constructors as well as
 with types. So here's the definition of the \code{Functor} class:
 
-\src{code/haskell/snippet13.hs}
+\src{snippet13}
 It stipulates that \code{f} is a \code{Functor} if there exists a
 function \code{fmap} with the specified type signature. The lowercase
 \code{f} is a type variable, similar to type variables \code{a} and
@@ -362,7 +362,7 @@ other types, as in \code{f a} and \code{f b}. Accordingly, when
 declaring an instance of \code{Functor}, you have to give it a type
 constructor, as is the case with \code{Maybe}:
 
-\src{code/haskell/snippet14.hs}
+\src{snippet14}
 By the way, the \code{Functor} class, as well as its instance
 definitions for a lot of simple data types, including \code{Maybe},
 are part of the standard Prelude library.
@@ -410,14 +410,14 @@ is a candidate for a functor. Generic containers are parameterized by
 the type of the elements they store, so let's look at a very simple
 container, the list:
 
-\src{code/haskell/snippet15.hs}
+\src{snippet15}
 We have the type constructor \code{List}, which is a mapping from any
 type \code{a} to the type \code{List a}. To show that \code{List}
 is a functor we have to define the lifting of functions: Given a
 function \code{a -> b} define a function\\
 \code{List a -> List b}:
 
-\src{code/haskell/snippet16.hs}
+\src{snippet16}
 A function acting on \code{List a} must consider two cases
 corresponding to the two list constructors. The \code{Nil} case is
 trivial --- just return \code{Nil} --- there isn't much you can do
@@ -433,7 +433,7 @@ lifted (\code{fmap}ped) \code{f} to the tail. This is a recursive
 definition, because we are defining lifted \code{f} in terms of lifted
 \code{f}:
 
-\src{code/haskell/snippet17.hs}
+\src{snippet17}
 Notice that, on the right hand side, \code{fmap f} is applied to a
 list that's shorter than the list for which we are defining it --- it's
 applied to its tail. We recurse towards shorter and shorter lists, so we
@@ -444,7 +444,7 @@ we combine the new head \code{(f x)} with the new tail
 \code{(fmap f t)} using the \code{Cons} constructor. Putting it
 all together, here's the instance declaration for the list functor:
 
-\src{code/haskell/snippet18.hs}
+\src{snippet18}
 If you are more comfortable with C++, consider the case of a
 \code{std::vector}, which could be considered the most generic C++
 container. The implementation of \code{fmap} for \code{std::vector}
@@ -493,12 +493,12 @@ argument type and the result type. You've already seen it in infix form,
 \code{a -> b}, but it can equally well be used in prefix
 form, when parenthesized:
 
-\src{code/haskell/snippet19.hs}
+\src{snippet19}
 Just like with regular functions, type functions of more than one
 argument can be partially applied. So when we provide just one type
 argument to the arrow, it still expects another one. That's why:
 
-\src{code/haskell/snippet20.hs}
+\src{snippet20}
 is a type constructor. It needs one more type \code{b} to produce a
 complete type \code{a -> b}. As it stands, it defines a
 whole family of type constructors parameterized by \code{a}. Let's see
@@ -515,7 +515,7 @@ are the types that are formed using the type constructor
 \code{b}. Here's the type signature of \code{fmap} applied to this
 case:
 
-\src{code/haskell/snippet21.hs}
+\src{snippet21}
 We have to solve the following puzzle: given a function
 \code{f :: a -> b} and a function
 \code{g :: r -> a}, create a function
@@ -523,16 +523,16 @@ We have to solve the following puzzle: given a function
 functions, and the result is exactly what we need. So here's the
 implementation of our \code{fmap}:
 
-\src{code/haskell/snippet22.hs}
+\src{snippet22}
 It just works! If you like terse notation, this definition can be
 reduced further by noticing that composition can be rewritten in prefix
 form:
 
-\src{code/haskell/snippet23.hs}
+\src{snippet23}
 and the arguments can be omitted to yield a direct equality of two
 functions:
 
-\src{code/haskell/snippet24.hs}
+\src{snippet24}
 This combination of the type constructor \code{(->) r}
 with the above implementation of \code{fmap} is called the reader
 functor.
@@ -549,7 +549,7 @@ Haskell's laziness, a traditional container, like a list, may actually
 be implemented as a function. Consider, for instance, an infinite list
 of natural numbers, which can be compactly defined as:
 
-\src{code/haskell/snippet25.hs}
+\src{snippet25}
 In the first line, a pair of square brackets is Haskell's built-in
 type constructor for lists. In the second line, square brackets are used
 to create a list literal. Obviously, an infinite list like this cannot
@@ -587,7 +587,7 @@ don't care about being able to access the values inside a functor
 object, here's a type constructor that ignores completely its argument
 \code{a}:
 
-\src{code/haskell/snippet26.hs}
+\src{snippet26}
 The \code{Const} type constructor takes two types, \code{c} and
 \code{a}. Just like we did with the arrow constructor, we are going to
 partially apply it to create a functor. The data constructor (also
@@ -595,12 +595,12 @@ called \code{Const}) takes just one value of type \code{c}. It has
 no dependence on \code{a}. The type of \code{fmap} for this type
 constructor is:
 
-\src{code/haskell/snippet27.hs}
+\src{snippet27}
 Because the functor ignores its type argument, the implementation of
 \code{fmap} is free to ignore its function argument --- the function
 has nothing to act upon:
 
-\src{code/haskell/snippet28.hs}
+\src{snippet28}
 This might be a little clearer in C++ (I never thought I would utter
 those words!), where there is a stronger distinction between type
 arguments --- which are compile-time --- and values, which are run-time:
@@ -640,7 +640,7 @@ particular, it's easy to compose endofunctors. Remember the function
 \code{maybeTail}? I'll rewrite it using Haskell's built in
 implementation of lists:
 
-\src{code/haskell/snippet29.hs}
+\src{snippet29}
 (The empty list constructor that we used to call \code{Nil} is
 replaced with the empty pair of square brackets \code{{[}{]}}. The
 \code{Cons} constructor is replaced with the infix operator \code{:}
@@ -656,28 +656,28 @@ to send \code{(fmap f)} to operate on the inner list. For instance,
 let's see how we can square the elements of a \code{Maybe} list of
 integers:
 
-\src{code/haskell/snippet30.hs}
+\src{snippet30}
 The compiler, after analyzing the types, will figure out that, for the
 outer \code{fmap}, it should use the implementation from the
 \code{Maybe} instance, and for the inner one, the list functor
 implementation. It may not be immediately obvious that the above code
 may be rewritten as:
 
-\src{code/haskell/snippet31.hs}
+\src{snippet31}
 But remember that \code{fmap} may be considered a function of just one
 argument:
 
-\src{code/haskell/snippet32.hs}
+\src{snippet32}
 In our case, the second \code{fmap} in \code{(fmap . fmap)} takes
 as its argument:
 
-\src{code/haskell/snippet33.hs}
+\src{snippet33}
 and returns a function of the type:
 
-\src{code/haskell/snippet34.hs}
+\src{snippet34}
 The first \code{fmap} then takes that function and returns a function:
 
-\src{code/haskell/snippet35.hs}
+\src{snippet35}
 Finally, that function is applied to \code{mis}. So the composition of
 two functors is a functor whose \code{fmap} is the composition of the
 corresponding \code{fmap}s. Going back to category theory: It's pretty

@@ -1,0 +1,1 @@
+def extract[A](wa: W[A]): A

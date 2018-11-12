@@ -1,0 +1,1 @@
+case class FreeF[F[_], A](r: (A => ?) ~> F)

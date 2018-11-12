@@ -115,6 +115,13 @@
 }
 \makeatother
 
+% workaround for incompatibility with lettrine's \LettrineFontHook
+% https://tex.stackexchange.com/questions/459834/problem-with-using-allrunes-together-with-lettrine-and-a-custom-lettrinefonthook
+\usepackage{etoolbox}
+\letcs\xmdseries{mdseries }
+\usepackage{allrunes}
+\cslet{mdseries }\xmdseries
+
 % Document colors
 \definecolor{Dark}          {HTML} {262626}
 \definecolor{DropCapGray}   {HTML} {B8B8B8}
@@ -123,7 +130,7 @@
 \definecolor{DropCapViolet} {HTML} {9090C0}
 
 \usepackage{lettrine}  % adds commands that make drop capitals
-\renewcommand{\LettrineFontHook}{\rmfamily\mdseries\color{DropCapViolet}}
+\renewcommand{\LettrineFontHook}{\rmfamily\xmdseries\color{DropCapViolet}}
 \renewcommand{\DefaultLraise}{0.00}
 \renewcommand{\DefaultLoversize}{0.02}
 \renewcommand{\DefaultLhang}{0.12}
@@ -146,6 +153,7 @@
 \makeatletter
 \newcommand{\src}[1]{
   \srcsnippet{\currfileabsdir/code/haskell/#1.hs}{blue}{haskell}
+  \unskip
   \srcsnippet{\currfileabsdir/code/scala/#1.scala}{red}{scala}
   \NoIndentAfterThis
 }
@@ -163,7 +171,7 @@
   %   frametitleaboveskip=-9pt,
   }
   \begin{mdframed}
-    \inputminted[autogobble]{#3}{\snippet}
+    \inputminted[autogobble,breaklines,escapeinside=||]{#3}{\snippet}
   \end{mdframed}
 }
 \makeatother

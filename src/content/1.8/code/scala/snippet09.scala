@@ -1,0 +1,1 @@
+case class BiComp[BF[_, _], FU[_], GU[_], A, B](v: BF[FU[A], GU[B]])

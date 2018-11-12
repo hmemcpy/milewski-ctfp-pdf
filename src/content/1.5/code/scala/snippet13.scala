@@ -1,0 +1,1 @@
+def m: Int => (Int, Boolean) = x => (x, true)

@@ -1,0 +1,3 @@
+case class Product[E, A](run: (E, A))
+
+// implicit def productFunctor = ...

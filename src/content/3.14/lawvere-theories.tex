@@ -90,7 +90,7 @@ singleton set using coproducts (treating the empty set as a special case
 of a nullary coproduct). For instance, a two-element set is a sum of two
 singletons, $2 = 1 + 1$, as expressed in Haskell:
 
-\src{code/haskell/snippet01.hs}
+\src{snippet01}
 However, even though it's natural to think that there's only one empty
 set, there may be many distinct singleton sets. In particular, the set
 $1 + \varnothing$ is different from the set $\varnothing + 1$, and
@@ -562,7 +562,7 @@ single nullary operation $0 \to 1$. A model of this
 theory is a functor that maps $1$ to some set $a$, and
 maps the nullary operation to a function:
 
-\src{code/haskell/snippet02.hs}
+\src{snippet02}
 We can recover the \code{Maybe} monad using the coend formula. Let's
 consider what the addition of the nullary operation does to the hom-sets
 $\cat{L}(n, 1)$. Besides creating a new $\cat{L}(0, 1)$ (which is
@@ -593,10 +593,10 @@ The coend reduces to:
 \[T_{\cat{L}}\ a = a^0 + a^1\]
 or, using Haskell notation:
 
-\src{code/haskell/snippet03.hs}
+\src{snippet03}
 which is equivalent to:
 
-\src{code/haskell/snippet04.hs}
+\src{snippet04}
 Notice that this Lawvere theory only supports the raising of exceptions,
 not their handling.
 

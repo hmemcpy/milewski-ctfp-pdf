@@ -12,11 +12,11 @@ You can see this even at the most basic level. Composition itself may be
 defined declaratively; as in, \code{h} is a composite of \code{g}
 after \code{f}:
 
-\src{code/haskell/snippet01.hs}
+\src{snippet01}
 or imperatively; as in, call \code{f} first, remember the result of
 that call, then call \code{g} with the result:
 
-\src{code/haskell/snippet02.hs}
+\src{snippet02}
 The imperative version of a program is usually described as a sequence
 of actions ordered in time. In particular, the call to \code{g} cannot
 happen before the execution of \code{f} completes. At least, that's

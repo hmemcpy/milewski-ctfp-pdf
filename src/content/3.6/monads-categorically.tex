@@ -86,10 +86,10 @@ Here $T$, being a functor, can be applied to the morphism
 $g$. It might be easier to recognize this formula in Haskell
 notation:
 
-\src{code/haskell/snippet01.hs}
+\src{snippet01}
 or, in components:
 
-\src{code/haskell/snippet02.hs}
+\src{snippet02}
 In terms of the algebraic interpretation, we are just composing two
 successive substitutions.
 
@@ -174,7 +174,7 @@ Let's go back to the conventional definition of a monoid. It's a set
 with a binary operation and a special element called unit. In Haskell,
 this can be expressed as a typeclass:
 
-\src{code/haskell/snippet03.hs}
+\src{snippet03}
 The binary operation \code{mappend} must be associative and unital
 (i.e., multiplication by the unit \code{mempty} is a no-op).
 
@@ -182,14 +182,14 @@ Notice that, in Haskell, the definition of \code{mappend} is curried.
 It can be interpreted as mapping every element of \code{m} to a
 function:
 
-\src{code/haskell/snippet04.hs}
+\src{snippet04}
 It's this interpretation that gives rise to the definition of a monoid
 as a single-object category where endomorphisms
 \code{(m -> m)} represent the elements of the monoid.
 But because currying is built into Haskell, we could as well have
 started with a different definition of multiplication:
 
-\src{code/haskell/snippet05.hs}
+\src{snippet05}
 Here, the Cartesian product \code{(m, m)} becomes the source of pairs
 to be multiplied.
 
@@ -204,7 +204,7 @@ to it. Remember how element selection is equivalent to a function from
 the singleton set? In Haskell, we could replace the definition of
 \code{mempty} with a function:
 
-\src{code/haskell/snippet06.hs}
+\src{snippet06}
 The singleton is the terminal object in $\Set$, so it's natural to
 generalize this definition to any category that has a terminal object
 $t$:
@@ -221,47 +221,47 @@ recall how monoidal structure works in Haskell first.
 We start with associativity. In Haskell, the corresponding equational
 law is:
 
-\src{code/haskell/snippet07.hs}
+\src{snippet07}
 Before we can generalize it to other categories, we have to rewrite it
 as an equality of functions (morphisms). We have to abstract it away
 from its action on individual variables --- in other words, we have to
 use point-free notation. Knowing that the Cartesian product is a
 bifunctor, we can write the left hand side as:
 
-\src{code/haskell/snippet08.hs}
+\src{snippet08}
 and the right hand side as:
 
-\src{code/haskell/snippet09.hs}
+\src{snippet09}
 This is almost what we want. Unfortunately, the Cartesian product is not
 strictly associative --- \code{(x, (y, z))} is not the same as
 \code{((x, y), z)} --- so we can't just write point-free:
 
-\src{code/haskell/snippet10.hs}
+\src{snippet10}
 On the other hand, the two nestings of pairs are isomorphic. There is an
 invertible function called the associator that converts between them:
 
-\src{code/haskell/snippet11.hs}
+\src{snippet11}
 With the help of the associator, we can write the point-free
 associativity law for \code{mu}:
 
-\src{code/haskell/snippet12.hs}
+\src{snippet12}
 We can apply a similar trick to unit laws which, in the new notation,
 take the form:
 
-\src{code/haskell/snippet13.hs}
+\src{snippet13}
 They can be rewritten as:
 
-\src{code/haskell/snippet14.hs}
+\src{snippet14}
 The isomorphisms \code{lambda} and \code{rho} are called the left
 and right unitor, respectively. They witness the fact that the unit
 \code{()} is the identity of the Cartesian product up to isomorphism:
 
-\src{code/haskell/snippet15.hs}
+\src{snippet15}
 
-\src{code/haskell/snippet16.hs}
+\src{snippet16}
 The point-free versions of the unit laws are therefore:
 
-\src{code/haskell/snippet17.hs}
+\src{snippet17}
 We have formulated point-free monoidal laws for \code{mu} and
 \code{eta} using the fact that the underlying Cartesian product itself
 acts like a monoidal multiplication in the category of types. Keep in
@@ -474,28 +474,28 @@ You may recognize their composition as the familiar state monad:
 \[R\ (L\ z) = s \Rightarrow (z\times{}s)\]
 We've seen this monad before in Haskell:
 
-\src{code/haskell/snippet18.hs}
+\src{snippet18}
 Let's also translate the adjunction to Haskell. The left functor is the
 product functor:
 
-\src{code/haskell/snippet19.hs}
+\src{snippet19}
 and the right functor is the reader functor:
 
-\src{code/haskell/snippet20.hs}
+\src{snippet20}
 They form the adjunction:
 
-\src{code/haskell/snippet21.hs}
+\src{snippet21}
 You can easily convince yourself that the composition of the reader
 functor after the product functor is indeed equivalent to the state
 functor:
 
-\src{code/haskell/snippet22.hs}
+\src{snippet22}
 As expected, the \code{unit} of the adjunction is equivalent to the
 \code{return} function of the state monad. The \code{counit} acts by
 evaluating a function acting on its argument. This is recognizable as
 the uncurried version of the function \code{runState}:
 
-\src{code/haskell/snippet23.hs}
+\src{snippet23}
 (uncurried, because in \code{counit} it acts on a pair).
 
 We can now define \code{join} for the state monad as a component of
@@ -513,12 +513,12 @@ We have to first peel off the data constructor \code{State} to expose
 the function inside the \code{State} functor. This is done using
 \code{runState}:
 
-\src{code/haskell/snippet24.hs}
+\src{snippet24}
 Then we left-compose it with the counit, which is defined by
 \code{uncurry runState}. Finally, we clothe it back in the
 \code{State} data constructor:
 
-\src{code/haskell/snippet25.hs}
+\src{snippet25}
 This is indeed the implementation of \code{join} for the
 \code{State} monad.
 

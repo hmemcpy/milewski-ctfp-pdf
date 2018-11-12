@@ -1,0 +1,1 @@
+mu compose bimap(mu)(identity)

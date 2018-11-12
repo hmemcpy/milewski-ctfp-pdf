@@ -1,0 +1,1 @@
+f compose p1 == g compose p1

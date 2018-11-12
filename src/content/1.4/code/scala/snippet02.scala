@@ -1,0 +1,1 @@
+A => Writer[B]

@@ -1,0 +1,1 @@
+Either[A, Nothing]

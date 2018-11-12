@@ -1,0 +1,1 @@
+fmap(g compose f) == fmap(g) compose fmap(f)

@@ -37,7 +37,7 @@ In Haskell, a profunctor is defined as a two-argument type constructor
 \code{p} equipped with the method called \code{dimap}, which lifts a
 pair of functions, the first going in the ``wrong'' direction:
 
-\src{code/haskell/snippet01.hs}
+\src{snippet01}
 The functoriality of the profunctor tells us that if we have a proof
 that \code{a} is related to \code{b}, then we get the proof that
 \code{c} is related to \code{d}, as long as there is a morphism from
@@ -56,11 +56,11 @@ $f \Colon a \to b$, we can lift the pair
 $\langle f, \idarrow[b] \rangle$ to go from $p\ b\ b$ to
 $p\ a\ b$:
 
-\src{code/haskell/snippet02.hs}
+\src{snippet02}
 Or we can lift the pair $\langle \idarrow[a], f \rangle$ to go
 from $p\ a\ a$ to $p\ a\ b$:
 
-\src{code/haskell/snippet03.hs}
+\src{snippet03}
 
 \section{Dinatural Transformations}
 
@@ -135,7 +135,7 @@ This is called the \newterm{wedge condition}. It can be written as:
 \[p\ \idarrow[a]\ f \circ \alpha_a = p\ f\ \idarrow[b] \circ \alpha_b\]
 Or, using Haskell notation:
 
-\src{code/haskell/snippet04.hs}
+\src{snippet04}
 We can now proceed with the universal construction and define the end of
 $p$ as the universal wedge --- a set $e$ together with a
 family of functions $\pi$ such that for any other wedge with the
@@ -163,13 +163,13 @@ and this product through an equalizer.
 In Haskell, the end formula translates directly to the universal
 quantifier:
 
-\src{code/haskell/snippet05.hs}
+\src{snippet05}
 Strictly speaking, this is just a product of all diagonal elements of
 $p$, but the wedge condition is satisfied automatically due to
 \urlref{https://bartoszmilewski.com/2017/04/11/profunctor-parametricity/}{parametricity}. For any function
 $f \Colon a \to b$, the wedge condition reads:
 
-\src{code/haskell/snippet06.hs}
+\src{snippet06}
 or, with type annotations:
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -177,10 +177,10 @@ dimap f id\textsubscript{b} . pi\textsubscript{b} = dimap id\textsubscript{a} f 
 \end{Verbatim}
 where both sides of the equation have the type:
 
-\src{code/haskell/snippet07.hs}
+\src{snippet07}
 and \code{pi} is the polymorphic projection:
 
-\src{code/haskell/snippet08.hs}
+\src{snippet08}
 Here, type inference automatically picks the right component of
 \code{e}.
 
@@ -207,20 +207,20 @@ notation, because mathematical notation seems to be less user-friendly
 in this case). These functions correspond to the two converging branches
 of the wedge condition:
 
-\src{code/haskell/snippet09.hs}
+\src{snippet09}
 Both functions map diagonal elements of the profunctor \code{p} to
 polymorphic functions of the type:
 
-\src{code/haskell/snippet10.hs}
+\src{snippet10}
 These functions have different types. However, we can unify their types,
 if we form one big product type, gathering together all diagonal
 elements of \code{p}:
 
-\src{code/haskell/snippet11.hs}
+\src{snippet11}
 The functions \code{lambda} and \code{rho} induce two mappings from
 this product type:
 
-\src{code/haskell/snippet12.hs}
+\src{snippet12}
 The end of \code{p} is the equalizer of these two functions. Remember
 that the equalizer picks the largest subset on which two functions are
 equal. In this case it picks the subset of the product of all diagonal
@@ -235,7 +235,7 @@ of the form $\cat{C}(F\ a, G\ a)$. If it weren't for the naturality
 condition, the set of natural transformations would be just the product
 of all these hom-sets. In fact, in Haskell, it is:
 
-\src{code/haskell/snippet13.hs}
+\src{snippet13}
 The reason it works in Haskell is because naturality follows from
 parametricity. Outside of Haskell, though, not all diagonal sections
 across such hom-sets will yield natural transformations. But notice that
@@ -301,7 +301,7 @@ exists a. p a a
 The standard way of encoding existential quantifiers in Haskell is to
 use universally quantified data constructors. We can thus define:
 
-\src{code/haskell/snippet14.hs}
+\src{snippet14}
 The logic behind this is that it should be possible to construct a coend
 using a value of any of the family of types $p\ a\ a$, no matter
 what $a$ we chose.
@@ -312,14 +312,14 @@ summarized by taking one gigantic coproduct of $p\ a\ b$ for all
 possible functions $b \to a$. In Haskell, that would be
 expressed as an existential type:
 
-\src{code/haskell/snippet15.hs}
+\src{snippet15}
 There are two ways of evaluating this sum type, by lifting the function
 using \code{dimap} and applying it to the profunctor $p$:
 
-\src{code/haskell/snippet16.hs}
+\src{snippet16}
 where \code{DiagSum} is the sum of diagonal elements of $p$:
 
-\src{code/haskell/snippet17.hs}
+\src{snippet17}
 The coequalizer of these two functions is the coend. A coequalizer is
 obtained from \code{DiagSum p} by identifying values that are
 obtained by applying \code{lambda} or \code{rho} to the same
@@ -429,7 +429,7 @@ formula:
 Here's the equivalent Haskell definition from\\
 \code{Data.Profunctor.Composition}, after some renaming:
 
-\src{code/haskell/snippet18.hs}
+\src{snippet18}
 This is using generalized algebraic data type, or \acronym{GADT} syntax, in which
 a free type variable (here \code{c}) is automatically existentially
 quantified. The (uncurried) data constructor \code{Procompose} is

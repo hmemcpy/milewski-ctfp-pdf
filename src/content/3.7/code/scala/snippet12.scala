@@ -1,0 +1,1 @@
+def extend[W[_], A, B]: (W[A] => B) => W[A] => W[B]

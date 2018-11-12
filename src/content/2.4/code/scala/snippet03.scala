@@ -1,0 +1,1 @@
+type Op[A, X] = X => A

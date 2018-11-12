@@ -1,0 +1,1 @@
+case class Op[R, A](f: A => R)
