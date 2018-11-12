@@ -1,0 +1,1 @@
+def alpha[A]: F[A] => G[A]

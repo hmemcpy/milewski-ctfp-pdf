@@ -1,0 +1,1 @@
+def split(x: M): (M, M) = (x, x)

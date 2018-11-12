@@ -1,0 +1,1 @@
+def destroy(x: M): Unit = ()

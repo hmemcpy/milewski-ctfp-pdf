@@ -1,0 +1,1 @@
+def side[P[_, _]: Profunctor]: PolyFunction1[P] => P[A, B]

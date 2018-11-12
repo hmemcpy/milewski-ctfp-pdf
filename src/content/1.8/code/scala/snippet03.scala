@@ -1,0 +1,1 @@
+def bimap[A, B, C, D](f: A => C)(g: B => D): ((A, B)) => (C, D)

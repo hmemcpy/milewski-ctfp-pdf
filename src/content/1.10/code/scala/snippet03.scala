@@ -1,0 +1,1 @@
+val alpha: F[A] => G[A]

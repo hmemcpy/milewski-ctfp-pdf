@@ -1,0 +1,1 @@
+case class Stmt(s: String, b: Boolean)

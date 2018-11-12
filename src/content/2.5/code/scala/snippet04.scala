@@ -1,0 +1,1 @@
+def alpha[A]: (A => ?) ~> F

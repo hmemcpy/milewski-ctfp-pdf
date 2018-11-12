@@ -152,12 +152,12 @@ alpha\textsubscript{a} :: F a -> G a
 A natural transformation is a polymorphic function that is defined for
 all types \code{a}:
 
-\src{code/haskell/snippet01.hs}
+\src{snippet01}
 The \code{forall a} is optional in Haskell (and in fact requires
 turning on the language extension \code{ExplicitForAll}). Normally,
 you would write it like this:
 
-\src{code/haskell/snippet02.hs}
+\src{snippet02}
 Keep in mind that it's really a family of functions parameterized by
 \code{a}. This is another example of the terseness of the Haskell
 syntax. A similar construct in C++ would be slightly more verbose:
@@ -186,7 +186,7 @@ classes and type families.
 Haskell's parametric polymorphism has an unexpected consequence: any
 polymorphic function of the type:
 
-\src{code/haskell/snippet03.hs}
+\src{snippet03}
 where \code{F} and \code{G} are functors, automatically satisfies
 the naturality condition. Here it is in categorical notation ($f$
 is a function $f \Colon a \to b$):
@@ -239,30 +239,30 @@ Let's see a few examples of natural transformations in Haskell. The
 first is between the list functor, and the \code{Maybe} functor. It
 returns the head of the list, but only if the list is non-empty:
 
-\src{code/haskell/snippet04.hs}
+\src{snippet04}
 It's a function polymorphic in \code{a}. It works for any type
 \code{a}, with no limitations, so it is an example of parametric
 polymorphism. Therefore it is a natural transformation between the two
 functors. But just to convince ourselves, let's verify the naturality
 condition.
 
-\src{code/haskell/snippet05.hs}
+\src{snippet05}
 We have two cases to consider; an empty list:
 
-\src{code/haskell/snippet06.hs}
+\src{snippet06}
 
-\src{code/haskell/snippet07.hs}
+\src{snippet07}
 and a non-empty list:
 
-\src{code/haskell/snippet08.hs}
+\src{snippet08}
 
-\src{code/haskell/snippet09.hs}
+\src{snippet09}
 I used the implementation of \code{fmap} for lists:
 
-\src{code/haskell/snippet10.hs}
+\src{snippet10}
 and for \code{Maybe}:
 
-\src{code/haskell/snippet11.hs}
+\src{snippet11}
 An interesting case is when one of the functors is the trivial
 \code{Const} functor. A natural transformation from or to a
 \code{Const} functor looks just like a function that's either
@@ -271,30 +271,30 @@ polymorphic in its return type or in its argument type.
 For instance, \code{length} can be thought of as a natural
 transformation from the list functor to the \code{Const Int} functor:
 
-\src{code/haskell/snippet12.hs}
+\src{snippet12}
 Here, \code{unConst} is used to peel off the \code{Const}
 constructor:
 
-\src{code/haskell/snippet13.hs}
+\src{snippet13}
 Of course, in practice \code{length} is defined as:
 
-\src{code/haskell/snippet14.hs}
+\src{snippet14}
 which effectively hides the fact that it's a natural transformation.
 
 Finding a parametrically polymorphic function \emph{from} a
 \code{Const} functor is a little harder, since it would require the
 creation of a value from nothing. The best we can do is:
 
-\src{code/haskell/snippet15.hs}
+\src{snippet15}
 Another common functor that we've seen already, and which will play an
 important role in the Yoneda lemma, is the \code{Reader} functor. I
 will rewrite its definition as a \code{newtype}:
 
-\src{code/haskell/snippet16.hs}
+\src{snippet16}
 It is parameterized by two types, but is (covariantly) functorial only
 in the second one:
 
-\src{code/haskell/snippet17.hs}
+\src{snippet17}
 For every type \code{e}, you can define a family of natural
 transformations from \code{Reader e} to any other functor \code{f}.
 We'll see later that the members of this family are always in one to one
@@ -309,13 +309,13 @@ These are just all the functions that pick a single element from the set
 \code{a}. Now let's consider natural transformations from this functor
 to the \code{Maybe} functor:
 
-\src{code/haskell/snippet18.hs}
+\src{snippet18}
 There are only two of these, \code{dumb} and \code{obvious}:
 
-\src{code/haskell/snippet19.hs}
+\src{snippet19}
 and
 
-\src{code/haskell/snippet20.hs}
+\src{snippet20}
 (The only thing you can do with \code{g} is to apply it to the unit
 value \code{()}.)
 
@@ -346,34 +346,34 @@ opposite category to Haskell types.
 You might remember the example of a contravariant functor we've looked
 at before:
 
-\src{code/haskell/snippet21.hs}
+\src{snippet21}
 This functor is contravariant in \code{a}:
 
-\src{code/haskell/snippet22.hs}
+\src{snippet22}
 We can write a polymorphic function from, say, \code{Op Bool} to
 \code{Op String}:
 
-\src{code/haskell/snippet23.hs}
+\src{snippet23}
 But since the two functors are not covariant, this is not a natural
 transformation in $\Hask$. However, because they are both
 contravariant, they satisfy the ``opposite'' naturality condition:
 
-\src{code/haskell/snippet24.hs}
+\src{snippet24}
 Notice that the function \code{f} must go in the opposite direction
 than what you'd use with \code{fmap}, because of the signature of
 \code{contramap}:
 
-\src{code/haskell/snippet25.hs}
+\src{snippet25}
 Are there any type constructors that are not functors, whether covariant
 or contravariant? Here's one example:
 
-\src{code/haskell/snippet26.hs}
+\src{snippet26}
 This is not a functor because the same type \code{a} is used both in
 the negative (contravariant) and positive (covariant) position. You
 can't implement \code{fmap} or \code{contramap} for this type.
 Therefore a function of the signature:
 
-\src{code/haskell/snippet27.hs}
+\src{snippet27}
 where \code{f} is an arbitrary functor, cannot be a natural
 transformation. Interestingly, there is a generalization of natural
 transformations, called dinatural transformations, that deals with such

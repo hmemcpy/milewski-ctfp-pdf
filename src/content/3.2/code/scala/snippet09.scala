@@ -1,0 +1,1 @@
+Product2[Int, Boolean] ~ (Int, Boolean)

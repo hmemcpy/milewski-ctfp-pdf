@@ -1,0 +1,1 @@
+case class Fix[F[_]](x: F[Fix[F]])

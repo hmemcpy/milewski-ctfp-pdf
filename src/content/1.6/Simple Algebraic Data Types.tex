@@ -33,7 +33,7 @@ the same information. They are, however, commutative up to isomorphism
 --- the isomorphism being given by the \code{swap} function (which is
 its own inverse):
 
-\src{code/haskell/snippet01.hs}
+\src{snippet01}
 You can think of the two pairs as simply using a different format for
 storing the same data. It's just like big endian vs. little endian.
 
@@ -44,18 +44,18 @@ ways of nesting pairs are isomorphic. If you want to combine three types
 in a product, \code{a}, \code{b}, and \code{c}, in this order, you
 can do it in two ways:
 
-\src{code/haskell/snippet02.hs}
+\src{snippet02}
 
 or
-\src{code/haskell/snippet03.hs}
+\src{snippet03}
 These types are different --- you can't pass one to a function that
 expects the other --- but their elements are in one-to-one
 correspondence. There is a function that maps one to another:
 
-\src{code/haskell/snippet04.hs}
+\src{snippet04}
 and this function is invertible:
 
-\src{code/haskell/snippet05.hs}
+\src{snippet05}
 so it's an isomorphism. These are just different ways of repackaging the
 same data.
 
@@ -72,12 +72,12 @@ unit of the product the same way 1 is the unit of multiplication.
 Indeed, the pairing of a value of some type \code{a} with a unit
 doesn't add any information. The type:
 
-\src{code/haskell/snippet06.hs}
+\src{snippet06}
 is isomorphic to \code{a}. Here's the isomorphism:
 
-\src{code/haskell/snippet07.hs}
+\src{snippet07}
 
-\src{code/haskell/snippet08.hs}
+\src{snippet08}
 These observations can be formalized by saying that $\Set$ (the
 category of sets) is a \newterm{monoidal category}. It's a category that's
 also a monoid, in the sense that you can multiply objects (here, take
@@ -89,7 +89,7 @@ especially, as we'll see soon, when they are combined with sum types. It
 uses named constructors with multiple arguments. A pair, for instance,
 can be defined alternatively as:
 
-\src{code/haskell/snippet09.hs}
+\src{snippet09}
 Here, \code{Pair a b} is the name of the type parameterized by two
 other types, \code{a} and \code{b}; and \code{P} is the name of
 the data constructor. You define a pair type by passing two types to the
@@ -98,7 +98,7 @@ two values of appropriate types to the constructor \code{P}. For
 instance, let's define a value \code{stmt} as a pair of
 \code{String} and \code{Bool}:
 
-\src{code/haskell/snippet10.hs}
+\src{snippet10}
 The first line is the type declaration. It uses the type constructor
 \code{Pair}, with \code{String} and \code{Bool} replacing
 \code{a} and the \code{b} in the generic definition of
@@ -110,20 +110,20 @@ constructors, to construct values.
 Since the name spaces for type and data constructors are separate in
 Haskell, you will often see the same name used for both, as in:
 
-\src{code/haskell/snippet11.hs}
+\src{snippet11}
 And if you squint hard enough, you may even view the built-in pair type
 as a variation on this kind of declaration, where the name \code{Pair}
 is replaced with the binary operator \code{(,)}. In fact you can use
 \code{(,)} just like any other named constructor and create pairs
 using prefix notation:
 
-\src{code/haskell/snippet12.hs}
+\src{snippet12}
 Similarly, you can use \code{(,,)} to create triples, and so on.
 
 Instead of using generic pairs or tuples, you can also define specific
 named product types, as in:
 
-\src{code/haskell/snippet13.hs}
+\src{snippet13}
 which is just a product of \code{String} and \code{Bool}, but it's
 given its own name and constructor. The advantage of this style of
 declaration is that you may define many types that have the same content
@@ -145,32 +145,32 @@ what. We would extract components by pattern matching, as in this
 function that checks if the symbol of the element is the prefix of its
 name (as in \textbf{He} being the prefix of \textbf{Helium}):
 
-\src{code/haskell/snippet14.hs}
+\src{snippet14}
 This code is error prone, and is hard to read and maintain. It's much
 better to define a record:
 
-\src{code/haskell/snippet15.hs}
+\src{snippet15}
 The two representations are isomorphic, as witnessed by these two
 conversion functions, which are the inverse of each other:
 
-\src{code/haskell/snippet16.hs}
+\src{snippet16}
 
-\src{code/haskell/snippet17.hs}
+\src{snippet17}
 Notice that the names of record fields also serve as functions to access
 these fields. For instance, \code{atomicNumber e} retrieves the
 \code{atomicNumber} field from \code{e}. We use
 \code{atomicNumber} as a function of the type:
 
-\src{code/haskell/snippet18.hs}
+\src{snippet18}
 With the record syntax for \code{Element}, our function
 \code{startsWithSymbol} becomes more readable:
 
-\src{code/haskell/snippet19.hs}
+\src{snippet19}
 We could even use the Haskell trick of turning the function
 \code{isPrefixOf} into an infix operator by surrounding it with
 backquotes, and make it read almost like a sentence:
 
-\src{code/haskell/snippet20.hs}
+\src{snippet20}
 The parentheses could be omitted in this case, because an infix operator
 has lower precedence than a function call.
 
@@ -180,12 +180,12 @@ Just as the product in the category of sets gives rise to product types,
 the coproduct gives rise to sum types. The canonical implementation of a
 sum type in Haskell is:
 
-\src{code/haskell/snippet21.hs}
+\src{snippet21}
 And like pairs, \code{Either}s are commutative (up to isomorphism),
 can be nested, and the nesting order is irrelevant (up to isomorphism).
 So we can, for instance, define a sum equivalent of a triple:
 
-\src{code/haskell/snippet22.hs}
+\src{snippet22}
 and so on.
 
 It turns out that $\Set$ is also a (symmetric) monoidal category
@@ -197,7 +197,7 @@ neutral element. You can think of \code{Either} as plus, and
 \code{Void} as zero. Indeed, adding \code{Void} to a sum type
 doesn't change its content. For instance:
 
-\src{code/haskell/snippet23.hs}
+\src{snippet23}
 is isomorphic to \code{a}. That's because there is no way to construct
 a \code{Right} version of this type --- there isn't a value of type
 \code{Void}. The only inhabitants of \code{Either a Void} are
@@ -212,7 +212,7 @@ First of all, the simplest sum types are just enumerations and are
 implemented using \code{enum} in C++. The equivalent of the Haskell
 sum type:
 
-\src{code/haskell/snippet24.hs}
+\src{snippet24}
 is the C++:
 
 \begin{Verbatim}
@@ -220,7 +220,7 @@ enum { Red, Green, Blue };
 \end{Verbatim}
 An even simpler sum type:
 
-\src{code/haskell/snippet25.hs}
+\src{snippet25}
 is the primitive \code{bool} in C++.
 
 Simple sum types that encode the presence or absence of a value are
@@ -229,26 +229,26 @@ values, like empty strings, negative numbers, null pointers, etc. This
 kind of optionality, if deliberate, is expressed in Haskell using the
 \code{Maybe} type:
 
-\src{code/haskell/snippet26.hs}
+\src{snippet26}
 The \code{Maybe} type is a sum of two types. You can see this if you
 separate the two constructors into individual types. The first one would
 look like this:
 
-\src{code/haskell/snippet27.hs}
+\src{snippet27}
 It's an enumeration with one value called \code{Nothing}. In other
 words, it's a singleton, which is equivalent to the unit type
 \code{()}. The second part:
 
-\src{code/haskell/snippet28.hs}
+\src{snippet28}
 is just an encapsulation of the type \code{a}. We could have encoded
 \code{Maybe} as:
 
-\src{code/haskell/snippet29.hs}
+\src{snippet29}
 More complex sum types are often faked in C++ using pointers. A pointer
 can be either null, or point to a value of specific type. For instance,
 a Haskell list type, which can be defined as a (recursive) sum type:
 
-\src{code/haskell/snippet30.hs}
+\src{snippet30}
 can be translated to C++ using the null pointer trick to implement the
 empty list:
 
@@ -292,7 +292,7 @@ constructors. One matches the empty \code{Nil} list, and the other a
 \code{Cons}-constructed list. For instance, here's the definition of a
 simple function on \code{List}s:
 
-\src{code/haskell/snippet31.hs}
+\src{snippet31}
 The first part of the definition of \code{maybeTail} uses the
 \code{Nil} constructor as pattern and returns \code{Nothing}. The
 second part uses the \code{Cons} constructor as pattern. It replaces
@@ -347,22 +347,22 @@ property:
 Does it also hold for product and sum types? Yes, it does --- up to
 isomorphisms, as usual. The left hand side corresponds to the type:
 
-\src{code/haskell/snippet32.hs}
+\src{snippet32}
 and the right hand side corresponds to the type:
 
-\src{code/haskell/snippet33.hs}
+\src{snippet33}
 Here's the function that converts them one way:
 
-\src{code/haskell/snippet34.hs}
+\src{snippet34}
 and here's one that goes the other way:
 
-\src{code/haskell/snippet35.hs}
+\src{snippet35}
 The \code{case of} statement is used for pattern matching inside
 functions. Each pattern is followed by an arrow and the expression to be
 evaluated when the pattern matches. For instance, if you call
 \code{prodToSum} with the value:
 
-\src{code/haskell/snippet36.hs}
+\src{snippet36}
 the \code{e} in \code{case e of} will be equal to
 \code{Left "Hi!"}. It will match the pattern \code{Left y},
 substituting \code{"Hi!"} for \code{y}. Since the \code{x} has
@@ -402,7 +402,7 @@ The list type is quite interesting, because it's defined as a solution
 to an equation. The type we are defining appears on both sides of the
 equation:
 
-\src{code/haskell/snippet37.hs}
+\src{snippet37}
 If we do our usual substitutions, and also replace \code{List a} with
 \code{x}, we get the equation:
 

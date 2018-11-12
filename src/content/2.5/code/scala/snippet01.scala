@@ -1,0 +1,1 @@
+type Reader[A, X] = A => X

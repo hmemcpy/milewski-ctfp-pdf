@@ -1,0 +1,1 @@
+fromY(identity): B => A

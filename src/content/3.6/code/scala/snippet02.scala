@@ -1,0 +1,1 @@
+(f >=> g)(a) == flatten(fmap(g)(f(a)))

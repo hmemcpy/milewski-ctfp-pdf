@@ -1,0 +1,1 @@
+Store(coalg compose set(a), get(a))

@@ -1,0 +1,1 @@
+case class Cont[R, A](run: (A => R) => R)

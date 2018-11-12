@@ -1,0 +1,1 @@
+def putStr: String => Unit

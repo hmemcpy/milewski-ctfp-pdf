@@ -74,7 +74,7 @@ problems with infinite lists.)
 
 A monoid in Haskell is defined by the type class:
 
-\src{code/haskell/snippet01.hs}
+\src{snippet01}
 This just says that every \code{Monoid} must have a neutral element,
 which is called \code{mempty}, and a binary function (multiplication)
 called \code{mappend}. The unit and associativity laws cannot be
@@ -84,7 +84,7 @@ monoid is instantiated.
 The fact that a list of any type forms a monoid is described by this
 instance definition:
 
-\src{code/haskell/snippet02.hs}
+\src{snippet02}
 It states that an empty list \code{{[}{]}} is the unit element, and
 list concatenation \code{(++)} is the binary operation.
 
@@ -93,7 +93,7 @@ with the set \code{a} serving as generators. The set of natural
 numbers with multiplication is not a free monoid, because we identify
 lots of products. Compare for instance:
 
-\src{code/haskell/snippet03.hs}
+\src{snippet03}
 That was easy, but the question is, can we perform this free
 construction in category theory, where we are not allowed to look inside
 objects? We'll use our workhorse: the universal construction.
@@ -119,17 +119,17 @@ structure-preserving functions are called \newterm{homomorphisms}. A monoid
 homomorphism must map the product of two elements to the product of the
 mapping of the two elements:
 
-\src{code/haskell/snippet04.hs}
+\src{snippet04}
 and it must map unit to unit.
 
 For instance, consider a homomorphism from lists of integers to
 integers. If we map \code{{[}2{]}} to 2 and \code{{[}3{]}} to 3, we
 have to map \code{{[}2, 3{]}} to 6, because concatenation
 
-\src{code/haskell/snippet05.hs}
+\src{snippet05}
 becomes multiplication
 
-\src{code/haskell/snippet06.hs}
+\src{snippet06}
 Now let's forget about the internal structure of individual monoids, and
 only look at them as objects with corresponding morphisms. You get a
 category $\cat{Mon}$ of monoids.
@@ -174,7 +174,7 @@ $\Set$.
 The pattern we are going to match consists of a monoid $m$ --- an
 object of $\cat{Mon}$ --- and a function $p$ in $\Set$:
 
-\src{code/haskell/snippet07.hs}
+\src{snippet07}
 where $U$ is our forgetful functor from $\cat{Mon}$ to
 $\Set$. This is a weird heterogeneous pattern --- half in
 $\cat{Mon}$ and half in $\Set$.
@@ -195,15 +195,15 @@ We also have to define the ranking among candidates. Suppose we have
 another candidate: a monoid $n$ and a function that identifies
 the generators in its X-ray image:
 
-\src{code/haskell/snippet08.hs}
+\src{snippet08}
 We'll say that $m$ is better than $n$ if there is a
 morphism of monoids (that's a structure-preserving homomorphism):
 
-\src{code/haskell/snippet09.hs}
+\src{snippet09}
 whose image under $U$ (remember, $U$ is a functor, so it
 maps morphisms to functions) factorizes through $p$:
 
-\src{code/haskell/snippet10.hs}
+\src{snippet10}
 If you think of $p$ as selecting the generators in $m$;
 and $q$ as selecting ``the same'' generators in $n$; then
 you can think of $h$ as mapping these generators between the two

@@ -1,0 +1,1 @@
+fmap(f)(alpha(h)) == alpha(f compose h)

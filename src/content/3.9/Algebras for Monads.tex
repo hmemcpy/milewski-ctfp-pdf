@@ -70,26 +70,26 @@ $T$ in anticipation of what follows):
 \noindent
 We can also express these conditions in Haskell:
 
-\src{code/haskell/snippet01.hs}
+\src{snippet01}
 Let's look at a small example. An algebra for a list endofunctor
 consists of some type \code{a} and a function that produces an
 \code{a} from a list of \code{a}. We can express this function using
 \code{foldr} by choosing both the element type and the accumulator
 type to be equal to \code{a}:
 
-\src{code/haskell/snippet02.hs}
+\src{snippet02}
 This particular algebra is specified by a two-argument function, let's
 call it \code{f}, and a value \code{z}. The list functor happens to
 also be a monad, with \code{return} turning a value into a singleton
 list. The composition of the algebra, here \code{foldr f z}, after
 \code{return} takes \code{x} to:
 
-\src{code/haskell/snippet03.hs}
+\src{snippet03}
 where the action of \code{f} is written in the infix notation. The
 algebra is compatible with the monad if the following coherence
 condition is satisfied for every \code{x}:
 
-\src{code/haskell/snippet04.hs}
+\src{snippet04}
 If we look at \code{f} as a binary operator, this condition tells us
 that \code{z} is the right unit.
 
@@ -275,7 +275,7 @@ h &= \mu \circ (T\ g) \circ f
 \end{align*}
 In Haskell we would write it as:
 
-\src{code/haskell/snippet05.hs}
+\src{snippet05}
 There is a functor $F$ from $\cat{C}$ to $\cat{C}_T$
 which acts trivially on objects. On morphisms, it maps $f$ in
 $\cat{C}$ to a morphism in $\cat{C}_T$ by creating a
@@ -287,7 +287,7 @@ corresponding Kleisli arrow:
 \[\eta \circ f\]
 In Haskell we'd write it as:
 
-\src{code/haskell/snippet06.hs}
+\src{snippet06}
 We can also define a functor $G$ from $\cat{C}_T$
 back to $\cat{C}$. It takes an object $a$ from the Kleisli
 category and maps it to an object $T\ a$ in $\cat{C}$. Its action 
@@ -372,7 +372,7 @@ coalgebra:
 \[coalg_s \Colon a \to Store\ s\ a\]
 for the functor $Store\ s$:
 
-\src{code/haskell/snippet07.hs}
+\src{snippet07}
 This coalgebra can be also expressed as a pair of functions:
 \begin{align*}
 set &\Colon a \to s \to a \\
@@ -386,7 +386,7 @@ applied \code{set} is a function $s \to a$.
 
 We also know that $Store\ s$ is a comonad:
 
-\src{code/haskell/snippet08.hs}
+\src{snippet08}
 The question is: Under what conditions is a lens a coalgebra for this
 comonad? The first coherence condition:
 \[\varepsilon_a \circ coalg = \idarrow[a]\]
@@ -400,28 +400,28 @@ The second condition:
 requires a little more work. First, recall the definition of
 \code{fmap} for the \code{Store} functor:
 
-\src{code/haskell/snippet09.hs}
+\src{snippet09}
 Applying \code{fmap coalg} to the result of \code{coalg} gives us:
 
-\src{code/haskell/snippet10.hs}
+\src{snippet10}
 On the other hand, applying \code{duplicate} to the result of
 \code{coalg} produces:
 
-\src{code/haskell/snippet11.hs}
+\src{snippet11}
 For these two expressions to be equal, the two functions under
 \code{Store} must be equal when acting on an arbitrary \code{s}:
 
-\src{code/haskell/snippet12.hs}
+\src{snippet12}
 Expanding \code{coalg}, we get:
 
-\src{code/haskell/snippet13.hs}
+\src{snippet13}
 This is equivalent to two remaining lens laws. The first one:
 
-\src{code/haskell/snippet14.hs}
+\src{snippet14}
 tells us that setting the value of a field twice is the same as setting
 it once. The second law:
 
-\src{code/haskell/snippet15.hs}
+\src{snippet15}
 tells us that getting a value of a field that was set to $s$
 gives $s$ back.
 

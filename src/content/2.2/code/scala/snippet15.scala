@@ -1,0 +1,1 @@
+g compose q == f compose p

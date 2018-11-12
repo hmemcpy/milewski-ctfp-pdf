@@ -1,0 +1,1 @@
+def beta: List ~> (Int => ?)
