@@ -1,1 +1,1 @@
-val fact = (n: Int) => (1 to n).toList.product
+val fact = (n: Int) => (1 to n).product

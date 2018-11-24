@@ -1,7 +1,8 @@
+% !TEX root = ctfp-print.tex
+
 \documentclass[11pt,\OPTmodes]{book}
 
 \usepackage[papersize={\OTPpapersize},
-            total={\OPTtextwidth,\OPTtextheight},
             top=\OPTtopmargin,
             bottom=\OPTbottommargin,
             inner=\OPTinnermargin,
@@ -75,6 +76,7 @@
 
 \usepackage{minted}
 \setminted[text]{fontsize=\small,breaklines}
+\usemintedstyle{github}
 
 \usepackage{imakeidx}
 \usepackage[totoc,font=footnotesize]{idxlayout}
@@ -87,7 +89,8 @@
 \usepackage{verbatim}  % for simple verbatim and comment environments
 \usepackage{enumerate} % allows customized labels in enumerations
 \usepackage{enumitem}  % allows nested enumeration with numbers
-\usepackage{hyperref}  % makes cross references and URLs clickable
+% \usepackage{hyperref}  % makes cross references and URLs clickable
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 \definecolor{LinkRed}{HTML}{80171F}
 \hypersetup{
   pdfauthor={Bartosz Milewski},
@@ -115,13 +118,6 @@
 }
 \makeatother
 
-% workaround for incompatibility with lettrine's \LettrineFontHook
-% https://tex.stackexchange.com/questions/459834/problem-with-using-allrunes-together-with-lettrine-and-a-custom-lettrinefonthook
-\usepackage{etoolbox}
-\letcs\xmdseries{mdseries }
-\usepackage{allrunes}
-\cslet{mdseries }\xmdseries
-
 % Document colors
 \definecolor{Dark}          {HTML} {262626}
 \definecolor{DropCapGray}   {HTML} {B8B8B8}
@@ -130,7 +126,7 @@
 \definecolor{DropCapViolet} {HTML} {9090C0}
 
 \usepackage{lettrine}  % adds commands that make drop capitals
-\renewcommand{\LettrineFontHook}{\rmfamily\xmdseries\color{DropCapViolet}}
+\renewcommand{\LettrineFontHook}{\rmfamily\mdseries\color{DropCapViolet}}
 \renewcommand{\DefaultLraise}{0.00}
 \renewcommand{\DefaultLoversize}{0.02}
 \renewcommand{\DefaultLhang}{0.12}
@@ -165,13 +161,14 @@
   %   \node[anchor=east,rectangle,fill=blue!20]
   %   {\includegraphics[height=8pt]{fig/icons/scala.png}};},
     linecolor=#2!20,%
-  %   innertopmargin=0pt,
-  %   linewidth=.5pt,
-  %   topline=true,
+    linewidth=2pt,
+    topline=false,
+    bottomline=false,
+    rightline=false
   %   frametitleaboveskip=-9pt,
   }
   \begin{mdframed}
-    \inputminted[autogobble,breaklines,escapeinside=||]{#3}{\snippet}
+    \inputminted[autogobble,breaklines]{#3}{\snippet}
   \end{mdframed}
 }
 \makeatother

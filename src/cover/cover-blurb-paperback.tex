@@ -1,0 +1,131 @@
+\documentclass[
+    coverheight=9.25in,
+    coverwidth=6.125in, % (pagesize - spinewidth) / 2
+    spinewidth=1.125in,
+    bleedwidth=0in,
+    11pt,
+    marklength=0pt,
+  ]{bookcover}
+  
+  \usepackage{lettrine}
+  \usepackage{fancybox}
+  \usepackage{wrapfig}
+  \usepackage[many]{tcolorbox}
+  \usetikzlibrary{calc,positioning, shadings}
+  \usepackage[T1]{fontenc}
+  \usepackage{Alegreya} %% Option 'black' gives heavier bold face 
+
+  \newcommand{\olpath}{../}
+  \newcommand{\whitebg}[1]{%
+  \tikz\node[circle,draw,minimum size=1.1cm,
+  fill=white,
+  path picture={
+      \node at (path picture bounding box){
+          \includegraphics[width=1.1cm]{\olpath#1}
+      };
+  }]{};
+  }
+  \newcommand{\bartosz}{
+    \vspace{0pt}
+    \begin{tcolorbox}[beamer,
+      width=3.6cm,
+      arc=0pt,
+      boxsep=0pt,
+      left=0pt,right=0pt,top=0pt,bottom=0pt,
+      ] \includegraphics[width=3.6cm]{bartosz}
+    \end{tcolorbox}
+  }
+  \input{\olpath/version}
+  
+  \definecolor{BackgroundColor}{HTML}{f3f6ed}
+  \definecolor{SpineBackColor}{HTML}{262626}
+  \definecolor{SpineFontColor}{RGB}{248,154,14}
+  
+  \newcommand{\stripskip}{4}
+  \newcommand{\stripwidth}{3}
+
+  \begin{document}
+  
+  \begin{bookcover}
+    \bookcovercomponent{color}{bg whole}{color=BackgroundColor}
+    \bookcovercomponent{color}{spine}{color=SpineBackColor}
+    \bookcovercomponent{normal}{front}{
+      \begin{tikzpicture}[
+        overlay,
+        remember picture,
+        ribbon/.style={anchor=center, rotate = 45,
+                             font={\fontsize{20}{1}\selectfont\bfseries\scshape}}
+                        ]
+        \coordinate (A) at ($ (current page.south east) + (-\stripskip,0) $);% <-- changed coordinate from 'north' to south'
+        \coordinate (A') at ($(A) + (-\stripwidth,0) $);
+
+        \coordinate (B) at ($ (current page.south east) + (0,\stripskip) $);% <-- changed coordinate from 'north' to south' and sign for \stripskip
+        \coordinate (B') at ($(B) + (0,\stripwidth) $);% <-- changed sign for \stripskip 
+
+        \fill [red!20] (A) -- (A') -- (B') -- (B) -- cycle;
+
+        \coordinate (tempA) at ($(A)!.5!(A')$);
+        \coordinate (tempB) at ($(B)!.5!(B')$);
+
+        \node [ribbon](text) at ($(tempA)!.5!(tempB)$) {
+          \raisebox{-.35\height}{\includegraphics[width=.8cm]{\olpath/fig/icons/scala}}
+          Scala Edition
+        };
+
+    \end{tikzpicture}
+    
+    \begin{center}
+      \fontsize{40pt}{7em}\selectfont\bfseries
+          CATEGORY THEORY \\FOR PROGRAMMERS
+      \vfil
+      % \vspace*{1cm}
+      \includegraphics[width=.5\coverwidth]{piggie}
+      \vfil
+      \normalfont\Huge
+      \textbf{Bartosz Milewski}
+      \vfil
+      \vspace*{1cm}
+    \end{center}}
+    
+    \bookcovercomponent{center}{spine}{
+      \rotatebox[origin=c]{-90}{\color{SpineFontColor}
+      \bfseries\Huge Category Theory for Programmers \hspace{2em} Bartosz Milewski}}
+
+    \bookcovercomponent{normal}{back}{%
+    \begin{minipage}[b][\coverheight][t]{\coverwidth}
+      \begin{center}
+        \includegraphics[width=.8\coverwidth]{bunnies}
+        \begin{minipage}[t]{.8\coverwidth}
+          \input{blurb}
+          \vspace{.5cm}
+        \end{minipage}
+        
+        \begin{minipage}{.85\textwidth}
+          \rule{\textwidth}{0.4pt}
+
+          \begin{tabular}[h]{p{3.4cm} p{\textwidth}}
+            \bartosz
+            &
+            \vspace{5pt}
+            \begin{minipage}[b]{.58\coverwidth}
+              \fontsize{11pt}{1.4em}\selectfont\textit{Category Theory for Programmers}
+                is a series of blog posts by Bartosz Milewski, originally at bartoszmilewski.com.\\
+                Edited by Igal Tabachnik. Licenced under CC BY-SA 4.0.
+          \end{minipage}
+        \end{tabular}
+        \begin{flushright}
+          \vspace{-2.6cm}
+          \begin{minipage}[b]{4cm}
+          \raggedleft
+          \whitebg{fig/icons/by}
+          \whitebg{fig/icons/cc}
+          \whitebg{fig/icons/sa}
+          \centering\footnotesize{\texttt{\OPTversion}}
+          \end{minipage}
+        \end{flushright}
+      \end{minipage}
+    \end{center}
+  \end{minipage}
+  }
+  \end{bookcover}
+\end{document}
