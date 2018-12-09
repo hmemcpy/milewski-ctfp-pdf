@@ -1,3 +1,3 @@
 sealed trait Bool
-final case object True extends Bool
-final case object False extends Bool
+case object True extends Bool
+case object False extends Bool
