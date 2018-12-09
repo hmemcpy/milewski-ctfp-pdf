@@ -8,3 +8,4 @@ out/*
 *.gz
 src/version.tex
 *.pyg
+*.synctex(busy)
