@@ -1,0 +1,1 @@
+def f: String => Tree[Int]

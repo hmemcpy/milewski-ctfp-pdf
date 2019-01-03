@@ -1,0 +1,1 @@
+def extract[C]: W[C] => C

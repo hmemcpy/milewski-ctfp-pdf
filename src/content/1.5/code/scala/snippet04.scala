@@ -1,0 +1,1 @@
+def no[A]: A => Boolean = _ => false

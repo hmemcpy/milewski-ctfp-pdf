@@ -7,3 +7,5 @@ out/*
 *.xdv
 *.gz
 src/version.tex
+*.pyg
+*.synctex(busy)

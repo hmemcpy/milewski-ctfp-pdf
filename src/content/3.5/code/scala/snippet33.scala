@@ -1,0 +1,1 @@
+type IO[A] = RealWorld => (A, RealWorld)

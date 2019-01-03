@@ -1,0 +1,1 @@
+type Two = Either[Unit, Unit]

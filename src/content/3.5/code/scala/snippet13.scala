@@ -1,0 +1,1 @@
+case class Writer[W, A](run: (A, W))

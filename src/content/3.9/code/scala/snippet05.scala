@@ -1,0 +1,1 @@
+h == flatten.compose(fmap(g) _ compose f)

@@ -1,0 +1,1 @@
+case class SomeType[A](a: A)

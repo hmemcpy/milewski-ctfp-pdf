@@ -1,0 +1,1 @@
+case class DiaProd[P[_, _]](paa: PolyFunction1[P])

@@ -1,0 +1,1 @@
+def put(s1: S): State[S, Unit] = State(s => ((), s1))

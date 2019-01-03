@@ -1,0 +1,1 @@
+type Algebra[F[_], A] = F[A] => A

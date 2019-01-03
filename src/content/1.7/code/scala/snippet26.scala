@@ -1,0 +1,1 @@
+case class Const[C, A](v: C)

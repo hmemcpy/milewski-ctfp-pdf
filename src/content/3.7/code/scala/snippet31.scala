@@ -1,0 +1,1 @@
+case class Store[S, A](run: S => A, s: S)

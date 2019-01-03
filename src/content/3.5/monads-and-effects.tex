@@ -121,11 +121,11 @@ Remember that \code{join} is supposed to flatten a container of
 containers --- \code{concat} concatenates a list of lists into a
 single list. \code{return} creates a singleton list:
 
-\src{code/haskell/snippet01.hs}
+\src{snippet01}
 The bind operator for the list monad is given by the general formula:
 \code{fmap} followed by \code{join} which, in this case gives:
 
-\src{code/haskell/snippet02.hs}
+\src{snippet02}
 Here, the function \code{k}, which itself produces a list, is applied
 to every element of the list \code{as}. The result is a list of lists,
 which is flattened using \code{concat}.
@@ -156,7 +156,7 @@ used to replace complex nested loops.
 My favorite example is the program that generates Pythagorean triples
 --- triples of positive integers that can form sides of right triangles.
 
-\src{code/haskell/snippet03.hs}
+\src{snippet03}
 The first line tells us that \code{z} gets an element from an infinite
 list of positive numbers \code{{[}1..{]}}. Then \code{x} gets an
 element from the (finite) list \code{{[}1..z{]}} of numbers between 1
@@ -166,7 +166,7 @@ $1 \leqslant x \leqslant y \leqslant z$ at our
 disposal. The function \code{guard} takes a \code{Bool} expression
 and returns a list of units:
 
-\src{code/haskell/snippet04.hs}
+\src{snippet04}
 This function (which is a member of a larger class called
 \code{MonadPlus}) is used here to filter out non-Pythagorean triples.
 Indeed, if you look at the implementation of bind (or the related
@@ -186,7 +186,7 @@ been dramatically simplified with the help of the list monad and the
 \code{do} notation. As if that weren't enough, Haskell let's you
 simplify this code even further using list comprehension:
 
-\src{code/haskell/snippet05.hs}
+\src{snippet05}
 This is just further syntactic sugar for the list monad (strictly
 speaking, \code{MonadPlus}).
 
@@ -204,13 +204,13 @@ as soon as we curry it to
 \code{a -> (e -> b)} we recognize the
 embellishment as our old friend the reader functor:
 
-\src{code/haskell/snippet06.hs}
+\src{snippet06}
 You may interpret a function returning a \code{Reader} as producing a
 mini-executable: an action that given an environment produces the
 desired result. There is a helper function \code{runReader} to execute
 such an action:
 
-\src{code/haskell/snippet07.hs}
+\src{snippet07}
 It may produce different results for different values of the
 environment.
 
@@ -221,42 +221,42 @@ To implement bind for the \code{Reader} monad, first notice that you
 have to produce a function that takes the environment \code{e} and
 produces a \code{b}:
 
-\src{code/haskell/snippet08.hs}
+\src{snippet08}
 Inside the lambda, we can execute the action \code{ra} to produce an
 \code{a}:
 
-\src{code/haskell/snippet09.hs}
+\src{snippet09}
 We can then pass the \code{a} to the continuation \code{k} to get a
 new action \code{rb}:
 
-\src{code/haskell/snippet10.hs}
+\src{snippet10}
 Finally, we can run the action \code{rb} with the environment
 \code{e}:
 
-\src{code/haskell/snippet11.hs}
+\src{snippet11}
 To implement \code{return} we create an action that ignores the
 environment and returns the unchanged value.
 
 Putting it all together, after a few simplifications, we get the
 following definition:
 
-\src{code/haskell/snippet12.hs}
+\src{snippet12}
 
 \subsection{Write-Only State}
 
 This is just our initial logging example. The embellishment is given by
 the \code{Writer} functor:
 
-\src{code/haskell/snippet13.hs}
+\src{snippet13}
 For completeness, there's also a trivial helper \code{runWriter} that
 unpacks the data constructor:
 
-\src{code/haskell/snippet14.hs}
+\src{snippet14}
 As we've seen before, in order to make \code{Writer} composable,
 \code{w} has to be a monoid. Here's the monad instance for
 \code{Writer} written in terms of the bind operator:
 
-\src{code/haskell/snippet15.hs}
+\src{snippet15}
 
 \subsection{State}
 
@@ -269,11 +269,11 @@ into the form of Kleisli arrows
 \code{a -> (s -> (b, s))}, with the
 embellishment abstracted in the \code{State} functor:
 
-\src{code/haskell/snippet16.hs}
+\src{snippet16}
 Again, we can look at a Kleisli arrow as returning an action, which can
 be executed using the helper function:
 
-\src{code/haskell/snippet17.hs}
+\src{snippet17}
 Different initial states may not only produce different results, but
 also different final states.
 
@@ -281,17 +281,17 @@ The implementation of bind for the \code{State} monad is very similar
 to that of the \code{Reader} monad, except that care has to be taken
 to pass the correct state at each step:
 
-\src{code/haskell/snippet18.hs}
+\src{snippet18}
 Here's the full instance:
 
-\src{code/haskell/snippet19.hs}
+\src{snippet19}
 There are also two helper Kleisli arrows that may be used to manipulate
 the state. One of them retrieves the state for inspection:
 
-\src{code/haskell/snippet20.hs}
+\src{snippet20}
 and the other replaces it with a completely new state:
 
-\src{code/haskell/snippet21.hs}
+\src{snippet21}
 
 \subsection{Exceptions}
 
@@ -307,7 +307,7 @@ instance, to \code{String}).
 
 Here's the \code{Monad} instance for \code{Maybe}:
 
-\src{code/haskell/snippet22.hs}
+\src{snippet22}
 Notice that monadic composition for \code{Maybe} correctly
 short-circuits the computation (the continuation \code{k} is never
 called) when an error is detected. That's the behavior we expect from
@@ -324,7 +324,7 @@ evaluated by another thread or delivered from a remote web site. A
 Kleisli arrow in this case returns a function that accepts a handler,
 which represents ``the rest of the computation'':
 
-\src{code/haskell/snippet23.hs}
+\src{snippet23}
 The handler \code{a -> r}, when it's eventually called,
 produces the result of type \code{r}, and this result is returned at
 the end. A continuation is parameterized by the result type. (In
@@ -333,7 +333,7 @@ practice, this is often some kind of status indicator.)
 There is also a helper function for executing the action returned by the
 Kleisli arrow. It takes the handler and passes it to the continuation:
 
-\src{code/haskell/snippet24.hs}
+\src{snippet24}
 The composition of continuations is notoriously difficult, so its
 handling through a monad and, in particular, the \code{do} notation,
 is of extreme advantage.
@@ -341,27 +341,27 @@ is of extreme advantage.
 Let's figure out the implementation of bind. First let's look at the
 stripped down signature:
 
-\src{code/haskell/snippet25.hs}
+\src{snippet25}
 Our goal is to create a function that takes the handler
 \code{(b -> r)} and produces the result \code{r}. So
 that's our starting point:
 
-\src{code/haskell/snippet26.hs}
+\src{snippet26}
 Inside the lambda, we want to call the function \code{ka} with the
 appropriate handler that represents the rest of the computation. We'll
 implement this handler as a lambda:
 
-\src{code/haskell/snippet27.hs}
+\src{snippet27}
 In this case, the rest of the computation involves first calling
 \code{kab} with \code{a}, and then passing \code{hb} to the
 resulting action \code{kb}:
 
-\src{code/haskell/snippet28.hs}
+\src{snippet28}
 As you can see, continuations are composed inside out. The final handler
 \code{hb} is called from the innermost layer of the computation.
 Here's the full instance:
 
-\src{code/haskell/snippet29.hs}
+\src{snippet29}
 
 \subsection{Interactive Input}
 
@@ -381,7 +381,7 @@ inside the box. The box is defined using the special built-in
 \code{IO} functor. In our example, \code{getChar} could be declared
 as a Kleisli arrow:
 
-\src{code/haskell/snippet30.hs}
+\src{snippet30}
 (Actually, since a function from the unit type is equivalent to picking
 a value of the return type, the declaration of \code{getChar} is
 simplified to \code{getChar :: IO Char}.)
@@ -410,10 +410,10 @@ object, other than compose it with another Kleisli arrow? Well, you can
 return it from \code{main}. In Haskell, \code{main} has the
 signature:
 
-\src{code/haskell/snippet31.hs}
+\src{snippet31}
 and you are free to think of it as a Kleisli arrow:
 
-\src{code/haskell/snippet32.hs}
+\src{snippet32}
 From that perspective, a Haskell program is just one big Kleisli arrow
 in the \code{IO} monad. You can compose it from smaller Kleisli arrows
 using monadic composition. It's up to the runtime system to do something
@@ -450,10 +450,10 @@ enough that we assume that there exists a type \code{RealWorld} and,
 by some miracle of cosmic engineering, the runtime is able to provide an
 object of this type. An \code{IO} action is just a function:
 
-\src{code/haskell/snippet33.hs}
+\src{snippet33}
 Or, in terms of the \code{State} monad:
 
-\src{code/haskell/snippet34.hs}
+\src{snippet34}
 However, \code{>=>} and \code{return} for
 the \code{IO} monad have to be built into the language.
 
@@ -464,10 +464,10 @@ The same \code{IO} monad is used to encapsulate interactive output.
 wonder why we can't just call output functions from Haskell and pretend
 that they do nothing. For instance, why do we have:
 
-\src{code/haskell/snippet35.hs}
+\src{snippet35}
 rather than the simpler:
 
-\src{code/haskell/snippet36.hs}
+\src{snippet36}
 Two reasons: Haskell is lazy, so it would never call a function whose
 output --- here, the unit object --- is not used for anything. And, even
 if it weren't lazy, it could still freely change the order of such calls
@@ -478,7 +478,7 @@ passed between \code{IO} actions enforces sequencing.
 
 Conceptually, in this program:
 
-\src{code/haskell/snippet37.hs}
+\src{snippet37}
 the action that prints ``World!'' receives, as input, the Universe in
 which ``Hello '' is already on the screen. It outputs a new Universe,
 with ``Hello World!'' on the screen.

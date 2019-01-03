@@ -68,13 +68,13 @@ Library that takes two functions and returns their composition, but
 there isn't one. So let's try some Haskell for a change. Here's the
 declaration of a function from A to B:
 
-\src{code/haskell/snippet01.hs}
+\src{snippet01}
 Similarly:
 
-\src{code/haskell/snippet02.hs}
+\src{snippet02}
 Their composition is:
 
-\src{code/haskell/snippet03.hs}
+\src{snippet03}
 Once you see how simple things are in Haskell, the inability to express
 straightforward functional concepts in C++ is a little embarrassing. In
 fact, Haskell will let you use Unicode characters so you can write
@@ -107,7 +107,7 @@ expressed as:
 \[h \circ (g \circ f) = (h \circ g) \circ f = h \circ g \circ f\]
 In (pseudo) Haskell:
 
-\src{code/haskell/snippet04.hs}
+\src{snippet04}
 (I said ``pseudo,'' because equality is not defined for functions.)
 
 Associativity is pretty obvious when dealing with functions, but it may
@@ -139,7 +139,7 @@ reference, by const reference, by move, and so on).
 In Haskell, the identity function is part of the standard library
 (called Prelude). Here's its declaration and definition:
 
-\src{code/haskell/snippet05.hs}
+\src{snippet05}
 As you can see, polymorphic functions in Haskell are a piece of cake. In
 the declaration, you just replace the type with a type variable. Here's
 the trick: names of concrete types always start with a capital letter,
@@ -164,7 +164,7 @@ This concludes our second Haskell lesson.
 
 The identity conditions can be written (again, in pseudo-Haskell) as:
 
-\src{code/haskell/snippet06.hs}
+\src{snippet06}
 You might be asking yourself the question: Why would anyone bother with
 the identity function --- a function that does nothing? Then again, why
 do we bother with the number zero? Zero is a symbol for nothing. Ancient

@@ -1,0 +1,1 @@
+def combine(x: M): (M => M)

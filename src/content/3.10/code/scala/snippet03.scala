@@ -1,0 +1,1 @@
+dimap(identity[A])(f)(paa): P[A, B]

@@ -1,0 +1,1 @@
+type IO[A] = State[RealWorld, A]

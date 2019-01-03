@@ -1,0 +1,1 @@
+val f44: Unit => BigInt = _ => 44

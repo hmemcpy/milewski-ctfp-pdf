@@ -1,0 +1,1 @@
+def absurd[A]: Nothing => A

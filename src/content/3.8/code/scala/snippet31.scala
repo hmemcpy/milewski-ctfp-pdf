@@ -1,0 +1,1 @@
+def unfoldr[A, B]: (B => Option[(A, B)]) => B => List[A]

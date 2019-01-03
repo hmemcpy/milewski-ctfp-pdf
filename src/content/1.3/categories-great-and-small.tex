@@ -105,7 +105,7 @@ In Haskell we can define a type class for monoids --- a type for which
 there is a neutral element called \code{mempty} and a binary operation
 called \code{mappend}:
 
-\src{code/haskell/snippet01.hs}
+\src{snippet01}
 The type signature for a two-argument function,
 \code{m -> m -> m}, might look strange at first,
 but it will make perfect sense after we talk about currying. You may
@@ -131,7 +131,7 @@ be a monoid by providing the implementation of \code{mempty} and
 \code{mappend} (this is, in fact, done for you in the standard
 Prelude):
 
-\src{code/haskell/snippet02.hs}
+\src{snippet02}
 Here, we have reused the list concatenation operator \code{(++)},
 because a \code{String} is just a list of characters.
 

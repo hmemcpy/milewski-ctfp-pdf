@@ -1,0 +1,1 @@
+def foldr[A]: (A => A => A) => A => List[A] => A

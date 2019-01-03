@@ -1,0 +1,1 @@
+def main: IO[Unit]

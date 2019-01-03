@@ -1,0 +1,1 @@
+type Option[A] = Either[Unit, A]

@@ -1,0 +1,1 @@
+safeHead(fmap(f)(x :: xs)) == safeHead(f(1) :: fmap(f)(xs)) == Some(f(x))

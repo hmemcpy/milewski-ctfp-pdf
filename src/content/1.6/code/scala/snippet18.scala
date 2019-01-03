@@ -1,0 +1,1 @@
+val atomicNumber: Element => Int

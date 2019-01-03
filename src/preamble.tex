@@ -1,7 +1,8 @@
-\documentclass[11pt,\OPTmodes]{book}
+% !TEX root = ctfp-print.tex
+
+\documentclass[\OPTmodes]{book}
 
 \usepackage[papersize={\OTPpapersize},
-            total={\OPTtextwidth,\OPTtextheight},
             top=\OPTtopmargin,
             bottom=\OPTbottommargin,
             inner=\OPTinnermargin,
@@ -73,6 +74,10 @@
 \usepackage{fancyvrb}
 \fvset{fontsize=\small}
 
+\usepackage{minted}
+\setminted[text]{fontsize=\small,breaklines}
+\usemintedstyle{github}
+
 \usepackage{imakeidx}
 \usepackage[totoc,font=footnotesize]{idxlayout}
 \usepackage{fancyhdr}
@@ -84,7 +89,7 @@
 \usepackage{verbatim}  % for simple verbatim and comment environments
 \usepackage{enumerate} % allows customized labels in enumerations
 \usepackage{enumitem}  % allows nested enumeration with numbers
-\usepackage{hyperref}  % makes cross references and URLs clickable
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}  % makes cross references and URLs clickable
 \definecolor{LinkRed}{HTML}{80171F}
 \hypersetup{
   pdfauthor={Bartosz Milewski},
@@ -138,38 +143,35 @@
   {\par\xdef\tpd{\the\prevdepth}\egroup
    \prevdepth=\tpd}
 
-\usepackage{xifthen}
-\newcommand{\ifequals}[3]{\ifthenelse{\equal{#1}{#2}}{#3}{}}
-\newcommand{\case}[2]{#1 #2} % Dummy, so \renewcommand has something to overwrite...
-\newenvironment{switch}[1]{\renewcommand{\case}{\ifequals{#1}}}{}
 \usepackage[abspath]{currfile}
-\usepackage{minted}
 \usepackage{noindentafter}
-\setminted[text]{fontsize=\small,breaklines}
 \makeatletter
 \newcommand{\src}[1]{
-  \filename@parse{#1}
-  \begin{switch}{\filename@ext}
-    \case{hs}{
-      % \mdfsetup{%
-        % frametitle={%
-        %   \tikz[baseline=(current bounding box.east),outer sep=0pt]
-        %   \node[anchor=east,rectangle,fill=blue!20]
-        %   {\includegraphics[height=8pt]{fig/icons/haskell-2.png}};},
-        % linecolor=blue!20,%
-        % innertopmargin=0pt,
-        % linewidth=.5pt,
-        % topline=true,
-        % frametitleaboveskip=-9pt,
-      % }
-      % \begin{mdframed}
-        \inputminted[autogobble]{text}{\currfileabsdir#1}
-      % \end{mdframed}
-    }
-  \end{switch}
-
-  % based on https://texblog.org/2015/09/30/fancy-boxes-for-theorem-lemma-and-proof-with-mdframed/
+  \srcsnippet{\currfileabsdir/code/haskell/#1.hs}{blue}{haskell}
+  \ifdefined\OPTCustomLanguage{%
+    \unskip
+    \srcsnippet{\currfileabsdir/code/\OPTCustomLanguage/#1.\OPTCustomLanguageExt}{\OPTCustomLanguageColor}{\OPTCustomLanguage}
+  }
+  \fi
   \NoIndentAfterThis
+}
+\newcommand{\srcsnippet}[3]{
+  \def\snippet{#1}
+  \mdfsetup{%
+  %   frametitle={%
+  %   \tikz[baseline=(current bounding box.east),outer sep=0pt]
+  %   \node[anchor=east,rectangle,fill=blue!20]
+  %   {\includegraphics[height=8pt]{fig/icons/scala.png}};},
+    linecolor=#2!20,%
+    linewidth=2pt,
+    topline=false,
+    bottomline=false,
+    rightline=false
+  %   frametitleaboveskip=-9pt,
+  }
+  \begin{mdframed}
+    \inputminted[autogobble,breaklines]{#3}{\snippet}
+  \end{mdframed}
 }
 \makeatother
 
@@ -181,6 +183,18 @@
 \newcommand{\monoit}[1]{\hbox{\ttfamily\itshape\scriptsize #1}}
 \newcommand{\mathtext}[1]{\ensuremath{\pmb{#1}}}
 \newcommand{\urlref}[2]{\href{#1}{#2}\urlfootnote{#1}}
+
+% https://tex.stackexchange.com/questions/219445/line-break-in-texttt/219497
+\renewcommand{\code}[1]{%
+  \begingroup
+  \ttfamily
+  \begingroup\lccode`~=`/\lowercase{\endgroup\def~}{/\discretionary{}{}{}}%
+  \begingroup\lccode`~=`[\lowercase{\endgroup\def~}{[\discretionary{}{}{}}%
+  \begingroup\lccode`~=`.\lowercase{\endgroup\def~}{.\discretionary{}{}{}}%
+  \catcode`/=\active\catcode`[=\active\catcode`.=\active
+  \scantokens{#1\noexpand}%
+  \endgroup
+}
 
 \makeatletter
 \newcommand\urlfootnote@[1]{\footnote{\url@{#1}}}

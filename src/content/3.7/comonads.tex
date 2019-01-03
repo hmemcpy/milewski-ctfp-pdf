@@ -7,24 +7,24 @@ opposite category.
 Recall that, at the most basic level, monads are about composing Kleisli
 arrows:
 
-\src{code/haskell/snippet01.hs}
+\src{snippet01}
 where \code{m} is a functor that is a monad. If we use the letter
 \code{w} (upside down \code{m}) for the comonad, we can define
 co-Kleisli arrows as morphism of the type:
 
-\src{code/haskell/snippet02.hs}
+\src{snippet02}
 The analog of the fish operator for co-Kleisli arrows is defined as:
 
-\src{code/haskell/snippet03.hs}
+\src{snippet03}
 For co-Kleisli arrows to form a category we also have to have an
 identity co-Kleisli arrow, which is called \code{extract}:
 
-\src{code/haskell/snippet04.hs}
+\src{snippet04}
 This is the dual of \code{return}. We also have to impose the laws of
 associativity as well as left- and right-identity. Putting it all
 together, we could define a comonad in Haskell as:
 
-\src{code/haskell/snippet05.hs}
+\src{snippet05}
 In practice, we use slightly different primitives, as we'll see shortly.
 
 The question is, what's the use for comonads in programming?
@@ -56,22 +56,22 @@ implementing computations that need access to some read-only environment
 \code{e}. Such computations can be represented as pure functions of
 the form:
 
-\src{code/haskell/snippet06.hs}
+\src{snippet06}
 We used currying to turn them into Kleisli arrows:
 
-\src{code/haskell/snippet07.hs}
+\src{snippet07}
 But notice that these functions already have the form of co-Kleisli
 arrows. Let's massage their arguments into the more convenient functor
 form:
 
-\src{code/haskell/snippet08.hs}
+\src{snippet08}
 We can easily define the composition operator by making the same
 environment available to the arrows that we are composing:
 
-\src{code/haskell/snippet09.hs}
+\src{snippet09}
 The implementation of \code{extract} simply ignores the environment:
 
-\src{code/haskell/snippet10.hs}
+\src{snippet10}
 Not surprisingly, the product comonad can be used to perform exactly the
 same computations as the reader monad. In a way, the comonadic
 implementation of the environment is more natural --- it follows the
@@ -99,16 +99,16 @@ produce a co-Kleisli arrow that takes \code{w a} and produces a
 \code{c}. The only way to produce a \code{c} is to apply the second
 function to an argument of the type \code{w b}:
 
-\src{code/haskell/snippet11.hs}
+\src{snippet11}
 But how can we produce a value of type \code{w b} that could be fed
 to \code{g}? We have at our disposal the argument of type
 \code{w a} and the function\\ \code{f :: w a -> b}.
 The solution is to define the dual of bind, which is called extend:
 
-\src{code/haskell/snippet12.hs}
+\src{snippet12}
 Using \code{extend} we can implement composition:
 
-\src{code/haskell/snippet13.hs}
+\src{snippet13}
 Can we next dissect \code{extend}? You might be tempted to say, why
 not just apply the function \code{w a -> b} to the
 argument \code{w a}, but then you quickly realize that you'd have no
@@ -120,13 +120,13 @@ we could use \code{fmap} here would be if we had something of the type
 into\\ \code{w (w a)}. And, conveniently, that would be exactly the
 dual of \code{join}. We call it \code{duplicate}:
 
-\src{code/haskell/snippet14.hs}
+\src{snippet14}
 So, just like with the definitions of the monad, we have three
 equivalent definitions of the comonad: using co-Kleisli arrows,
 \code{extend}, or \code{duplicate}. Here's the Haskell definition
 taken directly from\\ \code{Control.Comonad} library:
 
-\src{code/haskell/snippet15.hs}
+\src{snippet15}
 Provided are the default implementations of \code{extend} in terms of
 \code{duplicate} and vice versa, so you only need to override one of
 them.
@@ -169,25 +169,25 @@ another is best illustrated with the example of an infinite stream. Such
 a stream is just like a list, except that it doesn't have the empty
 constructor:
 
-\src{code/haskell/snippet16.hs}
+\src{snippet16}
 It's trivially a \code{Functor}:
 
-\src{code/haskell/snippet17.hs}
+\src{snippet17}
 The focus of a stream is its first element, so here's the implementation
 of \code{extract}:
 
-\src{code/haskell/snippet18.hs}
+\src{snippet18}
 \code{duplicate} produces a stream of streams, each focused on a
 different element.
 
-\src{code/haskell/snippet19.hs}
+\src{snippet19}
 The first element is the original stream, the second element is the tail
 of the original stream, the third element is its tail, and so on, ad
 infinitum.
 
 Here's the complete instance:
 
-\src{code/haskell/snippet20.hs}
+\src{snippet20}
 This is a very functional way of looking at streams. In an imperative
 language, we would probably start with a method \code{advance} that
 shifts the stream by one position. Here, \code{duplicate} produces all
@@ -195,7 +195,7 @@ shifted streams in one fell swoop. Haskell's laziness makes this
 possible and even desirable. Of course, to make a \code{Stream}
 practical, we would also implement the analog of \code{advance}:
 
-\src{code/haskell/snippet21.hs}
+\src{snippet21}
 but it's never part of the comonadic interface.
 
 If you had any experience with digital signal processing, you'll see
@@ -205,15 +205,15 @@ filter, and \code{extend} produces a filtered stream.
 As a simple example, let's implement the moving average filter. Here's a
 function that sums \code{n} elements of a stream:
 
-\src{code/haskell/snippet22.hs}
+\src{snippet22}
 Here's the function that calculates the average of the first \code{n}
 elements of the stream:
 
-\src{code/haskell/snippet23.hs}
+\src{snippet23}
 Partially applied \code{average n} is a co-Kleisli arrow, so we can
 \code{extend} it over the whole stream:
 
-\src{code/haskell/snippet24.hs}
+\src{snippet24}
 The result is the stream of running averages.
 
 A stream is an example of a unidirectional, one-dimensional comonad. It
@@ -266,27 +266,27 @@ category:
 \end{align*}
 One can write a definition of a comonoid in Haskell:
 
-\src{code/haskell/snippet25.hs}
+\src{snippet25}
 but it is rather trivial. Obviously \code{destroy} ignores its
 argument.
 
-\src{code/haskell/snippet26.hs}
+\src{snippet26}
 \code{split} is just a pair of functions:
 
-\src{code/haskell/snippet27.hs}
+\src{snippet27}
 Now consider comonoid laws that are dual to the monoid unit laws.
 
-\src{code/haskell/snippet28.hs}
+\src{snippet28}
 Here, \code{lambda} and \code{rho} are the left and right unitors,
 respectively (see the definition of
 \hyperref[monads-categorically]{monoidal
 categories}). Plugging in the definitions, we get:
 
-\src{code/haskell/snippet29.hs}
+\src{snippet29}
 which proves that \code{g = id}. Similarly, the second law expands
 to \code{f = id}. In conclusion:
 
-\src{code/haskell/snippet30.hs}
+\src{snippet30}
 which shows that in Haskell (and, in general, in the category
 $\Set$) every object is a trivial comonoid.
 
@@ -318,22 +318,22 @@ Translating this to Haskell, we start with the adjunction between the
 right. Composing \code{Prod} after \code{Reader} is equivalent to
 the following definition:
 
-\src{code/haskell/snippet31.hs}
+\src{snippet31}
 The counit of the adjunction taken at the object $a$ is the
 morphism:
 \[\varepsilon_a \Colon ((s \Rightarrow a)\times{}s) \to a\]
 or, in Haskell notation:
 
-\src{code/haskell/snippet32.hs}
+\src{snippet32}
 This becomes our \code{extract}:
 
-\src{code/haskell/snippet33.hs}
+\src{snippet33}
 The unit of the adjunction:
 
-\src{code/haskell/snippet34.hs}
+\src{snippet34}
 can be rewritten as partially applied data constructor:
 
-\src{code/haskell/snippet35.hs}
+\src{snippet35}
 We construct $\delta$, or \code{duplicate}, as the horizontal composition:
 \begin{align*}
 \delta &\Colon L \circ R \to L \circ R \circ L \circ R \\
@@ -344,14 +344,14 @@ We have to sneak $\eta$ through the leftmost $L$, which is the
 the left component of the pair (that's what \code{fmap} for
 \code{Prod} would do). We get:
 
-\src{code/haskell/snippet36.hs}
+\src{snippet36}
 (Remember that, in the formula for $\delta$, $L$ and $R$ stand
 for identity natural transformations whose components are identity
 morphisms.)
 
 Here's the complete definition of the \code{Store} comonad:
 
-\src{code/haskell/snippet37.hs}
+\src{snippet37}
 You may think of the \code{Reader} part of \code{Store} as a
 generalized container of \code{a}s that are keyed using elements of
 the type \code{s}. For instance, if \code{s} is \code{Int},
@@ -380,10 +380,10 @@ basis for the \code{Lens} library. Conceptually, the
 a lens) on a particular substructure of the date type \code{a} using
 the type \code{s} as an index. In particular, a function of the type:
 
-\src{code/haskell/snippet38.hs}
+\src{snippet38}
 is equivalent to a pair of functions:
 
-\src{code/haskell/snippet39.hs}
+\src{snippet39}
 If \code{a} is a product type, \code{set} could be implemented as
 setting the field of type \code{s} inside of \code{a} while
 returning the modified version of \code{a}. Similarly, \code{get}
