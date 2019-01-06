@@ -7,12 +7,15 @@
 
 \begin{raggedleft}
 \fontsize{24pt}{24pt}\selectfont
-  \textbf{Category Theory \\ for Programmers}\\
-\vspace*{1cm}
-\small\selectfont{
-\textbf{Scala Edition}\\
-\textit{Contains code snippets in Haskell and Scala}\\
+\textbf{Category Theory \\ for Programmers}\\
+\ifdefined\OPTCustomLanguage{%
+  \vspace*{1cm}
+  \small\selectfont{
+    \textbf{\titlecap{\OPTCustomLanguage} Edition}\\
+    \textit{Contains code snippets in Haskell and \titlecap{\OPTCustomLanguage}}\\
+  }
 }
+\fi
 \vspace*{1cm}
 \fontsize{16pt}{18pt}\selectfont \textit{By } \textbf{Bartosz Milewski}\\
 \vspace{1cm}
