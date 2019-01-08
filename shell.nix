@@ -28,6 +28,7 @@ mkShell {
         mdframed
         needspace
         xifthen
+        ifnextok
         currfile
         noindentafter
         ifmtarg
@@ -41,6 +42,7 @@ mkShell {
         ifplatform
         xstring
         minifp
+        titlecaps
         enumitem;
       })
     gnumake
