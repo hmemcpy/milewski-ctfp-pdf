@@ -1,21 +1,23 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{I}{f we interpret} endofunctors as ways of defining expressions, algebras
 let us evaluate them and monads let us form and manipulate them. By
 combining algebras with monads we not only gain a lot of functionality
 but we can also answer a few interesting questions.
-\begin{wrapfigure}[8]{R}{0pt}
-\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=1.27083in]{images/pigalg.png}}%
-\end{wrapfigure}
 
-One such question
-concerns the relation between monads and adjunctions. As we've seen,
-every adjunction \hyperref[monads-categorically]{defines
+One such question concerns the relation between monads and adjunctions.
+As we've seen, every adjunction \hyperref[monads-categorically]{defines
 a monad} (and a comonad). The question is: Can every monad (comonad) be
 derived from an adjunction? The answer is positive. There is a whole
 family of adjunctions that generate a given monad. I'll show you two
 such adjunctions.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{images/pigalg.png}
+\end{figure}
+
+\noindent
 Let's review the definitions. A monad is an endofunctor $m$
 equipped with two natural transformations that satisfy some coherence
 conditions. The components of these transformations at $a$ are:

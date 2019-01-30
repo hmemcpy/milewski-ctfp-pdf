@@ -1,13 +1,7 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{S}{o far} I've been glossing over the meaning of function types. A function
 type is different from other types.
-
-\begin{wrapfigure}[9]{R}{0pt}
-\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=32mm]{images/set-hom-set.jpg}}%
-\caption{Hom-set in Set is just a set}
-\end{wrapfigure}
 
 Take \code{Integer}, for instance: It's just a set of integers.
 \code{Bool} is a two element set. But a function type
@@ -17,13 +11,20 @@ two objects in any category is called a hom-set. It just so happens that
 in the category $\Set$ every hom-set is itself an object in the
 same category ---because it is, after all, a \emph{set}.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{images/set-hom-set.jpg}
+\caption{Hom-set in Set is just a set}
+\end{figure}
+
+\noindent
 The same is not true of other categories where hom-sets are external to
 a category. They are even called \emph{external} hom-sets.
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=50mm]{images/hom-set.jpg}
-  \caption{Hom-set in category C is an external set}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{images/hom-set.jpg}
+\caption{Hom-set in category C is an external set}
 \end{figure}
 
 It's the self-referential nature of the category $\Set$ that makes
@@ -65,9 +66,8 @@ with an argument $x$ (an element of $a$) and map it to
 $f x$ (the application of $f$ to $x$, which is an
 element of $b$).
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=50mm]{images/functionset.jpg}
+\begin{figure}[H]
+\centering\includegraphics[width=0.4\textwidth]{images/functionset.jpg}
 \caption{In Set we can pick a function $f$ from a set of functions $z$ and we can
 pick an argument $x$ from the set (type) $a$. We get an element $f x$ in the
 set (type) $b$.}
@@ -83,9 +83,9 @@ function that maps every pair $(f, x)$ to $f x$.
 So that's the pattern: a product of two objects $z$ and
 $a$ connected to another object $b$ by a morphism $g$.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/functionpattern.jpg}
+\includegraphics[width=0.5\textwidth]{images/functionpattern.jpg}
 \caption{A pattern of objects and morphisms that is the starting point of the
 universal construction}
 \end{figure}
@@ -117,9 +117,9 @@ $z$ such that the application of $g'$ factors
 through the application of $g$. (Hint: Read this sentence while
 looking at the picture.)
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/functionranking.jpg}
+\includegraphics[width=0.5\textwidth]{images/functionranking.jpg}
 \caption{Establishing a ranking between candidates for the function object}
 \end{figure}
 

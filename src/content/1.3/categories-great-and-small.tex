@@ -1,4 +1,4 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{Y}{ou can get} real appreciation for categories by studying a variety of
 examples. Categories come in all shapes and sizes and often pop up in
@@ -251,17 +251,16 @@ adders follows from the second interpretation of the type signature of
 tells us that \code{mappend} maps an element of a monoid set to a
 function acting on that set.
 
-\begin{wrapfigure}[11]{R}{0pt}
-\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=40mm]{images/monoid.jpg}}
-\end{wrapfigure}
-
 Now I want you to forget that you are dealing with the set of natural
 numbers and just think of it as a single object, a blob with a bunch of
 morphisms --- the adders. A monoid is a single object category. In fact
 the name monoid comes from Greek \emph{mono}, which means single. Every
 monoid can be described as a single object category with a set of
 morphisms that follow appropriate rules of composition.
+
+\begin{figure}[H]
+\centering\includegraphics[width=40mm]{images/monoid.jpg}
+\end{figure}
 
 String concatenation is an interesting case, because we have a choice of
 defining right appenders and left appenders (or \emph{prependers}, if

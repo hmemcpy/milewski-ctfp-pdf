@@ -1,4 +1,4 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{A}{t the risk of sounding} like a broken record, I will say this about
 functors: A functor is a very simple but powerful idea. Category theory
@@ -16,13 +16,15 @@ the image of $f$ in $\cat{D}$, $F f$, will connect the image of
 $a$ to the image of $b$:
 \[F f \Colon F a \to F b\]
 
-\begin{wrapfigure}{r}{0pt}
-\includegraphics[width=0.3\textwidth]{images/functor.jpg}
-\end{wrapfigure}
 (This is a mixture of mathematical and Haskell notation that hopefully
 makes sense by now. I won't use parentheses when applying functors to
 objects or morphisms.)
 
+\begin{figure}[H]
+\centering\includegraphics[width=0.4\textwidth]{images/functor.jpg}
+\end{figure}
+
+\noindent
 As you can see, a
 functor preserves the structure of a category: what's connected in one
 category will be connected in the other category. But there's something
@@ -35,17 +37,13 @@ and $g$:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/functorcompos.jpg}
+\includegraphics[width=0.4\textwidth]{images/functorcompos.jpg}
 \end{figure}
 
 \noindent
 Finally, we want all identity morphisms in $\cat{C}$ to be mapped to identity morphisms in
 $\cat{D}$:
 \[F \idarrow[a] = \idarrow[F a]\]
-
-\begin{wrapfigure}{r}{0pt}
-\includegraphics[width=0.3\textwidth]{images/functorid.jpg}
-\end{wrapfigure}
 
 \noindent
 Here, $\idarrow[a]$ is the identity at the object $a$,

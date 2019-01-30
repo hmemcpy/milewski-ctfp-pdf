@@ -1,4 +1,4 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{N}{ow that you know} what a functor is, and have seen a few examples, let's
 see how we can build larger functors from smaller ones. In particular
@@ -17,10 +17,9 @@ one from category $\cat{C}$, and one from category $\cat{D}$, to an object in ca
 $\cat{E}$. Notice that this is just saying that it's a mapping from a
 \newterm{Cartesian product} of categories $\cat{C}\times{}\cat{D}$ to $\cat{E}$.
 
-\begin{wrapfigure}[10]{R}{0pt}
-\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=50mm]{images/bifunctor.jpg}}
-\end{wrapfigure}
+\begin{figure}[H]
+\centering\includegraphics[width=0.4\textwidth]{images/bifunctor.jpg}
+\end{figure}
 
 \noindent
 That's pretty straightforward. But functoriality means that a bifunctor
@@ -65,8 +64,7 @@ implementation of \code{bimap} in terms of \code{first} and
 each argument separately to be able to define a bifunctor.  (This is not true in general in category theory, because the two maps may not commute: \code{first g . second h} might not be the same as \code{second h . first g}.)
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=40mm]{images/bimap.jpg}
+\centering\includegraphics[width=0.4\textwidth]{images/bimap.jpg}
 \caption{bimap}
 \end{figure}
 
@@ -75,20 +73,19 @@ The two other type signatures, \code{first} and \code{second}, are
 the two \code{fmap}s witnessing the functoriality of \code{f} in the
 first and the second argument, respectively.
 
-\begin{longtable}[]{@{}ll@{}}
-\toprule
-\begin{minipage}[t]{0.48\columnwidth}\raggedright\strut
-\includegraphics[width=1.56250in]{images/first.jpg}
-
-first\strut
-\end{minipage} & \begin{minipage}[t]{0.48\columnwidth}\raggedright\strut
-\hypertarget{attachment_4072}{}
-\includegraphics[width=1.56250in]{images/second.jpg}
-
-~second\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.45\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{images/first.jpg} % first figure itself
+      \caption{first}
+  \end{minipage}\hfill
+  \begin{minipage}{0.45\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{images/second.jpg} % second figure itself
+      \caption{second}
+  \end{minipage}
+\end{figure}
 
 \noindent
 The typeclass definition provides default implementations for both of
