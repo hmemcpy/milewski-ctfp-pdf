@@ -1,2 +1,2 @@
 val stmt: Pair[String, Boolean] =
-  P("This statements is", false)
+  P("This statement is", false)

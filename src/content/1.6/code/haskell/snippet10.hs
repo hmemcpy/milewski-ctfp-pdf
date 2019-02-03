@@ -1,2 +1,2 @@
 stmt :: Pair String Bool
-stmt = P "This statements is" False
+stmt = P "This statement is" False
