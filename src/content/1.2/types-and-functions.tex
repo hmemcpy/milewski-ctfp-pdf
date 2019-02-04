@@ -11,11 +11,12 @@ a thought experiment. Imagine millions of monkeys at computer keyboards
 happily hitting random keys, producing programs, compiling, and running
 them.
 
-\begin{figure}
+\begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/img_1329.jpg}
+\includegraphics[width=0.3\textwidth]{images/img_1329.jpg}
 \end{figure}
 
+\noindent
 With machine language, any combination of bytes produced by monkeys
 would be accepted and run. But with higher level languages, we do
 appreciate the fact that a compiler is able to detect lexical and
@@ -69,8 +70,8 @@ In Haskell, except on rare occasions, type annotations are purely
 optional. Programmers tend to use them anyway, because they can tell a
 lot about the semantics of code, and they make compilation errors easier
 to understand. It's a common practice in Haskell to start a project by
-designing the types. Later, type annotations drive the implementation
-and become compiler-enforced comments.
+designing the types. \sloppy{Later, type annotations drive the implementation
+and become compiler-enforced comments.}
 
 Strong static typing is often used as an excuse for not testing the
 code. You may sometimes hear Haskell programmers saying, ``If it
@@ -164,7 +165,7 @@ bottom, which is a member of any type, including \code{Bool}. You can
 even write:
 
 \src{snippet04}
-(without the \code{x}) because the bottom is also a member of the type\\
+(without the \code{x}) because the bottom is also a member of the type
 \code{Bool -> Bool}.
 
 Functions that may return bottom are called partial, as opposed to total
@@ -323,7 +324,7 @@ anything, as in the Latin adage ``ex falso sequitur quodlibet.''
 
 Next is the type that corresponds to a singleton set. It's a type that
 has only one possible value. This value just ``is.'' You might not
-immediately recognise it as such, but that is the C++ \code{void}.
+immediately recognize it as such, but that is the C++ \code{void}.
 Think of functions from and to this type. A function from \code{void}
 can always be called. If it's a pure function, it will always return the
 same result. Here's an example of such a function:
