@@ -13,7 +13,7 @@ same category ---because it is, after all, a \emph{set}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/set-hom-set.jpg}
+\includegraphics[width=0.35\textwidth]{images/set-hom-set.jpg}
 \caption{Hom-set in Set is just a set}
 \end{figure}
 
@@ -23,10 +23,11 @@ a category. They are even called \emph{external} hom-sets.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/hom-set.jpg}
+\includegraphics[width=0.35\textwidth]{images/hom-set.jpg}
 \caption{Hom-set in category C is an external set}
 \end{figure}
 
+\noindent
 It's the self-referential nature of the category $\Set$ that makes
 function types special. But there is a way, at least in some categories,
 to construct objects that represent hom-sets. Such objects are called
@@ -67,12 +68,13 @@ $f x$ (the application of $f$ to $x$, which is an
 element of $b$).
 
 \begin{figure}[H]
-\centering\includegraphics[width=0.4\textwidth]{images/functionset.jpg}
+\centering\includegraphics[width=0.35\textwidth]{images/functionset.jpg}
 \caption{In Set we can pick a function $f$ from a set of functions $z$ and we can
 pick an argument $x$ from the set (type) $a$. We get an element $f x$ in the
 set (type) $b$.}
 \end{figure}
 
+\noindent
 But instead of dealing with individual pairs $(f, x)$, we can as
 well talk about the whole \emph{product} of the function type $z$
 and the argument type $a$. The product $z\times{}a$ is an object,
@@ -85,11 +87,12 @@ $a$ connected to another object $b$ by a morphism $g$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{images/functionpattern.jpg}
+\includegraphics[width=0.4\textwidth]{images/functionpattern.jpg}
 \caption{A pattern of objects and morphisms that is the starting point of the
 universal construction}
 \end{figure}
 
+\noindent
 Is this pattern specific enough to single out the function type using a
 universal construction? Not in every category. But in the categories of
 interest to us it is. And another question: Would it be possible to
@@ -119,12 +122,13 @@ looking at the picture.)
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{images/functionranking.jpg}
+\includegraphics[width=0.4\textwidth]{images/functionranking.jpg}
 \caption{Establishing a ranking between candidates for the function object}
 \end{figure}
 
+\noindent
 Now here's the tricky part, and the main reason I postponed this
-particular universal construction till now. Given the morphism\\
+particular universal construction till now. Given the morphism
 $h \Colon z'\to z$, we want to close the diagram
 that has both $z'$ and $z$ crossed with $a$.
 What we really need, given the mapping $h$ from $z'$
@@ -156,9 +160,9 @@ way that its application morphism $g$ factorizes through
 $eval$. This object is better than any other object according to
 our ranking.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/universalfunctionobject.jpg}
+\includegraphics[width=0.4\textwidth]{images/universalfunctionobject.jpg}
 \caption{The definition of the universal function object. This is the same
 diagram as above, but now the object $a \Rightarrow b$ is \emph{universal}.}
 \end{figure}
@@ -326,7 +330,7 @@ C++ Standard Library that are usually implemented using lookups.
 Functions like \code{isupper} or \code{isspace} are implemented
 using tables, which are equivalent to tuples of 256 Boolean values. A
 tuple is a product type, so we are dealing with products of 256
-Booleans: {\small\texttt{bool × bool × bool × ... × bool}}. We know from
+Booleans: \code{bool × bool × bool × ... × bool}. We know from
 arithmetics that an iterated product defines a power. If you
 ``multiply'' \code{bool} by itself 256 (or \code{char}) times, you
 get \code{bool} to the power of \code{char}, or \code{bool}\textsuperscript{\code{char}}.
