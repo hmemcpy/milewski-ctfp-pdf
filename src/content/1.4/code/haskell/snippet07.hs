@@ -1,2 +1,2 @@
-toWords :: String -> Writer [String]
-toWords s = (words s, "toWords ")
+process :: String -> Writer [String]
+process = upCase >=> toWords

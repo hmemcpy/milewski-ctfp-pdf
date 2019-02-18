@@ -1,2 +1,4 @@
-val toWords: String => Writer[List[String]] =
-  s => (s.split(' ').toList, "toWords ")
+val process: String => Writer[List[String]] = {
+  import kleisli._
+  upCase >=> toWords
+}
