@@ -2,4 +2,4 @@
 let
   nixpkgs = import <nixpkgs> {};
 in
-  nixpkgs.callPackage ./hello.nix {}
+  nixpkgs.callPackage ./shell.nix {}
