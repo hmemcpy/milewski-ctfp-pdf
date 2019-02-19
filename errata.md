@@ -4,6 +4,10 @@
 
 * [#155](https://github.com/hmemcpy/milewski-ctfp-pdf/pull/155) - Typo (physicist -> physicists)
 
+### 6. Simple Algebraic Data Types
+
+* [#176](https://github.com/hmemcpy/milewski-ctfp-pdf/pull/176) - Typo (statements -> statement)
+
 ### 9. Function Types
 
 * [#182](https://github.com/hmemcpy/milewski-ctfp-pdf/pull/182) - Fix typo (chose -> choose)
