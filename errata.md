@@ -4,6 +4,10 @@
 
 * [#155](https://github.com/hmemcpy/milewski-ctfp-pdf/pull/155) - Typo (physicist -> physicists)
 
+### 9. Function Types
+
+* [#182](https://github.com/hmemcpy/milewski-ctfp-pdf/pull/182) - Fix typo (chose -> choose)
+
 ### 10. Natural Transformations
 
 * [#157](https://github.com/hmemcpy/milewski-ctfp-pdf/pull/157) - Adding paragraph indent
