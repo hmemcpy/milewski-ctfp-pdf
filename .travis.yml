@@ -2,7 +2,7 @@ language:
   - nix
 
 script:
-  - nix-shell --pure shell.nix --command 'cd src; make'
+  - nix-shell --pure --command 'cd src; make'
 
 deploy:
   - provider: s3

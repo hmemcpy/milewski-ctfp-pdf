@@ -1,4 +1,3 @@
-# nix-shell --pure shell.nix --command 'cd src; make'
 { pkgs ? import <nixpkgs> {} }: with pkgs;
 
 mkShell {
