@@ -1,4 +1,4 @@
-% !TEX root = ../../ctfp-print.tex
+% !TEX root = ../../ctfp-print-scala.tex
 
 \lettrine[lhang=0.17]{N}{ow that you know} what a functor is, and have seen a few examples, let's
 see how we can build larger functors from smaller ones. In particular
@@ -111,7 +111,7 @@ mapping from those objects to the product is bifunctorial. This is true
 in general, and in Haskell in particular. Here's the \code{Bifunctor}
 instance for a pair constructor --- the simplest product type:
 
-\src{snippet02}
+\src{snippet02}[b]
 There isn't much choice: \code{bimap} simply applies the first
 function to the first component, and the second function to the second
 component of a pair. The code pretty much writes itself, given the
@@ -129,7 +129,7 @@ category, is also a bifunctor. In Haskell, this is exemplified by the
 \code{Either} type constructor being an instance of
 \code{Bifunctor}:
 
-\src{snippet04}
+\src{snippet04}[b]
 This code also writes itself.
 
 Now, remember when we talked about monoidal categories? A monoidal
@@ -230,7 +230,7 @@ know that there will be a definition of \code{bimap} available for
 instance declaration: a set of class constraints followed by a double
 arrow:
 
-\src{snippet10}
+\src{snippet10}[b]
 The implementation of \code{bimap} for \code{BiComp} is given in
 terms of \code{bimap} for \code{bf} and the two \code{fmap}s for
 \code{fu} and \code{gu}. The compiler automatically infers all the
@@ -249,7 +249,7 @@ and \code{f2} are:
 then the final result is of the type
 \code{bf (fu a') (gu b')}:
 
-\src{snippet13}
+\src{snippet13}[b]
 If you like jigsaw puzzles, these kinds of type manipulations can
 provide hours of entertainment.
 
@@ -533,7 +533,7 @@ which is contra-functorial in the first argument and functorial in the
 second. Here's the appropriate typeclass taken from the
 \code{Data.Profunctor} library:
 
-\src{snippet29}
+\src{snippet29}[b]
 All three functions come with default implementations. Just like with
 \code{Bifunctor}, when declaring an instance of \code{Profunctor},
 you have a choice of either implementing \code{dimap} and accepting
@@ -551,7 +551,7 @@ the defaults for \code{lmap} and \code{rmap}, or implementing both
 Now we can assert that the function-arrow operator is an instance of a
 \code{Profunctor}:
 
-\src{snippet30}
+\src{snippet30}[b]
 Profunctors have their application in the Haskell lens library. We'll
 see them again when we talk about ends and coends.
 

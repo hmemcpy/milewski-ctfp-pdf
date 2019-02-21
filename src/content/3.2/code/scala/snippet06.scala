@@ -4,10 +4,8 @@ def unit[A](a: A): U[F[A]] =
   def counit[A](a: F[U[A]]): A =
     rightAdjunct(a)(identity)
   
-  def leftAdjunct[A, B]
-      (a: A)(f: F[A] => B): U[B] =
+  def leftAdjunct[A, B](a: A)(f: F[A] => B): U[B] =
     U.map(unit(a))(f)
   
-  def rightAdjunct[A, B]
-      (a: F[A])(f: A => U[B]): B =
+  def rightAdjunct[A, B](a: F[A])(f: A => U[B]): B =
     counit(F.map(a)(f))

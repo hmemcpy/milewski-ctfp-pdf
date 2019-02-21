@@ -1,2 +1,1 @@
-(op.contramap(func) compose predToStr) ==
-  (predToStr compose op.contramap(func))
+(op.contramap(func) compose predToStr) == (predToStr compose op.contramap(func))

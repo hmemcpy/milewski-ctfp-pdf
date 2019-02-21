@@ -221,26 +221,26 @@ To implement bind for the \code{Reader} monad, first notice that you
 have to produce a function that takes the environment \code{e} and
 produces a \code{b}:
 
-\src{snippet08}
+\src{snippet08}[b]
 Inside the lambda, we can execute the action \code{ra} to produce an
 \code{a}:
 
-\src{snippet09}
+\src{snippet09}[b]
 We can then pass the \code{a} to the continuation \code{k} to get a
 new action \code{rb}:
 
-\src{snippet10}
+\src{snippet10}[b]
 Finally, we can run the action \code{rb} with the environment
 \code{e}:
 
-\src{snippet11}
+\src{snippet11}[b]
 To implement \code{return} we create an action that ignores the
 environment and returns the unchanged value.
 
 Putting it all together, after a few simplifications, we get the
 following definition:
 
-\src{snippet12}
+\src{snippet12}[b]
 
 \subsection{Write-Only State}
 
@@ -256,7 +256,7 @@ As we've seen before, in order to make \code{Writer} composable,
 \code{w} has to be a monoid. Here's the monad instance for
 \code{Writer} written in terms of the bind operator:
 
-\src{snippet15}
+\src{snippet15}[b]
 
 \subsection{State}
 

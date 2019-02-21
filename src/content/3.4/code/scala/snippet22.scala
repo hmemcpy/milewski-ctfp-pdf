@@ -1,6 +1,6 @@
 def words: String => List[String] =
-    _.split("\\s+").toList
-  
+  _.split("\\s+").toList
+
 def process: String => Writer[String, List[String]] =
   s => {
     import bindSyntax._
