@@ -72,6 +72,7 @@
 \usepackage{tikz-cd}
 \usepackage[framemethod=TikZ]{mdframed}
 
+\usepackage{ifthen}
 \usepackage{fancyvrb}
 \fvset{fontsize=\small}
 
@@ -137,19 +138,21 @@
 \renewcommand{\partname}{}
 \renewcommand{\thepart}{}
 
+\usepackage{xparse}
 \usepackage[abspath]{currfile}
 \usepackage{noindentafter}
-\makeatletter
-\newcommand{\src}[1]{
-  \srcsnippet{\currfileabsdir/code/haskell/#1.hs}{blue}{haskell}
+
+\NewDocumentCommand\src{mO{}}{
+  \srcsnippet{\currfileabsdir/code/haskell/#1.hs}{blue}{haskell}{#2}
   \ifdefined\OPTCustomLanguage{%
     \unskip
-    \srcsnippet{\currfileabsdir/code/\OPTCustomLanguage/#1.\OPTCustomLanguageExt}{\OPTCustomLanguageColor}{\OPTCustomLanguage}
+    \srcsnippet{\currfileabsdir/code/\OPTCustomLanguage/#1.\OPTCustomLanguageExt}{\OPTCustomLanguageColor}{\OPTCustomLanguage}{#2}
   }
   \fi
   \NoIndentAfterThis
 }
-\newcommand{\srcsnippet}[3]{
+\NewDocumentCommand\srcsnippet{mmmm}{
+  \newif\ifbreak
   \def\snippet{#1}
   \mdfsetup{%
   %   frametitle={%
@@ -163,11 +166,14 @@
     rightline=false
   %   frametitleaboveskip=-9pt,
   }
+  \def\x{#4}
+  \ifthenelse{\equal{\x}{b}}{\breaktrue}{\breakfalse}
   \begin{mdframed}
-    \inputminted[autogobble,breaklines]{#3}{\snippet}
+    \ifbreak \inputminted[autogobble,breaklines]{#3}{\snippet}
+    \else \inputminted[autogobble]{#3}{\snippet}
+    \fi
   \end{mdframed}
 }
-\makeatother
 
 \newcommand{\acronym}[1]{\textsc{\fontspec[Numbers={OldStyle}]{Linux Libertine O}\MakeLowercase{#1}}}
 \newcommand{\newterm}[1]{\index{#1}\emph{#1}}

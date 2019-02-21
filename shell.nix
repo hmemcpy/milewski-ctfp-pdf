@@ -26,7 +26,7 @@ mkShell {
         fontaxes
         mdframed
         needspace
-        xifthen
+        ifthen
         ifnextok
         currfile
         noindentafter

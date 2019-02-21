@@ -1,4 +1,4 @@
-final case class StreamF[E, A](h: E, t: A)
+case class StreamF[E, A](h: E, t: A)
 
 implicit def streamFFunctor[E] =
   new Functor[StreamF[E, ?]] {

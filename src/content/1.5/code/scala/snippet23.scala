@@ -1,3 +1,3 @@
 sealed trait Contact
-final case class PhoneNum(num: Int) extends Contact
-final case class EmailAddr(addr: String) extends Contact
+case class PhoneNum(num: Int) extends Contact
+case class EmailAddr(addr: String) extends Contact

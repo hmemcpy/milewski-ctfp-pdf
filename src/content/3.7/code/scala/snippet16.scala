@@ -1,4 +1,4 @@
-final case class Stream[A](
+case class Stream[A](
     h: () => A,
     t: () => Stream[A]
 )

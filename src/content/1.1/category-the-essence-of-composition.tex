@@ -13,7 +13,7 @@ object $B$ to object $C$, then there must be an arrow --- their composition
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{images/img_1330.jpg}
+\includegraphics[width=0.8\textwidth]{images/img_1330.jpg}
 \caption{In a category, if there is an arrow going from $A$ to $B$ and an arrow going from $B$ to $C$
 then there must also be a direct arrow from $A$ to $C$ that is their composition. This diagram is not a full
 category because it’s missing identity morphisms (see later).}
@@ -107,7 +107,7 @@ expressed as:
 \[h \circ (g \circ f) = (h \circ g) \circ f = h \circ g \circ f\]
 In (pseudo) Haskell:
 
-\src{snippet04}
+\src{snippet04}[b]
 (I said ``pseudo,'' because equality is not defined for functions.)
 
 Associativity is pretty obvious when dealing with functions, but it may
