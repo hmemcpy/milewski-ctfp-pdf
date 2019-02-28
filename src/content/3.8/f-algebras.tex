@@ -145,9 +145,9 @@ which we can also write as:
 \src{snippet09}
 Continuing this process, we can write a symbolic equation:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{snipv}
 type RingF\textsubscript{n+1} a = RingF (RingF\textsubscript{n} a)
-\end{Verbatim}
+\end{snipv}
 Conceptually, after repeating this process infinitely many times, we end
 up with our \code{Expr}. Notice that \code{Expr} does not depend on
 \code{a}. The starting point of our journey doesn't matter, we always
@@ -339,9 +339,9 @@ one arrow in this diagram to get:
 \noindent
 Let's write down the commutation condition for this diagram:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 m = alg . fmap m . unFix
-\end{Verbatim}
+\end{snip}
 We can interpret this equation as a recursive definition of \code{m}.
 The recursion is bound to terminate for any finite tree created using
 the functor \code{f}. We can see that by noticing that

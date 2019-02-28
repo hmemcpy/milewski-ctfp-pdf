@@ -274,26 +274,26 @@ initializer lists).
 You can partially apply a C++ function using the template
 \code{std::bind}. For instance, given a function of two strings:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 std::string catstr(std::string s1, std::string s2) {
     return s1 + s2;
 }
-\end{Verbatim}
+\end{snip}
 you can define a function of one string:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 using namespace std::placeholders;
 
 auto greet = std::bind(catstr, "Hello ", _1);
 std::cout << greet("Haskell Curry");
-\end{Verbatim}
+\end{snip}
 Scala, which is more functional than C++ or Java, falls somewhere in
 between. If you anticipate that the function you're defining will be
 partially applied, you define it with multiple argument lists:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 def catstr(s1: String)(s2: String) = s1 + s2
-\end{Verbatim}
+\end{snip}
 Of course that requires some amount of foresight or prescience on the
 part of a library writer.
 
@@ -567,14 +567,14 @@ Considering that \code{Void} translates into false, we get:
 Anything follows from falsehood (\emph{ex falso quodlibet}). Here's one
 possible proof (implementation) of this statement (function) in Haskell:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 absurd (Void a) = absurd a
-\end{Verbatim}
+\end{snip}
 where \code{Void} is defined as:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 newtype Void = Void Void
-\end{Verbatim}
+\end{snip}
 As always, the type \code{Void} is tricky. This definition makes it
 impossible to construct a value because in order to construct one, you
 would need to provide one. Therefore, the function \code{absurd} can

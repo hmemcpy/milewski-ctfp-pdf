@@ -198,9 +198,9 @@ The other transformation, \code{beta}, goes the opposite way:
 \src{snippet09}
 It must respect naturality conditions, and it must be the inverse of \code{alpha}:
 
-\begin{Verbatim}
+\begin{snip}{text}
 alpha . beta = id = beta . alpha
-\end{Verbatim}
+\end{snip}
 We will see later that a natural transformation from $\cat{C}(a, -)$
 to any $\Set$-valued functor always exists (Yoneda's lemma) but it
 is not necessarily invertible.
@@ -314,9 +314,9 @@ explore alternative implementations that have practical value.
 \item
   The functor:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 Pair a = Pair a a
-\end{Verbatim}
+\end{snip}
   is representable. Can you guess the type that represents it? Implement
   \code{tabulate} and \code{index}.
 \end{enumerate}

@@ -1,4 +1,4 @@
-% !TEX root = ../../ctfp-print-scala.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{T}{here are many intuitions} that we may attach to morphisms in a category,
 but we can all agree that if there is a morphism from the object
@@ -172,9 +172,9 @@ $f \Colon a \to b$, the wedge condition reads:
 \src{snippet06}
 or, with type annotations:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{snipv}
 dimap f id\textsubscript{b} . pi\textsubscript{b} = dimap id\textsubscript{a} f . pi\textsubscript{a}
-\end{Verbatim}
+\end{snipv}
 where both sides of the equation have the type:
 
 \src{snippet07}
@@ -296,9 +296,9 @@ coend.
 
 This is why, in pseudo-Haskell, we would define the coend as:
 
-\begin{Verbatim}
+\begin{snip}{text}
 exists a. p a a
-\end{Verbatim}
+\end{snip}
 The standard way of encoding existential quantifiers in Haskell is to
 use universally quantified data constructors. We can thus define:
 
@@ -360,9 +360,9 @@ identity for converting coends to ends:
 \[\Set(\int^x p\ x\ x, c) \cong \int_x \Set(p\ x\ x, c)\]
 Let's have a look at it in pseudo-Haskell:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{snipv}
 (exists x. p x x) -> c \ensuremath{\cong} forall x. p x x -> c
-\end{Verbatim}
+\end{snipv}
 It tells us that a function that takes an existential type is equivalent
 to a polymorphic function. This makes perfect sense, because such a
 function must be prepared to handle any one of the types that may be
@@ -436,9 +436,9 @@ a free type variable (here \code{c}) is automatically existentially
 quantified. The (uncurried) data constructor \code{Procompose} is
 thus equivalent to:
 
-\begin{Verbatim}
+\begin{snip}{text}
 exists c. (q a c, p c b)
-\end{Verbatim}
+\end{snip}
 The unit of so defined composition is the hom-functor --- this
 immediately follows from the Ninja Yoneda lemma. It makes sense,
 therefore, to ask the question if there is a category in which

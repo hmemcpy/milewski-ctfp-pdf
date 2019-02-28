@@ -1,4 +1,4 @@
-% !TEX root = ../../ctfp-print-scala.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{N}{ow that you know} what a functor is, and have seen a few examples, let's
 see how we can build larger functors from smaller ones. In particular
@@ -121,9 +121,9 @@ types:
 The action of the bifunctor here is to make pairs of types, for
 instance:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 (,) a b = (a, b)
-\end{Verbatim}
+\end{snip}
 By duality, a coproduct, if it's defined for every pair of objects in a
 category, is also a bifunctor. In Haskell, this is exemplified by the
 \code{Either} type constructor being an instance of
@@ -263,14 +263,14 @@ can't it be automated and performed by the compiler? Indeed, it can, and
 it is. You need to enable a particular Haskell extension by including
 this line at the top of your source file:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 {-# LANGUAGE DeriveFunctor #-}
-\end{Verbatim}
+\end{snip}
 and then add \code{deriving Functor} to your data structure:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 data Maybe a = Nothing | Just a deriving Functor
-\end{Verbatim}
+\end{snip}
 and the corresponding \code{fmap} will be implemented for you.
 
 The regularity of algebraic data structures makes it possible to derive
@@ -308,31 +308,31 @@ The base class must define at least one virtual function in order to
 support dynamic casting, so we'll make the destructor virtual (which is
 a good idea in any case):
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class T>
 struct Tree { 
     virtual ~Tree() {};
 };
-\end{Verbatim}
+\end{snip}
 The \code{Leaf} is just an \code{Identity} functor in disguise:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class T>
 struct Leaf : public Tree<T> {
     T _label;
     Leaf(T l) : _label(l) {}
 };
-\end{Verbatim}
+\end{snip}
 The \code{Node} is a product type:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class T>
 struct Node : public Tree<T> {
     Tree<T> * _left;
     Tree<T> * _right;
     Node(Tree<T> * l, Tree<T> * r) : _left(l), _right(r) {}
 };
-\end{Verbatim}
+\end{snip}
 When implementing \code{fmap} we take advantage of dynamic dispatching
 on the type of the \code{Tree}. The \code{Leaf} case applies the
 \code{Identity} version of \code{fmap}, and the \code{Node} case
@@ -341,7 +341,7 @@ is treated like a bifunctor composed with two copies of the
 analyzing code in these terms, but it's a good exercise in categorical
 thinking.
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class A, class B>
 Tree<B> * fmap(std::function<B(A)> f, Tree<A> * t) {
     Leaf<A> * pl = dynamic_cast <Leaf<A>*>(t);
@@ -353,7 +353,7 @@ Tree<B> * fmap(std::function<B(A)> f, Tree<A> * t) {
                           , fmap<A>(f, pn->_right));
     return nullptr;
 }
-\end{Verbatim}
+\end{snip}
 For simplicity, I decided to ignore memory and resource management
 issues, but in production code you would probably use smart pointers
 (unique or shared, depending on your policy).
@@ -585,9 +585,9 @@ As you can see, the hom-functor is a special case of a profunctor.
 \item
   Show that the data type:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 data Pair a b = Pair a b
-\end{Verbatim}
+\end{snip}
 
   is a bifunctor. For additional credit implement all three methods of
   \code{Bifunctor} and use equational reasoning to show that these
@@ -597,9 +597,9 @@ data Pair a b = Pair a b
   Show the isomorphism between the standard definition of \code{Maybe}
   and this desugaring:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 type Maybe' a = Either (Const () a) (Identity a)
-\end{Verbatim}
+\end{snip}
 
   Hint: Define two mappings between the two implementations. For
   additional credit, show that they are the inverse of each other using
@@ -609,9 +609,9 @@ type Maybe' a = Either (Const () a) (Identity a)
   it's a precursor to a \code{List}. It replaces recursion with a type
   parameter \code{b}.
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 data PreList a b = Nil | Cons a b
-\end{Verbatim}
+\end{snip}
 
   You could recover our earlier definition of a \code{List} by
   recursively applying \code{PreList} to itself (we'll see how it's
@@ -622,17 +622,13 @@ data PreList a b = Nil | Cons a b
   Show that the following data types define bifunctors in \code{a} and
   \code{b}:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 data K2 c a b = K2 c
-\end{Verbatim}
 
-\begin{Verbatim}
 data Fst a b = Fst a
-\end{Verbatim}
 
-\begin{Verbatim}
 data Snd a b = Snd b
-\end{Verbatim}
+\end{snip}
 
   For additional credit, check your solutions against Conor McBride's
   paper \urlref{http://strictlypositive.org/CJ.pdf}{Clowns to the Left of

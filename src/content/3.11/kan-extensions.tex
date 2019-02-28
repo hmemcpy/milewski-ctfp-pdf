@@ -392,9 +392,9 @@ The left Kan extension is a coend:
 \[\Lan_{K}D\ a = \int^i \cat{A}(K\ i, a)\times{}D\ i\]
 so it translates to an existential quantifier. Symbolically:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 Lan k d a = exists i. (k i -> a, d i)
-\end{Verbatim}
+\end{snip}
 This can be encoded in Haskell using \acronym{GADT}s, or using a universally
 quantified data constructor:
 

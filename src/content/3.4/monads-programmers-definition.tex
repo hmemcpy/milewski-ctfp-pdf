@@ -54,7 +54,7 @@ directly from function to function. We also inline short segments of
 glue code rather than abstract them into helper functions. Here's an
 imperative-style implementation of the vector-length function in C:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 double vlen(double * v) {
     double d = 0.0;
     int n;
@@ -62,7 +62,7 @@ double vlen(double * v) {
         d += v[n] * v[n];
     return sqrt(d);
 }
-\end{Verbatim}
+\end{snip}
 Compare this with the (stylized) Haskell version that makes function
 composition explicit:
 
@@ -131,11 +131,11 @@ In this formulation, monad laws are very easy to express. They cannot be
 enforced in Haskell, but they can be used for equational reasoning. They
 are simply the standard composition laws for the Kleisli category:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 (f >=> g) >=> h = f >=> (g >=> h) -- associativity
 return >=> f = f                  -- left unit
 f >=> return = f                  -- right unit
-\end{Verbatim}
+\end{snip}
 This kind of a definition also expresses what a monad really is: it's a
 way of composing embellished functions. It's not about side effects or
 state. It's about composition. As we'll see later, embellished functions

@@ -301,9 +301,9 @@ given by first lifting $f$ and then applying $\mu$:
 \[\mu_{T b} \circ T\ f\]
 In Haskell notation this would read:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{snipv}
 G f\textsubscript{T} = join . fmap f
-\end{Verbatim}
+\end{snipv}
 You may recognize this as the definition of monadic bind in terms of
 \code{join}.
 

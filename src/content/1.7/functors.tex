@@ -170,13 +170,13 @@ There are two cases to consider: \code{Nothing} and \code{Just}.
 Here's the first case (I'm using Haskell pseudo-code to transform the
 left hand side to the right hand side):
 
-\begin{Verbatim}
+\begin{snip}{haskell}
   fmap id Nothing
 = { definition of fmap }
   Nothing
-= { definition of id } 
+= { definition of id }
   id Nothing
-\end{Verbatim}
+\end{snip}
 Notice that in the last step I used the definition of \code{id}
 backwards. I replaced the expression \code{Nothing} with
 \code{id\ Nothing}. In practice, you carry out such proofs by
@@ -184,7 +184,7 @@ backwards. I replaced the expression \code{Nothing} with
 in the middle --- here it was \code{Nothing}. The second case is also
 easy:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
   fmap id (Just x)
 = { definition of fmap }
   Just (id x)
@@ -192,13 +192,13 @@ easy:
   Just x
 = { definition of id }
   id (Just x)
-\end{Verbatim}
+\end{snip}
 Now, lets show that \code{fmap} preserves composition:
 
 \src{snippet09}
 First the \code{Nothing} case:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
   fmap (g . f) Nothing
 = { definition of fmap }
   Nothing
@@ -206,10 +206,10 @@ First the \code{Nothing} case:
   fmap g Nothing
 = { definition of fmap }
   fmap g (fmap f Nothing)
-\end{Verbatim}
+\end{snip}
 And then the \code{Just} case:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
   fmap (g . f) (Just x)
 = { definition of fmap }
   Just ((g . f) x)
@@ -221,28 +221,28 @@ And then the \code{Just} case:
   fmap g (fmap f (Just x))
 = { definition of composition }
   (fmap g . fmap f) (Just x)
-\end{Verbatim}
+\end{snip}
 It's worth stressing that equational reasoning doesn't work for C++
 style ``functions'' with side effects. Consider this code:
 
-\begin{Verbatim}
-int square(int x) { 
+\begin{snip}{cpp}
+int square(int x) {
     return x * x;
 }
 
-int counter() { 
+int counter() {
     static int c = 0;
     return c++;
 }
 
 double y = square(counter());
-\end{Verbatim}
+\end{snip}
 Using equational reasoning, you would be able to inline \code{square}
 to get:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 double y = counter() * counter();
-\end{Verbatim}
+\end{snip}
 This is definitely not a valid transformation, and it will not produce
 the same result. Despite that, the C++ compiler will try to use
 equational reasoning if you implement \code{square} as a macro, with
@@ -258,7 +258,7 @@ implementation is much more complex, dealing with various ways the
 argument may be passed, with copy semantics, and with the resource
 management issues characteristic of C++):
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class T>
 class optional { 
     bool _isValid; // the tag
@@ -268,13 +268,13 @@ public:
     optional(T x) : _isValid(true) , _v(x) {} // Just
     bool isValid() const { return _isValid; }
     T val() const { return _v; } };
-\end{Verbatim}
+\end{snip}
 This template provides one part of the definition of a functor: the
 mapping of types. It maps any type \code{T} to a new type
 \code{optional<T>}. Let's define its action on
 functions:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class A, class B>
 std::function<optional<B>(optional<A>)>
 fmap(std::function<B(A)> f) { 
@@ -285,11 +285,11 @@ fmap(std::function<B(A)> f) {
             return optional<B>{ f(opt.val()) };
     };
 }
-\end{Verbatim}
+\end{snip}
 This is a higher order function, taking a function as an argument and
 returning a function. Here's the uncurried version of it:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class A, class B>
 optional<B> fmap(std::function<B(A)> f, optional<A> opt) { 
     if (!opt.isValid())
@@ -297,7 +297,7 @@ optional<B> fmap(std::function<B(A)> f, optional<A> opt) {
     else 
         return optional<B>{ f(opt.val()) };
 }
-\end{Verbatim}
+\end{snip}
 There is also an option of making \code{fmap} a template method of
 \code{optional}. This embarrassment of choices makes abstracting the
 functor pattern in C++ a problem. Should functor be an interface to
@@ -308,9 +308,9 @@ specified explicitly? Consider a situation where the input function
 \code{f} takes an \code{int} to a \code{bool}. How will the
 compiler figure out the type of \code{g}:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 auto g = fmap(f);
-\end{Verbatim}
+\end{snip}
 especially if, in the future, there are multiple functors overloading
 \code{fmap}? (We'll see more functors soon.)
 
@@ -372,22 +372,22 @@ template class, like \code{optional}, so by analogy, we would
 parameterize \code{fmap} with a \newterm{template template parameter}
 \code{F}. This is the syntax for it:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<template<class> F, class A, class B>
 F<B> fmap(std::function<B(A)>, F<A>);
-\end{Verbatim}
+\end{snip}
 We would like to be able to specialize this template for different
 functors. Unfortunately, there is a prohibition against partial
 specialization of template functions in C++. You can't write:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class A, class B>
 optional<B> fmap<optional>(std::function<B(A)> f, optional<A> opt)
-\end{Verbatim}
+\end{snip}
 Instead, we have to fall back on function overloading, which brings us
 back to the original definition of the uncurried \code{fmap}:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class A, class B>
 optional<B> fmap(std::function<B(A)> f, optional<A> opt) { 
     if (!opt.isValid()) 
@@ -395,7 +395,7 @@ optional<B> fmap(std::function<B(A)> f, optional<A> opt) {
     else
         return optional<B>{ f(opt.val()) };
 }
-\end{Verbatim}
+\end{snip}
 This definition works, but only because the second argument of
 \code{fmap} selects the overload. It totally ignores the more generic
 definition of \code{fmap}.
@@ -448,7 +448,7 @@ If you are more comfortable with C++, consider the case of a
 container. The implementation of \code{fmap} for \code{std::vector}
 is just a thin encapsulation of \code{std::transform}:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class A, class B>
 std::vector<B> fmap(std::function<B(A)> f, std::vector<A> v) {
     std::vector<B> w;
@@ -458,17 +458,17 @@ std::vector<B> fmap(std::function<B(A)> f, std::vector<A> v) {
                   , f); 
     return w;
 }
-\end{Verbatim}
+\end{snip}
 We can use it, for instance, to square the elements of a sequence of
 numbers:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 std::vector<int> v{ 1, 2, 3, 4 };
 auto w = fmap([](int i) { return i*i; }, v);
 std::copy( std::begin(w)
          , std::end(w)
          , std::ostream_iterator(std::cout, ", "));
-\end{Verbatim}
+\end{snip}
 Most C++ containers are functors by virtue of implementing iterators
 that can be passed to \code{std::transform}, which is the more
 primitive cousin of \code{fmap}. Unfortunately, the simplicity of a
@@ -603,23 +603,23 @@ This might be a little clearer in C++ (I never thought I would utter
 those words!), where there is a stronger distinction between type
 arguments --- which are compile-time --- and values, which are run-time:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class C, class A>
 struct Const { 
     Const(C v) : _v(v) {}
     C _v;
 };
-\end{Verbatim}
+\end{snip}
 The C++ implementation of \code{fmap} also ignores the function
 argument and essentially re-casts the \code{Const} argument without
 changing its value:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class C, class A, class B>
 Const<C, B> fmap(std::function<B(A)> f, Const<C, A> c) {
     return Const<C, B>{c._v};
 }
-\end{Verbatim}
+\end{snip}
 Despite its weirdness, the \code{Const} functor plays an important
 role in many constructions. In category theory, it's a special case of
 the $\Delta_c$ functor I mentioned earlier --- the endo-functor
@@ -705,9 +705,9 @@ We'll see later that functors form categories as well.
   Can we turn the \code{Maybe} type constructor into a functor by
   defining:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 fmap _ _ = Nothing
-\end{Verbatim}
+\end{snip}
 
   which ignores both of its arguments? (Hint: Check the functor laws.)
 \item

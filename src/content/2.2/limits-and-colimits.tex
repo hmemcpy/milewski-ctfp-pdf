@@ -499,46 +499,46 @@ There's also a more advanced use of a pullback in type inference. There
 is often a need to \emph{unify} types of two expressions. For instance,
 suppose that the compiler wants to infer the type of a function:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 twice f x = f (f x)
-\end{Verbatim}
+\end{snip}
 It will assign preliminary types to all variables and sub-expressions.
 In particular, it will assign:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 f       :: t0
 x       :: t1
 f x     :: t2
 f (f x) :: t3
-\end{Verbatim}
+\end{snip}
 from which it will deduce that:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 twice :: t0 -> t1 -> t3
-\end{Verbatim}
+\end{snip}
 It will also come up with a set of constraints resulting from the rules
 of function application:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 t0 = t1 -> t2 -- because f is applied to x 
 t0 = t2 -> t3 -- because f is applied to (f x)
-\end{Verbatim}
+\end{snip}
 These constraints have to be unified by finding a set of types (or type
 variables) that, when substituted for the unknown types in both
 expressions, produce the same type. One such substitution is:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 t1 = t2 = t3 = Int 
 twice :: (Int -> Int) -> Int -> Int
-\end{Verbatim}
+\end{snip}
 but, obviously, it's not the most general one. The most general
 substitution is obtained using a pullback. I won't go into the details,
 because they are beyond the scope of this book, but you can convince
 yourself that the result should be:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 twice :: (t -> t) -> t -> t
-\end{Verbatim}
+\end{snip}
 with \code{t} a free type variable.
 
 \section{Colimits}

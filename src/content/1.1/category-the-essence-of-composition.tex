@@ -33,9 +33,9 @@ functions: $g \circ f$. Notice the right to left order of composition. For some
 people this is confusing. You may be familiar with the pipe notation in
 Unix, as in:
 
-\begin{Verbatim}
+\begin{snip}{text}
 lsof | grep Chrome
-\end{Verbatim}
+\end{snip}
 or the chevron \code{>>} in F\#, which both
 go from left to right. But in mathematics and in Haskell functions
 compose right to left. It helps if you read $g \circ f$ as ``g \emph{after} f.''
@@ -44,22 +44,22 @@ Let's make this even more explicit by writing some C code. We have one
 function \code{f} that takes an argument of type \code{A} and
 returns a value of type \code{B}:
 
-\begin{Verbatim}
+\begin{snip}{text}
 B f(A a);
-\end{Verbatim}
+\end{snip}
 and another:
 
-\begin{Verbatim}
+\begin{snip}{text}
 C g(B b);
-\end{Verbatim}
+\end{snip}
 Their composition is:
 
-\begin{Verbatim}
+\begin{snip}{text}
 C g_after_f(A a)
 {
     return g(f(a));
 }
-\end{Verbatim}
+\end{snip}
 Here, again, you see right-to-left composition: \code{g(f(a))}; this
 time in C.
 
@@ -80,14 +80,15 @@ straightforward functional concepts in C++ is a little embarrassing. In
 fact, Haskell will let you use Unicode characters so you can write
 composition as:
 % don't 'mathify' this block
-\begin{Verbatim}
+\begin{snip}{text}
 g ◦ f
-\end{Verbatim}
+\end{snip}
+
 You can even use Unicode double colons and arrows:
 % don't 'mathify' this block
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{snipv}
 f \ensuremath{\Colon} A → B
-\end{Verbatim}
+\end{snipv}
 So here's the first Haskell lesson: Double colon means ``has the type
 of\ldots{}'' A function type is created by inserting an arrow between
 two types. You compose two functions by inserting a period between them
@@ -129,9 +130,9 @@ identity function that just returns back its argument. The
 implementation is the same for every type, which means this function is
 universally polymorphic. In C++ we could define it as a template:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class T> T id(T x) { return x; }
-\end{Verbatim}
+\end{snip}
 Of course, in C++ nothing is that simple, because you have to take into
 account not only what you're passing but also how (that is, by value, by
 reference, by const reference, by move, and so on).

@@ -236,7 +236,7 @@ The function \code{product} multiplies all elements of a list. That's
 just like a definition of factorial taken from a math text. Compare this
 with C:
 
-\begin{Verbatim}
+\begin{snip}{c}
 int fact(int n) {
     int i;
     int result = 1;
@@ -244,7 +244,7 @@ int fact(int n) {
         result *= i;
     return result;
 }
-\end{Verbatim}
+\end{snip}
 Need I say more?
 
 Okay, I'll be the first to admit that this was a cheap shot! A factorial
@@ -329,9 +329,9 @@ Think of functions from and to this type. A function from \code{void}
 can always be called. If it's a pure function, it will always return the
 same result. Here's an example of such a function:
 
-\begin{Verbatim}
+\begin{snip}{c}
 int f44() { return 44; }
-\end{Verbatim}
+\end{snip}
 You might think of this function as taking ``nothing'', but as we've
 just seen, a function that takes ``nothing'' can never be called because
 there is no value representing ``nothing.'' So what does this function
@@ -351,9 +351,9 @@ defines \code{f44} by pattern matching the only constructor for unit,
 namely \code{()}, and producing the number 44. You call this function
 by providing the unit value \code{()}:
 
-\begin{Verbatim}
+\begin{snip}{c}
 f44 ()
-\end{Verbatim}
+\end{snip}
 Notice that every function of unit is equivalent to picking a single
 element from the target type (here, picking the \code{Integer} 44). In
 fact you could think of \code{f44} as a different representation for
@@ -393,10 +393,10 @@ to unit type? Of course we'll call it \code{unit}:
 \src{snippet10}
 In C++ you would write this function as:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class T>
 void unit(T) {}
-\end{Verbatim}
+\end{snip}
 Next in the typology of types is a two-element set. In C++ it's called
 \code{bool} and in Haskell, predictably, \code{Bool}. The difference
 is that in C++ \code{bool} is a built-in type, whereas in Haskell it
@@ -407,12 +407,12 @@ can be defined as follows:
 \code{True} or \code{False}.) In principle, one should also be able
 to define a Boolean type in C++ as an enumeration:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 enum bool { 
     true,
     false
 };
-\end{Verbatim}
+\end{snip}
 but C++ \code{enum} is secretly an integer. The C++11
 ``\code{enum class}'' could have been used instead, but then you
 would have to qualify its values with the class name, as in
@@ -463,24 +463,24 @@ have the form \code{ctype::is(alpha, c)}, \code{ctype::is(digit, c)}, etc.
   \item
     The factorial function from the example in the text.
   \item
-\begin{Verbatim}
+\begin{minted}{cpp}
 std::getchar()
-\end{Verbatim}
+\end{minted}
   \item
-\begin{Verbatim}
+\begin{minted}{cpp}
 bool f() { 
     std::cout << "Hello!" << std::endl;
     return true;
 }
-\end{Verbatim}
+\end{minted}
   \item
-\begin{Verbatim}
+\begin{minted}{cpp}
 int f(int x) {
     static int y = 0;
     y += x;
     return y;
 }
-\end{Verbatim}
+\end{minted}
   \end{enumerate}
 \item
   How many different functions are there from \code{Bool} to

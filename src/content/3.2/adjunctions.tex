@@ -491,10 +491,10 @@ In Haskell, we can always construct the inverse of the
 \code{factorizer} by composing \code{m} with, respectively,
 \code{fst} and \code{snd}.
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 p = fst . m
 q = snd . m
-\end{Verbatim}
+\end{snip}
 To complete the proof of the equivalence of the two ways of defining a
 product we also need to show that the mapping between hom-sets is
 natural in $a$, $b$, and $c$. I will leave this as

@@ -145,9 +145,9 @@ $F a$. Another functor, \code{G}, maps it to $G a$.
 The component of a natural transformation \code{alpha} at \code{a}
 is a function from $F a$ to $G a$. In pseudo-Haskell:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{snipv}
 alpha\textsubscript{a} :: F a -> G a
-\end{Verbatim}
+\end{snipv}
 A natural transformation is a polymorphic function that is defined for
 all types \code{a}:
 
@@ -161,9 +161,9 @@ Keep in mind that it's really a family of functions parameterized by
 \code{a}. This is another example of the terseness of the Haskell
 syntax. A similar construct in C++ would be slightly more verbose:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class A> G<A> alpha(F<A>);
-\end{Verbatim}
+\end{snip}
 There is a more profound difference between Haskell's polymorphic
 functions and C++ generic functions, and it's reflected in the way these
 functions are implemented and type-checked. In Haskell, a polymorphic
@@ -195,15 +195,15 @@ In Haskell, the action of a functor \code{G} on a morphism \code{f}
 is implemented using \code{fmap}. I'll first write it in
 pseudo-Haskell, with explicit type annotations:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{snipv}
 fmap\textsubscript{G} f . alpha\textsubscript{a} = alpha\textsubscript{b} . fmap\textsubscript{F} f
-\end{Verbatim}
+\end{snipv}
 Because of type inference, these annotations are not necessary, and the
 following equation holds:
 
-\begin{Verbatim}
+\begin{snip}{text}
 fmap f . alpha = alpha . fmap f
-\end{Verbatim}
+\end{snip}
 This is still not real Haskell --- function equality is not expressible
 in code --- but it's an identity that can be used by the programmer in
 equational reasoning; or by the compiler, to implement optimizations.
@@ -712,14 +712,14 @@ natural transformation is a special type of polymorphic function.
   transformations between different \code{Op} functors. Here's one
   choice:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 op :: Op Bool Int
 op = Op (\x -> x > 0)
-\end{Verbatim}
+\end{snip}
 and
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 f :: String -> Int
 f x = read x
-\end{Verbatim}
+\end{snip}
 \end{enumerate}

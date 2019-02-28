@@ -26,7 +26,7 @@ mkShell {
         fontaxes
         mdframed
         needspace
-        ifthen
+        xifthen
         ifnextok
         currfile
         noindentafter
@@ -42,7 +42,8 @@ mkShell {
         xstring
         minifp
         titlecaps
-        enumitem;
+        enumitem
+        l3packages;
       })
     gnumake
     pythonPackages.pygments

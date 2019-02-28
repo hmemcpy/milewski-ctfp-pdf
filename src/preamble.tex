@@ -1,5 +1,3 @@
-% !TEX root = ctfp-print.tex
-
 \documentclass[\OPTmodes]{book}
 
 \usepackage[papersize={\OPTpagesize},
@@ -8,7 +6,7 @@
             inner=\OPTinnermargin,
             outer=\OPToutermargin,
             bindingoffset=\OPTbindingoffset,
-            centering
+            centering,
             ]{geometry}
 
 % New line height: 1.05 * 1.2 = 1.26
@@ -45,6 +43,7 @@
 
 \usepackage[all]{nowidow}
 \usepackage{emptypage}
+\usepackage{noindentafter}
 
 % So that file names with multiple dots don't confuse
 % graphicx package when using \includegraphics command:
@@ -88,7 +87,6 @@
 
 \usepackage{titlesec}  % to change the appearance of section titles
 \usepackage{listings}  % for syntax highlighted code listings
-\usepackage{verbatim}  % for simple verbatim and comment environments
 \usepackage{enumerate} % allows customized labels in enumerations
 \usepackage{enumitem}  % allows nested enumeration with numbers
 \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}  % makes cross references and URLs clickable
@@ -140,7 +138,32 @@
 
 \usepackage{xparse}
 \usepackage[abspath]{currfile}
-\usepackage{noindentafter}
+
+\newenvironment{snip}[2][]
+  {\VerbatimEnvironment
+  \mdfsetup{
+    linecolor=gray!20,
+    linewidth=2pt,
+    topline=false,
+    bottomline=false,
+    rightline=false
+  }
+  \begin{mdframed}\begin{minted}[#1]{#2}}
+ {\end{minted}\end{mdframed}
+ \vspace{-1ex}}
+
+ \newenvironment{snipv}
+ {\VerbatimEnvironment
+ \mdfsetup{
+   linecolor=gray!20,
+   linewidth=2pt,
+   topline=false,
+   bottomline=false,
+   rightline=false
+ }
+ \begin{mdframed}\begin{Verbatim}[commandchars=\\\{\}]}
+{\end{Verbatim}\end{mdframed}
+\vspace{-1ex}}
 
 \NewDocumentCommand\src{mO{}}{
   \srcsnippet{\currfileabsdir/code/haskell/#1.hs}{blue}{haskell}{#2}
@@ -155,16 +178,11 @@
   \newif\ifbreak
   \def\snippet{#1}
   \mdfsetup{%
-  %   frametitle={%
-  %   \tikz[baseline=(current bounding box.east),outer sep=0pt]
-  %   \node[anchor=east,rectangle,fill=blue!20]
-  %   {\includegraphics[height=8pt]{fig/icons/scala.png}};},
     linecolor=#2!20,%
     linewidth=2pt,
     topline=false,
     bottomline=false,
-    rightline=false
-  %   frametitleaboveskip=-9pt,
+    rightline=false,
   }
   \def\x{#4}
   \ifthenelse{\equal{\x}{b}}{\breaktrue}{\breakfalse}
@@ -228,6 +246,7 @@
 \frenchspacing
 \makeindex
 
+% reduce space between items in a list
 \providecommand{\tightlist}{%
 \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
