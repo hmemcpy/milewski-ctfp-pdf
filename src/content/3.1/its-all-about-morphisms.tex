@@ -1,4 +1,4 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{I}{f I haven't} convinced you yet that category theory is all about
 morphisms then I haven't done my job properly. Since the next topic is
@@ -32,16 +32,17 @@ constructions (with the notable exceptions of the initial and terminal
 objects). We've seen this in the definitions of products, coproducts,
 various other (co-)limits, exponential objects, free monoids, etc.
 
-\begin{wrapfigure}[8]{R}{0pt}
-\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=1.78125in]{images/productranking.jpg}}%
-\end{wrapfigure}
-
 The product is a simple example of a universal construction. We pick two
 objects $a$ and $b$ and see if there exists an object
 $c$, together with a pair of morphisms $p$ and $q$,
 that has the universal property of being their product.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{images/productranking.jpg}
+\end{figure}
+
+\noindent
 A product is a special case of a limit. A limit is defined in terms of
 cones. A general cone is built from commuting diagrams. Commutativity of
 those diagrams may be replaced with a suitable naturality condition for
@@ -59,7 +60,7 @@ of the natural transformation (which are also morphisms).
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=2.25000in]{images/3_naturality.jpg}
+\includegraphics[width=0.35\textwidth]{images/3_naturality.jpg}
 \end{figure}
 
 \noindent
@@ -75,10 +76,10 @@ you up and down or back and forth --- so to speak. You can visualize the
 transformation maps one such sheet corresponding to F, to another,
 corresponding to G.
 
-\begin{wrapfigure}[10]{R}{0pt}
-\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=60mm]{images/sheets.png}}%
-\end{wrapfigure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{images/sheets.png}
+\end{figure}
 
 \noindent
 We've seen examples of this orthogonality in Haskell. There the action
@@ -195,7 +196,7 @@ one direction.
 A preorder, which is based on a relation that's not necessarily
 antisymmetric, is also ``mostly'' directional, except for occasional
 cycles. It's convenient to think of an arbitrary category as a
-generalization of a preoder.
+generalization of a preorder.
 
 A preorder is a thin category --- all hom-sets are either singletons or
 empty. We can visualize a general category as a ``thick'' preorder.
@@ -208,7 +209,7 @@ empty. We can visualize a general category as a ``thick'' preorder.
   Consider some degenerate cases of a naturality condition and draw the
   appropriate diagrams. For instance, what happens if either functor
   $F$ or $G$ map both objects $a$ and $b$
-  (the ends of\\ $f \Colon a \to b$) to the same
+  (the ends of $f \Colon a \to b$) to the same
   object, e.g., $F a = F b$ or $G a = G b$?
   (Notice that you get a cone or a co-cone this way.) Then consider
   cases where either $F a = G a$ or $F b = G b$.

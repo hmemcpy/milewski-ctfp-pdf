@@ -42,7 +42,8 @@ mkShell {
         xstring
         minifp
         titlecaps
-        enumitem;
+        enumitem
+        l3packages;
       })
     gnumake
     pythonPackages.pygments

@@ -1,14 +1,12 @@
-% !TEX root = ctfp-print.tex
-
 \documentclass[\OPTmodes]{book}
 
-\usepackage[papersize={\OTPpapersize},
+\usepackage[papersize={\OPTpagesize},
             top=\OPTtopmargin,
             bottom=\OPTbottommargin,
             inner=\OPTinnermargin,
             outer=\OPToutermargin,
             bindingoffset=\OPTbindingoffset,
-            centering
+            centering,
             ]{geometry}
 
 % New line height: 1.05 * 1.2 = 1.26
@@ -45,6 +43,7 @@
 
 \usepackage[all]{nowidow}
 \usepackage{emptypage}
+\usepackage{noindentafter}
 
 % So that file names with multiple dots don't confuse
 % graphicx package when using \includegraphics command:
@@ -72,6 +71,7 @@
 \usepackage{tikz-cd}
 \usepackage[framemethod=TikZ]{mdframed}
 
+\usepackage{ifthen}
 \usepackage{fancyvrb}
 \fvset{fontsize=\small}
 
@@ -87,7 +87,6 @@
 
 \usepackage{titlesec}  % to change the appearance of section titles
 \usepackage{listings}  % for syntax highlighted code listings
-\usepackage{verbatim}  % for simple verbatim and comment environments
 \usepackage{enumerate} % allows customized labels in enumerations
 \usepackage{enumitem}  % allows nested enumeration with numbers
 \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}  % makes cross references and URLs clickable
@@ -137,44 +136,62 @@
 \renewcommand{\partname}{}
 \renewcommand{\thepart}{}
 
-% https://tex.stackexchange.com/questions/94699/absolutely-definitely-preventing-page-break
-\newenvironment{absolutelynopagebreak}
-  {\par\nobreak\vfil\penalty0\vfilneg
-   \vtop\bgroup}
-  {\par\xdef\tpd{\the\prevdepth}\egroup
-   \prevdepth=\tpd}
-
+\usepackage{xparse}
 \usepackage[abspath]{currfile}
-\usepackage{noindentafter}
-\makeatletter
-\newcommand{\src}[1]{
-  \srcsnippet{\currfileabsdir/code/haskell/#1.hs}{blue}{haskell}
-  \ifdefined\OPTCustomLanguage{%
-    \unskip
-    \srcsnippet{\currfileabsdir/code/\OPTCustomLanguage/#1.\OPTCustomLanguageExt}{\OPTCustomLanguageColor}{\OPTCustomLanguage}
-  }
-  \fi
-  \NoIndentAfterThis
-}
-\newcommand{\srcsnippet}[3]{
-  \def\snippet{#1}
-  \mdfsetup{%
-  %   frametitle={%
-  %   \tikz[baseline=(current bounding box.east),outer sep=0pt]
-  %   \node[anchor=east,rectangle,fill=blue!20]
-  %   {\includegraphics[height=8pt]{fig/icons/scala.png}};},
-    linecolor=#2!20,%
+
+\newenvironment{snip}[2][]
+  {\VerbatimEnvironment
+  \mdfsetup{
+    linecolor=gray!20,
     linewidth=2pt,
     topline=false,
     bottomline=false,
     rightline=false
-  %   frametitleaboveskip=-9pt,
   }
+  \begin{mdframed}\begin{minted}[#1]{#2}}
+ {\end{minted}\end{mdframed}
+ \vspace{-1ex}}
+
+ \newenvironment{snipv}
+ {\VerbatimEnvironment
+ \mdfsetup{
+   linecolor=gray!20,
+   linewidth=2pt,
+   topline=false,
+   bottomline=false,
+   rightline=false
+ }
+ \begin{mdframed}\begin{Verbatim}[commandchars=\\\{\}]}
+{\end{Verbatim}\end{mdframed}
+\vspace{-1ex}}
+
+\NewDocumentCommand\src{mO{}}{
+  \srcsnippet{\currfileabsdir/code/haskell/#1.hs}{blue}{haskell}{#2}
+  \ifdefined\OPTCustomLanguage{%
+    \unskip
+    \srcsnippet{\currfileabsdir/code/\OPTCustomLanguage/#1.\OPTCustomLanguageExt}{\OPTCustomLanguageColor}{\OPTCustomLanguage}{#2}
+  }
+  \fi
+  \NoIndentAfterThis
+}
+\NewDocumentCommand\srcsnippet{mmmm}{
+  \newif\ifbreak
+  \def\snippet{#1}
+  \mdfsetup{%
+    linecolor=#2!20,%
+    linewidth=2pt,
+    topline=false,
+    bottomline=false,
+    rightline=false,
+  }
+  \def\x{#4}
+  \ifthenelse{\equal{\x}{b}}{\breaktrue}{\breakfalse}
   \begin{mdframed}
-    \inputminted[autogobble,breaklines]{#3}{\snippet}
+    \ifbreak \inputminted[autogobble,breaklines]{#3}{\snippet}
+    \else \inputminted[autogobble]{#3}{\snippet}
+    \fi
   \end{mdframed}
 }
-\makeatother
 
 \newcommand{\acronym}[1]{\textsc{\fontspec[Numbers={OldStyle}]{Linux Libertine O}\MakeLowercase{#1}}}
 \newcommand{\newterm}[1]{\index{#1}\emph{#1}}
@@ -225,9 +242,11 @@
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 
+\sloppy
 \frenchspacing
 \makeindex
 
+% reduce space between items in a list
 \providecommand{\tightlist}{%
 \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 

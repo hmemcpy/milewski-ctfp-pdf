@@ -1,20 +1,19 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{W}{e talked about} functors as mappings between categories that preserve
 their structure.
 
-\begin{wrapfigure}[13]{R}{0pt}
-\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=60mm]{images/1_functors.jpg}}%
-\end{wrapfigure}
-
-\noindent
 A functor ``embeds'' one category in another. It may
 collapse multiple things into one, but it never breaks connections. One
 way of thinking about it is that with a functor we are modeling one
 category inside another. The source category serves as a model, a
 blueprint, for some structure that's part of the target category.
 
+\begin{figure}[H]
+\centering\includegraphics[width=0.4\textwidth]{images/1_functors.jpg}
+\end{figure}
+
+\noindent
 There may be many ways of embedding one category in another. Sometimes
 they are equivalent, sometimes very different. One may collapse the
 whole source category into one object, another may map every object to a
@@ -31,7 +30,7 @@ $G a$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/2_natcomp.jpg}
+\includegraphics[width=0.3\textwidth]{images/2_natcomp.jpg}
 \end{figure}
 
 \noindent
@@ -78,7 +77,7 @@ that complete the diagram in \emph{D}:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/3_naturality.jpg}
+\includegraphics[width=0.4\textwidth]{images/3_naturality.jpg}
 \end{figure}
 
 \noindent
@@ -96,7 +95,7 @@ $\alpha_a$ along $f$:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/4_transport.jpg}
+\includegraphics[width=0.4\textwidth]{images/4_transport.jpg}
 \end{figure}
 
 \noindent
@@ -116,7 +115,7 @@ commuting naturality square in $\cat{D}$ for every morphism in $\cat{C}$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/naturality.jpg}
+\includegraphics[width=0.4\textwidth]{images/naturality.jpg}
 \end{figure}
 
 \noindent
@@ -146,9 +145,9 @@ $F a$. Another functor, \code{G}, maps it to $G a$.
 The component of a natural transformation \code{alpha} at \code{a}
 is a function from $F a$ to $G a$. In pseudo-Haskell:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{snipv}
 alpha\textsubscript{a} :: F a -> G a
-\end{Verbatim}
+\end{snipv}
 A natural transformation is a polymorphic function that is defined for
 all types \code{a}:
 
@@ -162,9 +161,9 @@ Keep in mind that it's really a family of functions parameterized by
 \code{a}. This is another example of the terseness of the Haskell
 syntax. A similar construct in C++ would be slightly more verbose:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class A> G<A> alpha(F<A>);
-\end{Verbatim}
+\end{snip}
 There is a more profound difference between Haskell's polymorphic
 functions and C++ generic functions, and it's reflected in the way these
 functions are implemented and type-checked. In Haskell, a polymorphic
@@ -196,15 +195,15 @@ In Haskell, the action of a functor \code{G} on a morphism \code{f}
 is implemented using \code{fmap}. I'll first write it in
 pseudo-Haskell, with explicit type annotations:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{snipv}
 fmap\textsubscript{G} f . alpha\textsubscript{a} = alpha\textsubscript{b} . fmap\textsubscript{F} f
-\end{Verbatim}
+\end{snipv}
 Because of type inference, these annotations are not necessary, and the
 following equation holds:
 
-\begin{Verbatim}
+\begin{snip}{text}
 fmap f . alpha = alpha . fmap f
-\end{Verbatim}
+\end{snip}
 This is still not real Haskell --- function equality is not expressible
 in code --- but it's an identity that can be used by the programmer in
 equational reasoning; or by the compiler, to implement optimizations.
@@ -217,8 +216,8 @@ limitations translate into equational theorems about such functions. In
 the case of functions that transform functors, free theorems are the
 naturality conditions.\footnote{
 You may read more about free theorems in my
-blog \href{https://bartoszmilewski.com/2014/09/22/parametricity-money-for-nothing-and-theorems-for-free/}{Parametricity:
-Money for Nothing and Theorems for Free}.}
+blog \href{https://bartoszmilewski.com/2014/09/22/parametricity-money-for-nothing-and-theorems-for-free/}{``Parametricity:
+Money for Nothing and Theorems for Free}.''}
 
 One way of thinking about functors in Haskell that I mentioned earlier
 is to consider them generalized containers. We can continue this analogy
@@ -358,7 +357,7 @@ But since the two functors are not covariant, this is not a natural
 transformation in $\Hask$. However, because they are both
 contravariant, they satisfy the ``opposite'' naturality condition:
 
-\src{snippet24}
+\src{snippet24}[b]
 Notice that the function \code{f} must go in the opposite direction
 than what you'd use with \code{fmap}, because of the signature of
 \code{contramap}:
@@ -407,7 +406,7 @@ $\beta \cdot \alpha$ --- the composition of two natural transformations $\beta$ 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/5_vertical.jpg}
+\includegraphics[width=0.4\textwidth]{images/5_vertical.jpg}
 \end{figure}
 
 \noindent
@@ -417,7 +416,7 @@ composition is indeed a natural transformation from F to H:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/6_verticalnaturality.jpg}
+\includegraphics[width=0.35\textwidth]{images/6_verticalnaturality.jpg}
 \end{figure}
 
 \noindent
@@ -440,9 +439,10 @@ horizontal composition shortly.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/6a_vertical.jpg}
+\includegraphics[width=0.3\textwidth]{images/6a_vertical.jpg}
 \end{figure}
 
+\noindent
 The functor category between categories $\cat{C}$ and $\cat{D}$ is written as
 $\cat{Fun(C, D)}$, or $\cat{{[}C, D{]}}$, or sometimes as
 $\cat{D^C}$. This last notation suggests that a functor category itself
@@ -459,9 +459,10 @@ $\cat{Cat(C, D)}$ is a set of functors between two categories $\cat{C}$ and $\ca
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/7_cathomset.jpg}
+\includegraphics[width=0.3\textwidth]{images/7_cathomset.jpg}
 \end{figure}
 
+\noindent
 A functor category $\cat{{[}C, D{]}}$ is also a set of functors between two
 categories (plus natural transformations as morphisms). Its objects are
 the same as the members of $\cat{Cat(C, D)}$. Moreover, a functor category,
@@ -516,7 +517,7 @@ In the case of $\Cat$ seen as a $\cat{2}$-category we have:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/8_cat-2-cat.jpg}
+\includegraphics[width=0.3\textwidth]{images/8_cat-2-cat.jpg}
 \end{figure}
 
 \noindent
@@ -547,7 +548,7 @@ respectively, on functors $F$ and $G$:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/10_horizontal.jpg}
+\includegraphics[width=0.4\textwidth]{images/10_horizontal.jpg}
 \end{figure}
 
 \noindent
@@ -563,7 +564,7 @@ from $G \circ F$ to $G' \circ F'$? Let me sketch the construction.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=55mm]{images/9_horizontal.jpg}
+\includegraphics[width=0.5\textwidth]{images/9_horizontal.jpg}
 \end{figure}
 
 \noindent
@@ -620,7 +621,7 @@ We can think of it as connecting these two categories.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/sideways.jpg}
+\includegraphics[width=0.5\textwidth]{images/sideways.jpg}
 \end{figure}
 
 \noindent
@@ -711,14 +712,14 @@ natural transformation is a special type of polymorphic function.
   transformations between different \code{Op} functors. Here's one
   choice:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 op :: Op Bool Int
 op = Op (\x -> x > 0)
-\end{Verbatim}
+\end{snip}
 and
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 f :: String -> Int
 f x = read x
-\end{Verbatim}
+\end{snip}
 \end{enumerate}

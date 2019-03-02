@@ -6,8 +6,7 @@ trait ~>[F[_], G[_]] {
   def apply[X](fa: F[X]): G[X]
 }
 
-def fromY[A, B]: (A => ?) ~> (B => ?) =
-  new ~>[A => ?, B => ?] {
-    def apply[X](f: A => X): B => X =
-      b => f(btoa(b))
-  }
+def fromY[A, B]: (A => ?) ~> (B => ?) = new ~>[A => ?, B => ?] {
+  def apply[X](f: A => X): B => X =
+    b => f(btoa(b))
+}

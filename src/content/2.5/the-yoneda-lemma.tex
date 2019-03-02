@@ -1,4 +1,4 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{M}{ost constructions in} category theory are generalizations of results
 from other more specific areas of mathematics. Things like products,
@@ -56,7 +56,7 @@ regular functions between sets:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/yoneda1.png}
+\includegraphics[width=0.4\textwidth]{images/yoneda1.png}
 \end{figure}
 
 \noindent
@@ -80,7 +80,7 @@ case of $x = a$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/yoneda2.png}
+\includegraphics[width=0.4\textwidth]{images/yoneda2.png}
 \end{figure}
 
 \noindent
@@ -134,7 +134,7 @@ any choice of $q$ leads to a unique natural transformation.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/yoneda3.png}
+\includegraphics[width=0.3\textwidth]{images/yoneda3.png}
 \end{figure}
 
 \noindent
@@ -150,7 +150,7 @@ $\cat{C}(a, g)$; and under $F$ it's mapped to $F g$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/yoneda4.png}
+\includegraphics[width=0.4\textwidth]{images/yoneda4.png}
 \end{figure}
 
 \noindent
@@ -187,7 +187,7 @@ thus determined.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/yoneda5.png}
+\includegraphics[width=0.4\textwidth]{images/yoneda5.png}
 \end{figure}
 
 \noindent
@@ -234,9 +234,9 @@ to emphasize parametric polymorphism of natural transformations.
 The Yoneda lemma tells us that these natural transformations are in
 one-to-one correspondence with the elements of \code{F a}:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{snipv}
 forall x . (a -> x) -> F x \ensuremath{\cong} F a
-\end{Verbatim}
+\end{snipv}
 The right hand side of this identity is what we would normally consider
 a data structure. Remember the interpretation of functors as generalized
 containers? \code{F a} is a container of \code{a}. But the left
@@ -271,9 +271,9 @@ that is often used in compiler construction: the continuation passing
 style or \acronym{CPS}. It's the simplest application of the Yoneda lemma to the
 identity functor. Replacing \code{F} with identity produces:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{snipv}
 forall r . (a -> r) -> r \ensuremath{\cong} a
-\end{Verbatim}
+\end{snipv}
 The interpretation of this formula is that any type \code{a} can be
 replaced by a function that takes a ``handler'' for \code{a}. A
 handler is a function accepting \code{a} and performing the rest of
@@ -306,9 +306,9 @@ elements of the set $F a$:
 \[\cat{Nat}(\cat{C}(-, a), F) \cong F a\]
 Here's the Haskell version of the co-Yoneda lemma:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{snipv}
 forall x . (x -> a) -> F x \ensuremath{\cong} F a
-\end{Verbatim}
+\end{snipv}
 Notice that in some literature it's the contravariant version that's
 called the Yoneda lemma.
 
@@ -320,14 +320,13 @@ called the Yoneda lemma.
   Show that the two functions \code{phi} and \code{psi} that form
   the Yoneda isomorphism in Haskell are inverses of each other.
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 phi :: (forall x . (a -> x) -> F x) -> F a
 phi alpha = alpha id
-\end{Verbatim}
-\begin{Verbatim}
+
 psi :: F a -> (forall x . (a -> x) -> F x)
 psi fa h = fmap h fa
-\end{Verbatim}
+\end{snip}
 \item
   A discrete category is one that has objects but no morphisms other
   than identity morphisms. How does the Yoneda lemma work for functors

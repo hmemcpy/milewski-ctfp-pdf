@@ -1,11 +1,11 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
-\lettrine[lhang=0.17]{I}{t's about time} we had a little talk about sets. Mathematicians have a
-love/hate relationship with set theory. It's the assembly language of
-mathematics --- at least it used to be. Category theory tries to step
-away from set theory, to some extent. For instance, it's a known fact
-that the set of all sets doesn't exist, but the category of all sets,
-$\Set$, does. So that's good. On the other hand, we assume that
+\lettrine[lhang=0.17]{I}{t's about time} we had a little talk about sets.
+Mathematicians have a love/hate relationship with set theory. It's the
+assembly language of mathematics --- at least it used to be. Category
+theory tries to step away from set theory, to some extent. For instance,
+it's a known fact that the set of all sets doesn't exist, but the category
+of all sets, $\Set$, does. So that's good. On the other hand, we assume that
 morphisms between any two objects in a category form a set. We even
 called it a hom-set. To be fair, there is a branch of category theory
 where morphisms don't form sets. Instead they are objects in another
@@ -59,7 +59,7 @@ mapping from $x$ to $\Set$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/hom-set.jpg}
+\includegraphics[width=0.45\textwidth]{images/hom-set.jpg}
 \end{figure}
 
 \noindent
@@ -86,7 +86,7 @@ member of $\cat{C}(a, y)$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/hom-functor.jpg}
+\includegraphics[width=0.45\textwidth]{images/hom-functor.jpg}
 \end{figure}
 
 \noindent
@@ -198,9 +198,9 @@ The other transformation, \code{beta}, goes the opposite way:
 \src{snippet09}
 It must respect naturality conditions, and it must be the inverse of \code{alpha}:
 
-\begin{Verbatim}
+\begin{snip}{text}
 alpha . beta = id = beta . alpha
-\end{Verbatim}
+\end{snip}
 We will see later that a natural transformation from $\cat{C}(a, -)$
 to any $\Set$-valued functor always exists (Yoneda's lemma) but it
 is not necessarily invertible.
@@ -314,9 +314,9 @@ explore alternative implementations that have practical value.
 \item
   The functor:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 Pair a = Pair a a
-\end{Verbatim}
+\end{snip}
   is representable. Can you guess the type that represents it? Implement
   \code{tabulate} and \code{index}.
 \end{enumerate}

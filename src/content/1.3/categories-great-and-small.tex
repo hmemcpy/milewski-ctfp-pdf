@@ -1,4 +1,4 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{Y}{ou can get} real appreciation for categories by studying a variety of
 examples. Categories come in all shapes and sizes and often pop up in
@@ -139,14 +139,14 @@ A word about Haskell syntax: Any infix operator can be turned into a
 two-argument function by surrounding it with parentheses. Given two
 strings, you can concatenate them by inserting \code{++} between them:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 "Hello " ++ "world!"
-\end{Verbatim}
+\end{snip}
 or by passing them as two arguments to the parenthesized \code{(++)}:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 (++) "Hello " "world!"
-\end{Verbatim}
+\end{snip}
 Notice that arguments to a function are not separated by commas or
 surrounded by parentheses. (This is probably the hardest thing to get
 used to when learning Haskell.)
@@ -154,15 +154,15 @@ used to when learning Haskell.)
 It's worth emphasizing that Haskell lets you express equality of
 functions, as in:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 mappend = (++)
-\end{Verbatim}
+\end{snip}
 Conceptually, this is different than expressing the equality of values
 produced by functions, as in:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 mappend s1 s2 = (++) s1 s2
-\end{Verbatim}
+\end{snip}
 The former translates into equality of morphisms in the category
 $\Hask$ (or $\Set$, if we ignore bottoms, which is the name
 for never-ending calculations). Such equations are not only more
@@ -179,7 +179,7 @@ so this might be a little confusing to the beginner.)
 The closest one can get to declaring a monoid in C++ would be to use the
 (proposed) syntax for concepts.
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class T>
   T mempty = delete;
   
@@ -191,7 +191,7 @@ template<class M>
     { mempty<M> } -> M; 
     { mappend(m, m); } -> M;
   };
-\end{Verbatim}
+\end{snip}
 The first definition uses a value template (also proposed). A
 polymorphic value is a family of values --- a different value for every
 type.
@@ -207,14 +207,14 @@ type) that tests whether there exist appropriate definitions of
 An instantiation of the Monoid concept can be accomplished by providing
 appropriate specializations and overloads:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<>
 std::string mempty<std::string> = {""};
 
 std::string mappend(std::string s1, std::string s2) { 
     return s1 + s2;
 }
-\end{Verbatim}
+\end{snip}
 
 \section{Monoid as Category}
 
@@ -251,11 +251,6 @@ adders follows from the second interpretation of the type signature of
 tells us that \code{mappend} maps an element of a monoid set to a
 function acting on that set.
 
-\begin{wrapfigure}[11]{R}{0pt}
-\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=40mm]{images/monoid.jpg}}
-\end{wrapfigure}
-
 Now I want you to forget that you are dealing with the set of natural
 numbers and just think of it as a single object, a blob with a bunch of
 morphisms --- the adders. A monoid is a single object category. In fact
@@ -263,6 +258,12 @@ the name monoid comes from Greek \emph{mono}, which means single. Every
 monoid can be described as a single object category with a set of
 morphisms that follow appropriate rules of composition.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{images/monoid.jpg}
+\end{figure}
+
+\noindent
 String concatenation is an interesting case, because we have a choice of
 defining right appenders and left appenders (or \emph{prependers}, if
 you will). The composition tables of the two models are a mirror reverse
@@ -286,12 +287,13 @@ the rules of category. The identity morphism is the neutral element of
 this product. So we can always recover a set monoid from a category
 monoid. For all intents and purposes they are one and the same.
 
-\begin{figure}
+\begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/monoidhomset.jpg}
+\includegraphics[width=0.4\textwidth]{images/monoidhomset.jpg}
 \caption{Monoid hom-set seen as morphisms and as points in a set.}
 \end{figure}
 
+\noindent
 There is just one little nit for mathematicians to pick: morphisms don't
 have to form a set. In the world of categories there are things larger
 than sets. A category in which morphisms between any two objects form a

@@ -1,4 +1,4 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{N}{ow that we have covered} monads, we can reap the benefits of duality and
 get comonads for free simply by reversing the arrows and working in the
@@ -102,7 +102,7 @@ function to an argument of the type \code{w b}:
 \src{snippet11}
 But how can we produce a value of type \code{w b} that could be fed
 to \code{g}? We have at our disposal the argument of type
-\code{w a} and the function\\ \code{f :: w a -> b}.
+\code{w a} and the function \code{f :: w a -> b}.
 The solution is to define the dual of bind, which is called extend:
 
 \src{snippet12}

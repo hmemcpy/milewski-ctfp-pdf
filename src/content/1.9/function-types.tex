@@ -1,13 +1,7 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{S}{o far} I've been glossing over the meaning of function types. A function
 type is different from other types.
-
-\begin{wrapfigure}[9]{R}{0pt}
-\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=32mm]{images/set-hom-set.jpg}}%
-\caption{Hom-set in Set is just a set}
-\end{wrapfigure}
 
 Take \code{Integer}, for instance: It's just a set of integers.
 \code{Bool} is a two element set. But a function type
@@ -17,15 +11,23 @@ two objects in any category is called a hom-set. It just so happens that
 in the category $\Set$ every hom-set is itself an object in the
 same category ---because it is, after all, a \emph{set}.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{images/set-hom-set.jpg}
+\caption{Hom-set in Set is just a set}
+\end{figure}
+
+\noindent
 The same is not true of other categories where hom-sets are external to
 a category. They are even called \emph{external} hom-sets.
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=50mm]{images/hom-set.jpg}
-  \caption{Hom-set in category C is an external set}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{images/hom-set.jpg}
+\caption{Hom-set in category C is an external set}
 \end{figure}
 
+\noindent
 It's the self-referential nature of the category $\Set$ that makes
 function types special. But there is a way, at least in some categories,
 to construct objects that represent hom-sets. Such objects are called
@@ -65,14 +67,14 @@ with an argument $x$ (an element of $a$) and map it to
 $f x$ (the application of $f$ to $x$, which is an
 element of $b$).
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=50mm]{images/functionset.jpg}
+\begin{figure}[H]
+\centering\includegraphics[width=0.35\textwidth]{images/functionset.jpg}
 \caption{In Set we can pick a function $f$ from a set of functions $z$ and we can
 pick an argument $x$ from the set (type) $a$. We get an element $f x$ in the
 set (type) $b$.}
 \end{figure}
 
+\noindent
 But instead of dealing with individual pairs $(f, x)$, we can as
 well talk about the whole \emph{product} of the function type $z$
 and the argument type $a$. The product $z\times{}a$ is an object,
@@ -83,13 +85,14 @@ function that maps every pair $(f, x)$ to $f x$.
 So that's the pattern: a product of two objects $z$ and
 $a$ connected to another object $b$ by a morphism $g$.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/functionpattern.jpg}
+\includegraphics[width=0.4\textwidth]{images/functionpattern.jpg}
 \caption{A pattern of objects and morphisms that is the starting point of the
 universal construction}
 \end{figure}
 
+\noindent
 Is this pattern specific enough to single out the function type using a
 universal construction? Not in every category. But in the categories of
 interest to us it is. And another question: Would it be possible to
@@ -117,14 +120,15 @@ $z$ such that the application of $g'$ factors
 through the application of $g$. (Hint: Read this sentence while
 looking at the picture.)
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/functionranking.jpg}
+\includegraphics[width=0.4\textwidth]{images/functionranking.jpg}
 \caption{Establishing a ranking between candidates for the function object}
 \end{figure}
 
+\noindent
 Now here's the tricky part, and the main reason I postponed this
-particular universal construction till now. Given the morphism\\
+particular universal construction till now. Given the morphism
 $h \Colon z'\to z$, we want to close the diagram
 that has both $z'$ and $z$ crossed with $a$.
 What we really need, given the mapping $h$ from $z'$
@@ -156,9 +160,9 @@ way that its application morphism $g$ factorizes through
 $eval$. This object is better than any other object according to
 our ranking.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/universalfunctionobject.jpg}
+\includegraphics[width=0.4\textwidth]{images/universalfunctionobject.jpg}
 \caption{The definition of the universal function object. This is the same
 diagram as above, but now the object $a \Rightarrow b$ is \emph{universal}.}
 \end{figure}
@@ -270,26 +274,26 @@ initializer lists).
 You can partially apply a C++ function using the template
 \code{std::bind}. For instance, given a function of two strings:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 std::string catstr(std::string s1, std::string s2) {
     return s1 + s2;
 }
-\end{Verbatim}
+\end{snip}
 you can define a function of one string:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 using namespace std::placeholders;
 
 auto greet = std::bind(catstr, "Hello ", _1);
 std::cout << greet("Haskell Curry");
-\end{Verbatim}
+\end{snip}
 Scala, which is more functional than C++ or Java, falls somewhere in
 between. If you anticipate that the function you're defining will be
 partially applied, you define it with multiple argument lists:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 def catstr(s1: String)(s2: String) = s1 + s2
-\end{Verbatim}
+\end{snip}
 Of course that requires some amount of foresight or prescience on the
 part of a library writer.
 
@@ -326,7 +330,7 @@ C++ Standard Library that are usually implemented using lookups.
 Functions like \code{isupper} or \code{isspace} are implemented
 using tables, which are equivalent to tuples of 256 Boolean values. A
 tuple is a product type, so we are dealing with products of 256
-Booleans: {\small\texttt{bool × bool × bool × ... × bool}}. We know from
+Booleans: \code{bool × bool × bool × ... × bool}. We know from
 arithmetics that an iterated product defines a power. If you
 ``multiply'' \code{bool} by itself 256 (or \code{char}) times, you
 get \code{bool} to the power of \code{char}, or \code{bool}\textsuperscript{\code{char}}.
@@ -563,14 +567,14 @@ Considering that \code{Void} translates into false, we get:
 Anything follows from falsehood (\emph{ex falso quodlibet}). Here's one
 possible proof (implementation) of this statement (function) in Haskell:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 absurd (Void a) = absurd a
-\end{Verbatim}
+\end{snip}
 where \code{Void} is defined as:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 newtype Void = Void Void
-\end{Verbatim}
+\end{snip}
 As always, the type \code{Void} is tricky. This definition makes it
 impossible to construct a value because in order to construct one, you
 would need to provide one. Therefore, the function \code{absurd} can

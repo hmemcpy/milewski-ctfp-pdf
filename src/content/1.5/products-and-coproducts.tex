@@ -1,4 +1,4 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{T}{he Ancient Greek} playwright Euripides once said: ``Every man is like
 the company he is wont to keep.'' We are defined by our relationships.
@@ -51,7 +51,7 @@ morphism going to any object in the category.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/initial.jpg}
+\includegraphics[width=0.4\textwidth]{images/initial.jpg}
 \end{figure}
 
 \noindent
@@ -93,7 +93,7 @@ morphism coming to it from any object in the category.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/final.jpg}
+\includegraphics[width=0.4\textwidth]{images/final.jpg}
 \end{figure}
 
 \noindent
@@ -193,7 +193,7 @@ these two morphisms?
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/uniqueness.jpg}
+\includegraphics[width=0.4\textwidth]{images/uniqueness.jpg}
 \caption{All morphisms in this diagram are unique.}
 \end{figure}
 
@@ -243,12 +243,12 @@ wildcards:
 \src{snippet08}
 In C++, we would use template functions, for instance:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class A, class B> A
 fst(pair<A, B> const & p) {
     return p.first;
 }
-\end{Verbatim}
+\end{snip}
 Equipped with this seemingly very limited knowledge, let's try to define
 a pattern of objects and morphisms in the category of sets that will
 lead us to the construction of a product of two sets, $a$ and
@@ -260,7 +260,7 @@ respectively:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/productpattern.jpg}
+\includegraphics[width=0.3\textwidth]{images/productpattern.jpg}
 \end{figure}
 
 \noindent
@@ -269,7 +269,7 @@ the product. There may be lots of them.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/productcandidates.jpg}
+\includegraphics[width=0.4\textwidth]{images/productcandidates.jpg}
 \end{figure}
 
 \noindent
@@ -308,7 +308,7 @@ $p'$ and $q'$ can be reconstructed from $p$ and $q$ using $m$:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/productranking.jpg}
+\includegraphics[width=0.4\textwidth]{images/productranking.jpg}
 \end{figure}
 
 \noindent
@@ -324,7 +324,7 @@ presented before.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/not-a-product.jpg}
+\includegraphics[width=0.4\textwidth]{images/not-a-product.jpg}
 \end{figure}
 
 \noindent
@@ -400,7 +400,7 @@ and $b$ to $c$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/coproductpattern.jpg}
+\includegraphics[width=0.4\textwidth]{images/coproductpattern.jpg}
 \end{figure}
 
 \noindent
@@ -413,7 +413,7 @@ factorizes the injections:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/coproductranking.jpg}
+\includegraphics[width=0.4\textwidth]{images/coproductranking.jpg}
 \end{figure}
 
 \noindent
@@ -441,27 +441,27 @@ types: it's a tagged union of two types. C++ supports unions, but they
 are not tagged. It means that in your program you have to somehow keep
 track which member of the union is valid. To create a tagged union, you
 have to define a tag --- an enumeration --- and combine it with the
-union. For instance, a tagged union of an \code{int} and a\\
+union. For instance, a tagged union of an \code{int} and a
 \code{char const *} could be implemented as:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 struct Contact { 
     enum { isPhone, isEmail } tag;
     union { int phoneNum; char const * emailAddr; };
 };
-\end{Verbatim}
+\end{snip}
 The two injections can either be implemented as constructors or as
 functions. For instance, here's the first injection as a function
 \code{PhoneNum}:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 Contact PhoneNum(int n) { 
     Contact c;
     c.tag = isPhone;
     c.phoneNum = n;
     return c;
 }
-\end{Verbatim}
+\end{snip}
 It injects an integer into \code{Contact}.
 
 A tagged union is also called a \newterm{variant}, and there is a very
@@ -603,16 +603,16 @@ isomorphism is the same as a bijection.
   Show that \code{Either} is a ``better'' coproduct than \code{int}
   equipped with two injections:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 int i(int n) { return n; }
 int j(bool b) { return b ? 0: 1; }
-\end{Verbatim}
+\end{snip}
 
   Hint: Define a function
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 int m(Either const & e);
-\end{Verbatim}
+\end{snip}
 
   that factorizes \code{i} and \code{j}.
 \item
@@ -622,14 +622,14 @@ int m(Either const & e);
 \item
   Still continuing: What about these injections?
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 int i(int n) { 
     if (n < 0) return n;
     return n + 2;
 }
 
 int j(bool b) { return b ? 0: 1; }
-\end{Verbatim}
+\end{snip}
 \item
   Come up with an inferior candidate for a coproduct of \code{int} and
   \code{bool} that cannot be better than \code{Either} because it

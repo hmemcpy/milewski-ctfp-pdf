@@ -1,4 +1,4 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{F}{ree constructions are} a powerful application of adjunctions. A
 \newterm{free functor} is defined as the left adjoint to a \newterm{forgetful
@@ -22,8 +22,8 @@ hand, it's a bunch of sets with multiplication and unit elements. On the
 other hand, it's a category with featureless objects whose only
 structure is encoded in morphisms that go between them. Every
 set-function that preserves multiplication and unit gives rise to a
-morphism in $\cat{Mon}$.
-
+morphism in $\cat{Mon}$.\\
+\newline
 Things to keep in mind:
 
 \begin{itemize}
@@ -35,15 +35,6 @@ Things to keep in mind:
   are functions between their underlying sets.
 \end{itemize}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=80mm]{images/forgetful.jpg}
-\caption{Monoids $m_1$ and $m_2$ have the same
-underlying set. There are more functions between the underlying sets of
-$m_2$ and $m_3$ than there are morphisms
-between them.}
-\end{figure}
-
 \noindent
 The functor $F$ that's the left adjoint to the forgetful functor
 $U$ is the free functor that builds free monoids from their
@@ -51,6 +42,16 @@ generator sets. The adjunction follows from the free monoid
 universal construction we've discussed before.\footnote{See ch.13 on
 \hyperref[free-monoids]{free monoids}.}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{images/forgetful.jpg}
+\caption{Monoids $m_1$ and $m_2$ have the same
+  underlying set. There are more functions between the underlying sets of
+  $m_2$ and $m_3$ than there are morphisms
+  between them.}
+\end{figure}
+  
+\noindent
 In terms of hom-sets, we can write this adjunction as:
 \[\cat{Mon}(F x, m) \cong \Set(x, U m)\]
 This (natural in $x$ and $m$) isomorphism tells us that:
@@ -72,7 +73,7 @@ This (natural in $x$ and $m$) isomorphism tells us that:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{images/freemonadjunction.jpg}
+\includegraphics[width=0.8\textwidth]{images/freemonadjunction.jpg}
 \end{figure}
 
 \noindent
@@ -174,7 +175,7 @@ whereas the ones in $\cat{D}(U c', U c)$ don't.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/forgettingmorphisms.jpg}
+\includegraphics[width=0.45\textwidth]{images/forgettingmorphisms.jpg}
 \end{figure}
 
 \noindent
@@ -195,7 +196,7 @@ objects.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/freeimage.jpg}
+\includegraphics[width=0.45\textwidth]{images/freeimage.jpg}
 \end{figure}
 
 \noindent

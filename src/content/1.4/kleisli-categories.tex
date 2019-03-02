@@ -1,4 +1,4 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{Y}{ou've seen how to model} types and pure functions as a category. I also
 mentioned that there is a way to model side effects, or non-pure
@@ -7,14 +7,14 @@ functions that log or trace their execution. Something that, in an
 imperative language, would likely be implemented by mutating some global
 state, as in:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 string logger;
 
 bool negate(bool b) {
     logger += "Not so! ";
     return !b;
 }
-\end{Verbatim}
+\end{snip}
 You know that this is not a pure function, because its memoized version
 would fail to produce a log. This function has \newterm{side effects}.
 
@@ -27,25 +27,25 @@ have to pass the log explicitly, in and out. Let's do that by adding a
 string argument, and pairing regular output with a string that contains
 the updated log:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 pair<bool, string> negate(bool b, string logger) {
     return make_pair(!b, logger + "Not so! ");
 }
-\end{Verbatim}
+\end{snip}
 This function is pure, it has no side effects, it returns the same pair
 every time it's called with the same arguments, and it can be memoized
 if necessary. However, considering the cumulative nature of the log,
 you'd have to memoize all possible histories that can lead to a given
 call. There would be a separate memo entry for:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 negate(true, "It was the best of times. ");
-\end{Verbatim}
+\end{snip}
 and
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 negate(true, "It was the worst of times. ");
-\end{Verbatim}
+\end{snip}
 and so on.
 
 It's also not a very good interface for a library function. The callers
@@ -62,11 +62,11 @@ continuous log is a separate concern. We still want the function to
 produce a string, but we'd like to unburden it from producing a log. So
 here's the compromise solution:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 pair<bool, string> negate(bool b) {
     return make_pair(!b, "Not so! ");
 }
-\end{Verbatim}
+\end{snip}
 The idea is that the log will be aggregated \emph{between} function
 calls.
 
@@ -74,25 +74,25 @@ To see how this can be done, let's switch to a slightly more realistic
 example. We have one function from string to string that turns lower
 case characters to upper case:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 string toUpper(string s) {
     string result;
     int (*toupperp)(int) = &toupper; // toupper is overloaded
     transform(begin(s), end(s), back_inserter(result), toupperp);
     return result;
 }
-\end{Verbatim}
+\end{snip}
 and another that splits a string into a vector of strings, breaking it
 on whitespace boundaries:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 vector<string> toWords(string s) {
     return words(s);
 }
-\end{Verbatim}
+\end{snip}
 The actual work is done in the auxiliary function \code{words}:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 vector<string> words(string s) {
     vector<string> result{""};
     for (auto i = begin(s); i != end(s); ++i)
@@ -104,11 +104,11 @@ vector<string> words(string s) {
     }
     return result;
 }
-\end{Verbatim}
+\end{snip}
 
-\begin{wrapfigure}[11]{R}{0pt}
-\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=1.83333in]{images/piggyback.jpg}}%
+\begin{wrapfigure}{r}{0pt}
+\raisebox{14pt}[\dimexpr\height-0.75\baselineskip\relax]{
+\includegraphics[width=0.4\textwidth]{images/piggyback.jpg}}%
 \end{wrapfigure}
 
 \noindent
@@ -121,13 +121,13 @@ in a generic way by defining a template \code{Writer} that
 encapsulates a pair whose first component is a value of arbitrary type
 \code{A} and the second component is a string:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class A>
 using Writer = pair<A, string>;
-\end{Verbatim}
+\end{snip}
 Here are the embellished functions:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 Writer<string> toUpper(string s) {
     string result;
     int (*toupperp)(int) = &toupper;
@@ -138,18 +138,18 @@ Writer<string> toUpper(string s) {
 Writer<vector<string>> toWords(string s) { 
     return make_pair(words(s), "toWords ");
 }
-\end{Verbatim}
+\end{snip}
 We want to compose these two functions into another embellished function
 that uppercases a string and splits it into words, all the while
 producing a log of those actions. Here's how we may do it:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 Writer<vector<string>> process(string s) {
     auto p1 = toUpper(s);
     auto p2 = toWords(p1.first);
     return make_pair(p2.first, p1.second + p2.second);
 }
-\end{Verbatim}
+\end{snip}
 We have accomplished our goal: The aggregation of the log is no longer
 the concern of the individual functions. They produce their own
 messages, which are then, externally, concatenated into a larger log.
@@ -177,32 +177,32 @@ important point is that this morphism is still considered an arrow
 between the objects \code{int} and \code{bool}, even though the
 embellished function returns a pair:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 pair<bool, string> isEven(int n) {
     return make_pair(n % 2 == 0, "isEven ");
 }
-\end{Verbatim}
+\end{snip}
 By the laws of a category, we should be able to compose this morphism
 with another morphism that goes from the object \code{bool} to
 whatever. In particular, we should be able to compose it with our
 earlier \code{negate}:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 pair<bool, string> negate(bool b) {
     return make_pair(!b, "Not so! ");
 }
-\end{Verbatim}
+\end{snip}
 Obviously, we cannot compose these two morphisms the same way we compose
 regular functions, because of the input/output mismatch. Their
 composition should look more like this:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 pair<bool, string> isOdd(int n) {
     pair<bool, string> p1 = isEven(n);
     pair<bool, string> p2 = negate(p1.first);
     return make_pair(p2.first, p1.second + p2.second);
 }
-\end{Verbatim}
+\end{snip}
 So here's the recipe for the composition of two morphisms in this new
 category we are constructing:
 
@@ -227,7 +227,7 @@ corresponding to three objects in our category. It should take two
 embellished functions that are composable according to our rules, and
 return a third embellished function:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class A, class B, class C>
 function<Writer<C>(A)> compose(function<Writer<B>(A)> m1,
                                function<Writer<C>(B)> m2)
@@ -238,21 +238,21 @@ function<Writer<C>(A)> compose(function<Writer<B>(A)> m1,
         return make_pair(p2.first, p1.second + p2.second); 
     };
 }
-\end{Verbatim}
+\end{snip}
 Now we can go back to our earlier example and implement the composition
 of \code{toUpper} and \code{toWords} using this new template:
 
-\begin{minted}[breaklines,fontsize=\small]{text}
+\begin{snip}{cpp}
 Writer<vector<string>> process(string s) { 
     return compose<string, string, vector<string>>(toUpper, toWords)(s);
 }
-\end{minted}
+\end{snip}
 There is still a lot of noise with the passing of types to the
 \code{compose} template. This can be avoided as long as you have a
 C++14-compliant compiler that supports generalized lambda functions with
 return type deduction (credit for this code goes to Eric Niebler):
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 auto const compose = [](auto m1, auto m2) { 
     return [m1, m2](auto x) { 
         auto p1 = m1(x);
@@ -260,33 +260,33 @@ auto const compose = [](auto m1, auto m2) {
         return make_pair(p2.first, p1.second + p2.second);
     };
 };
-\end{Verbatim}
+\end{snip}
 In this new definition, the implementation of \code{process}
 simplifies to:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 Writer<vector<string>> process(string s) {
     return compose(toUpper, toWords)(s);
 }
-\end{Verbatim}
+\end{snip}
 But we are not finished yet. We have defined composition in our new
 category, but what are the identity morphisms? These are not our regular
 identity functions! They have to be morphisms from type A back to type
 A, which means they are embellished functions of the form:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 Writer<A> identity(A);
-\end{Verbatim}
+\end{snip}
 They have to behave like units with respect to composition. If you look
 at our definition of composition, you'll see that an identity morphism
 should pass its argument without change, and only contribute an empty
 string to the log:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class A> Writer<A> identity(A x) {
     return make_pair(x, "");
 }
-\end{Verbatim}
+\end{snip}
 You can easily convince yourself that the category we have just defined
 is indeed a legitimate category. In particular, our composition is
 trivially associative. If you follow what's happening with the first
@@ -363,8 +363,6 @@ For completeness, let's have the Haskell versions of the embellished
 functions \code{upCase} and \code{toWords}:
 
 \src{snippet06}
-
-\src{snippet07}
 The function \code{map} corresponds to the C++ \code{transform}. It
 applies the character function \code{toUpper} to the string
 \code{s}. The auxiliary function \code{words} is defined in the
@@ -373,7 +371,7 @@ standard Prelude library.
 Finally, the composition of the two functions is accomplished with the
 help of the fish operator:
 
-\src{snippet08}
+\src{snippet07}
 
 \section{Kleisli Categories}
 
@@ -412,7 +410,7 @@ mathematical sense, so it doesn't fit the standard categorical mold. It
 can, however, be represented by a function that returns an embellished
 type \code{optional}:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 template<class A> class optional {
     bool _isValid;
     A _value;
@@ -422,16 +420,16 @@ public:
     bool isValid() const { return _isValid; }
     A value() const { return _value; }
 };
-\end{Verbatim}
-As an example, here's the implementation of the embellished function
+\end{snip}
+For example, here's the implementation of the embellished function
 \code{safe\_root}:
 
-\begin{Verbatim}
+\begin{snip}{cpp}
 optional<double> safe_root(double x) {
     if (x >= 0) return optional<double>{sqrt(x)}; 
     else return optional<double>{};
 }
-\end{Verbatim}
+\end{snip}
 Here's the challenge:
 
 \begin{enumerate}
@@ -444,7 +442,7 @@ Here's the challenge:
   returns a valid reciprocal of its argument, if it's different from
   zero.
 \item
-  Compose \code{safe\_root} and \code{safe\_reciprocal} to implement\\
+  Compose the functions \code{safe\_root} and \code{safe\_reciprocal} to implement
   \code{safe\_root\_reciprocal} that calculates \code{sqrt(1/x)}
   whenever possible.
 \end{enumerate}

@@ -1,5 +1,4 @@
-def sumS[A](n: Int)(stm: Stream[A])
-    (implicit numeric: Numeric[A]): A =
+def sumS[A](n: Int)(stm: Stream[A])(implicit numeric: Numeric[A]): A =
   stm match {
     case Stream(a, as) =>
       import numeric._

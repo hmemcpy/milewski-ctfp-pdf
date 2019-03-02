@@ -1,4 +1,4 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{I}{t seems like in category theory} everything is related to everything and
 everything can be viewed from many angles. Take for instance the
@@ -9,7 +9,7 @@ try.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.56250in]{images/productpattern.jpg}
+\includegraphics[width=0.3\textwidth]{images/productpattern.jpg}
 \end{figure}
 
 \noindent
@@ -28,19 +28,19 @@ functor collapses objects, which is fine too). It also maps morphisms
 --- in this case it simply maps identity morphisms to identity
 morphisms.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=1.56250in]{images/two.jpg}
-\end{figure}
-
-\noindent
 What's great about this approach is that it builds on categorical
 notions, eschewing the imprecise descriptions like "selecting
-objects", taken stra\-ight from the hunter-gatherer lexicon of our
+objects", taken straight from the hunter-gatherer lexicon of our
 ancestors. And, incidentally, it is also easily generalized, because
 nothing can stop us from using categories more complex than $\cat{2}$
 to define our patterns.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{images/two.jpg}
+\end{figure}
+  
+\noindent
 But let's continue. The next step in the definition of a product is the
 selection of the candidate object $c$. Here again, we could
 rephrase the selection in terms of a functor from a singleton category.
@@ -53,7 +53,7 @@ objects into $c$ and all morphisms into $\idarrow[c]$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.56250in]{images/twodelta.jpg}
+\includegraphics[width=0.35\textwidth]{images/twodelta.jpg}
 \end{figure}
 
 \noindent
@@ -76,7 +76,7 @@ identities) in $\cat{2}$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.56250in]{images/productcone.jpg}
+\includegraphics[width=0.35\textwidth]{images/productcone.jpg}
 \end{figure}
 
 \noindent
@@ -100,7 +100,7 @@ under $D$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.56250in]{images/cone.jpg}
+\includegraphics[width=0.35\textwidth]{images/cone.jpg}
 \end{figure}
 
 \noindent
@@ -115,7 +115,7 @@ triangle are the components of the natural transformation.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.56250in]{images/conenaturality.jpg}
+\includegraphics[width=0.35\textwidth]{images/conenaturality.jpg}
 \end{figure}
 
 \noindent
@@ -140,7 +140,7 @@ instance:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.56250in]{images/productranking.jpg}
+\includegraphics[width=0.35\textwidth]{images/productranking.jpg}
 \end{figure}
 
 This condition translates, in the general case, to the condition that
@@ -148,7 +148,7 @@ the triangles whose one side is the factorizing morphism all commute.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/conecommutativity.jpg}
+\includegraphics[width=0.35\textwidth]{images/conecommutativity.jpg}
 \caption{The commuting triangle connecting two cones, with the factorizing
 morphism $h$ (here, the lower cone is the universal one, with
 $\Lim[D]$ as its apex)}
@@ -227,13 +227,12 @@ And that's an element of $\cat{C}(c', \Lim[D])$--- so indeed, we
 have found a mapping of morphisms:
 
 \src{snippet02}
-
 Notice the inversion in the order of $c$ and $c'$
 characteristic of a \emph{contravariant} functor.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/homsetmapping.jpg}
+\includegraphics[width=0.35\textwidth]{images/homsetmapping.jpg}
 \end{figure}
 
 \noindent
@@ -267,7 +266,7 @@ natural transformation.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/natmapping.jpg}
+\includegraphics[width=0.4\textwidth]{images/natmapping.jpg}
 \end{figure}
 
 \noindent
@@ -348,7 +347,7 @@ and two projections:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/equalizercone.jpg}
+\includegraphics[width=0.35\textwidth]{images/equalizercone.jpg}
 \end{figure}
 
 \noindent
@@ -403,7 +402,7 @@ with
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/equilizerlimit.jpg}
+\includegraphics[width=0.35\textwidth]{images/equilizerlimit.jpg}
 \end{figure}
 
 \noindent
@@ -430,7 +429,7 @@ and three morphisms:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/pullbackcone.jpg}
+\includegraphics[width=0.35\textwidth]{images/pullbackcone.jpg}
 \end{figure}
 
 \noindent
@@ -443,7 +442,7 @@ A pullback is a universal cone of this shape.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/pullbacklimit.jpg}
+\includegraphics[width=0.35\textwidth]{images/pullbacklimit.jpg}
 \end{figure}
 
 \noindent
@@ -492,7 +491,7 @@ there is a name conflict between some methods of \code{B} and \code{C}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=35mm]{images/classes.jpg}
+\includegraphics[width=0.25\textwidth]{images/classes.jpg}
 \end{figure}
 
 \noindent
@@ -500,46 +499,46 @@ There's also a more advanced use of a pullback in type inference. There
 is often a need to \emph{unify} types of two expressions. For instance,
 suppose that the compiler wants to infer the type of a function:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 twice f x = f (f x)
-\end{Verbatim}
+\end{snip}
 It will assign preliminary types to all variables and sub-expressions.
 In particular, it will assign:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 f       :: t0
 x       :: t1
 f x     :: t2
 f (f x) :: t3
-\end{Verbatim}
+\end{snip}
 from which it will deduce that:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 twice :: t0 -> t1 -> t3
-\end{Verbatim}
+\end{snip}
 It will also come up with a set of constraints resulting from the rules
 of function application:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 t0 = t1 -> t2 -- because f is applied to x 
 t0 = t2 -> t3 -- because f is applied to (f x)
-\end{Verbatim}
+\end{snip}
 These constraints have to be unified by finding a set of types (or type
 variables) that, when substituted for the unknown types in both
 expressions, produce the same type. One such substitution is:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 t1 = t2 = t3 = Int 
 twice :: (Int -> Int) -> Int -> Int
-\end{Verbatim}
+\end{snip}
 but, obviously, it's not the most general one. The most general
 substitution is obtained using a pullback. I won't go into the details,
 because they are beyond the scope of this book, but you can convince
 yourself that the result should be:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 twice :: (t -> t) -> t -> t
-\end{Verbatim}
+\end{snip}
 with \code{t} a free type variable.
 
 \section{Colimits}
@@ -553,7 +552,7 @@ co-cone.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/colimit.jpg}
+\includegraphics[width=0.35\textwidth]{images/colimit.jpg}
 \caption{Cocone with a factorizing morphism $h$ connecting two apexes.}
 \end{figure}
 
@@ -564,7 +563,7 @@ definition of the product.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/coproductranking.jpg}
+\includegraphics[width=0.35\textwidth]{images/coproductranking.jpg}
 \end{figure}
 
 \noindent
@@ -593,7 +592,7 @@ $F (\Lim[D])$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=3.12500in]{images/continuity.jpg}
+\includegraphics[width=0.6\textwidth]{images/continuity.jpg}
 \end{figure}
 
 \noindent
@@ -622,7 +621,6 @@ parameter, let's say to \code{String}, we get the contravariant
 functor:
 
 \src{snippet17}
-
 Continuity means that when \code{ToString} is applied to a colimit,
 for instance a coproduct \code{Either b c}, it will produce a limit;
 in this case a product of two function types:

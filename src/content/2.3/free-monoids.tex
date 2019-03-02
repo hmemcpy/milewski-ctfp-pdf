@@ -1,9 +1,9 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
-\lettrine[lhang=0.17]{M}{onoids are an important} concept in both category theory and in
-programming. Categories correspond to strongly typed langua\-ges, monoids
-to untyped languages. That's because in a monoid you can compose any two
-arrows, just as in an untyped language you can compose any two functions
+\lettrine[lhang=0.17]{M}{onoids are an important} concept in both category
+theory and in programming. Categories correspond to strongly typed languages, 
+monoids to untyped languages. That's because in a monoid you can compose any
+two arrows, just as in an untyped language you can compose any two functions
 (of course, you may end up with a runtime error when you execute your
 program).
 
@@ -44,7 +44,7 @@ $\{e, a, b, (a, a), (a, b), (b, a), (b, b)\}$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{images/bunnies.jpg}
+\includegraphics[width=0.8\textwidth]{images/bunnies.jpg}
 \end{figure}
 
 \noindent
@@ -187,7 +187,7 @@ which will pick the best representative of this pattern.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/monoid-pattern.jpg}
+\includegraphics[width=0.4\textwidth]{images/monoid-pattern.jpg}
 \end{figure}
 
 \noindent
@@ -214,7 +214,7 @@ monoid, and so on.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/monoid-ranking.jpg}
+\includegraphics[width=0.4\textwidth]{images/monoid-ranking.jpg}
 \end{figure}
 
 \noindent
@@ -248,9 +248,9 @@ We'll come back to free monoids when we talk about adjunctions.
   homomorphism of monoids preserve the unit is redundant. After all, we
   know that for all $a$
 
-\begin{Verbatim}
+\begin{snip}{text}
 h a * h e = h (a * e) = h a
-\end{Verbatim}
+\end{snip}
   So $h e$ acts like a right unit (and, by analogy, as a left
   unit). The problem is that $h a$, for all $a$ might
   only cover a sub-monoid of the target monoid. There may be a ``true''

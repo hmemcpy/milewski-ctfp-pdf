@@ -1,5 +1,4 @@
-def lambdaP[P[_, _]](P: Profunctor[P])
-    : DiaProd[P] => ProdP[P] = {
+def lambdaP[P[_, _]](P: Profunctor[P]): DiaProd[P] => ProdP[P] = {
   case DiaProd(paa) =>
     new ProdP[P] {
       def apply[A, B](f: A => B): P[A, B] =
@@ -7,8 +6,7 @@ def lambdaP[P[_, _]](P: Profunctor[P])
     }
 }
 
-def rhoP[P[_, _]](P: Profunctor[P])
-    : DiaProd[P] => ProdP[P] = {
+def rhoP[P[_, _]](P: Profunctor[P]): DiaProd[P] => ProdP[P] = {
   case DiaProd(paa) =>
     new ProdP[P] {
       def apply[A, B](f: A => B): P[A, B] =

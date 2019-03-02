@@ -1,4 +1,4 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{T}{here are many intuitions} that we may attach to morphisms in a category,
 but we can all agree that if there is a morphism from the object
@@ -78,7 +78,7 @@ for which the following diagram commutes, for any $f \Colon a \to b$:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/end.jpg}
+\includegraphics[width=0.35\textwidth]{images/end.jpg}
 \end{figure}
 
 \noindent
@@ -90,7 +90,7 @@ $q$ preserving composition):
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/end-1.jpg}
+\includegraphics[width=0.4\textwidth]{images/end-1.jpg}
 \end{figure}
 
 \noindent
@@ -127,7 +127,7 @@ commute:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=40mm]{images/end-2.jpg}
+\includegraphics[width=0.4\textwidth]{images/end-2.jpg}
 \end{figure}
 
 \noindent
@@ -145,7 +145,7 @@ $h \Colon a \to e$ that makes all triangles commute:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/end-21.jpg}
+\includegraphics[width=0.4\textwidth]{images/end-21.jpg}
 \end{figure}
 
 \noindent
@@ -172,9 +172,9 @@ $f \Colon a \to b$, the wedge condition reads:
 \src{snippet06}
 or, with type annotations:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{snipv}
 dimap f id\textsubscript{b} . pi\textsubscript{b} = dimap id\textsubscript{a} f . pi\textsubscript{a}
-\end{Verbatim}
+\end{snipv}
 where both sides of the equation have the type:
 
 \src{snippet07}
@@ -207,7 +207,7 @@ notation, because mathematical notation seems to be less user-friendly
 in this case). These functions correspond to the two converging branches
 of the wedge condition:
 
-\src{snippet09}
+\src{snippet09}[b]
 Both functions map diagonal elements of the profunctor \code{p} to
 polymorphic functions of the type:
 
@@ -246,7 +246,7 @@ condition:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/end1.jpg}
+\includegraphics[width=0.4\textwidth]{images/end1.jpg}
 \end{figure}
 
 \noindent
@@ -272,12 +272,13 @@ As expected, the dual to an end is called a coend. It is constructed
 from a dual to a wedge called a cowedge (pronounced co-wedge, not
 cow-edge).
 
-\begin{wrapfigure}[5]{R}{0pt}
-\raisebox{0pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=30mm]{images/end-31.jpg}}%
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\textwidth]{images/end-31.jpg}
 \caption{An edgy cow?}
-\end{wrapfigure}
+\end{figure}
 
+\noindent
 The symbol for a coend is the integral sign with the ``integration
 variable'' in the superscript position:
 \[\int^c p\ c\ c\]
@@ -295,9 +296,9 @@ coend.
 
 This is why, in pseudo-Haskell, we would define the coend as:
 
-\begin{Verbatim}
+\begin{snip}{text}
 exists a. p a a
-\end{Verbatim}
+\end{snip}
 The standard way of encoding existential quantifiers in Haskell is to
 use universally quantified data constructors. We can thus define:
 
@@ -359,9 +360,9 @@ identity for converting coends to ends:
 \[\Set(\int^x p\ x\ x, c) \cong \int_x \Set(p\ x\ x, c)\]
 Let's have a look at it in pseudo-Haskell:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{snipv}
 (exists x. p x x) -> c \ensuremath{\cong} forall x. p x x -> c
-\end{Verbatim}
+\end{snipv}
 It tells us that a function that takes an existential type is equivalent
 to a polymorphic function. This makes perfect sense, because such a
 function must be prepared to handle any one of the types that may be
@@ -426,7 +427,7 @@ and the Cartesian product of two sets corresponds to ``pairs of
 proofs,'' we can define composition of profunctors using the following
 formula:
 \[(q \circ p)\ a\ b = \int^c p\ c\ a\times{}q\ b\ c\]
-Here's the equivalent Haskell definition from\\
+Here's the equivalent Haskell definition from
 \code{Data.Profunctor.Composition}, after some renaming:
 
 \src{snippet18}
@@ -435,9 +436,9 @@ a free type variable (here \code{c}) is automatically existentially
 quantified. The (uncurried) data constructor \code{Procompose} is
 thus equivalent to:
 
-\begin{Verbatim}
+\begin{snip}{text}
 exists c. (q a c, p c b)
-\end{Verbatim}
+\end{snip}
 The unit of so defined composition is the hom-functor --- this
 immediately follows from the Ninja Yoneda lemma. It makes sense,
 therefore, to ask the question if there is a category in which

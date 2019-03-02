@@ -1,4 +1,4 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{W}{e've seen several formulations} of a monoid: as a set, as a
 single-object category, as an object in a monoidal category. How much
@@ -145,9 +145,9 @@ which we can also write as:
 \src{snippet09}
 Continuing this process, we can write a symbolic equation:
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\begin{snipv}
 type RingF\textsubscript{n+1} a = RingF (RingF\textsubscript{n} a)
-\end{Verbatim}
+\end{snipv}
 Conceptually, after repeating this process infinitely many times, we end
 up with our \code{Expr}. Notice that \code{Expr} does not depend on
 \code{a}. The starting point of our journey doesn't matter, we always
@@ -209,7 +209,7 @@ be equal:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/alg.png}
+\includegraphics[width=0.3\textwidth]{images/alg.png}
 \end{figure}
 
 \noindent
@@ -228,7 +228,7 @@ homomorphism, the following diagram must commute:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/alg2.png}
+\includegraphics[width=0.3\textwidth]{images/alg2.png}
 \end{figure}
 
 \noindent
@@ -243,7 +243,7 @@ diagram must commute:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/alg3a.png}
+\includegraphics[width=0.3\textwidth]{images/alg3a.png}
 \end{figure}
 
 \noindent
@@ -252,7 +252,7 @@ same!):
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/alg3.png}
+\includegraphics[width=0.3\textwidth]{images/alg3.png}
 \end{figure}
 
 \noindent
@@ -262,7 +262,7 @@ glue these two diagrams together to get:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=80mm]{images/alg4.png}
+\includegraphics[width=0.6\textwidth]{images/alg4.png}
 \end{figure}
 
 \noindent
@@ -319,7 +319,7 @@ algebra whose carrier is \code{a} and the evaluator is \code{alg}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/alg5.png}
+\includegraphics[width=0.4\textwidth]{images/alg5.png}
 \end{figure}
 
 \noindent
@@ -333,15 +333,15 @@ one arrow in this diagram to get:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/alg6.png}
+\includegraphics[width=0.4\textwidth]{images/alg6.png}
 \end{figure}
 
 \noindent
 Let's write down the commutation condition for this diagram:
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 m = alg . fmap m . unFix
-\end{Verbatim}
+\end{snip}
 We can interpret this equation as a recursive definition of \code{m}.
 The recursion is bound to terminate for any finite tree created using
 the functor \code{f}. We can see that by noticing that
@@ -432,7 +432,7 @@ homomorphism $m$ that makes the following diagram commute:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=50mm]{images/alg7.png}
+\includegraphics[width=0.4\textwidth]{images/alg7.png}
 \end{figure}
 
 \noindent

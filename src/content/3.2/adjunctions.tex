@@ -1,4 +1,4 @@
-% !TEX root = ../../ctfp-reader.tex
+% !TEX root = ../../ctfp-print.tex
 
 \lettrine[lhang=0.17]{I}{n mathematics we have} various ways of saying that one thing is like
 another. The strictest is equality. Two things are equal if there is no
@@ -37,7 +37,7 @@ and another in $\cat{D}$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=3.12500in]{images/adj-1.jpg}
+\includegraphics[width=0.5\textwidth]{images/adj-1.jpg}
 \end{figure}
 
 \noindent
@@ -105,7 +105,7 @@ counit in more detail.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/adj-unit.jpg}
+\includegraphics[width=0.5\textwidth]{images/adj-unit.jpg}
 \end{figure}
 
 \noindent
@@ -124,7 +124,7 @@ shoot an arrow --- the morphism $\eta_d$ --- to our target.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/adj-counit.jpg}
+\includegraphics[width=0.5\textwidth]{images/adj-counit.jpg}
 \end{figure}
 
 \noindent
@@ -255,7 +255,7 @@ adjunction.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/adj-homsets.jpg}
+\includegraphics[width=0.5\textwidth]{images/adj-homsets.jpg}
 \end{figure}
 
 \noindent
@@ -335,7 +335,7 @@ $R$ are called \code{f} and \code{u}:
 
 \src{snippet05}
 The equivalence between the \code{unit}/\code{counit} formulation
-and the\\ \code{leftAdjunct}/\code{rightAdjunct} formulation is
+and the \code{leftAdjunct}/\allowbreak\code{rightAdjunct} formulation is
 witnessed by these mappings:
 
 \src{snippet06}
@@ -412,7 +412,7 @@ morphisms in the product category $\cat{C}\times{}\cat{C}$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/adj-productcat.jpg}
+\includegraphics[width=0.5\textwidth]{images/adj-productcat.jpg}
 \end{figure}
 
 \noindent
@@ -467,7 +467,7 @@ $a\times{}b$. We recognize this element of the hom-set as the
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=3.12500in]{images/adj-product.jpg}
+\includegraphics[width=0.5\textwidth]{images/adj-product.jpg}
 \end{figure}
 
 \noindent
@@ -491,10 +491,10 @@ In Haskell, we can always construct the inverse of the
 \code{factorizer} by composing \code{m} with, respectively,
 \code{fst} and \code{snd}.
 
-\begin{Verbatim}
+\begin{snip}{haskell}
 p = fst . m
 q = snd . m
-\end{Verbatim}
+\end{snip}
 To complete the proof of the equivalence of the two ways of defining a
 product we also need to show that the mapping between hom-sets is
 natural in $a$, $b$, and $c$. I will leave this as
@@ -522,7 +522,7 @@ can be seen as an adjunction. Again, the trick is to concentrate on the
 statement:
 
 \begin{quote}
-For any other object $z$ with a morphism $g \Colon z\times{}a \to b$ \\
+For any other object $z$ with a morphism $g \Colon z\times{}a \to b$ 
 there is a unique morphism $h \Colon z \to (a \Rightarrow b)$
 \end{quote}
 This statement establishes a mapping between hom-sets.
@@ -542,7 +542,7 @@ redrawing the diagram that we used in the universal construction.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=60mm]{images/adj-expo.jpg}
+\includegraphics[width=0.4\textwidth]{images/adj-expo.jpg}
 \end{figure}
 
 \noindent
