@@ -406,22 +406,22 @@ equation:
 If we do our usual substitutions, and also replace \code{List a} with
 \code{x}, we get the equation:
 
-\begin{snip}{text}
+\begin{Verbatim}
 x = 1 + a * x
-\end{snip}
+\end{Verbatim}
 We can't solve it using traditional algebraic methods because we can't
 subtract or divide types. But we can try a series of substitutions,
 where we keep replacing \code{x} on the right hand side with
 \code{(1 + a*x)}, and use the distributive property. This leads to
 the following series:
 
-\begin{snip}{text}
+\begin{Verbatim}
 x = 1 + a*x
 x = 1 + a*(1 + a*x) = 1 + a + a*a*x
 x = 1 + a + a*a*(1 + a*x) = 1 + a + a*a + a*a*a*x
 ...
 x = 1 + a + a*a + a*a*a + a*a*a*a...
-\end{snip}
+\end{Verbatim}
 We end up with an infinite sum of products (tuples), which can be
 interpreted as: A list is either empty, \code{1}; or a singleton,
 \code{a}; or a pair, \code{a*a}; or a triple, \code{a*a*a};

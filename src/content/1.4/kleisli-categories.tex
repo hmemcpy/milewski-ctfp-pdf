@@ -105,17 +105,15 @@ vector<string> words(string s) {
     return result;
 }
 \end{snip}
-
-\begin{wrapfigure}{r}{0pt}
-\raisebox{14pt}[\dimexpr\height-0.75\baselineskip\relax]{
-\includegraphics[width=0.4\textwidth]{images/piggyback.jpg}}%
-\end{wrapfigure}
-
-\noindent
 We want to modify the functions \code{toUpper} and \code{toWords} so
 that they piggyback a message string on top of their regular return
 values.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{images/piggyback.jpg}
+\end{figure}
+\noindent
 We will ``embellish'' the return values of these functions. Let's do it
 in a generic way by defining a template \code{Writer} that
 encapsulates a pair whose first component is a value of arbitrary type
