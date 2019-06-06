@@ -1,2 +1,2 @@
-bimap :: (fu a -> fu a') -> (gu b -> gu b')
+bimap :: (a -> a') -> (b -> b')
   -> bf (fu a) (gu b) -> bf (fu a') (gu b')
