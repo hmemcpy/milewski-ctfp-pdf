@@ -4,8 +4,8 @@ Category Theory for Programmers
 <b>Direct link: [category-theory-for-programmers.pdf](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/download/v1.2.1/category-theory-for-programmers.pdf)</b>  
 (Latest release: v1.2.1, March 2019. See [releases](https://github.com/hmemcpy/milewski-ctfp-pdf/releases) for additional formats and languages.)
 
-[![Build Status](https://travis-ci.org/hmemcpy/milewski-ctfp-pdf.svg?branch=master)](https://travis-ci.org/hmemcpy/milewski-ctfp-pdf)  
-[(latest CI build)](https://s3.amazonaws.com/milewski-ctfp-pdf/category-theory-for-programmers.pdf)
+[![Build Status](https://travis-ci.org/jwvg0425/milewski-ctfp-pdf-kr.svg?branch=master)](https://travis-ci.org/jwvg0425/milewski-ctfp-pdf-kr)  
+[(latest CI build)](https://s3.amazonaws.com/milewski-ctfp-pdf-kr/category-theory-for-programmers.pdf)
 
 <img src="https://user-images.githubusercontent.com/601206/47271389-8eea0900-d581-11e8-8e81-5b932e336336.png"
  alt="Buy Category Theory for Programmers" width=410 />  
