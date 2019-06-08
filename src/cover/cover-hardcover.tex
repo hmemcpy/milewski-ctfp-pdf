@@ -1,7 +1,7 @@
 \documentclass[
     coverheight=9.249in,
     coverwidth=6.319in, % (pagesize - spinewidth) / 2
-    spinewidth=1.8in,
+    spinewidth=1.069in,
     bleedwidth=0in,
     11pt,
     marklength=0pt,
@@ -34,11 +34,11 @@
   \newcommand{\bartosz}{
     \vspace{0pt}
     \begin{tcolorbox}[beamer,
-      width=4cm,
+      width=3.6cm,
       arc=0pt,
       boxsep=0pt,
       left=0pt,right=0pt,top=0pt,bottom=0pt,
-      ] \includegraphics[width=4cm]{bartosz}
+      ] \includegraphics[width=3.6cm]{bartosz}
     \end{tcolorbox}
   }
   \input{\olpath/version}
@@ -57,18 +57,18 @@
       \fontsize{40pt}{5em}\selectfont\bfseries
           CATEGORY THEORY \\FOR PROGRAMMERS
       \vfil
-      % \vspace*{1cm}
-      \includegraphics[width=.5\coverwidth]{piggie}
-      \vfil
-      \normalfont\Huge
-      \hspace*{.8cm}\textbf{Bartosz Milewski}
+      \hspace*{-.8cm}\includegraphics[width=.5\coverwidth]{piggie}
+      \linebreak
+      \rule[1.5cm]{\textwidth/2}{.5pt}\\
+      \vspace{-1.5cm}
+      \normalfont\Huge\textbf{Bartosz Milewski}
       \vfil
       \vspace*{1cm}
     \end{center}}
     
     \bookcovercomponent{center}{spine}{
       \rotatebox[origin=c]{-90}{\color{orange}
-      \Huge Category Theory for Programmers \hspace{2em} Bartosz Milewski}}
+      \Huge\bfseries Category Theory for Programmers \hspace{2em} Bartosz Milewski}}
 
     \bookcovercomponent{normal}{back}{%
     \begin{minipage}[b][\coverheight][t]{\coverwidth}
@@ -80,7 +80,7 @@
         \end{minipage}
         
         \begin{minipage}{.85\textwidth}
-          \rule{\textwidth}{0.4pt}
+          \rule{\textwidth}{.5pt}
 
           \begin{tabular}[h]{p{3.4cm} p{\textwidth}}
             \bartosz
