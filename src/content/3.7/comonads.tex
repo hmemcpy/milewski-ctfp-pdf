@@ -314,7 +314,7 @@ We'll use the same adjunction to define the costate comonad. A comonad
 is defined by the composition $L \circ R$:
 \[L\ (R\ a) = (s \Rightarrow a)\times{}s\]
 Translating this to Haskell, we start with the adjunction between the
-\code{Prod} functor on the left and the \code{Reader} functor or the
+\code{Prod} functor on the left and the \code{Reader} functor on the
 right. Composing \code{Prod} after \code{Reader} is equivalent to
 the following definition:
 
