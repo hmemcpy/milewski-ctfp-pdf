@@ -1,7 +1,5 @@
 프로그래머를 위한 카테고리 이론
 ====
-![image](https://user-images.githubusercontent.com/601206/43392303-f770d7be-93fb-11e8-8db8-b7e915b435ba.png)
-
 [![Build Status](https://travis-ci.org/jwvg0425/milewski-ctfp-pdf-kr.svg?branch=master)](https://travis-ci.org/jwvg0425/milewski-ctfp-pdf-kr)  
 [(latest CI build)](https://milewski-ctfp-pdf-kr.s3.ap-northeast-2.amazonaws.com/category-theory-for-programmers.pdf)
 
