@@ -1,7 +1,7 @@
 { pkgs ? import <nixpkgs> {} }: with pkgs;
 
 mkShell {
-  FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ inconsolata-lgc libertine libertinus ]; };
+  FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ inconsolata-lgc libertine libertinus noto-fonts-cjk ]; };
   buildInputs = [
     (texlive.combine {
         inherit (texlive)
@@ -43,6 +43,11 @@ mkShell {
         minifp
         titlecaps
         enumitem
+        kotex-oblivoir
+        kotex-plain
+        kotex-utf
+        kotex-utils
+        unfonts-core
         l3packages;
       })
     gnumake
