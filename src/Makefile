@@ -64,4 +64,5 @@ clean:
 	if which latexmk > /dev/null 2>&1 ; then latexmk -CA; fi
 	rm -rf ../out
 
-clean-minted: rm -rf _minted-*
+clean-minted: 
+	rm -rf _minted-*

@@ -12,7 +12,7 @@
   \usepackage[many]{tcolorbox}
   \usetikzlibrary{calc,positioning, shadings}
   \usepackage[T1]{fontenc}
-  \usepackage{Alegreya} %% Option 'black' gives heavier bold face
+  \usepackage{Alegreya} %% Option 'black' gives heavier bold face 
   
   \setmainfont{Alegreya Sans}[
     UprightFeatures={SmallCapsFont=* SC},
@@ -45,8 +45,9 @@
   
   \definecolor{BackgroundColor}{HTML}{f3f6ed}
   \definecolor{SpineBackColor}{HTML}{262626}
-
+  
   \begin{document}
+  
   \begin{bookcover}
     \bookcovercomponent{color}{bg whole}{color=BackgroundColor}
     \bookcovercomponent{color}{spine}{color=SpineBackColor}
@@ -72,6 +73,7 @@
     \bookcovercomponent{normal}{back}{%
     \begin{minipage}[b][\coverheight][t]{\coverwidth}
       \begin{center}
+        \vspace{1cm}
         \includegraphics[width=.8\coverwidth]{bunnies}
         \begin{minipage}[t]{.8\coverwidth}
           \input{blurb}
@@ -79,7 +81,7 @@
         \end{minipage}
         
         \begin{minipage}{.85\textwidth}
-          \rule{\textwidth}{0.4pt}
+          \rule{\textwidth}{.5pt}
 
           \begin{tabular}[h]{p{3.4cm} p{\textwidth}}
             \bartosz
