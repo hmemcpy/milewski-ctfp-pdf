@@ -1,0 +1,1 @@
+data Stream e = Stream e (Stream e)

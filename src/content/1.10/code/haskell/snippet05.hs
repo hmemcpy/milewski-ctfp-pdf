@@ -1,0 +1,1 @@
+fmap f . safeHead = safeHead . fmap f

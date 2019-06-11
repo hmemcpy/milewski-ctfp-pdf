@@ -1,0 +1,1 @@
+def square: Int => Int

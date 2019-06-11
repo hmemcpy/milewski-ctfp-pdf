@@ -1,0 +1,1 @@
+def duplicate[W[_], A]: W[A] => W[W[A]]

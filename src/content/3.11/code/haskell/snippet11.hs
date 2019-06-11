@@ -1,0 +1,1 @@
+newtype FreeF f a = FreeF (forall i. (a -> i) -> f i)

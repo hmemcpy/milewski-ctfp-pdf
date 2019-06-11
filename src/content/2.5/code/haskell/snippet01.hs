@@ -1,0 +1,1 @@
+type Reader a x = a -> x

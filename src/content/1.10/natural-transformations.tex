@@ -1,0 +1,725 @@
+% !TEX root = ../../ctfp-print.tex
+
+\lettrine[lhang=0.17]{W}{e talked about} functors as mappings between categories that preserve
+their structure.
+
+A functor ``embeds'' one category in another. It may
+collapse multiple things into one, but it never breaks connections. One
+way of thinking about it is that with a functor we are modeling one
+category inside another. The source category serves as a model, a
+blueprint, for some structure that's part of the target category.
+
+\begin{figure}[H]
+\centering\includegraphics[width=0.4\textwidth]{images/1_functors.jpg}
+\end{figure}
+
+\noindent
+There may be many ways of embedding one category in another. Sometimes
+they are equivalent, sometimes very different. One may collapse the
+whole source category into one object, another may map every object to a
+different object and every morphism to a different morphism. The same
+blueprint may be realized in many different ways. Natural
+transformations help us compare these realizations. They are mappings of
+functors --- special mappings that preserve their functorial nature.
+
+Consider two functors $F$ and $G$ between categories
+$\cat{C}$ and $\cat{D}$. If you focus on just one object $a$ in
+$\cat{C}$, it is mapped to two objects: $F a$ and $G a$.
+A mapping of functors should therefore map $F a$ to
+$G a$.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{images/2_natcomp.jpg}
+\end{figure}
+
+\noindent
+Notice that $F a$ and $G a$ are objects in the same
+category $\cat{D}$. Mappings between objects in the same category should
+not go against the grain of the category. We don't want to make
+artificial connections between objects. So it's \emph{natural} to use
+existing connections, namely morphisms. A natural transformation is a
+selection of morphisms: for every object $a$, it picks one
+morphism from $F a$ to $G a$. If we call the natural
+transformation $\alpha$, this morphism is called the \newterm{component}
+of $\alpha$ at $a$, or $\alpha_a$.
+
+\[\alpha_a \Colon F a \to G a\]
+Keep in mind that $a$ is an object in $\cat{C}$ while $\alpha_a$
+is a morphism in $\cat{D}$.
+
+If, for some $a$, there is no morphism between $F a$ and
+$G a$ in $\cat{D}$, there can be no natural transformation
+between $F$ and $G$.
+
+Of course that's only half of the story, because functors not only map
+objects, they map morphisms as well. So what does a natural
+transformation do with those mappings? It turns out that the mapping of
+morphisms is fixed --- under any natural transformation between $F$ and $G$,
+$F\ f$ must be transformed into $G\ f$. What's more, the
+mapping of morphisms by the two functors drastically restricts the
+choices we have in defining a natural transformation that's compatible
+with it. Consider a morphism $f$ between two objects $a$
+and $b$ in $\cat{C}$. It's mapped to two morphisms, $F\ f$
+and $G f$ in $\cat{D}$:
+
+\begin{gather*}
+F f \Colon F a \to F b \\
+G f \Colon G a \to G b
+\end{gather*}
+The natural transformation \code{α} provides two additional morphisms
+that complete the diagram in \emph{D}:
+
+\begin{gather*}
+\alpha_a \Colon F a \to G a \\
+\alpha_b \Colon F b \to G b
+\end{gather*}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{images/3_naturality.jpg}
+\end{figure}
+
+\noindent
+Now we have two ways of getting from $F a$ to $G b$. To
+make sure that they are equal, we must impose the \newterm{naturality
+condition} that holds for any $f$:
+
+\[G f \circ \alpha_a = \alpha_b \circ F f\]
+The naturality condition is a pretty stringent requirement. For
+instance, if the morphism $F f$ is invertible, naturality
+determines $\alpha_b$ in terms of $\alpha_a$. It \emph{transports}
+$\alpha_a$ along $f$:
+
+\[\alpha_b = (G f) \circ \alpha_a \circ (F f)^{-1}\]
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{images/4_transport.jpg}
+\end{figure}
+
+\noindent
+If there is more than one invertible morphism between two objects, all
+these transports have to agree. In general, though, morphisms are not
+invertible; but you can see that the existence of natural
+transformations between two functors is far from guaranteed. So the
+scarcity or the abundance of functors that are related by natural
+transformations may tell you a lot about the structure of categories
+between which they operate. We'll see some examples of that when we talk
+about limits and the Yoneda lemma.
+
+Looking at a natural transformation component-wise, one may say that it
+maps objects to morphisms. Because of the naturality condition, one may
+also say that it maps morphisms to commuting squares --- there is one
+commuting naturality square in $\cat{D}$ for every morphism in $\cat{C}$.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{images/naturality.jpg}
+\end{figure}
+
+\noindent
+This property of natural transformations comes in very handy in a lot of
+categorical constructions, which often include commuting diagrams. With
+a judicious choice of functors, a lot of these commutativity conditions
+may be transformed into naturality conditions. We'll see examples of
+that when we get to limits, colimits, and adjunctions.
+
+Finally, natural transformations may be used to define isomorphisms of
+functors. Saying that two functors are naturally isomorphic is almost
+like saying they are the same. \newterm{Natural isomorphism} is defined as
+a natural transformation whose components are all isomorphisms
+(invertible morphisms).
+
+\section{Polymorphic Functions}
+
+We talked about the role of functors (or, more specifically,
+endofunctors) in programming. They correspond to type constructors that
+map types to types. They also map functions to functions, and this
+mapping is implemented by a higher order function \code{fmap} (or
+\code{transform}, \code{then}, and the like in C++).
+
+To construct a natural transformation we start with an object, here a
+type, \code{a}. One functor, \code{F}, maps it to the type
+$F a$. Another functor, \code{G}, maps it to $G a$.
+The component of a natural transformation \code{alpha} at \code{a}
+is a function from $F a$ to $G a$. In pseudo-Haskell:
+
+\begin{snipv}
+alpha\textsubscript{a} :: F a -> G a
+\end{snipv}
+A natural transformation is a polymorphic function that is defined for
+all types \code{a}:
+
+\src{snippet01}
+The \code{forall a} is optional in Haskell (and in fact requires
+turning on the language extension \code{ExplicitForAll}). Normally,
+you would write it like this:
+
+\src{snippet02}
+Keep in mind that it's really a family of functions parameterized by
+\code{a}. This is another example of the terseness of the Haskell
+syntax. A similar construct in C++ would be slightly more verbose:
+
+\begin{snip}{cpp}
+template<class A> G<A> alpha(F<A>);
+\end{snip}
+There is a more profound difference between Haskell's polymorphic
+functions and C++ generic functions, and it's reflected in the way these
+functions are implemented and type-checked. In Haskell, a polymorphic
+function must be defined uniformly for all types. One formula must work
+across all types. This is called \newterm{parametric polymorphism}.
+
+C++, on the other hand, supports by default \newterm{ad hoc polymorphism},
+which means that a template doesn't have to be well-defined for all
+types. Whether a template will work for a given type is decided at
+instantiation time, where a concrete type is substituted for the type
+parameter. Type checking is deferred, which unfortunately often leads to
+incomprehensible error messages.
+
+In C++, there is also a mechanism for function overloading and template
+specialization, which allows different definitions of the same function
+for different types. In Haskell this functionality is provided by type
+classes and type families.
+
+Haskell's parametric polymorphism has an unexpected consequence: any
+polymorphic function of the type:
+
+\src{snippet03}
+where \code{F} and \code{G} are functors, automatically satisfies
+the naturality condition. Here it is in categorical notation ($f$
+is a function $f \Colon a \to b$):
+
+\[G f \circ \alpha_a = \alpha_b \circ F f\]
+In Haskell, the action of a functor \code{G} on a morphism \code{f}
+is implemented using \code{fmap}. I'll first write it in
+pseudo-Haskell, with explicit type annotations:
+
+\begin{snipv}
+fmap\textsubscript{G} f . alpha\textsubscript{a} = alpha\textsubscript{b} . fmap\textsubscript{F} f
+\end{snipv}
+Because of type inference, these annotations are not necessary, and the
+following equation holds:
+
+\begin{snip}{text}
+fmap f . alpha = alpha . fmap f
+\end{snip}
+This is still not real Haskell --- function equality is not expressible
+in code --- but it's an identity that can be used by the programmer in
+equational reasoning; or by the compiler, to implement optimizations.
+
+The reason why the naturality condition is automatic in Haskell has to
+do with ``theorems for free.'' Parametric polymorphism, which is used to
+define natural transformations in Haskell, imposes very strong
+limitations on the implementation --- one formula for all types. These
+limitations translate into equational theorems about such functions. In
+the case of functions that transform functors, free theorems are the
+naturality conditions.\footnote{
+You may read more about free theorems in my
+blog \href{https://bartoszmilewski.com/2014/09/22/parametricity-money-for-nothing-and-theorems-for-free/}{``Parametricity:
+Money for Nothing and Theorems for Free}.''}
+
+One way of thinking about functors in Haskell that I mentioned earlier
+is to consider them generalized containers. We can continue this analogy
+and consider natural transformations to be recipes for repackaging the
+contents of one container into another container. We are not touching
+the items themselves: we don't modify them, and we don't create new
+ones. We are just copying (some of) them, sometimes multiple times, into
+a new container.
+
+The naturality condition becomes the statement that it doesn't matter
+whether we modify the items first, through the application of
+\code{fmap}, and repackage later; or repackage first, and then modify
+the items in the new container, with its own implementation of
+\code{fmap}. These two actions, repackaging and \code{fmap}ping, are
+orthogonal. ``One moves the eggs, the other boils them.''
+
+Let's see a few examples of natural transformations in Haskell. The
+first is between the list functor, and the \code{Maybe} functor. It
+returns the head of the list, but only if the list is non-empty:
+
+\src{snippet04}
+It's a function polymorphic in \code{a}. It works for any type
+\code{a}, with no limitations, so it is an example of parametric
+polymorphism. Therefore it is a natural transformation between the two
+functors. But just to convince ourselves, let's verify the naturality
+condition.
+
+\src{snippet05}
+We have two cases to consider; an empty list:
+
+\src{snippet06}
+
+\src{snippet07}
+and a non-empty list:
+
+\src{snippet08}
+
+\src{snippet09}
+I used the implementation of \code{fmap} for lists:
+
+\src{snippet10}
+and for \code{Maybe}:
+
+\src{snippet11}
+An interesting case is when one of the functors is the trivial
+\code{Const} functor. A natural transformation from or to a
+\code{Const} functor looks just like a function that's either
+polymorphic in its return type or in its argument type.
+
+For instance, \code{length} can be thought of as a natural
+transformation from the list functor to the \code{Const Int} functor:
+
+\src{snippet12}
+Here, \code{unConst} is used to peel off the \code{Const}
+constructor:
+
+\src{snippet13}
+Of course, in practice \code{length} is defined as:
+
+\src{snippet14}
+which effectively hides the fact that it's a natural transformation.
+
+Finding a parametrically polymorphic function \emph{from} a
+\code{Const} functor is a little harder, since it would require the
+creation of a value from nothing. The best we can do is:
+
+\src{snippet15}
+Another common functor that we've seen already, and which will play an
+important role in the Yoneda lemma, is the \code{Reader} functor. I
+will rewrite its definition as a \code{newtype}:
+
+\src{snippet16}
+It is parameterized by two types, but is (covariantly) functorial only
+in the second one:
+
+\src{snippet17}
+For every type \code{e}, you can define a family of natural
+transformations from \code{Reader e} to any other functor \code{f}.
+We'll see later that the members of this family are always in one to one
+correspondence with the elements of \code{f e} (the
+\hyperref[the-yoneda-lemma]{Yoneda lemma}).
+
+For instance, consider the somewhat trivial unit type \code{()} with
+one element \code{()}. The functor \code{Reader ()} takes any type
+\code{a} and maps it into a function type \code{() -> a}.
+These are just all the functions that pick a single element from the set
+\code{a}. There are as many of these as there are elements in
+\code{a}. Now let's consider natural transformations from this functor
+to the \code{Maybe} functor:
+
+\src{snippet18}
+There are only two of these, \code{dumb} and \code{obvious}:
+
+\src{snippet19}
+and
+
+\src{snippet20}
+(The only thing you can do with \code{g} is to apply it to the unit
+value \code{()}.)
+
+And, indeed, as predicted by the Yoneda lemma, these correspond to the
+two elements of the \code{Maybe ()} type, which are \code{Nothing}
+and \code{Just ()}. We'll come back to the Yoneda lemma later ---
+this was just a little teaser.
+
+\section{Beyond Naturality}
+
+A parametrically polymorphic function between two functors (including
+the edge case of the \code{Const} functor) is always a natural
+transformation. Since all standard algebraic data types are functors,
+any polymorphic function between such types is a natural transformation.
+
+We also have function types at our disposal, and those are functorial in
+their return type. We can use them to build functors (like the
+\code{Reader} functor) and define natural transformations that are
+higher-order functions.
+
+However, function types are not covariant in the argument type. They are
+\newterm{contravariant}. Of course contravariant functors are equivalent to
+covariant functors from the opposite category. Polymorphic functions
+between two contravariant functors are still natural transformations in
+the categorical sense, except that they work on functors from the
+opposite category to Haskell types.
+
+You might remember the example of a contravariant functor we've looked
+at before:
+
+\src{snippet21}
+This functor is contravariant in \code{a}:
+
+\src{snippet22}
+We can write a polymorphic function from, say, \code{Op Bool} to
+\code{Op String}:
+
+\src{snippet23}
+But since the two functors are not covariant, this is not a natural
+transformation in $\Hask$. However, because they are both
+contravariant, they satisfy the ``opposite'' naturality condition:
+
+\src{snippet24}[b]
+Notice that the function \code{f} must go in the opposite direction
+than what you'd use with \code{fmap}, because of the signature of
+\code{contramap}:
+
+\src{snippet25}
+Are there any type constructors that are not functors, whether covariant
+or contravariant? Here's one example:
+
+\src{snippet26}
+This is not a functor because the same type \code{a} is used both in
+the negative (contravariant) and positive (covariant) position. You
+can't implement \code{fmap} or \code{contramap} for this type.
+Therefore a function of the signature:
+
+\src{snippet27}
+where \code{f} is an arbitrary functor, cannot be a natural
+transformation. Interestingly, there is a generalization of natural
+transformations, called dinatural transformations, that deals with such
+cases. We'll get to them when we discuss ends.
+
+\section{Functor Category}
+
+Now that we have mappings between functors --- natural transformations
+--- it's only natural to ask the question whether functors form a
+category. And indeed they do! There is one category of functors for each
+pair of categories, $\cat{C}$ and $\cat{D}$. Objects in this category are functors from
+$\cat{C}$ to $\cat{D}$, and morphisms are natural transformations between those
+functors.
+
+We have to define composition of two natural transformations, but that's
+quite easy. The components of natural transformations are morphisms, and
+we know how to compose morphisms.
+
+Indeed, let's take a natural transformation $\alpha$ from functor $F$ to $G$. Its
+component at object $a$ is some morphism:
+\[\alpha_a \Colon F a \to G a\]
+We'd like to compose $\alpha$ with $\beta$, which is a natural transformation from
+functor $G$ to $H$. The component of $\beta$ at $a$ is a morphism:
+\[\beta_a \Colon G a \to H a\]
+These morphisms are composable and their composition is another
+morphism:
+\[\beta_a \circ \alpha_a \Colon F a \to H a\]
+We will use this morphism as the component of the natural transformation
+$\beta \cdot \alpha$ --- the composition of two natural transformations $\beta$ after $\alpha$:
+\[(\beta \cdot \alpha)_a = \beta_a \circ \alpha_a\]
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{images/5_vertical.jpg}
+\end{figure}
+
+\noindent
+One (long) look at a diagram convinces us that the result of this
+composition is indeed a natural transformation from F to H:
+\[H f \circ (\beta \cdot \alpha)_a = (\beta \cdot \alpha)_b \circ F f\]
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{images/6_verticalnaturality.jpg}
+\end{figure}
+
+\noindent
+Composition of natural transformations is associative, because their
+components, which are regular morphisms, are associative with respect to
+their composition.
+
+Finally, for each functor F there is an identity natural transformation
+$1_F$ whose components are the identity morphisms:
+\[\id_{F a} \Colon F a \to F a\]
+So, indeed, functors form a category.
+
+A word about notation. Following Saunders Mac Lane I use the dot for the
+kind of natural transformation composition I have just described. The
+problem is that there are two ways of composing natural transformations.
+This one is called the vertical composition, because the functors are
+usually stacked up vertically in the diagrams that describe it. Vertical
+composition is important in defining the functor category. I'll explain
+horizontal composition shortly.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{images/6a_vertical.jpg}
+\end{figure}
+
+\noindent
+The functor category between categories $\cat{C}$ and $\cat{D}$ is written as
+$\cat{Fun(C, D)}$, or $\cat{{[}C, D{]}}$, or sometimes as
+$\cat{D^C}$. This last notation suggests that a functor category itself
+might be considered a function object (an exponential) in some other
+category. Is this indeed the case?
+
+Let's have a look at the hierarchy of abstractions that we've been
+building so far. We started with a category, which is a collection of
+objects and morphisms. Categories themselves (or, strictly speaking
+\emph{small} categories, whose objects form sets) are themselves objects
+in a higher-level category $\Cat$. Morphisms in that category are
+functors. A Hom-set in $\Cat$ is a set of functors. For instance
+$\cat{Cat(C, D)}$ is a set of functors between two categories $\cat{C}$ and $\cat{D}$.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{images/7_cathomset.jpg}
+\end{figure}
+
+\noindent
+A functor category $\cat{{[}C, D{]}}$ is also a set of functors between two
+categories (plus natural transformations as morphisms). Its objects are
+the same as the members of $\cat{Cat(C, D)}$. Moreover, a functor category,
+being a category, must itself be an object of $\Cat$ (it so
+happens that the functor category between two small categories is itself
+small). We have a relationship between a Hom-set in a category and an
+object in the same category. The situation is exactly like the
+exponential object that we've seen in the last section. Let's see how we
+can construct the latter in $\Cat$.
+
+As you may remember, in order to construct an exponential, we need to
+first define a product. In $\Cat$, this turns out to be relatively
+easy, because small categories are \emph{sets} of objects, and we know
+how to define Cartesian products of sets. So an object in a product
+category $\cat{C\times D}$ is just a pair of objects, $(c, d)$, one from $\cat{C}$
+and one from $\cat{D}$. Similarly, a morphism between two such pairs,
+$(c, d)$ and $(c', d')$, is a pair of morphisms, $(f, g)$, where
+$f \Colon c \to c'$ and $g \Colon d \to d'$. These pairs of morphisms
+compose component-wise, and there is always an identity pair that is
+just a pair of identity morphisms. To make the long story short,
+$\Cat$ is a full-blown Cartesian closed category in which there is
+an exponential object $\cat{D^C}$ for any pair of categories.
+And by ``object'' in $\Cat$ I mean a category, so
+$\cat{D^C}$ is a category, which we can identify with the
+functor category between $\cat{C}$ and $\cat{D}$.
+
+\section{2-Categories}
+
+With that out of the way, let's have a closer look at $\Cat$. By
+definition, any Hom-set in $\Cat$ is a set of functors. But, as we
+have seen, functors between two objects have a richer structure than
+just a set. They form a category, with natural transformations acting as
+morphisms. Since functors are considered morphisms in $\Cat$,
+natural transformations are morphisms between morphisms.
+
+This richer structure is an example of a $\cat{2}$-category, a generalization of
+a category where, besides objects and morphisms (which might be called
+$1$-morphisms in this context), there are also $2$-morphisms, which are
+morphisms between morphisms.
+
+In the case of $\Cat$ seen as a $\cat{2}$-category we have:
+
+\begin{itemize}
+\tightlist
+\item
+  Objects: (Small) categories
+\item
+  1-morphisms: Functors between categories
+\item
+  2-morphisms: Natural transformations between functors.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{images/8_cat-2-cat.jpg}
+\end{figure}
+
+\noindent
+Instead of a Hom-set between two categories $\cat{C}$ and $\cat{D}$, we have a
+Hom-category --- the functor category $\cat{D^C}$. We have
+regular functor composition: a functor $F$ from $\cat{D^C}$
+composes with a functor $G$ from $\cat{E^D}$ to give $G \circ F$ from
+$\cat{E^C}$. But we also have composition inside each
+Hom-category --- vertical composition of natural transformations, or
+2-morphisms, between functors.
+
+With two kinds of composition in a $\cat{2}$-category, the question arises: How
+do they interact with each other?
+
+Let's pick two functors, or 1-morphisms, in $\Cat$:
+\begin{gather*}
+F \Colon \cat{C} \to \cat{D} \\
+G \Colon \cat{D} \to \cat{E}
+\end{gather*}
+and their composition:
+\[G \circ F \Colon \cat{C} \to \cat{E}\]
+Suppose we have two natural transformations, $\alpha$ and $\beta$, that act,
+respectively, on functors $F$ and $G$:
+\begin{gather*}
+\alpha \Colon F \to F' \\
+\beta \Colon G \to G'
+\end{gather*}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{images/10_horizontal.jpg}
+\end{figure}
+
+\noindent
+Notice that we cannot apply vertical composition to this pair, because
+the target of $\alpha$ is different from the source of $\beta$. In fact they are
+members of two different functor categories: $\cat{D^C}$ and $\cat{E^D}$.
+We can, however, apply composition to the functors
+$F'$ and $G'$, because the target of $F'$ is the source of $G'$ --- it's the
+category $\cat{D}$. What's the relation between the functors $G' \circ F'$ and $G \circ F$?
+
+Having $\alpha$ and $\beta$ at our disposal, can we define a natural transformation
+from $G \circ F$ to $G' \circ F'$? Let me sketch the construction.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{images/9_horizontal.jpg}
+\end{figure}
+
+\noindent
+As usual, we start with an object $a$ in $\cat{C}$. Its image splits into
+two objects in $\cat{D}$: $F a$ and $F'a$. There is also a
+morphism, a component of $\alpha$, connecting these two objects:
+\[\alpha_a \Colon F a \to F'a\]
+When going from $\cat{D}$ to $\cat{E}$, these two objects split further into four
+objects: $G (F a)$, $G'(F a)$, $G (F'a)$, $G'(F'a)$.
+We also have four morphisms forming a square. Two of these morphisms are
+the components of the natural transformation $\beta$:
+\begin{gather*}
+\beta_{F a} \Colon G (F a) \to G'(F a) \\
+\beta_{F'a} \Colon G (F'a) \to G'(F'a)
+\end{gather*}
+The other two are the images of $\alpha_a$ under the two
+functors (functors map morphisms):
+\begin{gather*}
+G \alpha_a \Colon G (F a) \to G (F'a) \\
+G'\alpha_a \Colon G'(F a) \to G'(F'a)
+\end{gather*}
+That's a lot of morphisms. Our goal is to find a morphism that goes from
+$G (F a)$ to $G'(F'a)$, a candidate for the
+component of a natural transformation connecting the two functors $G \circ F$
+and $G' \circ F'$. In fact there's not one but two paths we can take from
+$G (F a)$ to $G'(F'a)$:
+\begin{gather*}
+G'\alpha_a \circ \beta_{F a} \\
+\beta_{F'a} \circ G \alpha_a
+\end{gather*}
+Luckily for us, they are equal, because the square we have formed turns
+out to be the naturality square for $\beta$.
+
+We have just defined a component of a natural transformation from $G \circ F$
+to $G' \circ F'$. The proof of naturality for this transformation is pretty
+straightforward, provided you have enough patience.
+
+We call this natural transformation the \newterm{horizontal composition} of
+$\alpha$ and $\beta$:
+\[\beta \circ \alpha \Colon G \circ F \to G' \circ F'\]
+Again, following Mac Lane I use the small circle for horizontal
+composition, although you may also encounter star in its place.
+
+Here's a categorical rule of thumb: Every time you have composition, you
+should look for a category. We have vertical composition of natural
+transformations, and it's part of the functor category. But what about
+the horizontal composition? What category does that live in?
+
+The way to figure this out is to look at $\Cat$ sideways. Look at
+natural transformations not as arrows between functors but as arrows
+between categories. A natural transformation sits between two
+categories, the ones that are connected by the functors it transforms.
+We can think of it as connecting these two categories.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{images/sideways.jpg}
+\end{figure}
+
+\noindent
+Let's focus on two objects of $\Cat$ --- categories $\cat{C}$ and $\cat{D}$. There
+is a set of natural transformations that go between functors that
+connect $\cat{C}$ to $\cat{D}$. These natural transformations are our new arrows from $\cat{C}$
+to $\cat{D}$. By the same token, there are natural transformations going between
+functors that connect $\cat{D}$ to $\cat{E}$, which we can treat as new arrows going
+from $\cat{D}$ to $\cat{E}$. Horizontal composition is the composition of these arrows.
+
+We also have an identity arrow going from $\cat{C}$ to $\cat{C}$. It's the identity
+natural transformation that maps the identity functor on $\cat{C}$ to itself.
+Notice that the identity for horizontal composition is also the identity
+for vertical composition, but not vice versa.
+
+Finally, the two compositions satisfy the interchange law:
+\[(\beta' \cdot \alpha') \circ (\beta \cdot \alpha) = (\beta' \circ \beta) \cdot (\alpha' \circ \alpha)\]
+I will quote Saunders Mac Lane here: The reader may enjoy writing down
+the evident diagrams needed to prove this fact.
+
+There is one more piece of notation that might come in handy in the
+future. In this new sideways interpretation of $\Cat$ there are
+two ways of getting from object to object: using a functor or using a
+natural transformation. We can, however, re-interpret the functor arrow
+as a special kind of natural transformation: the identity natural
+transformation acting on this functor. So you'll often see this
+notation:
+\[F \circ \alpha\]
+where $F$ is a functor from $\cat{D}$ to $\cat{E}$, and $\alpha$ is a natural transformation
+between two functors going from $\cat{C}$ to $\cat{D}$. Since you can't compose a
+functor with a natural transformation, this is interpreted as a
+horizontal composition of the identity natural transformation
+$1_F$ after $\alpha$.
+
+Similarly:
+\[\alpha \circ F\]
+is a horizontal composition of $\alpha$ after $1_F$.
+
+\section{Conclusion}
+
+This concludes the first part of the book. We've learned the basic
+vocabulary of category theory. You may think of objects and categories
+as nouns; and morphisms, functors, and natural transformations as verbs.
+Morphisms connect objects, functors connect categories, natural
+transformations connect functors.
+
+But we've also seen that, what appears as an action at one level of
+abstraction, becomes an object at the next level. A set of morphisms
+turns into a function object. As an object, it can be a source or a
+target of another morphism. That's the idea behind higher order
+functions.
+
+A functor maps objects to objects, so we can use it as a type
+constructor, or a parametric type. A functor also maps morphisms, so it
+is a higher order function --- \code{fmap}. There are some simple
+functors, like \code{Const}, product, and coproduct, that can be used
+to generate a large variety of algebraic data types. Function types are
+also functorial, both covariant and contravariant, and can be used to
+extend algebraic data types.
+
+Functors may be looked upon as objects in the functor category. As such,
+they become sources and targets of morphisms: natural transformations. A
+natural transformation is a special type of polymorphic function.
+
+\section{Challenges}
+
+\begin{enumerate}
+\tightlist
+\item
+  Define a natural transformation from the \code{Maybe} functor to the
+  list functor. Prove the naturality condition for it.
+\item
+  Define at least two different natural transformations between
+  \code{Reader ()} and the list functor. How many different lists of
+  \code{()} are there?
+\item
+  Continue the previous exercise with \code{Reader Bool} and
+  \code{Maybe}.
+\item
+  Show that horizontal composition of natural transformation satisfies
+  the naturality condition (hint: use components). It's a good exercise
+  in diagram chasing.
+\item
+  Write a short essay about how you may enjoy writing down the evident
+  diagrams needed to prove the interchange law.
+\item
+  Create a few test cases for the opposite naturality condition of
+  transformations between different \code{Op} functors. Here's one
+  choice:
+
+\begin{snip}{haskell}
+op :: Op Bool Int
+op = Op (\x -> x > 0)
+\end{snip}
+and
+
+\begin{snip}{haskell}
+f :: String -> Int
+f x = read x
+\end{snip}
+\end{enumerate}

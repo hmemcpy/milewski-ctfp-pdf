@@ -1,0 +1,1 @@
+newtype BiComp bf fu gu a b = BiComp (bf (fu a) (gu b))

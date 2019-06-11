@@ -1,0 +1,1 @@
+newtype State s a = State (s -> (a, s))

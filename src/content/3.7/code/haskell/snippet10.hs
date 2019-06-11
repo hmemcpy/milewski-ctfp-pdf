@@ -1,0 +1,1 @@
+extract (P e a) = a

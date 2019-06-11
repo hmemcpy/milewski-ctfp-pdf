@@ -1,0 +1,1 @@
+putStr :: String -> ()

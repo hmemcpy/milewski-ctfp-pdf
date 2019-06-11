@@ -1,0 +1,2 @@
+fInt :: Integer -> ()
+fInt _ = ()

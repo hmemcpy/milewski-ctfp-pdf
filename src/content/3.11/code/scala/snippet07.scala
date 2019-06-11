@@ -1,0 +1,1 @@
+type Exp[A, B] = Lan[(A, ?), I, B]

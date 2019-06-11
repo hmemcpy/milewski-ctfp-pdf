@@ -1,0 +1,722 @@
+% !TEX root = ../../ctfp-print.tex
+
+\lettrine[lhang=0.17]{A}{t the risk of sounding} like a broken record, I will say this about
+functors: A functor is a very simple but powerful idea. Category theory
+is just full of those simple but powerful ideas. A functor is a mapping
+between categories. Given two categories, $\cat{C}$ and $\cat{D}$, a functor $F$ maps
+objects in $\cat{C}$ to objects in $\cat{D}$ --- it's a function on objects. If $a$
+is an object in $\cat{C}$, we'll write its image in $\cat{D}$ as $F a$ (no
+parentheses). But a category is not just objects --- it's objects and
+morphisms that connect them. A functor also maps morphisms --- it's a
+function on morphisms. But it doesn't map morphisms willy-nilly --- it
+preserves connections. So if a morphism $f$ in $\cat{C}$ connects object
+$a$ to object $b$,
+\[f \Colon a \to b\]
+the image of $f$ in $\cat{D}$, $F f$, will connect the image of
+$a$ to the image of $b$:
+\[F f \Colon F a \to F b\]
+
+(This is a mixture of mathematical and Haskell notation that hopefully
+makes sense by now. I won't use parentheses when applying functors to
+objects or morphisms.)
+
+\begin{figure}[H]
+\centering\includegraphics[width=0.3\textwidth]{images/functor.jpg}
+\end{figure}
+
+\noindent
+As you can see, a
+functor preserves the structure of a category: what's connected in one
+category will be connected in the other category. But there's something
+more to the structure of a category: there's also the composition of
+morphisms. If $h$ is a composition of $f$ and $g$:
+\[h = g . f\]
+we want its image under $F$ to be a composition of the images of $f$
+and $g$:
+\[F h = F g~.~F f\]
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{images/functorcompos.jpg}
+\end{figure}
+
+\noindent
+Finally, we want all identity morphisms in $\cat{C}$ to be mapped to identity morphisms in
+$\cat{D}$:
+\[F \idarrow[a] = \idarrow[F a]\]
+
+\noindent
+Here, $\idarrow[a]$ is the identity at the object $a$,
+and $\idarrow[F a]$ the identity at $F a$.
+Note that these conditions make functors much more restrictive than regular functions.
+Functors must preserve the structure of a category. If you picture a
+category as a collection of objects held together by a network of
+morphisms, a functor is not allowed to introduce any tears into this
+fabric. It may smash objects together, it may glue multiple morphisms
+into one, but it may never break things apart. This no-tearing
+constraint is similar to the continuity condition you might know from
+calculus. In this sense functors are ``continuous'' (although there
+exists an even more restrictive notion of continuity for functors). Just
+like functions, functors may do both collapsing and embedding. The
+embedding aspect is more prominent when the source category is much
+smaller than the target category. In the extreme, the source can be the
+trivial singleton category --- a category with one object and one
+morphism (the identity). A functor from the singleton category to any
+other category simply selects an object in that category. This is fully
+analogous to the property of morphisms from singleton sets selecting
+elements in target sets. The maximally collapsing functor is called the
+constant functor $\Delta_c$. It maps every object in the source
+category to one selected object $c$ in the target category. It also
+maps every morphism in the source category to the identity morphism
+$\idarrow[c]$. It acts like a black hole, compacting
+everything into one singularity. We'll see more of this functor when we
+discuss limits and colimits.
+
+\section{Functors in Programming}
+
+Let's get down to earth and talk about programming. We have our category
+of types and functions. We can talk about functors that map this
+category into itself --- such functors are called endofunctors. So
+what's an endofunctor in the category of types? First of all, it maps
+types to types. We've seen examples of such mappings, maybe without
+realizing that they were just that. I'm talking about definitions of
+types that were parameterized by other types. Let's see a few examples.
+
+\subsection{The Maybe Functor}
+
+The definition of \code{Maybe} is a mapping from type \code{a} to
+type \code{Maybe a}:
+
+\src{snippet01}
+Here's an important subtlety: \code{Maybe} itself is not a type, it's
+a \emph{type constructor}. You have to give it a type argument, like
+\code{Int} or \code{Bool}, in order to turn it into a type.
+\code{Maybe} without any argument represents a function on types. But
+can we turn \code{Maybe} into a functor? (From now on, when I speak of
+functors in the context of programming, I will almost always mean
+endofunctors.) A functor is not only a mapping of objects (here, types)
+but also a mapping of morphisms (here, functions). For any function from
+\code{a} to \code{b}:
+
+\src{snippet02}
+we would like to produce a function from \code{Maybe a} to
+\code{Maybe b}. To define such a function, we'll have two cases to
+consider, corresponding to the two constructors of \code{Maybe}. The
+\code{Nothing} case is simple: we'll just return \code{Nothing}
+back. And if the argument is \code{Just}, we'll apply the function
+\code{f} to its contents. So the image of \code{f} under
+\code{Maybe} is the function:
+
+\src{snippet03}
+(By the way, in Haskell you can use apostrophes in variables names,
+which is very handy in cases like these.) In Haskell, we implement the
+morphism-mapping part of a functor as a higher order function called
+\code{fmap}. In the case of \code{Maybe}, it has the following
+signature:
+
+\src{snippet04}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{images/functormaybe.jpg}
+\end{figure}
+
+\noindent
+We often say
+that \code{fmap} \emph{lifts} a function. The lifted function acts on
+\code{Maybe} values. As usual, because of currying, this signature may
+be interpreted in two ways: as a function of one argument --- which
+itself is a function \code{(a -> b)} --- returning a
+function \code{(Maybe a -> Maybe b)}; or as a
+function of two arguments returning \code{Maybe b}:
+
+\src{snippet05}
+Based on our previous discussion, this is how we implement \code{fmap}
+for \code{Maybe}:
+
+\src{snippet06}
+To show that the type constructor \code{Maybe} together with the
+function \code{fmap} form a functor, we have to prove that
+\code{fmap} preserves identity and composition. These are called ``the
+functor laws,'' but they simply ensure the preservation of the structure
+of the category.
+
+\subsection{Equational Reasoning}
+
+To prove the functor laws, I will use \newterm{equational reasoning}, which
+is a common proof technique in Haskell. It takes advantage of the fact
+that Haskell functions are defined as equalities: the left hand side
+equals the right hand side. You can always substitute one for another,
+possibly renaming variables to avoid name conflicts. Think of this as
+either inlining a function, or the other way around, refactoring an
+expression into a function. Let's take the identity function as an
+example:
+
+\src{snippet07}
+If you see, for instance, \code{id y} in some expression, you can
+replace it with \code{y} (inlining). Further, if you see \code{id}
+applied to an expression, say \code{id (y + 2)}, you can replace it
+with the expression itself \code{(y + 2)}. And this substitution
+works both ways: you can replace any expression \code{e} with
+\code{id e} (refactoring). If a function is defined by pattern
+matching, you can use each sub-definition independently. For instance,
+given the above definition of \code{fmap} you can replace
+\code{fmap f Nothing} with \code{Nothing}, or the other way
+around. Let's see how this works in practice. Let's start with the
+preservation of identity:
+
+\src{snippet08}
+There are two cases to consider: \code{Nothing} and \code{Just}.
+Here's the first case (I'm using Haskell pseudo-code to transform the
+left hand side to the right hand side):
+
+\begin{snip}{haskell}
+  fmap id Nothing
+= { definition of fmap }
+  Nothing
+= { definition of id }
+  id Nothing
+\end{snip}
+Notice that in the last step I used the definition of \code{id}
+backwards. I replaced the expression \code{Nothing} with
+\code{id\ Nothing}. In practice, you carry out such proofs by
+``burning the candle at both ends,'' until you hit the same expression
+in the middle --- here it was \code{Nothing}. The second case is also
+easy:
+
+\begin{snip}{haskell}
+  fmap id (Just x)
+= { definition of fmap }
+  Just (id x)
+= { definition of id }
+  Just x
+= { definition of id }
+  id (Just x)
+\end{snip}
+Now, lets show that \code{fmap} preserves composition:
+
+\src{snippet09}
+First the \code{Nothing} case:
+
+\begin{snip}{haskell}
+  fmap (g . f) Nothing
+= { definition of fmap }
+  Nothing
+= { definition of fmap }
+  fmap g Nothing
+= { definition of fmap }
+  fmap g (fmap f Nothing)
+\end{snip}
+And then the \code{Just} case:
+
+\begin{snip}{haskell}
+  fmap (g . f) (Just x)
+= { definition of fmap }
+  Just ((g . f) x)
+= { definition of composition }
+  Just (g (f x))
+= { definition of fmap }
+  fmap g (Just (f x))
+= { definition of fmap }
+  fmap g (fmap f (Just x))
+= { definition of composition }
+  (fmap g . fmap f) (Just x)
+\end{snip}
+It's worth stressing that equational reasoning doesn't work for C++
+style ``functions'' with side effects. Consider this code:
+
+\begin{snip}{cpp}
+int square(int x) {
+    return x * x;
+}
+
+int counter() {
+    static int c = 0;
+    return c++;
+}
+
+double y = square(counter());
+\end{snip}
+Using equational reasoning, you would be able to inline \code{square}
+to get:
+
+\begin{snip}{cpp}
+double y = counter() * counter();
+\end{snip}
+This is definitely not a valid transformation, and it will not produce
+the same result. Despite that, the C++ compiler will try to use
+equational reasoning if you implement \code{square} as a macro, with
+disastrous results.
+
+\subsection{Optional}
+
+Functors are easily expressed in Haskell, but they can be defined in any
+language that supports generic programming and higher-order functions.
+Let's consider the C++ analog of \code{Maybe}, the template type
+\code{optional}. Here's a sketch of the implementation (the actual
+implementation is much more complex, dealing with various ways the
+argument may be passed, with copy semantics, and with the resource
+management issues characteristic of C++):
+
+\begin{snip}{cpp}
+template<class T>
+class optional { 
+    bool _isValid; // the tag
+    T _v;
+public:
+    optional()    : _isValid(false) {}        // Nothing
+    optional(T x) : _isValid(true) , _v(x) {} // Just
+    bool isValid() const { return _isValid; }
+    T val() const { return _v; } };
+\end{snip}
+This template provides one part of the definition of a functor: the
+mapping of types. It maps any type \code{T} to a new type
+\code{optional<T>}. Let's define its action on
+functions:
+
+\begin{snip}{cpp}
+template<class A, class B>
+std::function<optional<B>(optional<A>)>
+fmap(std::function<B(A)> f) { 
+    return [f](optional<A> opt) { 
+        if (!opt.isValid()) 
+            return optional<B>{};
+        else 
+            return optional<B>{ f(opt.val()) };
+    };
+}
+\end{snip}
+This is a higher order function, taking a function as an argument and
+returning a function. Here's the uncurried version of it:
+
+\begin{snip}{cpp}
+template<class A, class B>
+optional<B> fmap(std::function<B(A)> f, optional<A> opt) { 
+    if (!opt.isValid())
+        return optional<B>{};
+    else 
+        return optional<B>{ f(opt.val()) };
+}
+\end{snip}
+There is also an option of making \code{fmap} a template method of
+\code{optional}. This embarrassment of choices makes abstracting the
+functor pattern in C++ a problem. Should functor be an interface to
+inherit from (unfortunately, you can't have template virtual functions)?
+Should it be a curried or an uncurried free template function? Can the
+C++ compiler correctly infer the missing types, or should they be
+specified explicitly? Consider a situation where the input function
+\code{f} takes an \code{int} to a \code{bool}. How will the
+compiler figure out the type of \code{g}:
+
+\begin{snip}{cpp}
+auto g = fmap(f);
+\end{snip}
+especially if, in the future, there are multiple functors overloading
+\code{fmap}? (We'll see more functors soon.)
+
+\subsection{Typeclasses}
+
+So how does Haskell deal with abstracting the functor? It uses the
+typeclass mechanism. A typeclass defines a family of types that support
+a common interface. For instance, the class of objects that support
+equality is defined as follows:
+
+\src{snippet10}
+This definition states that type \code{a} is of the class \code{Eq}
+if it supports the operator \code{(==)} that takes two arguments of
+type \code{a} and returns a \code{Bool}. If you want to tell Haskell
+that a particular type is \code{Eq}, you have to declare it an
+\newterm{instance} of this class and provide the implementation of
+\code{(==)}. For example, given the definition of a 2D \code{Point}
+(a product type of two \code{Float}s):
+
+\src{snippet11}
+you can define the equality of points:
+
+\src{snippet12}
+Here I used the operator \code{(==)} (the one I'm defining) in the
+infix position between the two patterns \code{(Pt x y)} and
+\code{(Pt x' y')}. The body of the function follows the
+single equal sign. Once \code{Point} is declared an instance of
+\code{Eq}, you can directly compare points for equality. Notice that,
+unlike in C++ or Java, you don't have to specify the \code{Eq} class
+(or interface) when defining \code{Point} --- you can do it later in
+client code. Typeclasses are also Haskell's only mechanism for
+overloading functions (and operators). We will need that for overloading
+\code{fmap} for different functors. There is one complication, though:
+a functor is not defined as a type but as a mapping of types, a type
+constructor. We need a typeclass that's not a family of types, as was
+the case with \code{Eq}, but a family of type constructors.
+Fortunately a Haskell typeclass works with type constructors as well as
+with types. So here's the definition of the \code{Functor} class:
+
+\src{snippet13}
+It stipulates that \code{f} is a \code{Functor} if there exists a
+function \code{fmap} with the specified type signature. The lowercase
+\code{f} is a type variable, similar to type variables \code{a} and
+\code{b}. The compiler, however, is able to deduce that it represents
+a type constructor rather than a type by looking at its usage: acting on
+other types, as in \code{f a} and \code{f b}. Accordingly, when
+declaring an instance of \code{Functor}, you have to give it a type
+constructor, as is the case with \code{Maybe}:
+
+\src{snippet14}
+By the way, the \code{Functor} class, as well as its instance
+definitions for a lot of simple data types, including \code{Maybe},
+are part of the standard Prelude library.
+
+\subsection{Functor in C++}
+
+Can we try the same approach in C++? A type constructor corresponds to a
+template class, like \code{optional}, so by analogy, we would
+parameterize \code{fmap} with a \newterm{template template parameter}
+\code{F}. This is the syntax for it:
+
+\begin{snip}{cpp}
+template<template<class> F, class A, class B>
+F<B> fmap(std::function<B(A)>, F<A>);
+\end{snip}
+We would like to be able to specialize this template for different
+functors. Unfortunately, there is a prohibition against partial
+specialization of template functions in C++. You can't write:
+
+\begin{snip}{cpp}
+template<class A, class B>
+optional<B> fmap<optional>(std::function<B(A)> f, optional<A> opt)
+\end{snip}
+Instead, we have to fall back on function overloading, which brings us
+back to the original definition of the uncurried \code{fmap}:
+
+\begin{snip}{cpp}
+template<class A, class B>
+optional<B> fmap(std::function<B(A)> f, optional<A> opt) { 
+    if (!opt.isValid()) 
+        return optional<B>{}; 
+    else
+        return optional<B>{ f(opt.val()) };
+}
+\end{snip}
+This definition works, but only because the second argument of
+\code{fmap} selects the overload. It totally ignores the more generic
+definition of \code{fmap}.
+
+\subsection{The List Functor}
+
+To get some intuition as to the role of functors in programming, we need
+to look at more examples. Any type that is parameterized by another type
+is a candidate for a functor. Generic containers are parameterized by
+the type of the elements they store, so let's look at a very simple
+container, the list:
+
+\src{snippet15}
+We have the type constructor \code{List}, which is a mapping from any
+type \code{a} to the type \code{List a}. To show that \code{List}
+is a functor we have to define the lifting of functions: Given a
+function \code{a -> b} define a function
+\code{List a -> List b}:
+
+\src{snippet16}
+A function acting on \code{List a} must consider two cases
+corresponding to the two list constructors. The \code{Nil} case is
+trivial --- just return \code{Nil} --- there isn't much you can do
+with an empty list. The \code{Cons} case is a bit tricky, because it
+involves recursion. So let's step back for a moment and consider what we
+are trying to do. We have a list of \code{a}, a function \code{f}
+that turns \code{a} to \code{b}, and we want to generate a list of
+\code{b}. The obvious thing is to use \code{f} to turn each element
+of the list from \code{a} to \code{b}. How do we do this in
+practice, given that a (non-empty) list is defined as the \code{Cons}
+of a head and a tail? We apply \code{f} to the head and apply the
+lifted (\code{fmap}ped) \code{f} to the tail. This is a recursive
+definition, because we are defining lifted \code{f} in terms of lifted
+\code{f}:
+
+\src{snippet17}
+Notice that, on the right hand side, \code{fmap f} is applied to a
+list that's shorter than the list for which we are defining it --- it's
+applied to its tail. We recurse towards shorter and shorter lists, so we
+are bound to eventually reach the empty list, or \code{Nil}. But as
+we've decided earlier, \code{fmap f} acting on \code{Nil} returns
+\code{Nil}, thus terminating the recursion. To get the final result,
+we combine the new head \code{(f x)} with the new tail
+\code{(fmap f t)} using the \code{Cons} constructor. Putting it
+all together, here's the instance declaration for the list functor:
+
+\src{snippet18}
+If you are more comfortable with C++, consider the case of a
+\code{std::vector}, which could be considered the most generic C++
+container. The implementation of \code{fmap} for \code{std::vector}
+is just a thin encapsulation of \code{std::transform}:
+
+\begin{snip}{cpp}
+template<class A, class B>
+std::vector<B> fmap(std::function<B(A)> f, std::vector<A> v) {
+    std::vector<B> w;
+    std::transform( std::begin(v)
+                  , std::end(v)
+                  , std::back_inserter(w)
+                  , f); 
+    return w;
+}
+\end{snip}
+We can use it, for instance, to square the elements of a sequence of
+numbers:
+
+\begin{snip}{cpp}
+std::vector<int> v{ 1, 2, 3, 4 };
+auto w = fmap([](int i) { return i*i; }, v);
+std::copy( std::begin(w)
+         , std::end(w)
+         , std::ostream_iterator(std::cout, ", "));
+\end{snip}
+Most C++ containers are functors by virtue of implementing iterators
+that can be passed to \code{std::transform}, which is the more
+primitive cousin of \code{fmap}. Unfortunately, the simplicity of a
+functor is lost under the usual clutter of iterators and temporaries
+(see the implementation of \code{fmap} above). I'm happy to say that
+the new proposed C++ range library makes the functorial nature of ranges
+much more pronounced.
+
+\subsection{The Reader Functor}
+
+Now that you might have developed some intuitions --- for instance,
+functors being some kind of containers --- let me show you an example
+which at first sight looks very different. Consider a mapping of type
+\code{a} to the type of a function returning \code{a}. We haven't
+really talked about function types in depth --- the full categorical
+treatment is coming --- but we have some understanding of those as
+programmers. In Haskell, a function type is constructed using the arrow
+type constructor \code{(->)} which takes two types: the
+argument type and the result type. You've already seen it in infix form,
+\code{a -> b}, but it can equally well be used in prefix
+form, when parenthesized:
+
+\src{snippet19}
+Just like with regular functions, type functions of more than one
+argument can be partially applied. So when we provide just one type
+argument to the arrow, it still expects another one. That's why:
+
+\src{snippet20}
+is a type constructor. It needs one more type \code{b} to produce a
+complete type \code{a -> b}. As it stands, it defines a
+whole family of type constructors parameterized by \code{a}. Let's see
+if this is also a family of functors. Dealing with two type parameters
+can get a bit confusing, so let's do some renaming. Let's call the
+argument type \code{r} and the result type \code{a}, in line with
+our previous functor definitions. So our type constructor takes any type
+\code{a} and maps it into the type \code{r -> a}. To show
+that it's a functor, we want to lift a function
+\code{a -> b} to a function that takes
+\code{r -> a} and returns \code{r -> b}. These
+are the types that are formed using the type constructor
+\code{(->) r} acting on, respectively, \code{a} and
+\code{b}. Here's the type signature of \code{fmap} applied to this
+case:
+
+\src{snippet21}
+We have to solve the following puzzle: given a function
+\code{f :: a -> b} and a function
+\code{g :: r -> a}, create a function
+\code{r -> b}. There is only one way we can compose the two
+functions, and the result is exactly what we need. So here's the
+implementation of our \code{fmap}:
+
+\src{snippet22}
+It just works! If you like terse notation, this definition can be
+reduced further by noticing that composition can be rewritten in prefix
+form:
+
+\src{snippet23}
+and the arguments can be omitted to yield a direct equality of two
+functions:
+
+\src{snippet24}
+This combination of the type constructor \code{(->) r}
+with the above implementation of \code{fmap} is called the reader
+functor.
+
+\section{Functors as Containers}
+
+We've seen some examples of functors in programming languages that
+define general-purpose containers, or at least objects that contain some
+value of the type they are parameterized over. The reader functor seems
+to be an outlier, because we don't think of functions as data. But we've
+seen that pure functions can be memoized, and function execution can be
+turned into table lookup. Tables are data. Conversely, because of
+Haskell's laziness, a traditional container, like a list, may actually
+be implemented as a function. Consider, for instance, an infinite list
+of natural numbers, which can be compactly defined as:
+
+\src{snippet25}
+In the first line, a pair of square brackets is Haskell's built-in
+type constructor for lists. In the second line, square brackets are used
+to create a list literal. Obviously, an infinite list like this cannot
+be stored in memory. The compiler implements it as a function that
+generates \code{Integer}s on demand. Haskell effectively blurs the
+distinction between data and code. A list could be considered a
+function, and a function could be considered a table that maps arguments
+to results. The latter can even be practical if the domain of the
+function is finite and not too large. It would not be practical,
+however, to implement \code{strlen} as table lookup, because there are
+infinitely many different strings. As programmers, we don't like
+infinities, but in category theory you learn to eat infinities for
+breakfast. Whether it's a set of all strings or a collection of all
+possible states of the Universe, past, present, and future --- we can
+deal with it! So I like to think of the functor object (an object of the
+type generated by an endofunctor) as containing a value or values of the
+type over which it is parameterized, even if these values are not
+physically present there. One example of a functor is a C++
+\code{std::future}, which may at some point contain a value, but it's
+not guaranteed it will; and if you want to access it, you may block
+waiting for another thread to finish execution. Another example is a
+Haskell \code{IO} object, which may contain user input, or the future
+versions of our Universe with ``Hello World!'' displayed on the monitor.
+According to this interpretation, a functor object is something that may
+contain a value or values of the type it's parameterized upon. Or it may
+contain a recipe for generating those values. We are not at all
+concerned about being able to access the values --- that's totally
+optional, and outside of the scope of the functor. All we are interested
+in is to be able to manipulate those values using functions. If the
+values can be accessed, then we should be able to see the results of
+this manipulation. If they can't, then all we care about is that the
+manipulations compose correctly and that the manipulation with an
+identity function doesn't change anything. Just to show you how much we
+don't care about being able to access the values inside a functor
+object, here's a type constructor that ignores completely its argument
+\code{a}:
+
+\src{snippet26}
+The \code{Const} type constructor takes two types, \code{c} and
+\code{a}. Just like we did with the arrow constructor, we are going to
+partially apply it to create a functor. The data constructor (also
+called \code{Const}) takes just one value of type \code{c}. It has
+no dependence on \code{a}. The type of \code{fmap} for this type
+constructor is:
+
+\src{snippet27}
+Because the functor ignores its type argument, the implementation of
+\code{fmap} is free to ignore its function argument --- the function
+has nothing to act upon:
+
+\src{snippet28}
+This might be a little clearer in C++ (I never thought I would utter
+those words!), where there is a stronger distinction between type
+arguments --- which are compile-time --- and values, which are run-time:
+
+\begin{snip}{cpp}
+template<class C, class A>
+struct Const { 
+    Const(C v) : _v(v) {}
+    C _v;
+};
+\end{snip}
+The C++ implementation of \code{fmap} also ignores the function
+argument and essentially re-casts the \code{Const} argument without
+changing its value:
+
+\begin{snip}{cpp}
+template<class C, class A, class B>
+Const<C, B> fmap(std::function<B(A)> f, Const<C, A> c) {
+    return Const<C, B>{c._v};
+}
+\end{snip}
+Despite its weirdness, the \code{Const} functor plays an important
+role in many constructions. In category theory, it's a special case of
+the $\Delta_c$ functor I mentioned earlier --- the endo-functor
+case of a black hole. We'll be seeing more of it in the future.
+
+\section{Functor Composition}
+
+It's not hard to convince yourself that functors between categories
+compose, just like functions between sets compose. A composition of two
+functors, when acting on objects, is just the composition of their
+respective object mappings; and similarly when acting on morphisms.
+After jumping through two functors, identity morphisms end up as
+identity morphisms, and compositions of morphisms finish up as
+compositions of morphisms. There's really nothing much to it. In
+particular, it's easy to compose endofunctors. Remember the function
+\code{maybeTail}? I'll rewrite it using Haskell's built in
+implementation of lists:
+
+\src{snippet29}
+(The empty list constructor that we used to call \code{Nil} is
+replaced with the empty pair of square brackets \code{{[}{]}}. The
+\code{Cons} constructor is replaced with the infix operator \code{:}
+(colon).) The result of \code{maybeTail} is of a type that's a
+composition of two functors, \code{Maybe} and \code{{[}{]}}, acting
+on \code{a}. Each of these functors is equipped with its own version
+of \code{fmap}, but what if we want to apply some function \code{f}
+to the contents of the composite: a \code{Maybe} list? We have to
+break through two layers of functors. We can use \code{fmap} to break
+through the outer \code{Maybe}. But we can't just send \code{f}
+inside \code{Maybe} because \code{f} doesn't work on lists. We have
+to send \code{(fmap f)} to operate on the inner list. For instance,
+let's see how we can square the elements of a \code{Maybe} list of
+integers:
+
+\src{snippet30}
+The compiler, after analyzing the types, will figure out that, for the
+outer \code{fmap}, it should use the implementation from the
+\code{Maybe} instance, and for the inner one, the list functor
+implementation. It may not be immediately obvious that the above code
+may be rewritten as:
+
+\src{snippet31}
+But remember that \code{fmap} may be considered a function of just one
+argument:
+
+\src{snippet32}
+In our case, the second \code{fmap} in \code{(fmap . fmap)} takes
+as its argument:
+
+\src{snippet33}
+and returns a function of the type:
+
+\src{snippet34}
+The first \code{fmap} then takes that function and returns a function:
+
+\src{snippet35}
+Finally, that function is applied to \code{mis}. So the composition of
+two functors is a functor whose \code{fmap} is the composition of the
+corresponding \code{fmap}s. Going back to category theory: It's pretty
+obvious that functor composition is associative (the mapping of objects
+is associative, and the mapping of morphisms is associative). And there
+is also a trivial identity functor in every category: it maps every
+object to itself, and every morphism to itself. So functors have all the
+same properties as morphisms in some category. But what category would
+that be? It would have to be a category in which objects are categories
+and morphisms are functors. It's a category of categories. But a
+category of \emph{all} categories would have to include itself, and we
+would get into the same kinds of paradoxes that made the set of all sets
+impossible. There is, however, a category of all \emph{small} categories
+called $\Cat$ (which is big, so it can't be a member of itself). A
+small category is one in which objects form a set, as opposed to
+something larger than a set. Mind you, in category theory, even an
+infinite uncountable set is considered ``small.'' I thought I'd mention
+these things because I find it pretty amazing that we can recognize the
+same structures repeating themselves at many levels of abstraction.
+We'll see later that functors form categories as well.
+
+\section{Challenges}
+
+\begin{enumerate}
+\tightlist
+\item
+  Can we turn the \code{Maybe} type constructor into a functor by
+  defining:
+
+\begin{snip}{haskell}
+fmap _ _ = Nothing
+\end{snip}
+
+  which ignores both of its arguments? (Hint: Check the functor laws.)
+\item
+  Prove functor laws for the reader functor. Hint: it's really simple.
+\item
+  Implement the reader functor in your second favorite language (the
+  first being Haskell, of course).
+\item
+  Prove the functor laws for the list functor. Assume that the laws are
+  true for the tail part of the list you're applying it to (in other
+  words, use \emph{induction}).
+\end{enumerate}

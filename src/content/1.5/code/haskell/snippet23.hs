@@ -1,0 +1,1 @@
+data Contact = PhoneNum Int | EmailAddr String

@@ -1,0 +1,1 @@
+fmap f g = (.) f g

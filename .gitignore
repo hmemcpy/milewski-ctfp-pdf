@@ -1,5 +1,11 @@
+.vscode/
 *.fls
 _minted*
 *.fdb_latexmk
-category-theory-for-programmers.pdf
-.vscode/
+out/*
+*.pdf
+*.xdv
+*.gz
+src/version.tex
+*.pyg
+*.synctex(busy)

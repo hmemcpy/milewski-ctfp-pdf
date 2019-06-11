@@ -1,0 +1,1 @@
+alpha :: forall a . F a -> G a

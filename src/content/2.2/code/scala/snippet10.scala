@@ -1,0 +1,1 @@
+def p1 : Unit => (Double, Double) = _ => (0, 0)

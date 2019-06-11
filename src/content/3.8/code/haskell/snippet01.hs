@@ -1,0 +1,1 @@
+type Algebra f a = f a -> a

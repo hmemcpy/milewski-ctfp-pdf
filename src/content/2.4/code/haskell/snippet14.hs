@@ -1,0 +1,1 @@
+data Stream x = Cons x (Stream x)

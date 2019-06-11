@@ -1,0 +1,1 @@
+f :: Bool -> Bool

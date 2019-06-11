@@ -1,0 +1,1 @@
+data DiagSum p = forall a. DiagSum (p a a)

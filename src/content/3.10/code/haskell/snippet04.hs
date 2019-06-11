@@ -1,0 +1,1 @@
+dimap id f . alpha = dimap f id . alpha

@@ -1,0 +1,1 @@
+alpha(h) == fmap(h)(fa)

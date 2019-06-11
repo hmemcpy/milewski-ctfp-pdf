@@ -1,0 +1,1 @@
+def >=>[A, B, C](m1: A => Writer[B], m2: B => Writer[C]): A => Writer[C]

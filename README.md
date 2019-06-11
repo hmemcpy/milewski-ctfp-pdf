@@ -1,13 +1,18 @@
-Category Theory for Programmers [![Build Status](https://travis-ci.org/hmemcpy/milewski-ctfp-pdf.svg?branch=master)](https://travis-ci.org/hmemcpy/milewski-ctfp-pdf)
+Category Theory for Programmers
 ====
+![image](https://user-images.githubusercontent.com/601206/43392303-f770d7be-93fb-11e8-8db8-b7e915b435ba.png)
+<b>Direct link: [category-theory-for-programmers.pdf](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/download/v1.2.1/category-theory-for-programmers.pdf)</b>  
+(Latest release: v1.2.1, March 2019. See [releases](https://github.com/hmemcpy/milewski-ctfp-pdf/releases) for additional formats and languages.)
 
-<img src="https://user-images.githubusercontent.com/601206/31094980-ba6af4a4-a7bf-11e7-8857-870346890b44.png"
- alt="Category Theory for Programmers" width=256 align="right" />
+[![Build Status](https://travis-ci.org/hmemcpy/milewski-ctfp-pdf.svg?branch=master)](https://travis-ci.org/hmemcpy/milewski-ctfp-pdf)  
+[(latest CI build)](https://s3.amazonaws.com/milewski-ctfp-pdf/category-theory-for-programmers.pdf)
 
-<b>Direct link: [category-theory-for-programmers.pdf](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/download/v0.7.0/category-theory-for-programmers.pdf)</b>  
-(Latest release: v0.7.0, April 2018)
+<img src="https://user-images.githubusercontent.com/601206/47271389-8eea0900-d581-11e8-8e81-5b932e336336.png"
+ alt="Buy Category Theory for Programmers" width=410 />  
+**[Purchase now in full-color hardcover print on blurb.com](http://www.blurb.com/b/9008339-category-theory-for-programmers)**  
+Publish date: 21 October, 2018. Based off release tag [v1.0.0](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/tag/v1.0.0). See [errata](errata.md) for changes and fixes since print.
 
-This is an *unofficial* PDF version of "Category Theory for Programmers" by Bartosz Milewski, converted from his [blogpost series](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/).
+This is an *unofficial* PDF version of "Category Theory for Programmers" by Bartosz Milewski, converted from his [blogpost series](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/) (with permission!)
 
 ---
 
@@ -18,7 +23,7 @@ Please [report](https://github.com/hmemcpy/milewski-ctfp-pdf/issues) any formatt
 Building
 --------
 
-*For macOS Users:* The Inconsolata LGC, Linux Libertine, and Libertinus Math fonts are not included in MacTex. You need to install them separately. Download the Inconsolata LGC fonts [here](https://github.com/MihailJP/Inconsolata-LGC/downloads), the Linux Libertine fonts [here](http://sourceforge.net/projects/linuxlibertine/files/linuxlibertine/5.3.0/LinLibertineOTF_5.3.0_2012_07_02.tgz/download), and the Libertinus Math font [here](https://fontlibrary.org/en/font/libertinus-math). To install the fonts system-wide, move all the downloaded `.otf` files into the `/Library/Fonts` folder. After completing these tasks, continue with the instructions below.
+Chances for successful compilation are increased if you have almost complete installation of recent [TeX Live 2017](https://www.tug.org/texlive/) distribution (the PDF here is compiled with 2017 release). The needed OpenType fonts must be installed in the operating system. In addition, [pygments](http://pygments.org/) for Python must be installed as well.
 
 The `src` directory contains the LaTeX sources. To recompile the book, go there and enter:
 
@@ -26,23 +31,9 @@ The `src` directory contains the LaTeX sources. To recompile the book, go there 
 $ make
 ```
 
+Upon successful compilation, the files will be placed in the `out` directory next to `src`. 
+
 The file `preamble.tex` contains all the configuration and style declarations.
-
-Chances for successful compilation are increased if you have almost complete installation of recent [TeX Live](https://www.tug.org/texlive/) distribution (the PDF here is compiled with 2017 release). The needed OpenType fonts must be installed in the operating system.
-
-To remove all the generated PDFs and auxiliary files in the whole `src` tree:
-
-```bash
-$ make clean-all
-```
-
-**Tip**: you can use a utility like [entr](http://entrproject.org/) to run a command after any `*.tex` file changes, e.g.:
-
-```bash
-$ ls **/*.tex | entr make
-```
-
-This will monitor all the `*.tex` files for changes, and will execute the `make` command if any of them changes. This speeds up development significantly, as you can freely modify any of the files, and get almost instant feedback!
 
 Acknowledgements
 ----------------
@@ -56,9 +47,12 @@ Thanks to the following people for contributing corrections/conversions and misc
 * Jared Weakly
 * Paolo G. Giarrusso
 * Adi Shavit
-* Mico from the TeX.StackExchange community
+* Mico Loretan
 * Marcello Seri
 * Erwin Maruli Tua Pakpahan
+* Markus Hauck
+* Yevheniy Zelenskyy
+* Ross Kirsling
 * ...and many others!
 
 Note from Bartosz: I really appreciate all your contributions. You made this book much better than I could have imagined. Thank you!

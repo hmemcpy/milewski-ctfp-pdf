@@ -1,0 +1,1 @@
+val f: Either[Int, Double] => String

@@ -1,0 +1,1 @@
+case class Stream[E](h: E, t: Stream[E])

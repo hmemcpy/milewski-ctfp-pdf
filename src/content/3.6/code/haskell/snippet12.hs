@@ -1,0 +1,1 @@
+mu . bimap id mu . alpha = mu . bimap mu id

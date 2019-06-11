@@ -1,0 +1,1 @@
+def get: State[S, S] = State(s => (s, s))

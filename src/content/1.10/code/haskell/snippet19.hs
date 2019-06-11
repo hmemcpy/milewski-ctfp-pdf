@@ -1,0 +1,1 @@
+dumb (Reader _) = Nothing

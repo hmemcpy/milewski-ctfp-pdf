@@ -1,0 +1,1 @@
+newtype Op r a = Op (a -> r)

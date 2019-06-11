@@ -1,0 +1,1 @@
+data NatF a = ZeroF | SuccF a

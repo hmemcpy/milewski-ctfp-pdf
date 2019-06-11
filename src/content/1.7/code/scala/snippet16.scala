@@ -1,0 +1,1 @@
+def fmap[A, B](f: A => B): (List[A] => List[B])

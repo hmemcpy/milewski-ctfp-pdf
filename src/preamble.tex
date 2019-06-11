@@ -1,37 +1,49 @@
-% !TEX TS-program = xelatex
-% !TEX encoding = UTF-8 Unicode
+\documentclass[\OPTmodes]{book}
 
-\documentclass[11pt,twoside]{book}
+\usepackage[papersize={\OPTpagesize},
+            top=\OPTtopmargin,
+            bottom=\OPTbottommargin,
+            inner=\OPTinnermargin,
+            outer=\OPToutermargin,
+            bindingoffset=\OPTbindingoffset,
+            centering,
+            ]{geometry}
 
 % New line height: 1.05 * 1.2 = 1.26
 \renewcommand{\baselinestretch}{1.05}
 
 % Font settings
-\usepackage{minted} %---------------------------------------%  Note:
+%--------------------------------------------------------------%  Note:
 \usepackage[no-math]{fontspec}                                 %  This exact order
-\defaultfontfeatures{%                                         %  of declarations
-  Scale=MatchLowercase, % needed here ...                      %  is important for
-}                                                              %  single quotes not
-\setmonofont[BoldFont={Inconsolata LGC Bold}]{Inconsolata LGC} %  to turn out curly
-                                                               %  ("typographic")
-\defaultfontfeatures{%                                         %  in verbatim blocks
-  Scale=MatchLowercase, % ... and here again                   %  of Haskell code.
-  Mapping=tex-text,                                            %  Now the quote is
-  SmallCapsFeatures={LetterSpace=2.5,WordSpace=1.05},          %  upright and safely
-}                                                              %  copy-pasteable to
-\setmainfont{Linux Libertine O}                                %  the REPL without
-\setsansfont{Linux Biolinum O} %-------------------------------%  giving errors.
+\usepackage{libertine}                                         %  of declarations
+\defaultfontfeatures{%                                         %  is important for
+  Scale=MatchLowercase, % needed here ...                      %  single quotes not
+}                                                              %  to turn out curly
+\setmonofont[BoldFont={Inconsolata LGC Bold}]{Inconsolata LGC} %  ("typographic")
+                                                               %  in verbatim blocks
+\defaultfontfeatures{%                                         %  of Haskell code.
+  Scale=MatchLowercase, % ... and here again                   %  Now the quote is
+  Mapping=tex-text,                                            %  upright and safely
+  SmallCapsFeatures={LetterSpace=2.5,WordSpace=1.05},          %  copy-pasteable to
+}                                                              %  the REPL without
+%--------------------------------------------------------------%  giving errors.
 
 % To use Libertine letters and numbers,
 % but tx-style operators in math environment:
 \usepackage[libertine]{newtxmath}
 \usepackage{amsmath}
 % Needed to display additional math unicode symbols (like double-colon)
+
+% https://github.com/wspr/unicode-math/issues/469
+\expandafter\let\csname not=\endcsname\relax
+\expandafter\let\csname not<\endcsname\relax
+\expandafter\let\csname not>\endcsname\relax
 \usepackage{unicode-math}
 \setmathfont{Libertinus Math}
 
 \usepackage[all]{nowidow}
 \usepackage{emptypage}
+\usepackage{noindentafter}
 
 % So that file names with multiple dots don't confuse
 % graphicx package when using \includegraphics command:
@@ -40,6 +52,7 @@
 \usepackage{caption, wrapfig, framed, subfigure}
 \usepackage[export]{adjustbox}
 \captionsetup{labelformat=empty,font=scriptsize}
+\usepackage{titlecaps}
 
 \usepackage[usenames,dvipsnames,x11names]{xcolor}
 \usepackage{longtable}
@@ -56,9 +69,15 @@
 
 % Use tikz-cd for commutative diagrams
 \usepackage{tikz-cd}
+\usepackage[framemethod=TikZ]{mdframed}
 
+\usepackage{ifthen}
 \usepackage{fancyvrb}
 \fvset{fontsize=\small}
+
+\usepackage{minted}
+\setminted[text]{fontsize=\small,breaklines}
+\usemintedstyle{github}
 
 \usepackage{imakeidx}
 \usepackage[totoc,font=footnotesize]{idxlayout}
@@ -66,20 +85,11 @@
 \pagestyle{plain}
 \usepackage[final]{pdfpages} % inserts pages from a pdf file
 
-% Page geometry for 10-inch tablets:
-\usepackage[papersize={148mm,197mm},
-            top=21mm,
-            textwidth=111mm,  % increase one or both of these by 1mm or so to
-            textheight=148mm, % make the source compile with TeX Live 2013
-            hcentering,       % if you get "Too many unprocessed floats" error
-]{geometry}
-
 \usepackage{titlesec}  % to change the appearance of section titles
 \usepackage{listings}  % for syntax highlighted code listings
-\usepackage{verbatim}  % for simple verbatim and comment environments
 \usepackage{enumerate} % allows customized labels in enumerations
 \usepackage{enumitem}  % allows nested enumeration with numbers
-\usepackage{hyperref}  % makes cross references and URLs clickable
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}  % makes cross references and URLs clickable
 \definecolor{LinkRed}{HTML}{80171F}
 \hypersetup{
   pdfauthor={Bartosz Milewski},
@@ -89,14 +99,21 @@
   linkcolor=LinkRed,
   urlcolor=LinkRed,
 }
+\usepackage{afterpage}
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
 \usepackage{subfiles}
 \makeatletter
 \let\org@subfile\subfile
 \renewcommand*{\subfile}[1]{%
-  \filename@parse{#1}% LaTeX's file name parser
+  \filename@parse{#1}
   \expandafter
-  \graphicspath\expandafter{\expandafter{\filename@area}}%
-  \org@subfile{"#1"}%
+  \graphicspath\expandafter{\expandafter{\filename@area}}
+  \org@subfile{#1}%
 }
 \makeatother
 
@@ -119,9 +136,62 @@
 \renewcommand{\partname}{}
 \renewcommand{\thepart}{}
 
-\usemintedstyle{bw}
-\newminted{cpp}{}
-\newminted{haskell}{}
+\usepackage{xparse}
+\usepackage[abspath]{currfile}
+
+\newenvironment{snip}[2][]
+  {\VerbatimEnvironment
+  \mdfsetup{
+    linecolor=gray!20,
+    linewidth=2pt,
+    topline=false,
+    bottomline=false,
+    rightline=false
+  }
+  \begin{mdframed}\begin{minted}[#1]{#2}}
+ {\end{minted}\end{mdframed}
+ \vspace{-1ex}}
+
+ \newenvironment{snipv}
+ {\VerbatimEnvironment
+ \mdfsetup{
+   linecolor=gray!20,
+   linewidth=2pt,
+   topline=false,
+   bottomline=false,
+   rightline=false
+ }
+ \begin{mdframed}\begin{Verbatim}[commandchars=\\\{\}]}
+{\end{Verbatim}\end{mdframed}
+\vspace{-1ex}}
+
+\NewDocumentCommand\src{mO{}}{
+  \srcsnippet{\currfileabsdir/code/haskell/#1.hs}{blue}{haskell}{#2}
+  \ifdefined\OPTCustomLanguage{%
+    \unskip
+    \srcsnippet{\currfileabsdir/code/\OPTCustomLanguage/#1.\OPTCustomLanguageExt}{\OPTCustomLanguageColor}{\OPTCustomLanguage}{#2}
+  }
+  \fi
+  \NoIndentAfterThis
+}
+\NewDocumentCommand\srcsnippet{mmmm}{
+  \newif\ifbreak
+  \def\snippet{#1}
+  \mdfsetup{%
+    linecolor=#2!20,%
+    linewidth=2pt,
+    topline=false,
+    bottomline=false,
+    rightline=false,
+  }
+  \def\x{#4}
+  \ifthenelse{\equal{\x}{b}}{\breaktrue}{\breakfalse}
+  \begin{mdframed}
+    \ifbreak \inputminted[autogobble,breaklines]{#3}{\snippet}
+    \else \inputminted[autogobble]{#3}{\snippet}
+    \fi
+  \end{mdframed}
+}
 
 \newcommand{\acronym}[1]{\textsc{\fontspec[Numbers={OldStyle}]{Linux Libertine O}\MakeLowercase{#1}}}
 \newcommand{\newterm}[1]{\index{#1}\emph{#1}}
@@ -132,6 +202,18 @@
 \newcommand{\mathtext}[1]{\ensuremath{\pmb{#1}}}
 \newcommand{\urlref}[2]{\href{#1}{#2}\urlfootnote{#1}}
 
+% https://tex.stackexchange.com/questions/219445/line-break-in-texttt/219497
+\renewcommand{\code}[1]{%
+  \begingroup
+  \ttfamily
+  \begingroup\lccode`~=`/\lowercase{\endgroup\def~}{/\discretionary{}{}{}}%
+  \begingroup\lccode`~=`[\lowercase{\endgroup\def~}{[\discretionary{}{}{}}%
+  \begingroup\lccode`~=`.\lowercase{\endgroup\def~}{.\discretionary{}{}{}}%
+  \catcode`/=\active\catcode`[=\active\catcode`.=\active
+  \scantokens{#1\noexpand}%
+  \endgroup
+}
+
 \makeatletter
 \newcommand\urlfootnote@[1]{\footnote{\url@{#1}}}
 \DeclareRobustCommand{\urlfootnote}{\hyper@normalise\urlfootnote@}
@@ -141,7 +223,7 @@
   {\color{Dark}\normalfont\sffamily\bfseries\LARGE}
   {\filright \color{ChapterViolet}\sffamily\mdseries
     \fontsize{6em}{0em}\selectfont
-    \oldstylenums{\thechapter}}
+    {\addfontfeature{Numbers=OldStyle}\thechapter}}
   {1em}
   {\filright}
 
@@ -160,9 +242,11 @@
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 
+\sloppy
 \frenchspacing
 \makeindex
 
+% reduce space between items in a list
 \providecommand{\tightlist}{%
 \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 

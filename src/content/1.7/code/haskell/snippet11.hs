@@ -1,0 +1,1 @@
+data Point = Pt Float Float

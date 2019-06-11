@@ -1,0 +1,1 @@
+coalg (set a s) = Store (set a) s

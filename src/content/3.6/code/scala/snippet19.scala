@@ -1,0 +1,1 @@
+case class Prod[S, A](run: (A, S))

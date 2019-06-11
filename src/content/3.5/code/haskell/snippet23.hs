@@ -1,0 +1,1 @@
+data Cont r a = Cont ((a -> r) -> r)

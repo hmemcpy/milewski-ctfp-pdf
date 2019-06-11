@@ -1,0 +1,1 @@
+val h = g compose f
