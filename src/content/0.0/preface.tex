@@ -1,105 +1,65 @@
 % !TEX root = ../../ctfp-print.tex
 
 \begin{quote}
-For some time now I've been floating the idea of writing a book about
-category theory that would be targeted at programmers. Mind you, not
-computer scientists but programmers --- engineers rather than
-scientists. I know this sounds crazy and I am properly scared. I can't
-deny that there is a huge gap between science and engineering because I
-have worked on both sides of the divide. But I've always felt a very
-strong compulsion to explain things. I have tremendous admiration for
-Richard Feynman who was the master of simple explanations. I know I'm no
-Feynman, but I will try my best. I'm starting by publishing this preface
---- which is supposed to motivate the reader to learn category theory
---- in hopes of starting a discussion and soliciting feedback.\footnote{
-You may also watch me teach this material to a live audience, at
-\href{https://goo.gl/GT2UWU}{https://goo.gl/GT2UWU} (or search 
-``bartosz milewski category theory'' on YouTube.)}
+한동안 나는 프로그래머들을 대상으로 \trCategoryTheory\을 설명하는 책을 쓰는 것에 대한 생각에 사로잡혔다. 
+그러니까, 컴퓨터 과학자가 아니라 프로그래머들, 혹은 엔지니어들을 대상으로 하는 책 말이다.
+이 말이 조금 미친 것처럼 들릴 수 있다는 것을 안다. 꽤 겁이 나기도 한다.
+두 분야에서 모두 일해 본 적이 있기 때문에 과학과 공학 사이에는 큰 차이가 있다는 사실을 부정할 수 없다.
+하지만, 나는 항상 이것을 설명하고 싶다는 강한 충동을 느낀다. 나는 간결한 설명의 대가인 리처드 파인만에 대해 큰 존경심을 품고 있다.
+물론 파인만처럼 해낼 수는 없겠지만 내 나름대로 최선을 다해서 설명해보려고 한다.
+이 서문을 통해 토의가 시작되고 피드백이 돌아왔으면 좋겠다.
+또 독자에게 \trCategoryTheory\을 배우고자 하는 의욕을 심어줄 수 있었으면 한다.
+\footnote{
+관중들 앞에서 이 내용을 가르치는 영상도 \href{https://goo.gl/GT2UWU}{https://goo.gl/GT2UWU}(혹은 ``bartosz milewski category theory''를 youtube에서 검색)에서 볼 수 있다.}
 \end{quote}
 
-\lettrine[lhang=0.17]{I}{will attempt}, in the space of a few paragraphs,
-to convince you that this book is written for you, and whatever
-objections you might have to learning one of the most abstract branches
-of mathematics in your ``copious spare time'' are totally unfounded.
+어쩌면 이 글을 읽는 사람들 중에는 왜 이런 극도로 추상적인 수학 공부를 하는데 내 여가 시간을 투자해야만 하냐고 반론을 하는 사람이 있을 지도 모른다.
+그래서 다음 몇 문단을 통해 이 책은 당신을 위해 쓴 책이며 충분히 읽을 가치가 있을 것이라는 사실을 납득시켜 보겠다.
 
-My optimism is based on several observations. First, category theory is
-a treasure trove of extremely useful programming ideas. Haskell
-programmers have been tapping this resource for a long time, and the
-ideas are slowly percolating into other languages, but this process is
-too slow. We need to speed it up.
+내 낙관론은 몇 가지 관찰에 기반한다. 첫째로, \trCategoryTheory\는 굉장히 유용한 프로그래밍 아이디어의 보물 창고다.
+하스켈 프로그래머들은 이 보물 창고를 오랜 시간동안 두드려 왔으며, 이 아이디어들은 천천히 다른 언어들로 침투해가고 있다.
+하지만 그 과정은 너무나 느리다. 우리는 이를 가속시킬 필요가 있다.
 
-Second, there are many different kinds of math, and they appeal to
-different audiences. You might be allergic to calculus or algebra, but
-it doesn't mean you won't enjoy category theory. I would go as far as
-to argue that category theory is the kind of math that is particularly
-well suited for the minds of programmers. That's because category theory
---- rather than dealing with particulars --- deals with structure. It
-deals with the kind of structure that makes programs composable.
+둘째로, 세상에는 굉장히 다양한 종류의 수학이 있으며 사람마다 흥미를 가지는 분야는 서로 다르다.
+대수학 혹은 미적분학에 거부감을 가지고 있을 수도 있지만, 그게 곧 \trCategoryTheory\를 즐길 수 없다는 의미는 아니다.
+나는 \trCategoryTheory\는 특히 프로그래머들의 마음에 잘 맞는다라고까지 이야기하고 싶다. 왜냐하면 \trCategoryTheory\는 구체적인 대상들을 다루기보단 구조를 다루기 때문이다.
+\trCategoryTheory\는 프로그램을 합성 가능하게(composable) 만드는 종류의 구조에 대해 다룬다.
 
-Composition is at the very root of category theory --- it's part of the
-definition of the category itself. And I will argue strongly that
-composition is the essence of programming. We've been composing things
-forever, long before some great engineer came up with the idea of a
-subroutine. Some time ago the principles of structural programming
-revolutionized programming because they made blocks of code composable.
-Then came object oriented programming, which is all about composing
-objects. Functional programming is not only about composing functions
-and algebraic data structures --- it makes concurrency composable ---
-something that's virtually impossible with other programming paradigms.
+\trComposition\은 \trCategoryTheory의 근간이다. 이 것은 \trCategory의 정의 그 자체의 일부분이기도 하다.
+또한 나는 \trComposition이 프로그래밍의 정수라고 강력하게 주장하고 싶다.
+우리는 먼 옛날 몇몇 위대한 엔지니어들이 서브루틴(subroutine)의 개념을 찾아낸 뒤로부터 계속해서 무언가들을 합성해오고 있다.
+예전 구조적 프로그래밍의 원칙은 코드 블록을 합성할 수 있게 만듦으로써 프로그래밍에 혁명을 가져왔다.
+그리고 그 이후 모든 객체들을 합성하는 객체 지향 프로그래밍이 나타났다.
+함수형 프로그래밍은 함수와 대수적 자료 구조들을 합성하는 것 뿐만 아니라, 다른 프로그래밍 패러다임에서는 사실상 불가능한 동시성(concurrency)과 같은 것들까지도 합성한다.
 
-Third, I have a secret weapon, a butcher's knife, with which I will
-butcher math to make it more palatable to programmers. When you're a
-professional mathematician, you have to be very careful to get all your
-assumptions straight, qualify every statement properly, and construct
-all your proofs rigorously. This makes mathematical papers and books
-extremely hard to read for an outsider. I'm a physicist by training, and
-in physics we made amazing advances using informal reasoning.
-Mathematicians laughed at the Dirac delta function, which was made up on
-the spot by the great physicist P. A. M. Dirac to solve some
-differential equations. They stopped laughing when they discovered a
-completely new branch of calculus called distribution theory that
-formalized Dirac's insights.
+셋째로, 나는 수학을 프로그래머들의 입맛에 맞게 조리할 수 있는 비밀의 무기를 갖고 있다.
+만약 당신이 전문적인 수학자라면, 자신이 한 가정이 전부 올바른지 보고, 모든 문장이 적절한지 확인하고, 모든 증명을 엄밀하게 구성하기 위해 굉장히 신경을 쓸 것이다.
+이런 일련의 과정이 수학 논문과 서적을 외부인들이 읽기 극도로 힘들게 만든다. 나는 물리학 전공자인데, 물리학에서는 정형화되지 않은 추론으로 굉장한 진보를 이뤄낸다.
+수학자들은 위대한 물리학자 P. A. M. 디랙이 몇몇 미분 방정식을 풀기 위해 즉석으로 만들어낸 디랙 델타 함수를 보고 이를 비웃음거리로 삼았다.
+하지만, 디랙의 통찰을 공식화한 완벽하게 새로운 미적분학의 한 갈래인 분포 이론(distribution theory)을 발견하곤 곧 웃음을 멈췄다.
 
-Of course when using hand-waving arguments you run the risk of saying
-something blatantly wrong, so I will try to make sure that there is
-solid mathematical theory behind informal arguments in this book. I do
-have a worn-out copy of Saunders Mac Lane's \emph{Category Theory for
-the Working Mathematician} on my nightstand.
+물론 엄밀하지 않게 대략적으로 이야기하는 것은 뻔뻔하게도 완전 잘못된 이야기를 하게 만들 위험성을 내포하고 있다.
+그래서 나는 이 책에 약식으로 기술한 요소들 뒤에 엄밀한 수학적 토대가 있음을 확인할 수 있게 하려 노력할 것이다.
+나는 다 닳아 헤진 손더스 매클레인(Saunders Mac Lane)의 \emph{Category Theory for the Working Mathematician} 한 권을 내 침실 탁자 위에 올려두고 있다.
 
-Since this is category theory \emph{for programmers} I will illustrate
-all major concepts using computer code. You are probably aware that
-functional languages are closer to math than the more popular imperative
-languages. They also offer more abstracting power. So a natural
-temptation would be to say: You must learn Haskell before the bounty of
-category theory becomes available to you. But that would imply that
-category theory has no application outside of functional programming and
-that's simply not true. So I will provide a lot of C++ examples.
-Granted, you'll have to overcome some ugly syntax, the patterns might
-not stand out from the background of verbosity, and you might be forced
-to do some copy and paste in lieu of higher abstraction, but that's just
-the lot of a C++ programmer.
+이것이 \emph{프로그래머를 위한} \trCategoryTheory이기 때문에 나는 모든 중요한 개념들을 컴퓨터 코드를 이용해 나타낼 것이다.
+당신은 아마 함수형 언어가 더 유명한 명령형 언어들보다 수학에 가깝다는 사실을 인지하고 있을 것이다. 함수형 언어는 더욱 강력한 추상적인 힘을 가져다 준다.
+그래서 자연스럽게 "\trCategoryTheory\로 인한 이득을 사용할 수 있게 되려면 너는 반드시 먼저 하스켈을 배워야 해"라고 말하고픈 유혹에 빠지게 된다.
+하지만 이는 \trCategoryTheory\가 함수형 프로그래밍 외에는 전혀 쓸 곳이 없다는 의미를 내포하게 되는데, 이것은 전혀 사실이 아니다. 따라서 나는 많은 양의 C++ 예제도 제공할 것이다.
+물론, 일부 흉측한 구문들을 극복해야할 것이며, 패턴들은 그 배경의 장황함 때문에 두드러져 보이지 않을 것이고, 고수준의 추상화 대신에 복사 붙여넣기를 해야만 할 것이다.
+하지만 어차피 그건 C++ 프로그래머라면 늘상 하는 일일 뿐이다.
 
-But you're not off the hook as far as Haskell is concerned. You don't
-have to become a Haskell programmer, but you need it as a language for
-sketching and documenting ideas to be implemented in C++. That's exactly
-how I got started with Haskell. I found its terse syntax and powerful
-type system a great help in understanding and implementing C++
-templates, data structures, and algorithms. But since I can't expect the
-readers to already know Haskell, I will introduce it slowly and explain
-everything as I go.
+하지만 하스켈에 관한 고려를 아예 내려놓지는 않아야 한다. 하스켈 프로그래머가 될 필요는 없지만, C++에 구현된 아이디어를 입증하고 스케치하기 위한 언어로서 하스켈이 필요하다.
+내가 하스켈을 시작하게 된 이유도 이와 같다. 나는 하스켈의 간단명료한 구문과 강력한 타입 시스템이 C++의 템플릿, 자료 구조, 알고리즘을 이해하고 구현하는데 굉장히 큰 도움이 된다고 본다.
+그러나 독자들이 이미 하스켈을 알고 있다고 가정할 수는 없기 때문에, 차차 진행하면서 모든 것을 천천히 소개하고 설명할 것이다.
 
-If you're an experienced programmer, you might be asking yourself: I've
-been coding for so long without worrying about category theory or
-functional methods, so what's changed? Surely you can't help but notice
-that there's been a steady stream of new functional features invading
-imperative languages. Even Java, the bastion of object-oriented
-programming, let the lambdas in. C++ has recently been evolving at a
-frantic pace --- a new standard every few years --- trying to catch up
-with the changing world. All this activity is in preparation for a
-disruptive change or, as we physicists call it, a phase transition. If
-you keep heating water, it will eventually start boiling. We are now in
-the position of a frog that must decide if it should continue swimming
-in increasingly hot water, or start looking for some alternatives.
+당신이 이미 숙련된 프로그래머라면, 스스로에게 이런 질문을 해보았을 것이다. 
+"나는 오랫동안 \trCategoryTheory에 대한 걱정이나 함수형 기법에 대한 걱정 없이 잘 코딩해 왔는데, 뭔가 달라진 게 있어?"
+물론 당신은 이미 함수형 언어의 기능들이 명령형 언어에 침투해 들어오고 있는 꾸준한 흐름을 이미 느끼고 있을 것이다.
+심지어 객체 지향 프로그래밍의 마지막 보루로 느껴졌던 자바마저도 람다가 들어갔다.
+C++은 최근 몇년에 한번씩 새로운 표준이 나올 만큼 제정신이 아닌 속도로 발전하고 있다. 변화하는 세상을 따라잡기 위해서 말이다.
+이런 모든 활동들은 파괴적인 변화, 혹은 물리학자로서 말하자면 상전이(phase transition)를 위한 준비에 속한다고 볼 수 있다.
+물을 계속 데우다 보면 언젠간 끓기 시작할 것이다. 우리는 점점 뜨거워지는 물 속에서 계속 헤엄을 칠지, 혹은 다른 대안을 찾든지 선택의 기로에 놓인 개구리의 위치에 있는 것이다.
 
 \begin{figure}[H]
 \centering
@@ -107,51 +67,33 @@ in increasingly hot water, or start looking for some alternatives.
 \end{figure}
 
 \noindent
-One of the forces that are driving the big change is the multicore
-revolution. The prevailing programming paradigm, object oriented
-programming, doesn't buy you anything in the realm of concurrency and
-parallelism, and instead encourages dangerous and buggy design. Data
-hiding, the basic premise of object orientation, when combined with
-sharing and mutation, becomes a recipe for data races. The idea of
-combining a mutex with the data it protects is nice but, unfortunately,
-locks don't compose, and lock hiding makes deadlocks more likely and
-harder to debug.
+이 거대한 변화를 이끌고 있는 힘 중 하나는 멀티코어 혁명이다.
+기존의 주류 프로그래밍 패러다임이던 객체 지향은 동시성과 병렬성의 영역에서는 어느 것도 가져다 주지 못 한다.
+대신 위험하고 버그가 많은 디자인만 야기할 뿐이다.
+객체 지향의 기본적인 전제인 정보 은닉(Data hiding)은 공유(sharing), 그리고 조작(mutation)과 결합될 경우 그대로 데이터 레이스(data race)를 만들어 버린다.
+뮤텍스와 그 뮤텍스가 보호할 데이터를 결합하는 것은 좋은 생각이지만 안타깝게도 락(lock)은 합성할 수 없고, 락을 숨기는 것은 데드락이 발생할 위험이 커지며 더욱 디버깅을 어렵게 만든다.
 
-But even in the absence of concurrency, the growing complexity of
-software systems is testing the limits of scalability of the imperative
-paradigm. To put it simply, side effects are getting out of hand.
-Granted, functions that have side effects are often convenient and easy
-to write. Their effects can in principle be encoded in their names and
-in the comments. A function called SetPassword or WriteFile is obviously
-mutating some state and generating side effects, and we are used to
-dealing with that. It's only when we start composing functions that have
-side effects on top of other functions that have side effects, and so
-on, that things start getting hairy. It's not that side effects are
-inherently bad --- it's the fact that they are hidden from view that
-makes them impossible to manage at larger scales. Side effects don't
-scale, and imperative programming is all about side effects.
+그러나 병렬성을 떼놓고 보더라도, 점점 증가하는 소프트웨어 시스템의 복잡성은 명령형 패러다임의 확장성의 한계를 테스트하고 있다.
+간단히 말해, \trSideEffect(side effects)\은 점점 손 쓸 수 없는 범위로 가고 있다. 물론, \trSideEffect\을 가진 함수는 때때로 편리하고 작성하기도 쉽다.
+이들이 끼치는 영향은 원칙적으로 그 함수의 이름과 주석에 포함될 수 있다.
+SetPassword 혹은 WriteFile과 같은 이름의 함수는 명백하게 어떤 상태를 변경하고, \trSideEffect\을 만들어낼 것이며 우리는 이것을 다루는 데에 익숙하다.
+그러나 \trSideEffect\을 가진 함수를 또 다른 \trSideEffect\을 가진 함수와 합성하고, 다시 또 다른 함수와 합성하고, 반복하다보면 금세 불편해진다. 
+\trSideEffect 자체가 선천적으로 나쁘다는 것이 아니다. 이것은 그저 \trSideEffect\이 볼 수 없게 숨어 있는 것이 이를 더 큰 규모에서 관리하는 게 불가능하게 만든다는 사실일 뿐이다.
+\trSideEffect\은 확장할 수 없고, 명령형 언어는 모두 \trSideEffect에 관한 것이다.
 
-Changes in hardware and the growing complexity of software are forcing
-us to rethink the foundations of programming. Just like the builders of
-Europe's great gothic cathedrals we've been honing our craft to the
-limits of material and structure. There is an unfinished gothic
-\urlref{http://en.wikipedia.org/wiki/Beauvais_Cathedral}{cathedral in
-Beauvais}, France, that stands witness to this deeply human struggle
-with limitations. It was intended to beat all previous records of height
-and lightness, but it suffered a series of collapses. Ad hoc measures
-like iron rods and wooden supports keep it from disintegrating, but
-obviously a lot of things went wrong. From a modern perspective, it's a
-miracle that so many gothic structures had been successfully completed
-without the help of modern material science, computer modelling, finite
-element analysis, and general math and physics. I hope future
-generations will be as admiring of the programming skills we've been
-displaying in building complex operating systems, web servers, and the
-internet infrastructure. And, frankly, they should, because we've done
-all this based on very flimsy theoretical foundations. We have to fix
-those foundations if we want to move forward.
+하드웨어의 변화와 소프트웨어 복잡성의 증가는 우리가 프로그래밍의 기반에 대해 다시 생각하게끔 강요하고 있다.
+유럽의 고딕 대성당 건축가들처럼, 우리는 우리가 계속해서 써오던 도구들, 구조들에 대한 프로그래밍 기술을 계속해서 연마해 왔다.
+\urlref{http://en.wikipedia.org/wiki/Beauvais_Cathedral}{보베 대성당}이라는 완성되지 못한 고딕 대성당이 프랑스에 있다.
+이 성당은 한계에 대한 인간의 깊은 투쟁에 대한 목격자로서 서 있다.
+이 성당은 이전의 모든 높이와 가벼움에 대한 기록을 깨부수려고 했으나, 여러 차례 붕괴 사고를 겪고 말았다.
+철제 지지대와 목판 보강과 같은 이후의 즉석 조치들은 건물이 완전히 무너지지 않게끔 지키고 있지만, 여러 가지가 잘못되어 가고 있다는 것은 명확하다.
+현대적인 관점에서, 대부분의 고딕 구조가 현대 재료 과학, 컴퓨터 모델링, 유한 요소 해석, 그리고 일반적인 수학과 물리학의 도움 없이 성공적으로 완공되었다는 사실은 거의 기적에 가깝다.
+나는 후대 사람들이 우리가 복잡한 운영 체제, 웹 서버, 그리고 인터넷 인프라를 구축하는데 사용해온 프로그래밍 기술을 감탄의 시선으로 바라보기를 희망한다.
+그리고, 노골적으로 말하자면, 그들은 그럴 수 밖에 없을 것이다. 왜냐하면 우리는 이 모든 것을 굉장히 조잡한 이론적 토대만 가지고 만들어오고 있기 때문이다.
+다음 단계로 나아가기 위해서 우리는 우리의 이 토대를 고쳐야만 한다.
 
 \begin{figure}
 \centering
 \includegraphics[totalheight=0.5\textheight]{images/beauvais_interior_supports.jpg}
-\caption{Ad hoc measures preventing the Beauvais cathedral from collapsing.}
+\caption{보베 대성당을 붕괴로부터 보호하고 있는 즉석 조치들}
 \end{figure}
