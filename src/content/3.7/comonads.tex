@@ -314,8 +314,8 @@ We'll use the same adjunction to define the costate comonad. A comonad
 is defined by the composition $L \circ R$:
 \[L\ (R\ a) = (s \Rightarrow a)\times{}s\]
 Translating this to Haskell, we start with the adjunction between the
-\code{Prod} functor on the left and the \code{Reader} functor or the
-right. Composing \code{Prod} after \code{Reader} is equivalent to
+\code{Product} functor on the left and the \code{Reader} functor or the
+right. Composing \code{Product} after \code{Reader} is equivalent to
 the following definition:
 
 \src{snippet31}
@@ -340,9 +340,9 @@ We construct $\delta$, or \code{duplicate}, as the horizontal composition:
 \delta &= L \circ \eta \circ R
 \end{align*}
 We have to sneak $\eta$ through the leftmost $L$, which is the
-\code{Prod} functor. It means acting with $\eta$, or \code{Store f}, on
+\code{Product} functor. It means acting with $\eta$, or \code{Store f}, on
 the left component of the pair (that's what \code{fmap} for
-\code{Prod} would do). We get:
+\code{Product} would do). We get:
 
 \src{snippet36}
 (Remember that, in the formula for $\delta$, $L$ and $R$ stand

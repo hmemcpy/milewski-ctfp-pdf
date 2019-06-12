@@ -129,12 +129,12 @@ shoot an arrow --- the morphism $\eta_d$ --- to our target.
 
 \noindent
 By the same token, the component of the counit ε can be described as:
-\[\varepsilon_{c'} \Colon (L \circ R) c \to c\]
-where $c'$ is $(L \circ R) c$. It tells us that we
+\[\varepsilon_{c} \Colon (L \circ R) c \to c\]
+It tells us that we
 can pick any object $c$ in $\cat{C}$ as our target, and use the
 round trip functor $L \circ R$ to pick the source
-$c'$. Then we shoot the arrow --- the morphism
-$\varepsilon_{c'}$ --- from the source to the target.
+$c' = (L \circ R) c$. Then we shoot the arrow --- the morphism
+$\varepsilon_{c}$ --- from the source to the target.
 
 Another way of looking at unit and counit is that unit lets us
 \emph{introduce} the composition $R \circ L$ anywhere we could
@@ -178,7 +178,7 @@ transformations, and their composition is the horizontal composition of
 natural transformations. In components, these identities become:
 \begin{gather*}
 \varepsilon_{L d} \circ L \eta_d = \id_{L d} \\
-R \varepsilon_c \circ \eta_{R c} = \id_{R c}
+R \varepsilon_{c} \circ \eta_{R c} = \id_{R c}
 \end{gather*}
 We often see unit and counit in Haskell under different names. Unit is
 known as \code{return} (or \code{pure}, in the definition of

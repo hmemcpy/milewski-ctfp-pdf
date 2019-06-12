@@ -348,7 +348,7 @@ following equivalence relation:
 \[(a, b) \sim (c, d)\ \text{iff}\ a * d = b * c\]
 It's easy to check that this is an equivalence relation. A pair
 $(a, b)$ is interpreted as a fraction $\frac{a}{b}$, and
-fractions that have a common divisor are identified. A rational number
+fractions whose numerator and denominator have a common divisor are identified. A rational number
 is an equivalence class of such fractions.
 
 You might recall from our earlier discussion of limits and colimits that
@@ -378,7 +378,7 @@ The set of natural transformations that appears in the Yoneda lemma may
 be encoded using an end, resulting in the following formulation:
 \[\int_z \Set(\cat{C}(a, z), F\ z) \cong F\ a\]
 There is also a dual formula:
-\[\int^z \cat{C}(a, z)\times{}F\ z \cong F\ a\]
+\[\int^z \cat{C}(z, a)\times{}F\ z \cong F\ a\]
 This identity is strongly reminiscent of the formula for the Dirac delta
 function (a function $\delta(a - z)$, or rather a distribution, that
 has an infinite peak at $a = z$). Here, the hom-functor plays
@@ -397,19 +397,21 @@ that is an isomorphism.
 We start by inserting the left-hand side of the identity we want to
 prove inside a hom-functor that's going to some arbitrary object
 $c$:
-\[\Set(\int^z \cat{C}(a, z)\times{}F\ z, c)\]
+\[\Set(\int^z \cat{C}(z, a)\times{}F\ z, c)\]
 Using the continuity argument, we can replace the coend with the end:
-\[\int_z \Set(\cat{C}(a, z)\times{}F\ z, c)\]
+\[\int_z \Set(\cat{C}(z, a)\times{}F\ z, c)\]
 We can now take advantage of the adjunction between the product and the
 exponential:
-\[\int_z \Set(\cat{C}(a, z), c^{(F\ z)})\]
+\[\int_z \Set(\cat{C}(z, a), c^{(F\ z)})\]
 We can ``perform the integration'' by using the Yoneda lemma to get:
 \[c^{(F\ a)}\]
+(Notice that we used the contravariant version of the Yoneda lemma, 
+since the functor $c^{(F z)}$ is contravariant in $z$.)
 This exponential object is isomorphic to the hom-set:
 \[\Set(F\ a, c)\]
 Finally, we take advantage of the Yoneda embedding to arrive at the
 isomorphism:
-\[\int^z \cat{C}(a, z)\times{}F\ z \cong F\ a\]
+\[\int^z \cat{C}(z, a)\times{}F\ z \cong F\ a\]
 
 \section{Profunctor Composition}
 

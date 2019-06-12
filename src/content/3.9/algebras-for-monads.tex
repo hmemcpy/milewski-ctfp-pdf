@@ -223,7 +223,7 @@ Every adjunction gives rise to a monad. The round trip
 is the endofunctor in C that gives rise to the corresponding monad.
 Let's see what its action on an object $a$ is. The free algebra
 created by $F^T$ is $(T\ a, \mu_a)$. The forgetful functor
-$F^T$ drops the evaluator. So, indeed, we have:
+$U^T$ drops the evaluator. So, indeed, we have:
 \[U^T \circ F^T = T\]
 As expected, the unit of the adjunction is the unit of the monad $T$.
 
@@ -362,7 +362,7 @@ The right adjoint to a forgetful functor is called a cofree functor.
 $F^W$ generates cofree coalgebras. It assigns, to an object
 $a$ in $\cat{C}$, the coalgebra $(W\ a, \delta_a)$. The
 adjunction reproduces the original comonad as the composite
-$F^W \circ U^W$.
+$U^W \circ F^W$.
 
 Similarly, we can construct a co-Kleisli category with co-Kleisli arrows
 and regenerate the comonad from the corresponding adjunction.

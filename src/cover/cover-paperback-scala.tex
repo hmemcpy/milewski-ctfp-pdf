@@ -1,13 +1,12 @@
 \documentclass[
-    coverheight=9.249in,
-    coverwidth=6.319in, % (pagesize - spinewidth) / 2
-    spinewidth=1.8in,
-    bleedwidth=0.306in,
+    coverheight=9.25in,
+    coverwidth=6.125in, % (pagesize - spinewidth) / 2
+    spinewidth=1.125in,
+    bleedwidth=0in,
     11pt,
     marklength=0pt,
   ]{bookcover}
   
-  \usepackage{lettrine}
   \usepackage{fancybox}
   \usepackage{wrapfig}
   \usepackage[many]{tcolorbox}
@@ -15,6 +14,13 @@
   \usepackage[T1]{fontenc}
   \usepackage{Alegreya} %% Option 'black' gives heavier bold face 
   
+  \setmainfont{Alegreya Sans}[
+    UprightFeatures={SmallCapsFont=* SC},
+    ItalicFeatures={SmallCapsFont=* SC Italic},
+    BoldFeatures={SmallCapsFont=* SC Bold},
+    BoldItalicFeatures={SmallCapsFont=* SC Bold Italic},
+  ]
+
   \newcommand{\olpath}{../}
   \newcommand{\whitebg}[1]{%
   \tikz\node[circle,draw,minimum size=1.1cm,
@@ -28,18 +34,17 @@
   \newcommand{\bartosz}{
     \vspace{0pt}
     \begin{tcolorbox}[beamer,
-      width=4cm,
+      width=3.6cm,
       arc=0pt,
       boxsep=0pt,
       left=0pt,right=0pt,top=0pt,bottom=0pt,
-      ] \includegraphics[width=4cm]{bartosz}
+      ] \includegraphics[width=3.6cm]{bartosz}
     \end{tcolorbox}
   }
   \input{\olpath/version}
   
   \definecolor{BackgroundColor}{HTML}{f3f6ed}
   \definecolor{SpineBackColor}{HTML}{262626}
-  \definecolor{SpineFontColor}{RGB}{248,154,14}
   
   \begin{document}
   
@@ -47,26 +52,28 @@
     \bookcovercomponent{color}{bg whole}{color=BackgroundColor}
     \bookcovercomponent{color}{spine}{color=SpineBackColor}
     \bookcovercomponent{normal}{front}{
-    \vspace{2cm}
+    \input{ribbon}
     \begin{center}
-      \fontsize{40pt}{7em}\selectfont\bfseries
+      \fontsize{40pt}{5em}\selectfont\bfseries
           CATEGORY THEORY \\FOR PROGRAMMERS
       \vfil
-      \vspace*{1cm}
-      \includegraphics[width=.5\coverwidth]{piggie}
-      \vfil
-      \normalfont\Huge
-      \hspace*{.8cm}\textbf{Bartosz Milewski}
+      \hspace*{-.8cm}\includegraphics[width=.5\coverwidth]{piggie}
+      \linebreak
+      \rule[1.5cm]{\textwidth/2}{.5pt}\\
+      \vspace{-1.5cm}
+      \normalfont\Huge\textbf{Bartosz Milewski}
       \vfil
       \vspace*{1cm}
     \end{center}}
     
     \bookcovercomponent{center}{spine}{
-      \rotatebox[origin=c]{-90}{\color{SpineFontColor}\bfseries\Huge Category Theory for Programmers \hspace{2em} Bartosz Milewski}}
-    
+      \rotatebox[origin=c]{-90}{\color{orange}
+      \Huge\bfseries Category Theory for Programmers \hspace{2em} Bartosz Milewski}}
+
     \bookcovercomponent{normal}{back}{%
     \begin{minipage}[b][\coverheight][t]{\coverwidth}
       \begin{center}
+        \vspace{1cm}
         \includegraphics[width=.8\coverwidth]{bunnies}
         \begin{minipage}[t]{.8\coverwidth}
           \input{blurb}
@@ -74,16 +81,16 @@
         \end{minipage}
         
         \begin{minipage}{.85\textwidth}
-          \rule{\textwidth}{0.4pt}
+          \rule{\textwidth}{.5pt}
 
-          \begin{tabular}[h]{p{4cm} p{\textwidth}}
+          \begin{tabular}[h]{p{3.4cm} p{\textwidth}}
             \bartosz
             &
             \vspace{5pt}
-            \begin{minipage}[b]{.55\coverwidth}
+            \begin{minipage}[b]{.58\coverwidth}
               \fontsize{11pt}{1.4em}\selectfont\textit{Category Theory for Programmers}
-                is a series of blog posts by Bartosz Milewski, originally at bartoszmilewski.com.\\
-                Edited by Igal Tabachnik. Licenced under CC BY-SA 4.0.
+                is a series of blog posts by Bartosz Milewski, originally posted on bartoszmilewski.com.\\
+                Edited by Igal Tabachnik. Licenced under CC BY-SA 4.0.\\
           \end{minipage}
         \end{tabular}
         \begin{flushright}

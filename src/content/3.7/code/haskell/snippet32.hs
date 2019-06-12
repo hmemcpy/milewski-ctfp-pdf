@@ -1,1 +1,1 @@
-counit (Prod (Reader f, s)) = f s
+counit (Product (Reader f, s)) = f s
