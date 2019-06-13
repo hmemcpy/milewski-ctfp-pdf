@@ -1,2 +1,2 @@
-def unit[S, A](a: A): Reader[S, Prod[S, A]] =
-  Reader(s => Prod((a, s)))
+def unit[S, A](a: A): Reader[S, Product[S, A]] =
+  Reader(s => Product((a, s)))

@@ -1,3 +1,3 @@
-def counit[S, A](a: Prod[S, Reader[S, A]]): A = a match {
-  case Prod((Reader(f), s)) => f(s)
+def counit[S, A](a: Product[S, Reader[S, A]]): A = a match {
+  case Product((Reader(f), s)) => f(s)
 }
