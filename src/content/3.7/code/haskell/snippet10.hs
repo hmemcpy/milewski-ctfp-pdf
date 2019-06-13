@@ -1,1 +1,1 @@
-extract (P e a) = a
+extract (Prod e a) = a
