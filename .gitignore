@@ -9,3 +9,4 @@ out/*
 src/version.tex
 *.pyg
 *.synctex(busy)
+src/.dotty-ide-disabled
