@@ -8,6 +8,10 @@
 
 * [#176](https://github.com/hmemcpy/milewski-ctfp-pdf/pull/176) - Typo (statements -> statement)
 
+### 8. Functoriality
+
+* [9a3a5a3](https://github.com/hmemcpy/milewski-ctfp-pdf/commit/9a3a5a386e98ef8f926bccd08f572cc19b1a6367) - added clarifications on bifunctoriality vs. separate functoriality (fix by Bartosz) 
+
 ### 9. Function Types
 
 * [#182](https://github.com/hmemcpy/milewski-ctfp-pdf/pull/182) - Fix typo (chose -> choose)
@@ -45,6 +49,7 @@
 ### 23. Comonads
 
 * [#158](https://github.com/hmemcpy/milewski-ctfp-pdf/pull/158) - fixed incorrect typesetting of `set`
+* [23f522e](https://github.com/hmemcpy/milewski-ctfp-pdf/commit/23f522ec083c2c98f28f15935ff2893ccd1fa76c) - adjusted `Prod`/`Product` names (fix by Bartosz)
 
 ### 25. Algebras for Monads
 
@@ -61,6 +66,7 @@
 ### 27. Kan Extensions
 
 * [#160](https://github.com/hmemcpy/milewski-ctfp-pdf/pull/160) - Fix subscript spacing
+* [31821e5](https://github.com/hmemcpy/milewski-ctfp-pdf/commit/31821e5ded0dacf059e1fcb985be406e8a495107) - postcomposition -> precomposition (fix by Bartosz)
 
 ### 28. Enriched Categories
 
