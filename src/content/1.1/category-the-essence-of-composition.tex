@@ -1,58 +1,57 @@
 % !TEX root = ../../ctfp-print.tex
 
-\lettrine[lhang=0.17]{A}{category} is an embarrassingly simple concept.
-A category consists of \newterm{objects} and \newterm{arrows} that go between them. That's
-why categories are so easy to represent pictorially. An object can be
-drawn as a circle or a point, and an arrow\ldots{} is an arrow. (Just
-for variety, I will occasionally draw objects as piggies and arrows as
-fireworks.) But the essence of a category is \emph{composition}. Or, if you
-prefer, the essence of composition is a category. Arrows compose, so
-if you have an arrow from object $A$ to object $B$, and another arrow from
-object $B$ to object $C$, then there must be an arrow --- their composition
---- that goes from $A$ to $C$.
+\lettrine[lhang=0.17]{카}{테고리}는 부끄러울 정도로 간단한 개념이다.
+\trCategory는 \newterm{\trObject}\와 그들 사이를 잇는 \newterm{\trArrow}으로 이루어져 있다. 
+그래서 \trCategory\는 그림으로 나타내기 쉽다. \trObject는 원이나 점으로, 
+\trArrow\는 \ldots{} 화살표로 그린다. (독자가 질리지 않게끔 
+나는 가끔 \trObject\는 돼지로, \trArrow\는 폭죽으로 그릴 것이다.
+그러나, \trCategory의 정수는 합성이다. 또는, 이렇게 말하는 걸 더 좋아한다면, 합성의 정수는 \trCategory다.
+\trArrow\는 합성된다. 
+즉 \trObject $A$에서 \trObject $B$로 가는 화살표가 하나, \trObject $B$에서 \trObject $C$로 가는 화살표가 하나 있다면, 
+$A$ to $C$로 가는 화살표가(합성이) 있어야 한다.
 
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{images/img_1330.jpg}
-\caption{In a category, if there is an arrow going from $A$ to $B$ and an arrow going from $B$ to $C$
-then there must also be a direct arrow from $A$ to $C$ that is their composition. This diagram is not a full
-category because it’s missing identity morphisms (see later).}
+\caption{어떤 \trCategory에서 $A$에서 $B$로, $B$에서 $C$로 가는 화살표가 각각 있다면,
+이 두 화살표의 합성, 즉, $A$에서 $C$로 직접 가는 화살표가 있어야 한다.
+이 도식은 \trIdentityMorphism(후술)이 없어서 완전한 \trCategory가 아니다.}
 \end{figure}
 
-\section{Arrows as Functions}
+\section{함수로써의 \trArrow}
 
-Is this already too much abstract nonsense? Do not despair. Let's talk
-concretes. Think of arrows, which are also called \newterm{morphisms}, as
-functions. You have a function $f$ that takes an argument of type $A$ and
-returns a $B$. You have another function $g$ that takes a $B$ and returns a $C$.
-You can compose them by passing the result of $f$ to $g$. You have just
-defined a new function that takes an $A$ and returns a $C$.
+이미 너무 뜬구름잡는 것 같은가? 절망하지 마라. 그럼 조금 실질적인 이야기를 해 보자.
+\trArrow\를, 혹은 다른 이름으로 \newterm{\trMorphism}\을, 함수라고 생각해 보라.
+당신은 $A$형 인자를 받아서 $B$형 객채를 리턴하는 함수 $f$를 가지고 있다.
+또 당신은 $B$형 인자를 받아 $C$형 객채를 리턴하는 함수 $g$도 가지고 있다.
+당신은 $f$의 리턴값을 $g$에 인자로 제공해서 $f$와 $g$를 합성할 수 있다.
+이렇게 해서 $A$를 받아서 $C$를 리턴하는 함수를 만들었다.
 
-In math, such composition is denoted by a small circle between
-functions: $g \circ f$. Notice the right to left order of composition. For some
-people this is confusing. You may be familiar with the pipe notation in
-Unix, as in:
+수학에서는 함수 이름 사이에 작은 원을 그려서 합성을 표시한다 ($g \circ f$). 
+합성 순서가 오른쪽에서 왼쪽이라는 점에 주의하라. 일부에게는 이 순서가 헷갈릴 수 있다.
+독자는 아래와 같은 유닉스(Unix) pipe notation(피드백 바람)에 친숙할 지도 모르겠다.
 
 \begin{snip}{text}
 lsof | grep Chrome
 \end{snip}
-or the chevron \code{>>} in F\#, which both
-go from left to right. But in mathematics and in Haskell functions
-compose right to left. It helps if you read $g \circ f$ as ``g \emph{after} f.''
 
-Let's make this even more explicit by writing some C code. We have one
-function \code{f} that takes an argument of type \code{A} and
-returns a value of type \code{B}:
+또는, F\#의 셰브론(Chevron) \code{>>}에 친숙할 수도 있다. 이 둘은 순서가 왼쪽에서 오른쪽으로 간다.
+그러나 수학의 함수들과 하스켈의 함수들은 오른쪽에서 왼쪽으로 합성된다.
+$g \circ f$를 ``g \emph{전에} f.''라고 읽으면 좀 덜 헷갈린다.
+%맙소사 이거 어쩌죠 아악%
+
+C 코드를 써서 조금 더 명확하게 해 보자. 
+우리는 \code{A}형 인자를 받아서 \code{B}형 값을 리턴하는 함수 \code{f}를 가지고 있다.
 
 \begin{snip}{text}
 B f(A a);
 \end{snip}
-and another:
+또
 
 \begin{snip}{text}
 C g(B b);
 \end{snip}
-Their composition is:
+라면, 이 둘의 합성은 다음과 같다.
 
 \begin{snip}{text}
 C g_after_f(A a)
@@ -60,181 +59,161 @@ C g_after_f(A a)
     return g(f(a));
 }
 \end{snip}
-Here, again, you see right-to-left composition: \code{g(f(a))}; this
-time in C.
+C언어에서도 오른쪽에서 왼쪽 순서의 합성을 볼 수 있다. (\code{g(f(a))})
 
-I wish I could tell you that there is a template in the C++ Standard
-Library that takes two functions and returns their composition, but
-there isn't one. So let's try some Haskell for a change. Here's the
-declaration of a function from A to B:
+C++ 표준 라이브러리에 함수 두 개를 받아서 그 합성을 리턴하는 템플릿이 있다 말해줄 수 있으면 참 좋겠으나, 그런 건 없다.
+그러므로 한 번 하스켈을 써 보자. A에서 B로 가는 함수는 다음과 같이 선언한다.
 
 \src{snippet01}
-Similarly:
+비슷하게:
 
 \src{snippet02}
-Their composition is:
+이들의 합성은:
 
 \src{snippet03}
-Once you see how simple things are in Haskell, the inability to express
-straightforward functional concepts in C++ is a little embarrassing. In
-fact, Haskell will let you use Unicode characters so you can write
-composition as:
+하스켈에서의 표현이 얼마나 같단한지 보고 나면, 이리도 쉬운 함수형 개념들을 C++에서 표현할 수 없다는 것이 조금 부끄럽게 느껴진다.
+사실 하스켈은 유니코드를 지원하기 때문에, 합성을 다음과 같이 쓸 수 있다.
 % don't 'mathify' this block
 \begin{snip}{text}
 g ◦ f
 \end{snip}
 
-You can even use Unicode double colons and arrows:
+심지어 유니코드 더블 콜론($\ensuremath{\Colon}$)과 화살표도 쓸 수 있다.
 % don't 'mathify' this block
 \begin{snipv}
 f \ensuremath{\Colon} A → B
 \end{snipv}
-So here's the first Haskell lesson: Double colon means ``has the type
-of\ldots{}'' A function type is created by inserting an arrow between
-two types. You compose two functions by inserting a period between them
-(or a Unicode circle).
+So here's the first Haskell lesson: 더블 콜론은 ``~~형을 가지는''이라는 뜻이다.
+두 타입 사이에 화살표를 넣어서 함수 타입을 만들 수 있다.
+두 함수 사이에 온점( . )이나 유니코드 원(◦)을 넢어서 합성할 수 있다.
 
-\section{Properties of Composition}
+\section{합성의 성질}
 
-There are two extremely important properties that the composition in any
-category must satisfy.
+\trCategory에 속한 합성이 만족해야 할 매우 중요할 성질이 두 가지 있다.
 
 \begin{enumerate}
 \item
-Composition is associative. If you have three morphisms, $f$, $g$, and $h$,
-that can be composed (that is, their objects match end-to-end), you
-don't need parentheses to compose them. In math notation this is
-expressed as:
+합성은 결합성을 만족한다. 합성 가능한 세 개의 \trMorphism $f$, $g$, $h$가 있을 때
+(즉 양 끝의 \trObject가 서로 잘 맞아떨어질 때), 합성하기 위해 괄호가 필요하지 않다.
+수학 기호로는 다음과 같이 쓴다.
 \[h \circ (g \circ f) = (h \circ g) \circ f = h \circ g \circ f\]
-In (pseudo) Haskell:
+(의사) 하스켈에서는
 
 \src{snippet04}[b]
-(I said ``pseudo,'' because equality is not defined for functions.)
+(``의사'' 하스켈이라고 한 것은, 하스켈에는 함수 사이의 동등(==) 연산이 정의되어있지 않지 때문이다.)
 
-Associativity is pretty obvious when dealing with functions, but it may
-be not as obvious in other categories.
+결합성은 함수를 다룰 때는 당연해 보이나, 다른 카테고리에서는 꼭 그렇지만은 않을 수 있다.
 
 \item
-For every object $A$ there is an arrow which is a unit of composition.
-This arrow loops from the object to itself. Being a unit of composition
-means that, when composed with any arrow that either starts at $A$ or ends
-at $A$, respectively, it gives back the same arrow. The unit arrow for
-object A is called $\idarrow[A]$ (\newterm{identity} on $A$). In math
-notation, if $f$ goes from $A$ to $B$ then
+모든 \trObject $A$에 대해, 합성의 \trUnit이 되는 \trArrow가 존재한다.
+이 \trArrow는 $A$에서 자신으로 다시 돌아가는 \trArrow이다. 
+합성의 \trUnit이라는 것은, $A$에서 시작하거나 끝나는 \trArrow와 합성란 결과가 그 각각의 화살표라는 의미이다.
+\trObject $A$와 연관된 \trUnit \trArrow는 $\idarrow[A]$ ($A$에의 \newterm{\trIdentity}) 라고 부른다.
+수학 기호로는, $f$가 $A$를 받아 $B$를 반환한다면
 \[f \circ \idarrow[A] = f\]
-and
+이며
 \[\idarrow[B] \circ f = f\]
 \end{enumerate}
-When dealing with functions, the identity arrow is implemented as the
-identity function that just returns back its argument. The
-implementation is the same for every type, which means this function is
-universally polymorphic. In C++ we could define it as a template:
+함수와 관련된 작업을 할 때, \trIdentity를 나타내는 \trArrow는 그 인자를 그대로 리턴하는 항등함수로 구현된다.
+이 구현은 인자의 형에 따라 달라지는 것이 아니므로, 보편 다형적이다. 
+C++에서는 템플릿으로 다음과 같이 정의할 수 있을 것이다.
 
 \begin{snip}{cpp}
 template<class T> T id(T x) { return x; }
 \end{snip}
-Of course, in C++ nothing is that simple, because you have to take into
-account not only what you're passing but also how (that is, by value, by
-reference, by const reference, by move, and so on).
+물론, C++에서는 인자의 형뿐만 아니라 어떻게 (값, 레퍼런스, const, 이동, 등등...) 인자를 넘겨주는지도 고려해야 하므로,
+실제로도 이렇게 간단하지는 않다.
 
-In Haskell, the identity function is part of the standard library
-(called Prelude). Here's its declaration and definition:
+하스켈에서는 항등함수가 표준 라이브러리(Prelude라고 부른다)에 포함되어 있다. 
+그 선언과 정의는 다음과 같다.
 
 \src{snippet05}
-As you can see, polymorphic functions in Haskell are a piece of cake. In
-the declaration, you just replace the type with a type variable. Here's
-the trick: names of concrete types always start with a capital letter,
-names of type variables start with a lowercase letter. So here
-\code{a} stands for all types.
+이렇듯, 하스켈에서는 다형적 함수를 매우 쉽게 다를 수 있다.
+선언에서는 자료형을 타입 변수(type variable)로 대체하면 끝이다.
+구상(concrete) 자료형의 이름은 항상 대문자로, 타입 변수의 이름은 항상 소문자로 시작함을 기억하자.
+즉, 여기서 \code{a}는 모든 타입을 나타낼 수 있다.
 
-Haskell function definitions consist of the name of the function
-followed by formal parameters --- here just one, \code{x}. The body of
-the function follows the equal sign. This terseness is often shocking to
-newcomers but you will quickly see that it makes perfect sense. Function
-definition and function call are the bread and butter of functional
-programming so their syntax is reduced to the bare minimum. Not only are
-there no parentheses around the argument list but there are no commas
-between arguments (you'll see that later, when we define functions of
-multiple arguments).
+하스켈에서 함수 정의는 함수의 이름, 그리고 이를 뒤따르는 형식인자로 이루어진다.
+위 예시에서 형식인자는 \code{x} 단 하나다.
+함수의 \trFunctionBody(body)\는 등호(=) 뒤에 붙는다.
+하스켈 새내기들은 간혹 이러한 간결함에 놀라기도 하지만, 이것이 말이 된다는 점을 바로 깨달을 수 있을 것이다.
+함수형 프로그래밍에서 함수 정의와 호출은 밥이나 빵과 같으므로, 관련된 문법을 최소화한 것이다.
+그래서 인자 목록 주위에 소괄호가 없을 뿐만 아니라, 인자 사이에 반점(,)도 쓰지 않는다.(나중에 다인자 함수를 정의할 때 볼 수 있다.)
 
-The body of a function is always an expression --- there are no
-statements in functions. The result of a function is this expression ---
-here, just \code{x}.
+함수의 \trFunctionBody\는 항상 \trExpression이다. 함수에서는 \trStatement는 없다. 
+함수의 결과값은 \trExpression이며 여기서는 \code{x}다.
 
-This concludes our second Haskell lesson.
+이로써 두 번째 하스켈 강좌를 끝마쳤다.
 
-The identity conditions can be written (again, in pseudo-Haskell) as:
+항등 조건은 의사하스켈로 다음과 같이 쓸 수 있다.
 
 \src{snippet06}
-You might be asking yourself the question: Why would anyone bother with
-the identity function --- a function that does nothing? Then again, why
-do we bother with the number zero? Zero is a symbol for nothing. Ancient
-Romans had a number system without a zero and they were able to build
-excellent roads and aqueducts, some of which survive to this day.
+문득 이러한 질문이 떠올랐을 수 있다. 대체 왜 아무 일도 안 하는 항등함수에 신경을 쓰는가?
+그럼 숫자 0에는 신경을 왜 쓰는가? 0은 무(無)의 상징이다. 고대 로마인들은 0 없는 숫자 체계를 가지고 있었지만
+우수한 도로와 수도 시설을 만들어냈으며, 이들 중 일부는 오늘날까지도 나와있다.
 
-Neutral values like zero or $\id$ are extremely useful when
-working with symbolic variables. That's why Romans were not very good at
-algebra, whereas the Arabs and the Persians, who were familiar with the
-concept of zero, were. So the identity function becomes very handy as an
-argument to, or a return from, a higher-order function. Higher order
-functions are what make symbolic manipulation of functions possible.
-They are the algebra of functions.
+0이나 $id$같은 중립적인 값들은 \trSymbolic 변수를 다룰 때에 유용하다.
+그래서 로마인들은 대수학을 잘 못 했고, 반면 0을 알고 있던 아랍인들과 페르시아인들은 대수학을 잘 했다.
+어쨌든, 항등함수는 고계함수의 인자, 혹은 리턴값으로 쓰기 유용하다. 
+그리고 고계 함수가 함수의 \trSymbolic적 조작을 가능케 한다.
+즉, 함수를 가지고 전개하는 대수학이 가능해지는 것이다.
 
-To summarize: A category consists of objects and arrows (morphisms).
-Arrows can be composed, and the composition is associative. Every object
-has an identity arrow that serves as a unit under composition.
+요약하면, \trCategory는 \trObject와 \trArrow(\trMorphism)으로 이루어져 있다.
+\trArrow는 합성될 수 있으며, 이 합성은 결합성을 만족한다.
+그리고, 모든 \trObject에는 합성의 \trUnit인 \trIdentity \trArrow가 있다.
 
-\section{Composition is the Essence of Programming}
+\section{합성은 프로그래밍의 정수다}
 
-Functional programmers have a peculiar way of approaching problems. They
-start by asking very Zen-like questions. For instance, when designing an
-interactive program, they would ask: What is interaction? When
-implementing Conway's Game of Life, they would probably ponder about the
-meaning of life. In this spirit, I'm going to ask: What is programming?
-At the most basic level, programming is about telling the computer what
-to do. ``Take the contents of memory address x and add it to the
-contents of the register EAX.'' But even when we program in assembly,
-the instructions we give the computer are an expression of something
-more meaningful. We are solving a non-trivial problem (if it were
-trivial, we wouldn't need the help of the computer). And how do we solve
-problems? We decompose bigger problems into smaller problems. If the
-smaller problems are still too big, we decompose them further, and so
-on. Finally, we write code that solves all the small problems. And then
-comes the essence of programming: we compose those pieces of code to
-create solutions to larger problems. Decomposition wouldn't make sense
-if we weren't able to put the pieces back together.
+함수형 프로그래머들은 특이한 방식으로 문제에 접근한다. 그들은 무척이나 철학자 같은 질문을 한다.
+이를테면, 인터렉티브 프로그램을 만든다면, 그들은 먼저 인터렉션이 무엇인지를 묻는다.
+콘웨이의 생명 게임을 구현한다면, 아마 그들은 인생이란 무엇인지 고민해볼 것이다.
+이러한 관례를 따라 필자는 다음과 같은 질문을 던지려 한다. 프로그래밍이란 무엇인가?
+가장 기본적인 수준에서 얘기하자면, 프로그래밍이란 컴퓨터에게 명령을 내리는 것이다.
+``메모리 주소 x에 있는 내용을 EAX 레지스터의 내용에 더하시오.'' 
+그러나 어셈블리어로 프로그램을 짤 때조차도, 우리가 컴퓨터에게 주는 명령은 무언가 더 의미있는 다른 것의 표현에 지나지 않는다.
+우리는 규모가 작지는 않은 문제를 해결하기 위해서 컴퓨터를 사용한다 (그런 소규모 문제라면 컴퓨터를 사용해 풀지 않을 것이다.)
+그런데 문제는 또 어떻게 해결하는가? 우리는 큰 문제들을 작은 문제들로 쪼갠다. 
+이 작은 문제들이 아직도 너무 크다면, 계속 더 잘게 쪼갠다.
+마지막으로, 이렇게 나온 모든 작은 문제들을 해결할 수 있는 코드를 작성한다.
+그리고 바로 다음이 프로그래밍의 정수다.
+우리는 코드 조각조각을 잘 합성해서, 큰 문제의 해답을 만든다. 
+만약 이렇게 코드를 다시 합지는 게 불가능했다면, 쪼개는 것은 애초에 말이 되지 않는다.
 
-This process of hierarchical decomposition and recomposition is not
-imposed on us by computers. It reflects the limitations of the human
-mind. Our brains can only deal with a small number of concepts at a
-time. One of the most cited papers in psychology,
+이러한 계층적인 분해와 조립은 컴퓨터가 우리에게 강제한 것이 아니다.
+대신 인간 정신의 한계를 반영한 것일 뿐이다. 우리의 뇌는 한 번에 단 몇 개의 개념만을 다룰 수 있다.
+심리학 분야에서 가장 많이 인용된 논문인 
 \urlref{http://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two}{The
-Magical Number Seven, Plus or Minus Two}, postulated that we can only
-keep $7 \pm 2$ ``chunks'' of information in our minds. The details of our
-understanding of the human short-term memory might be changing, but we
-know for sure that it's limited. The bottom line is that we are unable
-to deal with the soup of objects or the spaghetti of code. We need
-structure not because well-structured programs are pleasant to look at,
-but because otherwise our brains can't process them efficiently. We
-often describe some piece of code as elegant or beautiful, but what we
-really mean is that it's easy to process by our limited human minds.
-Elegant code creates chunks that are just the right size and come in
-just the right number for our mental digestive system to assimilate
-them.
+Magical Number Seven, Plus or Minus Two}
+에서 저자는 우리가 한 번에 $7 \pm 2$ ``조각''의 정보만을 기억하고 있을 수 있다고 추측했다.
+단기기억능력에 대한 학설은 계속해 바뀌고 있지만, 그래도 단기기억력에 한계가 있다는 점은 확실하다.
+요는, 우리는 너무 많은 객체나, 꼬일 대로 꼬인 스파게티 코드에 대처할 수 없다는 점이다.
+구조라는 것이 필요한 이유는 구조 잘 잡힌 코드를 보면 기분이 좋기 때문이 아니고,
+단지 우리의 뇌가 구조 안 잡힌 코드를 잘 처리해낼 수 없어서다.
+가끔 우리는 어떤 코드를 보고 예쁘거나 우아하다고 표현하지만, 이 말은 사실
+그 코드가 사람의 한정된 뇌 자원으로 처리하기가 쉽다고 이야기하는 것이다.
+우아한 코드는 우리가 소화하기 쉬운 크기와 갯수의 조각들을 만들어내는 코드다.
 
-So what are the right chunks for the composition of programs? Their
-surface area has to increase slower than their volume. (I like this
-analogy because of the intuition that the surface area of a geometric
-object grows with the square of its size --- slower than the volume,
-which grows with the cube of its size.) The surface area is the
-information we need in order to compose chunks. The volume is the
-information we need in order to implement them. The idea is that, once a
-chunk is implemented, we can forget about the details of its
-implementation and concentrate on how it interacts with other chunks. In
-object-oriented programming, the surface is the class declaration of the
-object, or its abstract interface. In functional programming, it's the
-declaration of a function. (I'm simplifying things a bit, but that's the
-gist of it.)
+그래서 합성하기에 알맞은 프로그램 조각들이란 무엇인가?
+이 조각들의 "표면적"이 "부피" 보다 느리게 증가해야 한다.(
+  나는 이 비유가 좋다. 기하학적인 물체의 표면적은 길이 제곱에 비례해 증가한다.
+  길이 세제곱에 비례하는 부피보다 표면적이 느리게 증가한다는 사실은 직감적으로 받아들이기 쉽다.
+)
+"표면적"이란 조각을 합성해내기 위해 필요한 정보를 말한다.
+"부피"란 그 조각을 구현해내기 위해 필요한 정보를 말한다.
+어떤 조각이 완성되면 이제 이 조각을 어떻게 구현했는지 잊어버리고,
+대신 다른 조각과 어떻게 상호작용하는지에 대해서만 집중하자는 이야기다.
+객체지향 프로그래밍에서는, "표면적"은 클래스 선언문, 혹은 추상 인터페이스 등이다.
+함수형 프로그래밍에서는 함수의 선언이 "표면적"에 해당한다. (조금 너무 간략화시켜서 이야기했지만, 대강 그렇다.)
+
+\trCategory 이론은, \trObject안을 들여다 보는 걸 적극적으로 막는다는 점에서 극단적일 수 있다.
+\trCategory 이론상에서 \trObject는 추상적이고 모호한 객체이다.
+이 \trObject가 다른 \trObject와 어떻게 관련되는지, 즉 \trArrow로 어떤 식으로 연결되어 있는지만 알 수 있다.
+인터넷 검색 엔진들이 ("반칙"을 쓰지 않으면) 이런 식으로 작동하는데, 
+사이트에서 들어가고 나가는 링크들을 분석해서 웹 사이트들에 순위를 매긴다.
+객체지향 프로그래밍에서는, 이상적인 객체는 추상적 인터페이스만을 통해 볼 수 있고("표면적"만 있고 "부피"는 없다),
+여기서 \trArrow의 역할을 하는 것은 메소드이다. 
+만약 어떤 \trObject를 다른 \trObject와 합성할 때 \trObject의 구현을 들여다봐야 한다면
+이미 그 프로그래밍 패러다임의 장점은 없는 거나 마찬가지다.
 
 Category theory is extreme in the sense that it actively discourages us
 from looking inside the objects. An object in category theory is an
@@ -248,26 +227,23 @@ you have to dig into the implementation of the object in order to
 understand how to compose it with other objects, you've lost the
 advantages of your programming paradigm.
 
-\section{Challenges}
+\section{연습문제}
 
 \begin{enumerate}
 \tightlist
 \item
-  Implement, as best as you can, the identity function in your favorite
-  language (or the second favorite, if your favorite language happens to
-  be Haskell).
+  당신이 가장 좋아하는 프로그래밍 언어로 \trIdentity 함수를 구현하라.
+  (만약 그 언어가 하스켈이라면, 두 번째로 좋아하는 프로그래밍 언어를 사용하라.)
 \item
-  Implement the composition function in your favorite language. It takes
-  two functions as arguments and returns a function that is their
-  composition.
+  당신이 가장 좋아하는 프로그래밍 언어로 두 함수의 합성을 리턴하는 함수를 작성하라.
+  인자로 두 함수가 주어지고, 이 두 함수의 합성이 리턴되어야 한다.  
 \item
-  Write a program that tries to test that your composition function
-  respects identity.
+  바로 위 문제에서 짠 함수가 항등성을 만족하는지 테스트하는 코드를 짜려고 노력하라.
 \item
-  Is the world-wide web a category in any sense? Are links morphisms?
+  월드 와이드 웹을 \trCategory라고 볼 수 있는가? 그렇다면 하이퍼링크는 \trMorphism인가?
 \item
-  Is Facebook a category, with people as objects and friendships as
-  morphisms?
+  사람을 \trObject, 페이스북 친구 관계를 \trMorphism이라고 본다면
+  페이스북을 \trCategory라고 볼 수 있는가?
 \item
-  When is a directed graph a category?
+  유향그래프는 언제 \trCategory인가?
 \end{enumerate}
