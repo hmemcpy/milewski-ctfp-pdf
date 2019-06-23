@@ -6,35 +6,35 @@
 % 3. \tr~~~~들을 전부 해당하는 한국말로 대체해서 읽어본다.
 
 \lettrine[lhang=0.17]{카}{테고리}는 부끄러울 정도로 간단한 개념이다.
-\trCategory는 \newterm{\trObject}\와 그들 사이를 잇는 \newterm{\trArrow}로 이루어져 있다. 
-그래서 \trCategory\는 그림으로 나타내기 쉽다. \trObject는 원이나 점으로, 
+\trCategory\는 \newterm{\trObject}\와 그들 사이를 잇는 \newterm{\trArrow}\로 이루어져 있다. 
+그래서 \trCategory\는 그림으로 나타내기 쉽다. \trObject\는 원이나 점으로, 
 \trArrow\는\ldots{} 화살표로 그린다. (독자가 질리지 않게끔 
 나는 가끔 \trObject 대신 돼지를, \trArrow 대신 폭죽을 가지고 그림을 그릴 것이다.)
-그러나, \trCategory의 정수는 \trComposition이다. 또는, 이렇게 말하는 걸 더 좋아한다면, \trComposition의 정수는 \trCategory다.
+그러나, \trCategory의 정수는 \emph{\trComposition}이다. 또는, 이렇게 말하는 걸 더 좋아한다면, \trComposition의 정수는 \trCategory이다.
 \trArrow\는 \trComposition된다. 
-즉 \trObject $A$에서 \trObject $B$로 가는 \trArrow가 하나, \trObject $B$에서 \trObject $C$로 가는 \trArrow가 하나 있다면, 
-$A$ to $C$로 가는 \trArrow가(\trComposition이) 있어야 한다.
+즉 \trObject $A$에서 \trObject $B$로 가는 \trArrow\가 하나, \trObject $B$에서 \trObject $C$로 가는 \trArrow\가 하나 있다면, 
+$A$ 에서 $C$로 가는 \trArrow\가(\trComposition\이) 있어야 한다.
 
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{images/img_1330.jpg}
 \caption{어떤 \trCategory에서 $A$에서 $B$로, $B$에서 $C$로 가는 화살표가 각각 있다면,
 이 두 화살표의 \trComposition, 즉, $A$에서 $C$로 직접 가는 화살표가 있어야 한다.
-이 도식은 \trIdentityMorphism(후술)이 없어서 완전한 \trCategory는 아니다.}
+이 도식은 \trIdentityMorphism(후술)\이 없어서 완전한 \trCategory\는 아니다.}
 \end{figure}
 
 \section{함수로써의 \trArrow}
 
 이미 너무 뜬구름잡는 것 같은가? 절망하지 마라. 그럼 조금 실질적인 이야기를 해 보자.
 \trArrow\를, 혹은 다른 이름으로 \newterm{\trMorphism}\을, 함수라고 생각해 보라.
-당신은 $A$형 인자를 받아서 $B$형 객체를 리턴하는 함수 $f$를 가지고 있다.
-또 당신은 $B$형 인자를 받아 $C$형 객체를 리턴하는 함수 $g$도 가지고 있다.
-당신은 $f$의 리턴값을 $g$에 인자로 제공해서 $f$와 $g$를 \trComposition할 수 있다.
+당신은 $A$타입 \trArgument\를 받아서 $B$타입 객체를 리턴하는 함수 $f$를 가지고 있다.
+또 당신은 $B$타입 \trArgument\를 받아 $C$타입 객체를 리턴하는 함수 $g$도 가지고 있다.
+당신은 $f$의 리턴값을 $g$에 제공해서 $f$와 $g$를 \trComposition할 수 있다.
 이렇게 해서 $A$를 받아서 $C$를 리턴하는 함수를 만들었다.
 
-수학에서는 함수 이름 사이에 작은 원을 그려서 \trComposition을 표시한다 ($g \circ f$). 
+수학에서는 함수 이름 사이에 작은 원을 그려서 \trComposition\을 표시한다 ($g \circ f$). 
 \trComposition 순서가 오른쪽에서 왼쪽이라는 점에 주의하라. 일부 독자에게는 이 순서가 헷갈릴 수 있다.
-독자는 아래와 같은 유닉스(Unix) pipe notation(피드백 바람)에 친숙할 지도 모르겠다.
+독자는 아래와 같은 유닉스 파이프 명령(pipe notation)에 친숙할 지도 모르겠다.
 
 \begin{snip}{text}
 lsof | grep Chrome
@@ -42,11 +42,11 @@ lsof | grep Chrome
 
 또는, F\#의 셰브론(Chevron) \code{>>}에 친숙할 수도 있다. 이들은 왼쪽에서 오른쪽으로 진행한다.
 그러나 수학의 함수들과 하스켈의 함수들은 오른쪽에서 왼쪽으로 \trComposition된다.
-$g \circ f$를 ``g \emph{전에} f.''라고 읽으면 좀 덜 헷갈린다.
+$g \circ f$를 ``g \emph{하기 전에} f.''라고 읽으면 좀 덜 헷갈린다.
 %맙소사 이거 어쩌죠 아악%
 
 C언어 코드를 써서 조금 더 명확하게 해 보자. 
-우리는 \code{A}형 인자를 받아서 \code{B}형 값을 리턴하는 함수 \code{f}를 가지고 있다.
+우리는 \code{A}타입 \trArgument\를 받아서 \code{B}타입 값을 리턴하는 함수 \code{f}를 가지고 있다.
 
 \begin{snip}{text}
 B f(A a);
@@ -56,7 +56,7 @@ B f(A a);
 \begin{snip}{text}
 C g(B b);
 \end{snip}
-면, 이 둘의 \trComposition은 다음과 같다.
+면, 이 둘의 \trComposition\은 다음과 같다.
 
 \begin{snip}{text}
 C g_after_f(A a)
@@ -64,20 +64,20 @@ C g_after_f(A a)
     return g(f(a));
 }
 \end{snip}
-C언어에서도 오른쪽에서 왼쪽 순서의 \trComposition을 볼 수 있다. (\code{g(f(a))})
+C언어에서도 오른쪽에서 왼쪽 순서의 \trComposition\을 볼 수 있다. (\code{g(f(a))})
 
-C++ 표준 라이브러리에 함수 두 개를 받아서 그 \trComposition을 리턴하는 템플릿이 있다 말할 수 있으면 참 좋겠으나, 그런 건 없다.
+C++ 표준 라이브러리에 함수 두 개를 받아서 그 \trComposition\을 리턴하는 템플릿이 있다 말할 수 있으면 참 좋겠으나, 그런 건 없다.
 그러므로 한 번 하스켈을 써 보자. A에서 B로 가는 함수는 다음과 같이 선언한다.
 
 \src{snippet01}
-비슷하게:
+비슷하게, g를 다음과 같이 선언할 수 있다.
 
 \src{snippet02}
-이들의 \trComposition은:
+이들의 \trComposition\은 아래와 같다.
 
 \src{snippet03}
 하스켈에서의 표현이 얼마나 간단한지 보고 나면, 이리도 쉬운 함수형 개념들을 C++에서 표현할 수 없다는 것이 조금 부끄럽게 느껴진다.
-사실 하스켈은 유니코드를 지원하기 때문에, \trComposition을 다음과 같이 쓸 수 있다.
+사실 하스켈은 유니코드를 지원하기 때문에, \trComposition\을 다음과 같이 쓸 수 있다.
 % don't 'mathify' this block
 \begin{snip}{text}
 g ◦ f
@@ -89,68 +89,70 @@ g ◦ f
 f \ensuremath{\Colon} A → B
 \end{snipv}
 %여기 말인데, 좋은 아이디어 있으시면 제시 부탁드립니다.%
-So here's the first Haskell lesson: 더블 콜론은 ``~~형을 가지는''이라는 뜻이다.
+자, 여기서 첫 번째 하스켈 수업이다. 
+더블 콜론은 ``~~타입을 가지는''이라는 뜻이다.
 두 타입 사이에 화살표를 넣어서 함수 타입을 만들 수 있다.
-두 함수 사이에 온점( . )이나 유니코드 원(◦)을 넢어서 \trComposition할 수 있다.
+두 함수 사이에 온점( . )이나 유니코드 원(◦)을 넣어서 \trComposition할 수 있다.
 
 \section{\trComposition의 성질}
 
-\trCategory에 속한 \trComposition이 만족해야 할 매우 중요할 성질이 두 가지 있다.
+\trCategory에 속한 \trComposition\이 만족해야 할 매우 중요한 성질이 두 가지 있다.
 
 \begin{enumerate}
 \item
-\trComposition은 결\trComposition을 만족한다. \trComposition 가능한 세 개의 \trMorphism $f$, $g$, $h$가 있을 때
-(즉 양 끝의 \trObject가 서로 잘 맞아떨어질 때), \trComposition하기 위해 괄호가 필요하지 않다.
+\trComposition\은 \trAssociativity\을 만족한다. \trComposition 가능한 세 개의 \trMorphism $f$, $g$, $h$가 있을 때
+(즉 양 끝의 \trObject\가 서로 잘 맞아떨어질 때), 이들의 \trComposition에는 괄호가 필요 없다.
 수학 기호로는 다음과 같이 쓴다.
 \[h \circ (g \circ f) = (h \circ g) \circ f = h \circ g \circ f\]
-(의사) 하스켈에서는
+(의사) 하스켈에서는 다음과 같이 쓸 수 있다.
 
 \src{snippet04}[b]
 (``의사'' 하스켈이라고 한 것은, 하스켈에는 함수 사이의 동등(==) 연산이 정의되어있지 않지 때문이다.)
 
-결\trComposition은 함수를 다룰 때는 당연해 보이나, 다른 카테고리에서는 꼭 그렇지만은 않을 수 있다.
+\trAssociativity\은 함수를 다룰 때는 당연해 보이나, 다른 카테고리에서는 꼭 그렇지만은 않을 수 있다.
 
 \item
-모든 \trObject $A$에 대해, \trComposition의 \trUnit이 되는 \trArrow가 존재한다.
-이 \trArrow는 $A$에서 자신으로 다시 돌아간다. 
-\trComposition의 \trUnit이라는 것은, $A$에서 시작하거나 끝나는 \trArrow와 \trComposition한 결과가 그 각각의 화살표라는 의미이다.
-\trObject $A$와 연관된 \trUnit \trArrow는 $\idarrow[A]$ ($A$에의 \newterm{\trIdentity}) 라고 부른다.
+모든 \trObject $A$에 대해, \trComposition의 \trUnit\이 되는 \trArrow\가 존재한다.
+이 \trArrow\는 $A$에서 자신으로 다시 돌아간다. 
+\trComposition의 \trUnit임은, $A$에서 시작하거나 끝나는 \trArrow와 \trComposition한 결과가 그 각각의 화살표라는 의미이다.
+\trObject $A$와 연관된 \trUnit \trArrow\는 $\idarrow[A]$ ($A$에의 \newterm{\trIdentity}) 라고 부른다.
 수학 기호로는, $f$가 $A$를 받아 $B$를 반환한다면
 \[f \circ \idarrow[A] = f\]
 이며
 \[\idarrow[B] \circ f = f\]
+이다.
 \end{enumerate}
-함수와 관련된 작업을 할 때, \trIdentity\을 나타내는 \trArrow\는 그 인자를 그대로 리턴하는 항등함수로 구현된다.
-이 구현은 인자의 형에 따라 달라지는 것이 아니므로, 보편 다형적이다. 
+함수와 관련된 작업을 할 때, \trIdentity\을 나타내는 \trArrow\는 그 \trArgument\를 그대로 리턴하는 항등함수로 구현된다.
+이 구현은 모든 타입에 대해 같으므로, 보편 다형적(universally polymorphic)이다. 
 C++에서는 템플릿으로 다음과 같이 정의할 수 있을 것이다.
 
 \begin{snip}{cpp}
 template<class T> T id(T x) { return x; }
 \end{snip}
-물론, C++에서는 인자의 형뿐만 아니라 어떻게 (값, 레퍼런스, const, 이동, 등등...) 인자를 넘겨주는지도 고려해야 하므로,
-실제로도 이렇게 간단하지는 않다.
+물론, C++에서는 \trArgument의 타입뿐만 아니라 어떻게 (값, 레퍼런스, const, 이동, 등등...) \trArgument\를 넘겨주는지도 고려해야 하므로,
+실제로는 이렇게 간단하지 않다.
 
 하스켈에서는 항등함수가 표준 라이브러리(Prelude)에 포함되어 있다. 
 그 선언과 정의는 다음과 같다.
 
 \src{snippet05}
-이렇듯, 하스켈에서는 다형적 함수를 매우 쉽게 다를 수 있다.
+이렇듯, 하스켈에서는 다형적 함수 다루기는 누워서 떡 먹기다.
 선언에서는 자료형을 타입 변수(type variable)로 대체하면 끝이다.
 구상(concrete) 자료형의 이름은 항상 대문자로, 타입 변수의 이름은 항상 소문자로 시작함을 기억하자.
 즉, 여기서 \code{a}는 모든 타입을 나타낼 수 있다.
 
-하스켈에서 함수 정의는 함수의 이름, 그리고 이를 뒤따르는 형식인자로 이루어진다.
-위 예시에서 형식인자는 \code{x} 단 하나다.
+하스켈에서 함수 정의는 함수의 이름, 그리고 이를 뒤따르는 형식\trParameter\로 이루어진다.
+위 예시에서 형식\trParameter\는 \code{x} 단 하나다.
 함수의 \trFunctionBody(body)\는 등호(=) 뒤에 붙는다.
 하스켈 새내기들은 간혹 이러한 간결함에 놀라기도 하지만, 그게 말이 된다는 점은 바로 알 수 있을 것이다.
 함수형 프로그래밍에서 함수 정의와 호출은 밥이나 빵만큼 중요하므로, 관련 문법을 최소화한 것이다.
-그래서 인자 목록 주위에 소괄호가 없을 뿐만 아니라, 인자 사이에 반점(,)도 쓰지 않는다.
-(나중에 다인자 함수를 정의할 때 이 사실을 알 수 있다.)
+그래서 \trArgument 목록 주위에 소괄호가 없을 뿐만 아니라, \trArgument 사이에 반점(,)도 쓰지 않는다.
+(나중에 다\trArgument 함수를 정의할 때 이 사실을 알 수 있다.)
 
-함수의 \trFunctionBody\는 항상 \trExpression(expression)이다. 함수에서는 \trStatement(statement)는 없다. 
+함수의 \trFunctionBody\는 항상 \trExpression(expression)이다. 함수에서는 \trStatement(statement)\는 없다. 
 함수의 결과값은 \trExpression이며 여기서는 \code{x}다.
 
-이로써 두 번째 하스켈 강좌를 끝마쳤다.
+이로써 두 번째 하스켈 강의를 끝마쳤다.
 %여기도...%
 
 항등 조건은 의사하스켈로 다음과 같이 쓸 수 있다.
@@ -162,15 +164,15 @@ template<class T> T id(T x) { return x; }
 
 0이나 $id$같은 중립적인 값들은 \trSymbolic 변수를 다룰 때에 유용하다.
 그래서 로마인들은 대수학을 잘 못 했고, 반면 0을 알고 있던 아랍인들과 페르시아인들은 대수학을 잘 했다.
-어쨌든, 항등함수는 고계함수의 인자, 혹은 리턴값으로 쓰기 유용하다. 
-그리고 고계 함수가 함수의 \trSymbolic적인 조작을 가능케 한다.
+어쨌든, 항등함수는 \trHigherOrderFunction의 \trArgument, 혹은 리턴값으로 쓰기 유용하다. 
+그리고 \trHigherOrderFunction\가 함수의 \trSymbolic적인 조작을 가능케 한다.
 즉, 함수를 가지고 전개하는 대수학이 가능해지는 것이다.
 
-요약하면, \trCategory는 \trObject와 \trArrow(\trMorphism)으로 이루어져 있다.
-\trArrow는 \trComposition될 수 있으며, 이 \trComposition은 결\trComposition을 만족한다.
-그리고, 모든 \trObject에는 \trComposition의 \trUnit인 \trIdentity \trArrow가 있다.
+요약하면, \trCategory\는 \trObject\와 \trArrow(\trMorphism)\로 이루어져 있다.
+\trArrow\는 \trComposition될 수 있으며, 이 \trComposition\은 \trAssociativity\을 만족한다.
+그리고, 모든 \trObject에는 \trComposition의 \trUnit인 \trIdentity \trArrow\가 있다.
 
-\section{\trComposition은 프로그래밍의 정수다}
+\section{\trComposition\은 프로그래밍의 정수다}
 
 함수형 프로그래머들은 특이한 방식으로 문제에 접근한다. 그들은 무척이나 철학자 같은 질문을 한다.
 이를테면, 인터렉티브 프로그램을 만든다면, 그들은 먼저 인터렉션이 무엇인지를 묻는다.
@@ -193,52 +195,52 @@ template<class T> T id(T x) { return x; }
 \urlref{http://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two}{The
 Magical Number Seven, Plus or Minus Two}
 에서 저자는 우리가 한 번에 $7 \pm 2$ ``조각''의 정보만을 기억하고 있을 수 있다고 추측했다.
-단기기억능력에 대한 학설이 바뀌어가던 말던, 단기기억력에 한계가 있음은 명확하다.
-어쨌든 요는, 우리는 너무 많은 객체나, 꼬일 대로 꼬인 스파게티 코드에 대처할 수 없다는 점이다.
+물론 단기기억능력에 관한 학설이 시간에 따라 바뀌어가지만, 어쨌든 단기기억력에 한계가 있음은 명확하다.
+요는, 우리는 너무 많은 객체나, 꼬일 대로 꼬인 스파게티 코드에 대처할 수 없다는 점이다.
 구조라는 것이 필요한 이유는 구조 잘 잡힌 코드를 보면 기분이 좋기 때문이 아니라,
-단지 우리의 뇌가 구조 안 잡힌 코드를 잘 처리해낼 수 없어서다.
+단지 우리의 뇌가 무질서한 코드를 잘 처리해낼 수 없어서다.
 가끔 우리는 어떤 코드를 보고 예쁘거나 우아하다고 표현하지만, 이 말은 사실
 사람의 한정된 뇌 자원으로 그 코드를 이해하기가 쉽다고 이야기하는 것이다.
 우아한 코드는 우리가 소화하기 쉬운 크기와 갯수의 조각들을 만들어내는 코드다.
 
 그래서 \trComposition하기에 알맞은 프로그램 조각들이란 무엇인가?
-이 조각들의 "표면적"이 "부피" 보다 느리게 증가해야 한다.
+이 조각들의 ``표면적''이 ``부피'' 보다 느리게 증가해야 한다.
 (나는 이 비유가 좋다. 기하학적인 물체의 표면적은 길이 제곱에 비례해 증가한다.
 길이 세제곱에 비례하는 부피보다 표면적이 느리게 증가한다는 사실은 직감적으로 받아들이기 쉽다.)
 ``표면적''이란 조각을 \trComposition해내기 위해 필요한 정보를 말한다.
 ``부피''란 그 조각을 구현해내기 위해 필요한 정보를 말한다.
 어떤 조각이 완성되면 그 구현에 대해서는 잊어버리고,
 대신 다른 조각과 어떻게 상호작용하는지에 대해서만 집중하자는 이야기다.
-객체지향 프로그래밍에서는, "표면적"은 클래스 선언문, 추상 인터페이스 등이다.
-함수형 프로그래밍에서는 함수의 선언이 "표면적"에 해당한다. (조금 너무 간략화시켜서 이야기했지만, 대강 그렇다.)
+객체지향 프로그래밍에서는, ``표면적''은 클래스 선언문, 추상 인터페이스 등이다.
+함수형 프로그래밍에서는 함수의 선언이 ``표면적''에 해당한다. (조금 너무 간략화시켜서 이야기했지만, 대강 그렇다.)
 
-\trCategoryTheory\는, \trObject안을 들여다 보는 행위를 적극적으로 막는다는 면에서 극단적이다.
-\trCategoryTheory 상에서 \trObject는 추상적이고 모호한 객체이다.
-이 \trObject가 다른 \trObject와 어떻게 관련되는지, 즉 \trArrow로 어떤 식으로 연결되어 있는지만을 알 수 있다.
+\trCategoryTheory\는, \trObject 안을 들여다 보는 행위를 적극적으로 막는다는 면에서 극단적이다.
+\trCategoryTheory 상에서 \trObject\는 추상적이고 모호한 객체이다.
+이 \trObject\가 다른 \trObject\와 어떻게 관련되는지, 즉 \trArrow\로 어떤 식으로 연결되어 있는지만을 알 수 있다.
 인터넷 검색 엔진들이 (``반칙''을 쓰지 않으면) 이런 식으로 작동하는데, 
 사이트에서 들어가고 나가는 링크들을 분석해서 웹 사이트들에 순위를 매긴다.
-객체지향 프로그래밍에서 이상적인 객체는 추상적 인터페이스만을 통해 볼 수 있고("표면적"만 있고 "부피"는 없다),
+객체지향 프로그래밍에서 이상적인 객체는 추상적 인터페이스만을 통해 볼 수 있고(``표면적''만 있고 ``부피''는 없다),
 여기서 \trArrow의 역할을 하는 것은 메소드이다. 
-만약 어떤 \trObject를 다른 \trObject와 \trComposition할 때 \trObject의 구현을 들여다봐야 한다면
-이미 그 프로그래밍 패러다임의 장점은 없는 거나 마찬가지다.
+만약 어떤 \trObject\를 다른 \trObject\와 \trComposition할 때 \trObject의 구현을 들여다봐야 한다면
+이미 그 프로그래밍 패러다임의 장점은 없는 것이나 다름 없다.
 
 \section{연습문제}
 
 \begin{enumerate}
 \tightlist
 \item
-  당신이 가장 좋아하는 프로그래밍 언어로 \trIdentity을 구현하라.
+  당신이 가장 좋아하는 프로그래밍 언어로 항등함수를 구현하라.
   (만약 그 언어가 하스켈이라면, 두 번째로 좋아하는 프로그래밍 언어를 사용하라.)
 \item
-  당신이 가장 좋아하는 프로그래밍 언어로 두 함수의 \trComposition을 리턴하는 함수를 작성하라.
-  인자로 두 함수가 주어지고, 이 두 함수의 \trComposition이 리턴되어야 한다.  
+  당신이 가장 좋아하는 프로그래밍 언어로 두 함수의 \trComposition\을 리턴하는 함수를 작성하라.
+  \trArgument\로 두 함수가 주어지고, 이 두 함수의 \trComposition\이 리턴되어야 한다.  
 \item
-  바로 위 문제에서 짠 함수가 항등성을 만족하는지 테스트하는 코드를 짜려고 노력하라.
+  바로 위 문제에서 짠 함수가 항등성을 만족하는지 테스트하려 시도하는 코드를 짜라.
 \item
-  월드 와이드 웹을 \trCategory라고 볼 수 있는가? 그렇다면 하이퍼링크는 \trMorphism인가?
+  월드 와이드 웹을 \trCategory\라 볼 수 있는가? 그렇다면 하이퍼링크는 \trMorphism인가?
 \item
-  사람을 \trObject, 페이스북 친구 관계를 \trMorphism이라고 본다면
-  페이스북을 \trCategory라고 볼 수 있는가?
+  사람을 \trObject, 페이스북 친구 관계를 \trMorphism\이라 본다면
+  페이스북을 \trCategory\라 볼 수 있는가?
 \item
-  유향그래프는 언제 \trCategory인가?
+  유향그래프는 어떤 조건이 주어지면 \trCategory인가?
 \end{enumerate}
