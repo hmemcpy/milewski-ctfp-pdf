@@ -39,8 +39,8 @@ def one():
     with open(name,"r",encoding='utf-8') as f:
         d = f.read()
     for tr,word in word_list:
-        d = d.replace(word[0].upper()+word[1:],tr+" ")
-        d = d.replace(word,tr+" ")
+        d = d.replace(" "+word[0].upper()+word[1:]," "+tr+" ")
+        d = d.replace(" "+word," "+tr+" ")
     with open(name,"w",encoding='utf-8') as f:
         f.write(d)
 
@@ -55,12 +55,15 @@ def two():
     for i in [x for x in set(criterion_two.findall(d)) if (x not in jargon_list)]:
         print("\\newcommand{"+i+"}{} % ")
 
+def db(match_obj):
+    return match_obj.group(1)+'\\'+match_obj.group(2)
+
 def three():
     print("!!주의!! 본 작업은 롤백이 안 됩니다.")
     name = get_file_from_ch_name()
     with open(name,"r",encoding='utf-8') as f:
         d = f.read()
-    d = re.sub(r'(?<=\\tr[A-Za-z])(이|가|을|를|와|과|로|으로|은|는|라|이라)',lambda x: '\\'+x[0],d)
+    d = re.sub(r'(\\tr[A-Za-z]+)(이|가|을|를|와|과|로|으로|은|는|라|이라)',db,d)
     with open(name,"w",encoding='utf-8') as f:
         f.write(d)
     
@@ -87,4 +90,3 @@ def zero():
 
 if __name__=="__main__":
     zero()
-    
