@@ -1,10 +1,16 @@
 \documentclass[\OPTmodes]{book}
 
 % 용어 모음
-% 스크립트와 같이 사용하시려면, "알파벳 역순으로" 정렬해주시기를 부탁드립니다!
-% 알파벳 역순이 아니라도, 다른 용어의 일부인 용어들은 되도록 뒤에 와야 합니다.
-% 이를테면, parameter가 formal parameter 앞쪽으로 오게 되면,
+
+% 꼭 \newcommand{}{} % ~~~ 꼴로 써 주셔야 합니다! 
+% 짜놓은 스크립트가 이 사실을 적극적으로 이용합니다.
+% 만약 "이 단어는 매크로 적용하면 안 되겠다"는 게 있다면, % 이후에 $$$$$$$$$$와 같이 써 주세요
+
+% 다른 용어의 일부인 용어들은 되도록 뒤에 와야 합니다.
+% parameter가 formal parameter 앞쪽으로 오게 되면,
 % Formal \trParameter 같은 일이 생깁니다.
+% (이런 경우가 자동적으로 핸들링되게끔 고칠 예정이 있습니다만, 그게 정확히 어찌 하면 좋을지가 조금 막막합니다.)
+
 \newcommand{\trComposition}{합성} % composition
 \newcommand{\trCategoryTheory}{카테고리 이론} % category theory
 \newcommand{\trCategory}{카테고리} % category
