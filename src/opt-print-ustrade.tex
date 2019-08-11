@@ -1,11 +1,31 @@
-% !TEX root = ctfp-print.tex
+% !TeX program = xelatex
+% !TEX root = ctfp-print-scala.tex
 
 \def\OPTmodes{twoside,final,openright,10pt}
 
-% PAGE FORMAT
-\def\OPTpagesize{6.125in,9.250in}     % Page size
-\def\OPTtopmargin{0.75in}     % Margin at the top of the page
-\def\OPTbottommargin{0.75in}  % Margin at the bottom of the page
-\def\OPTinnermargin{0.5in}    % Margin on the inner side of the page
-\def\OPTbindingoffset{0.35in} % Extra offset on the inner side
-\def\OPToutermargin{0.75in}   % Margin on the outer side of the page
+% After struggling a while to get it right, here's how to calculate:
+% 1. Use the calculator to get your specifications
+%    https://www.blurb.com/make/pdf_to_book/booksize_calculator
+% 2. Get the specifications. For a 6x9 hardcover (ImageWrap) book, I got:
+%
+%    Page Specifications	                    Inches
+%    Final, exported PDF should measure (w x h)	6.125 x 9.25
+%    Page size / trim line (w x h)	            6.0 x 9.0
+%    Bleed (top, bottom, and outside edges)	    0.125
+%    Safe boundary (Top, Bottom, Outside Edge)	0.25
+%    Safe boundary (Binding Edge)	            0.5
+%
+% 3. Trim line is at 0.625in, so to get safe text boundary (magenta line):
+%    Top margin:      0.625in (start at trim line, header space fills to safe line)
+%    Bottom margin:   0.625in + 0.25in = 0.875in
+%    Inner margin:    0.625in (start on the trim line)
+%    Binding offset:  0.5in
+%    Outer margin:    0.625in + 0.25in = 0.875in
+
+% Specifications for blurb.com
+\def\OPTpaperesize{6.125in,9.25in}     % Page size
+\def\OPTtopmargin{.625in}              % Margin at the top of the page
+\def\OPTbottommargin{0.875in}          % Margin at the bottom of the page
+\def\OPTinnermargin{0.625in}           % Margin on the inner side of the page
+\def\OPTbindingoffset{0.45in}          % Extra offset on the inner side
+\def\OPToutermargin{0.625in}           % Margin on the outer side of the page

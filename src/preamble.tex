@@ -1,6 +1,6 @@
 \documentclass[\OPTmodes]{book}
 
-\usepackage[papersize={\OPTpagesize},
+\usepackage[papersize={\OPTpaperesize},
             top=\OPTtopmargin,
             bottom=\OPTbottommargin,
             inner=\OPTinnermargin,
@@ -11,6 +11,9 @@
 
 % New line height: 1.05 * 1.2 = 1.26
 \renewcommand{\baselinestretch}{1.05}
+
+% Uncomment for diagnostics!
+% \usepackage[cam,width=6in,height=9in]{crop}
 
 % Font settings
 %--------------------------------------------------------------%  Note:
@@ -193,7 +196,7 @@
   \end{mdframed}
 }
 
-\newcommand{\acronym}[1]{\textsc{\fontspec[Numbers={OldStyle}]{Linux Libertine O}\MakeLowercase{#1}}}
+\newcommand{\acronym}[1]{\textsc{\MakeLowercase{#1}}}
 \newcommand{\newterm}[1]{\index{#1}\emph{#1}}
 \newcommand{\code}[1]{\Verb+{#1}+}
 \newcommand{\heading}[1]{{\sffamily\bfseries #1}}
