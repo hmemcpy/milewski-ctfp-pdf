@@ -1,0 +1,1 @@
+## A list of typos/mistakes that were fixed after the initial printed book release (12 August, 2019).
