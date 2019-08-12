@@ -1,10 +1,14 @@
 { pkgs ? import <nixpkgs> {} }: with pkgs;
 
 mkShell {
-  FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ inconsolata-lgc libertine libertinus ]; };
+  FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ inconsolata-lgc libertine libertinus]; };
   buildInputs = [
     (texlive.combine {
         inherit (texlive)
+        bookcover
+        textpos
+        fgruler
+        tcolorbox
         fvextra
         framed
         newtx

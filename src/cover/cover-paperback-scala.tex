@@ -1,10 +1,11 @@
 \documentclass[
+    % bleed is added to the final result
     coverheight=9.25in,
-    coverwidth=6.125in, % (pagesize - spinewidth) / 2
-    spinewidth=1.014in,
+    coverwidth=6.125in, % (pagesize - spinewidth) / 2 == (13.042 - 1.042) / 2
+    spinewidth=1.042in,
     bleedwidth=0in,
     11pt,
-    marklength=0pt,
+    marklength=0in,
   ]{bookcover}
   
   \usepackage{fancybox}
@@ -12,14 +13,27 @@
   \usepackage[many]{tcolorbox}
   \usetikzlibrary{calc,positioning, shadings}
   \usepackage[T1]{fontenc}
-  \usepackage{Alegreya} %% Option 'black' gives heavier bold face 
-  
-  \setmainfont{Alegreya Sans}[
-    UprightFeatures={SmallCapsFont=* SC},
-    ItalicFeatures={SmallCapsFont=* SC Italic},
-    BoldFeatures={SmallCapsFont=* SC Bold},
-    BoldItalicFeatures={SmallCapsFont=* SC Bold Italic},
-  ]
+  \usepackage{fontspec}
+
+  % \setmainfont{AlegreyaSans-Regular}[
+  %   BoldFont={AlegreyaSans-Bold},
+  %   ItalicFont={AlegreyaSans-Italic},
+  %   UprightFeatures={SmallCapsFont=AlegreyaSansSC-Regular},
+  %   ItalicFeatures={SmallCapsFont=AlegreyaSansSC-Italic},
+  %   BoldFeatures={SmallCapsFont=AlegreyaSansSC-Bold},
+  %   BoldItalicFeatures={SmallCapsFont=AlegreyaSansSC-BoldItalic},
+  % ]
+  \setmainfont[
+    Path=fonts/,
+    Extension=.otf,
+    UprightFont=*-Regular,
+    ItalicFont=*-Italic,
+    BoldFont=*-Bold,
+    UprightFeatures={SmallCapsFont=*SC-Regular},
+    ItalicFeatures={SmallCapsFont=*SC-Italic},
+    BoldFeatures={SmallCapsFont=*SC-Bold},
+    BoldItalicFeatures={SmallCapsFont=*SC-BoldItalic},
+    ]{AlegreyaSans}
 
   \newcommand{\olpath}{../}
   \newcommand{\whitebg}[1]{%
@@ -76,18 +90,19 @@
       \begin{center}
         \vspace{1cm}
         \includegraphics[width=.8\coverwidth]{bunnies}
-        \begin{minipage}[t]{.8\coverwidth}
+        \begin{minipage}[t]{.75\coverwidth}
           \input{blurb}
-          \vspace{.5cm}
+          \vspace{0.6cm}
         \end{minipage}
         
         \begin{minipage}{.85\textwidth}
           \rule{\textwidth}{.5pt}
 
           \begin{tabular}[h]{p{3.4cm} p{\textwidth}}
+            \vspace{5pt}
             \bartosz
             &
-            \vspace{5pt}
+            \vspace{10pt}
             \begin{minipage}[b]{.58\coverwidth}
               \fontsize{11pt}{1.4em}\selectfont\textit{Category Theory for Programmers}
                 is a series of blog posts by Bartosz Milewski, originally posted on bartoszmilewski.com.\\
