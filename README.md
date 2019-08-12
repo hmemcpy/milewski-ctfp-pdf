@@ -1,16 +1,19 @@
 Category Theory for Programmers
 ====
 ![image](https://user-images.githubusercontent.com/601206/43392303-f770d7be-93fb-11e8-8db8-b7e915b435ba.png)
-<b>Direct link: [category-theory-for-programmers.pdf](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/download/v1.2.1/category-theory-for-programmers.pdf)</b>  
-(Latest release: v1.2.1, March 2019. See [releases](https://github.com/hmemcpy/milewski-ctfp-pdf/releases) for additional formats and languages.)
+<b>Direct link: [category-theory-for-programmers.pdf](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/download/v1.3.0/category-theory-for-programmers.pdf)</b>  
+(Latest release: v1.3.0, August 2019. See [releases](https://github.com/hmemcpy/milewski-ctfp-pdf/releases) for additional formats and languages.)
 
 [![Build Status](https://travis-ci.org/hmemcpy/milewski-ctfp-pdf.svg?branch=master)](https://travis-ci.org/hmemcpy/milewski-ctfp-pdf)  
 [(latest CI build)](https://s3.amazonaws.com/milewski-ctfp-pdf/category-theory-for-programmers.pdf)
 
 <img src="https://user-images.githubusercontent.com/601206/47271389-8eea0900-d581-11e8-8e81-5b932e336336.png"
  alt="Buy Category Theory for Programmers" width=410 />  
-**[Purchase now in full-color hardcover print on blurb.com](http://www.blurb.com/b/9008339-category-theory-for-programmers)**  
+**[Available in full-color hardcover print](http://www.blurb.com/b/9008339-category-theory-for-programmers)**  
 Publish date: 21 October, 2018. Based off release tag [v1.0.0](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/tag/v1.0.0). See [errata](errata.md) for changes and fixes since print.
+
+**[Scala Edition is now available in paperback](https://www.blurb.com/b/9603882-category-theory-for-programmers-scala-edition-pape)**  
+Publish date: 12 August, 2019. Based off release tag [v1.3.0](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/tag/v1.3.0). See [errata-scala](errata-scala.md) for changes and fixes since print.
 
 This is an *unofficial* PDF version of "Category Theory for Programmers" by Bartosz Milewski, converted from his [blogpost series](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/) (with permission!)
 
