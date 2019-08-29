@@ -26,12 +26,20 @@ Please [report](https://github.com/hmemcpy/milewski-ctfp-pdf/issues) any formatt
 Building
 --------
 
-Chances for successful compilation are increased if you have almost complete installation of recent [TeX Live 2017](https://www.tug.org/texlive/) distribution (the PDF here is compiled with 2017 release). The needed OpenType fonts must be installed in the operating system. In addition, [pygments](http://pygments.org/) for Python must be installed as well.
+The best way to build the book is using the [Nix](https://nixos.org/nix/) package manager. After installing Nix, type `nix-shell` in the root directory of the project. This will download all the needed dependencies and tools to build the book (TeXLive, required fonts and packages, Pygments theme for syntax highligting, etc.)
+
+When the download is complete, and you're prompted with a shell, use the instructions below to build the book.
 
 The `src` directory contains the LaTeX sources. To recompile the book, go there and enter:
 
 ```bash
 $ make
+```
+
+To build the Scala edition, type:
+
+```bash
+$ make scala
 ```
 
 Upon successful compilation, the files will be placed in the `out` directory next to `src`. 
