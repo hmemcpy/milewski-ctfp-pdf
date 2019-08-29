@@ -1,1 +1,2 @@
-## A list of typos/mistakes that were fixed after the release of the new edition (12 August, 2019).
+## A list of typos/mistakes that were fixed after the release of the new edition (1.3.0) (12 August, 2019).
+(see errata for the original edition until 1.3.0 [here](https://github.com/hmemcpy/milewski-ctfp-pdf/blob/master/errata-1.0.0.md))
