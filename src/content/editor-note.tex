@@ -6,3 +6,9 @@
   \input{content/\OPTCustomLanguage/editor-note}
 }
 \fi
+\ifdefined\OPTCustomLanguageKotlin{%
+  \chapter*{A note from the editor}
+  \addcontentsline{toc}{chapter}{A note from the editor}
+  \input{content/\OPTCustomLanguageKotlin/editor-note}
+}
+\fi
