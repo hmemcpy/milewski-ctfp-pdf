@@ -19,10 +19,6 @@ This is an *unofficial* PDF version of "Category Theory for Programmers" by Bart
 
 ---
 
-Conversion is done by scraping the blog with [Mercury Web Parser](https://mercury.postlight.com/web-parser/) to get a clean HTML content, modifying and tweaking with [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/), finally, converting to LaTeX with [Pandoc](https://pandoc.org/). See [scraper.py](https://github.com/hmemcpy/milewski-ctfp-pdf/blob/master/src/scraper.py) for additional information.
-
-Please [report](https://github.com/hmemcpy/milewski-ctfp-pdf/issues) any formatting/content issues, or better yet, send a PR!
-
 Building
 --------
 
