@@ -47,17 +47,17 @@ version.tex:
 	git describe --tags --always --long | tr -d '\n' >> version.tex
 	/bin/echo -n '}' >> version.tex
 
-copy:
-	echo 'Creating output directory: $(GIT_VER)'
-	mkdir -p ../out/$(GIT_VER)
-	mv ctfp-reader.pdf ../out/$(GIT_VER)/category-theory-for-programmers.pdf
-	mv ctfp-print.pdf ../out/$(GIT_VER)/category-theory-for-programmers-print.pdf
+copy: suffix = ''
+copy: copy-task
 
-copy-scala: #remove this awful duplication ASAP
+copy-scala: suffix = '-scala'
+copy-scala: copy-task
+
+copy-task:
 	echo 'Creating output directory: $(GIT_VER)'
 	mkdir -p ../out/$(GIT_VER)
-	mv ctfp-reader-scala.pdf ../out/$(GIT_VER)/category-theory-for-programmers-scala.pdf
-	mv ctfp-print-scala.pdf ../out/$(GIT_VER)/category-theory-for-programmers-scala-print.pdf
+	mv ctfp-reader$(suffix).pdf ../out/$(GIT_VER)/category-theory-for-programmers$(suffix).pdf
+	mv ctfp-print$(suffix).pdf ../out/$(GIT_VER)/category-theory-for-programmers$(suffix)-print.pdf
 
 clean:
 	rm -f *~ *.aux {ctfp-*}.{out,log,pdf,dvi,fls,fdb_latexmk,aux,brf,bbl,idx,ilg,ind,toc,sed}
