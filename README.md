@@ -9,8 +9,8 @@ Category Theory for Programmers
 
 <img src="https://user-images.githubusercontent.com/601206/47271389-8eea0900-d581-11e8-8e81-5b932e336336.png"
  alt="Buy Category Theory for Programmers" width=410 />  
-**[Available in full-color hardcover print](http://www.blurb.com/b/9008339-category-theory-for-programmers)**  
-Publish date: 21 October, 2018. Based off release tag [v1.0.0](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/tag/v1.0.0). See [errata](errata.md) for changes and fixes since print.
+**[Available in full-color hardcover print](https://www.blurb.com/b/9621951-category-theory-for-programmers-new-edition-hardco)**  
+Publish date: 12 August, 2019. Based off release tag [v1.3.0](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/tag/v1.3.0). See [errata-1.3.0](errata-1.3.0.md) for changes and fixes since print.
 
 **[Scala Edition is now available in paperback](https://www.blurb.com/b/9603882-category-theory-for-programmers-scala-edition-pape)**  
 Publish date: 12 August, 2019. Based off release tag [v1.3.0](https://github.com/hmemcpy/milewski-ctfp-pdf/releases/tag/v1.3.0). See [errata-scala](errata-scala.md) for changes and fixes since print.
