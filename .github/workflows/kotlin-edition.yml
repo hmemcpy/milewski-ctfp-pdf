@@ -1,0 +1,30 @@
+name: KotlinEdition
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build Kotling Edition
+      run: |
+        export NIX_CURL_FLAGS=-sS
+        wget --retry-connrefused --waitretry=1 -O /tmp/nix-install https://nixos.org/releases/nix/nix-2.0.4/install
+        sh /tmp/nix-install
+        . ~/.nix-profile/etc/profile.d/nix.sh
+        nix-env --version
+        nix-instantiate --eval -E 'with import <nixpkgs> {}; lib.version or lib.nixpkgsVersion'
+        nix-shell --pure --command 'cd src; make kotlin' || echo "Skipping the failures for now..."
+    - name: Show PDF files
+      run: |
+        echo -e "INFO:\n\tOK: PDF file in out directory\n\tFAILURE = PDF file in src directory"
+        find . -name "*.pdf"
+        mkdir pdf-files
+        mv `find . -name "*.pdf"` pdf-files
+    - uses: actions/upload-artifact@master
+      with:
+        name: partial-book
+        path: pdf-files
