@@ -20,7 +20,7 @@ DEFAULTPDF:=$(DEFAULTTOPTEX:.tex=.pdf)
 # Scala PDF file to make
 SCALAPDF:=$(SCALATEXFILES:.tex=.pdf)
 
-# Other PDF files for the CTFP book 
+# Other PDF files for the CTFP book
 TOPPDFFILES:=$(TOPTEXFILES:.tex=.pdf)
 
 # Configuration files
@@ -36,16 +36,16 @@ default: $(DEFAULTPDF) copy # todo cover
 scala: version.tex $(SCALAPDF) copy-scala
 
 # Main targets
-$(TOPPDFFILES) : %.pdf : %.tex $(TEXFILES) 
+$(TOPPDFFILES) : %.pdf : %.tex $(TEXFILES)
 	if which latexmk > /dev/null 2>&1 ;\
 	then latexmk -shell-escape -interaction=nonstopmode -halt-on-error -norc -pdflatex="xelatex %O %S" -pdf $< ;\
-	else echo "Error: unable to find latexmk. Is it installed?" ;\
+	else @printf "Error: unable to find latexmk. Is it installed?\n" ;\
 	fi
 
 version.tex:
-	/bin/echo -n '\newcommand{\OPTversion}{' > version.tex
+	printf '\\newcommand{\\OPTversion}{' > version.tex
 	git describe --tags --always --long | tr -d '\n' >> version.tex
-	/bin/echo -n '}' >> version.tex
+	printf '}' >> version.tex
 
 copy: suffix = ''
 copy: copy-task
@@ -54,7 +54,7 @@ copy-scala: suffix = '-scala'
 copy-scala: copy-task
 
 copy-task:
-	echo 'Creating output directory: $(GIT_VER)'
+	@printf 'Creating output directory: $(GIT_VER)\n'
 	mkdir -p ../out/$(GIT_VER)
 	mv ctfp-reader$(suffix).pdf ../out/$(GIT_VER)/category-theory-for-programmers$(suffix).pdf
 	mv ctfp-print$(suffix).pdf ../out/$(GIT_VER)/category-theory-for-programmers$(suffix)-print.pdf
@@ -64,5 +64,5 @@ clean:
 	if which latexmk > /dev/null 2>&1 ; then latexmk -CA; fi
 	rm -rf ../out
 
-clean-minted: 
+clean-minted:
 	rm -rf _minted-*
