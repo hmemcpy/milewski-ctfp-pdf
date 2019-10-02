@@ -176,6 +176,11 @@
     \srcsnippet{\currfileabsdir/code/\OPTCustomLanguage/#1.\OPTCustomLanguageExt}{\OPTCustomLanguageColor}{\OPTCustomLanguage}{#2}
   }
   \fi
+  \ifdefined\OPTCustomLanguageKotlin{%
+    \unskip
+    \srcsnippet{\currfileabsdir/code/\OPTCustomLanguageKotlin/#1.\OPTCustomLanguageKotlinExt}{\OPTCustomLanguageKotlinColor}{\OPTCustomLanguageKotlin}{#2}
+  }
+  \fi
   \NoIndentAfterThis
 }
 \NewDocumentCommand\srcsnippet{mmmm}{

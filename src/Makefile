@@ -11,8 +11,10 @@ DEFAULTTOPTEX = ctfp-reader.tex ctfp-print.tex
 
 SCALATEXFILES = ctfp-reader-scala.tex ctfp-print-scala.tex # todo make this a macro
 
+KOTLINTEXFILES = ctfp-reader-kotlin.tex ctfp-print-kotlin.tex # todo make this a macro
+
 # Top-level LaTeX files from which CTFP book can be generated
-TOPTEXFILES = version.tex $(DEFAULTTOPTEX) $(SCALATEXFILES)
+TOPTEXFILES = version.tex $(DEFAULTTOPTEX) $(SCALATEXFILES) $(KOTLINTEXFILES)
 
 # Default PDF file to make
 DEFAULTPDF:=$(DEFAULTTOPTEX:.tex=.pdf)
@@ -20,20 +22,26 @@ DEFAULTPDF:=$(DEFAULTTOPTEX:.tex=.pdf)
 # Scala PDF file to make
 SCALAPDF:=$(SCALATEXFILES:.tex=.pdf)
 
-# Other PDF files for the CTFP book
+# Kotlin PDF file to make
+KOTLINPDF:=$(KOTLINTEXFILES:.tex=.pdf)
+
+# Other PDF files for the CTFP book 
 TOPPDFFILES:=$(TOPTEXFILES:.tex=.pdf)
 
 # Configuration files
 OPTFILES = opt-print-ustrade.tex \
 			opt-reader-10in.tex \
-			opt-scala.tex
+			opt-scala.tex \
+			opt-kotlin.tex
 
 # All the LaTeX files for the CTFP book in order of dependency
-TEXFILES = $(TOPTEXFILES) $(SCALATEXFILES) $(OPTFILES)
+TEXFILES = $(TOPTEXFILES) $(SCALATEXFILES) $(KOTLINTEXFILES) $(OPTFILES)
 
 default: $(DEFAULTPDF) copy # todo cover
 
 scala: version.tex $(SCALAPDF) copy-scala
+
+kotlin: version.tex $(KOTLINPDF) copy-kotlin
 
 # Main targets
 $(TOPPDFFILES) : %.pdf : %.tex $(TEXFILES)
@@ -52,6 +60,9 @@ copy: copy-task
 
 copy-scala: suffix = '-scala'
 copy-scala: copy-task
+
+copy-kotlin: suffix = '-kotlin'
+copy-kotlin: copy-task
 
 copy-task:
 	@printf 'Creating output directory: $(GIT_VER)\n'
