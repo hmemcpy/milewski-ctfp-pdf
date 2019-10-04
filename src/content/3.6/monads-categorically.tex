@@ -276,7 +276,11 @@ isomorphisms. The laws can be represented by commuting diagrams.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{images/assocmon.png}
+\begin{tikzcd}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    (a\times a) \times a \arrow[rr, "\alpha"] & & a\times (a\times a) \\
+    a\times a \arrow[from=1-1, "\mu\times id"] & & a\times a \arrow[from=1-3, "id\times\mu"] \\
+     & a \arrow[from=2-1, "\mu"] \arrow[from=2-3, "\mu"'] & \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
