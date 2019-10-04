@@ -293,7 +293,27 @@ domain of one is the codomain of the other.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{images/spanmul.png}
+\begin{tikzpicture}[cells={nodes={font=\bfseries}}]
+    \def\colspace{1.2}
+    \def\rowspace{1.5}
+    \node (P0) at (2*\rowspace, 2*\colspace) {$Arr\otimes Arr$};
+    \node (P1) at (1*\rowspace, 1*\colspace) {$Arr$};
+    \node (P2) at (3*\rowspace, 1*\colspace) {$Arr$};
+    \node (P3) at (0*\rowspace, 0*\colspace) {$Ob$};
+    \node (P4) at (2*\rowspace, 0*\colspace) {$Ob$};
+    \node (P5) at (4*\rowspace, 0*\colspace) {$Ob$};
+    \node (P0b) at (2*\rowspace, 1.7*\colspace) {\rotatebox[origin=c]{-45}{$\lrcorner$}};
+
+
+    \path[commutative diagrams/.cd,every arrow, every label,line width=0.2mm]
+        (P0) edge node {} (P1)
+        (P0) edge node {} (P2)
+        (P1) edge node[swap] {$dom$} (P3)
+        (P1) edge node[swap] {$cod$} (P4)
+        (P2) edge node[swap] {$dom$} (P4)
+        (P2) edge node[swap] {$cod$} (P5);
+\end{tikzpicture}
+
 \end{figure}
 
 \noindent
