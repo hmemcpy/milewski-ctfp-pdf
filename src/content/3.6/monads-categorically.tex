@@ -400,7 +400,9 @@ which you may recognize as the special case of horizontal composition.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/horizcomp.png}
+\begin{tikzcd}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    C \arrow[r, bend left=50, "F"{name=U, above}] \arrow[r, bend right=50, "F'"{name=D, below}] & C \arrow[Rightarrow, from=U, to=D] \arrow[r, bend left=50, "G"{name=U, above}] \arrow[r, bend right=50, "G'"{name=D, below}] & C \arrow[Rightarrow, from=U, to=D]
+\end{tikzcd}
 \end{figure}
 
 \noindent
