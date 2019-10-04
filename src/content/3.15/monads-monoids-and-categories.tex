@@ -150,7 +150,21 @@ g' \Colon y \to c
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{images/compspan.png}
+\begin{tikzpicture}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \def\colspace{1.2}
+    \def\rowspace{1.5}
+    \node (P1) at (1*\rowspace, 1*\colspace) {$x$};
+    \node (P2) at (3*\rowspace, 1*\colspace) {$y$};
+    \node (P3) at (0*\rowspace, 0*\colspace) {$a$};
+    \node (P4) at (2*\rowspace, 0*\colspace) {$b$};
+    \node (P5) at (4*\rowspace, 0*\colspace) {$c$};
+
+    \path[commutative diagrams/.cd,every arrow, every label,line width=0.2mm]
+        (P1) edge node[swap] {$f$} (P3)
+        (P1) edge node {$g$} (P4)
+        (P2) edge node[swap] {$f'$} (P4)
+        (P2) edge node {$g'$} (P5);
+\end{tikzpicture}
 \end{figure}
 
 \noindent
