@@ -214,7 +214,21 @@ triangles commute.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/morphspan.png}
+\begin{tikzpicture}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \def\colspace{1.2}
+    \def\rowspace{1.2}
+    \node (P0) at (2*\rowspace, 2*\colspace) {$x$};
+    \node (P12) at (2*\rowspace, 0.8*\colspace) {$y$};
+    \node (P3) at (0*\rowspace, 0*\colspace) {$a$};
+    \node (P5) at (4*\rowspace, 0*\colspace) {$b$};
+
+    \path[commutative diagrams/.cd,every arrow, every label,line width=0.2mm]
+        (P0) edge node {} (P3)
+        (P0) edge node {} (P5)
+        (P12) edge node {} (P3)
+        (P12) edge node[swap] {} (P5)
+        (P0) edge[commutative diagrams/Rightarrow, "$h$"] (P12);
+\end{tikzpicture}
 \caption{A $2$-cell in $\cat{Span}$.}
 \end{figure}
 
