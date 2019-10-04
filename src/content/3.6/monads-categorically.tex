@@ -156,7 +156,21 @@ be true for $T \circ \eta$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/unitlawcomp-1.png}
+\begin{tikzpicture}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \def\colspace{1.5}
+    \def\rowspace{2}
+    \node (P0) at (0*\rowspace, 1*\colspace) {$I\circ T$};
+    \node (P1) at (1*\rowspace, 1*\colspace) {$T^2$};
+    \node (P2) at (2*\rowspace, 1*\colspace) {$T\circ I$};
+    \node (P3) at (1*\rowspace, 0*\colspace) {$T$};
+
+    \path[commutative diagrams/.cd,every arrow, every label,line width=0.2mm]
+        (P0) edge node {$\eta\,\circ\, T$} (P1)
+        (P1) edge node {$T\,\circ\,\eta$} (P2)
+        (P0) edge node {} (P3)
+        (P1) edge node {$\eta$} (P3)
+        (P2) edge node {} (P3);
+\end{tikzpicture}
 \end{figure}
 
 \noindent
