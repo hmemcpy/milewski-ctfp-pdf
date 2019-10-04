@@ -60,7 +60,12 @@ of the natural transformation (which are also morphisms).
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.35\textwidth]{images/3_naturality.jpg}
+\begin{tikzcd}[row sep=large,column sep=large]
+     & F_a \arrow[dd, dashed, pos=0.7, "F_f"] \arrow[dr, "\alpha_a"] & \\
+    a \arrow[rr, crossing over] \arrow[ur] \arrow[dd, "f"] & & G_a \arrow[dd, "G_f"] \\
+     & F_b \arrow[dr, "\alpha_b"] & \\
+    b \arrow[rr] \arrow[ur] & & G_b \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
