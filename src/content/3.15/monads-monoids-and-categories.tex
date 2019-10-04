@@ -125,7 +125,17 @@ g \Colon x \to b
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.35\textwidth]{images/span.png}
+\begin{tikzpicture}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \def\colspace{1.2}
+    \def\rowspace{1.5}
+    \node (x) at (2*\rowspace, 2*\colspace) {$x$};
+    \node (a) at (1*\rowspace, 1*\colspace) {$a$};
+    \node (b) at (3*\rowspace, 1*\colspace) {$b$};
+
+    \path[commutative diagrams/.cd,every arrow, every label,line width=0.2mm]
+        (x) edge node[swap] {$f$} (a)
+        (x) edge node {$g$} (b);
+\end{tikzpicture}
 \end{figure}
 
 \noindent
