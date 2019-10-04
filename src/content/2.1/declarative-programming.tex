@@ -181,7 +181,21 @@ factorizing the projections of other such objects.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.35\textwidth]{images/productranking.jpg}
+\begin{tikzpicture}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \def\colspace{1}
+    \def\rowspace{1}
+    \node (P0) at (2*\rowspace, 2*\colspace) {$c'$};
+    \node (P12) at (2*\rowspace, 0.8*\colspace) {$c$};
+    \node (P3) at (0*\rowspace, 0*\colspace) {$a$};
+    \node (P5) at (4*\rowspace, 0*\colspace) {$b$};
+
+    \path[commutative diagrams/.cd,every arrow, every label,line width=0.2mm]
+        (P0) edge node["$p'$", above] {} (P3)
+        (P0) edge node["$q'$"] {} (P5)
+        (P12) edge node[below, "$p$"] {} (P3)
+        (P12) edge node[below, "$q$"] {} (P5)
+        (P0) edge[commutative diagrams/dashrightarrow, "$m$", swap] (P12);
+\end{tikzpicture}
 \end{figure}
 
 \noindent
