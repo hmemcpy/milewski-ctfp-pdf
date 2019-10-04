@@ -319,7 +319,17 @@ cod &\Colon Ar \to Ob
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{images/spanmonad.png}
+\begin{tikzpicture}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \def\colspace{1.2}
+    \def\rowspace{1.5}
+    \node (P0) at (2*\rowspace, 2*\colspace) {$Arr$};
+    \node (P1) at (1*\rowspace, 1*\colspace) {$Ob$};
+    \node (P2) at (3*\rowspace, 1*\colspace) {$Ob$};
+
+    \path[commutative diagrams/.cd,every arrow, every label,line width=0.2mm]
+        (P0) edge node[swap] {$dom$} (P1)
+        (P0) edge node {$cod$} (P2);
+\end{tikzpicture}
 \end{figure}
 
 \noindent
