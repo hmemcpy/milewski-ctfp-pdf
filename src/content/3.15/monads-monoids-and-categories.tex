@@ -182,7 +182,25 @@ which is universal among all such objects.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{images/pullspan.png}
+\begin{tikzpicture}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \def\colspace{1.2}
+    \def\rowspace{1.5}
+    \node (z) at (2*\rowspace, 2*\colspace) {$z$};
+    \node (x) at (1*\rowspace, 1*\colspace) {$x$};
+    \node (y) at (3*\rowspace, 1*\colspace) {$y$};
+    \node (a) at (0*\rowspace, 0*\colspace) {$a$};
+    \node (b) at (2*\rowspace, 0*\colspace) {$b$};
+    \node (c) at (4*\rowspace, 0*\colspace) {$c$};
+    \node (P0b) at (2*\rowspace, 1.7*\colspace) {\rotatebox[origin=c]{-45}{\Large$\lrcorner$}};
+
+    \path[commutative diagrams/.cd,every arrow, every label,line width=0.2mm]
+        (z) edge node[swap] {$h$} (x)
+        (z) edge node {$h'$} (y)
+        (x) edge node[swap] {$f$} (a)
+        (x) edge node[swap] {$g$} (b)
+        (y) edge node {$f'$} (b)
+        (y) edge node {$g'$} (c);
+\end{tikzpicture}
 \end{figure}
 
 \noindent
