@@ -296,7 +296,9 @@ satisfying the monoid laws. We call \emph{this} a monad.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{images/bimonad.png}
+\begin{tikzcd}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    a \arrow[loop above, "id"{name=id}] \arrow[loop, "T"{name=T}, looseness=18, out=130,in=50] \arrow[loop, "T\circ T"{name=T2}, looseness=25, out=140,in=40] \arrow[Rightarrow, from=id, to=T, "\eta"] \arrow[Rightarrow, from=T2, to=T, "\mu"']
+\end{tikzcd}
 \end{figure}
 
 \noindent
