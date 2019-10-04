@@ -48,7 +48,9 @@ morphisms are $2$-cells.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.35\textwidth]{images/twocat.png}
+\begin{tikzcd}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    a \arrow[r, bend left=50, "f"{name=U, above}] & b \arrow[l, bend left=50, "g"{name=D}] \arrow[Rightarrow, from=U, to=D, "\alpha"]
+\end{tikzcd}
 \caption{$0$-cells $a, b$; $1$-cells $f, g$; and a $2$-cell $\alpha$.}
 \end{figure}
 
