@@ -265,7 +265,17 @@ we get:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{images/monad.png}
+\begin{tikzpicture}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \def\colspace{1.8}
+    \def\rowspace{1.8}
+    \node (P0) at (1*\rowspace, 1*\colspace) {$T\circ T$};
+    \node (P1) at (1*\rowspace, 0*\colspace) {$T$};
+    \node (P2) at (0*\rowspace, 0*\colspace) {$I$};
+
+    \path[commutative diagrams/.cd,every arrow, every label,line width=0.2mm]
+        (P0) edge node {$\mu$} (P1)
+        (P2) edge node {$\eta$} (P1);
+\end{tikzpicture}
 \end{figure}
 
 \noindent
