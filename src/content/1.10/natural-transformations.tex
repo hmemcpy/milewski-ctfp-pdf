@@ -100,7 +100,10 @@ $\alpha_a$ along $f$:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/4_transport.jpg}
+\begin{tikzcd}[row sep=huge,column sep=huge,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    F a \arrow[r, "\alpha_a"] \arrow[d, swap, bend right=30, "F f"] & G a \arrow[d, "G f"]\\
+    F b \arrow[r, dashed, "\alpha_b"] \arrow[u, swap, dashed, bend right=30, "(F f)^{-1}"] & G b
+\end{tikzcd}
 \end{figure}
 
 \noindent
