@@ -414,7 +414,11 @@ $\beta \cdot \alpha$ --- the composition of two natural transformations $\beta$ 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/5_vertical.jpg}
+\begin{tikzcd}[row sep=large,column sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+     & & F a \arrow[dr, "\alpha a"] \arrow[dd, dashed, out=0, in=0, looseness=2.5, "(\beta\cdot\alpha) a"] & \\
+    a \arrow[urr, "F"] \arrow[rrr, "G"] \arrow[drr, "H"] & & & G a \arrow[dl, "\beta a"] \\
+     & & H a & \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
