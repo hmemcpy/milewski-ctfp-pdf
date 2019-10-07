@@ -334,7 +334,10 @@ algebra whose carrier is \code{a} and the evaluator is \code{alg}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/alg5.png}
+\begin{tikzcd}[column sep=large,row sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    f(Fix\,f) \arrow[r, "f\,map\,m"] \arrow[d, "Fix"] & fa \arrow[d, "alg"] \\
+    Fix\,f \arrow[r, "m"] & a
+\end{tikzcd}
 \end{figure}
 
 \noindent
