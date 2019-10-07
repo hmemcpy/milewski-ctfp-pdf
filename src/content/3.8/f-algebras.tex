@@ -231,7 +231,10 @@ homomorphism, the following diagram must commute:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{images/alg2.png}
+\begin{tikzcd}[column sep=large,row sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    F i \arrow[r, "F m"] \arrow[d, "j"] & Fa \arrow[d, "f"] \\
+    i \arrow[r, "m"] & a \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
