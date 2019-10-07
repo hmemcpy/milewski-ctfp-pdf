@@ -453,7 +453,10 @@ homomorphism $m$ that makes the following diagram commute:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/alg7.png}
+\begin{tikzcd}[column sep=large,row sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    F t & F a \arrow[l, "F m"{above}] \\
+    t \arrow[u, "u"{right}] & a \arrow[u, "f"{right}] \arrow[l, "m"{above}]
+\end{tikzcd}
 \end{figure}
 
 \noindent
