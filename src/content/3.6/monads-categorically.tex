@@ -394,7 +394,11 @@ be expressed in terms of the following commuting diagrams:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{images/assoctensor.jpg}
+\begin{tikzcd}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    (m\otimes m) \otimes m \arrow[rr, "\alpha"] & & m\otimes (m\otimes m) \\
+    m\otimes m \arrow[from=1-1, "\mu\otimes id"] & & m\otimes m \arrow[from=1-3, "id\otimes\mu"] \\
+     & m \arrow[from=2-1, "\mu"] \arrow[from=2-3, "\mu"'] & \\
+\end{tikzcd}
 \end{figure}
 
 \begin{figure}[H]
