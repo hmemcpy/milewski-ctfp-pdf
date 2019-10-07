@@ -155,7 +155,20 @@ require that the two paths produce the same result.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{images/assoc.png}
+\begin{tikzpicture}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \def\colspace{1.8}
+    \def\rowspace{2}
+    \node (P0) at (0*\rowspace, 1*\colspace) {$T^3$};
+    \node (P1) at (1*\rowspace, 0*\colspace) {$T$};
+    \node (P2) at (0*\rowspace, 0*\colspace) {$T^2$};
+    \node (P4) at (1*\rowspace, 1*\colspace) {$T^2$};
+
+    \path[commutative diagrams/.cd,every arrow, every label,line width=0.2mm]
+        (P0) edge node {$T\circ\mu$} (P2)
+        (P2) edge node {$\mu$} (P1)
+        (P0) edge node {$T\circ\mu$} (P4)
+        (P4) edge node {$\mu$} (P1);
+\end{tikzpicture}
 \end{figure}
 
 \noindent
