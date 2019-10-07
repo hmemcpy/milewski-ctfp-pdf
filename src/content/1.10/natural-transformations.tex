@@ -457,7 +457,9 @@ horizontal composition shortly.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{images/6a_vertical.jpg}
+\begin{tikzcd}[column sep=huge,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \mathcal{C} \arrow[r, bend left=65, pos=.37, "F"] \arrow[r, pos=.2, "G"] \arrow[r, bend right=65, pos=.2, "H"] \arrow[r, bend left=65, ""{name=U, below}] \arrow[r, ""{name=M, below}] \arrow[r, bend right=65, ""{name=D, below}] & \mathcal{D} \arrow[Rightarrow, from=U, to=M, "\alpha"] \arrow[Rightarrow, from=M, to=D, "\beta"]
+\end{tikzcd}
 \end{figure}
 
 \noindent
