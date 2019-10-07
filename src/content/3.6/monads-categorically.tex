@@ -115,7 +115,9 @@ horizontal composition of two natural transformations:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/assoc1.png}
+\begin{tikzcd}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    C \arrow[r, bend left=50, "T^2"{name=U, above}] \arrow[r, bend right=50, "T"{name=D, below}] & C \arrow[Rightarrow, from=U, to=D, "\mu"] \arrow[r, bend left=50, "T"{name=U, above}] \arrow[r, bend right=50, "T"{name=D, below}] & C \arrow[Rightarrow, from=U, to=D, "I_T"]
+\end{tikzcd}
 \end{figure}
 
 \noindent
