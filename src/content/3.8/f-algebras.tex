@@ -351,7 +351,10 @@ one arrow in this diagram to get:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/alg6.png}
+\begin{tikzcd}[column sep=large,row sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    f(Fix\,f) \arrow[r, "f\,map\,m"] \arrow[from=d, "unFix"] & fa \arrow[d, "alg"] \\
+    Fix\,f \arrow[r, "m"] & a
+\end{tikzcd}
 \end{figure}
 
 \noindent
