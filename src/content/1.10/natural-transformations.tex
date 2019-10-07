@@ -77,7 +77,12 @@ that complete the diagram in \emph{D}:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/3_naturality.jpg}
+\begin{tikzcd}[row sep=large,column sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+     & F a \arrow[dd, dashed, pos=0.7, "F f"] \arrow[dr, "\alpha_a"] & \\
+    a \arrow[rr, crossing over] \arrow[ur] \arrow[dd, "f"] & & G a \arrow[dd, "G_f"] \\
+     & F b \arrow[dr, "\alpha_b"] & \\
+    b \arrow[rr] \arrow[ur] & & G b \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
