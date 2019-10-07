@@ -249,7 +249,10 @@ diagram must commute:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{images/alg3a.png}
+\begin{tikzcd}[column sep=large,row sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    F i \arrow[r, "F m"] \arrow[d, "j"] & F(F i) \arrow[d, "F j"] \\
+    i \arrow[r, "m"] & Fi \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
