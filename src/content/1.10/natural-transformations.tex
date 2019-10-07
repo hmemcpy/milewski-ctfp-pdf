@@ -428,7 +428,13 @@ composition is indeed a natural transformation from F to H:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.35\textwidth]{images/6_verticalnaturality.jpg}
+\begin{tikzcd}[row sep=large,column sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+     & & & F a \arrow[dl, "\alpha_a"] \arrow[dd, "F f"] \\
+    a \arrow[urrr, "F"] \arrow[rr, "G"] \arrow[dr, "H"] \arrow[dd, "f"] & & G a \arrow[dl, "\beta_a"] & \\
+     & H a & & F b \arrow[dl, "\alpha_b"] \\
+    b \arrow[urrr, dashed] \arrow[rr, dashed] \arrow[dr]  & & G b \arrow[dl, "\beta_b"] \arrow[from=uu, crossing over, "G f"] & \\
+     & H b \arrow[from=uu, crossing over, pos=0.41, "H f"] & & \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
