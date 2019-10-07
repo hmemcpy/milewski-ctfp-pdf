@@ -261,7 +261,10 @@ same!):
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{images/alg3.png}
+\begin{tikzcd}[column sep=large,row sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    F(F i) \arrow[r, "F j"] \arrow[d, "F j"] & F i \arrow[d, "j"] \\
+    F i \arrow[r, "j"] & i \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
