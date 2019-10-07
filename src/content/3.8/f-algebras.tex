@@ -209,7 +209,10 @@ be equal:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{images/alg.png}
+\begin{tikzcd}[column sep=large,row sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    F a \arrow[r, "F m"] \arrow[d, "f"] & F b \arrow[d, "g"] \\
+    a \arrow[r, "m"] & b \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
