@@ -403,7 +403,10 @@ be expressed in terms of the following commuting diagrams:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{images/unitmon.jpg}
+\begin{tikzcd}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    i\otimes m \arrow[r, "\eta\otimes id"] \arrow[dr, "\lambda"] & m\otimes m \arrow[d, "\mu"] & m\otimes i \arrow[l, "id\otimes\eta"] \arrow[dl, "\rho"] \\
+     & m & \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
