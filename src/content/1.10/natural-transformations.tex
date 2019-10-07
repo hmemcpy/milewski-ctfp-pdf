@@ -568,7 +568,9 @@ respectively, on functors $F$ and $G$:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/10_horizontal.jpg}
+\begin{tikzcd}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \mathcal{C} \arrow[r, bend left=50, "F"{name=U, above}] \arrow[r, bend right=50, "F'"{name=D, below}] & \mathcal{D} \arrow[Rightarrow, from=U, to=D, "\alpha"] \arrow[r, bend left=50, "G"{name=U, above}] \arrow[r, bend right=50, "G'"{name=D, below}] & \mathcal{E} \arrow[Rightarrow, from=U, to=D, "\beta"]
+\end{tikzcd}
 \end{figure}
 
 \noindent
