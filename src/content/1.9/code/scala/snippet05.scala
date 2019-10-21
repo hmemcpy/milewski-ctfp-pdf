@@ -1,2 +1,2 @@
 val greet: String => String =
-  catstr("Hello ", _)
+  catstr("Hello ")   // or catstr_prime("Hello ")
