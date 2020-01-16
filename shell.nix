@@ -52,12 +52,13 @@ mkShell {
     gnumake
     which
     git
-    pythonPackages.virtualenv
-    pythonPackages.pip
+    python3Packages.virtualenv
   ];
   shellHook = ''
-    virtualenv --no-wheel --no-setuptools venv
-    venv/bin/pip install -v https://github.com/hmemcpy/pygments-patched/archive/2.4.2-PATCHED.tar.gz
+    # set SOURCE_DATE_EPOCH so that we can use python wheels
+    SOURCE_DATE_EPOCH=$(date +%s)
+    virtualenv venv
+    venv/bin/pip install -v pygments
     venv/bin/pip install -v pygments-style-github
     source venv/bin/activate
   '';

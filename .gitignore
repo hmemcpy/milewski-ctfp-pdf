@@ -11,3 +11,4 @@ src/version.tex
 *.synctex(busy)
 src/.dotty-ide-disabled
 venv/*
+.DS_Store
