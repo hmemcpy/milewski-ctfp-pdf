@@ -2,7 +2,8 @@ module AdjunctionState (S : sig
   type s
 end)
 (F : Functor with type 'a t = (S.s, 'a) prod)
-(R : Representable with type 'a t = (S.s, 'a) reader) : Adjunction = struct
+(R : Representable with type 'a t = (S.s, 'a) reader) : Adjunction =
+struct
   type 'a f = (S.s, 'a) prod
   type 'a r = (S.s, 'a) reader
 

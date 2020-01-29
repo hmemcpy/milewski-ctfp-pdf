@@ -1,1 +1,1 @@
-let rho_inv a = (a, ())
+let rho_inv a = a, ()

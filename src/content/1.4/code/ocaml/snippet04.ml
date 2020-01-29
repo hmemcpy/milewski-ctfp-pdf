@@ -1,1 +1,1 @@
-let pure x = (x, "");;
+let pure x = x, ""

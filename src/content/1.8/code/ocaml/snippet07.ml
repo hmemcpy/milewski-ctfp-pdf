@@ -1,1 +1,3 @@
-type 'a option = None | Some of 'a
+type 'a option =
+  | None
+  | Some of 'a

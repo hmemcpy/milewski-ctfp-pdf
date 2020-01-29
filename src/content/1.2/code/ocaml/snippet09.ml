@@ -1,1 +1,1 @@
-let f_int (_:int) = ()
+let f_int (_ : int) = ()

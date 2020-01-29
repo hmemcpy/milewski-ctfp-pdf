@@ -1,1 +1,1 @@
-let stmt = ("This statement is", false)
+let stmt = "This statement is", false

@@ -1,1 +1,1 @@
-let alpha_inv (a, (b, c)) = ((a, b), c)
+let alpha_inv (a, (b, c)) = (a, b), c

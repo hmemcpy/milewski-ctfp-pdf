@@ -1,1 +1,1 @@
-let eval (f,a) = f a
+let eval (f, a) = f a

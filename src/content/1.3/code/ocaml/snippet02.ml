@@ -1,5 +1,6 @@
-module StringMonoid:Monoid = struct
+module StringMonoid : Monoid = struct
   type a = string
+
   let mempty = ""
-  let mappend = (^)
+  let mappend = ( ^ )
 end

@@ -1,1 +1,1 @@
-let catstr s s' = String.concat ~sep:"" [s;s']
+let catstr s s' = String.concat ~sep:"" [ s; s' ]

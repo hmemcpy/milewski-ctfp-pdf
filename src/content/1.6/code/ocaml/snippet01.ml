@@ -1,1 +1,1 @@
-let swap (a, b) = (b, a)
+let swap (a, b) = b, a

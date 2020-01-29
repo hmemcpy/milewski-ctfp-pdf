@@ -1,2 +1,2 @@
-let fst (a,_) = a
+let fst (a, _) = a
 let snd (_, b) = b

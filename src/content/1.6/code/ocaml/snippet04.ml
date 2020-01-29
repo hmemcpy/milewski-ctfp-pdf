@@ -1,1 +1,1 @@
-let alpha ((a, b), c) = (a, (b, c))
+let alpha ((a, b), c) = a, (b, c)

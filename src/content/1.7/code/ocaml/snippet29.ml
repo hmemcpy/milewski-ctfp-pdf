@@ -1,3 +1,4 @@
-let maybe_tail = function 
-  | [] -> None 
+let maybe_tail = function
+  | [] -> None
   | _ :: xs -> Some xs
+;;

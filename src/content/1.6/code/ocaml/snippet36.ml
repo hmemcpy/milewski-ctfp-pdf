@@ -1,1 +1,1 @@
-let prod1 = (2, Left "Hi!")
+let prod1 = 2, Left "Hi!"

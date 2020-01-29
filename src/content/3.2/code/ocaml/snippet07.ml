@@ -1,1 +1,1 @@
-let factorizer p q x = (p x, q x)
+let factorizer p q x = p x, q x

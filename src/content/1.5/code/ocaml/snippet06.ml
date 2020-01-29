@@ -1,1 +1,1 @@
-let fst (a,b) = a
+let fst (a, b) = a

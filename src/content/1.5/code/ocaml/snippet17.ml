@@ -1,1 +1,1 @@
-let m' ((x, b): int * bool) = (x, x, b)
+let m' ((x, b) : int * bool) = x, x, b

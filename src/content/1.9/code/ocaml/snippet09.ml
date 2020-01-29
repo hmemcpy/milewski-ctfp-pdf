@@ -1,1 +1,1 @@
-let factorizer g = fun a -> (fun b -> g (a, b))
+let factorizer g a b = g (a, b)

@@ -1,1 +1,1 @@
-let p t = (t, (-2) * t)
+let p t = t, -2 * t
