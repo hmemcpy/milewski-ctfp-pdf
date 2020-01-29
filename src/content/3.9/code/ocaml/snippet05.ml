@@ -1,3 +1,3 @@
-module Kleisli_Composition (T : Monad) = struct
-  let h = T.join <.> T.fmap g <.> f
+module Kleisli_Composition (T : MonadJoin) = struct
+  let h g f = T.join <.> T.fmap g <.> f
 end
