@@ -5,11 +5,11 @@ module EndsWithDiaProd
 struct
   module E = EndsEqualizer (P)
 
-  let lambdaP : 'a 'b. 'a D.diaprod -> ('a, 'b) PP.prod_p =
+  let lambdaP : 'a D.diaprod -> ('a, 'b) PP.prod_p =
    fun (DiaProd paa) -> E.lambda paa
  ;;
 
-  let rhoP : 'a 'b. 'b D.diaprod -> ('a, 'b) PP.prod_p =
+  let rhoP : 'b D.diaprod -> ('a, 'b) PP.prod_p =
    fun (DiaProd pbb) -> E.rho pbb
  ;;
 end
