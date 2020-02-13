@@ -1,10 +1,12 @@
 # Igal Tabachnik, 2007.
 # Based on work by Andres Raba et al., 2013-2015.
 
-.PHONY: default all clean version.tex
+.PHONY: default all clean out-dir version.tex
 
 DIR := $(shell pwd)
 GIT_VER := $(shell git describe --tags --always --long | tr -d '\n')
+
+OUTPUT = category-theory-for-programmers
 
 # Default top-level LaTeX to generate
 DEFAULTTOPTEX = ctfp-reader.tex ctfp-print.tex
@@ -31,33 +33,29 @@ OPTFILES = opt-print-ustrade.tex \
 # All the LaTeX files for the CTFP book in order of dependency
 TEXFILES = $(TOPTEXFILES) $(SCALATEXFILES) $(OPTFILES)
 
-default: $(DEFAULTPDF) copy # todo cover
+default: suffix=''
+default: out-dir $(DEFAULTPDF) # todo cover
 
-scala: version.tex $(SCALAPDF) copy-scala
+scala: suffix='-scala'
+scala: out-dir version.tex $(SCALAPDF)
 
 # Main targets
 $(TOPPDFFILES) : %.pdf : %.tex $(TEXFILES)
 	if which latexmk > /dev/null 2>&1 ;\
-	then latexmk -shell-escape -interaction=nonstopmode -halt-on-error -norc -pdflatex="xelatex %O %S" -pdf $< ;\
+	then \
+		latexmk -shell-escape -interaction=nonstopmode -halt-on-error -norc -jobname=ctfp -pdflatex="xelatex %O %S" -pdf $< ;\
+		mv ctfp.pdf ../out/$(GIT_VER)/$(subst ctfp,$(OUTPUT),$(subst ctfp-reader,$(OUTPUT),$*)).pdf ;\
 	else @printf "Error: unable to find latexmk. Is it installed?\n" ;\
 	fi
 
 version.tex:
-	printf '\\newcommand{\\OPTversion}{' > version.tex
-	printf $(GIT_VER) >> version.tex
-	printf '}' >> version.tex
+	@printf '\\newcommand{\\OPTversion}{' > version.tex
+	@printf $(GIT_VER) >> version.tex
+	@printf '}' >> version.tex
 
-copy: suffix = ''
-copy: copy-task
-
-copy-scala: suffix = '-scala'
-copy-scala: copy-task
-
-copy-task:
+out-dir:
 	@printf 'Creating output directory: $(GIT_VER)\n'
 	mkdir -p ../out/$(GIT_VER)
-	mv ctfp-reader$(suffix).pdf ../out/$(GIT_VER)/category-theory-for-programmers$(suffix).pdf
-	mv ctfp-print$(suffix).pdf ../out/$(GIT_VER)/category-theory-for-programmers$(suffix)-print.pdf
 
 clean:
 	rm -f *~ *.aux {ctfp-*}.{out,log,pdf,dvi,fls,fdb_latexmk,aux,brf,bbl,idx,ilg,ind,toc,sed}
