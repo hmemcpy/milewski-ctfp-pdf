@@ -12,3 +12,4 @@ src/version.tex
 src/.dotty-ide-disabled
 venv/*
 .DS_Store
+src/.metals
