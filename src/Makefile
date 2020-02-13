@@ -44,7 +44,7 @@ $(TOPPDFFILES) : %.pdf : %.tex $(TEXFILES)
 
 version.tex:
 	printf '\\newcommand{\\OPTversion}{' > version.tex
-	git describe --tags --always --long | tr -d '\n' >> version.tex
+	printf $(GIT_VER) >> version.tex
 	printf '}' >> version.tex
 
 copy: suffix = ''
