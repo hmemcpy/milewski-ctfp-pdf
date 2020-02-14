@@ -1,0 +1,3 @@
+type bool =
+  | True
+  | False
