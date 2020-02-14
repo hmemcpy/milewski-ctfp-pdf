@@ -36,6 +36,8 @@ TEXFILES = $(TOPTEXFILES) $(SCALATEXFILES) $(OPTFILES)
 default: suffix=''
 default: out-dir $(DEFAULTPDF) # todo cover
 
+all: default scala
+
 scala: suffix='-scala'
 scala: out-dir version.tex $(SCALAPDF)
 
