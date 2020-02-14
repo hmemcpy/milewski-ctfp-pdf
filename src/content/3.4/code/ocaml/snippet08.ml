@@ -1,0 +1,3 @@
+let (>=>) f g = fun a -> 
+  let mb = f a in
+  ...

@@ -1,0 +1,1 @@
+let greet = catstr "Hello"
