@@ -1,10 +1,26 @@
 language:
-  - nix
+- nix
 
 script:
-  - nix-shell --pure --command 'cd src; make'
+- nix-shell --pure --command 'cd src; make all'
+
+before_deploy:
+- git config --local user.name "Igal Tabachnik"
+- git config --local user.email "hmemcpy@gmail.com"
+- export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+- git tag $TRAVIS_TAG
 
 deploy:
+  - provider: releases
+    api_key:
+      secure: usNWQZc/HcrZxR72+Qz2YXeyf56h0EwLVl6oOXIivxTWQCTTQ0cE6tXG6lP8JxQ1qlfAhbdh4QOmz6jxQD60HxsUwDWmt9t51o+8n3EMeID0hc45ES40/mbieUfR1jbkLbwmL16Z/bWsvUErmGuUgOxYrUCplK9fWs7Vvt8xmReFdunw8XpVrywG4rl1jXDo9YWihMps5KLOqd3mY3yvlxAmB+UKkhHPNdcEuEghEBhC8HZoZkFiwfRw/8PeOh9VpnQ2ht9eDXOlB7zNYY9Xr/S98FbzfZXxFjApXVRgNP8k2UYyHn8HCmIoCSs+Jv06tEvNCuwTvj0JNsuoW7vu/Q7wrrpScfDL+WnSw2CScml+xAe7Q4caoZKkzaMCnj5fHbPEZ731+SLZNbG6TMTYhMqhFm0Fr87bwdNlayqAssIhOwU4ca3pnZOQFO4vNOWblNfbHsX5F9sJDOR0uD4Y+PgfNWgTsssXqei7owBJNTe+qz5Q7IaFA3A8EMp57CV1dUCgmjxVuugtz6DLpl16WGiWpqakIA900GXMG+2c4ENCCDWmYtGlpWs2lSBqRYHV1gncE8UGtIih8G6g5jQd2aJUQKHKuaEiv/28WLI7f2exUuOBmc0ce4xP+qZAs5XWiPo4jJLNyb81uNIZ0jCb/c5+lEH8EsYF+jFOrmw17GQ=
+    file: out/**/*.pdf
+    file_glob: true
+    skip_cleanup: true
+    on:
+      repo: hmemcpy/milewski-ctfp-pdf
+      branch: master
+      tags: true
   - provider: s3
     bucket: milewski-ctfp-pdf
     access_key_id: '$ARTIFACTS_KEY'
@@ -16,12 +32,3 @@ deploy:
     on:
       all_branches: true
       repo: hmemcpy/milewski-ctfp-pdf
-  - provider: releases
-    api_key:
-      secure: XIHB7JJMi1+VcoiIfCPxJ+XsTQZ1xG17VXJ0xrHma2PsQhGtT0vK/rdRE1wAjw1kwEKGe6fP6cVf36QPBA8EuUJYN2pU27AUTB0Wp6aZ1kmaY/cIsyMo340qXQnB28o9clIzufn7ouuiEjgCCAahAvweAsYf/mv6EpZTzl3UAD/WrryyaabfEsiR+6Am0mw+r1zeXXiiappA4rLHjdBgTnF6AXZf/fKzwEm53vIjzcVOTrqIaPCevvf0UUP1D4iD435jov7my7ZZc6zGEwUoDeuKthk3xFmQ5e7gw0FvjUXyqhjOQmc5myX8XSfzG4SlY8jmz9bgFyKTPB1sja8lV738N2HN0tfY9HcCQDXCLCOSJOtEa833p5rIhfHnKy0gQw3K9LvOQnMjiM/0Ik9uWuYIAQW1rtnI8iPClEF8hXshXewGNU+WmxGfQ82OYey8wHPXg4FZj50p7djFr2l0GLG4ngbrFcp9U9msXCVVDDa+0vO09LpGZ6WDWYH4inaK4catJT8vrfSprx1BbiJG+EuzjgvTFKNoxydTiM4EYW3QkVTRkUCa2ZO7ARg5caT0fL12csHGBXlPN3L5RWnTIHg8mWmz3jzBWYKs3IFLMvwKPF3y4Gbq7Ippmj9OwSyR7/V8ozNux5Wb8mFyPdFaW0PsU1SqdNpEy0ry7yFptWI=
-    file_glob: true
-    file: out/*.pdf
-    skip_cleanup: true
-    on:
-      repo: hmemcpy/milewski-ctfp-pdf
-      tags: true
