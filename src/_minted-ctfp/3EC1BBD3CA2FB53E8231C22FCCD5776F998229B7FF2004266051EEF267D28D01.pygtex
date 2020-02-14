@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{o}{\PYGZgt{}=\PYGZgt{}[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{p}{,} \PYG{k+kt}{C}\PYG{o}{](}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{M}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{],} \PYG{n}{g}\PYG{k}{:} \PYG{k+kt}{B} \PYG{o}{=\PYGZgt{}} \PYG{n}{M}\PYG{o}{[}\PYG{k+kt}{C}\PYG{o}{])} \PYG{k}{=}
+  \PYG{n}{a} \PYG{k}{=\PYGZgt{}} \PYG{o}{\PYGZob{}...\PYGZcb{}}
+\end{Verbatim}

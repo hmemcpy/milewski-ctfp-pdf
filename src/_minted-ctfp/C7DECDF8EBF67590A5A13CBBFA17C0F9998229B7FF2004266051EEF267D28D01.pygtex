@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{i1} \PYG{o}{==} \PYG{n}{m} \PYG{n}{compose} \PYG{n}{i}
+\PYG{n}{j1} \PYG{o}{==} \PYG{n}{m} \PYG{n}{compose} \PYG{n}{j}
+\end{Verbatim}

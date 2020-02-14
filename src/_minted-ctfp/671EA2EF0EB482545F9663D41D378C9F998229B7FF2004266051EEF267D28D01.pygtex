@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{trait} \PYG{n+nc}{Coend}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{p}{,} \PYG{k}{\PYGZus{}}\PYG{o}{]]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{paa}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{P}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

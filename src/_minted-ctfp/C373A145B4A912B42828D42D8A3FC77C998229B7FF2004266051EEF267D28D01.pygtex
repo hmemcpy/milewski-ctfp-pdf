@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{extract}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{wa}\PYG{k}{:} \PYG{k+kt}{W}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{A}
+\end{Verbatim}

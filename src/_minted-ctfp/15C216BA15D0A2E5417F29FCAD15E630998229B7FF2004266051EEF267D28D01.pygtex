@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{type} \PYG{k+kt}{Algebra}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=} \PYG{n}{F}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n}{A}
+\end{Verbatim}

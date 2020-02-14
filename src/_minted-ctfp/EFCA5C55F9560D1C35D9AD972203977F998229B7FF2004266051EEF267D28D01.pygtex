@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{type} \PYG{k+kt}{Op}\PYG{o}{[}\PYG{k+kt}{R}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=} \PYG{n}{A} \PYG{k}{=\PYGZgt{}} \PYG{n}{R}
+\end{Verbatim}

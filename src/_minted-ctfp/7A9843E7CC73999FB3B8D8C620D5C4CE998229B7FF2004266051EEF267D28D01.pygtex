@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{length}\PYG{o}{[}\PYG{k+kt}{E}\PYG{o}{](}\PYG{n}{l}\PYG{k}{:} \PYG{k+kt}{List}\PYG{o}{[}\PYG{k+kt}{E}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{Int} \PYG{o}{=}
+  \PYG{n}{l}\PYG{o}{.}\PYG{n}{foldRight}\PYG{o}{(}\PYG{l+m+mi}{0}\PYG{o}{)((}\PYG{n}{e}\PYG{o}{,} \PYG{n}{n}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{n} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{o}{)}
+\end{Verbatim}

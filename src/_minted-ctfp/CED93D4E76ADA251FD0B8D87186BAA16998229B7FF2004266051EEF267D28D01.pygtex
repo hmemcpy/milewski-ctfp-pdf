@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// no Rank\PYGZhy{}N types in Scala}
+\PYG{c+c1}{// have to introduce a polymorphic function}
+\PYG{k}{trait} \PYG{n+nc}{PolyFunction1}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{p}{,} \PYG{k}{\PYGZus{}}\PYG{o}{]]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{apply}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]()}\PYG{k}{:} \PYG{k+kt}{P}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

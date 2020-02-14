@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{trait} \PYG{n+nc}{Monad}\PYG{o}{[}\PYG{k+kt}{M}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]]} \PYG{k}{extends} \PYG{n+nc}{Functor}\PYG{o}{[}\PYG{k+kt}{M}\PYG{o}{]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{flatten}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{mma}\PYG{k}{:} \PYG{k+kt}{M}\PYG{o}{[}\PYG{k+kt}{M}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]])}\PYG{k}{:} \PYG{k+kt}{M}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}
+  \PYG{k}{def} \PYG{n}{pure}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{a}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{M}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

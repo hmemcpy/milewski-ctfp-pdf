@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{f1}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{A1}
+\PYG{k}{def} \PYG{n}{f2}\PYG{k}{:} \PYG{k+kt}{B} \PYG{o}{=\PYGZgt{}} \PYG{n}{B1}
+\end{Verbatim}

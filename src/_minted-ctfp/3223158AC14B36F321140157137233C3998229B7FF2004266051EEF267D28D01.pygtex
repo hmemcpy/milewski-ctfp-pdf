@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{sealed} \PYG{k}{trait} \PYG{n+nc}{NatF}\PYG{o}{[}\PYG{k+kt}{+A}\PYG{o}{]}
+\PYG{k}{case} \PYG{k}{object} \PYG{n+nc}{ZeroF} \PYG{k}{extends} \PYG{n+nc}{NatF}\PYG{o}{[}\PYG{k+kt}{Nothing}\PYG{o}{]}
+\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{SuccF}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{a}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{NatF}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}
+\end{Verbatim}

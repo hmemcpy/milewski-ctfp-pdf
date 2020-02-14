@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nc}{Function1}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]}
+\PYG{c+c1}{// or}
+\PYG{n}{A} \PYG{k}{=\PYGZgt{}} \PYG{n}{B}
+\end{Verbatim}

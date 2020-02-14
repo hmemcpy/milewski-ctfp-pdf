@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{Store}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{run}\PYG{k}{:} \PYG{k+kt}{S} \PYG{o}{=\PYGZgt{}} \PYG{n}{A}\PYG{o}{,} \PYG{n}{s}\PYG{k}{:} \PYG{k+kt}{S}\PYG{o}{)}
+\end{Verbatim}

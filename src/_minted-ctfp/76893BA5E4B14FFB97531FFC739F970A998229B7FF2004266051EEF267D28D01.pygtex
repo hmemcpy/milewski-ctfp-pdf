@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{val} \PYG{n}{alpha}\PYG{k}{:} \PYG{k+kt}{F}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n}{G}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}
+\end{Verbatim}

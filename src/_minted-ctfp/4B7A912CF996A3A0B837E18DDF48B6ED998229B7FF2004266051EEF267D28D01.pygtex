@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{implicit} \PYG{k}{def} \PYG{n}{readerFunctor}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=} \PYG{k}{new} \PYG{n+nc}{Functor}\PYG{o}{[}\PYG{k+kt}{Reader}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{?}\PYG{o}{]]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{fmap}\PYG{o}{[}\PYG{k+kt}{X}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{X} \PYG{o}{=\PYGZgt{}} \PYG{n}{B}\PYG{o}{)(}\PYG{n}{h}\PYG{k}{:} \PYG{k+kt}{Reader}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{X}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{Reader}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=}
+    \PYG{n}{f} \PYG{n}{compose} \PYG{n}{h}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

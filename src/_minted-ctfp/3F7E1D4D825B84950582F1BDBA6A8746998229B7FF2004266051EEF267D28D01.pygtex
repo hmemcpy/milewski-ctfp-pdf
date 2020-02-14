@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{set}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{S}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{S} \PYG{k}{=\PYGZgt{}} \PYG{n}{A}
+\PYG{k}{def} \PYG{n}{get}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{S}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{S}
+\end{Verbatim}

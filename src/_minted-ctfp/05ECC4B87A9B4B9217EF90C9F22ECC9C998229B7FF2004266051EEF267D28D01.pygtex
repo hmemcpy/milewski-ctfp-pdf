@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// just imagine that the list is infinite}
+\PYG{k}{def} \PYG{n}{primes} \PYG{k}{=}
+  \PYG{n}{ana}\PYG{o}{(}\PYG{n}{era}\PYG{o}{)(}\PYG{n}{streamFFunctor}\PYG{o}{)((}\PYG{l+m+mi}{1} \PYG{n}{to} \PYG{l+m+mi}{10}\PYG{o}{).}\PYG{n}{toList}\PYG{o}{)}
+\end{Verbatim}

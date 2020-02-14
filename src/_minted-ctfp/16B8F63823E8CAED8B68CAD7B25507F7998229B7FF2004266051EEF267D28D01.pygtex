@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{unit}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{a}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{Reader}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{Product}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]]} \PYG{k}{=}
+  \PYG{n+nc}{Reader}\PYG{o}{(}\PYG{n}{s} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Product}\PYG{o}{((}\PYG{n}{a}\PYG{o}{,} \PYG{n}{s}\PYG{o}{)))}
+\end{Verbatim}

@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{g} \PYG{n}{compose} \PYG{n}{q} \PYG{o}{==} \PYG{n}{f} \PYG{n}{compose} \PYG{n}{p}
+\end{Verbatim}

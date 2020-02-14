@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{trait} \PYG{n+nc}{Comonad}\PYG{o}{[}\PYG{k+kt}{W}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]]} \PYG{k}{extends} \PYG{n+nc}{Functor}\PYG{o}{[}\PYG{k+kt}{W}\PYG{o}{]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{o}{=\PYGZgt{}=[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{p}{,} \PYG{k+kt}{C}\PYG{o}{](}\PYG{n}{w1}\PYG{k}{:} \PYG{k+kt}{W}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n}{B}\PYG{o}{)(}\PYG{n}{w2}\PYG{k}{:} \PYG{k+kt}{W}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n}{C}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{W}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n}{C}
+  \PYG{k}{def} \PYG{n}{extract}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{wa}\PYG{k}{:} \PYG{k+kt}{W}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{A}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

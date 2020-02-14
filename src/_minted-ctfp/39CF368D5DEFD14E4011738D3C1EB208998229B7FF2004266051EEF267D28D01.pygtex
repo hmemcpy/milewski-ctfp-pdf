@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{factorizer}\PYG{o}{(}\PYG{n}{p}\PYG{o}{)(}\PYG{n}{q}\PYG{o}{).}\PYG{n}{andThen}\PYG{o}{(}\PYG{k}{\PYGZus{}}\PYG{o}{.}\PYG{n}{\PYGZus{}1}\PYG{o}{)} \PYG{o}{==} \PYG{n}{p}
+\PYG{n}{factorizer}\PYG{o}{(}\PYG{n}{p}\PYG{o}{)(}\PYG{n}{q}\PYG{o}{).}\PYG{n}{andThen}\PYG{o}{(}\PYG{k}{\PYGZus{}}\PYG{o}{.}\PYG{n}{\PYGZus{}2}\PYG{o}{)} \PYG{o}{==} \PYG{n}{q}
+\end{Verbatim}

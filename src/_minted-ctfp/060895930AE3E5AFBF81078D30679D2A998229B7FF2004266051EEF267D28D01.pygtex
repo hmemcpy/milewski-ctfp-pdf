@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{sealed} \PYG{k}{trait} \PYG{n+nc}{Tree}\PYG{o}{[}\PYG{k+kt}{+A}\PYG{o}{]}
+\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{Leaf}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{a}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{Tree}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}
+\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{Node}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{l}\PYG{k}{:} \PYG{k+kt}{Tree}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{],} \PYG{n}{r}\PYG{k}{:} \PYG{k+kt}{Tree}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])} \PYG{k}{extends} \PYG{n+nc}{Tree}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}
+\PYG{c+c1}{// implicit def treeFunctor = ???}
+\end{Verbatim}

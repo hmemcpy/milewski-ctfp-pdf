@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{val} \PYG{n}{p} \PYG{k}{:} \PYG{k+kt}{C} \PYG{o}{=\PYGZgt{}} \PYG{n}{A}
+\PYG{k}{val} \PYG{n}{q} \PYG{k}{:} \PYG{k+kt}{C} \PYG{o}{=\PYGZgt{}} \PYG{n}{B}
+\end{Verbatim}

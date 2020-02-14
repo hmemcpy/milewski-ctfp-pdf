@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{counit}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{a}\PYG{k}{:} \PYG{k+kt}{Product}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{Reader}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]])}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=} \PYG{n}{a} \PYG{k}{match} \PYG{o}{\PYGZob{}}
+  \PYG{k}{case} \PYG{n+nc}{Product}\PYG{o}{((}\PYG{n+nc}{Reader}\PYG{o}{(}\PYG{n}{f}\PYG{o}{),} \PYG{n}{s}\PYG{o}{))} \PYG{k}{=\PYGZgt{}} \PYG{n}{f}\PYG{o}{(}\PYG{n}{s}\PYG{o}{)}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

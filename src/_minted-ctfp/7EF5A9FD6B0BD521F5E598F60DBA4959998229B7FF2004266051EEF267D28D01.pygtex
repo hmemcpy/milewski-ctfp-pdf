@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{sealed} \PYG{k}{trait} \PYG{n+nc}{Bool}
+\PYG{k}{case} \PYG{k}{object} \PYG{n+nc}{True} \PYG{k}{extends} \PYG{n+nc}{Bool}
+\PYG{k}{case} \PYG{k}{object} \PYG{n+nc}{False} \PYG{k}{extends} \PYG{n+nc}{Bool}
+\end{Verbatim}

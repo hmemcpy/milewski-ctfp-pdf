@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{duplicateS}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{wa}\PYG{k}{:} \PYG{k+kt}{Stream}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{Stream}\PYG{o}{[}\PYG{k+kt}{Stream}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]]} \PYG{k}{=} \PYG{n}{wa} \PYG{k}{match} \PYG{o}{\PYGZob{}}
+  \PYG{k}{case} \PYG{n}{s} \PYG{k}{@} \PYG{n+nc}{Stream}\PYG{o}{(}\PYG{n}{a}\PYG{o}{,} \PYG{n}{as}\PYG{o}{)} \PYG{k}{=\PYGZgt{}}
+    \PYG{n+nc}{Stream}\PYG{o}{(()} \PYG{k}{=\PYGZgt{}} \PYG{n}{s}\PYG{o}{,} \PYG{o}{()} \PYG{k}{=\PYGZgt{}} \PYG{n}{duplicateS}\PYG{o}{(}\PYG{n}{as}\PYG{o}{()))}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

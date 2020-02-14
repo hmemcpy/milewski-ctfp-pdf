@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{DiaProd}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{p}{,} \PYG{k}{\PYGZus{}}\PYG{o}{]](}\PYG{n}{paa}\PYG{k}{:} \PYG{k+kt}{PolyFunction1}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{])}
+\end{Verbatim}

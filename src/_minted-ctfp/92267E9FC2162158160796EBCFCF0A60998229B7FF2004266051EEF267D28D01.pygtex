@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{alg} \PYG{n}{compose} \PYG{n}{pure} \PYG{o}{==} \PYG{n}{id}
+\PYG{n}{alg} \PYG{n}{compose} \PYG{n}{flatten} \PYG{o}{==} \PYG{n}{alg} \PYG{n}{compose} \PYG{n}{fmap}\PYG{o}{(}\PYG{n}{alg}\PYG{o}{)}
+\end{Verbatim}

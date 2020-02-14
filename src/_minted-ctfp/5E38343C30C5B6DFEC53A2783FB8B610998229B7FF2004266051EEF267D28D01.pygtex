@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{trait} \PYG{n+nc}{Lan}\PYG{o}{[}\PYG{k+kt}{K}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{+D}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{fk}\PYG{o}{[}\PYG{k+kt}{I}\PYG{o}{](}\PYG{n}{ki}\PYG{k}{:} \PYG{k+kt}{K}\PYG{o}{[}\PYG{k+kt}{I}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{A}
+  \PYG{k}{def} \PYG{n}{di}\PYG{o}{[}\PYG{k+kt}{I}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{D}\PYG{o}{[}\PYG{k+kt}{I}\PYG{o}{]}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

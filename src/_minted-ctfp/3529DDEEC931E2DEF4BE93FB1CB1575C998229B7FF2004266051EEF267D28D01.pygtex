@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{implicit} \PYG{k}{def} \PYG{n}{freeFunctor}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]]} \PYG{k}{=} \PYG{k}{new} \PYG{n+nc}{Functor}\PYG{o}{[}\PYG{k+kt}{FreeF}\PYG{o}{[}\PYG{k+kt}{F}\PYG{p}{,} \PYG{k+kt}{?}\PYG{o}{]]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{fmap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{g}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{B}\PYG{o}{)(}\PYG{n}{fa}\PYG{k}{:} \PYG{k+kt}{FreeF}\PYG{o}{[}\PYG{k+kt}{F}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{FreeF}\PYG{o}{[}\PYG{k+kt}{F}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=} \PYG{n}{fa} \PYG{k}{match} \PYG{o}{\PYGZob{}}
+    \PYG{k}{case} \PYG{n+nc}{FreeF}\PYG{o}{(}\PYG{n}{r}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{FreeF} \PYG{o}{\PYGZob{}}
+      \PYG{k}{new} \PYG{o}{\PYGZti{}\PYGZgt{}[}\PYG{k+kt}{B} \PYG{k}{=\PYGZgt{}} \PYG{k+kt}{?}\PYG{p}{,} \PYG{k+kt}{F}\PYG{o}{]} \PYG{o}{\PYGZob{}}
+        \PYG{k}{def} \PYG{n}{apply}\PYG{o}{[}\PYG{k+kt}{C}\PYG{o}{](}\PYG{n}{bi}\PYG{k}{:} \PYG{k+kt}{B} \PYG{o}{=\PYGZgt{}} \PYG{n}{C}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{F}\PYG{o}{[}\PYG{k+kt}{C}\PYG{o}{]} \PYG{k}{=}
+          \PYG{n}{r}\PYG{o}{(}\PYG{n}{bi} \PYG{n}{compose} \PYG{n}{g}\PYG{o}{)}
+      \PYG{o}{\PYGZcb{}}
+    \PYG{o}{\PYGZcb{}}
+  \PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

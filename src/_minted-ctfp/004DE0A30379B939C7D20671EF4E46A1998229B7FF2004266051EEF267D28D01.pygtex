@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{process}\PYG{k}{:} \PYG{k+kt}{String} \PYG{o}{=\PYGZgt{}} \PYG{n+nc}{Writer}\PYG{o}{[}\PYG{k+kt}{String}\PYG{p}{,} \PYG{k+kt}{List}\PYG{o}{[}\PYG{k+kt}{String}\PYG{o}{]]} \PYG{k}{=}
+  \PYG{n}{s} \PYG{k}{=\PYGZgt{}} \PYG{o}{\PYGZob{}}
+    \PYG{k}{import} \PYG{n+nn}{bindSyntax.\PYGZus{}}
+    \PYG{n}{upCase}\PYG{o}{(}\PYG{n}{s}\PYG{o}{)} \PYG{o}{\PYGZgt{}\PYGZgt{}=} \PYG{o}{(}\PYG{n}{upStr} \PYG{k}{=\PYGZgt{}} \PYG{n}{toWords}\PYG{o}{(}\PYG{n}{upStr}\PYG{o}{))}
+  \PYG{o}{\PYGZcb{}}
+\end{Verbatim}

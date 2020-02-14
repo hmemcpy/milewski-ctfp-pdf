@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{f}\PYG{o}{(}\PYG{n}{x}\PYG{o}{,} \PYG{n}{y}\PYG{o}{)} \PYG{k}{=} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{y} \PYG{o}{+} \PYG{n}{x}
+\PYG{k}{def} \PYG{n}{g}\PYG{o}{(}\PYG{n}{x}\PYG{o}{,} \PYG{n}{y}\PYG{o}{)} \PYG{k}{=} \PYG{n}{y} \PYG{o}{\PYGZhy{}} \PYG{n}{x}
+\end{Verbatim}

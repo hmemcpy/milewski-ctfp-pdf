@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{implicit} \PYG{k}{def} \PYG{n}{constFunctor}\PYG{o}{[}\PYG{k+kt}{C}\PYG{o}{]} \PYG{k}{=} \PYG{k}{new} \PYG{n+nc}{Functor}\PYG{o}{[}\PYG{k+kt}{Const}\PYG{o}{[}\PYG{k+kt}{C}\PYG{p}{,} \PYG{k+kt}{?}\PYG{o}{]]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{fmap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{B}\PYG{o}{)(}\PYG{n}{ca}\PYG{k}{:} \PYG{k+kt}{Const}\PYG{o}{[}\PYG{k+kt}{C}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{Const}\PYG{o}{[}\PYG{k+kt}{C}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=}
+    \PYG{n+nc}{Const}\PYG{o}{(}\PYG{n}{ca}\PYG{o}{.}\PYG{n}{v}\PYG{o}{)}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{val} \PYG{n}{prod1}\PYG{k}{:} \PYG{o}{(}\PYG{k+kt}{Int}\PYG{o}{,} \PYG{k+kt}{Either}\PYG{o}{[}\PYG{k+kt}{String}\PYG{p}{,} \PYG{k+kt}{Float}\PYG{o}{])} \PYG{k}{=}
+  \PYG{o}{(}\PYG{l+m+mi}{2}\PYG{o}{,} \PYG{n+nc}{Left}\PYG{o}{(}\PYG{l+s}{\PYGZdq{}Hi!\PYGZdq{}}\PYG{o}{))}
+\end{Verbatim}

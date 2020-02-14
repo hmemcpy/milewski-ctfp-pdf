@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{side}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{p}{,} \PYG{k}{\PYGZus{}}\PYG{o}{]}\PYG{k+kt}{:} \PYG{k+kt}{Profunctor}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{PolyFunction1}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n}{P}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]}
+\end{Verbatim}

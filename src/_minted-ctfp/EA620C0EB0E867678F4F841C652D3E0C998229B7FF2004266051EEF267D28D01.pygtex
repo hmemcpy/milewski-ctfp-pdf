@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{implicit} \PYG{k}{def} \PYG{n}{state}\PYG{o}{[}\PYG{k+kt}{S}\PYG{o}{]} \PYG{k}{=} \PYG{k}{new} \PYG{n+nc}{Adjunction}\PYG{o}{[}\PYG{k+kt}{Prod}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{?}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{Reader}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{?}\PYG{o}{]]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{counit}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{a}\PYG{k}{:} \PYG{k+kt}{Prod}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{Reader}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]])}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=} \PYG{n}{a} \PYG{k}{match} \PYG{o}{\PYGZob{}}
+    \PYG{k}{case} \PYG{n+nc}{Prod}\PYG{o}{((}\PYG{n+nc}{Reader}\PYG{o}{(}\PYG{n}{f}\PYG{o}{),} \PYG{n}{s}\PYG{o}{))} \PYG{k}{=\PYGZgt{}} \PYG{n}{f}\PYG{o}{(}\PYG{n}{s}\PYG{o}{)}
+  \PYG{o}{\PYGZcb{}}
+
+  \PYG{k}{def} \PYG{n}{unit}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{a}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{Reader}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{Prod}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]]} \PYG{k}{=}
+    \PYG{n+nc}{Reader}\PYG{o}{(}\PYG{n}{s} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Prod}\PYG{o}{((}\PYG{n}{a}\PYG{o}{,} \PYG{n}{s}\PYG{o}{)))}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{flatMap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{ra}\PYG{k}{:} \PYG{k+kt}{Reader}\PYG{o}{[}\PYG{k+kt}{E}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{])(}\PYG{n}{k}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n+nc}{Reader}\PYG{o}{[}\PYG{k+kt}{E}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{Reader}\PYG{o}{[}\PYG{k+kt}{E}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=}
+  \PYG{n+nc}{Reader} \PYG{o}{\PYGZob{}} \PYG{n}{e} \PYG{k}{=\PYGZgt{}}
+    \PYG{k}{val} \PYG{n}{a} \PYG{k}{=} \PYG{n}{runReader}\PYG{o}{(}\PYG{n}{ra}\PYG{o}{)(}\PYG{n}{e}\PYG{o}{)}
+    \PYG{k}{val} \PYG{n}{rb} \PYG{k}{=} \PYG{n}{k}\PYG{o}{(}\PYG{n}{a}\PYG{o}{)}
+    \PYG{n}{runReader}\PYG{o}{(}\PYG{n}{rb}\PYG{o}{)(}\PYG{n}{e}\PYG{o}{)}
+  \PYG{o}{\PYGZcb{}}
+\end{Verbatim}

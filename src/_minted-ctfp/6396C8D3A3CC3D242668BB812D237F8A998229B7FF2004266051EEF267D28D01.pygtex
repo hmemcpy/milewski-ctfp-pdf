@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{fmap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{B}\PYG{o}{)(}\PYG{n}{fa}\PYG{k}{:} \PYG{k+kt}{Option}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{Option}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{]}
+\end{Verbatim}

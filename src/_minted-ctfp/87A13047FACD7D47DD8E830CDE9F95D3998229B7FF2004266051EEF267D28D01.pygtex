@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{mu}\PYG{o}{(}\PYG{n}{eta}\PYG{o}{(),} \PYG{n}{x}\PYG{o}{)} \PYG{o}{==} \PYG{n}{x}
+\PYG{n}{mu}\PYG{o}{(}\PYG{n}{x}\PYG{o}{,} \PYG{n}{eta}\PYG{o}{())} \PYG{o}{==} \PYG{n}{x}
+\end{Verbatim}

@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{o}{(}\PYG{n}{fmap}\PYG{o}{(}\PYG{n}{f}\PYG{o}{)} \PYG{n}{compose} \PYG{n}{safeHead}\PYG{o}{)} \PYG{o}{==} \PYG{o}{(}\PYG{n}{safeHead} \PYG{n}{compose} \PYG{n}{fmap}\PYG{o}{(}\PYG{n}{f}\PYG{o}{))}
+\end{Verbatim}

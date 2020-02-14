@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{sealed} \PYG{k}{trait} \PYG{n+nc}{MonF}\PYG{o}{[}\PYG{k+kt}{+A}\PYG{o}{]}
+\PYG{k}{case} \PYG{k}{object} \PYG{n+nc}{MEmpty} \PYG{k}{extends} \PYG{n+nc}{MonF}\PYG{o}{[}\PYG{k+kt}{Nothing}\PYG{o}{]}
+\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{MAppend}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{m}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{,} \PYG{n}{n}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{MonF}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}
+\end{Verbatim}

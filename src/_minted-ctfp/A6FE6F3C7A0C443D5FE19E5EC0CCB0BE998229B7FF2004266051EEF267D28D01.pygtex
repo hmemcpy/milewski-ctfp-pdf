@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{implicit} \PYG{k}{val} \PYG{n}{listFunctor} \PYG{k}{=} \PYG{k}{new} \PYG{n+nc}{Functor}\PYG{o}{[}\PYG{k+kt}{List}\PYG{o}{]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{fmap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{B}\PYG{o}{)(}\PYG{n}{fa}\PYG{k}{:} \PYG{k+kt}{List}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{List}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=} \PYG{n}{fa} \PYG{k}{match} \PYG{o}{\PYGZob{}}
+    \PYG{k}{case} \PYG{n+nc}{Nil} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Nil}
+    \PYG{k}{case} \PYG{n+nc}{Cons}\PYG{o}{(}\PYG{n}{x}\PYG{o}{,} \PYG{n}{t}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Cons}\PYG{o}{(}\PYG{n}{f}\PYG{o}{(}\PYG{n}{x}\PYG{o}{),} \PYG{n}{fmap}\PYG{o}{(}\PYG{n}{f}\PYG{o}{)(}\PYG{n}{t}\PYG{o}{))}
+  \PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

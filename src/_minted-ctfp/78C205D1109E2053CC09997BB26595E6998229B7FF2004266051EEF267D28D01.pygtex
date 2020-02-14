@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{sealed} \PYG{k}{trait} \PYG{n+nc}{Color}
+\PYG{k}{case} \PYG{k}{object} \PYG{n+nc}{Red} \PYG{k}{extends} \PYG{n+nc}{Color}
+\PYG{k}{case} \PYG{k}{object} \PYG{n+nc}{Green} \PYG{k}{extends} \PYG{n+nc}{Color}
+\PYG{k}{case} \PYG{k}{object} \PYG{n+nc}{Blue} \PYG{k}{extends} \PYG{n+nc}{Color}
+\end{Verbatim}

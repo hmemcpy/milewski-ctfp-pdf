@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{import} \PYG{n+nn}{kleisli.\PYGZus{}}
+\PYG{k}{def} \PYG{n}{fmap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{B}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{Writer}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Writer}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=}
+  \PYG{n}{identity}\PYG{o}{[}\PYG{k+kt}{Writer}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]]} \PYG{k}{\PYGZus{}} \PYG{o}{\PYGZgt{}=\PYGZgt{}} \PYG{o}{(}\PYG{n}{x} \PYG{k}{=\PYGZgt{}} \PYG{n}{pure}\PYG{o}{(}\PYG{n}{f}\PYG{o}{(}\PYG{n}{x}\PYG{o}{)))}
+\end{Verbatim}

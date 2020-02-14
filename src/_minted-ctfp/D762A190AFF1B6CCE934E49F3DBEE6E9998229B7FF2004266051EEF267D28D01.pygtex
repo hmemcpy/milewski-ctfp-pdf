@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{val} \PYG{n}{h} \PYG{k}{=} \PYG{n}{x} \PYG{k}{=\PYGZgt{}} \PYG{o}{\PYGZob{}}
+  \PYG{k}{val} \PYG{n}{y} \PYG{k}{=} \PYG{n}{f}\PYG{o}{(}\PYG{n}{x}\PYG{o}{)}
+  \PYG{n}{g}\PYG{o}{(}\PYG{n}{y}\PYG{o}{)}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{lambda}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{[}\PYG{k+kt}{\PYGZhy{}} \PYG{k}{\PYGZus{}}\PYG{p}{,} \PYG{k}{\PYGZus{}}\PYG{o}{]](}\PYG{n}{P}\PYG{k}{:} \PYG{k+kt}{Profunctor}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{SumP}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{DiagSum}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{]} \PYG{k}{=}
+  \PYG{n}{sump} \PYG{k}{=\PYGZgt{}} \PYG{k}{new} \PYG{n+nc}{DiagSum}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{]} \PYG{o}{\PYGZob{}}
+    \PYG{k}{def} \PYG{n}{paa}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{P}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=}
+      \PYG{n}{P}\PYG{o}{.}\PYG{n}{dimap}\PYG{o}{(}\PYG{n}{sump}\PYG{o}{.}\PYG{n}{f}\PYG{o}{)(}\PYG{n}{identity}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])(}\PYG{n}{sump}\PYG{o}{.}\PYG{n}{pab}\PYG{o}{)}
+  \PYG{o}{\PYGZcb{}}
+
+\PYG{k}{def} \PYG{n}{rho}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{p}{,} \PYG{k}{\PYGZus{}}\PYG{o}{]](}\PYG{n}{P}\PYG{k}{:} \PYG{k+kt}{Profunctor}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{SumP}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{DiagSum}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{]} \PYG{k}{=}
+  \PYG{n}{sump} \PYG{k}{=\PYGZgt{}} \PYG{k}{new} \PYG{n+nc}{DiagSum}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{]} \PYG{o}{\PYGZob{}}
+    \PYG{k}{def} \PYG{n}{paa}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{P}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=}
+      \PYG{n}{P}\PYG{o}{.}\PYG{n}{dimap}\PYG{o}{(}\PYG{n}{identity}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])(}\PYG{n}{sump}\PYG{o}{.}\PYG{n}{f}\PYG{o}{)(}\PYG{n}{sump}\PYG{o}{.}\PYG{n}{pab}\PYG{o}{)}
+  \PYG{o}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{Point}\PYG{o}{(}\PYG{n}{x}\PYG{k}{:} \PYG{k+kt}{Float}\PYG{o}{,} \PYG{n}{y}\PYG{k}{:} \PYG{k+kt}{Float}\PYG{o}{)}
+\end{Verbatim}

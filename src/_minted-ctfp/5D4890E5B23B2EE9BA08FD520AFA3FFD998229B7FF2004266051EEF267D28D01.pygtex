@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{val} \PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{Either}\PYG{o}{[}\PYG{k+kt}{Int}\PYG{p}{,} \PYG{k+kt}{Double}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{String} \PYG{k}{=} \PYG{o}{\PYGZob{}}
+  \PYG{k}{case} \PYG{n+nc}{Left}\PYG{o}{(}\PYG{n}{n}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{k}{if} \PYG{o}{(}\PYG{n}{n} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0}\PYG{o}{)} \PYG{l+s}{\PYGZdq{}Negative int\PYGZdq{}} \PYG{k}{else} \PYG{l+s}{\PYGZdq{}Positive int\PYGZdq{}}
+  \PYG{k}{case} \PYG{n+nc}{Right}\PYG{o}{(}\PYG{n}{x}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{k}{if} \PYG{o}{(}\PYG{n}{x} \PYG{o}{\PYGZlt{}} \PYG{l+m+mf}{0.0}\PYG{o}{)} \PYG{l+s}{\PYGZdq{}Negative double\PYGZdq{}} \PYG{k}{else} \PYG{l+s}{\PYGZdq{}Positive double\PYGZdq{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

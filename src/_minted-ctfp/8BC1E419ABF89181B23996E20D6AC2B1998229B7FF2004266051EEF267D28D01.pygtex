@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{sealed} \PYG{k}{trait} \PYG{n+nc}{Expr}
+\PYG{k}{case} \PYG{k}{object} \PYG{n+nc}{RZero} \PYG{k}{extends} \PYG{n+nc}{Expr}
+\PYG{k}{case} \PYG{k}{object} \PYG{n+nc}{ROne} \PYG{k}{extends} \PYG{n+nc}{Expr}
+\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{RAdd}\PYG{o}{(}\PYG{n}{e1}\PYG{k}{:} \PYG{k+kt}{Expr}\PYG{o}{,} \PYG{n}{e2}\PYG{k}{:} \PYG{k+kt}{Expr}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{Expr}
+\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{RMul}\PYG{o}{(}\PYG{n}{e1}\PYG{k}{:} \PYG{k+kt}{Expr}\PYG{o}{,} \PYG{n}{e2}\PYG{k}{:} \PYG{k+kt}{Expr}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{Expr}
+\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{RNeg}\PYG{o}{(}\PYG{n}{e}\PYG{k}{:} \PYG{k+kt}{Expr}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{Expr}
+\end{Verbatim}

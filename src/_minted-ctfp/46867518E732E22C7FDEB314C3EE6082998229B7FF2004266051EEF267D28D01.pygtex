@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// return is a keyword in Scala}
+\PYG{k}{def} \PYG{n}{pure}\PYG{o}{[}\PYG{k+kt}{D}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{D} \PYG{o}{=\PYGZgt{}} \PYG{n}{M}\PYG{o}{[}\PYG{k+kt}{D}\PYG{o}{]}
+\end{Verbatim}

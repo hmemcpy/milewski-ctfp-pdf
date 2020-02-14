@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{unFix}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]]}\PYG{k}{:} \PYG{k+kt}{Fix}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n}{F}\PYG{o}{[}\PYG{k+kt}{Fix}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{]]} \PYG{k}{=} \PYG{o}{\PYGZob{}}
+  \PYG{k}{case} \PYG{n+nc}{Fix}\PYG{o}{(}\PYG{n}{x}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{x}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

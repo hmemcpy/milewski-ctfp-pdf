@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{fmapO}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]}\PYG{k}{:} \PYG{o}{(}\PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{k+kt}{B}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Option}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Option}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=}
+  \PYG{n}{optionFunctor}\PYG{o}{.}\PYG{n}{fmap}
+\PYG{k}{def} \PYG{n}{fmapL}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]}\PYG{k}{:} \PYG{o}{(}\PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{k+kt}{B}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{List}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{List}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=}
+  \PYG{n}{listFunctor}\PYG{o}{.}\PYG{n}{fmap}
+\PYG{k}{def} \PYG{n}{fmapC}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]}\PYG{k}{:} \PYG{o}{(}\PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{k+kt}{B}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Option}\PYG{o}{[}\PYG{k+kt}{List}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Option}\PYG{o}{[}\PYG{k+kt}{List}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{]]} \PYG{k}{=}
+  \PYG{n}{fmapO}\PYG{o}{.}\PYG{n}{compose}\PYG{o}{(}\PYG{n}{fmapL}\PYG{o}{)}
+
+\PYG{k}{val} \PYG{n}{mis2} \PYG{k}{=} \PYG{n}{fmapC}\PYG{o}{(}\PYG{n}{square}\PYG{o}{)(}\PYG{n}{mis}\PYG{o}{)}
+\end{Verbatim}

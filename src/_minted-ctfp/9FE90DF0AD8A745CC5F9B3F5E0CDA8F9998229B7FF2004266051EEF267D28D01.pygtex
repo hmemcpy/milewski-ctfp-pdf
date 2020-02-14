@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{o}{=\PYGZgt{}=[}\PYG{k+kt}{W}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{p}{,} \PYG{k+kt}{C}\PYG{o}{]}\PYG{k}{:} \PYG{o}{(}\PYG{k+kt}{W}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{o}{=\PYGZgt{}} \PYG{n}{B}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{W}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n}{C}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{W}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n}{C}\PYG{o}{)} \PYG{k}{=}
+  \PYG{n}{f} \PYG{k}{=\PYGZgt{}} \PYG{n}{g} \PYG{k}{=\PYGZgt{}} \PYG{n}{g} \PYG{n}{compose} \PYG{n}{extend}\PYG{o}{(}\PYG{n}{f}\PYG{o}{)}
+\end{Verbatim}

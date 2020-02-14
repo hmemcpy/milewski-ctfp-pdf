@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// In order to make a universal transformation,}
+\PYG{c+c1}{// another type needs to be introduced.}
+\PYG{c+c1}{// To read more about FunctionK (\PYGZti{}\PYGZgt{}):}
+\PYG{c+c1}{// typelevel.org/cats/datatypes/functionk.html}
+\PYG{k}{trait} \PYG{n+nc}{\PYGZti{}\PYGZgt{}}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{G}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{apply}\PYG{o}{[}\PYG{k+kt}{X}\PYG{o}{](}\PYG{n}{fa}\PYG{k}{:} \PYG{k+kt}{F}\PYG{o}{[}\PYG{k+kt}{X}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{G}\PYG{o}{[}\PYG{k+kt}{X}\PYG{o}{]}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k}{def} \PYG{n}{fromY}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]}\PYG{k}{:} \PYG{o}{(}\PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{k+kt}{?}\PYG{o}{)} \PYG{o}{\PYGZti{}\PYGZgt{}} \PYG{o}{(}\PYG{n}{B} \PYG{k}{=\PYGZgt{}} \PYG{o}{?)} \PYG{k}{=} \PYG{k}{new} \PYG{o}{\PYGZti{}\PYGZgt{}[}\PYG{k+kt}{A} \PYG{k}{=\PYGZgt{}} \PYG{k+kt}{?}\PYG{p}{,} \PYG{k+kt}{B} \PYG{k}{=\PYGZgt{}} \PYG{k+kt}{?}\PYG{o}{]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{apply}\PYG{o}{[}\PYG{k+kt}{X}\PYG{o}{](}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{X}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{B} \PYG{o}{=\PYGZgt{}} \PYG{n}{X} \PYG{k}{=}
+    \PYG{n}{b} \PYG{k}{=\PYGZgt{}} \PYG{n}{f}\PYG{o}{(}\PYG{n}{btoa}\PYG{o}{(}\PYG{n}{b}\PYG{o}{))}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

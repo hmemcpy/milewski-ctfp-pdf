@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{fmap}\PYG{o}{(}\PYG{n}{f}\PYG{o}{)(}\PYG{n}{alpha}\PYG{o}{(}\PYG{n}{h}\PYG{o}{))} \PYG{o}{==} \PYG{n}{alpha}\PYG{o}{(}\PYG{n}{f} \PYG{n}{compose} \PYG{n}{h}\PYG{o}{)}
+\end{Verbatim}
