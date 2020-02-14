@@ -47,6 +47,8 @@ mkShell {
         minifp
         titlecaps
         enumitem
+        environ
+        trimspaces
         l3packages;
       })
     gnumake
