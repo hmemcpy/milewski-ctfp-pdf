@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{process} \PYG{n}{s} \PYG{o+ow}{=} 
+    \PYG{n}{upCase} \PYG{n}{s} \PYG{o}{\PYGZgt{}\PYGZgt{}=} \PYG{n+nf}{\PYGZbs{}}\PYG{n}{upStr} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
+        \PYG{n}{toWords} \PYG{n}{upStr}
+\end{Verbatim}

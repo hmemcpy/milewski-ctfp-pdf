@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{k+kt}{Functor} \PYG{p}{(}\PYG{k+kt}{Const} \PYG{n}{c}\PYG{p}{)} \PYG{k+kr}{where}
+    \PYG{n}{fmap} \PYG{k+kr}{\PYGZus{}} \PYG{p}{(}\PYG{k+kt}{Const} \PYG{n}{v}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Const} \PYG{n}{v}
+\end{Verbatim}

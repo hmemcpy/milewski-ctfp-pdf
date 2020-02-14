@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{lenAlg} \PYG{o+ow}{::} \PYG{k+kt}{ListF} \PYG{n}{e} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int}
+\PYG{n+nf}{lenAlg} \PYG{p}{(}\PYG{k+kt}{ConsF} \PYG{n}{e} \PYG{n}{n}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{n} \PYG{o}{+} \PYG{l+m+mi}{1}
+\PYG{n+nf}{lenAlg} \PYG{k+kt}{NilF} \PYG{o+ow}{=} \PYG{l+m+mi}{0}
+\end{Verbatim}

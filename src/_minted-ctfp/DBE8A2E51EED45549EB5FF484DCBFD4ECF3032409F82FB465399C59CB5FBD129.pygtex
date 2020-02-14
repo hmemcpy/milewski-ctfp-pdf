@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{sa} \PYG{o}{\PYGZgt{}\PYGZgt{}=} \PYG{n}{k} \PYG{o+ow}{=} \PYG{k+kt}{State} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{s} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kr}{let} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{s\PYGZsq{}}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{runState} \PYG{n}{sa} \PYG{n}{s}
+                            \PYG{n}{sb} \PYG{o+ow}{=} \PYG{n}{k} \PYG{n}{a} 
+                        \PYG{k+kr}{in} \PYG{n}{runState} \PYG{n}{sb} \PYG{n}{s\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}

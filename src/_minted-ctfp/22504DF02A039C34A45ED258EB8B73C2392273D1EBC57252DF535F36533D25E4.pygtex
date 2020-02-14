@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{n}{class}\PYG{o}{\PYGZgt{}} \PYG{n}{F}\PYG{p}{,} \PYG{k}{class} \PYG{n+nc}{A}\PYG{p}{,} \PYG{k}{class} \PYG{n+nc}{B}\PYG{o}{\PYGZgt{}}
+\PYG{n}{F}\PYG{o}{\PYGZlt{}}\PYG{n}{B}\PYG{o}{\PYGZgt{}} \PYG{n}{fmap}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{function}\PYG{o}{\PYGZlt{}}\PYG{n}{B}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}\PYG{o}{\PYGZgt{}}\PYG{p}{,} \PYG{n}{F}\PYG{o}{\PYGZlt{}}\PYG{n}{A}\PYG{o}{\PYGZgt{}}\PYG{p}{);}
+\end{Verbatim}

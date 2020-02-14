@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{p} \PYG{o+ow}{::} \PYG{n}{d} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a}
+\PYG{n+nf}{q} \PYG{o+ow}{::} \PYG{n}{d} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{c}
+\PYG{n+nf}{r} \PYG{o+ow}{::} \PYG{n}{d} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{b}
+\end{Verbatim}

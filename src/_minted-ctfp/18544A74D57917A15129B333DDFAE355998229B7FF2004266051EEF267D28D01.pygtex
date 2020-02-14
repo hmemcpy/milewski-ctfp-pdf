@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{implicit} \PYG{k}{def} \PYG{n}{arrowProfunctor} \PYG{k}{=} \PYG{k}{new} \PYG{n+nc}{Profunctor}\PYG{o}{[}\PYG{k+kt}{Function1}\PYG{o}{]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{dimap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{p}{,} \PYG{k+kt}{C}\PYG{p}{,} \PYG{k+kt}{D}\PYG{o}{](}\PYG{n}{ab}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{B}\PYG{o}{)(}\PYG{n}{cd}\PYG{k}{:} \PYG{k+kt}{C} \PYG{o}{=\PYGZgt{}} \PYG{n}{D}\PYG{o}{)(}\PYG{n}{bc}\PYG{k}{:} \PYG{k+kt}{B} \PYG{o}{=\PYGZgt{}} \PYG{n}{C}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{D} \PYG{k}{=}
+    \PYG{n}{cd} \PYG{n}{compose} \PYG{n}{bc} \PYG{n}{compose} \PYG{n}{ab}
+
+  \PYG{k}{def} \PYG{n}{lmap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{p}{,} \PYG{k+kt}{C}\PYG{o}{](}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{C} \PYG{o}{=\PYGZgt{}} \PYG{n}{A}\PYG{o}{)(}\PYG{n}{ab}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{B}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{C} \PYG{o}{=\PYGZgt{}} \PYG{n}{B} \PYG{k}{=}
+    \PYG{n}{f} \PYG{n}{andThen} \PYG{n}{ab}
+
+  \PYG{k}{def} \PYG{n}{rmap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{p}{,} \PYG{k+kt}{C}\PYG{o}{](}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{B} \PYG{o}{=\PYGZgt{}} \PYG{n}{C}\PYG{o}{)(}\PYG{n}{ab}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{B}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{C} \PYG{k}{=}
+    \PYG{n}{f} \PYG{n}{compose} \PYG{n}{ab}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

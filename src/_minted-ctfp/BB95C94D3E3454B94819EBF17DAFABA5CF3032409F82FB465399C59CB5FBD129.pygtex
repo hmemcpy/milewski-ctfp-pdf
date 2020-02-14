@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{data} \PYG{k+kt}{Either} \PYG{n}{a} \PYG{n}{b} \PYG{o+ow}{=} \PYG{k+kt}{Left} \PYG{n}{a} \PYG{o}{|} \PYG{k+kt}{Right} \PYG{n}{b}
+\end{Verbatim}

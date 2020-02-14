@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{absurd} \PYG{o+ow}{::} \PYG{k+kt}{Void} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a}
+\end{Verbatim}

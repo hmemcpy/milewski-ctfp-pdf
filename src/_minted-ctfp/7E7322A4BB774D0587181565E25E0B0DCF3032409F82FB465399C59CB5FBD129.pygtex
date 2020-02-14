@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{toNat} \PYG{o+ow}{::} \PYG{p}{[}\PYG{n+nb}{()}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int}
+\PYG{n+nf}{toNat} \PYG{o+ow}{=} \PYG{n}{length}
+
+\PYG{n+nf}{toLst} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n+nb}{()}\PYG{p}{]}
+\PYG{n+nf}{toLst} \PYG{n}{n} \PYG{o+ow}{=} \PYG{n}{replicate} \PYG{n}{n} \PYG{n+nb}{()}
+\end{Verbatim}

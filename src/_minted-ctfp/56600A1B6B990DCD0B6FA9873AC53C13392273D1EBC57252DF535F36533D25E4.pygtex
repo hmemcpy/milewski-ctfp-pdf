@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{using} \PYG{k}{namespace} \PYG{n}{std}\PYG{o}{::}\PYG{n}{placeholders}\PYG{p}{;}
+
+\PYG{k}{auto} \PYG{n}{greet} \PYG{o}{=} \PYG{n}{std}\PYG{o}{::}\PYG{n}{bind}\PYG{p}{(}\PYG{n}{catstr}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Hello \PYGZdq{}}\PYG{p}{,} \PYG{n}{\PYGZus{}1}\PYG{p}{);}
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{greet}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Haskell Curry\PYGZdq{}}\PYG{p}{);}
+\end{Verbatim}

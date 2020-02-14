@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{m} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{k+kr}{\PYGZus{}}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)} \PYG{o+ow}{=} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)}
+\end{Verbatim}

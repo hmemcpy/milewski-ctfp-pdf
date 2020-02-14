@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{implicit} \PYG{k}{val} \PYG{n}{streamRepresentable} \PYG{k}{=} \PYG{k}{new} \PYG{n+nc}{Representable}\PYG{o}{[}\PYG{k+kt}{Stream}\PYG{o}{]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{type} \PYG{k+kt}{Rep} \PYG{o}{=} \PYG{n+nc}{Int}
+
+  \PYG{k}{def} \PYG{n}{tabulate}\PYG{o}{[}\PYG{k+kt}{X}\PYG{o}{](}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{Rep} \PYG{o}{=\PYGZgt{}} \PYG{n}{X}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{Stream}\PYG{o}{[}\PYG{k+kt}{X}\PYG{o}{]} \PYG{k}{=} 
+    \PYG{n+nc}{Stream}\PYG{o}{[}\PYG{k+kt}{X}\PYG{o}{](()} \PYG{k}{=\PYGZgt{}} \PYG{n}{f}\PYG{o}{(}\PYG{l+m+mi}{0}\PYG{o}{),} \PYG{o}{()} \PYG{k}{=\PYGZgt{}} \PYG{n}{tabulate}\PYG{o}{(}\PYG{n}{f} \PYG{n}{compose} \PYG{o}{(}\PYG{k}{\PYGZus{}} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{o}{)))}
+
+  \PYG{k}{def} \PYG{n}{index}\PYG{o}{[}\PYG{k+kt}{X}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{Stream}\PYG{o}{[}\PYG{k+kt}{X}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Rep} \PYG{k}{=\PYGZgt{}} \PYG{n}{X} \PYG{k}{=} \PYG{o}{\PYGZob{}}
+    \PYG{k}{case} \PYG{n+nc}{Stream}\PYG{o}{(}\PYG{n}{b}\PYG{o}{,} \PYG{n}{bs}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} 
+      \PYG{n}{n} \PYG{k}{=\PYGZgt{}}
+        \PYG{k}{if} \PYG{o}{(}\PYG{n}{n} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{o}{)} \PYG{n}{b}\PYG{o}{()}
+        \PYG{k}{else} \PYG{n}{index}\PYG{o}{(}\PYG{n}{bs}\PYG{o}{())(}\PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{o}{)}
+  \PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

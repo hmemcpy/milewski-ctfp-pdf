@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{T}\PYG{o}{\PYGZgt{}}
+\PYG{k}{struct} \PYG{n+nl}{Leaf} \PYG{p}{:} \PYG{k}{public} \PYG{n}{Tree}\PYG{o}{\PYGZlt{}}\PYG{n}{T}\PYG{o}{\PYGZgt{}} \PYG{p}{\PYGZob{}}
+    \PYG{n}{T} \PYG{n}{\PYGZus{}label}\PYG{p}{;}
+    \PYG{n}{Leaf}\PYG{p}{(}\PYG{n}{T} \PYG{n}{l}\PYG{p}{)} \PYG{o}{:} \PYG{n}{\PYGZus{}label}\PYG{p}{(}\PYG{n}{l}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

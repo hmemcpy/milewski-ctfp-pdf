@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{C}\PYG{p}{,} \PYG{k}{class} \PYG{n+nc}{A}\PYG{o}{\PYGZgt{}}
+\PYG{k}{struct} \PYG{n}{Const} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Const}\PYG{p}{(}\PYG{n}{C} \PYG{n}{v}\PYG{p}{)} \PYG{o}{:} \PYG{n}{\PYGZus{}v}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
+    \PYG{n}{C} \PYG{n}{\PYGZus{}v}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

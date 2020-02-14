@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{implicit} \PYG{k}{val} \PYG{n}{eitherBifunctor} \PYG{k}{=} \PYG{k}{new} \PYG{n+nc}{Bifunctor}\PYG{o}{[}\PYG{k+kt}{Either}\PYG{o}{]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{override} \PYG{k}{def} \PYG{n}{bimap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{p}{,} \PYG{k+kt}{C}\PYG{p}{,} \PYG{k+kt}{D}\PYG{o}{](}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{C}\PYG{o}{)(}\PYG{n}{g}\PYG{k}{:} \PYG{k+kt}{B} \PYG{o}{=\PYGZgt{}} \PYG{n}{D}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{Either}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Either}\PYG{o}{[}\PYG{k+kt}{C}\PYG{p}{,} \PYG{k+kt}{D}\PYG{o}{]} \PYG{k}{=} \PYG{o}{\PYGZob{}}
+    \PYG{k}{case} \PYG{n+nc}{Left}\PYG{o}{(}\PYG{n}{x}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Left}\PYG{o}{(}\PYG{n}{f}\PYG{o}{(}\PYG{n}{x}\PYG{o}{))}
+    \PYG{k}{case} \PYG{n+nc}{Right}\PYG{o}{(}\PYG{n}{y}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Right}\PYG{o}{(}\PYG{n}{g}\PYG{o}{(}\PYG{n}{y}\PYG{o}{))}
+  \PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

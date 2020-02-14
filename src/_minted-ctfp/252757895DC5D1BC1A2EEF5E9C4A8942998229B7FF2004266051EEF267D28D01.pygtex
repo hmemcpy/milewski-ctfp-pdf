@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{bimap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{p}{,} \PYG{k+kt}{C}\PYG{p}{,} \PYG{k+kt}{D}\PYG{o}{](}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{C}\PYG{o}{)(}\PYG{n}{g}\PYG{k}{:} \PYG{k+kt}{B} \PYG{o}{=\PYGZgt{}} \PYG{n}{D}\PYG{o}{)}\PYG{k}{:} \PYG{o}{((}\PYG{k+kt}{A}\PYG{o}{,} \PYG{k+kt}{B}\PYG{o}{))} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{C}\PYG{o}{,} \PYG{n}{D}\PYG{o}{)}
+\end{Verbatim}

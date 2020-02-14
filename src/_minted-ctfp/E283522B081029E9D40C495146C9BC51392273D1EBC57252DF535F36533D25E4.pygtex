@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Writer}\PYG{o}{\PYGZlt{}}\PYG{n}{string}\PYG{o}{\PYGZgt{}} \PYG{n}{toUpper}\PYG{p}{(}\PYG{n}{string} \PYG{n}{s}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{string} \PYG{n}{result}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{p}{(}\PYG{o}{*}\PYG{n}{toupperp}\PYG{p}{)(}\PYG{k+kt}{int}\PYG{p}{)} \PYG{o}{=} \PYG{o}{\PYGZam{}}\PYG{n}{toupper}\PYG{p}{;}
+    \PYG{n}{transform}\PYG{p}{(}\PYG{n}{begin}\PYG{p}{(}\PYG{n}{s}\PYG{p}{),} \PYG{n}{end}\PYG{p}{(}\PYG{n}{s}\PYG{p}{),} \PYG{n}{back\PYGZus{}inserter}\PYG{p}{(}\PYG{n}{result}\PYG{p}{),} \PYG{n}{toupperp}\PYG{p}{);}
+    \PYG{k}{return} \PYG{n+nf}{make\PYGZus{}pair}\PYG{p}{(}\PYG{n}{result}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}toUpper \PYGZdq{}}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{Writer}\PYG{o}{\PYGZlt{}}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{string}\PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{toWords}\PYG{p}{(}\PYG{n}{string} \PYG{n}{s}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{make\PYGZus{}pair}\PYG{p}{(}\PYG{n}{words}\PYG{p}{(}\PYG{n}{s}\PYG{p}{),} \PYG{l+s}{\PYGZdq{}toWords \PYGZdq{}}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

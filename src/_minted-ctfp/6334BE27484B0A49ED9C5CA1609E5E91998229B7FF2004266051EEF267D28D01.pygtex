@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{get}\PYG{k}{:} \PYG{k+kt}{State}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{S}\PYG{o}{]} \PYG{k}{=} \PYG{n+nc}{State}\PYG{o}{(}\PYG{n}{s} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{s}\PYG{o}{,} \PYG{n}{s}\PYG{o}{))}
+\end{Verbatim}

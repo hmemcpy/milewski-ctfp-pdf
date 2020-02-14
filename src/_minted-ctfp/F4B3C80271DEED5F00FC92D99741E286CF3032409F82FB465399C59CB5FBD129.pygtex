@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{k+kt}{Functor} \PYG{k+kt}{Tree} \PYG{k+kr}{where}
+    \PYG{n}{fmap} \PYG{n}{f} \PYG{p}{(}\PYG{k+kt}{Leaf} \PYG{n}{a}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Leaf} \PYG{p}{(}\PYG{n}{f} \PYG{n}{a}\PYG{p}{)}
+    \PYG{n}{fmap} \PYG{n}{f} \PYG{p}{(}\PYG{k+kt}{Node} \PYG{n}{t} \PYG{n}{t\PYGZsq{}}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Node} \PYG{p}{(}\PYG{n}{fmap} \PYG{n}{f} \PYG{n}{t}\PYG{p}{)} \PYG{p}{(}\PYG{n}{fmap} \PYG{n}{f} \PYG{n}{t\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}

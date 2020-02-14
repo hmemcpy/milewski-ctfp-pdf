@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{sum} \PYG{o+ow}{=} \PYG{n}{foldr} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{e} \PYG{n}{s} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{e} \PYG{o}{+} \PYG{n}{s}\PYG{p}{)} \PYG{l+m+mf}{0.0}
+\end{Verbatim}

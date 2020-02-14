@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// LazyLists are supported as of Scala 2.13}
+\PYG{k}{def} \PYG{n}{nats}\PYG{k}{:} \PYG{k+kt}{LazyList}\PYG{o}{[}\PYG{k+kt}{Int}\PYG{o}{]} \PYG{k}{=} \PYG{n+nc}{LazyList}\PYG{o}{.}\PYG{n}{from}\PYG{o}{(}\PYG{l+m+mi}{1}\PYG{o}{)}
+\end{Verbatim}

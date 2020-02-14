@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{f} \PYG{o}{\PYGZgt{}=\PYGZgt{}} \PYG{n}{g} \PYG{o+ow}{=} \PYG{n+nf}{\PYGZbs{}}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kr}{let} \PYG{n}{mb} \PYG{o+ow}{=} \PYG{n}{f} \PYG{n}{a}
+                \PYG{k+kr}{in} \PYG{o}{...}
+\end{Verbatim}

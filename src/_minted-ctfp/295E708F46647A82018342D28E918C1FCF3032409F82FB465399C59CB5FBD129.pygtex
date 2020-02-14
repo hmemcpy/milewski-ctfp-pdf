@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{join} \PYG{o+ow}{::} \PYG{k+kt}{Monoid} \PYG{n}{w} \PYG{o+ow}{=\PYGZgt{}} \PYG{k+kt}{Writer} \PYG{n}{w} \PYG{p}{(}\PYG{k+kt}{Writer} \PYG{n}{w} \PYG{n}{a}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Writer} \PYG{n}{w} \PYG{n}{a}
+\PYG{n+nf}{join} \PYG{p}{(}\PYG{k+kt}{Writer} \PYG{p}{((}\PYG{k+kt}{Writer} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{w\PYGZsq{}}\PYG{p}{)),} \PYG{n}{w}\PYG{p}{))} \PYG{o+ow}{=} \PYG{k+kt}{Writer} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{w} \PYG{p}{`}\PYG{n}{mappend}\PYG{p}{`} \PYG{n}{w\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}

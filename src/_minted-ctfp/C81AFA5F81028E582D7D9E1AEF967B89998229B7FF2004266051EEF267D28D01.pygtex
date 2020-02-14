@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{unConst}\PYG{o}{[}\PYG{k+kt}{C}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{Const}\PYG{o}{[}\PYG{k+kt}{C}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n}{C} \PYG{k}{=} \PYG{o}{\PYGZob{}}
+  \PYG{k}{case} \PYG{n+nc}{Const}\PYG{o}{(}\PYG{n}{x}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{x}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

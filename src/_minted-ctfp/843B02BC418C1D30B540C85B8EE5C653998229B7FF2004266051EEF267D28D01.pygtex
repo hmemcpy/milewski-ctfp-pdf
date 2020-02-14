@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// Streams in Scala can be}
+\PYG{c+c1}{// thought of as lazy lists}
+\PYG{k}{def} \PYG{n}{triples} \PYG{k}{=} \PYG{k}{for} \PYG{o}{\PYGZob{}}
+  \PYG{n}{z} \PYG{k}{\PYGZlt{}\PYGZhy{}} \PYG{n+nc}{Stream}\PYG{o}{.}\PYG{n}{from}\PYG{o}{(}\PYG{l+m+mi}{1}\PYG{o}{)}
+  \PYG{n}{x} \PYG{k}{\PYGZlt{}\PYGZhy{}} \PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{z}
+  \PYG{n}{y} \PYG{k}{\PYGZlt{}\PYGZhy{}} \PYG{n}{x} \PYG{n}{to} \PYG{n}{z}
+  \PYG{k}{\PYGZus{}} \PYG{k}{\PYGZlt{}\PYGZhy{}} \PYG{n}{guard}\PYG{o}{(}\PYG{n}{x} \PYG{o}{*} \PYG{n}{x} \PYG{o}{+} \PYG{n}{y} \PYG{o}{*} \PYG{n}{y} \PYG{o}{==} \PYG{n}{z} \PYG{o}{*} \PYG{n}{z}\PYG{o}{)}
+\PYG{o}{\PYGZcb{}} \PYG{k}{yield} \PYG{o}{(}\PYG{n}{x}\PYG{o}{,} \PYG{n}{y}\PYG{o}{,} \PYG{n}{z}\PYG{o}{)}
+\end{Verbatim}

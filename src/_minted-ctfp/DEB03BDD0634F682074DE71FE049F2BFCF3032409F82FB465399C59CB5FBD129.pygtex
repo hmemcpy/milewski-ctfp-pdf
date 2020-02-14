@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{main} \PYG{o+ow}{::} \PYG{k+kt}{IO} \PYG{n+nb}{()} 
+\PYG{n+nf}{main} \PYG{o+ow}{=} \PYG{k+kr}{do} 
+    \PYG{n}{putStr} \PYG{l+s}{\PYGZdq{}Hello \PYGZdq{}}
+    \PYG{n}{putStr} \PYG{l+s}{\PYGZdq{}World!\PYGZdq{}}
+\end{Verbatim}

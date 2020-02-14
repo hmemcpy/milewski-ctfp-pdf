@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{T}\PYG{o}{\PYGZgt{}}
+\PYG{k}{class} \PYG{n+nc}{optional} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{bool} \PYG{n}{\PYGZus{}isValid}\PYG{p}{;} \PYG{c+c1}{// the tag}
+    \PYG{n}{T} \PYG{n}{\PYGZus{}v}\PYG{p}{;}
+\PYG{k}{public}\PYG{o}{:}
+    \PYG{n}{optional}\PYG{p}{()}    \PYG{o}{:} \PYG{n}{\PYGZus{}isValid}\PYG{p}{(}\PYG{n+nb}{false}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}        \PYG{c+c1}{// Nothing}
+    \PYG{n}{optional}\PYG{p}{(}\PYG{n}{T} \PYG{n}{x}\PYG{p}{)} \PYG{o}{:} \PYG{n}{\PYGZus{}isValid}\PYG{p}{(}\PYG{n+nb}{true}\PYG{p}{)} \PYG{p}{,} \PYG{n}{\PYGZus{}v}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}} \PYG{c+c1}{// Just}
+    \PYG{k+kt}{bool} \PYG{n}{isValid}\PYG{p}{()} \PYG{k}{const} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{\PYGZus{}isValid}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+    \PYG{n}{T} \PYG{n}{val}\PYG{p}{()} \PYG{k}{const} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{\PYGZus{}v}\PYG{p}{;} \PYG{p}{\PYGZcb{}} \PYG{p}{\PYGZcb{};}
+\end{Verbatim}

@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+C g\PYGZus{}after\PYGZus{}f(A a)
+\PYGZob{}
+    return g(f(a));
+\PYGZcb{}
+\end{Verbatim}

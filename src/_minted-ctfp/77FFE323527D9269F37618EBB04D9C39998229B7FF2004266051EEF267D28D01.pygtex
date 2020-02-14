@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{mu}\PYG{k}{:} \PYG{o}{((}\PYG{k+kt}{M}\PYG{o}{,} \PYG{k+kt}{M}\PYG{o}{))} \PYG{k}{=\PYGZgt{}} \PYG{n}{M}
+\end{Verbatim}

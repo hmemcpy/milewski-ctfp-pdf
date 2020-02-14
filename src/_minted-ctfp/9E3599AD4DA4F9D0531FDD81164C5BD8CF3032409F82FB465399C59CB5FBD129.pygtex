@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{type} \PYG{k+kt}{IO} \PYG{o+ow}{=} \PYG{k+kt}{State} \PYG{k+kt}{RealWorld}
+\end{Verbatim}

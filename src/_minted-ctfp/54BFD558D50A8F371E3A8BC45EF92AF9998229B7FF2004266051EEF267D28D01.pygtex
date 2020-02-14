@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{ana}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{coalg}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{F}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])}
+                \PYG{o}{(}\PYG{k}{implicit} \PYG{n}{F}\PYG{k}{:} \PYG{k+kt}{Functor}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n+nc}{Fix}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{]} \PYG{k}{=}
+  \PYG{o}{(}\PYG{n+nc}{Fix}\PYG{o}{.}\PYG{n}{apply}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{]} \PYG{k}{\PYGZus{}}\PYG{o}{).}\PYG{n}{compose}\PYG{o}{(}\PYG{n}{F}\PYG{o}{.}\PYG{n}{fmap}\PYG{o}{(}\PYG{n}{ana}\PYG{o}{(}\PYG{n}{coalg}\PYG{o}{))} \PYG{k}{\PYGZus{}} \PYG{n}{compose} \PYG{n}{coalg}\PYG{o}{)}
+\end{Verbatim}

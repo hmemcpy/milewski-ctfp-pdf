@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{m}\PYG{k}{:} \PYG{k+kt}{Int} \PYG{o}{=\PYGZgt{}} \PYG{o}{(}\PYG{n+nc}{Int}\PYG{o}{,} \PYG{n+nc}{Boolean}\PYG{o}{)} \PYG{k}{=} \PYG{n}{x} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{x}\PYG{o}{,} \PYG{k+kc}{true}\PYG{o}{)}
+\end{Verbatim}

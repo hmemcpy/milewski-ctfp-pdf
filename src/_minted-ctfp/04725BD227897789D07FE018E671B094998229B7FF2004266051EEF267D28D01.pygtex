@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{unit}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{a}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{U}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]]} \PYG{k}{=}
+    \PYG{n}{leftAdjunct}\PYG{o}{(}\PYG{n}{a}\PYG{o}{)(}\PYG{n}{identity}\PYG{o}{)}
+
+  \PYG{k}{def} \PYG{n}{counit}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{a}\PYG{k}{:} \PYG{k+kt}{F}\PYG{o}{[}\PYG{k+kt}{U}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]])}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=}
+    \PYG{n}{rightAdjunct}\PYG{o}{(}\PYG{n}{a}\PYG{o}{)(}\PYG{n}{identity}\PYG{o}{)}
+
+  \PYG{k}{def} \PYG{n}{leftAdjunct}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{a}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{)(}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{F}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n}{B}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{U}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=}
+    \PYG{n}{U}\PYG{o}{.}\PYG{n}{map}\PYG{o}{(}\PYG{n}{unit}\PYG{o}{(}\PYG{n}{a}\PYG{o}{))(}\PYG{n}{f}\PYG{o}{)}
+
+  \PYG{k}{def} \PYG{n}{rightAdjunct}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{a}\PYG{k}{:} \PYG{k+kt}{F}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])(}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{U}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{B} \PYG{o}{=}
+    \PYG{n}{counit}\PYG{o}{(}\PYG{n}{F}\PYG{o}{.}\PYG{n}{map}\PYG{o}{(}\PYG{n}{a}\PYG{o}{)(}\PYG{n}{f}\PYG{o}{))}
+\end{Verbatim}

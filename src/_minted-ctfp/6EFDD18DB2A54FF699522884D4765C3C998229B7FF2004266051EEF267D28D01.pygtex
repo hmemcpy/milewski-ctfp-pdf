@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{swap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]}\PYG{k}{:} \PYG{o}{((}\PYG{k+kt}{A}\PYG{o}{,} \PYG{k+kt}{B}\PYG{o}{))} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{B}\PYG{o}{,} \PYG{n}{A}\PYG{o}{)} \PYG{k}{=} \PYG{o}{\PYGZob{}}
+  \PYG{k}{case} \PYG{o}{(}\PYG{n}{a}\PYG{o}{,} \PYG{n}{b}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{b}\PYG{o}{,} \PYG{n}{a}\PYG{o}{)}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

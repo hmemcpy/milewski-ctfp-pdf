@@ -1,6 +1,5 @@
 .vscode/
 *.fls
-_minted*
 *.fdb_latexmk
 out/*
 *.pdf

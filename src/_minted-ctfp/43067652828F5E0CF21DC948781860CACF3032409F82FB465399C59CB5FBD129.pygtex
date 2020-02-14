@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{startsWithSymbol} \PYG{n}{e} \PYG{o+ow}{=} \PYG{n}{symbol} \PYG{n}{e} \PYG{p}{`}\PYG{n}{isPrefixOf}\PYG{p}{`} \PYG{n}{name} \PYG{n}{e}
+\end{Verbatim}

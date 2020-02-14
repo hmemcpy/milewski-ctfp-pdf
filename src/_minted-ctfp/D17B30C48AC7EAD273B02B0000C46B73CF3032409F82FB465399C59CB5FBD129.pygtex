@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{data} \PYG{k+kt}{OneOfThree} \PYG{n}{a} \PYG{n}{b} \PYG{n}{c} \PYG{o+ow}{=} \PYG{k+kt}{Sinistral} \PYG{n}{a} \PYG{o}{|} \PYG{k+kt}{Medial} \PYG{n}{b} \PYG{o}{|} \PYG{k+kt}{Dextral} \PYG{n}{c}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{data} \PYG{k+kt}{Tree} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{Leaf} \PYG{n}{a} \PYG{o}{|} \PYG{k+kt}{Node} \PYG{p}{(}\PYG{k+kt}{Tree} \PYG{n}{a}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{Tree} \PYG{n}{a}\PYG{p}{)}
+    \PYG{k+kr}{deriving} \PYG{k+kt}{Functor}
+\end{Verbatim}

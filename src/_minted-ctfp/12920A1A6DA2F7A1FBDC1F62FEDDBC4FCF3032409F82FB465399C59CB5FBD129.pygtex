@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{return} \PYG{o+ow}{::} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Writer} \PYG{n}{a}
+\PYG{n+nf}{return} \PYG{n}{x} \PYG{o+ow}{=} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

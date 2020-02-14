@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{k+kt}{Monoid} \PYG{k+kt}{String} \PYG{k+kr}{where}
+    \PYG{n}{mempty} \PYG{o+ow}{=} \PYG{l+s}{\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{mappend} \PYG{o+ow}{=} \PYG{p}{(}\PYG{o}{++}\PYG{p}{)}
+\end{Verbatim}

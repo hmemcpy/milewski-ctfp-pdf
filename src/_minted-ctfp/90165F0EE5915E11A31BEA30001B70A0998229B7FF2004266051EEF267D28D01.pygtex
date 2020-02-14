@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{val} \PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{B}
+\PYG{k}{val} \PYG{n}{g}\PYG{k}{:} \PYG{k+kt}{B} \PYG{o}{=\PYGZgt{}} \PYG{n}{C}
+\PYG{k}{val} \PYG{n}{h}\PYG{k}{:} \PYG{k+kt}{C} \PYG{o}{=\PYGZgt{}} \PYG{n}{D}
+
+\PYG{n}{h} \PYG{n}{compose} \PYG{o}{(}\PYG{n}{g} \PYG{n}{compose} \PYG{n}{f}\PYG{o}{)} \PYG{o}{===} \PYG{o}{(}\PYG{n}{h} \PYG{n}{compose} \PYG{n}{g}\PYG{o}{)} \PYG{n}{compose} \PYG{n}{f} \PYG{o}{===} \PYG{n}{h} \PYG{n}{compose} \PYG{n}{g} \PYG{n}{compose} \PYG{n}{f}
+\end{Verbatim}

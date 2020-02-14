@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{f} \PYG{n}{compose} \PYG{n}{g} \PYG{o}{==} \PYG{n}{identity} \PYG{k}{\PYGZus{}}
+\PYG{n}{g} \PYG{n}{compose} \PYG{n}{f} \PYG{o}{==} \PYG{n}{identity} \PYG{k}{\PYGZus{}}
+\end{Verbatim}

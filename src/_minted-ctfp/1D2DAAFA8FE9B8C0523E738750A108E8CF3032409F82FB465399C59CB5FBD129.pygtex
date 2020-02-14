@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{sumToProd} \PYG{o+ow}{::} \PYG{k+kt}{Either} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{c}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{Either} \PYG{n}{b} \PYG{n}{c}\PYG{p}{)}
+\PYG{n+nf}{sumToProd} \PYG{n}{e} \PYG{o+ow}{=}
+    \PYG{k+kr}{case} \PYG{n}{e} \PYG{k+kr}{of}
+      \PYG{k+kt}{Left}  \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{k+kt}{Left}  \PYG{n}{y}\PYG{p}{)}
+      \PYG{k+kt}{Right} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{z}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{k+kt}{Right} \PYG{n}{z}\PYG{p}{)}
+\end{Verbatim}

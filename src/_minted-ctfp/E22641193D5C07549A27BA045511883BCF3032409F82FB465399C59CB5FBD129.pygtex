@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{data} \PYG{k+kt}{NatF} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{ZeroF} \PYG{o}{|} \PYG{k+kt}{SuccF} \PYG{n}{a}
+\end{Verbatim}

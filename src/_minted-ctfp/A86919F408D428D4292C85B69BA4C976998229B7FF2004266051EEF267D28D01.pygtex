@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nc}{Store}\PYG{o}{(}\PYG{n+nc}{Store}\PYG{o}{(}\PYG{n}{set}\PYG{o}{(}\PYG{n}{a}\PYG{o}{)),} \PYG{n}{get}\PYG{o}{(}\PYG{n}{a}\PYG{o}{))}
+\end{Verbatim}

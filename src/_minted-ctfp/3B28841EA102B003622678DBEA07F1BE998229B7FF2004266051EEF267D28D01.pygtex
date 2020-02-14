@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{o}{(}\PYG{n}{dimap}\PYG{o}{(}\PYG{n}{f}\PYG{o}{)(}\PYG{n}{identity}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{])} \PYG{k}{\PYGZus{}} \PYG{n}{compose} \PYG{n}{pi}\PYG{o}{.}\PYG{n}{apply}\PYG{o}{)} \PYG{o}{==}
+  \PYG{o}{(}\PYG{n}{dimap}\PYG{o}{(}\PYG{n}{identity}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])(}\PYG{n}{f}\PYG{o}{)} \PYG{k}{\PYGZus{}} \PYG{n}{compose} \PYG{n}{pi}\PYG{o}{.}\PYG{n}{apply}\PYG{o}{)}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{tell}\PYG{o}{[}\PYG{k+kt}{W}\PYG{o}{](}\PYG{n}{s}\PYG{k}{:} \PYG{k+kt}{W}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{Writer}\PYG{o}{[}\PYG{k+kt}{W}\PYG{p}{,} \PYG{k+kt}{Unit}\PYG{o}{]} \PYG{k}{=}
+  \PYG{n+nc}{Writer}\PYG{o}{((),} \PYG{n}{s}\PYG{o}{)}
+\end{Verbatim}

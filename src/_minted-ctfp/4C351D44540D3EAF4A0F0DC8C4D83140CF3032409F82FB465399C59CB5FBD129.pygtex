@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{alpha} \PYG{o+ow}{::} \PYG{n}{forall} \PYG{n}{x}\PYG{o}{.} \PYG{p}{(}\PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{x}\PYG{p}{]}
+\PYG{n+nf}{alpha} \PYG{n}{h} \PYG{o+ow}{=} \PYG{n}{map} \PYG{n}{h} \PYG{p}{[}\PYG{l+m+mi}{12}\PYG{p}{]}
+\end{Verbatim}

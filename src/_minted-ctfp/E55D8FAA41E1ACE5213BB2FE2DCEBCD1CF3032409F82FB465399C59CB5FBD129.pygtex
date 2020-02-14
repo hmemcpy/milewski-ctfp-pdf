@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{lambda}\PYG{p}{,} \PYG{n}{rho} \PYG{o+ow}{::} \PYG{k+kt}{Profunctor} \PYG{n}{p} \PYG{o+ow}{=\PYGZgt{}} \PYG{k+kt}{SumP} \PYG{n}{p} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{DiagSum} \PYG{n}{p}
+\PYG{n+nf}{lambda} \PYG{p}{(}\PYG{k+kt}{SumP} \PYG{n}{f} \PYG{n}{pab}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{DiagSum} \PYG{p}{(}\PYG{n}{dimap} \PYG{n}{f} \PYG{n}{id} \PYG{n}{pab}\PYG{p}{)}
+\PYG{n+nf}{rho}    \PYG{p}{(}\PYG{k+kt}{SumP} \PYG{n}{f} \PYG{n}{pab}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{DiagSum} \PYG{p}{(}\PYG{n}{dimap} \PYG{n}{id} \PYG{n}{f} \PYG{n}{pab}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{elemToTuple} \PYG{o+ow}{::} \PYG{k+kt}{Element} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{k+kt}{String}\PYG{p}{,} \PYG{k+kt}{String}\PYG{p}{,} \PYG{k+kt}{Int}\PYG{p}{)}
+\PYG{n+nf}{elemToTuple} \PYG{n}{e} \PYG{o+ow}{=} \PYG{p}{(}\PYG{n}{name} \PYG{n}{e}\PYG{p}{,} \PYG{n}{symbol} \PYG{n}{e}\PYG{p}{,} \PYG{n}{atomicNumber} \PYG{n}{e}\PYG{p}{)}
+\end{Verbatim}

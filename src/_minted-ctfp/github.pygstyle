@@ -1,0 +1,101 @@
+
+\makeatletter
+\def\PYGgithub@reset{\let\PYGgithub@it=\relax \let\PYGgithub@bf=\relax%
+    \let\PYGgithub@ul=\relax \let\PYGgithub@tc=\relax%
+    \let\PYGgithub@bc=\relax \let\PYGgithub@ff=\relax}
+\def\PYGgithub@tok#1{\csname PYGgithub@tok@#1\endcsname}
+\def\PYGgithub@toks#1+{\ifx\relax#1\empty\else%
+    \PYGgithub@tok{#1}\expandafter\PYGgithub@toks\fi}
+\def\PYGgithub@do#1{\PYGgithub@bc{\PYGgithub@tc{\PYGgithub@ul{%
+    \PYGgithub@it{\PYGgithub@bf{\PYGgithub@ff{#1}}}}}}}
+\def\PYGgithub#1#2{\PYGgithub@reset\PYGgithub@toks#1+\relax+\PYGgithub@do{#2}}
+
+\expandafter\def\csname PYGgithub@tok@c\endcsname{\let\PYGgithub@it=\textit\def\PYGgithub@tc##1{\textcolor[rgb]{0.60,0.60,0.53}{##1}}}
+\expandafter\def\csname PYGgithub@tok@cm\endcsname{\let\PYGgithub@it=\textit\def\PYGgithub@tc##1{\textcolor[rgb]{0.60,0.60,0.53}{##1}}}
+\expandafter\def\csname PYGgithub@tok@cp\endcsname{\let\PYGgithub@bf=\textbf\let\PYGgithub@it=\textit\def\PYGgithub@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PYGgithub@tok@c1\endcsname{\let\PYGgithub@it=\textit\def\PYGgithub@tc##1{\textcolor[rgb]{0.60,0.60,0.53}{##1}}}
+\expandafter\def\csname PYGgithub@tok@cs\endcsname{\let\PYGgithub@bf=\textbf\let\PYGgithub@it=\textit\def\PYGgithub@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PYGgithub@tok@err\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.65,0.09,0.09}{##1}}\def\PYGgithub@bc##1{\setlength{\fboxsep}{0pt}\colorbox[rgb]{0.89,0.82,0.82}{\strut ##1}}}
+\expandafter\def\csname PYGgithub@tok@gd\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}\def\PYGgithub@bc##1{\setlength{\fboxsep}{0pt}\colorbox[rgb]{1.00,0.87,0.87}{\strut ##1}}}
+\expandafter\def\csname PYGgithub@tok@ge\endcsname{\let\PYGgithub@it=\textit\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGgithub@tok@gr\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.67,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGgithub@tok@gh\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PYGgithub@tok@gi\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}\def\PYGgithub@bc##1{\setlength{\fboxsep}{0pt}\colorbox[rgb]{0.87,1.00,0.87}{\strut ##1}}}
+\expandafter\def\csname PYGgithub@tok@go\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PYGgithub@tok@gp\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.33,0.33,0.33}{##1}}}
+\expandafter\def\csname PYGgithub@tok@gs\endcsname{\let\PYGgithub@bf=\textbf}
+\expandafter\def\csname PYGgithub@tok@gu\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.67,0.67,0.67}{##1}}}
+\expandafter\def\csname PYGgithub@tok@gt\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.67,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGgithub@tok@k\endcsname{\let\PYGgithub@bf=\textbf\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGgithub@tok@kc\endcsname{\let\PYGgithub@bf=\textbf\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGgithub@tok@kd\endcsname{\let\PYGgithub@bf=\textbf\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGgithub@tok@kn\endcsname{\let\PYGgithub@bf=\textbf\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGgithub@tok@kp\endcsname{\let\PYGgithub@bf=\textbf\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGgithub@tok@kr\endcsname{\let\PYGgithub@bf=\textbf\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGgithub@tok@kt\endcsname{\let\PYGgithub@bf=\textbf\def\PYGgithub@tc##1{\textcolor[rgb]{0.27,0.33,0.53}{##1}}}
+\expandafter\def\csname PYGgithub@tok@m\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.60,0.60}{##1}}}
+\expandafter\def\csname PYGgithub@tok@mf\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.60,0.60}{##1}}}
+\expandafter\def\csname PYGgithub@tok@mh\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.60,0.60}{##1}}}
+\expandafter\def\csname PYGgithub@tok@mi\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.60,0.60}{##1}}}
+\expandafter\def\csname PYGgithub@tok@il\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.60,0.60}{##1}}}
+\expandafter\def\csname PYGgithub@tok@mo\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.60,0.60}{##1}}}
+\expandafter\def\csname PYGgithub@tok@s\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.87,0.07,0.27}{##1}}}
+\expandafter\def\csname PYGgithub@tok@sb\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.87,0.07,0.27}{##1}}}
+\expandafter\def\csname PYGgithub@tok@sc\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.87,0.07,0.27}{##1}}}
+\expandafter\def\csname PYGgithub@tok@sd\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.87,0.07,0.27}{##1}}}
+\expandafter\def\csname PYGgithub@tok@s2\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.87,0.07,0.27}{##1}}}
+\expandafter\def\csname PYGgithub@tok@se\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.87,0.07,0.27}{##1}}}
+\expandafter\def\csname PYGgithub@tok@sh\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.87,0.07,0.27}{##1}}}
+\expandafter\def\csname PYGgithub@tok@si\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.87,0.07,0.27}{##1}}}
+\expandafter\def\csname PYGgithub@tok@sx\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.87,0.07,0.27}{##1}}}
+\expandafter\def\csname PYGgithub@tok@sr\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.60,0.15}{##1}}}
+\expandafter\def\csname PYGgithub@tok@s1\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.87,0.07,0.27}{##1}}}
+\expandafter\def\csname PYGgithub@tok@ss\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.60,0.00,0.45}{##1}}}
+\expandafter\def\csname PYGgithub@tok@na\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.50,0.50}{##1}}}
+\expandafter\def\csname PYGgithub@tok@nb\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.53,0.70}{##1}}}
+\expandafter\def\csname PYGgithub@tok@bp\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PYGgithub@tok@nc\endcsname{\let\PYGgithub@bf=\textbf\def\PYGgithub@tc##1{\textcolor[rgb]{0.27,0.33,0.53}{##1}}}
+\expandafter\def\csname PYGgithub@tok@no\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.50,0.50}{##1}}}
+\expandafter\def\csname PYGgithub@tok@nd\endcsname{\let\PYGgithub@bf=\textbf\def\PYGgithub@tc##1{\textcolor[rgb]{0.24,0.36,0.36}{##1}}}
+\expandafter\def\csname PYGgithub@tok@ni\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PYGgithub@tok@ne\endcsname{\let\PYGgithub@bf=\textbf\def\PYGgithub@tc##1{\textcolor[rgb]{0.60,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGgithub@tok@nf\endcsname{\let\PYGgithub@bf=\textbf\def\PYGgithub@tc##1{\textcolor[rgb]{0.60,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGgithub@tok@nl\endcsname{\let\PYGgithub@bf=\textbf\def\PYGgithub@tc##1{\textcolor[rgb]{0.60,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGgithub@tok@nn\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.33,0.33,0.33}{##1}}}
+\expandafter\def\csname PYGgithub@tok@nt\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PYGgithub@tok@nv\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.50,0.50}{##1}}}
+\expandafter\def\csname PYGgithub@tok@vc\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.50,0.50}{##1}}}
+\expandafter\def\csname PYGgithub@tok@vg\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.50,0.50}{##1}}}
+\expandafter\def\csname PYGgithub@tok@vi\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.50,0.50}{##1}}}
+\expandafter\def\csname PYGgithub@tok@o\endcsname{\let\PYGgithub@bf=\textbf\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGgithub@tok@ow\endcsname{\let\PYGgithub@bf=\textbf\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGgithub@tok@w\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PYGgithub@tok@fm\endcsname{\let\PYGgithub@bf=\textbf\def\PYGgithub@tc##1{\textcolor[rgb]{0.60,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGgithub@tok@vm\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.50,0.50}{##1}}}
+\expandafter\def\csname PYGgithub@tok@sa\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.87,0.07,0.27}{##1}}}
+\expandafter\def\csname PYGgithub@tok@dl\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.87,0.07,0.27}{##1}}}
+\expandafter\def\csname PYGgithub@tok@mb\endcsname{\def\PYGgithub@tc##1{\textcolor[rgb]{0.00,0.60,0.60}{##1}}}
+\expandafter\def\csname PYGgithub@tok@ch\endcsname{\let\PYGgithub@it=\textit\def\PYGgithub@tc##1{\textcolor[rgb]{0.60,0.60,0.53}{##1}}}
+\expandafter\def\csname PYGgithub@tok@cpf\endcsname{\let\PYGgithub@it=\textit\def\PYGgithub@tc##1{\textcolor[rgb]{0.60,0.60,0.53}{##1}}}
+
+\def\PYGgithubZbs{\char`\\}
+\def\PYGgithubZus{\char`\_}
+\def\PYGgithubZob{\char`\{}
+\def\PYGgithubZcb{\char`\}}
+\def\PYGgithubZca{\char`\^}
+\def\PYGgithubZam{\char`\&}
+\def\PYGgithubZlt{\char`\<}
+\def\PYGgithubZgt{\char`\>}
+\def\PYGgithubZsh{\char`\#}
+\def\PYGgithubZpc{\char`\%}
+\def\PYGgithubZdl{\char`\$}
+\def\PYGgithubZhy{\char`\-}
+\def\PYGgithubZsq{\char`\'}
+\def\PYGgithubZdq{\char`\"}
+\def\PYGgithubZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYGgithubZat{@}
+\def\PYGgithubZlb{[}
+\def\PYGgithubZrb{]}
+\makeatother
+

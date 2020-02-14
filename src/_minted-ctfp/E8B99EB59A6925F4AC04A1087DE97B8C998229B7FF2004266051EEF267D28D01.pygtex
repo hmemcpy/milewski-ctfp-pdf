@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{o}{(}\PYG{n}{op}\PYG{o}{.}\PYG{n}{contramap}\PYG{o}{(}\PYG{n}{func}\PYG{o}{)} \PYG{n}{compose} \PYG{n}{predToStr}\PYG{o}{)} \PYG{o}{==} \PYG{o}{(}\PYG{n}{predToStr} \PYG{n}{compose} \PYG{n}{op}\PYG{o}{.}\PYG{n}{contramap}\PYG{o}{(}\PYG{n}{func}\PYG{o}{))}
+\end{Verbatim}

@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{trait} \PYG{n+nc}{Comonoid}\PYG{o}{[}\PYG{k+kt}{M}\PYG{o}{]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{split}\PYG{o}{(}\PYG{n}{x}\PYG{k}{:} \PYG{k+kt}{M}\PYG{o}{)}\PYG{k}{:} \PYG{o}{(}\PYG{k+kt}{M}\PYG{o}{,} \PYG{k+kt}{M}\PYG{o}{)}
+  \PYG{k}{def} \PYG{n}{destroy}\PYG{o}{(}\PYG{n}{x}\PYG{k}{:} \PYG{k+kt}{M}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{Unit}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

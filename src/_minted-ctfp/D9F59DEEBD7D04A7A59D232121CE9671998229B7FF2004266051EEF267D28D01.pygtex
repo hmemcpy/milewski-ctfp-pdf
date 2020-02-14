@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{R} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{A}\PYG{o}{,} \PYG{n}{B}\PYG{o}{)} \PYG{o}{\PYGZti{}} \PYG{o}{(}\PYG{n}{R} \PYG{k}{=\PYGZgt{}} \PYG{n}{A}\PYG{o}{,} \PYG{n}{R} \PYG{k}{=\PYGZgt{}} \PYG{n}{B}\PYG{o}{)}
+\end{Verbatim}

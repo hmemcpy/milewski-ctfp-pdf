@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{f} \PYG{n}{compose} \PYG{n}{identity}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{o}{==} \PYG{n}{f}
+\PYG{n}{identity}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{\PYGZus{}} \PYG{n}{compose} \PYG{n}{f} \PYG{o}{==} \PYG{n}{f}
+\end{Verbatim}

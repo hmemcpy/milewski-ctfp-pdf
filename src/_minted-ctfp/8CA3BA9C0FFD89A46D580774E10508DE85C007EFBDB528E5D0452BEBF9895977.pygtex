@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{f}       \PYG{o+ow}{::} \PYG{n}{t0}
+\PYG{n+nf}{x}       \PYG{o+ow}{::} \PYG{n}{t1}
+\PYG{n+nf}{f} \PYG{n}{x}     \PYG{o+ow}{::} \PYG{n}{t2}
+\PYG{n+nf}{f} \PYG{p}{(}\PYG{n}{f} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{::} \PYG{n}{t3}
+\end{Verbatim}

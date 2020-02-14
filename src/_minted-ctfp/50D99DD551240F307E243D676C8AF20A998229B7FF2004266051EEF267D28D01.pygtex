@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{Element}\PYG{o}{(}
+  \PYG{n}{name}\PYG{k}{:} \PYG{k+kt}{String}\PYG{o}{,}
+  \PYG{n}{symbol}\PYG{k}{:} \PYG{k+kt}{String}\PYG{o}{,}
+  \PYG{n}{atomicNumber}\PYG{k}{:} \PYG{k+kt}{Int}
+\PYG{o}{)}
+\end{Verbatim}

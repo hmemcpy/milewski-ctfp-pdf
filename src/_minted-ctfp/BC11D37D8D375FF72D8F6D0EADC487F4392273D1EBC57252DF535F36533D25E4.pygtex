@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{v}\PYG{p}{\PYGZob{}} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{4} \PYG{p}{\PYGZcb{};}
+\PYG{k}{auto} \PYG{n}{w} \PYG{o}{=} \PYG{n}{fmap}\PYG{p}{([](}\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{i}\PYG{o}{*}\PYG{n}{i}\PYG{p}{;} \PYG{p}{\PYGZcb{},} \PYG{n}{v}\PYG{p}{);}
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{copy}\PYG{p}{(} \PYG{n}{std}\PYG{o}{::}\PYG{n}{begin}\PYG{p}{(}\PYG{n}{w}\PYG{p}{)}
+         \PYG{p}{,} \PYG{n}{std}\PYG{o}{::}\PYG{n}{end}\PYG{p}{(}\PYG{n}{w}\PYG{p}{)}
+         \PYG{p}{,} \PYG{n}{std}\PYG{o}{::}\PYG{n}{ostream\PYGZus{}iterator}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}, \PYGZdq{}}\PYG{p}{));}
+\end{Verbatim}

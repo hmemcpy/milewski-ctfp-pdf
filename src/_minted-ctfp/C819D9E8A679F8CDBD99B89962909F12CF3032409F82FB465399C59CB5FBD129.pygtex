@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{k+kt}{Monad} \PYG{p}{(}\PYG{k+kt}{State} \PYG{n}{s}\PYG{p}{)} \PYG{k+kr}{where}
+    \PYG{n}{sa} \PYG{o}{\PYGZgt{}\PYGZgt{}=} \PYG{n}{k} \PYG{o+ow}{=} \PYG{k+kt}{State} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{s} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kr}{let} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{s\PYGZsq{}}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{runState} \PYG{n}{sa} \PYG{n}{s}
+                            \PYG{k+kr}{in} \PYG{n}{runState} \PYG{p}{(}\PYG{n}{k} \PYG{n}{a}\PYG{p}{)} \PYG{n}{s\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{return} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{State} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{s} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{s}\PYG{p}{))}
+\end{Verbatim}

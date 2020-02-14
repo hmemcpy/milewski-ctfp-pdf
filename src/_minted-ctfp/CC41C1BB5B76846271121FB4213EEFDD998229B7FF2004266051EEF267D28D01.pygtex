@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{object} \PYG{n+nc}{Monoid} \PYG{o}{\PYGZob{}}
+  \PYG{k}{implicit} \PYG{k}{def} \PYG{n}{listMonoid}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{Monoid}\PYG{o}{[}\PYG{k+kt}{List}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]]} \PYG{k}{=} \PYG{k}{new} \PYG{n+nc}{Monoid}\PYG{o}{[}\PYG{k+kt}{List}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]]} \PYG{o}{\PYGZob{}}
+    \PYG{k}{def} \PYG{n}{mempty}\PYG{k}{:} \PYG{k+kt}{List}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=} \PYG{n+nc}{List}\PYG{o}{()}
+    \PYG{k}{def} \PYG{n}{mappend}\PYG{o}{(}\PYG{n}{m1}\PYG{k}{:} \PYG{k+kt}{List}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{],} \PYG{n}{m2}\PYG{k}{:} \PYG{k+kt}{List}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{List}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=} \PYG{n}{m1} \PYG{o}{++} \PYG{n}{m2}
+  \PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

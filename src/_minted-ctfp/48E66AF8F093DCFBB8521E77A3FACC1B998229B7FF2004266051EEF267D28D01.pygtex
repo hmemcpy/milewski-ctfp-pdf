@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{trait} \PYG{n+nc}{Monoid}\PYG{o}{[}\PYG{k+kt}{M}\PYG{o}{]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{mempty}\PYG{k}{:} \PYG{k+kt}{M}
+  \PYG{k}{def} \PYG{n}{mappend}\PYG{o}{(}\PYG{n}{m1}\PYG{k}{:} \PYG{k+kt}{M}\PYG{o}{,} \PYG{n}{m2}\PYG{k}{:} \PYG{k+kt}{M}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{M}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

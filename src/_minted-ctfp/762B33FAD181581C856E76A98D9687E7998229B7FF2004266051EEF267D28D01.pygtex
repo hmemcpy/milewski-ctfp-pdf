@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{implicit} \PYG{k}{val} \PYG{n}{optionMonad} \PYG{k}{=} \PYG{k}{new} \PYG{n+nc}{Monad}\PYG{o}{[}\PYG{k+kt}{Option}\PYG{o}{]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{flatMap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{ma}\PYG{k}{:} \PYG{k+kt}{Option}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])(}\PYG{n}{k}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n+nc}{Option}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{Option}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=} 
+    \PYG{n}{ma} \PYG{k}{match} \PYG{o}{\PYGZob{}}
+      \PYG{k}{case} \PYG{n+nc}{None} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{None}
+      \PYG{k}{case} \PYG{n+nc}{Some}\PYG{o}{(}\PYG{n}{a}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{k}\PYG{o}{(}\PYG{n}{a}\PYG{o}{)}
+  \PYG{o}{\PYGZcb{}}
+
+  \PYG{k}{def} \PYG{n}{pure}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{a}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{Option}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=} \PYG{n+nc}{Some}\PYG{o}{(}\PYG{n}{a}\PYG{o}{)}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

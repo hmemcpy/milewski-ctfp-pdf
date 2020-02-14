@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{scam} \PYG{o+ow}{::} \PYG{k+kt}{Const} \PYG{k+kt}{Int} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Maybe} \PYG{n}{a}
+\PYG{n+nf}{scam} \PYG{p}{(}\PYG{k+kt}{Const} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Nothing}
+\end{Verbatim}

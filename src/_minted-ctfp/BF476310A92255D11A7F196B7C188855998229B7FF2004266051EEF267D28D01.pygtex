@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{scam}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{Const}\PYG{o}{[}\PYG{k+kt}{Int}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Option}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=} \PYG{o}{\PYGZob{}}
+  \PYG{k}{case} \PYG{n+nc}{Const}\PYG{o}{(}\PYG{n}{x}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{None}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

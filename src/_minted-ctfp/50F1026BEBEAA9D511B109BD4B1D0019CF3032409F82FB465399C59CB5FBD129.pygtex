@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{k+kt}{Monad} \PYG{p}{(}\PYG{k+kt}{Cont} \PYG{n}{r}\PYG{p}{)} \PYG{k+kr}{where}
+  \PYG{n}{ka} \PYG{o}{\PYGZgt{}\PYGZgt{}=} \PYG{n}{kab} \PYG{o+ow}{=} \PYG{k+kt}{Cont} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{hb} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{runCont} \PYG{n}{ka} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{runCont} \PYG{p}{(}\PYG{n}{kab} \PYG{n}{a}\PYG{p}{)} \PYG{n}{hb}\PYG{p}{))}
+  \PYG{n}{return} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{Cont} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{ha} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{ha} \PYG{n}{a}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{flatMap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{ka}\PYG{k}{:} \PYG{k+kt}{Cont}\PYG{o}{[}\PYG{k+kt}{R}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{])(}\PYG{n}{kab}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n+nc}{Cont}\PYG{o}{[}\PYG{k+kt}{R}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{Cont}\PYG{o}{[}\PYG{k+kt}{R}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=}
+  \PYG{n+nc}{Cont}\PYG{o}{(}\PYG{n}{hb} \PYG{k}{=\PYGZgt{}} \PYG{o}{...)}
+\end{Verbatim}

@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{p} \PYG{o+ow}{::} \PYG{p}{(}\PYG{k+kt}{Int}\PYG{p}{,} \PYG{k+kt}{Int}\PYG{p}{,} \PYG{k+kt}{Bool}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int}
+\PYG{n+nf}{p} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{k+kr}{\PYGZus{}}\PYG{p}{,} \PYG{k+kr}{\PYGZus{}}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{x}
+
+\PYG{n+nf}{q} \PYG{o+ow}{::} \PYG{p}{(}\PYG{k+kt}{Int}\PYG{p}{,} \PYG{k+kt}{Int}\PYG{p}{,} \PYG{k+kt}{Bool}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Bool}
+\PYG{n+nf}{q} \PYG{p}{(}\PYG{k+kr}{\PYGZus{}}\PYG{p}{,} \PYG{k+kr}{\PYGZus{}}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{b}
+\end{Verbatim}

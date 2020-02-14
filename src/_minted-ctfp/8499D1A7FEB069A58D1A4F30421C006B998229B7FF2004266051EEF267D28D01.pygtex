@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{trait} \PYG{n+nc}{Contravariant}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{contramap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{fa}\PYG{k}{:} \PYG{k+kt}{F}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])(}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{B} \PYG{o}{=\PYGZgt{}} \PYG{n}{A}\PYG{o}{)} \PYG{k}{:} \PYG{k+kt}{F}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{]}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k}{class} \PYG{n+nc}{ToString}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n+nc}{String}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{AnyVal} 
+
+\PYG{k}{implicit} \PYG{k}{val} \PYG{n}{contravariant} \PYG{k}{=} \PYG{k}{new} \PYG{n+nc}{Contravariant}\PYG{o}{[}\PYG{k+kt}{ToString}\PYG{o}{]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{contramap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{fa}\PYG{k}{:} \PYG{k+kt}{ToString}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])(}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{B} \PYG{o}{=\PYGZgt{}} \PYG{n}{A}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{ToString}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=}
+    \PYG{n+nc}{ToString}\PYG{o}{(}\PYG{n}{fa}\PYG{o}{.}\PYG{n}{f} \PYG{n}{compose} \PYG{n}{f}\PYG{o}{)}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

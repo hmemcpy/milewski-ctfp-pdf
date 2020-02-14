@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{obvious} \PYG{p}{(}\PYG{k+kt}{Reader} \PYG{n}{g}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Just} \PYG{p}{(}\PYG{n}{g} \PYG{n+nb}{()}\PYG{p}{)}
+\end{Verbatim}

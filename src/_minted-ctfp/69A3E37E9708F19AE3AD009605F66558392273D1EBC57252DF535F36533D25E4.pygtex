@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{A}\PYG{p}{,} \PYG{k}{class} \PYG{n+nc}{B}\PYG{o}{\PYGZgt{}} \PYG{n}{A}
+\PYG{n}{fst}\PYG{p}{(}\PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{n}{A}\PYG{p}{,} \PYG{n}{B}\PYG{o}{\PYGZgt{}} \PYG{k}{const} \PYG{o}{\PYGZam{}} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{p}\PYG{p}{.}\PYG{n}{first}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{val} \PYG{n}{fact} \PYG{k}{=} \PYG{o}{(}\PYG{n}{n}\PYG{k}{:} \PYG{k+kt}{Int}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{l+m+mi}{1} \PYG{n}{to} \PYG{n}{n}\PYG{o}{).}\PYG{n}{product}
+\end{Verbatim}

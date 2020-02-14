@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{implicit} \PYG{k}{def} \PYG{n}{bicompBiFunctor}\PYG{o}{[}
+    \PYG{k+kt}{BF}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{p}{,} \PYG{k}{\PYGZus{}}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{FU}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{GU}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]](}
+    \PYG{k}{implicit} \PYG{n+nc}{BF}\PYG{k}{:} \PYG{k+kt}{Bifunctor}\PYG{o}{[}\PYG{k+kt}{BF}\PYG{o}{],}
+    \PYG{n+nc}{FU}\PYG{k}{:} \PYG{k+kt}{Functor}\PYG{o}{[}\PYG{k+kt}{FU}\PYG{o}{],} \PYG{n+nc}{GU}\PYG{k}{:} \PYG{k+kt}{Functor}\PYG{o}{[}\PYG{k+kt}{GU}\PYG{o}{])} \PYG{k}{=} \PYG{o}{\PYGZob{}}
+  \PYG{c+c1}{// partially\PYGZhy{}applied type BiComp}
+  \PYG{k}{type} \PYG{k+kt}{BiCompAB}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=} \PYG{n+nc}{BiComp}\PYG{o}{[}\PYG{k+kt}{BF}\PYG{p}{,} \PYG{k+kt}{FU}\PYG{p}{,} \PYG{k+kt}{GU}\PYG{p}{,} \PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]}
+  \PYG{k}{new} \PYG{n+nc}{Bifunctor}\PYG{o}{[}\PYG{k+kt}{BiCompAB}\PYG{o}{]} \PYG{o}{\PYGZob{}}
+    \PYG{k}{override} \PYG{k}{def} \PYG{n}{bimap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{p}{,} \PYG{k+kt}{C}\PYG{p}{,} \PYG{k+kt}{D}\PYG{o}{](}\PYG{n}{f1}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{C}\PYG{o}{)(}\PYG{n}{f2}\PYG{k}{:} \PYG{k+kt}{B} \PYG{o}{=\PYGZgt{}} \PYG{n}{D}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{BiCompAB}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{BiCompAB}\PYG{o}{[}\PYG{k+kt}{C}\PYG{p}{,} \PYG{k+kt}{D}\PYG{o}{]} \PYG{k}{=} \PYG{o}{\PYGZob{}}
+      \PYG{k}{case} \PYG{n+nc}{BiComp}\PYG{o}{(}\PYG{n}{x}\PYG{o}{)} \PYG{k}{=\PYGZgt{}}
+        \PYG{n+nc}{BiComp}\PYG{o}{(}
+          \PYG{n+nc}{BF}\PYG{o}{.}\PYG{n}{bimap}\PYG{o}{(}\PYG{n+nc}{FU}\PYG{o}{.}\PYG{n}{fmap}\PYG{o}{(}\PYG{n}{f1}\PYG{o}{))(}\PYG{n+nc}{GU}\PYG{o}{.}\PYG{n}{fmap}\PYG{o}{(}\PYG{n}{f2}\PYG{o}{))(}\PYG{n}{x}\PYG{o}{)}
+        \PYG{o}{)}
+    \PYG{o}{\PYGZcb{}}
+  \PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

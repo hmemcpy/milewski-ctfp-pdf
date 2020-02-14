@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{trait} \PYG{n+nc}{Representable}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{type} \PYG{k+kt}{Rep}
+  \PYG{k}{def} \PYG{n}{tabulate}\PYG{o}{[}\PYG{k+kt}{X}\PYG{o}{](}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{Rep} \PYG{o}{=\PYGZgt{}} \PYG{n}{X}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{F}\PYG{o}{[}\PYG{k+kt}{X}\PYG{o}{]}
+  \PYG{k}{def} \PYG{n}{index}\PYG{o}{[}\PYG{k+kt}{X}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{F}\PYG{o}{[}\PYG{k+kt}{X}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Rep} \PYG{k}{=\PYGZgt{}} \PYG{n}{X}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

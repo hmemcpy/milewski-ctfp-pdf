@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{k+kt}{Monad} \PYG{p}{(}\PYG{k+kt}{Reader} \PYG{n}{e}\PYG{p}{)} \PYG{k+kr}{where}
+    \PYG{n}{ra} \PYG{o}{\PYGZgt{}\PYGZgt{}=} \PYG{n}{k} \PYG{o+ow}{=} \PYG{k+kt}{Reader} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{e} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{runReader} \PYG{p}{(}\PYG{n}{k} \PYG{p}{(}\PYG{n}{runReader} \PYG{n}{ra} \PYG{n}{e}\PYG{p}{))} \PYG{n}{e}\PYG{p}{)}
+    \PYG{n}{return} \PYG{n}{x} \PYG{o+ow}{=} \PYG{k+kt}{Reader} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{e} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{x}\PYG{p}{)}
+\end{Verbatim}

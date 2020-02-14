@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+fmap f . alpha = alpha . fmap f
+\end{Verbatim}

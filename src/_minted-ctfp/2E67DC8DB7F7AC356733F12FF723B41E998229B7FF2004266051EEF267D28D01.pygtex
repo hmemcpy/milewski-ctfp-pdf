@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{object} \PYG{n+nc}{Monoid} \PYG{o}{\PYGZob{}}
+  \PYG{k}{implicit} \PYG{k}{val} \PYG{n}{stringMonoid}\PYG{k}{:} \PYG{k+kt}{Monoid}\PYG{o}{[}\PYG{k+kt}{String}\PYG{o}{]} \PYG{k}{=} \PYG{k}{new} \PYG{n+nc}{Monoid}\PYG{o}{[}\PYG{k+kt}{String}\PYG{o}{]} \PYG{o}{\PYGZob{}}
+    \PYG{k}{def} \PYG{n}{combine}\PYG{o}{(}\PYG{n}{m1}\PYG{k}{:} \PYG{k+kt}{String}\PYG{o}{,} \PYG{n}{m2}\PYG{k}{:} \PYG{k+kt}{String}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{String} \PYG{o}{=} \PYG{n}{m1} \PYG{o}{+} \PYG{n}{m2}
+    \PYG{k}{def} \PYG{n}{empty}\PYG{k}{:} \PYG{k+kt}{String} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}\PYGZdq{}}
+  \PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{mu}\PYG{o}{.}\PYG{n}{compose}\PYG{o}{(}\PYG{n}{bimap}\PYG{o}{(}\PYG{n}{eta}\PYG{o}{)(}\PYG{n}{identity}\PYG{o}{[}\PYG{k+kt}{M}\PYG{o}{]))(((),} \PYG{n}{x}\PYG{o}{))} \PYG{o}{==} \PYG{n}{lambda}\PYG{o}{(((),} \PYG{n}{x}\PYG{o}{))}
+
+\PYG{n}{mu}\PYG{o}{.}\PYG{n}{compose}\PYG{o}{(}\PYG{n}{bimap}\PYG{o}{(}\PYG{n}{identity}\PYG{o}{[}\PYG{k+kt}{M}\PYG{o}{])(}\PYG{n}{eta}\PYG{o}{))((}\PYG{n}{x}\PYG{o}{,} \PYG{o}{()))} \PYG{o}{==} \PYG{n}{rho}\PYG{o}{((}\PYG{n}{x}\PYG{o}{,} \PYG{o}{()))}
+\end{Verbatim}

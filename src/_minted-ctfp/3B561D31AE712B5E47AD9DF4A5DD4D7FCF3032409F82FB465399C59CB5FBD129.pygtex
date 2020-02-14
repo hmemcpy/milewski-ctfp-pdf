@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{data} \PYG{k+kt}{Expr} \PYG{o+ow}{=} \PYG{k+kt}{RZero} 
+          \PYG{o}{|} \PYG{k+kt}{ROne}
+          \PYG{o}{|} \PYG{k+kt}{RAdd} \PYG{k+kt}{Expr} \PYG{k+kt}{Expr}
+          \PYG{o}{|} \PYG{k+kt}{RMul} \PYG{k+kt}{Expr} \PYG{k+kt}{Expr}
+          \PYG{o}{|} \PYG{k+kt}{RNeg} \PYG{k+kt}{Expr}
+\end{Verbatim}

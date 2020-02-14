@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{Writer}\PYG{o}{[}\PYG{k+kt}{W}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{run}\PYG{k}{:} \PYG{o}{(}\PYG{k+kt}{A}\PYG{o}{,} \PYG{k+kt}{W}\PYG{o}{))}
+
+\PYG{k}{implicit} \PYG{k}{def} \PYG{n}{writerFunctor}\PYG{o}{[}\PYG{k+kt}{W}\PYG{o}{]} \PYG{k}{=} \PYG{k}{new} \PYG{n+nc}{Functor}\PYG{o}{[}\PYG{k+kt}{Writer}\PYG{o}{[}\PYG{k+kt}{W}\PYG{p}{,} \PYG{k+kt}{?}\PYG{o}{]]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{fmap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{B}\PYG{o}{)(}\PYG{n}{fa}\PYG{k}{:} \PYG{k+kt}{Writer}\PYG{o}{[}\PYG{k+kt}{W}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{Writer}\PYG{o}{[}\PYG{k+kt}{W}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=}
+    \PYG{n}{fa} \PYG{k}{match} \PYG{o}{\PYGZob{}}
+      \PYG{k}{case} \PYG{n+nc}{Writer}\PYG{o}{((}\PYG{n}{a}\PYG{o}{,} \PYG{n}{w}\PYG{o}{))} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Writer}\PYG{o}{(}\PYG{n}{f}\PYG{o}{(}\PYG{n}{a}\PYG{o}{),} \PYG{n}{w}\PYG{o}{)}
+  \PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

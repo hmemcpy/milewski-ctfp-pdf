@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{flatten}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{W:} \PYG{k+kt}{Monoid}\PYG{o}{](}\PYG{n}{wwa}\PYG{k}{:} \PYG{k+kt}{Writer}\PYG{o}{[}\PYG{k+kt}{W}\PYG{p}{,} \PYG{k+kt}{Writer}\PYG{o}{[}\PYG{k+kt}{W}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]])}\PYG{k}{:} \PYG{k+kt}{Writer}\PYG{o}{[}\PYG{k+kt}{W}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=}
+  \PYG{n}{wwa} \PYG{k}{match} \PYG{o}{\PYGZob{}}
+    \PYG{k}{case} \PYG{n+nc}{Writer}\PYG{o}{((}\PYG{n+nc}{Writer}\PYG{o}{((}\PYG{n}{a}\PYG{o}{,} \PYG{n}{w2}\PYG{o}{)),} \PYG{n}{w1}\PYG{o}{))} \PYG{k}{=\PYGZgt{}}
+      \PYG{n+nc}{Writer}\PYG{o}{(}\PYG{n}{a}\PYG{o}{,} \PYG{n+nc}{Monoid}\PYG{o}{[}\PYG{k+kt}{W}\PYG{o}{].}\PYG{n}{combine}\PYG{o}{(}\PYG{n}{w1}\PYG{o}{,} \PYG{n}{w2}\PYG{o}{))}
+  \PYG{o}{\PYGZcb{}}
+\end{Verbatim}

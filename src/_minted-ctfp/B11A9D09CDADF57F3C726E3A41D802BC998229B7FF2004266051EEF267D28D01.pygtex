@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{implicit} \PYG{k}{def} \PYG{n}{storeComonad}\PYG{o}{[}\PYG{k+kt}{S}\PYG{o}{]} \PYG{k}{=} \PYG{k}{new} \PYG{n+nc}{Comonad}\PYG{o}{[}\PYG{k+kt}{Store}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{?}\PYG{o}{]]} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{extract}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{wa}\PYG{k}{:} \PYG{k+kt}{Store}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=} \PYG{n}{wa} \PYG{k}{match} \PYG{o}{\PYGZob{}}
+    \PYG{k}{case} \PYG{n+nc}{Store}\PYG{o}{(}\PYG{n}{f}\PYG{o}{,} \PYG{n}{s}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{f}\PYG{o}{(}\PYG{n}{s}\PYG{o}{)}
+  \PYG{o}{\PYGZcb{}}
+
+  \PYG{k}{override} \PYG{k}{def} \PYG{n}{duplicate}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{wa}\PYG{k}{:} \PYG{k+kt}{Store}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{Store}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{Store}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]]} \PYG{k}{=}
+    \PYG{n}{wa} \PYG{k}{match} \PYG{o}{\PYGZob{}}
+      \PYG{k}{case} \PYG{n+nc}{Store}\PYG{o}{(}\PYG{n}{f}\PYG{o}{,} \PYG{n}{s}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Store}\PYG{o}{(}\PYG{n+nc}{Store}\PYG{o}{(}\PYG{n}{f}\PYG{o}{),} \PYG{n}{s}\PYG{o}{)}
+    \PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

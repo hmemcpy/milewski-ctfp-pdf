@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{(}\PYG{n}{mu} \PYG{o}{.} \PYG{n}{bimap} \PYG{n}{eta} \PYG{n}{id}\PYG{p}{)} \PYG{p}{(}\PYG{n+nb}{()}\PYG{p}{,} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{lambda}\PYG{p}{(}\PYG{n+nb}{()}\PYG{p}{,} \PYG{n}{x}\PYG{p}{)}
+\PYG{p}{(}\PYG{n}{mu} \PYG{o}{.} \PYG{n}{bimap} \PYG{n}{id} \PYG{n}{eta}\PYG{p}{)} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n+nb}{()}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{rho} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n+nb}{()}\PYG{p}{)}
+\end{Verbatim}

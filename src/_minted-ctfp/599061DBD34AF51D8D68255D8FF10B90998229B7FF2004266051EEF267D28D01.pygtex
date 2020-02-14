@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nc}{List}\PYG{o}{[}\PYG{k+kt}{Int}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{List}\PYG{o}{[}\PYG{k+kt}{Int}\PYG{o}{]}
+\end{Verbatim}

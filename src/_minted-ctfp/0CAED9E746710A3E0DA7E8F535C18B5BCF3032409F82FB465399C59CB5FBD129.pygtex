@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{type} \PYG{k+kt}{ProdP} \PYG{n}{p} \PYG{o+ow}{=} \PYG{n}{forall} \PYG{n}{a} \PYG{n}{b}\PYG{o}{.} \PYG{p}{(}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{b}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{p} \PYG{n}{a} \PYG{n}{b}
+\end{Verbatim}

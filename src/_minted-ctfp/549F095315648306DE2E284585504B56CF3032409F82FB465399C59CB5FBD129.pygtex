@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{unit}           \PYG{o+ow}{=} \PYG{n}{leftAdjunct} \PYG{n}{id}
+\PYG{n+nf}{counit}         \PYG{o+ow}{=} \PYG{n}{rightAdjunct} \PYG{n}{id}
+\PYG{n+nf}{leftAdjunct} \PYG{n}{f}  \PYG{o+ow}{=} \PYG{n}{fmap} \PYG{n}{f} \PYG{o}{.} \PYG{n}{unit}
+\PYG{n+nf}{rightAdjunct} \PYG{n}{f} \PYG{o+ow}{=} \PYG{n}{counit} \PYG{o}{.} \PYG{n}{fmap} \PYG{n}{f}
+\end{Verbatim}

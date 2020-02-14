@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{length}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{List}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Const}\PYG{o}{[}\PYG{k+kt}{Int}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=} \PYG{o}{\PYGZob{}}
+  \PYG{k}{case} \PYG{n+nc}{Nil} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Const}\PYG{o}{(}\PYG{l+m+mi}{0}\PYG{o}{)}
+  \PYG{k}{case} \PYG{n}{x} \PYG{o}{::} \PYG{n}{xs} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Const}\PYG{o}{(}\PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n}{unConst}\PYG{o}{(}\PYG{n}{length}\PYG{o}{(}\PYG{n}{xs}\PYG{o}{)))}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

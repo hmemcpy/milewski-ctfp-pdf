@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{sumAlg} \PYG{o+ow}{::} \PYG{k+kt}{ListF} \PYG{k+kt}{Double} \PYG{k+kt}{Double} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Double}
+\PYG{n+nf}{sumAlg} \PYG{p}{(}\PYG{k+kt}{ConsF} \PYG{n}{e} \PYG{n}{s}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{e} \PYG{o}{+} \PYG{n}{s}
+\PYG{n+nf}{sumAlg} \PYG{k+kt}{NilF} \PYG{o+ow}{=} \PYG{l+m+mf}{0.0}
+\end{Verbatim}

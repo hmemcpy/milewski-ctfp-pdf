@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{abstract} \PYG{k}{class} \PYG{n+nc}{Adjunction}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{U}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]](}
+  \PYG{k}{implicit} \PYG{k}{val} \PYG{n}{F}\PYG{k}{:} \PYG{k+kt}{Functor}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{],}
+  \PYG{k}{val} \PYG{n}{U}\PYG{k}{:} \PYG{k+kt}{Representable}\PYG{o}{[}\PYG{k+kt}{U}\PYG{o}{]}
+\PYG{o}{)\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{unit}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{a}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{U}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]]}
+
+  \PYG{k}{def} \PYG{n}{counit}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{a}\PYG{k}{:} \PYG{k+kt}{F}\PYG{o}{[}\PYG{k+kt}{U}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]])}\PYG{k}{:} \PYG{k+kt}{A}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

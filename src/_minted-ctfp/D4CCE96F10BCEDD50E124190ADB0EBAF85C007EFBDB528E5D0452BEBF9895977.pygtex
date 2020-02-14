@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{mappend} \PYG{o+ow}{=} \PYG{p}{(}\PYG{o}{++}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{ToString} \PYG{p}{(}\PYG{k+kt}{Either} \PYG{n}{b} \PYG{n}{c}\PYG{p}{)} \PYG{o}{\PYGZti{}} \PYG{p}{(}\PYG{n}{b} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{String}\PYG{p}{,} \PYG{n}{c} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{String}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{predToStr} \PYG{p}{(}\PYG{k+kt}{Op} \PYG{n}{f}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Op} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{x} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kr}{if} \PYG{n}{f} \PYG{n}{x} \PYG{k+kr}{then} \PYG{l+s}{\PYGZdq{}T\PYGZdq{}} \PYG{k+kr}{else} \PYG{l+s}{\PYGZdq{}F\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

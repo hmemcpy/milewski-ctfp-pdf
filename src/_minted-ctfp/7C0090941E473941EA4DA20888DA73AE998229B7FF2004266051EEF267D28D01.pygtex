@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{flatMap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{sa}\PYG{k}{:} \PYG{k+kt}{State}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{])(}\PYG{n}{k}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n+nc}{State}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{State}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=}
+  \PYG{n+nc}{State} \PYG{o}{\PYGZob{}} \PYG{n}{s} \PYG{k}{=\PYGZgt{}}
+    \PYG{k}{val} \PYG{o}{(}\PYG{n}{a}\PYG{o}{,} \PYG{n}{s1}\PYG{o}{)} \PYG{k}{=} \PYG{n}{runState}\PYG{o}{(}\PYG{n}{sa}\PYG{o}{)(}\PYG{n}{s}\PYG{o}{)}
+    \PYG{k}{val} \PYG{n}{sb} \PYG{k}{=} \PYG{n}{k}\PYG{o}{(}\PYG{n}{a}\PYG{o}{)}
+    \PYG{n}{runState}\PYG{o}{(}\PYG{n}{sb}\PYG{o}{)(}\PYG{n}{s1}\PYG{o}{)}
+  \PYG{o}{\PYGZcb{}}
+\end{Verbatim}

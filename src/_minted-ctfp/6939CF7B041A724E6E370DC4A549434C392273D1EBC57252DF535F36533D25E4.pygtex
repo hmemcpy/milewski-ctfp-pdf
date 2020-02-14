@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{A}\PYG{p}{,} \PYG{k}{class} \PYG{n+nc}{B}\PYG{o}{\PYGZgt{}}
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{B}\PYG{o}{\PYGZgt{}} \PYG{n}{fmap}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{function}\PYG{o}{\PYGZlt{}}\PYG{n}{B}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}\PYG{o}{\PYGZgt{}} \PYG{n}{f}\PYG{p}{,} \PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{A}\PYG{o}{\PYGZgt{}} \PYG{n}{v}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{B}\PYG{o}{\PYGZgt{}} \PYG{n}{w}\PYG{p}{;}
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{transform}\PYG{p}{(} \PYG{n}{std}\PYG{o}{::}\PYG{n}{begin}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
+                  \PYG{p}{,} \PYG{n}{std}\PYG{o}{::}\PYG{n}{end}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
+                  \PYG{p}{,} \PYG{n}{std}\PYG{o}{::}\PYG{n}{back\PYGZus{}inserter}\PYG{p}{(}\PYG{n}{w}\PYG{p}{)}
+                  \PYG{p}{,} \PYG{n}{f}\PYG{p}{);}
+    \PYG{k}{return} \PYG{n}{w}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{data} \PYG{k+kt}{FreeF} \PYG{n}{f} \PYG{n}{a} \PYG{o+ow}{=} \PYG{n}{forall} \PYG{n}{i}\PYG{o}{.} \PYG{k+kt}{FMap} \PYG{p}{(}\PYG{n}{i} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a}\PYG{p}{)} \PYG{p}{(}\PYG{n}{f} \PYG{n}{i}\PYG{p}{)}
+\end{Verbatim}

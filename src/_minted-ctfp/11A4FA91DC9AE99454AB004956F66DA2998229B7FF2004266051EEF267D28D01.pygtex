@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{flip}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{p}{,} \PYG{k+kt}{C}\PYG{o}{]}\PYG{k}{:} \PYG{o}{(}\PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{k+kt}{B} \PYG{o}{=\PYGZgt{}} \PYG{n}{C}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{B} \PYG{k}{=\PYGZgt{}} \PYG{n}{A} \PYG{k}{=\PYGZgt{}} \PYG{n}{C}\PYG{o}{)} \PYG{k}{=}
+  \PYG{n}{f} \PYG{k}{=\PYGZgt{}} \PYG{n}{y} \PYG{k}{=\PYGZgt{}} \PYG{n}{x} \PYG{k}{=\PYGZgt{}} \PYG{n}{f}\PYG{o}{(}\PYG{n}{x}\PYG{o}{)(}\PYG{n}{y}\PYG{o}{)}
+\end{Verbatim}

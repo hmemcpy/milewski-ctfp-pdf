@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{Product}\PYG{o}{[}\PYG{k+kt}{E}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{run}\PYG{k}{:} \PYG{o}{(}\PYG{k+kt}{E}\PYG{o}{,} \PYG{k+kt}{A}\PYG{o}{))}
+
+\PYG{c+c1}{// implicit def productFunctor = ...}
+\end{Verbatim}

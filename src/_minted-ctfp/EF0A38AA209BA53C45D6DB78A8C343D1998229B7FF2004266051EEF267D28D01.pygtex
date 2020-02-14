@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{runReader}\PYG{o}{[}\PYG{k+kt}{E}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{Reader}\PYG{o}{[}\PYG{k+kt}{E}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n}{E} \PYG{k}{=\PYGZgt{}} \PYG{n}{A} \PYG{k}{=} \PYG{o}{\PYGZob{}}
+  \PYG{k}{case} \PYG{n+nc}{Reader}\PYG{o}{(}\PYG{n}{f}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{e} \PYG{k}{=\PYGZgt{}} \PYG{n}{f}\PYG{o}{(}\PYG{n}{e}\PYG{o}{)}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

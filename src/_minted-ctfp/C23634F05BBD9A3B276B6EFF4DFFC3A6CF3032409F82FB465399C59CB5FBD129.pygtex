@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{k+kt}{Monad} \PYG{k+kt}{[]} \PYG{k+kr}{where}
+    \PYG{n}{join} \PYG{o+ow}{=} \PYG{n}{concat}
+    \PYG{n}{return} \PYG{n}{x} \PYG{o+ow}{=} \PYG{p}{[}\PYG{n}{x}\PYG{p}{]}
+\end{Verbatim}

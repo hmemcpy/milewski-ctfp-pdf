@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{trait} \PYG{n+nc}{Procompose}\PYG{o}{[}\PYG{k+kt}{Q}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{p}{,} \PYG{k}{\PYGZus{}}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{P}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{p}{,} \PYG{k}{\PYGZus{}}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]}
+
+\PYG{k}{object} \PYG{n+nc}{Procompose}\PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{apply}\PYG{o}{[}\PYG{k+kt}{Q}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{p}{,} \PYG{k}{\PYGZus{}}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{P}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{p}{,} \PYG{k}{\PYGZus{}}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{p}{,} \PYG{k+kt}{C}\PYG{o}{]}
+      \PYG{o}{(}\PYG{n}{qac}\PYG{k}{:} \PYG{k+kt}{Q}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{C}\PYG{o}{])(}\PYG{n}{pcb}\PYG{k}{:} \PYG{k+kt}{P}\PYG{o}{[}\PYG{k+kt}{C}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{Procompose}\PYG{o}{[}\PYG{k+kt}{Q}\PYG{p}{,} \PYG{k+kt}{P}\PYG{p}{,} \PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=} \PYG{o}{???}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

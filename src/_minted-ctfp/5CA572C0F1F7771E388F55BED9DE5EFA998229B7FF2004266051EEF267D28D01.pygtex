@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{main}\PYG{k}{:} \PYG{k+kt}{IO}\PYG{o}{[}\PYG{k+kt}{Unit}\PYG{o}{]} \PYG{k}{=} \PYG{k}{for} \PYG{o}{\PYGZob{}}
+  \PYG{k}{\PYGZus{}} \PYG{k}{\PYGZlt{}\PYGZhy{}} \PYG{n}{putStr}\PYG{o}{(}\PYG{l+s}{\PYGZdq{}Hello \PYGZdq{}}\PYG{o}{)}
+  \PYG{k}{\PYGZus{}} \PYG{k}{\PYGZlt{}\PYGZhy{}} \PYG{n}{putStr}\PYG{o}{(}\PYG{l+s}{\PYGZdq{}World!\PYGZdq{}}\PYG{o}{)}
+\PYG{o}{\PYGZcb{}} \PYG{k}{yield} \PYG{o}{()}
+\end{Verbatim}

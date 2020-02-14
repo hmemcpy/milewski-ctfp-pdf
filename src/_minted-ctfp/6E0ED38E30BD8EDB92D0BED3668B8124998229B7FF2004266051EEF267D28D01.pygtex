@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{unit}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n+nc}{Unit} \PYG{k}{=} \PYG{k}{\PYGZus{}} \PYG{k}{=\PYGZgt{}} \PYG{o}{()}
+\end{Verbatim}

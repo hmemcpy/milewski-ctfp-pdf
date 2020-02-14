@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{greet} \PYG{o+ow}{::} \PYG{k+kt}{String} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{String}
+\PYG{n+nf}{greet} \PYG{o+ow}{=} \PYG{n}{catstr} \PYG{l+s}{\PYGZdq{}Hello \PYGZdq{}}
+\end{Verbatim}

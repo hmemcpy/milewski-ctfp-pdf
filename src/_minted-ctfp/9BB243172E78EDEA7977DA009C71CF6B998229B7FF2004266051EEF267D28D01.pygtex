@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{val} \PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{Either}\PYG{o}{[}\PYG{k+kt}{Int}\PYG{p}{,} \PYG{k+kt}{Double}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{String}
+\end{Verbatim}

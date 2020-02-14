@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// with the Kind Projector plugin}
+\PYG{n+nc}{Function1}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{?}\PYG{o}{]} \PYG{n}{or} \PYG{n}{A} \PYG{k}{=\PYGZgt{}} \PYG{o}{?}
+\end{Verbatim}

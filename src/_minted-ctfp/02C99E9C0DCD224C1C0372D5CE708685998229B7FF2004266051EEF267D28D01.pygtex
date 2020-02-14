@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{beta}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{F} \PYG{k+kt}{\PYGZti{}\PYGZgt{}} \PYG{o}{(}\PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{k+kt}{?}\PYG{o}{)}
+\end{Verbatim}

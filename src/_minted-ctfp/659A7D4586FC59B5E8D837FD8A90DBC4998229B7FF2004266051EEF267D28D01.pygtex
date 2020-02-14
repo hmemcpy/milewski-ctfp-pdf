@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{fmap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]}\PYG{k}{:} \PYG{o}{(}\PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{k+kt}{B}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{List}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{List}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=}
+  \PYG{n}{f} \PYG{k}{=\PYGZgt{}} \PYG{o}{\PYGZob{}}
+    \PYG{k}{case} \PYG{n+nc}{Nil} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Nil}
+    \PYG{k}{case} \PYG{n}{x} \PYG{o}{::} \PYG{n}{xs} \PYG{k}{=\PYGZgt{}} \PYG{n}{f}\PYG{o}{(}\PYG{n}{x}\PYG{o}{)} \PYG{o}{::} \PYG{n}{fmap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{f}\PYG{o}{)(}\PYG{n}{xs}\PYG{o}{)}
+  \PYG{o}{\PYGZcb{}}
+
+\PYG{k}{def} \PYG{n}{sum}\PYG{k}{:} \PYG{k+kt}{List}\PYG{o}{[}\PYG{k+kt}{Double}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Double} \PYG{k}{=} \PYG{k}{\PYGZus{}}\PYG{o}{.}\PYG{n}{sum}
+
+\PYG{k}{import} \PYG{n+nn}{math.\PYGZus{}}
+
+\PYG{k}{def} \PYG{n}{vlen}\PYG{k}{:} \PYG{k+kt}{List}\PYG{o}{[}\PYG{k+kt}{Double}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Double} \PYG{k}{=}
+  \PYG{n}{sqrt} \PYG{k}{\PYGZus{}} \PYG{n}{compose} \PYG{n}{sum} \PYG{n}{compose} \PYG{n}{fmap}\PYG{o}{(}\PYG{n}{pow}\PYG{o}{(}\PYG{k}{\PYGZus{}}\PYG{o}{,} \PYG{l+m+mi}{2}\PYG{o}{))}
+\end{Verbatim}

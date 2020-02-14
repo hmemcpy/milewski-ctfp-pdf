@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n}{join}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{State}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{State}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{State}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=}
+  \PYG{n}{ssa} \PYG{k}{=\PYGZgt{}} \PYG{o}{\PYGZob{}}
+    \PYG{n+nc}{State}\PYG{o}{(}
+      \PYG{n+nc}{Function}\PYG{o}{.}\PYG{n}{uncurried}\PYG{o}{(}\PYG{n}{runState}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{])}
+        \PYG{o}{.}\PYG{n}{tupled}
+        \PYG{o}{.}\PYG{n}{compose}\PYG{o}{(}\PYG{n}{runState}\PYG{o}{(}\PYG{n}{ssa}\PYG{o}{))}
+    \PYG{o}{)}
+  \PYG{o}{\PYGZcb{}}
+\end{Verbatim}

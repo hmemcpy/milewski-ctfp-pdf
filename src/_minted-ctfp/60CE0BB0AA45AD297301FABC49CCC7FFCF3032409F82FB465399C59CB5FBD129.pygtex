@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{pi} \PYG{o+ow}{::} \PYG{k+kt}{Profunctor} \PYG{n}{p} \PYG{o+ow}{=\PYGZgt{}} \PYG{n}{forall} \PYG{n}{c}\PYG{o}{.} \PYG{p}{(}\PYG{n}{forall} \PYG{n}{a}\PYG{o}{.} \PYG{n}{p} \PYG{n}{a} \PYG{n}{a}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{p} \PYG{n}{c} \PYG{n}{c}
+\PYG{n+nf}{pi} \PYG{n}{e} \PYG{o+ow}{=} \PYG{n}{e}
+\end{Verbatim}

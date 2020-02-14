@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{object} \PYG{n+nc}{Fix} \PYG{o}{\PYGZob{}}
+  \PYG{k}{def} \PYG{n}{apply}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]](}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{F}\PYG{o}{[}\PYG{k+kt}{Fix}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{]])}\PYG{k}{:} \PYG{k+kt}{Fix}\PYG{o}{[}\PYG{k+kt}{F}\PYG{o}{]} \PYG{k}{=} \PYG{k}{new} \PYG{n+nc}{Fix}\PYG{o}{(}\PYG{n}{f}\PYG{o}{)}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

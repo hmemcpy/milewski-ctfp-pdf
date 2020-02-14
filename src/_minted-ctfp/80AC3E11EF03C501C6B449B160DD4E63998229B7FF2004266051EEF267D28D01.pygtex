@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{mu}\PYG{o}{.}\PYG{n}{compose}\PYG{o}{(}
+  \PYG{n}{bimap}\PYG{o}{(}\PYG{n}{identity}\PYG{o}{)(}\PYG{n}{mu}\PYG{o}{)} \PYG{n}{compose} \PYG{n}{alpha}\PYG{o}{)} \PYG{o}{==}
+  \PYG{n}{mu}\PYG{o}{.}\PYG{n}{compose}\PYG{o}{(}\PYG{n}{bimap}\PYG{o}{(}\PYG{n}{mu}\PYG{o}{)(}\PYG{n}{identity}\PYG{o}{))}
+\end{Verbatim}

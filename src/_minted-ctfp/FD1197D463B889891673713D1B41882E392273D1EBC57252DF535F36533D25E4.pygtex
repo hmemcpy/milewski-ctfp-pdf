@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{string} \PYG{n+nf}{toUpper}\PYG{p}{(}\PYG{n}{string} \PYG{n}{s}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{string} \PYG{n}{result}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{p}{(}\PYG{o}{*}\PYG{n}{toupperp}\PYG{p}{)(}\PYG{k+kt}{int}\PYG{p}{)} \PYG{o}{=} \PYG{o}{\PYGZam{}}\PYG{n}{toupper}\PYG{p}{;} \PYG{c+c1}{// toupper is overloaded}
+    \PYG{n}{transform}\PYG{p}{(}\PYG{n}{begin}\PYG{p}{(}\PYG{n}{s}\PYG{p}{),} \PYG{n}{end}\PYG{p}{(}\PYG{n}{s}\PYG{p}{),} \PYG{n}{back\PYGZus{}inserter}\PYG{p}{(}\PYG{n}{result}\PYG{p}{),} \PYG{n}{toupperp}\PYG{p}{);}
+    \PYG{k}{return} \PYG{n}{result}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{sealed} \PYG{k}{trait} \PYG{n+nc}{Either}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]}
+\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{Left}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{v}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{Either}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{Nothing}\PYG{o}{]}
+\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{Right}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{v}\PYG{k}{:} \PYG{k+kt}{B}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{Either}\PYG{o}{[}\PYG{k+kt}{Nothing}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]}
+\end{Verbatim}

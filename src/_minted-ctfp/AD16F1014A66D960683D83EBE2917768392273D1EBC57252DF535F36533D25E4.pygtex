@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{A}\PYG{p}{,} \PYG{k}{class} \PYG{n+nc}{B}\PYG{o}{\PYGZgt{}}
+\PYG{n}{optional}\PYG{o}{\PYGZlt{}}\PYG{n}{B}\PYG{o}{\PYGZgt{}} \PYG{n}{fmap}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{function}\PYG{o}{\PYGZlt{}}\PYG{n}{B}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}\PYG{o}{\PYGZgt{}} \PYG{n}{f}\PYG{p}{,} \PYG{n}{optional}\PYG{o}{\PYGZlt{}}\PYG{n}{A}\PYG{o}{\PYGZgt{}} \PYG{n}{opt}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{opt}\PYG{p}{.}\PYG{n}{isValid}\PYG{p}{())}
+        \PYG{k}{return} \PYG{n}{optional}\PYG{o}{\PYGZlt{}}\PYG{n}{B}\PYG{o}{\PYGZgt{}}\PYG{p}{\PYGZob{}\PYGZcb{};}
+    \PYG{k}{else}
+        \PYG{k}{return} \PYG{n}{optional}\PYG{o}{\PYGZlt{}}\PYG{n}{B}\PYG{o}{\PYGZgt{}}\PYG{p}{\PYGZob{}} \PYG{n}{f}\PYG{p}{(}\PYG{n}{opt}\PYG{p}{.}\PYG{n}{val}\PYG{p}{())} \PYG{p}{\PYGZcb{};}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

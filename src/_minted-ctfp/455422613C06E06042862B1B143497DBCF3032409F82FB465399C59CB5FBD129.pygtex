@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{k+kt}{Functor} \PYG{k+kt}{List} \PYG{k+kr}{where}
+    \PYG{n}{fmap} \PYG{k+kr}{\PYGZus{}} \PYG{k+kt}{Nil} \PYG{o+ow}{=} \PYG{k+kt}{Nil}
+    \PYG{n}{fmap} \PYG{n}{f} \PYG{p}{(}\PYG{k+kt}{Cons} \PYG{n}{x} \PYG{n}{t}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Cons} \PYG{p}{(}\PYG{n}{f} \PYG{n}{x}\PYG{p}{)} \PYG{p}{(}\PYG{n}{fmap} \PYG{n}{f} \PYG{n}{t}\PYG{p}{)}
+\end{Verbatim}

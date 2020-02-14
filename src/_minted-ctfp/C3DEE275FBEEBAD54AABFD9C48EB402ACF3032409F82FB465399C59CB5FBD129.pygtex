@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{class} \PYG{k+kt}{Functor} \PYG{n}{m} \PYG{o+ow}{=\PYGZgt{}} \PYG{k+kt}{Monad} \PYG{n}{m} \PYG{k+kr}{where}
+    \PYG{n}{join} \PYG{o+ow}{::} \PYG{n}{m} \PYG{p}{(}\PYG{n}{m} \PYG{n}{a}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{m} \PYG{n}{a}
+    \PYG{n}{return} \PYG{o+ow}{::} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{m} \PYG{n}{a}
+\end{Verbatim}

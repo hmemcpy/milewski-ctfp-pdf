@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{unConst} \PYG{o+ow}{::} \PYG{k+kt}{Const} \PYG{n}{c} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{c}
+\PYG{n+nf}{unConst} \PYG{p}{(}\PYG{k+kt}{Const} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{x}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{fst} \PYG{o}{.} \PYG{n}{factorizer} \PYG{n}{p} \PYG{n}{q} \PYG{o+ow}{=} \PYG{n}{p}
+\PYG{n+nf}{snd} \PYG{o}{.} \PYG{n}{factorizer} \PYG{n}{p} \PYG{n}{q} \PYG{o+ow}{=} \PYG{n}{q}
+\end{Verbatim}

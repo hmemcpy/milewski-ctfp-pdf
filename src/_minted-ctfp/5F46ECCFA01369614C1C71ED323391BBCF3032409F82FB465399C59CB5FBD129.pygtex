@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{k+kt}{Profunctor} \PYG{p}{(}\PYG{o+ow}{\PYGZhy{}\PYGZgt{}}\PYG{p}{)} \PYG{k+kr}{where}
+    \PYG{n}{dimap} \PYG{n}{ab} \PYG{n}{cd} \PYG{n}{bc} \PYG{o+ow}{=} \PYG{n}{cd} \PYG{o}{.} \PYG{n}{bc} \PYG{o}{.} \PYG{n}{ab}
+    \PYG{n}{lmap} \PYG{o+ow}{=} \PYG{n}{flip} \PYG{p}{(}\PYG{o}{.}\PYG{p}{)}
+    \PYG{n}{rmap} \PYG{o+ow}{=} \PYG{p}{(}\PYG{o}{.}\PYG{p}{)}
+\end{Verbatim}
