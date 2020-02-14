@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{flatMap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]}\PYG{k}{:} \PYG{o}{((}\PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{k+kt}{R}\PYG{o}{)} \PYG{o}{=\PYGZgt{}} \PYG{n}{R}\PYG{o}{)} \PYG{k}{=\PYGZgt{}}
-    \PYG{o}{(}\PYG{n}{A} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{B} \PYG{k}{=\PYGZgt{}} \PYG{n}{R}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{R}\PYG{o}{)} \PYG{k}{=\PYGZgt{}}
-    \PYG{o}{((}\PYG{n}{B} \PYG{k}{=\PYGZgt{}} \PYG{n}{R}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{R}\PYG{o}{)}
-\end{Verbatim}

@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{sealed} \PYG{k}{trait} \PYG{n+nc}{Contact}
-\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{PhoneNum}\PYG{o}{(}\PYG{n}{num}\PYG{k}{:} \PYG{k+kt}{Int}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{Contact}
-\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{EmailAddr}\PYG{o}{(}\PYG{n}{addr}\PYG{k}{:} \PYG{k+kt}{String}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{Contact}
-\end{Verbatim}

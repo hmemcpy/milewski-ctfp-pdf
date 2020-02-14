@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{struct} \PYG{n}{Contact} \PYG{p}{\PYGZob{}}
-    \PYG{k}{enum} \PYG{p}{\PYGZob{}} \PYG{n}{isPhone}\PYG{p}{,} \PYG{n}{isEmail} \PYG{p}{\PYGZcb{}} \PYG{n}{tag}\PYG{p}{;}
-    \PYG{k}{union} \PYG{p}{\PYGZob{}} \PYG{k+kt}{int} \PYG{n}{phoneNum}\PYG{p}{;} \PYG{k+kt}{char} \PYG{k}{const} \PYG{o}{*} \PYG{n}{emailAddr}\PYG{p}{;} \PYG{p}{\PYGZcb{};}
-\PYG{p}{\PYGZcb{};}
-\end{Verbatim}

@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{f} \PYG{o+ow}{::} \PYG{k+kt}{A} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{B}
-\PYG{n+nf}{g} \PYG{o+ow}{::} \PYG{k+kt}{B} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{C}
-\PYG{n+nf}{h} \PYG{o+ow}{::} \PYG{k+kt}{C} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{D}
-\PYG{n+nf}{h} \PYG{o}{.} \PYG{p}{(}\PYG{n}{g} \PYG{o}{.} \PYG{n}{f}\PYG{p}{)} \PYG{o}{==} \PYG{p}{(}\PYG{n}{h} \PYG{o}{.} \PYG{n}{g}\PYG{p}{)} \PYG{o}{.} \PYG{n}{f} \PYG{o}{==} \PYG{n}{h} \PYG{o}{.} \PYG{n}{g} \PYG{o}{.} \PYG{n}{f}
-\end{Verbatim}

@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{data} \PYG{k+kt}{Procompose} \PYG{n}{q} \PYG{n}{p} \PYG{n}{a} \PYG{n}{b} \PYG{k+kr}{where}
-    \PYG{k+kt}{Procompose} \PYG{o+ow}{::} \PYG{n}{q} \PYG{n}{a} \PYG{n}{c} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{p} \PYG{n}{c} \PYG{n}{b} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Procompose} \PYG{n}{q} \PYG{n}{p} \PYG{n}{a} \PYG{n}{b}
-\end{Verbatim}

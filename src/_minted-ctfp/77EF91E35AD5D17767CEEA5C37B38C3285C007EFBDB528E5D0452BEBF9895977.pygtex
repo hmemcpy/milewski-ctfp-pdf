@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{m} \PYG{o+ow}{=} \PYG{n}{alg} \PYG{o}{.} \PYG{n}{fmap} \PYG{n}{m} \PYG{o}{.} \PYG{n}{unFix}
-\end{Verbatim}

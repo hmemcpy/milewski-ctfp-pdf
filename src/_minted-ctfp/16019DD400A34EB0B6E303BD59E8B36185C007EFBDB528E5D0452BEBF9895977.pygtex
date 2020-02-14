@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{op} \PYG{o+ow}{::} \PYG{k+kt}{Op} \PYG{k+kt}{Bool} \PYG{k+kt}{Int}
-\PYG{n+nf}{op} \PYG{o+ow}{=} \PYG{k+kt}{Op} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{x} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{x} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{)}
-\end{Verbatim}

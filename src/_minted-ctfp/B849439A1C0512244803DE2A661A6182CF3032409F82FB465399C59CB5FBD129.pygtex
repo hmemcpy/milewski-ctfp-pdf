@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{process} \PYG{n}{s} \PYG{o+ow}{=} \PYG{k+kr}{do}
-    \PYG{n}{upStr} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{upCase} \PYG{n}{s}
-    \PYG{n}{tell} \PYG{l+s}{\PYGZdq{}toWords \PYGZdq{}}
-    \PYG{n}{return} \PYG{p}{(}\PYG{n}{words} \PYG{n}{upStr}\PYG{p}{)}
-\end{Verbatim}

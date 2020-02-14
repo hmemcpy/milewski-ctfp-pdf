@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{sealed} \PYG{k}{trait} \PYG{n+nc}{RingF}\PYG{o}{[}\PYG{k+kt}{+A}\PYG{o}{]}
-\PYG{k}{case} \PYG{k}{object} \PYG{n+nc}{RZero} \PYG{k}{extends} \PYG{n+nc}{RingF}\PYG{o}{[}\PYG{k+kt}{Nothing}\PYG{o}{]}
-\PYG{k}{case} \PYG{k}{object} \PYG{n+nc}{ROne} \PYG{k}{extends} \PYG{n+nc}{RingF}\PYG{o}{[}\PYG{k+kt}{Nothing}\PYG{o}{]}
-\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{RAdd}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{m}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{,} \PYG{n}{n}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{RingF}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}
-\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{RMul}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{m}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{,} \PYG{n}{n}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{RingF}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}
-\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{RNeg}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{n}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{RingF}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}
-\end{Verbatim}

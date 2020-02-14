@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-lsof | grep Chrome
-\end{Verbatim}

@@ -1,9 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kt}{int} \PYG{n+nf}{fact}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{;}
-    \PYG{k+kt}{int} \PYG{n}{result} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
-    \PYG{k}{for} \PYG{p}{(}\PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{n}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
-        \PYG{n}{result} \PYG{o}{*=} \PYG{n}{i}\PYG{p}{;}
-    \PYG{k}{return} \PYG{n}{result}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}
-\end{Verbatim}

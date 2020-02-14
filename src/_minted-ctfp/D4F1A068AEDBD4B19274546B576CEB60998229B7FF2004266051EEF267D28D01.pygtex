@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{runCont}\PYG{o}{[}\PYG{k+kt}{R}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{Cont}\PYG{o}{[}\PYG{k+kt}{R}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{A} \PYG{k}{=\PYGZgt{}} \PYG{n}{R}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{R} \PYG{k}{=} \PYG{o}{\PYGZob{}}
-  \PYG{k}{case} \PYG{n+nc}{Cont}\PYG{o}{(}\PYG{n}{k}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{h} \PYG{k}{=\PYGZgt{}} \PYG{n}{k}\PYG{o}{(}\PYG{n}{h}\PYG{o}{)}
-\PYG{o}{\PYGZcb{}}
-\end{Verbatim}

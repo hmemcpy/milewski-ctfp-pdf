@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{lambda}\PYG{o}{(}\PYG{n}{bimap}\PYG{o}{(}\PYG{n}{destroy}\PYG{o}{)(}\PYG{n}{identity}\PYG{o}{[}\PYG{k+kt}{M}\PYG{o}{])(}\PYG{n}{split}\PYG{o}{(}\PYG{n}{x}\PYG{o}{)))} \PYG{o}{==}
-  \PYG{n}{lambda}\PYG{o}{(}\PYG{n}{bimap}\PYG{o}{(}\PYG{n}{destroy}\PYG{o}{)(}\PYG{n}{identity}\PYG{o}{[}\PYG{k+kt}{M}\PYG{o}{])((}\PYG{n}{f}\PYG{o}{(}\PYG{n}{x}\PYG{o}{),} \PYG{n}{g}\PYG{o}{(}\PYG{n}{x}\PYG{o}{))))} \PYG{o}{==}
-  \PYG{n}{lambda}\PYG{o}{(((),} \PYG{n}{g}\PYG{o}{(}\PYG{n}{x}\PYG{o}{)))} \PYG{o}{==}
-  \PYG{n}{g}\PYG{o}{(}\PYG{n}{x}\PYG{o}{)}
-\end{Verbatim}

@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{t0} \PYG{o+ow}{=} \PYG{n}{t1} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{t2} \PYG{c+c1}{\PYGZhy{}\PYGZhy{} because f is applied to x}
-\PYG{n+nf}{t0} \PYG{o+ow}{=} \PYG{n}{t2} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{t3} \PYG{c+c1}{\PYGZhy{}\PYGZhy{} because f is applied to (f x)}
-\end{Verbatim}

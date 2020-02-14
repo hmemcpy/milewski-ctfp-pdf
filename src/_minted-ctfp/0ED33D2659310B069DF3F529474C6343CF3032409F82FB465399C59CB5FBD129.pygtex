@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{instance} \PYG{k+kt}{Bifunctor} \PYG{k+kt}{Either} \PYG{k+kr}{where}
-    \PYG{n}{bimap} \PYG{n}{f} \PYG{k+kr}{\PYGZus{}} \PYG{p}{(}\PYG{k+kt}{Left} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Left} \PYG{p}{(}\PYG{n}{f} \PYG{n}{x}\PYG{p}{)}
-    \PYG{n}{bimap} \PYG{k+kr}{\PYGZus{}} \PYG{n}{g} \PYG{p}{(}\PYG{k+kt}{Right} \PYG{n}{y}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Right} \PYG{p}{(}\PYG{n}{g} \PYG{n}{y}\PYG{p}{)}
-\end{Verbatim}

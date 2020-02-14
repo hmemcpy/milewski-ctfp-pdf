@@ -1,7 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{bool}\PYG{p}{,} \PYG{n}{string}\PYG{o}{\PYGZgt{}} \PYG{n}{isOdd}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{bool}\PYG{p}{,} \PYG{n}{string}\PYG{o}{\PYGZgt{}} \PYG{n}{p1} \PYG{o}{=} \PYG{n}{isEven}\PYG{p}{(}\PYG{n}{n}\PYG{p}{);}
-    \PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{bool}\PYG{p}{,} \PYG{n}{string}\PYG{o}{\PYGZgt{}} \PYG{n}{p2} \PYG{o}{=} \PYG{n}{negate}\PYG{p}{(}\PYG{n}{p1}\PYG{p}{.}\PYG{n}{first}\PYG{p}{);}
-    \PYG{k}{return} \PYG{n+nf}{make\PYGZus{}pair}\PYG{p}{(}\PYG{n}{p2}\PYG{p}{.}\PYG{n}{first}\PYG{p}{,} \PYG{n}{p1}\PYG{p}{.}\PYG{n}{second} \PYG{o}{+} \PYG{n}{p2}\PYG{p}{.}\PYG{n}{second}\PYG{p}{);}
-\PYG{p}{\PYGZcb{}}
-\end{Verbatim}

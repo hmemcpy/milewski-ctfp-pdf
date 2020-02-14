@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{mappend} \PYG{n}{s1} \PYG{n}{s2} \PYG{o+ow}{=} \PYG{p}{(}\PYG{o}{++}\PYG{p}{)} \PYG{n}{s1} \PYG{n}{s2}
-\end{Verbatim}

@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{h} \PYG{o}{==} \PYG{n}{flatten}\PYG{o}{.}\PYG{n}{compose}\PYG{o}{(}\PYG{n}{fmap}\PYG{o}{(}\PYG{n}{g}\PYG{o}{)} \PYG{k}{\PYGZus{}} \PYG{n}{compose} \PYG{n}{f}\PYG{o}{)}
-\end{Verbatim}

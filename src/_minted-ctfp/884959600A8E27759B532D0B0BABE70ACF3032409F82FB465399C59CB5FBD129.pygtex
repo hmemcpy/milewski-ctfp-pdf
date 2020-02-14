@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{runCont} \PYG{n}{ka} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kr}{let} \PYG{n}{kb} \PYG{o+ow}{=} \PYG{n}{kab} \PYG{n}{a} 
-                  \PYG{k+kr}{in} \PYG{n}{runCont} \PYG{n}{kb} \PYG{n}{hb}\PYG{p}{)}
-\end{Verbatim}

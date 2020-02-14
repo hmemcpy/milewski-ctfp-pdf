@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{enum} \PYG{k+kt}{bool} \PYG{p}{\PYGZob{}}
-    \PYG{n+nb}{true}\PYG{p}{,}
-    \PYG{n+nb}{false}
-\PYG{p}{\PYGZcb{};}
-\end{Verbatim}

@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{data} \PYG{k+kt}{Element} \PYG{o+ow}{=} \PYG{k+kt}{Element} \PYG{p}{\PYGZob{}} \PYG{n}{name} \PYG{o+ow}{::} \PYG{k+kt}{String} 
-                       \PYG{p}{,} \PYG{n}{symbol} \PYG{o+ow}{::} \PYG{k+kt}{String} 
-                       \PYG{p}{,} \PYG{n}{atomicNumber} \PYG{o+ow}{::} \PYG{k+kt}{Int} \PYG{p}{\PYGZcb{}}
-\end{Verbatim}

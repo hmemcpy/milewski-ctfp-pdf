@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{p}\PYG{k}{:} \PYG{k+kt}{Int} \PYG{o}{=\PYGZgt{}} \PYG{n+nc}{Int} \PYG{k}{=} \PYG{n}{x} \PYG{k}{=\PYGZgt{}} \PYG{n}{x}
-
-\PYG{k}{def} \PYG{n}{q}\PYG{k}{:} \PYG{k+kt}{Int} \PYG{o}{=\PYGZgt{}} \PYG{n+nc}{Boolean} \PYG{k}{=} \PYG{k}{\PYGZus{}} \PYG{k}{=\PYGZgt{}} \PYG{k+kc}{true}
-\end{Verbatim}

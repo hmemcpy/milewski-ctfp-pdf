@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{area} \PYG{o+ow}{::} \PYG{k+kt}{Shape} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Float}
-\PYG{n+nf}{area} \PYG{p}{(}\PYG{k+kt}{Circle} \PYG{n}{r}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{pi} \PYG{o}{*} \PYG{n}{r} \PYG{o}{*} \PYG{n}{r}
-\PYG{n+nf}{area} \PYG{p}{(}\PYG{k+kt}{Rect} \PYG{n}{d} \PYG{n}{h}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{d} \PYG{o}{*} \PYG{n}{h}
-\end{Verbatim}

@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{def} \PYG{n}{catstr}\PYG{p}{(}\PYG{n+nl}{s1}\PYG{p}{:} \PYG{n}{String}\PYG{p}{)(}\PYG{n+nl}{s2}\PYG{p}{:} \PYG{n}{String}\PYG{p}{)} \PYG{o}{=} \PYG{n}{s1} \PYG{o}{+} \PYG{n}{s2}
-\end{Verbatim}

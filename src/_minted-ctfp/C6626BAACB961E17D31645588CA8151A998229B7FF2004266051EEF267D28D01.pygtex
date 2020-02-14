@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{implicit} \PYG{k}{val} \PYG{n}{identityFunctor} \PYG{k}{=} \PYG{k}{new} \PYG{n+nc}{Functor}\PYG{o}{[}\PYG{k+kt}{Id}\PYG{o}{]} \PYG{o}{\PYGZob{}}
-  \PYG{k}{def} \PYG{n}{fmap}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n}{B}\PYG{o}{)(}\PYG{n}{x}\PYG{k}{:} \PYG{k+kt}{Id}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{Id}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=}
-    \PYG{n}{f}\PYG{o}{(}\PYG{n}{x}\PYG{o}{)}
-\PYG{o}{\PYGZcb{}}
-\end{Verbatim}

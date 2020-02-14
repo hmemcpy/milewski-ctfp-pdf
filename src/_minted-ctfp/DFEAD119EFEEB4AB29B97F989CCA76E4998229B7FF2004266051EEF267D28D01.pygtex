@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{val} \PYG{n}{startsWithSymbol}\PYG{k}{:} \PYG{k+kt}{Element} \PYG{o}{=\PYGZgt{}} \PYG{n+nc}{Boolean} \PYG{k}{=}
-  \PYG{n}{e} \PYG{k}{=\PYGZgt{}} \PYG{n}{e}\PYG{o}{.}\PYG{n}{name} \PYG{n}{startsWith} \PYG{n}{e}\PYG{o}{.}\PYG{n}{symbol}
-\end{Verbatim}

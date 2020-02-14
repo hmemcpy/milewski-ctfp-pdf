@@ -1,9 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-  \PYG{n}{fmap} \PYG{n}{id} \PYG{p}{(}\PYG{k+kt}{Just} \PYG{n}{x}\PYG{p}{)}
-\PYG{o+ow}{=} \PYG{p}{\PYGZob{}} \PYG{n}{definition} \PYG{k+kr}{of} \PYG{n}{fmap} \PYG{p}{\PYGZcb{}}
-  \PYG{k+kt}{Just} \PYG{p}{(}\PYG{n}{id} \PYG{n}{x}\PYG{p}{)}
-\PYG{o+ow}{=} \PYG{p}{\PYGZob{}} \PYG{n}{definition} \PYG{k+kr}{of} \PYG{n}{id} \PYG{p}{\PYGZcb{}}
-  \PYG{k+kt}{Just} \PYG{n}{x}
-\PYG{o+ow}{=} \PYG{p}{\PYGZob{}} \PYG{n}{definition} \PYG{k+kr}{of} \PYG{n}{id} \PYG{p}{\PYGZcb{}}
-  \PYG{n}{id} \PYG{p}{(}\PYG{k+kt}{Just} \PYG{n}{x}\PYG{p}{)}
-\end{Verbatim}

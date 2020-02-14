@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{vlen} \PYG{o+ow}{=} \PYG{n}{sqrt} \PYG{o}{.} \PYG{n}{sum} \PYG{o}{.} \PYG{n}{fmap} \PYG{p}{(}\PYG{n}{flip} \PYG{p}{(}\PYG{o}{\PYGZca{}}\PYG{p}{)} \PYG{l+m+mi}{2}\PYG{p}{)}
-\end{Verbatim}

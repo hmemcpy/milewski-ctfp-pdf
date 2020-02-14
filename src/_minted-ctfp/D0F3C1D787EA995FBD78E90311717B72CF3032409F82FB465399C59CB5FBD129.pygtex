@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{safeHead} \PYG{p}{(}\PYG{n}{fmap} \PYG{n}{f} \PYG{p}{(}\PYG{n}{x}\PYG{k+kt}{:}\PYG{n}{xs}\PYG{p}{))} \PYG{o+ow}{=} \PYG{n}{safeHead} \PYG{p}{(}\PYG{n}{f} \PYG{n}{x} \PYG{k+kt}{:} \PYG{n}{fmap} \PYG{n}{f} \PYG{n}{xs}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Just} \PYG{p}{(}\PYG{n}{f} \PYG{n}{x}\PYG{p}{)}
-\end{Verbatim}

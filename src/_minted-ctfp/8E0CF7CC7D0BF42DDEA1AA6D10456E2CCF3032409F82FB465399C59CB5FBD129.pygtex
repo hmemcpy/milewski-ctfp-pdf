@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{startsWithSymbol} \PYG{o+ow}{::} \PYG{k+kt}{Element} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Bool}
-\PYG{n+nf}{startsWithSymbol} \PYG{n}{e} \PYG{o+ow}{=} \PYG{n}{isPrefixOf} \PYG{p}{(}\PYG{n}{symbol} \PYG{n}{e}\PYG{p}{)} \PYG{p}{(}\PYG{n}{name} \PYG{n}{e}\PYG{p}{)}
-\end{Verbatim}

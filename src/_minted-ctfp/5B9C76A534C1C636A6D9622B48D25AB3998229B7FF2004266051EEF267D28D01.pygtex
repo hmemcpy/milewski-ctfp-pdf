@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{val} \PYG{n}{stmt}\PYG{k}{:} \PYG{k+kt}{Pair}\PYG{o}{[}\PYG{k+kt}{String}\PYG{p}{,} \PYG{k+kt}{Boolean}\PYG{o}{]} \PYG{k}{=}
-  \PYG{n}{P}\PYG{o}{(}\PYG{l+s}{\PYGZdq{}This statement is\PYGZdq{}}\PYG{o}{,} \PYG{k+kc}{false}\PYG{o}{)}
-\end{Verbatim}

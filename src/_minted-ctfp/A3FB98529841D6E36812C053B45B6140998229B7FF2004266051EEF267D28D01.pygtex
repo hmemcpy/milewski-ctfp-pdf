@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{m1}\PYG{k}{:} \PYG{o}{((}\PYG{k+kt}{Int}\PYG{o}{,} \PYG{k+kt}{Boolean}\PYG{o}{))} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n+nc}{Int}\PYG{o}{,} \PYG{n+nc}{Int}\PYG{o}{,} \PYG{n+nc}{Boolean}\PYG{o}{)} \PYG{k}{=} \PYG{o}{\PYGZob{}}
-  \PYG{k}{case} \PYG{o}{(}\PYG{n}{x}\PYG{o}{,} \PYG{n}{b}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{x}\PYG{o}{,} \PYG{l+m+mi}{42}\PYG{o}{,} \PYG{n}{b}\PYG{o}{)}
-\PYG{o}{\PYGZcb{}}
-\end{Verbatim}

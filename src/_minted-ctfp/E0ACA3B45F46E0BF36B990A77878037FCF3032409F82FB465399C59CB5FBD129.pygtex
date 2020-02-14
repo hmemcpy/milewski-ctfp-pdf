@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{type} \PYG{k+kt}{IO} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{RealWorld} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{RealWorld}\PYG{p}{)}
-\end{Verbatim}

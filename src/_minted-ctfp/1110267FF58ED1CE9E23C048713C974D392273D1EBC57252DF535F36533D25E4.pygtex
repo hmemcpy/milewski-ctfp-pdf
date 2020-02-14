@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{T}\PYG{o}{\PYGZgt{}}
-\PYG{k+kt}{void} \PYG{n}{unit}\PYG{p}{(}\PYG{n}{T}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
-\end{Verbatim}

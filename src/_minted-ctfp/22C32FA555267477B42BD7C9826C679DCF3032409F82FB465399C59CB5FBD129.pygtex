@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{instance} \PYG{k+kt}{Eq} \PYG{k+kt}{Point} \PYG{k+kr}{where}
-    \PYG{p}{(}\PYG{k+kt}{Pt} \PYG{n}{x} \PYG{n}{y}\PYG{p}{)} \PYG{o}{==} \PYG{p}{(}\PYG{k+kt}{Pt} \PYG{n}{x\PYGZsq{}} \PYG{n}{y\PYGZsq{}}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{x} \PYG{o}{==} \PYG{n}{x\PYGZsq{}} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{y} \PYG{o}{==} \PYG{n}{y\PYGZsq{}}
-\end{Verbatim}

@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{fmap}\PYG{o}{(}\PYG{n}{f}\PYG{o}{)(}\PYG{n}{safeHead}\PYG{o}{(}\PYG{n+nc}{List}\PYG{o}{.}\PYG{n}{empty}\PYG{o}{))} \PYG{o}{==} \PYG{n}{fmap}\PYG{o}{(}\PYG{n}{f}\PYG{o}{)(}\PYG{n+nc}{None}\PYG{o}{)} \PYG{o}{==} \PYG{n+nc}{None}
-\end{Verbatim}

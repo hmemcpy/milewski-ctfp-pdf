@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{sealed} \PYG{k}{trait} \PYG{n+nc}{OneOfThree}\PYG{o}{[}\PYG{k+kt}{+A}\PYG{p}{,} \PYG{k+kt}{+B}\PYG{p}{,} \PYG{k+kt}{+C}\PYG{o}{]}
-\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{Sinistral}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{v}\PYG{k}{:} \PYG{k+kt}{A}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{OneOfThree}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{Nothing}\PYG{p}{,} \PYG{k+kt}{Nothing}\PYG{o}{]}
-\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{Medial}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{v}\PYG{k}{:} \PYG{k+kt}{B}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{OneOfThree}\PYG{o}{[}\PYG{k+kt}{Nothing}\PYG{p}{,} \PYG{k+kt}{B}\PYG{p}{,} \PYG{k+kt}{Nothing}\PYG{o}{]}
-\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{Dextral}\PYG{o}{[}\PYG{k+kt}{C}\PYG{o}{](}\PYG{n}{v}\PYG{k}{:} \PYG{k+kt}{C}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{OneOfThree}\PYG{o}{[}\PYG{k+kt}{Nothing}\PYG{p}{,} \PYG{k+kt}{Nothing}\PYG{p}{,} \PYG{k+kt}{C}\PYG{o}{]}
-\end{Verbatim}

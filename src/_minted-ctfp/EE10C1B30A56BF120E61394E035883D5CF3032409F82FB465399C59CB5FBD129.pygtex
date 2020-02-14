@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{h} \PYG{p}{(}\PYG{n}{a} \PYG{o}{*} \PYG{n}{b}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{h} \PYG{n}{a} \PYG{o}{*} \PYG{n}{h} \PYG{n}{b}
-\end{Verbatim}

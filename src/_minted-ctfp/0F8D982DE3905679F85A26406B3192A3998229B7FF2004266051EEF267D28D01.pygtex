@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{mu} \PYG{n}{compose} \PYG{n}{bimap}\PYG{o}{(}\PYG{n}{mu}\PYG{o}{)(}\PYG{n}{identity}\PYG{o}{)}
-\end{Verbatim}

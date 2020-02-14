@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{fInt} \PYG{o+ow}{::} \PYG{k+kt}{Integer} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n+nb}{()}
-\PYG{n+nf}{fInt} \PYG{k+kr}{\PYGZus{}} \PYG{o+ow}{=} \PYG{n+nb}{()}
-\end{Verbatim}

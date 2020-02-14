@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{alpha}\PYG{k}{:} \PYG{o}{(}\PYG{k+kt}{Int} \PYG{o}{=\PYGZgt{}} \PYG{k+kt}{?}\PYG{o}{)} \PYG{o}{\PYGZti{}\PYGZgt{}} \PYG{n+nc}{List} \PYG{k}{=} \PYG{k}{new} \PYG{o}{\PYGZti{}\PYGZgt{}[}\PYG{k+kt}{Int} \PYG{k}{=\PYGZgt{}} \PYG{k+kt}{?}\PYG{p}{,} \PYG{k+kt}{List}\PYG{o}{]} \PYG{o}{\PYGZob{}}
-  \PYG{k}{def} \PYG{n}{apply}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{fa}\PYG{k}{:} \PYG{k+kt}{Int} \PYG{o}{=\PYGZgt{}} \PYG{n}{A}\PYG{o}{)} \PYG{k}{=}
-    \PYG{n+nc}{List}\PYG{o}{(}\PYG{l+m+mi}{12}\PYG{o}{).}\PYG{n}{map}\PYG{o}{(}\PYG{n}{fa}\PYG{o}{)}
-\PYG{o}{\PYGZcb{}}
-\end{Verbatim}

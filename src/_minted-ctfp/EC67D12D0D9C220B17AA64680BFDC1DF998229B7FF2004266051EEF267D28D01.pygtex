@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{BiComp}\PYG{o}{[}\PYG{k+kt}{BF}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{p}{,} \PYG{k}{\PYGZus{}}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{FU}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{GU}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{](}\PYG{n}{v}\PYG{k}{:} \PYG{k+kt}{BF}\PYG{o}{[}\PYG{k+kt}{FU}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}\PYG{p}{,} \PYG{k+kt}{GU}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{]])}
-\end{Verbatim}

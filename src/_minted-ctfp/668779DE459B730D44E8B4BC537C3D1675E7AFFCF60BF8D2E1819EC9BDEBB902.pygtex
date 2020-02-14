@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-exists c. (q a c, p c b)
-\end{Verbatim}

@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{enum} \PYG{p}{\PYGZob{}} \PYG{n}{Red}\PYG{p}{,} \PYG{n}{Green}\PYG{p}{,} \PYG{n}{Blue} \PYG{p}{\PYGZcb{};}
-\end{Verbatim}

@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{std}\PYG{o}{::}\PYG{n}{string} \PYG{n}{catstr}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{string} \PYG{n}{s1}\PYG{p}{,} \PYG{n}{std}\PYG{o}{::}\PYG{n}{string} \PYG{n}{s2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{n}{s1} \PYG{o}{+} \PYG{n}{s2}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}
-\end{Verbatim}

@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{lenAlg}\PYG{o}{[}\PYG{k+kt}{E}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{ListF}\PYG{o}{[}\PYG{k+kt}{E}\PYG{p}{,} \PYG{k+kt}{Int}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Int} \PYG{k}{=} \PYG{o}{\PYGZob{}}
-  \PYG{k}{case} \PYG{n+nc}{ConsF}\PYG{o}{(}\PYG{n}{e}\PYG{o}{,} \PYG{n}{n}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{n} \PYG{o}{+} \PYG{l+m+mi}{1}
-  \PYG{k}{case} \PYG{n+nc}{NilF} \PYG{k}{=\PYGZgt{}} \PYG{l+m+mi}{0}
-\PYG{o}{\PYGZcb{}}
-\end{Verbatim}

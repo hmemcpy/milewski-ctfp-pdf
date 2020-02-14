@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{sumAlg}\PYG{k}{:} \PYG{k+kt}{ListF}\PYG{o}{[}\PYG{k+kt}{Double}\PYG{p}{,} \PYG{k+kt}{Double}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Double} \PYG{k}{=} \PYG{o}{\PYGZob{}}
-  \PYG{k}{case} \PYG{n+nc}{ConsF}\PYG{o}{(}\PYG{n}{e}\PYG{o}{,} \PYG{n}{s}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{e} \PYG{o}{+} \PYG{n}{s}
-  \PYG{k}{case} \PYG{n+nc}{NilF} \PYG{k}{=\PYGZgt{}} \PYG{l+m+mf}{0.0}
-\PYG{o}{\PYGZcb{}}
-\end{Verbatim}

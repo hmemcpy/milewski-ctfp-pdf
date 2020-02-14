@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{newtype} \PYG{k+kt}{Fix} \PYG{n}{f} \PYG{o+ow}{=} \PYG{k+kt}{Fix} \PYG{p}{(}\PYG{n}{f} \PYG{p}{(}\PYG{k+kt}{Fix} \PYG{n}{f}\PYG{p}{))}
-\end{Verbatim}

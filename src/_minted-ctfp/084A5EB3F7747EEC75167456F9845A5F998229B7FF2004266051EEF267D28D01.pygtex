@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{dumb}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{Reader}\PYG{o}{[}\PYG{k+kt}{Unit}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Option}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=} \PYG{o}{\PYGZob{}}
-  \PYG{k}{case} \PYG{n+nc}{Reader}\PYG{o}{(}\PYG{k}{\PYGZus{}}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{None}
-\PYG{o}{\PYGZcb{}}
-\end{Verbatim}

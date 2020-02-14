@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{contramap} \PYG{n}{f} \PYG{o}{.} \PYG{n}{predToStr} \PYG{o+ow}{=} \PYG{n}{predToStr} \PYG{o}{.} \PYG{n}{contramap} \PYG{n}{f}
-\end{Verbatim}

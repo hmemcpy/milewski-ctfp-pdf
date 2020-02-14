@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{fib}\PYG{k}{:} \PYG{k+kt}{NatF}\PYG{o}{[(}\PYG{k+kt}{Int}\PYG{p}{,} \PYG{k+kt}{Int}\PYG{o}{)]} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n+nc}{Int}\PYG{o}{,} \PYG{n+nc}{Int}\PYG{o}{)} \PYG{k}{=} \PYG{o}{\PYGZob{}}
-  \PYG{k}{case} \PYG{n+nc}{ZeroF} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{l+m+mi}{1}\PYG{o}{,} \PYG{l+m+mi}{1}\PYG{o}{)}
-  \PYG{k}{case} \PYG{n+nc}{SuccF}\PYG{o}{((}\PYG{n}{m}\PYG{o}{,} \PYG{n}{n}\PYG{o}{))} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{n}\PYG{o}{,} \PYG{n}{m} \PYG{o}{+} \PYG{n}{n}\PYG{o}{)}
-\PYG{o}{\PYGZcb{}}
-\end{Verbatim}

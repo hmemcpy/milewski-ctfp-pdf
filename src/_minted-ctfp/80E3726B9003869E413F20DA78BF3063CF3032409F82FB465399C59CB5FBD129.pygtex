@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{atomicNumber} \PYG{o+ow}{::} \PYG{k+kt}{Element} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int}
-\end{Verbatim}

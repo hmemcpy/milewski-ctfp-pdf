@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{val} \PYG{n}{elemToTuple}\PYG{k}{:} \PYG{k+kt}{Element} \PYG{o}{=\PYGZgt{}} \PYG{o}{(}\PYG{n+nc}{String}\PYG{o}{,} \PYG{n+nc}{String}\PYG{o}{,} \PYG{n+nc}{Int}\PYG{o}{)} \PYG{k}{=}
-  \PYG{n}{e} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{e}\PYG{o}{.}\PYG{n}{name}\PYG{o}{,} \PYG{n}{e}\PYG{o}{.}\PYG{n}{symbol}\PYG{o}{,} \PYG{n}{e}\PYG{o}{.}\PYG{n}{atomicNumber}\PYG{o}{)}
-\end{Verbatim}

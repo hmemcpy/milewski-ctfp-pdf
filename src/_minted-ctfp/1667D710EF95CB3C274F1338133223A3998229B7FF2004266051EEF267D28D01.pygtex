@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{sealed} \PYG{k}{trait} \PYG{n+nc}{Nat}
-\PYG{k}{case} \PYG{k}{object} \PYG{n+nc}{Zero} \PYG{k}{extends} \PYG{n+nc}{Nat}
-\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{Succ}\PYG{o}{(}\PYG{n}{n}\PYG{k}{:} \PYG{k+kt}{Nat}\PYG{o}{)} \PYG{k}{extends} \PYG{n+nc}{Nat}
-\end{Verbatim}

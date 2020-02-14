@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{Cont}\PYG{o}{[}\PYG{k+kt}{R}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{run}\PYG{k}{:} \PYG{o}{(}\PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{k+kt}{R}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{R}\PYG{o}{)}
-\end{Verbatim}

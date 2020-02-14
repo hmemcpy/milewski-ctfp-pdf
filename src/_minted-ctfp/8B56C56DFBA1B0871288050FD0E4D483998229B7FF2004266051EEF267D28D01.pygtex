@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{no}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=\PYGZgt{}} \PYG{n+nc}{Boolean} \PYG{k}{=} \PYG{k}{\PYGZus{}} \PYG{k}{=\PYGZgt{}} \PYG{k+kc}{false}
-\end{Verbatim}

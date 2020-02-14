@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{Boolean} \PYG{o}{=\PYGZgt{}} \PYG{n+nc}{Boolean} \PYG{k}{=} \PYG{o}{???}
-\end{Verbatim}

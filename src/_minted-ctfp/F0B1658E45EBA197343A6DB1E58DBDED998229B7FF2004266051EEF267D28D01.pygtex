@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{extract}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{wa}\PYG{k}{:} \PYG{k+kt}{Stream}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=} \PYG{n}{wa} \PYG{k}{match} \PYG{o}{\PYGZob{}}
-  \PYG{k}{case} \PYG{n+nc}{Stream}\PYG{o}{(}\PYG{n}{a}\PYG{o}{,} \PYG{k}{\PYGZus{}}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{a}\PYG{o}{()}
-\PYG{o}{\PYGZcb{}}
-\end{Verbatim}

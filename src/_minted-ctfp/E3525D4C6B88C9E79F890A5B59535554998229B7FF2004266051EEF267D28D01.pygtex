@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{val} \PYG{n}{tupleToElem}\PYG{k}{:} \PYG{o}{((}\PYG{k+kt}{String}\PYG{o}{,} \PYG{k+kt}{String}\PYG{o}{,} \PYG{k+kt}{Int}\PYG{o}{))} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Element} \PYG{k}{=} \PYG{o}{\PYGZob{}}
-  \PYG{k}{case} \PYG{o}{(}\PYG{n}{n}\PYG{o}{,} \PYG{n}{s}\PYG{o}{,} \PYG{n}{a}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Element}\PYG{o}{(}\PYG{n}{n}\PYG{o}{,} \PYG{n}{s}\PYG{o}{,} \PYG{n}{a}\PYG{o}{)}
-\PYG{o}{\PYGZcb{}}
-\end{Verbatim}

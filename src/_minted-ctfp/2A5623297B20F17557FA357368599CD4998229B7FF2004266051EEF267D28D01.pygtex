@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{l+m+mi}{3} \PYG{o}{==} \PYG{l+m+mi}{6}
-\PYG{n+nc}{List}\PYG{o}{(}\PYG{l+m+mi}{2}\PYG{o}{)} \PYG{o}{++} \PYG{n+nc}{List}\PYG{o}{(}\PYG{l+m+mi}{3}\PYG{o}{)} \PYG{o}{==} \PYG{n+nc}{List}\PYG{o}{(}\PYG{l+m+mi}{2}\PYG{o}{,} \PYG{l+m+mi}{3}\PYG{o}{)}
-\end{Verbatim}

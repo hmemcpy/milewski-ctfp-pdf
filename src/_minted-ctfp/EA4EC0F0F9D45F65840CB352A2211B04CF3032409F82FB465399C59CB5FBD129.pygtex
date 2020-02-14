@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{ssa} \PYG{o+ow}{::} \PYG{k+kt}{State} \PYG{n}{s} \PYG{p}{(}\PYG{k+kt}{State} \PYG{n}{s} \PYG{n}{a}\PYG{p}{)}
-\PYG{n+nf}{runState} \PYG{n}{ssa} \PYG{o+ow}{::} \PYG{n}{s} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{k+kt}{State} \PYG{n}{s} \PYG{n}{a}\PYG{p}{,} \PYG{n}{s}\PYG{p}{)}
-\end{Verbatim}

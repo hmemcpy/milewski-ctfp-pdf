@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nc}{Product2}\PYG{o}{[}\PYG{k+kt}{Int}\PYG{p}{,} \PYG{k+kt}{Boolean}\PYG{o}{]} \PYG{o}{\PYGZti{}} \PYG{o}{(}\PYG{n+nc}{Int}\PYG{o}{,} \PYG{n+nc}{Boolean}\PYG{o}{)}
-\end{Verbatim}

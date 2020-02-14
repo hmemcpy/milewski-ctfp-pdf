@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{sumS}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{n}\PYG{k}{:} \PYG{k+kt}{Int}\PYG{o}{)(}\PYG{n}{stm}\PYG{k}{:} \PYG{k+kt}{Stream}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])(}\PYG{k}{implicit} \PYG{n}{numeric}\PYG{k}{:} \PYG{k+kt}{Numeric}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{A} \PYG{o}{=}
-  \PYG{n}{stm} \PYG{k}{match} \PYG{o}{\PYGZob{}}
-    \PYG{k}{case} \PYG{n+nc}{Stream}\PYG{o}{(}\PYG{n}{a}\PYG{o}{,} \PYG{n}{as}\PYG{o}{)} \PYG{k}{=\PYGZgt{}}
-      \PYG{k}{import} \PYG{n+nn}{numeric.\PYGZus{}}
-      \PYG{k}{if} \PYG{o}{(}\PYG{n}{n} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{0}\PYG{o}{)} \PYG{n}{zero} \PYG{k}{else} \PYG{n}{a}\PYG{o}{()} \PYG{o}{+} \PYG{n}{sumS}\PYG{o}{(}\PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{o}{)(}\PYG{n}{as}\PYG{o}{())}
-  \PYG{o}{\PYGZcb{}}
-\end{Verbatim}

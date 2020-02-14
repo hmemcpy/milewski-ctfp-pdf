@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{val} \PYG{n}{fInt}\PYG{k}{:} \PYG{k+kt}{BigInt} \PYG{o}{=\PYGZgt{}} \PYG{n+nc}{Unit} \PYG{k}{=} \PYG{n}{x} \PYG{k}{=\PYGZgt{}} \PYG{o}{()}
-\end{Verbatim}

@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{type} \PYG{k+kt}{Reader}\PYG{o}{[}\PYG{k+kt}{R}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=} \PYG{n}{R} \PYG{k}{=\PYGZgt{}} \PYG{n}{A}
-\end{Verbatim}

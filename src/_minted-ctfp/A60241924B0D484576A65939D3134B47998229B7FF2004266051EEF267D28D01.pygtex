@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{Prod}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{run}\PYG{k}{:} \PYG{o}{(}\PYG{k+kt}{A}\PYG{o}{,} \PYG{k+kt}{S}\PYG{o}{))}
-\end{Verbatim}

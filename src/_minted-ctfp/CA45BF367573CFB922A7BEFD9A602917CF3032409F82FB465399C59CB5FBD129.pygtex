@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{stmt} \PYG{o+ow}{::} \PYG{k+kt}{Pair} \PYG{k+kt}{String} \PYG{k+kt}{Bool}
-\PYG{n+nf}{stmt} \PYG{o+ow}{=} \PYG{k+kt}{P} \PYG{l+s}{\PYGZdq{}This statement is\PYGZdq{}} \PYG{k+kt}{False}
-\end{Verbatim}

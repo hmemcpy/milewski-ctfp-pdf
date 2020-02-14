@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{f}\PYG{k}{:} \PYG{k+kt}{String} \PYG{o}{=\PYGZgt{}} \PYG{n+nc}{Tree}\PYG{o}{[}\PYG{k+kt}{Int}\PYG{o}{]}
-\end{Verbatim}

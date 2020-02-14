@@ -1,9 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{auto} \PYG{k}{const} \PYG{n}{compose} \PYG{o}{=} \PYG{p}{[](}\PYG{k}{auto} \PYG{n}{m1}\PYG{p}{,} \PYG{k}{auto} \PYG{n}{m2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{p}{[}\PYG{n}{m1}\PYG{p}{,} \PYG{n}{m2}\PYG{p}{](}\PYG{k}{auto} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{k}{auto} \PYG{n}{p1} \PYG{o}{=} \PYG{n}{m1}\PYG{p}{(}\PYG{n}{x}\PYG{p}{);}
-        \PYG{k}{auto} \PYG{n}{p2} \PYG{o}{=} \PYG{n}{m2}\PYG{p}{(}\PYG{n}{p1}\PYG{p}{.}\PYG{n}{first}\PYG{p}{);}
-        \PYG{k}{return} \PYG{n+nf}{make\PYGZus{}pair}\PYG{p}{(}\PYG{n}{p2}\PYG{p}{.}\PYG{n}{first}\PYG{p}{,} \PYG{n}{p1}\PYG{p}{.}\PYG{n}{second} \PYG{o}{+} \PYG{n}{p2}\PYG{p}{.}\PYG{n}{second}\PYG{p}{);}
-    \PYG{p}{\PYGZcb{};}
-\PYG{p}{\PYGZcb{};}
-\end{Verbatim}

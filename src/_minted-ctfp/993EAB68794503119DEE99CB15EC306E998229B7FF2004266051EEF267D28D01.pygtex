@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{case} \PYG{k}{class} \PYG{n+nc}{Stream}\PYG{o}{[}\PYG{k+kt}{X}\PYG{o}{](}
-  \PYG{n}{h}\PYG{k}{:} \PYG{o}{()} \PYG{o}{=\PYGZgt{}} \PYG{n}{X}\PYG{o}{,}
-  \PYG{n}{t}\PYG{k}{:} \PYG{o}{()} \PYG{o}{=\PYGZgt{}} \PYG{n+nc}{Stream}\PYG{o}{[}\PYG{k+kt}{X}\PYG{o}{]}
-\PYG{o}{)}
-\end{Verbatim}

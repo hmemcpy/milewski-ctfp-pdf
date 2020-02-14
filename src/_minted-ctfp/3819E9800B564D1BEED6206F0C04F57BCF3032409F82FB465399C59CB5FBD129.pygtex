@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{newtype} \PYG{k+kt}{Ran} \PYG{n}{k} \PYG{n}{d} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{Ran} \PYG{p}{(}\PYG{n}{forall} \PYG{n}{i}\PYG{o}{.} \PYG{p}{(}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{k} \PYG{n}{i}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{d} \PYG{n}{i}\PYG{p}{)}
-\end{Verbatim}

@@ -1,9 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{evalZ}\PYG{k}{:} \PYG{k+kt}{Algebra}\PYG{o}{[}\PYG{k+kt}{RingF}\PYG{p}{,} \PYG{k+kt}{Int}\PYG{o}{]} \PYG{k}{=} \PYG{o}{\PYGZob{}}
-  \PYG{k}{case} \PYG{n+nc}{RZero} \PYG{k}{=\PYGZgt{}} \PYG{l+m+mi}{0}
-  \PYG{k}{case} \PYG{n+nc}{ROne} \PYG{k}{=\PYGZgt{}} \PYG{l+m+mi}{1}
-  \PYG{k}{case} \PYG{n+nc}{RAdd}\PYG{o}{(}\PYG{n}{m}\PYG{o}{,} \PYG{n}{n}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{m} \PYG{o}{+} \PYG{n}{n}
-  \PYG{k}{case} \PYG{n+nc}{RMul}\PYG{o}{(}\PYG{n}{m}\PYG{o}{,} \PYG{n}{n}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{m} \PYG{o}{*} \PYG{n}{n}
-  \PYG{k}{case} \PYG{n+nc}{RNeg}\PYG{o}{(}\PYG{n}{n}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{o}{\PYGZhy{}}\PYG{n}{n}
-\PYG{o}{\PYGZcb{}}
-\end{Verbatim}

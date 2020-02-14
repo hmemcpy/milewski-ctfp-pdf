@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{raise}\PYG{k}{:} \PYG{k+kt}{Unit} \PYG{o}{=\PYGZgt{}} \PYG{n}{A}
-\end{Verbatim}

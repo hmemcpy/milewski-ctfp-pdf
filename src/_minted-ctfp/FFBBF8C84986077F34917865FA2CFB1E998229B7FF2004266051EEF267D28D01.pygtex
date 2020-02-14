@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{put}\PYG{o}{(}\PYG{n}{s1}\PYG{k}{:} \PYG{k+kt}{S}\PYG{o}{)}\PYG{k}{:} \PYG{k+kt}{State}\PYG{o}{[}\PYG{k+kt}{S}\PYG{p}{,} \PYG{k+kt}{Unit}\PYG{o}{]} \PYG{k}{=} \PYG{n+nc}{State}\PYG{o}{(}\PYG{n}{s} \PYG{k}{=\PYGZgt{}} \PYG{o}{((),} \PYG{n}{s1}\PYG{o}{))}
-\end{Verbatim}

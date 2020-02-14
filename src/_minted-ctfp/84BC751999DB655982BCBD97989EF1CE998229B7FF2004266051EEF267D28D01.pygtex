@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{split}\PYG{o}{(}\PYG{n}{x}\PYG{k}{:} \PYG{k+kt}{M}\PYG{o}{)}\PYG{k}{:} \PYG{o}{(}\PYG{k+kt}{M}\PYG{o}{,} \PYG{k+kt}{M}\PYG{o}{)} \PYG{k}{=} \PYG{o}{(}\PYG{n}{x}\PYG{o}{,} \PYG{n}{x}\PYG{o}{)}
-\end{Verbatim}

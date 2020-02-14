@@ -1,7 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{average}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{n}\PYG{k}{:} \PYG{k+kt}{Int}\PYG{o}{)}
-    \PYG{o}{(}\PYG{k}{implicit} \PYG{n}{fractional}\PYG{k}{:} \PYG{k+kt}{Fractional}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{Stream}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n}{A} \PYG{k}{=} \PYG{n}{stm} \PYG{k}{=\PYGZgt{}} \PYG{o}{\PYGZob{}}
-  \PYG{k}{import} \PYG{n+nn}{fractional.\PYGZus{}}
-  \PYG{n}{sumS}\PYG{o}{(}\PYG{n}{n}\PYG{o}{)(}\PYG{n}{stm}\PYG{o}{)} \PYG{o}{/} \PYG{n}{fromInt}\PYG{o}{(}\PYG{n}{n}\PYG{o}{)}
-\PYG{o}{\PYGZcb{}}
-\end{Verbatim}

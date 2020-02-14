@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{fmap}\PYG{o}{(}\PYG{n}{f}\PYG{o}{)(}\PYG{n}{safeHead}\PYG{o}{(}\PYG{n}{x} \PYG{o}{::} \PYG{n}{xs}\PYG{o}{))} \PYG{o}{==} \PYG{n}{fmap}\PYG{o}{(}\PYG{n}{f}\PYG{o}{)(}\PYG{n+nc}{Some}\PYG{o}{(}\PYG{n}{x}\PYG{o}{))} \PYG{o}{==} \PYG{n+nc}{Some}\PYG{o}{(}\PYG{n}{f}\PYG{o}{(}\PYG{n}{x}\PYG{o}{))}
-\end{Verbatim}

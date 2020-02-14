@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{class} \PYG{k+kt}{Representable} \PYG{n}{f} \PYG{k+kr}{where}
-    \PYG{k+kr}{type} \PYG{k+kt}{Rep} \PYG{n}{f} \PYG{o+ow}{::} \PYG{o}{*}
-    \PYG{n}{tabulate} \PYG{o+ow}{::} \PYG{p}{(}\PYG{k+kt}{Rep} \PYG{n}{f} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{f} \PYG{n}{x}
-    \PYG{n}{index}    \PYG{o+ow}{::} \PYG{n}{f} \PYG{n}{x} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Rep} \PYG{n}{f} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{x}
-\end{Verbatim}

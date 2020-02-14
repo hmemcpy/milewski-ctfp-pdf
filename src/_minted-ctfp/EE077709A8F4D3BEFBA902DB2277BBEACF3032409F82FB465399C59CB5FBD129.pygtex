@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{fmap} \PYG{k+kr}{\PYGZus{}} \PYG{k+kt}{Nothing} \PYG{o+ow}{=} \PYG{k+kt}{Nothing}
-\PYG{n+nf}{fmap} \PYG{n}{f} \PYG{p}{(}\PYG{k+kt}{Just} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Just} \PYG{p}{(}\PYG{n}{f} \PYG{n}{x}\PYG{p}{)}
-\end{Verbatim}

@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{val} \PYG{n}{catstr}\PYG{k}{:} \PYG{o}{(}\PYG{k+kt}{String}\PYG{o}{,} \PYG{k+kt}{String}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{String} \PYG{k}{=}
-  \PYG{o}{(}\PYG{n}{s}\PYG{o}{,} \PYG{n}{s1}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{s} \PYG{o}{++} \PYG{n}{s1}
-\end{Verbatim}

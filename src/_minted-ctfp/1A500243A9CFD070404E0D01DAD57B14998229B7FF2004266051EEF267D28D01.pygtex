@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{val} \PYG{n}{process}\PYG{k}{:} \PYG{k+kt}{String} \PYG{o}{=\PYGZgt{}} \PYG{n+nc}{Writer}\PYG{o}{[}\PYG{k+kt}{List}\PYG{o}{[}\PYG{k+kt}{String}\PYG{o}{]]} \PYG{k}{=} \PYG{o}{\PYGZob{}}
-  \PYG{k}{import} \PYG{n+nn}{kleisli.\PYGZus{}}
-  \PYG{n}{upCase} \PYG{o}{\PYGZgt{}=\PYGZgt{}} \PYG{n}{toWords}
-\PYG{o}{\PYGZcb{}}
-\end{Verbatim}

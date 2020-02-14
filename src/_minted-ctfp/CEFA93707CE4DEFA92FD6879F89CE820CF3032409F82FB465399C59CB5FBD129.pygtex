@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{runReader} \PYG{o+ow}{::} \PYG{k+kt}{Reader} \PYG{n}{e} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{e} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a}
-\PYG{n+nf}{runReader} \PYG{p}{(}\PYG{k+kt}{Reader} \PYG{n}{f}\PYG{p}{)} \PYG{n}{e} \PYG{o+ow}{=} \PYG{n}{f} \PYG{n}{e}
-\end{Verbatim}

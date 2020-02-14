@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{helpdesk} \PYG{o+ow}{::} \PYG{k+kt}{Contact}
-\PYG{n+nf}{helpdesk} \PYG{o+ow}{=} \PYG{k+kt}{PhoneNum} \PYG{l+m+mi}{2222222}
-\end{Verbatim}

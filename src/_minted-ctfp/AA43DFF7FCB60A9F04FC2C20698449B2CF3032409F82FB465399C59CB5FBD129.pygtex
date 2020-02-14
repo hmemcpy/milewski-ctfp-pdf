@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{contramap} \PYG{o+ow}{=} \PYG{n}{flip} \PYG{p}{(}\PYG{o}{.}\PYG{p}{)}
-\end{Verbatim}

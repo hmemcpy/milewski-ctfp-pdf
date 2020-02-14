@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{string} \PYG{n}{logger}\PYG{p}{;}
-
-\PYG{k+kt}{bool} \PYG{n+nf}{negate}\PYG{p}{(}\PYG{k+kt}{bool} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{n}{logger} \PYG{o}{+=} \PYG{l+s}{\PYGZdq{}Not so! \PYGZdq{}}\PYG{p}{;}
-    \PYG{k}{return} \PYG{o}{!}\PYG{n}{b}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}
-\end{Verbatim}

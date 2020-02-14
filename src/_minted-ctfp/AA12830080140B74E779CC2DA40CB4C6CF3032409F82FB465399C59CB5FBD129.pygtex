@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{era} \PYG{o+ow}{::} \PYG{p}{[}\PYG{k+kt}{Int}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{StreamF} \PYG{k+kt}{Int} \PYG{p}{[}\PYG{k+kt}{Int}\PYG{p}{]}
-\PYG{n+nf}{era} \PYG{p}{(}\PYG{n}{p} \PYG{k+kt}{:} \PYG{n}{ns}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{StreamF} \PYG{n}{p} \PYG{p}{(}\PYG{n}{filter} \PYG{p}{(}\PYG{n}{notdiv} \PYG{n}{p}\PYG{p}{)} \PYG{n}{ns}\PYG{p}{)}
-    \PYG{k+kr}{where} \PYG{n}{notdiv} \PYG{n}{p} \PYG{n}{n} \PYG{o+ow}{=} \PYG{n}{n} \PYG{p}{`}\PYG{n}{mod}\PYG{p}{`} \PYG{n}{p} \PYG{o}{/=} \PYG{l+m+mi}{0}
-\end{Verbatim}

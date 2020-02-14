@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{class} \PYG{k+kt}{Functor} \PYG{n}{w} \PYG{o+ow}{=\PYGZgt{}} \PYG{k+kt}{Comonad} \PYG{n}{w} \PYG{k+kr}{where}
-    \PYG{n}{extract} \PYG{o+ow}{::} \PYG{n}{w} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a}
-    \PYG{n}{duplicate} \PYG{o+ow}{::} \PYG{n}{w} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{w} \PYG{p}{(}\PYG{n}{w} \PYG{n}{a}\PYG{p}{)}
-    \PYG{n}{duplicate} \PYG{o+ow}{=} \PYG{n}{extend} \PYG{n}{id}
-    \PYG{n}{extend} \PYG{o+ow}{::} \PYG{p}{(}\PYG{n}{w} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{b}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{w} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{w} \PYG{n}{b}
-    \PYG{n}{extend} \PYG{n}{f} \PYG{o+ow}{=} \PYG{n}{fmap} \PYG{n}{f} \PYG{o}{.} \PYG{n}{duplicate}
-\end{Verbatim}

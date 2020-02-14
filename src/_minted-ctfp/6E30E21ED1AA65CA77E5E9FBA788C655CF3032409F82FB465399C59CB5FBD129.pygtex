@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{p}{(}\PYG{n}{mu} \PYG{o}{.} \PYG{n}{bimap} \PYG{n}{id} \PYG{n}{mu}\PYG{p}{)(}\PYG{n}{x}\PYG{p}{,} \PYG{p}{(}\PYG{n}{y}\PYG{p}{,} \PYG{n}{z}\PYG{p}{))}
-\end{Verbatim}

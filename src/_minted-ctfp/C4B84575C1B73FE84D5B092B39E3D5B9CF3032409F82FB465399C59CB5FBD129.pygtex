@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{average} \PYG{o+ow}{::} \PYG{k+kt}{Fractional} \PYG{n}{a} \PYG{o+ow}{=\PYGZgt{}} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Stream} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a}
-\PYG{n+nf}{average} \PYG{n}{n} \PYG{n}{stm} \PYG{o+ow}{=} \PYG{p}{(}\PYG{n}{sumS} \PYG{n}{n} \PYG{n}{stm}\PYG{p}{)} \PYG{o}{/} \PYG{p}{(}\PYG{n}{fromIntegral} \PYG{n}{n}\PYG{p}{)}
-\end{Verbatim}

@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{data} \PYG{k+kt}{Cont} \PYG{n}{r} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{Cont} \PYG{p}{((}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{r}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{r}\PYG{p}{)}
-\end{Verbatim}

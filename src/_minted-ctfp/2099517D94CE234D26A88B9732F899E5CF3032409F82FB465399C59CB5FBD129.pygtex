@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{f} \PYG{o}{=\PYGZgt{}=} \PYG{n}{g} \PYG{o+ow}{=} \PYG{n}{g} \PYG{o}{.} \PYG{n}{extend} \PYG{n}{f}
-\end{Verbatim}

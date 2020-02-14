@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{instance} \PYG{k+kt}{Representable} \PYG{k+kt}{Stream} \PYG{k+kr}{where}
-    \PYG{k+kr}{type} \PYG{k+kt}{Rep} \PYG{k+kt}{Stream} \PYG{o+ow}{=} \PYG{k+kt}{Integer}
-    \PYG{n}{tabulate} \PYG{n}{f} \PYG{o+ow}{=} \PYG{k+kt}{Cons} \PYG{p}{(}\PYG{n}{f} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{(}\PYG{n}{tabulate} \PYG{p}{(}\PYG{n}{f} \PYG{o}{.} \PYG{p}{(}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)))}
-    \PYG{n}{index} \PYG{p}{(}\PYG{k+kt}{Cons} \PYG{n}{b} \PYG{n}{bs}\PYG{p}{)} \PYG{n}{n} \PYG{o+ow}{=} \PYG{k+kr}{if} \PYG{n}{n} \PYG{o}{==} \PYG{l+m+mi}{0} \PYG{k+kr}{then} \PYG{n}{b} \PYG{k+kr}{else} \PYG{n}{index} \PYG{n}{bs} \PYG{p}{(}\PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)}
-\end{Verbatim}

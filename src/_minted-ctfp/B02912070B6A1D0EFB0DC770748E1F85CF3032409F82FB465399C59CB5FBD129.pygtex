@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{f} \PYG{o+ow}{::} \PYG{k+kt}{Either} \PYG{k+kt}{Int} \PYG{k+kt}{Double} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{String}
-\end{Verbatim}

@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{ma} \PYG{o}{\PYGZgt{}\PYGZgt{}=} \PYG{n}{f} \PYG{o+ow}{=} \PYG{n}{join} \PYG{p}{(}\PYG{n}{fmap} \PYG{n}{f} \PYG{n}{ma}\PYG{p}{)}
-\end{Verbatim}

@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{p}{(}\PYG{o}{\PYGZgt{}\PYGZgt{}=}\PYG{p}{)} \PYG{o+ow}{::} \PYG{p}{((}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{r}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{r}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
-  \PYG{p}{(}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{n}{b} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{r}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{r}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}}
-  \PYG{p}{((}\PYG{n}{b} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{r}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{r}\PYG{p}{)}
-\end{Verbatim}

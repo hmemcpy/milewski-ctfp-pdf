@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{fmap}\PYG{o}{(}\PYG{n}{f}\PYG{o}{)(}\PYG{n}{fmap}\PYG{o}{(}\PYG{n}{h}\PYG{o}{)(}\PYG{n+nc}{List}\PYG{o}{(}\PYG{l+m+mi}{12}\PYG{o}{)))} \PYG{o}{==} \PYG{n}{fmap}\PYG{o}{(}\PYG{n}{f} \PYG{n}{compose} \PYG{n}{h}\PYG{o}{)(}\PYG{n+nc}{List}\PYG{o}{(}\PYG{l+m+mi}{12}\PYG{o}{))}
-
-\PYG{c+c1}{// Or using scala stdlib:}
-\PYG{n+nc}{List}\PYG{o}{(}\PYG{l+m+mi}{12}\PYG{o}{).}\PYG{n}{map}\PYG{o}{(}\PYG{n}{h}\PYG{o}{).}\PYG{n}{map}\PYG{o}{(}\PYG{n}{f}\PYG{o}{)} \PYG{o}{==} \PYG{n+nc}{List}\PYG{o}{(}\PYG{l+m+mi}{12}\PYG{o}{).}\PYG{n}{map}\PYG{o}{(}\PYG{n}{f} \PYG{n}{compose} \PYG{n}{h}\PYG{o}{)}
-\end{Verbatim}

@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{predToStr}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{Op}\PYG{o}{[}\PYG{k+kt}{Boolean}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Op}\PYG{o}{[}\PYG{k+kt}{String}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=} \PYG{o}{\PYGZob{}}
-  \PYG{k}{case} \PYG{n+nc}{Op}\PYG{o}{(}\PYG{n}{f}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n+nc}{Op}\PYG{o}{(}\PYG{n}{x} \PYG{k}{=\PYGZgt{}} \PYG{k}{if} \PYG{o}{(}\PYG{n}{f}\PYG{o}{(}\PYG{n}{x}\PYG{o}{))} \PYG{l+s}{\PYGZdq{}T\PYGZdq{}} \PYG{k}{else} \PYG{l+s}{\PYGZdq{}F\PYGZdq{}}\PYG{o}{)}
-\PYG{o}{\PYGZcb{}}
-\end{Verbatim}

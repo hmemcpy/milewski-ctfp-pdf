@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{alpha} \PYG{n}{h} \PYG{o+ow}{=} \PYG{n}{fmap} \PYG{n}{h} \PYG{n}{fa}
-\end{Verbatim}

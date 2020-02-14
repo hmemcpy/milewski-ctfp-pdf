@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{val} \PYG{n}{p1} \PYG{k}{=} \PYG{n}{p} \PYG{n}{compose} \PYG{n}{m}
-\PYG{k}{val} \PYG{n}{q1} \PYG{k}{=} \PYG{n}{q} \PYG{n}{compose} \PYG{n}{m}
-\end{Verbatim}

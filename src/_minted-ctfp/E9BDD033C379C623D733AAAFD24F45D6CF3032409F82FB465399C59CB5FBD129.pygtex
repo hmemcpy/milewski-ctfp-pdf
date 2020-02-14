@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{nats} \PYG{o+ow}{::} \PYG{p}{[}\PYG{k+kt}{Integer}\PYG{p}{]}
-\PYG{n+nf}{nats} \PYG{o+ow}{=} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{o}{..}\PYG{p}{]}
-\end{Verbatim}

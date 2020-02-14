@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{movingAvg}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{](}\PYG{n}{n}\PYG{k}{:} \PYG{k+kt}{Int}\PYG{o}{)(}\PYG{n}{stm}\PYG{k}{:} \PYG{k+kt}{Stream}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])}
-    \PYG{o}{(}\PYG{k}{implicit} \PYG{n}{fractional}\PYG{k}{:} \PYG{k+kt}{Fractional}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{Stream}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=}
-  \PYG{n}{streamComonad}\PYG{o}{.}
-    \PYG{n}{extend}\PYG{o}{(}\PYG{n}{average}\PYG{o}{(}\PYG{n}{n}\PYG{o}{)(}\PYG{n}{fractional}\PYG{o}{))(}\PYG{n}{stm}\PYG{o}{)}
-\end{Verbatim}

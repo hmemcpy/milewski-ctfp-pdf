@@ -1,9 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kt}{double} \PYG{n+nf}{vlen}\PYG{p}{(}\PYG{k+kt}{double} \PYG{o}{*} \PYG{n}{v}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k+kt}{double} \PYG{n}{d} \PYG{o}{=} \PYG{l+m+mf}{0.0}\PYG{p}{;}
-    \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{;}
-    \PYG{k}{for} \PYG{p}{(}\PYG{n}{n} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{n} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{3}\PYG{p}{;} \PYG{o}{++}\PYG{n}{n}\PYG{p}{)}
-        \PYG{n}{d} \PYG{o}{+=} \PYG{n}{v}\PYG{p}{[}\PYG{n}{n}\PYG{p}{]} \PYG{o}{*} \PYG{n}{v}\PYG{p}{[}\PYG{n}{n}\PYG{p}{];}
-    \PYG{k}{return} \PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{d}\PYG{p}{);}
-\PYG{p}{\PYGZcb{}}
-\end{Verbatim}

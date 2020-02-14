@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{bool}\PYG{p}{,} \PYG{n}{string}\PYG{o}{\PYGZgt{}} \PYG{n}{negate}\PYG{p}{(}\PYG{k+kt}{bool} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{n}{make\PYGZus{}pair}\PYG{p}{(}\PYG{o}{!}\PYG{n}{b}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Not so! \PYGZdq{}}\PYG{p}{);}
-\PYG{p}{\PYGZcb{}}
-\end{Verbatim}

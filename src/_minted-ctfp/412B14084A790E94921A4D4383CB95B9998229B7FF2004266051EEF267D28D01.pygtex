@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{sumToProd}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{p}{,} \PYG{k+kt}{C}\PYG{o}{]}\PYG{k}{:} \PYG{k+kt}{Either}\PYG{o}{[(}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{)}\PYG{p}{,} \PYG{o}{(}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{C}\PYG{o}{)]} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{A}\PYG{o}{,} \PYG{n+nc}{Either}\PYG{o}{[}\PYG{k+kt}{B}\PYG{p}{,} \PYG{k+kt}{C}\PYG{o}{])} \PYG{k}{=} \PYG{o}{\PYGZob{}}
-  \PYG{k}{case} \PYG{n+nc}{Left}\PYG{o}{((}\PYG{n}{x}\PYG{o}{,} \PYG{n}{y}\PYG{o}{))} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{x}\PYG{o}{,} \PYG{n+nc}{Left}\PYG{o}{(}\PYG{n}{y}\PYG{o}{))}
-  \PYG{k}{case} \PYG{n+nc}{Right}\PYG{o}{((}\PYG{n}{x}\PYG{o}{,} \PYG{n}{z}\PYG{o}{))} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{x}\PYG{o}{,} \PYG{n+nc}{Right}\PYG{o}{(}\PYG{n}{z}\PYG{o}{))}
-\PYG{o}{\PYGZcb{}}
-\end{Verbatim}

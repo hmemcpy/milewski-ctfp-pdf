@@ -1,7 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{toExp} \PYG{o+ow}{::} \PYG{p}{(}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{b}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Exp} \PYG{n}{a} \PYG{n}{b}
-\PYG{n+nf}{toExp} \PYG{n}{f} \PYG{o+ow}{=} \PYG{k+kt}{Lan} \PYG{p}{(}\PYG{n}{f} \PYG{o}{.} \PYG{n}{fst}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{I} \PYG{n+nb}{()}\PYG{p}{)}
-
-\PYG{n+nf}{fromExp} \PYG{o+ow}{::} \PYG{k+kt}{Exp} \PYG{n}{a} \PYG{n}{b} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{b}\PYG{p}{)}
-\PYG{n+nf}{fromExp} \PYG{p}{(}\PYG{k+kt}{Lan} \PYG{n}{f} \PYG{p}{(}\PYG{k+kt}{I} \PYG{n}{x}\PYG{p}{))} \PYG{o+ow}{=} \PYG{n+nf}{\PYGZbs{}}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{f} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{x}\PYG{p}{)}
-\end{Verbatim}

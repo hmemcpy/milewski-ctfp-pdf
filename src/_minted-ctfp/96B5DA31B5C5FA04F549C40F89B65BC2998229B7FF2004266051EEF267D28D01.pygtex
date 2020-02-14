@@ -1,7 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{def} \PYG{n}{lambda}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{p}{,} \PYG{k+kt}{P}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{p}{,} \PYG{k}{\PYGZus{}}\PYG{o}{]](}\PYG{n}{P}\PYG{k}{:} \PYG{k+kt}{Profunctor}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{P}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{A}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{A} \PYG{k}{=\PYGZgt{}} \PYG{n}{B}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{P}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=}
-  \PYG{n}{paa} \PYG{k}{=\PYGZgt{}} \PYG{n}{f} \PYG{k}{=\PYGZgt{}} \PYG{n}{P}\PYG{o}{.}\PYG{n}{dimap}\PYG{o}{(}\PYG{n}{identity}\PYG{o}{[}\PYG{k+kt}{A}\PYG{o}{])(}\PYG{n}{f}\PYG{o}{)(}\PYG{n}{paa}\PYG{o}{)}
-
-\PYG{k}{def} \PYG{n}{rho}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{p}{,} \PYG{k+kt}{P}\PYG{o}{[}\PYG{k}{\PYGZus{}}\PYG{p}{,} \PYG{k}{\PYGZus{}}\PYG{o}{]](}\PYG{n}{P}\PYG{k}{:} \PYG{k+kt}{Profunctor}\PYG{o}{[}\PYG{k+kt}{P}\PYG{o}{])}\PYG{k}{:} \PYG{k+kt}{P}\PYG{o}{[}\PYG{k+kt}{B}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=\PYGZgt{}} \PYG{o}{(}\PYG{n}{A} \PYG{k}{=\PYGZgt{}} \PYG{n}{B}\PYG{o}{)} \PYG{k}{=\PYGZgt{}} \PYG{n}{P}\PYG{o}{[}\PYG{k+kt}{A}\PYG{p}{,} \PYG{k+kt}{B}\PYG{o}{]} \PYG{k}{=}
-  \PYG{n}{pbb} \PYG{k}{=\PYGZgt{}} \PYG{n}{f} \PYG{k}{=\PYGZgt{}} \PYG{n}{P}\PYG{o}{.}\PYG{n}{dimap}\PYG{o}{(}\PYG{n}{f}\PYG{o}{)(}\PYG{n}{identity}\PYG{o}{[}\PYG{k+kt}{B}\PYG{o}{])(}\PYG{n}{pbb}\PYG{o}{)}
-\end{Verbatim}

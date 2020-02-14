@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n+nf}{f} \PYG{p}{(}\PYG{k+kt}{Left} \PYG{n}{n}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kr}{if} \PYG{n}{n} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0} \PYG{k+kr}{then} \PYG{l+s}{\PYGZdq{}Negative int\PYGZdq{}} \PYG{k+kr}{else} \PYG{l+s}{\PYGZdq{}Positive int\PYGZdq{}}
-\PYG{n+nf}{f} \PYG{p}{(}\PYG{k+kt}{Right} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kr}{if} \PYG{n}{x} \PYG{o}{\PYGZlt{}} \PYG{l+m+mf}{0.0} \PYG{k+kr}{then} \PYG{l+s}{\PYGZdq{}Negative double\PYGZdq{}} \PYG{k+kr}{else} \PYG{l+s}{\PYGZdq{}Positive double\PYGZdq{}}
-\end{Verbatim}
