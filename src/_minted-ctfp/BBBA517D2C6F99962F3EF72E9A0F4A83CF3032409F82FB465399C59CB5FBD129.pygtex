@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{p}{(}\PYG{k+kt}{Bifunctor} \PYG{n}{bf}\PYG{p}{,} \PYG{k+kt}{Functor} \PYG{n}{fu}\PYG{p}{,} \PYG{k+kt}{Functor} \PYG{n}{gu}\PYG{p}{)} \PYG{o+ow}{=\PYGZgt{}}
+  \PYG{k+kt}{Bifunctor} \PYG{p}{(}\PYG{k+kt}{BiComp} \PYG{n}{bf} \PYG{n}{fu} \PYG{n}{gu}\PYG{p}{)} \PYG{k+kr}{where}
+    \PYG{n}{bimap} \PYG{n}{f1} \PYG{n}{f2} \PYG{p}{(}\PYG{k+kt}{BiComp} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{BiComp} \PYG{p}{((}\PYG{n}{bimap} \PYG{p}{(}\PYG{n}{fmap} \PYG{n}{f1}\PYG{p}{)} \PYG{p}{(}\PYG{n}{fmap} \PYG{n}{f2}\PYG{p}{))} \PYG{n}{x}\PYG{p}{)}
+\end{Verbatim}

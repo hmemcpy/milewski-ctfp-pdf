@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{string}\PYG{o}{\PYGZgt{}} \PYG{n}{words}\PYG{p}{(}\PYG{n}{string} \PYG{n}{s}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{string}\PYG{o}{\PYGZgt{}} \PYG{n}{result}\PYG{p}{\PYGZob{}}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{\PYGZcb{};}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k}{auto} \PYG{n}{i} \PYG{o}{=} \PYG{n}{begin}\PYG{p}{(}\PYG{n}{s}\PYG{p}{);} \PYG{n}{i} \PYG{o}{!=} \PYG{n}{end}\PYG{p}{(}\PYG{n}{s}\PYG{p}{);} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{isspace}\PYG{p}{(}\PYG{o}{*}\PYG{n}{i}\PYG{p}{))}
+            \PYG{n}{result}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{);}
+        \PYG{k}{else}
+            \PYG{n}{result}\PYG{p}{.}\PYG{n}{back}\PYG{p}{()} \PYG{o}{+=} \PYG{o}{*}\PYG{n}{i}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{result}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{k+kt}{Functor} \PYG{p}{(}\PYG{k+kt}{Reader} \PYG{n}{a}\PYG{p}{)} \PYG{k+kr}{where}
+    \PYG{n}{fmap} \PYG{n}{f} \PYG{n}{h} \PYG{o+ow}{=} \PYG{n}{f} \PYG{o}{.} \PYG{n}{h}
+\end{Verbatim}

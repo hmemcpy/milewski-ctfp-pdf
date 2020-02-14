@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{k+kt}{Functor} \PYG{k+kt}{Stream} \PYG{k+kr}{where}
+    \PYG{n}{fmap} \PYG{n}{f} \PYG{p}{(}\PYG{k+kt}{Cons} \PYG{n}{a} \PYG{n}{as}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Cons} \PYG{p}{(}\PYG{n}{f} \PYG{n}{a}\PYG{p}{)} \PYG{p}{(}\PYG{n}{fmap} \PYG{n}{f} \PYG{n}{as}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{A}\PYG{o}{\PYGZgt{}} \PYG{n}{Writer}\PYG{o}{\PYGZlt{}}\PYG{n}{A}\PYG{o}{\PYGZgt{}} \PYG{n}{identity}\PYG{p}{(}\PYG{n}{A} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{make\PYGZus{}pair}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

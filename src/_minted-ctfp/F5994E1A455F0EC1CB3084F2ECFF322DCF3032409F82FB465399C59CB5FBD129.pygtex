@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{mu} \PYG{o}{.} \PYG{n}{bimap} \PYG{n}{id} \PYG{n}{mu} \PYG{o}{.} \PYG{n}{alpha} \PYG{o+ow}{=} \PYG{n}{mu} \PYG{o}{.} \PYG{n}{bimap} \PYG{n}{mu} \PYG{n}{id}
+\end{Verbatim}

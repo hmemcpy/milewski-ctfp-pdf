@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{k+kt}{Functor} \PYG{k+kt}{Identity} \PYG{k+kr}{where}
+    \PYG{n}{fmap} \PYG{n}{f} \PYG{p}{(}\PYG{k+kt}{Identity} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Identity} \PYG{p}{(}\PYG{n}{f} \PYG{n}{x}\PYG{p}{)}
+\end{Verbatim}

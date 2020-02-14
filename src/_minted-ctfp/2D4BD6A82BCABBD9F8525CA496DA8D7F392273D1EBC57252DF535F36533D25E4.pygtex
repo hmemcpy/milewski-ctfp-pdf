@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Writer}\PYG{o}{\PYGZlt{}}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{string}\PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{process}\PYG{p}{(}\PYG{n}{string} \PYG{n}{s}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{compose}\PYG{o}{\PYGZlt{}}\PYG{n}{string}\PYG{p}{,} \PYG{n}{string}\PYG{p}{,} \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{string}\PYG{o}{\PYGZgt{}\PYGZgt{}}\PYG{p}{(}\PYG{n}{toUpper}\PYG{p}{,} \PYG{n}{toWords}\PYG{p}{)(}\PYG{n}{s}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

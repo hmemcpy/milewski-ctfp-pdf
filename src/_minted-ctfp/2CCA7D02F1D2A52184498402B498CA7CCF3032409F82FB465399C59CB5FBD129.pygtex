@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{p} \PYG{n+nb}{()} \PYG{o+ow}{=} \PYG{n}{fst} \PYG{p}{(}\PYG{n}{m} \PYG{n+nb}{()}\PYG{p}{)}
+\PYG{n+nf}{q} \PYG{n+nb}{()} \PYG{o+ow}{=} \PYG{n}{snd} \PYG{p}{(}\PYG{n}{m} \PYG{n+nb}{()}\PYG{p}{)}
+\end{Verbatim}

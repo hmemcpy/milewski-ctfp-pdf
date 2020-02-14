@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{t1} \PYG{o+ow}{=} \PYG{n}{t2} \PYG{o+ow}{=} \PYG{n}{t3} \PYG{o+ow}{=} \PYG{k+kt}{Int}
+\PYG{n+nf}{twice} \PYG{o+ow}{::} \PYG{p}{(}\PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Int}
+\end{Verbatim}

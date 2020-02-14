@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{evalZ} \PYG{o+ow}{::} \PYG{k+kt}{Algebra} \PYG{k+kt}{RingF} \PYG{k+kt}{Integer}
+\PYG{n+nf}{evalZ} \PYG{k+kt}{RZero}      \PYG{o+ow}{=} \PYG{l+m+mi}{0}
+\PYG{n+nf}{evalZ} \PYG{k+kt}{ROne}       \PYG{o+ow}{=} \PYG{l+m+mi}{1}
+\PYG{n+nf}{evalZ} \PYG{p}{(}\PYG{k+kt}{RAdd} \PYG{n}{m} \PYG{n}{n}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{m} \PYG{o}{+} \PYG{n}{n}
+\PYG{n+nf}{evalZ} \PYG{p}{(}\PYG{k+kt}{RMul} \PYG{n}{m} \PYG{n}{n}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{m} \PYG{o}{*} \PYG{n}{n}
+\PYG{n+nf}{evalZ} \PYG{p}{(}\PYG{k+kt}{RNeg} \PYG{n}{n}\PYG{p}{)}   \PYG{o+ow}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{n}
+\end{Verbatim}

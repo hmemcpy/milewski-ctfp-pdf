@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{type} \PYG{k+kt}{Reader} \PYG{n}{a} \PYG{n}{x} \PYG{o+ow}{=} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{x}
+\end{Verbatim}

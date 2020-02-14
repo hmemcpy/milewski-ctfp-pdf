@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{class} \PYG{k+kt}{Monoid} \PYG{n}{m} \PYG{k+kr}{where}
+    \PYG{n}{mappend} \PYG{o+ow}{::} \PYG{n}{m} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{m} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{m}
+    \PYG{n}{mempty}  \PYG{o+ow}{::} \PYG{n}{m}
+\end{Verbatim}

@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{upCase} \PYG{o+ow}{::} \PYG{k+kt}{String} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Writer} \PYG{k+kt}{String}
+\PYG{n+nf}{upCase} \PYG{n}{s} \PYG{o+ow}{=} \PYG{p}{(}\PYG{n}{map} \PYG{n}{toUpper} \PYG{n}{s}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}upCase \PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{toWords} \PYG{o+ow}{::} \PYG{k+kt}{String} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Writer} \PYG{p}{[}\PYG{k+kt}{String}\PYG{p}{]}
+\PYG{n+nf}{toWords} \PYG{n}{s} \PYG{o+ow}{=} \PYG{p}{(}\PYG{n}{words} \PYG{n}{s}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}toWords \PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

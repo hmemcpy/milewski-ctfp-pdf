@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{square} \PYG{n}{x} \PYG{o+ow}{=} \PYG{n}{x} \PYG{o}{*} \PYG{n}{x}
+
+\PYG{n+nf}{mis} \PYG{o+ow}{::} \PYG{k+kt}{Maybe} \PYG{p}{[}\PYG{k+kt}{Int}\PYG{p}{]}
+\PYG{n+nf}{mis} \PYG{o+ow}{=} \PYG{k+kt}{Just} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{]}
+
+\PYG{n+nf}{mis2} \PYG{o+ow}{=} \PYG{n}{fmap} \PYG{p}{(}\PYG{n}{fmap} \PYG{n}{square}\PYG{p}{)} \PYG{n}{mis}
+\end{Verbatim}

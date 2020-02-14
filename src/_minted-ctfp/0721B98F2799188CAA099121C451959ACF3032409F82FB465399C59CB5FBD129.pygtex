@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{put} \PYG{o+ow}{::} \PYG{n}{s} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{State} \PYG{n}{s} \PYG{n+nb}{()}
+\PYG{n+nf}{put} \PYG{n}{s\PYGZsq{}} \PYG{o+ow}{=} \PYG{k+kt}{State} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{s} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{n+nb}{()}\PYG{p}{,} \PYG{n}{s\PYGZsq{}}\PYG{p}{))}
+\end{Verbatim}

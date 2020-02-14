@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{safeHead} \PYG{p}{(}\PYG{n}{fmap} \PYG{n}{f} \PYG{k+kt}{[]}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{safeHead} \PYG{k+kt}{[]} \PYG{o+ow}{=} \PYG{k+kt}{Nothing}
+\end{Verbatim}

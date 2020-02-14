@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{counit} \PYG{p}{(}\PYG{k+kt}{Prod} \PYG{p}{(}\PYG{k+kt}{Reader} \PYG{n}{f}\PYG{p}{)} \PYG{n}{s}\PYG{p}{))} \PYG{o+ow}{=} \PYG{n}{f} \PYG{n}{s}
+\end{Verbatim}

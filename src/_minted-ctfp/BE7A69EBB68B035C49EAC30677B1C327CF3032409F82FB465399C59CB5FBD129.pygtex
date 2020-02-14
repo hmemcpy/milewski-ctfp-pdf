@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{startsWithSymbol} \PYG{o+ow}{::} \PYG{p}{(}\PYG{k+kt}{String}\PYG{p}{,} \PYG{k+kt}{String}\PYG{p}{,} \PYG{k+kt}{Int}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Bool}
+\PYG{n+nf}{startsWithSymbol} \PYG{p}{(}\PYG{n}{name}\PYG{p}{,} \PYG{n}{symbol}\PYG{p}{,} \PYG{k+kr}{\PYGZus{}}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{isPrefixOf} \PYG{n}{symbol} \PYG{n}{name}
+\end{Verbatim}

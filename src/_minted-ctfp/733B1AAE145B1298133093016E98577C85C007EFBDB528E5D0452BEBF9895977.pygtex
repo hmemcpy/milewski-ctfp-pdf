@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{absurd} \PYG{p}{(}\PYG{k+kt}{Void} \PYG{n}{a}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{absurd} \PYG{n}{a}
+\end{Verbatim}

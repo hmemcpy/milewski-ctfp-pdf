@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{newtype} \PYG{k+kt}{ToString} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{ToString} \PYG{p}{(}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{String}\PYG{p}{)} 
+\PYG{k+kr}{instance} \PYG{k+kt}{Contravariant} \PYG{k+kt}{ToString} \PYG{k+kr}{where} 
+    \PYG{n}{contramap} \PYG{n}{f} \PYG{p}{(}\PYG{k+kt}{ToString} \PYG{n}{g}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{ToString} \PYG{p}{(}\PYG{n}{g} \PYG{o}{.} \PYG{n}{f}\PYG{p}{)}
+\end{Verbatim}

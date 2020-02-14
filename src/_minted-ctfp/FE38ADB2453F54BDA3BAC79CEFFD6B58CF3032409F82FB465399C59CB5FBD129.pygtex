@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{l+m+mi}{3} \PYG{o+ow}{=} \PYG{l+m+mi}{6}
+\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{++} \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]} \PYG{o+ow}{=} \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{]} \PYG{o}{//} \PYG{n}{not} \PYG{n}{the} \PYG{n}{same} \PYG{n}{as} \PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{]}
+\end{Verbatim}

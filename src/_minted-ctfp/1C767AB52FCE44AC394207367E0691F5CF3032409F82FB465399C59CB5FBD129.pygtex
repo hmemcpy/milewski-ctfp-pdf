@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{mu} \PYG{p}{(}\PYG{n}{eta} \PYG{n+nb}{()}\PYG{p}{,} \PYG{n}{x}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{x}
+\PYG{n+nf}{mu} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{eta} \PYG{n+nb}{()}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{x}
+\end{Verbatim}

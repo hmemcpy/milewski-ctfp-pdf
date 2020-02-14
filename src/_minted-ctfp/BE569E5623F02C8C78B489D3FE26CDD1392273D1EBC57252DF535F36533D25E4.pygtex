@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{bool}\PYG{p}{,} \PYG{n}{string}\PYG{o}{\PYGZgt{}} \PYG{n}{isEven}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{make\PYGZus{}pair}\PYG{p}{(}\PYG{n}{n} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{2} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}isEven \PYGZdq{}}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

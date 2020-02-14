@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{class} \PYG{k+kt}{Functor} \PYG{n}{w} \PYG{o+ow}{=\PYGZgt{}} \PYG{k+kt}{Comonad} \PYG{n}{w} \PYG{k+kr}{where}
+    \PYG{p}{(}\PYG{o}{=\PYGZgt{}=}\PYG{p}{)} \PYG{o+ow}{::} \PYG{p}{(}\PYG{n}{w} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{b}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{n}{w} \PYG{n}{b} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{c}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{n}{w} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{c}\PYG{p}{)}
+    \PYG{n}{extract} \PYG{o+ow}{::} \PYG{n}{w} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a}
+\end{Verbatim}

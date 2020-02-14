@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{i\PYGZsq{}} \PYG{o+ow}{=} \PYG{n}{m} \PYG{o}{.} \PYG{n}{i}
+\PYG{n+nf}{j\PYGZsq{}} \PYG{o+ow}{=} \PYG{n}{m} \PYG{o}{.} \PYG{n}{j}
+\end{Verbatim}

@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{dimap} \PYG{n}{f} \PYG{n}{id} \PYG{o}{.} \PYG{n}{pi} \PYG{o+ow}{=} \PYG{n}{dimap} \PYG{n}{id} \PYG{n}{f} \PYG{o}{.} \PYG{n}{pi}
+\end{Verbatim}

@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{lambdaP} \PYG{o+ow}{::} \PYG{k+kt}{Profunctor} \PYG{n}{p} \PYG{o+ow}{=\PYGZgt{}} \PYG{k+kt}{DiaProd} \PYG{n}{p} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{ProdP} \PYG{n}{p}
+\PYG{n+nf}{lambdaP} \PYG{p}{(}\PYG{k+kt}{DiaProd} \PYG{n}{paa}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{lambda} \PYG{n}{paa}
+
+\PYG{n+nf}{rhoP} \PYG{o+ow}{::} \PYG{k+kt}{Profunctor} \PYG{n}{p} \PYG{o+ow}{=\PYGZgt{}} \PYG{k+kt}{DiaProd} \PYG{n}{p} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{ProdP} \PYG{n}{p}
+\PYG{n+nf}{rhoP} \PYG{p}{(}\PYG{k+kt}{DiaProd} \PYG{n}{pbb}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{rho} \PYG{n}{pbb}
+\end{Verbatim}

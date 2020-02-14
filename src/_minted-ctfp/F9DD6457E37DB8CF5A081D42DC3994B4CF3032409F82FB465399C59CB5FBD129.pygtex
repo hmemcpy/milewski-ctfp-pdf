@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{fmap} \PYG{n}{f} \PYG{o+ow}{=} \PYG{n}{id} \PYG{o}{\PYGZgt{}=\PYGZgt{}} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{x} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{return} \PYG{p}{(}\PYG{n}{f} \PYG{n}{x}\PYG{p}{))}
+\end{Verbatim}

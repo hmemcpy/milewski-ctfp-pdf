@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{p}{(}\PYG{k+kt}{Monoid} \PYG{n}{w}\PYG{p}{)} \PYG{o+ow}{=\PYGZgt{}} \PYG{k+kt}{Monad} \PYG{p}{(}\PYG{k+kt}{Writer} \PYG{n}{w}\PYG{p}{)} \PYG{k+kr}{where}
+    \PYG{p}{(}\PYG{k+kt}{Writer} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{w}\PYG{p}{))} \PYG{o}{\PYGZgt{}\PYGZgt{}=} \PYG{n}{k} \PYG{o+ow}{=} \PYG{k+kr}{let} \PYG{p}{(}\PYG{n}{a\PYGZsq{}}\PYG{p}{,} \PYG{n}{w\PYGZsq{}}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{runWriter} \PYG{p}{(}\PYG{n}{k} \PYG{n}{a}\PYG{p}{)}
+                            \PYG{k+kr}{in} \PYG{k+kt}{Writer} \PYG{p}{(}\PYG{n}{a\PYGZsq{}}\PYG{p}{,} \PYG{n}{w} \PYG{p}{`}\PYG{n}{mappend}\PYG{p}{`} \PYG{n}{w\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{return} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{Writer} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{mempty}\PYG{p}{)}
+\end{Verbatim}

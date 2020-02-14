@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{T}\PYG{o}{\PYGZgt{}}
+  \PYG{n}{T} \PYG{n}{mempty} \PYG{o}{=} \PYG{k}{delete}\PYG{p}{;}
+
+\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{T}\PYG{o}{\PYGZgt{}}
+  \PYG{n}{T} \PYG{n}{mappend}\PYG{p}{(}\PYG{n}{T}\PYG{p}{,} \PYG{n}{T}\PYG{p}{)} \PYG{o}{=} \PYG{k}{delete}\PYG{p}{;}
+
+\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{M}\PYG{o}{\PYGZgt{}}
+  \PYG{n}{concept} \PYG{k+kt}{bool} \PYG{n}{Monoid} \PYG{o}{=} \PYG{n}{requires} \PYG{p}{(}\PYG{n}{M} \PYG{n}{m}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{p}{\PYGZob{}} \PYG{n}{mempty}\PYG{o}{\PYGZlt{}}\PYG{n}{M}\PYG{o}{\PYGZgt{}} \PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{M}\PYG{p}{;}
+    \PYG{p}{\PYGZob{}} \PYG{n}{mappend}\PYG{p}{(}\PYG{n}{m}\PYG{p}{,} \PYG{n}{m}\PYG{p}{);} \PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{M}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{};}
+\end{Verbatim}

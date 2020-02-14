@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{fib} \PYG{o+ow}{::} \PYG{k+kt}{NatF} \PYG{p}{(}\PYG{k+kt}{Int}\PYG{p}{,} \PYG{k+kt}{Int}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{k+kt}{Int}\PYG{p}{,} \PYG{k+kt}{Int}\PYG{p}{)}
+\PYG{n+nf}{fib} \PYG{k+kt}{ZeroF} \PYG{o+ow}{=} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n+nf}{fib} \PYG{p}{(}\PYG{k+kt}{SuccF} \PYG{p}{(}\PYG{n}{m}\PYG{p}{,} \PYG{n}{n}\PYG{p}{))} \PYG{o+ow}{=} \PYG{p}{(}\PYG{n}{n}\PYG{p}{,} \PYG{n}{m} \PYG{o}{+} \PYG{n}{n}\PYG{p}{)}
+\end{Verbatim}

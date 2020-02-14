@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{optional}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}} \PYG{n}{safe\PYGZus{}root}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{k}{return} \PYG{n}{optional}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}}\PYG{p}{\PYGZob{}}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)\PYGZcb{};}
+    \PYG{k}{else} \PYG{k}{return} \PYG{n}{optional}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}}\PYG{p}{\PYGZob{}\PYGZcb{};}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n+nf}{f}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{static} \PYG{k+kt}{int} \PYG{n}{y} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{y} \PYG{o}{+=} \PYG{n}{x}\PYG{p}{;}
+    \PYG{k}{return} \PYG{n}{y}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

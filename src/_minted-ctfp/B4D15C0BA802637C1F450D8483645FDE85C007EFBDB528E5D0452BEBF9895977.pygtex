@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{n}{fmap} \PYG{p}{(}\PYG{n}{g} \PYG{o}{.} \PYG{n}{f}\PYG{p}{)} \PYG{k+kt}{Nothing}
+\PYG{o+ow}{=} \PYG{p}{\PYGZob{}} \PYG{n}{definition} \PYG{k+kr}{of} \PYG{n}{fmap} \PYG{p}{\PYGZcb{}}
+  \PYG{k+kt}{Nothing}
+\PYG{o+ow}{=} \PYG{p}{\PYGZob{}} \PYG{n}{definition} \PYG{k+kr}{of} \PYG{n}{fmap} \PYG{p}{\PYGZcb{}}
+  \PYG{n}{fmap} \PYG{n}{g} \PYG{k+kt}{Nothing}
+\PYG{o+ow}{=} \PYG{p}{\PYGZob{}} \PYG{n}{definition} \PYG{k+kr}{of} \PYG{n}{fmap} \PYG{p}{\PYGZcb{}}
+  \PYG{n}{fmap} \PYG{n}{g} \PYG{p}{(}\PYG{n}{fmap} \PYG{n}{f} \PYG{k+kt}{Nothing}\PYG{p}{)}
+\end{Verbatim}

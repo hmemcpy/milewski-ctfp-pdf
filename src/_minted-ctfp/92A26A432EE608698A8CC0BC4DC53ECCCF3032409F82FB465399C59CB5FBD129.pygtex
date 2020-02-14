@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{m\PYGZsq{}} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)} \PYG{o+ow}{=} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{x}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)}
+\end{Verbatim}

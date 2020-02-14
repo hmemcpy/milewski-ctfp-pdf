@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{toListC} \PYG{o+ow}{::} \PYG{k+kt}{Fix} \PYG{p}{(}\PYG{k+kt}{StreamF} \PYG{n}{e}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{e}\PYG{p}{]}
+\PYG{n+nf}{toListC} \PYG{o+ow}{=} \PYG{n}{cata} \PYG{n}{al}
+    \PYG{k+kr}{where} \PYG{n}{al} \PYG{o+ow}{::} \PYG{k+kt}{StreamF} \PYG{n}{e} \PYG{p}{[}\PYG{n}{e}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{e}\PYG{p}{]} 
+          \PYG{n}{al} \PYG{p}{(}\PYG{k+kt}{StreamF} \PYG{n}{e} \PYG{n}{a}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{e} \PYG{k+kt}{:} \PYG{n}{a}
+\end{Verbatim}

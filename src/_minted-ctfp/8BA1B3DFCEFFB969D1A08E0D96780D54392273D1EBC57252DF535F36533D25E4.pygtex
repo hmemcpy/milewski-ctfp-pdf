@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{string}\PYG{o}{\PYGZgt{}} \PYG{n}{toWords}\PYG{p}{(}\PYG{n}{string} \PYG{n}{s}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{words}\PYG{p}{(}\PYG{n}{s}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

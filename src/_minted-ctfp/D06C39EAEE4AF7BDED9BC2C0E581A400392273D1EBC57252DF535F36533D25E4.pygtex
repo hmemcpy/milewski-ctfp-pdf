@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{T}\PYG{o}{\PYGZgt{}}
+\PYG{k}{struct} \PYG{n}{Tree} \PYG{p}{\PYGZob{}}
+    \PYG{k}{virtual} \PYG{o}{\PYGZti{}}\PYG{n}{Tree}\PYG{p}{()} \PYG{p}{\PYGZob{}\PYGZcb{};}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

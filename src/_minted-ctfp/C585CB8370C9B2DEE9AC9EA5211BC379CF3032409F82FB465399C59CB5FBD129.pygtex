@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{runCont} \PYG{o+ow}{::} \PYG{k+kt}{Cont} \PYG{n}{r} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{r}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{r}
+\PYG{n+nf}{runCont} \PYG{p}{(}\PYG{k+kt}{Cont} \PYG{n}{k}\PYG{p}{)} \PYG{n}{h} \PYG{o+ow}{=} \PYG{n}{k} \PYG{n}{h}
+\end{Verbatim}

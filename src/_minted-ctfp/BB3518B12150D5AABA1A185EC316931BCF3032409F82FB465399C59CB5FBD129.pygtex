@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{type} \PYG{k+kt}{Two} \PYG{o+ow}{=} \PYG{k+kt}{Either} \PYG{n+nb}{()} \PYG{n+nb}{()}
+\end{Verbatim}

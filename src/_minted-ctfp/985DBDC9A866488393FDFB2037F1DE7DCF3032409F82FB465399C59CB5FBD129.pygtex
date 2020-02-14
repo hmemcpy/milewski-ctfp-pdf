@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{k+kt}{Comonad} \PYG{p}{(}\PYG{k+kt}{Store} \PYG{n}{s}\PYG{p}{)} \PYG{k+kr}{where}
+    \PYG{n}{extract} \PYG{p}{(}\PYG{k+kt}{Store} \PYG{n}{f} \PYG{n}{s}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{f} \PYG{n}{s}
+    \PYG{n}{duplicate} \PYG{p}{(}\PYG{k+kt}{Store} \PYG{n}{f} \PYG{n}{s}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Store} \PYG{p}{(}\PYG{k+kt}{Store} \PYG{n}{f}\PYG{p}{)} \PYG{n}{s}
+\end{Verbatim}

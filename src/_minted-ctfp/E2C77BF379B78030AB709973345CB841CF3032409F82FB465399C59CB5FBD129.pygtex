@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{process} \PYG{o+ow}{::} \PYG{k+kt}{String} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Writer} \PYG{k+kt}{String} \PYG{p}{[}\PYG{k+kt}{String}\PYG{p}{]}
+\PYG{n+nf}{process} \PYG{o+ow}{=} \PYG{n}{upCase} \PYG{o}{\PYGZgt{}=\PYGZgt{}} \PYG{n}{toWords}
+\end{Verbatim}

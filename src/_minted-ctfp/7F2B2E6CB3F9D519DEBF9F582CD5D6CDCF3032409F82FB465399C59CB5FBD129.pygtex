@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{alg} \PYG{o}{.} \PYG{n}{return} \PYG{o+ow}{=} \PYG{n}{id}
+\PYG{n+nf}{alg} \PYG{o}{.} \PYG{n}{join} \PYG{o+ow}{=} \PYG{n}{alg} \PYG{o}{.} \PYG{n}{fmap} \PYG{n}{alg}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{h} \PYG{n}{x} \PYG{o+ow}{=} \PYG{k+kr}{let} \PYG{n}{y} \PYG{o+ow}{=} \PYG{n}{f} \PYG{n}{x}
+      \PYG{k+kr}{in} \PYG{n}{g} \PYG{n}{y}
+\end{Verbatim}

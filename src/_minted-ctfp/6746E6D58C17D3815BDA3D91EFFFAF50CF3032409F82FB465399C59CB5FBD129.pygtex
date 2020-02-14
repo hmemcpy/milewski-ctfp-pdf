@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{guard} \PYG{o+ow}{::} \PYG{k+kt}{Bool} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n+nb}{()}\PYG{p}{]}
+\PYG{n+nf}{guard} \PYG{k+kt}{True} \PYG{o+ow}{=} \PYG{p}{[}\PYG{n+nb}{()}\PYG{p}{]}
+\PYG{n+nf}{guard} \PYG{k+kt}{False} \PYG{o+ow}{=} \PYG{k+kt}{[]}
+\end{Verbatim}

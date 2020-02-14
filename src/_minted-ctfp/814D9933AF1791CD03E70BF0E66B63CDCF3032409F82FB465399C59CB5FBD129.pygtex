@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{k+kt}{Contravariant} \PYG{p}{(}\PYG{k+kt}{Op} \PYG{n}{r}\PYG{p}{)} \PYG{k+kr}{where}
+    \PYG{c+c1}{\PYGZhy{}\PYGZhy{} (b \PYGZhy{}\PYGZgt{} a) \PYGZhy{}\PYGZgt{} Op r a \PYGZhy{}\PYGZgt{} Op r b}
+    \PYG{n}{contramap} \PYG{n}{f} \PYG{n}{g} \PYG{o+ow}{=} \PYG{n}{g} \PYG{o}{.} \PYG{n}{f}
+\end{Verbatim}

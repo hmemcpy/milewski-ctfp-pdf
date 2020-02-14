@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{type} \PYG{k+kt}{RingF2} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{RingF} \PYG{p}{(}\PYG{k+kt}{RingF} \PYG{p}{(}\PYG{k+kt}{RingF} \PYG{n}{a}\PYG{p}{))}
+\end{Verbatim}

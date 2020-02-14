@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{lambda} \PYG{o}{.} \PYG{n}{bimap} \PYG{n}{destroy} \PYG{n}{id} \PYG{o}{.} \PYG{n}{split} \PYG{o+ow}{=} \PYG{n}{id}
+\PYG{n+nf}{rho} \PYG{o}{.} \PYG{n}{bimap} \PYG{n}{id} \PYG{n}{destroy} \PYG{o}{.} \PYG{n}{split} \PYG{o+ow}{=} \PYG{n}{id}
+\end{Verbatim}

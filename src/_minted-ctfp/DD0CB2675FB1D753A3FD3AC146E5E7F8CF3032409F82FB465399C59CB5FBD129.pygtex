@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{factorizer} \PYG{o+ow}{::} \PYG{p}{(}\PYG{n}{c} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{n}{c} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{b}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{n}{c} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{))}
+\PYG{n+nf}{factorizer} \PYG{n}{p} \PYG{n}{q} \PYG{o+ow}{=} \PYG{n+nf}{\PYGZbs{}}\PYG{n}{x} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{p}{(}\PYG{n}{p} \PYG{n}{x}\PYG{p}{,} \PYG{n}{q} \PYG{n}{x}\PYG{p}{)}
+\end{Verbatim}

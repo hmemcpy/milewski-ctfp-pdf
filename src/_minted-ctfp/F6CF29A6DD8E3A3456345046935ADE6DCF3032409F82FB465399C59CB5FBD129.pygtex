@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{safeHead} \PYG{o+ow}{::} \PYG{p}{[}\PYG{n}{a}\PYG{p}{]} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Maybe} \PYG{n}{a}
+\PYG{n+nf}{safeHead} \PYG{k+kt}{[]} \PYG{o+ow}{=} \PYG{k+kt}{Nothing}
+\PYG{n+nf}{safeHead} \PYG{p}{(}\PYG{n}{x}\PYG{k+kt}{:}\PYG{n}{xs}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Just} \PYG{n}{x}
+\end{Verbatim}

@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{data} \PYG{k+kt}{Store} \PYG{n}{s} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{Store} \PYG{p}{(}\PYG{n}{s} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a}\PYG{p}{)} \PYG{n}{s}
+\end{Verbatim}

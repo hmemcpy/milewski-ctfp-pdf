@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{type} \PYG{k+kt}{Maybe\PYGZsq{}} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{Either} \PYG{p}{(}\PYG{k+kt}{Const} \PYG{n+nb}{()} \PYG{n}{a}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{Identity} \PYG{n}{a}\PYG{p}{)}
+\end{Verbatim}

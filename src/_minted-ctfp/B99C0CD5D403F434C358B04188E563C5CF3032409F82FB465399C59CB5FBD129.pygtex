@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{mu} \PYG{o}{.} \PYG{n}{bimap} \PYG{n}{id} \PYG{n}{eta} \PYG{o+ow}{=} \PYG{n}{rho}
+\PYG{n+nf}{mu} \PYG{o}{.} \PYG{n}{bimap} \PYG{n}{eta} \PYG{n}{id} \PYG{o+ow}{=} \PYG{n}{lambda}
+\end{Verbatim}

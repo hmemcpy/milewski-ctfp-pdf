@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{duplicate} \PYG{p}{(}\PYG{k+kt}{Cons} \PYG{n}{a} \PYG{n}{as}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kt}{Cons} \PYG{p}{(}\PYG{k+kt}{Cons} \PYG{n}{a} \PYG{n}{as}\PYG{p}{)} \PYG{p}{(}\PYG{n}{duplicate} \PYG{n}{as}\PYG{p}{)}
+\end{Verbatim}

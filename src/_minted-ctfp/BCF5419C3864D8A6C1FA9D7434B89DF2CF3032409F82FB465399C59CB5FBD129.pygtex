@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{f} \PYG{o}{.} \PYG{n}{id} \PYG{o}{==} \PYG{n}{f}
+\PYG{n+nf}{id} \PYG{o}{.} \PYG{n}{f} \PYG{o}{==} \PYG{n}{f}
+\end{Verbatim}

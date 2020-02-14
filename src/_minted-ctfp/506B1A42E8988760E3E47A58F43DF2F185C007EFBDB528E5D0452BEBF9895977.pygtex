@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{circ} \PYG{o+ow}{::} \PYG{k+kt}{Shape} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Float}
+\PYG{n+nf}{circ} \PYG{p}{(}\PYG{k+kt}{Circle} \PYG{n}{r}\PYG{p}{)} \PYG{o+ow}{=} \PYG{l+m+mf}{2.0} \PYG{o}{*} \PYG{n}{pi} \PYG{o}{*} \PYG{n}{r}
+\PYG{n+nf}{circ} \PYG{p}{(}\PYG{k+kt}{Rect} \PYG{n}{d} \PYG{n}{h}\PYG{p}{)} \PYG{o+ow}{=} \PYG{l+m+mf}{2.0} \PYG{o}{*} \PYG{p}{(}\PYG{n}{d} \PYG{o}{+} \PYG{n}{h}\PYG{p}{)}
+\end{Verbatim}

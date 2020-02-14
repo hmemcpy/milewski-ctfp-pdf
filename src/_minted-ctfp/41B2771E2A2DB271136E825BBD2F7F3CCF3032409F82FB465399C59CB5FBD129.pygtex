@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{f44} \PYG{o+ow}{::} \PYG{n+nb}{()} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Integer}
+\PYG{n+nf}{f44} \PYG{n+nb}{()} \PYG{o+ow}{=} \PYG{l+m+mi}{44}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{sumS} \PYG{o+ow}{::} \PYG{k+kt}{Num} \PYG{n}{a} \PYG{o+ow}{=\PYGZgt{}} \PYG{k+kt}{Int} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Stream} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a}
+\PYG{n+nf}{sumS} \PYG{n}{n} \PYG{p}{(}\PYG{k+kt}{Cons} \PYG{n}{a} \PYG{n}{as}\PYG{p}{)} \PYG{o+ow}{=} \PYG{k+kr}{if} \PYG{n}{n} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{0} \PYG{k+kr}{then} \PYG{l+m+mi}{0} \PYG{k+kr}{else} \PYG{n}{a} \PYG{o}{+} \PYG{n}{sumS} \PYG{p}{(}\PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{n}{as}
+\end{Verbatim}

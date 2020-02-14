@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{rho} \PYG{o+ow}{::} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n+nb}{()}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{a}
+\PYG{n+nf}{rho} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n+nb}{()}\PYG{p}{)} \PYG{o+ow}{=} \PYG{n}{x}
+\end{Verbatim}

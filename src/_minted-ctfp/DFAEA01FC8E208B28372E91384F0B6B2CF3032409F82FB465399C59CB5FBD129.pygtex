@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{data} \PYG{k+kt}{Product} \PYG{n}{e} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{Prod} \PYG{n}{e} \PYG{n}{a} \PYG{k+kr}{deriving} \PYG{k+kt}{Functor}
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{instance} \PYG{k+kt}{Adjunction} \PYG{p}{(}\PYG{k+kt}{Prod} \PYG{n}{s}\PYG{p}{)} \PYG{p}{(}\PYG{k+kt}{Reader} \PYG{n}{s}\PYG{p}{)} \PYG{k+kr}{where}
+    \PYG{n}{counit} \PYG{p}{(}\PYG{k+kt}{Prod} \PYG{p}{(}\PYG{k+kt}{Reader} \PYG{n}{f}\PYG{p}{,} \PYG{n}{s}\PYG{p}{))} \PYG{o+ow}{=} \PYG{n}{f} \PYG{n}{s}
+    \PYG{n}{unit} \PYG{n}{a} \PYG{o+ow}{=} \PYG{k+kt}{Reader} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{s} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Prod} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{s}\PYG{p}{))}
+\end{Verbatim}

@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Writer}\PYG{o}{\PYGZlt{}}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{string}\PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{process}\PYG{p}{(}\PYG{n}{string} \PYG{n}{s}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{auto} \PYG{n}{p1} \PYG{o}{=} \PYG{n}{toUpper}\PYG{p}{(}\PYG{n}{s}\PYG{p}{);}
+    \PYG{k}{auto} \PYG{n}{p2} \PYG{o}{=} \PYG{n}{toWords}\PYG{p}{(}\PYG{n}{p1}\PYG{p}{.}\PYG{n}{first}\PYG{p}{);}
+    \PYG{k}{return} \PYG{n+nf}{make\PYGZus{}pair}\PYG{p}{(}\PYG{n}{p2}\PYG{p}{.}\PYG{n}{first}\PYG{p}{,} \PYG{n}{p1}\PYG{p}{.}\PYG{n}{second} \PYG{o}{+} \PYG{n}{p2}\PYG{p}{.}\PYG{n}{second}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
