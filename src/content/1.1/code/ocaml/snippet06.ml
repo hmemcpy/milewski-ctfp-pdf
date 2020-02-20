@@ -1,2 +1,2 @@
-f >> id
-id >> f
+f % id = f
+id % f = f

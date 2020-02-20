@@ -1,1 +1,2 @@
-let f_int (x : int) = ()
+(* val f_int : int -> unit *)
+let f_int x = ()
