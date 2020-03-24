@@ -1,0 +1,1 @@
+let alpha: 'a . f('a) => g('a);
