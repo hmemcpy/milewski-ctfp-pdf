@@ -1,0 +1,1 @@
+either('a, void)
