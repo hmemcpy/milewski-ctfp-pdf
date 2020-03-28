@@ -1,1 +1,1 @@
-external mappend: (m, m) => m = ;
+let mappend: (m, m) => m;
