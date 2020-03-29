@@ -56,7 +56,7 @@ ocaml: suffix='-ocaml'
 ocaml: clean out-dir version.tex $(OCAMLPDF)
 
 reason: suffix='-reason'
-reason: out-dir version.tex $(REASONPDF)
+reason: clean out-dir version.tex $(REASONPDF)
 
 # Main targets
 $(TOPPDFFILES) : %.pdf : %.tex $(TEXFILES)
