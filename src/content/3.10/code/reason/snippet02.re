@@ -1,0 +1,1 @@
+let dimap(f, id, (P (b, b))) : p('a, 'b);
