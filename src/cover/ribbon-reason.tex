@@ -1,9 +1,9 @@
-% !TeX root = ./cover-paperback-ocaml.tex
+% !TeX root = ./cover-paperback-reason.tex
 
 \newcommand{\stripskip}{4}
 \newcommand{\stripwidth}{3}
 
-\definecolor{BurntOrange}{rgb}{0.8, 0.33, 0.0}
+\definecolor{RedOrange}{rgb}{0.8, 0.33, 0.0}
 
 \begin{tikzpicture}[
     overlay,
@@ -23,8 +23,8 @@
     \coordinate (tempB) at ($(B)!.5!(B')$);
 
     \node [ribbon](text) at ($(tempA)!.5!(tempB)$) {
-        \raisebox{-.15\height}{\includegraphics[width=.8cm]{\olpath/fig/icons/ocaml}}
-        \hspace{.5mm} OCaml Edition
+        \raisebox{-.15\height}{\includegraphics[width=.8cm]{\olpath/fig/icons/reason}}
+        \hspace{.5mm} ReasonML Edition
     };
 
 \end{tikzpicture}

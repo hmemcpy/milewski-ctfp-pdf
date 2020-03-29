@@ -1,0 +1,127 @@
+\documentclass[
+    % bleed is added to the final result
+    coverheight=9.25in,
+    coverwidth=6.125in, % (pagesize - spinewidth) / 2 == (13.042 - 1.042) / 2
+    spinewidth=1.042in,
+    bleedwidth=0in,
+    11pt,
+    marklength=0in,
+  ]{bookcover}
+  
+  \usepackage{fancybox}
+  \usepackage{wrapfig}
+  \usepackage[many]{tcolorbox}
+  \usetikzlibrary{calc,positioning, shadings}
+  \usepackage[T1]{fontenc}
+  \usepackage{fontspec}
+
+  % \setmainfont{AlegreyaSans-Regular}[
+  %   BoldFont={AlegreyaSans-Bold},
+  %   ItalicFont={AlegreyaSans-Italic},
+  %   UprightFeatures={SmallCapsFont=AlegreyaSansSC-Regular},
+  %   ItalicFeatures={SmallCapsFont=AlegreyaSansSC-Italic},
+  %   BoldFeatures={SmallCapsFont=AlegreyaSansSC-Bold},
+  %   BoldItalicFeatures={SmallCapsFont=AlegreyaSansSC-BoldItalic},
+  % ]
+  \setmainfont[
+    Path=fonts/,
+    Extension=.otf,
+    UprightFont=*-Regular,
+    ItalicFont=*-Italic,
+    BoldFont=*-Bold,
+    UprightFeatures={SmallCapsFont=*SC-Regular},
+    ItalicFeatures={SmallCapsFont=*SC-Italic},
+    BoldFeatures={SmallCapsFont=*SC-Bold},
+    BoldItalicFeatures={SmallCapsFont=*SC-BoldItalic},
+    ]{AlegreyaSans}
+
+  \newcommand{\olpath}{../}
+  \newcommand{\whitebg}[1]{%
+  \tikz\node[circle,draw,minimum size=1.1cm,
+  fill=white,
+  path picture={
+      \node at (path picture bounding box){
+          \includegraphics[width=1.1cm]{\olpath#1}
+      };
+  }]{};
+  }
+  \newcommand{\bartosz}{
+    \vspace{0pt}
+    \begin{tcolorbox}[beamer,
+      width=3.6cm,
+      arc=0pt,
+      boxsep=0pt,
+      left=0pt,right=0pt,top=0pt,bottom=0pt,
+      ] \includegraphics[width=3.6cm]{bartosz}
+    \end{tcolorbox}
+  }
+  \input{\olpath/version}
+  
+  \definecolor{BackgroundColor}{HTML}{f3f6ed}
+  \definecolor{SpineBackColor}{HTML}{262626}
+  
+  \begin{document}
+  
+  \begin{bookcover}
+    \bookcovercomponent{color}{bg whole}{color=BackgroundColor}
+    \bookcovercomponent{color}{spine}{color=SpineBackColor}
+    \bookcovercomponent{normal}{front}{
+    \input{ribbon-reason}
+    \vspace{1.1cm}
+    \begin{center}
+      \fontsize{40pt}{5em}\selectfont\bfseries
+          CATEGORY THEORY \\FOR PROGRAMMERS
+      \vfil
+      \hspace*{-.8cm}\includegraphics[width=.5\coverwidth]{piggie}
+      \linebreak
+      \rule[1.5cm]{\textwidth/2}{.5pt}\\
+      \vspace{-1.5cm}
+      \normalfont\Huge\textbf{Bartosz Milewski}
+      \vfil
+      \vspace*{1cm}
+    \end{center}}
+    
+    \bookcovercomponent{center}{spine}{
+      \rotatebox[origin=c]{-90}{\color{orange}
+      \Huge\bfseries Category Theory for Programmers \hspace{2em} Bartosz Milewski}}
+
+    \bookcovercomponent{normal}{back}{%
+    \begin{minipage}[b][\coverheight][t]{\coverwidth}
+      \begin{center}
+        \vspace{1cm}
+        \includegraphics[width=.8\coverwidth]{bunnies}
+        \begin{minipage}[t]{.75\coverwidth}
+          \input{blurb}
+          \vspace{0.6cm}
+        \end{minipage}
+        
+        \begin{minipage}{.85\textwidth}
+          \rule{\textwidth}{.5pt}
+
+          \begin{tabular}[h]{p{3.4cm} p{\textwidth}}
+            \vspace{5pt}
+            \bartosz
+            &
+            \vspace{10pt}
+            \begin{minipage}[b]{.58\coverwidth}
+              \fontsize{11pt}{1.4em}\selectfont\textit{Category Theory for Programmers}
+                is a series of blog posts by Bartosz Milewski, originally posted on bartoszmilewski.com.\\
+                Edited by Igal Tabachnik. Licenced under CC BY-SA 4.0.\\
+          \end{minipage}
+        \end{tabular}
+        \begin{flushright}
+          \vspace{-2.6cm}
+          \begin{minipage}[b]{4cm}
+          \raggedleft
+          \whitebg{fig/icons/by}
+          \whitebg{fig/icons/cc}
+          \whitebg{fig/icons/sa}
+          \centering\footnotesize{\texttt{\OPTversion}}
+          \end{minipage}
+        \end{flushright}
+      \end{minipage}
+    \end{center}
+  \end{minipage}
+  }
+  \end{bookcover}
+\end{document}
