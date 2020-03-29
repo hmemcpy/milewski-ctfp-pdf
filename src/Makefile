@@ -41,19 +41,19 @@ TEXFILES = $(TOPTEXFILES) $(SCALATEXFILES) $(OCAMLTEXFILES) $(OPTFILES)
 default: suffix=''
 default: out-dir $(DEFAULTPDF) # todo cover
 
-all: default scala ocaml
+all: clean default scala ocaml
 
 scala: suffix='-scala'
-scala: out-dir version.tex $(SCALAPDF)
+scala: clean out-dir version.tex $(SCALAPDF)
 
 ocaml: suffix='-ocaml'
-ocaml: out-dir version.tex $(OCAMLPDF)
+ocaml: clean out-dir version.tex $(OCAMLPDF)
 
 # Main targets
 $(TOPPDFFILES) : %.pdf : %.tex $(TEXFILES)
 	if which latexmk > /dev/null 2>&1 ;\
 	then \
-		latexmk -shell-escape -interaction=nonstopmode -halt-on-error -norc -jobname=ctfp -pdflatex="xelatex %O %S" -pdfxe $< ;\
+		latexmk -shell-escape -interaction=nonstopmode -halt-on-error -norc -jobname=ctfp -pdflatex="xelatex %O %S" -pdf $< ;\
 		mv ctfp.pdf ../out/$(GIT_VER)/$(subst ctfp,$(OUTPUT),$(subst ctfp-reader,$(OUTPUT),$*)).pdf ;\
 	else @printf "Error: unable to find latexmk. Is it installed?\n" ;\
 	fi
