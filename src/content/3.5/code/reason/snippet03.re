@@ -1,5 +1,5 @@
 module Pythagorean = {
-  let ( let* ) = Fn.flip(Gen.flat_map);
+  let (let*) = Fn.flip(Gen.flat_map);
   let (let+) = (x, f) => Gen.map(f, x);
   let guard = b => b ? Gen.return() ? Gen.empty;
 

@@ -13,7 +13,7 @@ module IOMonad: Monad_Bind with type m('a) = io('a) = {
 
 /* main */
 module IO_Main = {
-  let ( let* ) = IOMonad.(>>=);
+  let (let*) = IOMonad.(>>=);
 
   let main = {
     let* _ = put_str("Hello");

@@ -10,7 +10,8 @@ module StreamComonadBase =
 };
 
 /* Implement duplicate */
-module StreamComonadDuplicate: ComonadDuplicate with type w('a) = stream('a) = {
+module StreamComonadDuplicate: ComonadDuplicate with type w('a) =
+    stream('a) = {
   type w('a) = stream('a);
 
   let rec duplicate = (Cons(x, xs)) =>

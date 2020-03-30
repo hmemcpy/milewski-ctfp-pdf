@@ -1,8 +1,8 @@
-/* ReasonML/OCaml doesn't have a built in Const type */
+/* ReasonML doesn't have a built in Const type */
 type const('a, 'b) =
   | Const('a);
 
-/* ReasonML/OCaml doesn't have a built in either type */
+/* ReasonML doesn't have a built in either type */
 type either('a, 'b) =
   | Left('a)
   | Right('b);

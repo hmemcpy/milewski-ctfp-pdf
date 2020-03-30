@@ -6,11 +6,10 @@ module FreeFunctorAlt = (F: {type f('a);}) : Functor => {
   let fmap =
       (type a', type b', f, module FF: F with type a = a')
       : (module F with type a = b') =>
-    (module
-     {
+    (module {
        type a = b';
        type f('a) = F.f('a);
 
        let freeF = bi => FF.freeF(a => bi(f(a)));
-     });
+    });
 };

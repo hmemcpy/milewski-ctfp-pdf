@@ -1,4 +1,5 @@
-/** You can represent bifunctor defintion in two forms and implement just and derive the other from it. */
+/** You can represent bifunctor defintion in two forms
+ * and implement just and derive the other from it. */
 module type BifunctorCore = {
   type t('a, 'b);
 

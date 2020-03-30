@@ -10,11 +10,11 @@ module CoEndImpl = (P: Profunctor) => {
   type b;
 
   module type Sum_P =
-    SumP with type p('a, 'b) = P.p('a, 'b) and type a = a and type b = b;
+    SumP with type p('a, 'b) = P.p('a, 'b)
+      and type a = a and type b = b;
 
   let lambda = (module S: Sum_P): (module DiagSum) =>
-    (module
-     {
+    (module {
        type a = S.b;
        type p('a, 'b) = P.p('a, 'b);
 
@@ -22,8 +22,7 @@ module CoEndImpl = (P: Profunctor) => {
      });
 
   let rho = (module S: Sum_P): (module DiagSum) =>
-    (module
-     {
+    (module {
        type a = S.a;
        type p('a, 'b) = P.p('a, 'b);
 

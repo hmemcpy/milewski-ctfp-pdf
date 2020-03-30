@@ -26,7 +26,8 @@ module type Comonad = {
   include ComonadDuplicate with type w('a) := w('a);
 };
 
-/* Construct a full comonad instance using one of the following modules */
+/* Construct a full comonad instance using one of the 
+* following modules */
 module ComonadImplViaExtend:
   (C: ComonadBase, D: ComonadDuplicate with type w('a) = C.w('a)) =>
    Comonad with type w('a) = C.w('a) =

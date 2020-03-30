@@ -1,4 +1,7 @@
-/** ReasonML/OCaml doesn't support higher kinded types. So, we have to use module functors to emulate the behavior higher kinded types. There's less verbose options using type defunctionalization but it's more advanced and obscures the flow of this book */
+/** ReasonML doesn't support higher kinded types. 
+ * So, we have to use module functors to emulate the behavior higher kinded types. 
+ * There's less verbose options using type defunctionalization 
+ * but it's more advanced and obscures the flow of this book */
 module type BiComp =
   (
     BF: {type t('a, 'b);},

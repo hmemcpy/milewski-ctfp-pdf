@@ -3,5 +3,6 @@ module ReaderMonad = (T: {type t;}) : Monad_Bind => {
 
   let return = a => Reader(e => a);
 
-  let (>>=) = (ra, k) => Reader(e => run_reader(k(run_reader(ra, e)), e));
+  let (>>=) = (ra, k) => 
+    Reader(e => run_reader(k(run_reader(ra, e)), e));
 };

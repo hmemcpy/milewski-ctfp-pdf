@@ -1,4 +1,5 @@
-/* ReasonML/OCaml requires mutually recursive functions to be defined together */
+/* ReasonML requires mutually recursive functions 
+* to be defined together */
 let rec length: list('a) => const(int, 'a) = (
   fun
   | [] => Const(0)

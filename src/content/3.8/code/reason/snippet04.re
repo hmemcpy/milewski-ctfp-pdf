@@ -1,8 +1,5 @@
 module Ring = {
-  module RingAlg =
-    Algebra({
-      type f('a) = ring_f('a);
-    });
+  module RingAlg = Algebra({type f('a) = ring_f('a);});
 
   let eval_z: RingAlg.algebra('a) = (
     fun
@@ -10,7 +7,6 @@ module Ring = {
     | ROne => 1
     | RAdd(m, n) => m + n
     | RMul(m, n) => m * n
-    | RNeg(n) => - n:
-      RingAlg.algebra('a)
+    | RNeg(n) => - n
   );
 };

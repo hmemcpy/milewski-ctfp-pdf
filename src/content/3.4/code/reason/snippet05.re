@@ -1,4 +1,5 @@
-module WriterMonad = (W: Monoid) : (Monad with type m('a) = writer(W.a, 'a)) => {
+module WriterMonad = (W: Monoid) : 
+    (Monad with type m('a) = writer(W.a, 'a)) => {
   type m('a) = writer(W.a, 'a);
 
   let (>=>) = (f, g, a) => {

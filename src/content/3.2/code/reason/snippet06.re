@@ -1,4 +1,5 @@
-/* Putting it all together to show the equivalence between unit/counit and left_adjunct/right_adjunct */
+/* Putting it all together to show the equivalence between 
+* unit & counit and left_adjunct & right_adjunct */
 module type Adjunction =
   (F: Functor, U: Representable) => {
     let unit: 'a => U.t(F.t('a));
@@ -7,7 +8,7 @@ module type Adjunction =
     let right_adjunct: ('a => U.t('b), F.t('a)) => 'b;
   };
 
-/* Adjunction via unit/counit */
+/* Adjunction via unit & counit */
 module type Adjunction_Unit_Counit =
   (F: Functor, U: Representable) => {
     let unit: 'a => U.t(F.t('a));
@@ -21,7 +22,7 @@ module type Adjunction_Hom_Set =
     let right_adjunct: ('a => U.t('b), F.t('a)) => 'b;
   };
 
-/* Implementing unit/counit from left and right adjoint definitions */
+/* Implementing unit & counit from left and right adjoint definitions */
 module Adjunction_From_Hom_Set = (A: Adjunction_Hom_Set) : Adjunction =>
   (F: Functor, U: Representable) => {
     type f('t) = F.t('t);
@@ -34,7 +35,7 @@ module Adjunction_From_Hom_Set = (A: Adjunction_Hom_Set) : Adjunction =>
     let counit: 'a. f(u('a)) => 'a = fua => M.right_adjunct(idty, fua);
   };
 
-/* Implementing left and right adjunct from unit/counit Definitions */
+/* Implementing left and right adjunct from unit & counit Definitions */
 module Adjunction_From_Unit_Counit = (A: Adjunction_Unit_Counit) : Adjunction =>
   (F: Functor, U: Representable) => {
     type f('t) = F.t('t);
