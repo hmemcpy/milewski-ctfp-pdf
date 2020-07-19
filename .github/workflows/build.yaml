@@ -13,6 +13,7 @@ jobs:
       - name: Install LaTeX
         uses: xu-cheng/latex-action@master
         with:
+          working_directory: src
           root_file: |
             ctfp-reader.tex
             ctfp-print.tex
