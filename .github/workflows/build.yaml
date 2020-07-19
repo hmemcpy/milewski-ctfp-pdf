@@ -16,7 +16,7 @@ jobs:
 
       - name: Create version.tex
         run: |
-          echo -n -e "\\newcommand{\\OPTversion}{$(cat VERSION)}" > src/version.tex
+          echo -n -e "\\\newcommand{\OPTversion}{$(cat VERSION)}" > src/version.tex
           cat src/version.tex
 
       - name: Install LaTeX
