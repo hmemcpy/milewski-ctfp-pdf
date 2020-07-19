@@ -10,6 +10,14 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v1
 
+      - name: Create version string
+        run: echo "::set-env name=VERSION::$(git describe --tags --always --long | tr -d '\n')"
+
+      - name: Create version.tex
+        run: |
+          echo -n -e "\\newcommand{\\OPTversion}{$(cat VERSION)}" > src/version.tex
+          cat src/version.tex
+
       - name: Install LaTeX
         uses: xu-cheng/latex-action@master
         with:
