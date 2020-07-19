@@ -1,0 +1,46 @@
+name: Build document
+
+on:
+  - push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v1
+
+      - name: Install LaTeX
+        uses: xu-cheng/latex-action@master
+
+      - name: Make documents
+        run: |
+          cd src
+          make
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: category-theory-for-programmers.pdf
+
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Version ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload release asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: category-theory-for-programmers.pdf
+          asset_content_type: application/pdf
+
