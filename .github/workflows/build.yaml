@@ -53,6 +53,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: category-theory-for-programmers.pdf
+          asset_name: src/ctfp-print.pdf
           asset_content_type: application/pdf
 
