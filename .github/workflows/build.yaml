@@ -32,6 +32,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
+          path: src/ctfp-print.pdf
           name: category-theory-for-programmers.pdf
 
       - name: Create release
