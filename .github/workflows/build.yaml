@@ -14,6 +14,7 @@ jobs:
         uses: xu-cheng/latex-action@master
         with:
           working_directory: src
+          latexmk_use_xelatex: true
           root_file: |
             ctfp-reader.tex
             ctfp-print.tex
