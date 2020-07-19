@@ -12,11 +12,11 @@ jobs:
 
       - name: Install LaTeX
         uses: xu-cheng/latex-action@master
-
-      - name: Make documents
-        run: |
-          cd src
-          make
+        with:
+          root_file: |
+            ctfp-reader.tex
+            ctfp-print.tex
+          latexmk_shell_escape: true
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
