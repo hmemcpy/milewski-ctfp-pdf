@@ -1,0 +1,118 @@
+name: Build document
+
+on:
+  - push
+
+jobs:
+  build:
+    name: "PDF document builds"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v1
+
+      - name: Create variables and necessary build files
+        run: |
+          echo "::set-env name=VERSION::$(git rev-parse --short HEAD)"
+          echo -n -e "\\\newcommand{\OPTversion}{$(git rev-parse --short HEAD)}" > src/version.tex
+
+      - name: Build documents using LaTeX (default)
+        uses: xu-cheng/latex-action@v2
+        with:
+          working_directory: src
+          latexmk_use_xelatex: true
+          root_file: |
+            ctfp-reader.tex
+            ctfp-print.tex
+          latexmk_shell_escape: true
+
+      - name: Build documents using LaTeX (scala)
+        uses: xu-cheng/latex-action@v2
+        with:
+          working_directory: src
+          latexmk_use_xelatex: true
+          root_file: |
+            ctfp-reader-scala.tex
+            ctfp-print-scala.tex
+          latexmk_shell_escape: true
+
+      - name: Build documents using LaTeX (ocaml)
+        uses: xu-cheng/latex-action@v2
+        with:
+          working_directory: src
+          latexmk_use_xelatex: true
+          root_file: |
+            ctfp-reader-ocaml.tex
+            ctfp-print-ocaml.tex
+          latexmk_shell_escape: true
+
+      - name: Create Github pre-release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.VERSION }}
+          release_name: Version ${{ env.VERSION }}
+          draft: false
+          prerelease: true
+
+      - name: Upload release asset (print)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: src/ctfp-print.pdf
+          asset_name: category-theory-for-programmers--print--${{ env.VERSION }}.pdf
+          asset_content_type: application/pdf
+
+      - name: Upload release asset (reader)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: src/ctfp-reader.pdf
+          asset_name: category-theory-for-programmers--reader--${{ env.VERSION }}.pdf
+          asset_content_type: application/pdf
+
+      - name: Upload release asset (print-scala)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: src/ctfp-print-scala.pdf
+          asset_name: category-theory-for-programmers--print-scala--${{ env.VERSION }}.pdf
+          asset_content_type: application/pdf
+
+      - name: Upload release asset (reader-scala)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: src/ctfp-reader-scala.pdf
+          asset_name: category-theory-for-programmers--reader-scala--${{ env.VERSION }}.pdf
+          asset_content_type: application/pdf
+
+      - name: Upload release asset (print-ocaml)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: src/ctfp-print-ocaml.pdf
+          asset_name: category-theory-for-programmers--print-ocaml--${{ env.VERSION }}.pdf
+          asset_content_type: application/pdf
+
+      - name: Upload release asset (reader-ocaml)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: src/ctfp-reader-ocaml.pdf
+          asset_name: category-theory-for-programmers--reader-ocaml--${{ env.VERSION }}.pdf
+          asset_content_type: application/pdf
