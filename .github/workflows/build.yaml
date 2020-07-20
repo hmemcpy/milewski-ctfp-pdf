@@ -104,7 +104,7 @@ jobs:
           name: ${{ matrix.assets.source }}
           path: ${{ matrix.assets.source }}
 
-      - name: Upload release assets
+      - name: Upload release assets (${{ matrix.assets.destination }}${{ needs.dependencies.outputs.version }}.pdf)
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
