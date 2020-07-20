@@ -1,118 +1,115 @@
-name: Build document
+name: Build
 
 on:
   - push
 
 jobs:
-  build:
-    name: "PDF document builds"
+  dependencies:
+    name: Build dependencies
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v1
 
-      - name: Create variables and necessary build files
+      - name: Create global variables
+        id: version
+        run: echo "::set-output name=version::$(git rev-parse --short HEAD)"
+
+  build:
+    name: Build documents
+    needs: dependencies
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        sources:
+          - input: ctfp-print.tex
+            output: ctfp-print.pdf
+          - input: ctfp-reader.tex
+            output: ctfp-reader.pdf
+          - input: ctfp-print-scala.tex
+            output: ctfp-print-scala.pdf
+          - input: ctfp-reader-scala.tex
+            output: ctfp-reader-scala.pdf
+          - input: ctfp-reader-ocaml.tex
+            output: ctfp-reader-ocaml.pdf
+          - input: ctfp-print-ocaml.tex
+            output: ctfp-print-ocaml.pdf
+
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v1
+
+      - name: Create necessary build file (version.tex)
         run: |
-          echo "::set-env name=VERSION::$(git rev-parse --short HEAD)"
           echo -n -e "\\\newcommand{\OPTversion}{$(git rev-parse --short HEAD)}" > src/version.tex
 
-      - name: Build documents using LaTeX (default)
+      - name: Build documents using LaTeX (${{ matrix.sources.input }})
         uses: xu-cheng/latex-action@v2
         with:
           working_directory: src
           latexmk_use_xelatex: true
-          root_file: |
-            ctfp-reader.tex
-            ctfp-print.tex
+          root_file: ${{ matrix.sources.input }}
           latexmk_shell_escape: true
 
-      - name: Build documents using LaTeX (scala)
-        uses: xu-cheng/latex-action@v2
+      - name: Upload build assets (${{ matrix.sources.output }})
+        uses: actions/upload-artifact@v2
         with:
-          working_directory: src
-          latexmk_use_xelatex: true
-          root_file: |
-            ctfp-reader-scala.tex
-            ctfp-print-scala.tex
-          latexmk_shell_escape: true
+          name: ${{ matrix.sources.output }}
+          path: src/${{ matrix.sources.output }}
 
-      - name: Build documents using LaTeX (ocaml)
-        uses: xu-cheng/latex-action@v2
-        with:
-          working_directory: src
-          latexmk_use_xelatex: true
-          root_file: |
-            ctfp-reader-ocaml.tex
-            ctfp-print-ocaml.tex
-          latexmk_shell_escape: true
-
-      - name: Create Github pre-release
+  release:
+    name: "Create Github tag/pre-release"
+    runs-on: ubuntu-latest
+    needs: [dependencies,build]
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+    steps:
+      - name: Create Github pre-release (${{ needs.dependencies.outputs.version }})
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.VERSION }}
-          release_name: Version ${{ env.VERSION }}
+          tag_name: ${{ needs.dependencies.outputs.version }}
+          release_name: Version ${{ needs.dependencies.outputs.version }}
           draft: false
           prerelease: true
 
-      - name: Upload release asset (print)
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  assets:
+    name: Upload release assets
+    runs-on: ubuntu-latest
+    needs: [dependencies,release]
+    strategy:
+      matrix:
+        assets:
+          - source: ctfp-print.pdf
+            destination: category-theory-for-programmers--print--
+          - source: ctfp-reader.pdf
+            destination: category-theory-for-programmers--
+          - source: ctfp-print-scala.pdf
+            destination: category-theory-for-programmers--print--scala--
+          - source: ctfp-reader-scala.pdf
+            destination: category-theory-for-programmers--reader--scala--
+          - source: ctfp-print-ocaml.pdf
+            destination: category-theory-for-programmers--print--ocaml--
+          - source: ctfp-reader-ocaml.pdf
+            destination: category-theory-for-programmers--reader--ocaml--
+    steps:
+      - name: Download build assets (${{ matrix.assets.source }})
+        uses: actions/download-artifact@v2
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: src/ctfp-print.pdf
-          asset_name: category-theory-for-programmers--print--${{ env.VERSION }}.pdf
-          asset_content_type: application/pdf
+          name: ${{ matrix.assets.source }}
+          path: ${{ matrix.assets.source }}
 
-      - name: Upload release asset (reader)
+      - name: Upload release assets
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: src/ctfp-reader.pdf
-          asset_name: category-theory-for-programmers--reader--${{ env.VERSION }}.pdf
-          asset_content_type: application/pdf
-
-      - name: Upload release asset (print-scala)
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: src/ctfp-print-scala.pdf
-          asset_name: category-theory-for-programmers--print-scala--${{ env.VERSION }}.pdf
-          asset_content_type: application/pdf
-
-      - name: Upload release asset (reader-scala)
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: src/ctfp-reader-scala.pdf
-          asset_name: category-theory-for-programmers--reader-scala--${{ env.VERSION }}.pdf
-          asset_content_type: application/pdf
-
-      - name: Upload release asset (print-ocaml)
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: src/ctfp-print-ocaml.pdf
-          asset_name: category-theory-for-programmers--print-ocaml--${{ env.VERSION }}.pdf
-          asset_content_type: application/pdf
-
-      - name: Upload release asset (reader-ocaml)
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: src/ctfp-reader-ocaml.pdf
-          asset_name: category-theory-for-programmers--reader-ocaml--${{ env.VERSION }}.pdf
+          upload_url: ${{ needs.release.outputs.upload_url }}
+          asset_path: ${{ matrix.assets.source }}/${{ matrix.assets.source }}
+          asset_name: ${{ matrix.assets.destination }}${{ needs.dependencies.outputs.version }}.pdf
           asset_content_type: application/pdf
