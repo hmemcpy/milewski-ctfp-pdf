@@ -55,11 +55,41 @@ let
       import
       ;
   };
+
+  #############################################################################
+  # Python Environment
+
+  # Pin the Python version and its associated package set in a single place.
+  python = pkgs.python38;
+  pythonPkgs = pkgs.python38Packages;
+
+  pygments-style-github = pythonPkgs.buildPythonPackage rec {
+    pname = "pygments-style-github";
+    version = "0.4";
+
+    doCheck = false; # Hopefully someone else has run the tests.
+
+    src = pythonPkgs.fetchPypi {
+      inherit pname version;
+      sha256 = "19zl8l5fyb8z3j8pdlm0zbgag669af66f8gn81ichm3x2hivvjhg";
+    };
+
+    # Anything depending on this derivation is probably also gonna want
+    # pygments to be available.
+    propagatedBuildInputs = with pythonPkgs; [ pygments ];
+  };
+
+  pythonEnv = python.withPackages (
+    pyPkgs: with pyPkgs; [
+      pygments
+      pygments-style-github
+    ]
+  );
 in
 
 pkgs.mkShell {
-  FONTCONFIG_FILE = pkgs.makeFontsConf { 
-    fontDirectories = with pkgs; [ inconsolata-lgc libertine libertinus]; 
+  FONTCONFIG_FILE = pkgs.makeFontsConf {
+    fontDirectories = with pkgs; [ inconsolata-lgc libertine libertinus ];
   };
 
   buildInputs = with pkgs; [
@@ -68,16 +98,9 @@ pkgs.mkShell {
     git
     python3Packages.virtualenv
     which
-    # LaTeX Environment.
+    # LaTeX Environment (with all associated libraries and packages).
     texliveEnv
+    # Python Environment (with all associated libraries and packages).
+    pythonEnv
   ];
-
-  shellHook = ''
-    # set SOURCE_DATE_EPOCH so that we can use python wheels
-    SOURCE_DATE_EPOCH=$(date +%s)
-    virtualenv venv
-    venv/bin/pip install -v pygments
-    venv/bin/pip install -v pygments-style-github
-    source venv/bin/activate
-  '';
 }
