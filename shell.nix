@@ -49,7 +49,10 @@ mkShell {
         enumitem
         environ
         trimspaces
-        l3packages;
+        l3packages
+        zref
+        catchfile
+        import;
       })
     gnumake
     which
