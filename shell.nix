@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {} }: with pkgs;
+{ pkgs ? import ./pinned.nix {} }: with pkgs;
 
 mkShell {
   FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ inconsolata-lgc libertine libertinus]; };
