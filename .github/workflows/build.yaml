@@ -4,84 +4,78 @@ on:
   - push
 
 jobs:
-  dependencies:
-    name: Build dependencies
+  determine-matrix:
+    name: Figure out the packages we need to build
     runs-on: ubuntu-latest
+
     outputs:
-      version: ${{ steps.version.outputs.version }}
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
 
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
-      - name: Create global variables
-        id: version
-        run: echo "::set-output name=version::$(git rev-parse --short HEAD)"
+      - name: Install the Nix package manager
+        uses: cachix/install-nix-action@v10
+
+      - id: set-matrix
+        run: |
+          echo "::set-output name=matrix::$(
+            nix-instantiate --eval --json --strict \
+              -E 'builtins.attrNames (import ./.).packages.x86_64-linux'
+          )"
 
   build:
     name: Build documents
-    needs: dependencies
+    needs: determine-matrix
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        sources:
-          - input: ctfp-print.tex
-            output: ctfp-print.pdf
-          - input: ctfp-reader.tex
-            output: ctfp-reader.pdf
-          - input: ctfp-print-scala.tex
-            output: ctfp-print-scala.pdf
-          - input: ctfp-reader-scala.tex
-            output: ctfp-reader-scala.pdf
-          - input: ctfp-reader-ocaml.tex
-            output: ctfp-reader-ocaml.pdf
-          - input: ctfp-print-ocaml.tex
-            output: ctfp-print-ocaml.pdf
+        packages: ${{fromJson(needs.determine-matrix.outputs.matrix)}}
 
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
-      - name: Create necessary build file (version.tex)
+      - name: Install the Nix package manager
+        uses: cachix/install-nix-action@v10
+
+      - name: Build documents using Nix (${{ matrix.packages }})
         run: |
-          echo -n -e "\\\newcommand{\OPTversion}{$(git rev-parse --short HEAD)}" > src/version.tex
+          document="$(echo $(nix-build --no-out-link -A \
+            packages.x86_64-linux.${{ matrix.packages }})/*.pdf)"
+          echo "::set-env name=DOCUMENT::$document"
+          echo "::set-env name=DOCUMENT_NAME::$(basename "$document")"
 
-      - name: Build documents using LaTeX (${{ matrix.sources.input }})
-        uses: xu-cheng/latex-action@v2
-        with:
-          working_directory: src
-          latexmk_use_xelatex: true
-          root_file: ${{ matrix.sources.input }}
-          latexmk_shell_escape: true
-
-      - name: Upload build assets (${{ matrix.sources.output }})
+      - name: Upload build assets for package ${{ matrix.packages }})
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ matrix.sources.output }}
-          path: src/${{ matrix.sources.output }}
+          name: ${{ env.DOCUMENT_NAME }}
+          path: ${{ env.DOCUMENT }}
+          if-no-files-found: error
 
   release:
     name: "Create Github tag/pre-release"
     runs-on: ubuntu-latest
-    needs: [dependencies,build]
+    needs: build
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
-      - name: Create Github pre-release (${{ needs.dependencies.outputs.version }})
+      - name: Create Github pre-release (${{ needs.build.outputs.version }})
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ needs.dependencies.outputs.version }}
-          release_name: Version ${{ needs.dependencies.outputs.version }}
+          tag_name: ${{ needs.build.outputs.version }}
+          release_name: Version ${{ needs.build.outputs.version }}
           draft: false
           prerelease: true
 
   assets:
     name: Upload release assets
     runs-on: ubuntu-latest
-    needs: [dependencies,release]
+    needs: release
     strategy:
       matrix:
         assets:
@@ -104,12 +98,12 @@ jobs:
           name: ${{ matrix.assets.source }}
           path: ${{ matrix.assets.source }}
 
-      - name: Upload release assets (${{ matrix.assets.destination }}${{ needs.dependencies.outputs.version }}.pdf)
+      - name: Upload release assets (${{ matrix.assets.destination }}${{ needs.build.outputs.version }}.pdf)
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.release.outputs.upload_url }}
           asset_path: ${{ matrix.assets.source }}/${{ matrix.assets.source }}
-          asset_name: ${{ matrix.assets.destination }}${{ needs.dependencies.outputs.version }}.pdf
+          asset_name: ${{ matrix.assets.destination }}${{ needs.build.outputs.version }}.pdf
           asset_content_type: application/pdf
