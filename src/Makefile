@@ -5,6 +5,7 @@
 
 DIR := $(shell pwd)
 GIT_VER := $(shell git describe --tags --always --long | tr -d '\n')
+OUTPUT_DIR := ../out/$(GIT_VER)
 
 OUTPUT = category-theory-for-programmers
 
@@ -54,7 +55,7 @@ $(TOPPDFFILES) : %.pdf : %.tex $(TEXFILES)
 	if which latexmk > /dev/null 2>&1 ;\
 	then \
 		latexmk -shell-escape -interaction=nonstopmode -halt-on-error -norc -jobname=ctfp -pdflatex="xelatex %O %S" -pdf $< ;\
-		mv ctfp.pdf ../out/$(GIT_VER)/$(subst ctfp,$(OUTPUT),$(subst ctfp-reader,$(OUTPUT),$*)).pdf ;\
+		mv ctfp.pdf $(OUTPUT_DIR)/$(subst ctfp,$(OUTPUT),$(subst ctfp-reader,$(OUTPUT),$*)).pdf ;\
 	else @printf "Error: unable to find latexmk. Is it installed?\n" ;\
 	fi
 
@@ -64,8 +65,8 @@ version.tex:
 	@printf '}' >> version.tex
 
 out-dir:
-	@printf 'Creating output directory: $(GIT_VER)\n'
-	mkdir -p ../out/$(GIT_VER)
+	@printf 'Creating output directory: $(OUTPUT_DIR)\n'
+	mkdir -p $(OUTPUT_DIR)
 
 clean:
 	rm -f *~ *.aux {ctfp-*}.{out,log,pdf,dvi,fls,fdb_latexmk,aux,brf,bbl,idx,ilg,ind,toc,sed}
