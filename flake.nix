@@ -86,54 +86,55 @@
       propagatedBuildInputs = with pythonPkgs; [ pygments ];
     };
 
-    pythonEnv = python.withPackages (
-      pyPkgs: with pyPkgs; [
-        pygments
-        pygments-style-github
-      ]
-    );
+    pythonEnv = python.withPackages (p: [ p.pygments pygments-style-github ]);
 
-    mkPackageName = edition:
-      "ctfp${lib.optionalString (edition != null) "-${edition}"}";
-
-    mkPackage = isShell: edition: pkgs.stdenv.mkDerivation {
-      name = mkPackageName edition;
-      src = if isShell then null else self;
-
-      makeFlags = [
-        "-C" "src" "OUTPUT_DIR=$(out)"
-        "GIT_VER=${self.rev or self.lastModifiedDate}"
-      ];
-
-      buildFlags = lib.optional (edition != null) edition;
-
-      dontInstall = true;
-
+    commonAttrs = {
+      nativeBuildInputs = [ texliveEnv pythonEnv pkgs.which ];
       FONTCONFIG_FILE = pkgs.makeFontsConf {
         fontDirectories = with pkgs; [ inconsolata-lgc libertine libertinus ];
       };
-
-      buildInputs = with pkgs; [
-        # Misc. build tooling.
-        gnumake
-        git
-        python3Packages.virtualenv
-        which
-        # LaTeX Environment (with all associated libraries and packages).
-        texliveEnv
-        # Python Environment (with all associated libraries and packages).
-        pythonEnv
-      ];
     };
 
+    mkLatex = variant: edition: let
+      maybeVariant = lib.optionalString (variant != null) "-${variant}";
+      maybeEdition = lib.optionalString (edition != null) "-${edition}";
+      variantStr = if variant == null then "reader" else variant;
+      suffix = maybeVariant + maybeEdition;
+      basename = "ctfp-${variantStr}${maybeEdition}";
+      version = self.shortRev or self.lastModifiedDate;
+    in pkgs.stdenv.mkDerivation (commonAttrs // {
+      name = "ctfp${suffix}-${version}";
+      inherit basename version;
+      fullname = "category-theory-for-programmers${suffix}";
+      src = "${self}/src";
+
+      configurePhase = ''
+        echo -n "\\newcommand{\\OPTversion}{$version}" > version.tex
+      '';
+
+      buildPhase = ''
+        latexmk -shell-escape -interaction=nonstopmode -halt-on-error \
+          -norc -jobname=ctfp -pdflatex="xelatex %O %S" -pdf "$basename.tex"
+      '';
+
+      installPhase = "install -m 0644 -vD ctfp.pdf \"$out/$fullname.pdf\"";
+
+      passthru.packageName = "ctfp${suffix}";
+    });
+
     editions = [ null "scala" "ocaml" ];
+    variants = [ null "print" ];
 
   in {
-    packages = lib.listToAttrs (map (edition: {
-      name = mkPackageName edition;
-      value = mkPackage false edition;
-    }) editions);
+    packages = lib.listToAttrs (lib.concatMap (variant: map (edition: rec {
+      name = value.packageName;
+      value = mkLatex variant edition;
+    }) editions) variants);
     defaultPackage = self.packages.${system}.ctfp;
-    devShell = mkPackage true null;
+    devShell = pkgs.mkShell (commonAttrs // {
+      nativeBuildInputs = commonAttrs.nativeBuildInputs ++ [
+        pkgs.git pkgs.gnumake
+      ];
+    });
   });
 }
