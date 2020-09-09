@@ -37,6 +37,10 @@ jobs:
             output: ctfp-reader-ocaml.pdf
           - input: ctfp-print-ocaml.tex
             output: ctfp-print-ocaml.pdf
+          - input: ctfp-reader-reason.tex
+            output: ctfp-reader-reason.pdf
+          - input: ctfp-print-reason.tex
+            output: ctfp-print-reason.pdf
 
     steps:
       - name: Set up Git repository
@@ -97,6 +101,10 @@ jobs:
             destination: category-theory-for-programmers--print--ocaml--
           - source: ctfp-reader-ocaml.pdf
             destination: category-theory-for-programmers--reader--ocaml--
+          - source: ctfp-print-reason.pdf
+            destination: category-theory-for-programmers--print--reason--
+          - source: ctfp-reader-reason.pdf
+            destination: category-theory-for-programmers--reader--reason--
     steps:
       - name: Download build assets (${{ matrix.assets.source }})
         uses: actions/download-artifact@v2

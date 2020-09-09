@@ -1,7 +1,7 @@
 # Igal Tabachnik, 2007.
 # Based on work by Andres Raba et al., 2013-2015.
 
-.PHONY: default all clean out-dir version.tex scala ocaml
+.PHONY: default all clean out-dir version.tex scala ocaml reason
 
 DIR := $(shell pwd)
 GIT_VER := $(shell git describe --tags --always --long | tr -d '\n')
@@ -16,8 +16,10 @@ SCALATEXFILES = ctfp-reader-scala.tex ctfp-print-scala.tex # todo make this a ma
 
 OCAMLTEXFILES = ctfp-reader-ocaml.tex ctfp-print-ocaml.tex # todo make this a macro
 
+REASONTEXFILES = ctfp-reader-reason.tex ctfp-print-reason.tex # todo make this a macro
+
 # Top-level LaTeX files from which CTFP book can be generated
-TOPTEXFILES = version.tex $(DEFAULTTOPTEX) $(SCALATEXFILES) $(OCAMLTEXFILES)
+TOPTEXFILES = version.tex $(DEFAULTTOPTEX) $(SCALATEXFILES) $(OCAMLTEXFILES) $(REASONTEXFILES)
 
 # Default PDF file to make
 DEFAULTPDF:=$(DEFAULTTOPTEX:.tex=.pdf)
@@ -28,6 +30,9 @@ SCALAPDF:=$(SCALATEXFILES:.tex=.pdf)
 # OCaml PDF file to make
 OCAMLPDF:=$(OCAMLTEXFILES:.tex=.pdf)
 
+# ReasonML PDF file to make
+REASONPDF:=$(REASONTEXFILES:.tex=.pdf)
+
 # Other PDF files for the CTFP book 
 TOPPDFFILES:=$(TOPTEXFILES:.tex=.pdf)
 
@@ -37,7 +42,7 @@ OPTFILES = opt-print-ustrade.tex \
 			opt-scala.tex
 
 # All the LaTeX files for the CTFP book in order of dependency
-TEXFILES = $(TOPTEXFILES) $(SCALATEXFILES) $(OCAMLTEXFILES) $(OPTFILES)
+TEXFILES = $(TOPTEXFILES) $(SCALATEXFILES) $(OCAMLTEXFILES) $(REASONTEXFILES) $(OPTFILES)
 
 default: suffix=''
 default: out-dir $(DEFAULTPDF) # todo cover
@@ -49,6 +54,9 @@ scala: clean out-dir version.tex $(SCALAPDF)
 
 ocaml: suffix='-ocaml'
 ocaml: clean out-dir version.tex $(OCAMLPDF)
+
+reason: suffix='-reason'
+reason: clean out-dir version.tex $(REASONPDF)
 
 # Main targets
 $(TOPPDFFILES) : %.pdf : %.tex $(TEXFILES)

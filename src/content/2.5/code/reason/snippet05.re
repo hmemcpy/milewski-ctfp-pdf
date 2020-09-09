@@ -1,0 +1,1 @@
+alpha(id) : f('a)

@@ -1,0 +1,1 @@
+let absurd: void => 'a
