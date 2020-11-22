@@ -267,7 +267,7 @@ management issues characteristic of C++):
 
 \begin{snip}{cpp}
 template<class T>
-class optional { 
+class optional {
     bool _isValid; // the tag
     T _v;
 public:
@@ -284,11 +284,11 @@ functions:
 \begin{snip}{cpp}
 template<class A, class B>
 std::function<optional<B>(optional<A>)>
-fmap(std::function<B(A)> f) { 
-    return [f](optional<A> opt) { 
-        if (!opt.isValid()) 
+fmap(std::function<B(A)> f) {
+    return [f](optional<A> opt) {
+        if (!opt.isValid())
             return optional<B>{};
-        else 
+        else
             return optional<B>{ f(opt.val()) };
     };
 }
@@ -298,10 +298,10 @@ returning a function. Here's the uncurried version of it:
 
 \begin{snip}{cpp}
 template<class A, class B>
-optional<B> fmap(std::function<B(A)> f, optional<A> opt) { 
+optional<B> fmap(std::function<B(A)> f, optional<A> opt) {
     if (!opt.isValid())
         return optional<B>{};
-    else 
+    else
         return optional<B>{ f(opt.val()) };
 }
 \end{snip}
@@ -396,9 +396,9 @@ back to the original definition of the uncurried \code{fmap}:
 
 \begin{snip}{cpp}
 template<class A, class B>
-optional<B> fmap(std::function<B(A)> f, optional<A> opt) { 
-    if (!opt.isValid()) 
-        return optional<B>{}; 
+optional<B> fmap(std::function<B(A)> f, optional<A> opt) {
+    if (!opt.isValid())
+        return optional<B>{};
     else
         return optional<B>{ f(opt.val()) };
 }
@@ -462,7 +462,7 @@ std::vector<B> fmap(std::function<B(A)> f, std::vector<A> v) {
     std::transform( std::begin(v)
                   , std::end(v)
                   , std::back_inserter(w)
-                  , f); 
+                  , f);
     return w;
 }
 \end{snip}
@@ -612,7 +612,7 @@ arguments --- which are compile-time --- and values, which are run-time:
 
 \begin{snip}{cpp}
 template<class C, class A>
-struct Const { 
+struct Const {
     Const(C v) : _v(v) {}
     C _v;
 };

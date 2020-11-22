@@ -345,7 +345,7 @@ Tree<B> * fmap(std::function<B(A)> f, Tree<A> * t) {
         return new Leaf<B>(f (pl->_label));
     Node<A> * pn = dynamic_cast<Node<A>*>(t);
     if (pn)
-        return new Node<B>( fmap<A>(f, pn->_left) 
+        return new Node<B>( fmap<A>(f, pn->_left)
                           , fmap<A>(f, pn->_right));
     return nullptr;
 }
