@@ -206,6 +206,8 @@ First the \code{Nothing} case:
   fmap g Nothing
 = { definition of fmap }
   fmap g (fmap f Nothing)
+= { definition of composition }
+  (fmap g . fmap f) Nothing
 \end{snip}
 And then the \code{Just} case:
 
