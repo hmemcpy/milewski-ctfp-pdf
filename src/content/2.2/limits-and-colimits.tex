@@ -39,7 +39,7 @@ to define our patterns.
 \centering
 \includegraphics[width=0.35\textwidth]{images/two.jpg}
 \end{figure}
-  
+
 \noindent
 But let's continue. The next step in the definition of a product is the
 selection of the candidate object $c$. Here again, we could
@@ -520,7 +520,7 @@ It will also come up with a set of constraints resulting from the rules
 of function application:
 
 \begin{snip}{haskell}
-t0 = t1 -> t2 -- because f is applied to x 
+t0 = t1 -> t2 -- because f is applied to x
 t0 = t2 -> t3 -- because f is applied to (f x)
 \end{snip}
 These constraints have to be unified by finding a set of types (or type
@@ -528,7 +528,7 @@ variables) that, when substituted for the unknown types in both
 expressions, produce the same type. One such substitution is:
 
 \begin{snip}{haskell}
-t1 = t2 = t3 = Int 
+t1 = t2 = t3 = Int
 twice :: (Int -> Int) -> Int -> Int
 \end{snip}
 but, obviously, it's not the most general one. The most general

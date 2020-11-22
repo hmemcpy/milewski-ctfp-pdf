@@ -156,18 +156,18 @@ diagrams commute:
   \begin{subfigure}
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
-    	L \arrow[rd, equal] \arrow[r, "L \circ \eta"] 
-          & L \circ R \circ L \arrow[d, "\epsilon \circ L"] \\
-    	    & L
+      L \arrow[rd, equal] \arrow[r, "L \circ \eta"]
+        & L \circ R \circ L \arrow[d, "\epsilon \circ L"] \\
+        & L
     \end{tikzcd}
   \end{subfigure}%
   \hspace{1cm}
   \begin{subfigure}
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
-      R \arrow[rd, equal] \arrow[r, "\eta \circ R"] 
-          & R \circ L \circ R \arrow[d, "R \circ \epsilon"] \\
-          & R
+      R \arrow[rd, equal] \arrow[r, "\eta \circ R"]
+        & R \circ L \circ R \arrow[d, "R \circ \epsilon"] \\
+        & R
     \end{tikzcd}
   \end{subfigure}
 \end{figure}
@@ -522,7 +522,7 @@ can be seen as an adjunction. Again, the trick is to concentrate on the
 statement:
 
 \begin{quote}
-For any other object $z$ with a morphism $g \Colon z\times{}a \to b$ 
+For any other object $z$ with a morphism $g \Colon z\times{}a \to b$
 there is a unique morphism $h \Colon z \to (a \Rightarrow b)$
 \end{quote}
 This statement establishes a mapping between hom-sets.

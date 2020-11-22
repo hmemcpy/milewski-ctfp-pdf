@@ -52,7 +52,7 @@ $T$ in anticipation of what follows):
   \begin{subfigure}
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
-      a \arrow[rd, equal] \arrow[r, "\eta_a"] 
+      a \arrow[rd, equal] \arrow[r, "\eta_a"]
           & Ta \arrow[d, "alg"] \\
           & a
     \end{tikzcd}
@@ -196,7 +196,7 @@ counit satisfy triangular identities. These are:
   \begin{subfigure}
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
-      Ta \arrow[rd, equal] \arrow[r, "T \eta_a"] 
+      Ta \arrow[rd, equal] \arrow[r, "T \eta_a"]
           & T(Ta) \arrow[d, "\mu_a"] \\
           & Ta
     \end{tikzcd}
@@ -205,7 +205,7 @@ counit satisfy triangular identities. These are:
   \begin{subfigure}
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
-      a \arrow[rd, equal] \arrow[r, "\eta_a"] 
+      a \arrow[rd, equal] \arrow[r, "\eta_a"]
           & Ta \arrow[d, "f"] \\
           & a
     \end{tikzcd}
@@ -292,7 +292,7 @@ In Haskell we'd write it as:
 \src{snippet06}
 We can also define a functor $G$ from $\cat{C}_T$
 back to $\cat{C}$. It takes an object $a$ from the Kleisli
-category and maps it to an object $T\ a$ in $\cat{C}$. Its action 
+category and maps it to an object $T\ a$ in $\cat{C}$. Its action
 on a morphism $f_{\cat{K}}$ corresponding to a Kleisli arrow:
 \[f \Colon a \to T\ b\]
 is a morphism in $\cat{C}$:
@@ -329,7 +329,7 @@ with a comonad. They make the following diagrams commute:
   \begin{subfigure}
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
-      a \arrow[rd, equal] 
+      a \arrow[rd, equal]
           & Wa \arrow[l, "\epsilon_a"'] \\
           & a \arrow[u, "coa"']
     \end{tikzcd}
