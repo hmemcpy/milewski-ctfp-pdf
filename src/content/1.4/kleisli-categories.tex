@@ -281,7 +281,8 @@ should pass its argument without change, and only contribute an empty
 string to the log:
 
 \begin{snip}{cpp}
-template<class A> Writer<A> identity(A x) {
+template<class A>
+Writer<A> identity(A x) {
     return make_pair(x, "");
 }
 \end{snip}
@@ -409,7 +410,8 @@ can, however, be represented by a function that returns an embellished
 type \code{optional}:
 
 \begin{snip}{cpp}
-template<class A> class optional {
+template<class A>
+class optional {
     bool _isValid;
     A _value;
 public:

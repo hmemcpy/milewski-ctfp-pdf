@@ -244,8 +244,8 @@ wildcards:
 In C++, we would use template functions, for instance:
 
 \begin{snip}{cpp}
-template<class A, class B> A
-fst(pair<A, B> const & p) {
+template<class A, class B>
+A fst(pair<A, B> const & p) {
     return p.first;
 }
 \end{snip}
