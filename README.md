@@ -38,7 +38,7 @@ To build the Scala edition, type:
 $ make scala
 ```
 
-Upon successful compilation, the files will be placed in the `out` directory next to `src`. 
+Upon successful compilation, the files will be placed in the `out` directory next to `src`.
 
 The file `preamble.tex` contains all the configuration and style declarations.
 

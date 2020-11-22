@@ -6,14 +6,14 @@
     11pt,
     marklength=0pt,
   ]{bookcover}
-  
+
   \usepackage{fancybox}
   \usepackage{wrapfig}
   \usepackage[many]{tcolorbox}
   \usetikzlibrary{calc,positioning, shadings}
   \usepackage[T1]{fontenc}
-  \usepackage{Alegreya} %% Option 'black' gives heavier bold face 
-  
+  \usepackage{Alegreya} %% Option 'black' gives heavier bold face
+
   \setmainfont{Alegreya Sans}[
     UprightFeatures={SmallCapsFont=* SC},
     ItalicFeatures={SmallCapsFont=* SC Italic},
@@ -42,12 +42,12 @@
     \end{tcolorbox}
   }
   \input{\olpath/version}
-  
+
   \definecolor{BackgroundColor}{HTML}{f3f6ed}
   \definecolor{SpineBackColor}{HTML}{262626}
-  
+
   \begin{document}
-  
+
   \begin{bookcover}
     \bookcovercomponent{color}{bg whole}{color=BackgroundColor}
     \bookcovercomponent{color}{spine}{color=SpineBackColor}
@@ -79,7 +79,7 @@
           \input{blurb}
           \vspace{.5cm}
         \end{minipage}
-        
+
         \begin{minipage}{.85\textwidth}
           \rule{\textwidth}{.5pt}
 

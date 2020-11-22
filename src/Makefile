@@ -33,7 +33,7 @@ OCAMLPDF:=$(OCAMLTEXFILES:.tex=.pdf)
 # ReasonML PDF file to make
 REASONPDF:=$(REASONTEXFILES:.tex=.pdf)
 
-# Other PDF files for the CTFP book 
+# Other PDF files for the CTFP book
 TOPPDFFILES:=$(TOPTEXFILES:.tex=.pdf)
 
 # Configuration files
@@ -81,5 +81,5 @@ clean:
 	if which latexmk > /dev/null 2>&1 ; then latexmk -CA; fi
 	rm -rf ../out
 
-clean-minted: 
+clean-minted:
 	rm -rf _minted-*
