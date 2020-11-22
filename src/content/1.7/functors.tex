@@ -266,7 +266,7 @@ argument may be passed, with copy semantics, and with the resource
 management issues characteristic of C++):
 
 \begin{snip}{cpp}
-template<class T>
+template<typename T>
 class optional {
     bool _isValid; // the tag
     T _v;
@@ -282,7 +282,7 @@ mapping of types. It maps any type \code{T} to a new type
 functions:
 
 \begin{snip}{cpp}
-template<class A, class B>
+template<typename A, typename B>
 std::function<optional<B>(optional<A>)>
 fmap(std::function<B(A)> f) {
     return [f](optional<A> opt) {
@@ -297,7 +297,7 @@ This is a higher order function, taking a function as an argument and
 returning a function. Here's the uncurried version of it:
 
 \begin{snip}{cpp}
-template<class A, class B>
+template<typename A, typename B>
 optional<B> fmap(std::function<B(A)> f, optional<A> opt) {
     if (!opt.isValid())
         return optional<B>{};
@@ -380,7 +380,7 @@ parameterize \code{fmap} with a \newterm{template template parameter}
 \code{F}. This is the syntax for it:
 
 \begin{snip}{cpp}
-template<template<class> F, class A, class B>
+template<template<typename> F, typename A, typename B>
 F<B> fmap(std::function<B(A)>, F<A>);
 \end{snip}
 We would like to be able to specialize this template for different
@@ -388,14 +388,14 @@ functors. Unfortunately, there is a prohibition against partial
 specialization of template functions in C++. You can't write:
 
 \begin{snip}{cpp}
-template<class A, class B>
+template<typename A, typename B>
 optional<B> fmap<optional>(std::function<B(A)> f, optional<A> opt)
 \end{snip}
 Instead, we have to fall back on function overloading, which brings us
 back to the original definition of the uncurried \code{fmap}:
 
 \begin{snip}{cpp}
-template<class A, class B>
+template<typename A, typename B>
 optional<B> fmap(std::function<B(A)> f, optional<A> opt) {
     if (!opt.isValid())
         return optional<B>{};
@@ -456,7 +456,7 @@ container. The implementation of \code{fmap} for \code{std::vector}
 is just a thin encapsulation of \code{std::transform}:
 
 \begin{snip}{cpp}
-template<class A, class B>
+template<typename A, typename B>
 std::vector<B> fmap(std::function<B(A)> f, std::vector<A> v) {
     std::vector<B> w;
     std::transform( std::begin(v)
@@ -611,7 +611,7 @@ those words!), where there is a stronger distinction between type
 arguments --- which are compile-time --- and values, which are run-time:
 
 \begin{snip}{cpp}
-template<class C, class A>
+template<typename C, typename A>
 struct Const {
     Const(C v) : _v(v) {}
     C _v;
@@ -622,7 +622,7 @@ argument and essentially re-casts the \code{Const} argument without
 changing its value:
 
 \begin{snip}{cpp}
-template<class C, class A, class B>
+template<typename C, typename A, typename B>
 Const<C, B> fmap(std::function<B(A)> f, Const<C, A> c) {
     return Const<C, B>{c._v};
 }

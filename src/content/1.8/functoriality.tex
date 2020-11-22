@@ -305,15 +305,15 @@ support dynamic casting, so we'll make the destructor virtual (which is
 a good idea in any case):
 
 \begin{snip}{cpp}
-template<class T>
-struct Tree {
+template<typename T>
+struct Tree { 
     virtual ~Tree() {}
 };
 \end{snip}
 The \code{Leaf} is just an \code{Identity} functor in disguise:
 
 \begin{snip}{cpp}
-template<class T>
+template<typename T>
 struct Leaf : public Tree<T> {
     T _label;
     Leaf(T l) : _label(l) {}
@@ -322,7 +322,7 @@ struct Leaf : public Tree<T> {
 The \code{Node} is a product type:
 
 \begin{snip}{cpp}
-template<class T>
+template<typename T>
 struct Node : public Tree<T> {
     Tree<T> * _left;
     Tree<T> * _right;
@@ -338,7 +338,7 @@ analyzing code in these terms, but it's a good exercise in categorical
 thinking.
 
 \begin{snip}{cpp}
-template<class A, class B>
+template<typename A, typename B>
 Tree<B> * fmap(std::function<B(A)> f, Tree<A> * t) {
     Leaf<A> * pl = dynamic_cast <Leaf<A>*>(t);
     if (pl)

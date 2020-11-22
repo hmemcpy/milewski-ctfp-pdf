@@ -180,13 +180,13 @@ The closest one can get to declaring a monoid in C++ would be to use the
 C++20 standard's concept feature.
 
 \begin{snip}{cpp}
-template<class T>
+template<typename T>
 struct mempty;
 
-template<class T>
+template<typename T>
 T mappend(T, T) = delete;
 
-template<class M>
+template<typename M>
 concept Monoid = requires (M m) {
     { mempty<M>::value() } -> std::same_as<M>;
     { mappend(m, m) } -> std::same_as<M>;
