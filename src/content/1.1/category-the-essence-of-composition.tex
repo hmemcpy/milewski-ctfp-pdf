@@ -131,7 +131,7 @@ implementation is the same for every type, which means this function is
 universally polymorphic. In C++ we could define it as a template:
 
 \begin{snip}{cpp}
-template<class T> T id(T x) { return x; }
+template<typename T> T id(T x) { return x; }
 \end{snip}
 Of course, in C++ nothing is that simple, because you have to take into
 account not only what you're passing but also how (that is, by value, by

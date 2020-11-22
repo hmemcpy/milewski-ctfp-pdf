@@ -120,7 +120,7 @@ encapsulates a pair whose first component is a value of arbitrary type
 \code{A} and the second component is a string:
 
 \begin{snip}{cpp}
-template<class A>
+template<typename A>
 using Writer = pair<A, string>;
 \end{snip}
 Here are the embellished functions:
@@ -226,7 +226,7 @@ embellished functions that are composable according to our rules, and
 return a third embellished function:
 
 \begin{snip}{cpp}
-template<class A, class B, class C>
+template<typename A, typename B, typename C>
 function<Writer<C>(A)> compose(function<Writer<B>(A)> m1,
                                function<Writer<C>(B)> m2)
 {
@@ -281,7 +281,7 @@ should pass its argument without change, and only contribute an empty
 string to the log:
 
 \begin{snip}{cpp}
-template<class A>
+template<typename A>
 Writer<A> identity(A x) {
     return make_pair(x, "");
 }
@@ -410,7 +410,7 @@ can, however, be represented by a function that returns an embellished
 type \code{optional}:
 
 \begin{snip}{cpp}
-template<class A>
+template<typename A>
 class optional {
     bool _isValid;
     A _value;
