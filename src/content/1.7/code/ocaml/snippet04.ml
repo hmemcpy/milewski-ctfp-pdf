@@ -1,4 +1,5 @@
-let f' f = function
-  | None -> None
-  | Some x -> Some (f x)
-;;
+module type Maybe_Functor = sig
+  type a
+  type b
+  val fmap : (a -> b) -> (a option -> b option)
+end

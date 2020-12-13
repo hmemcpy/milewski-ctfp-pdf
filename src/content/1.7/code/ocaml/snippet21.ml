@@ -1,7 +1,3 @@
-module type T = sig
-  type t
-end
-
-module Partially_Applied_FunctionType (T : T) = struct
-  type 'b t = T.t -> 'b
+module type Reader_Fmap_Example = sig
+  val fmap : ('a -> 'b) -> ('r -> 'a) -> 'r -> 'b
 end
