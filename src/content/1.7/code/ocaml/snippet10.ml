@@ -1,4 +1,5 @@
-module type Eq = sig 
-  type a 
-  val (==) : a -> a -> bool 
-end 
+module type Eq = sig
+  type a
+
+  val ( == ) : a -> a -> bool
+end

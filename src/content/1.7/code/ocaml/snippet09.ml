@@ -1,8 +1,10 @@
-module Test_Functor_Compose(F: Functor) = struct 
-    open F
+module Test_Functor_Compose (F : Functor) = struct
+  open F
 
-    (* Compose *)
-    let <.> f g x = f (g x)
+  (* Compose *)
+  let ( <.> ) f g x = f (g x)
 
-    let test_compose f g x = assert (fmap (f <.> g) x = fmap f (fmap g x))
+  let test_compose f g x =
+    assert (fmap (f <.> g) x = fmap f (fmap g x))
+  ;;
 end
