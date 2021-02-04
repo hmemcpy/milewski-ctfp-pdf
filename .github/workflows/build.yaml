@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: Create global variables
         id: version
@@ -44,7 +44,7 @@ jobs:
 
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: Create necessary build file (version.tex)
         run: |
@@ -77,8 +77,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ needs.dependencies.outputs.version }}
-          release_name: Version ${{ needs.dependencies.outputs.version }}
+          tag_name: v${{ github.run_number }}-${{ needs.dependencies.outputs.version }}
+          release_name: Version ${{ github.run_number }} (${{ needs.dependencies.outputs.version }})
           draft: false
           prerelease: true
 
