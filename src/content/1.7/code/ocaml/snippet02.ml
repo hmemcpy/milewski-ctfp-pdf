@@ -1,3 +1,6 @@
-type 'a option =
-  | None
-  | Some of 'a
+module type AtoB = sig
+  type a
+  type b
+
+  val f : a -> b
+end

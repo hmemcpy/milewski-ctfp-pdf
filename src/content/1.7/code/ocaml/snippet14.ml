@@ -1,5 +1,8 @@
-module type Functor = sig
-  type 'a t
+module Option_Functor : Functor with type 'a t = 'a option = struct
+  type 'a t = 'a option
 
-  val fmap : ('a -> 'b) -> 'a t -> 'b t
+  let fmap f = function
+    | None -> None
+    | Some x -> Some (f x)
+  ;;
 end

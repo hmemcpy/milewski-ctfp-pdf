@@ -1,3 +1,5 @@
-module type Reader_Fmap_Example = sig
-  val fmap : ('a -> 'b) -> ('r -> 'a) -> 'r -> 'b
+module Reader_Functor (T : T) : Functor = struct
+  type 'a t = T.t -> 'a
+
+  let fmap f ra r = f (ra r)
 end

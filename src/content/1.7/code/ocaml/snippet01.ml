@@ -1,1 +1,3 @@
-let compose f g x = f (g x)
+type 'a option =
+  | None
+  | Some of 'a
