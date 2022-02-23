@@ -126,7 +126,7 @@
       ];
     };
 
-    editions = [ null "scala" "ocaml" ];
+    editions = [ null "scala" "ocaml" "reason" ];
 
   in {
     packages = lib.listToAttrs (map (edition: {
