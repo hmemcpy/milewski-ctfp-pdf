@@ -5,8 +5,9 @@
   inputs.utils.url = "github:numtide/flake-utils";
 
   outputs = { self, nixpkgs, utils }: utils.lib.eachDefaultSystem (system: let
-    pkgs = nixpkgs.legacyPackages.${system};
     inherit (nixpkgs) lib;
+
+    pkgs = nixpkgs.legacyPackages.${system};
 
     ###########################################################################
     # LaTeX Environment
@@ -86,57 +87,63 @@
       propagatedBuildInputs = with pythonPkgs; [ pygments ];
     };
 
-    pythonEnv = python.withPackages (
-      pyPkgs: with pyPkgs; [
-        pygments
-        pygments-style-github
-      ]
-    );
+    pythonEnv = python.withPackages (p: [ p.pygments pygments-style-github ]);
 
-    mkPackageName = edition:
-      "ctfp${lib.optionalString (edition != null) "-${edition}"}";
-
-    mkPackage = isShell: edition: pkgs.stdenv.mkDerivation {
-      name = mkPackageName edition;
-      src = if isShell then null else self;
-
-      makeFlags = [
-        "-C" "src" "OUTPUT_DIR=$(out)"
-        "GIT_VER=${self.rev or self.lastModifiedDate}"
-      ];
-
-      buildFlags = lib.optional (edition != null) edition;
-
-      dontInstall = true;
-
+    commonAttrs = {
+      nativeBuildInputs = [ texliveEnv pythonEnv pkgs.which ];
       FONTCONFIG_FILE = pkgs.makeFontsConf {
         fontDirectories = with pkgs; [ inconsolata-lgc libertine libertinus ];
       };
-
-      buildInputs = with pkgs; [
-        # Misc. build tooling.
-        gnumake
-        git
-        python3Packages.virtualenv
-        which
-        # LaTeX Environment (with all associated libraries and packages).
-        texliveEnv
-        # Python Environment (with all associated libraries and packages).
-        pythonEnv
-      ];
     };
 
+    mkLatex = variant: edition: let
+      maybeVariant = lib.optionalString (variant != null) "-${variant}";
+      maybeEdition = lib.optionalString (edition != null) "-${edition}";
+      variantStr = if variant == null then "reader" else variant;
+      suffix = maybeVariant + maybeEdition;
+      basename = "ctfp-${variantStr}${maybeEdition}";
+      version = self.shortRev or self.lastModifiedDate;
+    in pkgs.stdenv.mkDerivation (commonAttrs // {
+      inherit basename version;
+
+      name = "ctfp${suffix}-${version}";
+      fullname = "ctfp${suffix}";
+      src = "${self}/src";
+
+      configurePhase = ''
+        echo -n "\\newcommand{\\OPTversion}{$version}" > version.tex
+      '';
+
+      buildPhase = ''
+        latexmk -shell-escape -interaction=nonstopmode -halt-on-error \
+          -norc -jobname=ctfp -pdflatex="xelatex %O %S" -pdf "$basename.tex"
+      '';
+
+      installPhase = "install -m 0644 -vD ctfp.pdf \"$out/$fullname.pdf\"";
+
+      passthru.packageName = "ctfp${suffix}";
+    });
+
     editions = [ null "scala" "ocaml" "reason" ];
-
+    variants = [ null "print" ];
   in {
-    # Nix build
-    packages = lib.listToAttrs (map (edition: {
-      name = mkPackageName edition;
-      value = mkPackage false edition;
-    }) editions);
+    # nix build .#ctfp
+    # nix build .#ctfp-print
+    # nix build .#ctfp-print-ocaml
+    # etc etc
+    packages = lib.listToAttrs (lib.concatMap (variant: map (edition: rec {
+      name = value.packageName;
+      value = mkLatex variant edition;
+    }) editions) variants);
 
+    # nix build .
     defaultPackage = self.packages.${system}.ctfp;
 
-    devShell = mkPackage true null;
+    # nix develop .
+    devShell = pkgs.mkShell (commonAttrs // {
+      nativeBuildInputs = commonAttrs.nativeBuildInputs ++ [
+        pkgs.git pkgs.gnumake
+      ];
+    });
   });
 }
