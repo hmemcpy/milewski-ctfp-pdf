@@ -5,7 +5,7 @@
 
 DIR := $(shell pwd)
 GIT_VER := $(shell git describe --tags --always --long | tr -d '\n')
-OUTPUT_DIR := ../out/$(GIT_VER)
+OUTPUT_DIR := ../out
 
 OUTPUT = category-theory-for-programmers
 
@@ -33,7 +33,7 @@ OCAMLPDF:=$(OCAMLTEXFILES:.tex=.pdf)
 # ReasonML PDF file to make
 REASONPDF:=$(REASONTEXFILES:.tex=.pdf)
 
-# Other PDF files for the CTFP book 
+# Other PDF files for the CTFP book
 TOPPDFFILES:=$(TOPTEXFILES:.tex=.pdf)
 
 # Configuration files
@@ -47,7 +47,7 @@ TEXFILES = $(TOPTEXFILES) $(SCALATEXFILES) $(OCAMLTEXFILES) $(REASONTEXFILES) $(
 default: suffix=''
 default: out-dir $(DEFAULTPDF) # todo cover
 
-all: clean default scala ocaml
+all: clean default scala ocaml reason
 
 scala: suffix='-scala'
 scala: clean out-dir version.tex $(SCALAPDF)
@@ -81,5 +81,5 @@ clean:
 	if which latexmk > /dev/null 2>&1 ; then latexmk -CA; fi
 	rm -rf ../out
 
-clean-minted: 
+clean-minted:
 	rm -rf _minted-*

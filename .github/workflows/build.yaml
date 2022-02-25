@@ -25,49 +25,50 @@ jobs:
     strategy:
       matrix:
         sources:
-          - input: ctfp-print.tex
-            output: ctfp-print.pdf
-          - input: ctfp-reader.tex
-            output: ctfp-reader.pdf
-          - input: ctfp-print-scala.tex
-            output: ctfp-print-scala.pdf
-          - input: ctfp-reader-scala.tex
-            output: ctfp-reader-scala.pdf
-          - input: ctfp-reader-ocaml.tex
-            output: ctfp-reader-ocaml.pdf
-          - input: ctfp-print-ocaml.tex
-            output: ctfp-print-ocaml.pdf
-          - input: ctfp-reader-reason.tex
-            output: ctfp-reader-reason.pdf
-          - input: ctfp-print-reason.tex
-            output: ctfp-print-reason.pdf
+          - input: ctfp
+            output:
+              reader: category-theory-for-programmers.pdf
+              print: category-theory-for-programmers-print.pdf
+          - input: ctfp-scala
+            output:
+              reader: category-theory-for-programmers-scala.pdf
+              print: category-theory-for-programmers-print-scala.pdf
+          - input: ctfp-reason
+            output:
+              reader: category-theory-for-programmers-reason.pdf
+              print: category-theory-for-programmers-print-reason.pdf
+          - input: ctfp-ocaml
+            output:
+              reader: category-theory-for-programmers-ocaml.pdf
+              print: category-theory-for-programmers-print-ocaml.pdf
 
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
 
       - name: Create necessary build file (version.tex)
         run: |
           echo -n -e "\\\newcommand{\OPTversion}{$(git rev-parse --short HEAD)}" > src/version.tex
+      - name: Install Nix
+        uses: cachix/install-nix-action@v16
 
-      - name: Build documents using LaTeX (${{ matrix.sources.input }})
-        uses: xu-cheng/latex-action@v2
-        with:
-          working_directory: src
-          latexmk_use_xelatex: true
-          root_file: ${{ matrix.sources.input }}
-          latexmk_shell_escape: true
-
-      - name: Upload build assets (${{ matrix.sources.output }})
+      - name: Build ${{ matrix.sources.input }}
+        run: |
+          nix build .#${{ matrix.sources.input }}
+          mkdir -p out
+          cp -ar ./result/* out/
+      - name: Upload build assets (${{ matrix.sources.output.print }})
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ matrix.sources.output }}
-          path: src/${{ matrix.sources.output }}
+          name: ctfp
+          path: out/*
 
   release:
     name: "Create Github tag/pre-release"
     runs-on: ubuntu-latest
-    needs: [dependencies,build]
+    needs: [dependencies, build]
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
@@ -85,39 +86,39 @@ jobs:
   assets:
     name: Upload release assets
     runs-on: ubuntu-latest
-    needs: [dependencies,release]
+    needs: [dependencies, release]
     strategy:
       matrix:
         assets:
-          - source: ctfp-print.pdf
-            destination: category-theory-for-programmers--print--
-          - source: ctfp-reader.pdf
-            destination: category-theory-for-programmers--
-          - source: ctfp-print-scala.pdf
-            destination: category-theory-for-programmers--print--scala--
-          - source: ctfp-reader-scala.pdf
-            destination: category-theory-for-programmers--reader--scala--
-          - source: ctfp-print-ocaml.pdf
-            destination: category-theory-for-programmers--print--ocaml--
-          - source: ctfp-reader-ocaml.pdf
-            destination: category-theory-for-programmers--reader--ocaml--
-          - source: ctfp-print-reason.pdf
-            destination: category-theory-for-programmers--print--reason--
-          - source: ctfp-reader-reason.pdf
-            destination: category-theory-for-programmers--reader--reason--
+          - source: category-theory-for-programmers-print.pdf
+            destination: category-theory-for-programmers--print
+          - source: category-theory-for-programmers.pdf
+            destination: category-theory-for-programmers
+          - source: category-theory-for-programmers-print-scala.pdf
+            destination: category-theory-for-programmers--print--scala
+          - source: category-theory-for-programmers-scala.pdf
+            destination: category-theory-for-programmers--reader--scala
+          - source: category-theory-for-programmers-print-ocaml.pdf
+            destination: category-theory-for-programmers--print--ocaml
+          - source: category-theory-for-programmers-ocaml.pdf
+            destination: category-theory-for-programmers--reader--ocaml
+          - source: category-theory-for-programmers-print-reason.pdf
+            destination: category-theory-for-programmers--print--reason
+          - source: category-theory-for-programmers-reason.pdf
+            destination: category-theory-for-programmers--reader--reason
     steps:
       - name: Download build assets (${{ matrix.assets.source }})
         uses: actions/download-artifact@v2
         with:
-          name: ${{ matrix.assets.source }}
-          path: ${{ matrix.assets.source }}
+          name: ctfp
+          path: ctfp
 
-      - name: Upload release assets (${{ matrix.assets.destination }}${{ needs.dependencies.outputs.version }}.pdf)
+      - name: Upload release assets (${{ matrix.assets.destination }}--${{ needs.dependencies.outputs.version }}.pdf)
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.release.outputs.upload_url }}
-          asset_path: ${{ matrix.assets.source }}/${{ matrix.assets.source }}
-          asset_name: ${{ matrix.assets.destination }}${{ needs.dependencies.outputs.version }}.pdf
+          asset_path: ctfp/${{ matrix.assets.source }}
+          asset_name: ${{ matrix.assets.destination }}--${{ needs.dependencies.outputs.version }}.pdf
           asset_content_type: application/pdf
