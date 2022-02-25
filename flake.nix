@@ -1,7 +1,7 @@
 {
   description = "Category Theory for Programmers";
 
-  inputs.nixpkgs.url = "nixpkgs/nixos-20.03";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
   inputs.utils.url = "github:numtide/flake-utils";
 
   outputs = { self, nixpkgs, utils }: utils.lib.eachDefaultSystem (system: let
@@ -129,11 +129,14 @@
     editions = [ null "scala" "ocaml" "reason" ];
 
   in {
+    # Nix build
     packages = lib.listToAttrs (map (edition: {
       name = mkPackageName edition;
       value = mkPackage false edition;
     }) editions);
+
     defaultPackage = self.packages.${system}.ctfp;
+
     devShell = mkPackage true null;
   });
 }
