@@ -1,4 +1,4 @@
-name: Build
+name: Build PDFs
 
 on:
   - push
@@ -13,34 +13,20 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
 
       - name: Create global variables
         id: version
         run: echo "::set-output name=version::$(git rev-parse --short HEAD)"
 
-  build:
-    name: Build documents
-    needs: dependencies
+  determine-matrix:
+    name: Figure out the packages we need to build
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        sources:
-          - input: ctfp
-            output:
-              reader: category-theory-for-programmers.pdf
-              print: category-theory-for-programmers-print.pdf
-          - input: ctfp-scala
-            output:
-              reader: category-theory-for-programmers-scala.pdf
-              print: category-theory-for-programmers-print-scala.pdf
-          - input: ctfp-reason
-            output:
-              reader: category-theory-for-programmers-reason.pdf
-              print: category-theory-for-programmers-print-reason.pdf
-          - input: ctfp-ocaml
-            output:
-              reader: category-theory-for-programmers-ocaml.pdf
-              print: category-theory-for-programmers-print-ocaml.pdf
+    needs: [dependencies]
+
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
 
     steps:
       - name: Set up Git repository
@@ -48,18 +34,40 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Create necessary build file (version.tex)
+      - name: Install the Nix package manager
+        uses: cachix/install-nix-action@v16
+
+      - id: set-matrix
         run: |
-          echo -n -e "\\\newcommand{\OPTversion}{$(git rev-parse --short HEAD)}" > src/version.tex
+          echo "::set-output name=matrix::$(
+            nix eval --json --impure \
+              --expr 'builtins.attrNames (import ./.).packages.x86_64-linux'
+          )"
+
+  build:
+    name: Build documents
+    needs: determine-matrix
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        packages: ${{fromJson(needs.determine-matrix.outputs.matrix)}}
+
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
       - name: Install Nix
         uses: cachix/install-nix-action@v16
 
-      - name: Build ${{ matrix.sources.input }}
+      - name: Build ${{ matrix.packages }}.pdf
         run: |
-          nix build .#${{ matrix.sources.input }}
+          nix build .#${{ matrix.packages }}
           mkdir -p out
           cp -ar ./result/* out/
-      - name: Upload build assets (${{ matrix.sources.output.print }})
+
+      - name: Upload build assets (${{ matrix.packages }}.pdf)
         uses: actions/upload-artifact@v2
         with:
           name: ctfp
@@ -86,39 +94,24 @@ jobs:
   assets:
     name: Upload release assets
     runs-on: ubuntu-latest
-    needs: [dependencies, release]
+    needs: [determine-matrix, dependencies, release]
     strategy:
       matrix:
-        assets:
-          - source: category-theory-for-programmers-print.pdf
-            destination: category-theory-for-programmers--print
-          - source: category-theory-for-programmers.pdf
-            destination: category-theory-for-programmers
-          - source: category-theory-for-programmers-print-scala.pdf
-            destination: category-theory-for-programmers--print--scala
-          - source: category-theory-for-programmers-scala.pdf
-            destination: category-theory-for-programmers--reader--scala
-          - source: category-theory-for-programmers-print-ocaml.pdf
-            destination: category-theory-for-programmers--print--ocaml
-          - source: category-theory-for-programmers-ocaml.pdf
-            destination: category-theory-for-programmers--reader--ocaml
-          - source: category-theory-for-programmers-print-reason.pdf
-            destination: category-theory-for-programmers--print--reason
-          - source: category-theory-for-programmers-reason.pdf
-            destination: category-theory-for-programmers--reader--reason
+        packages: ${{fromJson(needs.determine-matrix.outputs.matrix)}}
+
     steps:
-      - name: Download build assets (${{ matrix.assets.source }})
+      - name: Download build assets (${{ matrix.packages }}.pdf)
         uses: actions/download-artifact@v2
         with:
           name: ctfp
           path: ctfp
 
-      - name: Upload release assets (${{ matrix.assets.destination }}--${{ needs.dependencies.outputs.version }}.pdf)
+      - name: Upload release assets (${{ matrix.packages }}--${{ needs.dependencies.outputs.version }}.pdf)
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.release.outputs.upload_url }}
-          asset_path: ctfp/${{ matrix.assets.source }}
-          asset_name: ${{ matrix.assets.destination }}--${{ needs.dependencies.outputs.version }}.pdf
+          asset_path: ctfp/${{ matrix.packages }}.pdf
+          asset_name: ${{ matrix.packages }}--${{ needs.dependencies.outputs.version }}.pdf
           asset_content_type: application/pdf
