@@ -22,7 +22,21 @@ This is an *unofficial* PDF version of "Category Theory for Programmers" by Bart
 Building
 --------
 
-The best way to build the book is using the [Nix](https://nixos.org/nix/) package manager. After [installing Nix](https://nixos.org/download.html), if you're using a non-NixOS operating system, you need to install `nixFlakes` in your environment following [these steps](https://nixos.wiki/wiki/Flakes#Non-NixOS). 
+The best way to build the book is using the [Nix](https://nixos.org/nix/) package manager. After [installing Nix](https://nixos.org/download.html), if you're using a non-NixOS operating system, you need to install `nixFlakes` in your environment following the steps below ([source](https://nixos.wiki/wiki/Flakes#Non-NixOS)):
+
+```bash
+$ nix-env -iA nixpkgs.nixFlakes
+```
+
+Edit either `~/.config/nix/nix.conf` or `/etc/nix/nix.conf` and add:
+
+```
+experimental-features = nix-command flakes
+```
+
+This is needed to expose the Nix 2.0 CLI and flakes support that are hidden behind feature-flags.
+
+Also, if the Nix installation is in multi-user mode, don’t forget to restart the nix-daemon. 
 
 Afterwards, type `nix flake show` in the root directory of the project to see all the available versions of this book. Then type `nix build .#<edition>` to build the edition you want (Haskell, Scala, OCaml, Reason and their printed versions). For example, to build the Scala edition you'll have to type `nix build .#ctfp-scala`.
 
