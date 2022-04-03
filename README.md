@@ -22,23 +22,11 @@ This is an *unofficial* PDF version of "Category Theory for Programmers" by Bart
 Building
 --------
 
-The best way to build the book is using the [Nix](https://nixos.org/nix/) package manager. After installing Nix, type `nix-shell` in the root directory of the project. This will download all the needed dependencies and tools to build the book (TeXLive, required fonts and packages, Pygments theme for syntax highligting, etc.)
+The best way to build the book is using the [Nix](https://nixos.org/nix/) package manager. After [installing Nix](https://nixos.org/download.html), if you're using a non-NixOS operating system, you need to install `nixFlakes` in your environment following [these steps](https://nixos.wiki/wiki/Flakes#Non-NixOS). 
 
-When the download is complete, and you're prompted with a shell, use the instructions below to build the book.
+Afterwards, type `nix flake show` in the root directory of the project to see all the available versions of this book. Then type `nix build .#<edition>` to build the edition you want (Haskell, Scala, OCaml, Reason and their printed versions). For example, to build the Scala edition you'll have to type `nix build .#ctfp-scala`.
 
-The `src` directory contains the LaTeX sources. To recompile the book, go there and enter:
-
-```bash
-$ make
-```
-
-To build the Scala edition, type:
-
-```bash
-$ make scala
-```
-
-Upon successful compilation, the files will be placed in the `out` directory next to `src`. 
+Upon successful compilation, the PDF file will be placed in the `result` directory inside the root directory `milewski-ctfp-pdf` of the repository. 
 
 The file `preamble.tex` contains all the configuration and style declarations.
 
