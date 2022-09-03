@@ -223,7 +223,7 @@ can be easily made bidirectional or extended to two or more dimensions.
 
 Defining a comonad in category theory is a straightforward exercise in
 duality. As with the monad, we start with an endofunctor \code{T}. The
-two natural transformations, η and μ, that define the monad are simply
+two natural transformations, $\eta$ and $\mu$, that define the monad are simply
 reversed for the comonad:
 \begin{align*}
 \varepsilon &\Colon T \to I \\
@@ -238,7 +238,7 @@ reverses an adjunction: the left adjoint becomes the right adjoint and
 vice versa. And, since the composition $R \circ L$ defines a monad,
 $L \circ R$ must define a comonad. The counit of the adjunction:
 \[\varepsilon \Colon L \circ R \to I\]
-is indeed the same ε that we see in the definition of the comonad ---
+is indeed the same $\varepsilon$ that we see in the definition of the comonad ---
 or, in components, as Haskell's \code{extract}. We can also use the
 unit of the adjunction:
 \[\eta \Colon I \to R \circ L\]
