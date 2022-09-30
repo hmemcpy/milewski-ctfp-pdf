@@ -1,1 +1,1 @@
-def identity (α : A) : A := α
+def identity (a : A) : A := a
