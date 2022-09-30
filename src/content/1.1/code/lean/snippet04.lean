@@ -1,5 +1,3 @@
-def f: A → B
-def g: B → C
-def h: C → D
+variable (f : A → B) (g : B → C) (h: C → D)
 
 h ∘ (g ∘ f) == (h ∘ g) ∘ f == h ∘ g ∘ f
