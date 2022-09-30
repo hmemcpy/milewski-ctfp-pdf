@@ -1,1 +1,1 @@
-def identity (a : A) : A := a
+def identity (A : Type) (α : A) : A := α
