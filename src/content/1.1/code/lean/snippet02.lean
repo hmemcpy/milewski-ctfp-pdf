@@ -1,1 +1,1 @@
-variable g: B → C
+variable (g: B → C)
