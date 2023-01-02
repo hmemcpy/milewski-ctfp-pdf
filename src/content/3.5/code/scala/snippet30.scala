@@ -1,1 +1,1 @@
-def getChar: Unit => IO[Unit]
+def getChar: Unit => IO[Char]
