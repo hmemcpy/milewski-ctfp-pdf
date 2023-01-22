@@ -115,7 +115,9 @@ horizontal composition of two natural transformations:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/assoc1.png}
+\begin{tikzcd}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    C \arrow[r, bend left=50, "T^2"{name=U, above}] \arrow[r, bend right=50, "T"{name=D, below}] & C \arrow[Rightarrow, from=U, to=D, "\mu"] \arrow[r, bend left=50, "T"{name=U, above}] \arrow[r, bend right=50, "T"{name=D, below}] & C \arrow[Rightarrow, from=U, to=D, "I_T"]
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -132,7 +134,17 @@ We can also draw the diagram in the (endo-) functor category ${[}\cat{C}, \cat{C
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{images/assoc2.png}
+\begin{tikzpicture}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \def\colspace{1.8}
+    \def\rowspace{2}
+    \node (P0) at (0*\rowspace, 1*\colspace) {$T^3$};
+    \node (P1) at (1*\rowspace, 0*\colspace) {$T$};
+    \node (P2) at (0*\rowspace, 0*\colspace) {$T^2$};
+
+    \path[commutative diagrams/.cd,every arrow, every label,line width=0.2mm]
+        (P0) edge node {$T\circ\mu$} (P2)
+        (P2) edge node {$\mu$} (P1);
+\end{tikzpicture}
 \end{figure}
 
 \noindent
@@ -143,7 +155,20 @@ require that the two paths produce the same result.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{images/assoc.png}
+\begin{tikzpicture}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \def\colspace{1.8}
+    \def\rowspace{2}
+    \node (P0) at (0*\rowspace, 1*\colspace) {$T^3$};
+    \node (P1) at (1*\rowspace, 0*\colspace) {$T$};
+    \node (P2) at (0*\rowspace, 0*\colspace) {$T^2$};
+    \node (P4) at (1*\rowspace, 1*\colspace) {$T^2$};
+
+    \path[commutative diagrams/.cd,every arrow, every label,line width=0.2mm]
+        (P0) edge node {$T\circ\mu$} (P2)
+        (P2) edge node {$\mu$} (P1)
+        (P0) edge node {$T\circ\mu$} (P4)
+        (P4) edge node {$\mu$} (P1);
+\end{tikzpicture}
 \end{figure}
 
 \noindent
@@ -156,7 +181,21 @@ be true for $T \circ \eta$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/unitlawcomp-1.png}
+\begin{tikzpicture}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \def\colspace{1.5}
+    \def\rowspace{2}
+    \node (P0) at (0*\rowspace, 1*\colspace) {$I\circ T$};
+    \node (P1) at (1*\rowspace, 1*\colspace) {$T^2$};
+    \node (P2) at (2*\rowspace, 1*\colspace) {$T\circ I$};
+    \node (P3) at (1*\rowspace, 0*\colspace) {$T$};
+
+    \path[commutative diagrams/.cd,every arrow, every label,line width=0.2mm]
+        (P0) edge node {$\eta\,\circ\, T$} (P1)
+        (P1) edge node {$T\,\circ\,\eta$} (P2)
+        (P0) edge node {} (P3)
+        (P1) edge node {$\eta$} (P3)
+        (P2) edge node {} (P3);
+\end{tikzpicture}
 \end{figure}
 
 \noindent
@@ -276,7 +315,11 @@ isomorphisms. The laws can be represented by commuting diagrams.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{images/assocmon.png}
+\begin{tikzcd}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    (a\times a) \times a \arrow[rr, "\alpha"] & & a\times (a\times a) \\
+    a\times a \arrow[from=1-1, "\mu\times id"] & & a\times a \arrow[from=1-3, "id\times\mu"] \\
+     & a \arrow[from=2-1, "\mu"] \arrow[from=2-3, "\mu"'] & \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -351,12 +394,19 @@ be expressed in terms of the following commuting diagrams:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{images/assoctensor.jpg}
+\begin{tikzcd}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    (m\otimes m) \otimes m \arrow[rr, "\alpha"] & & m\otimes (m\otimes m) \\
+    m\otimes m \arrow[from=1-1, "\mu\otimes id"] & & m\otimes m \arrow[from=1-3, "id\otimes\mu"] \\
+     & m \arrow[from=2-1, "\mu"] \arrow[from=2-3, "\mu"'] & \\
+\end{tikzcd}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{images/unitmon.jpg}
+\begin{tikzcd}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    i\otimes m \arrow[r, "\eta\otimes id"] \arrow[dr, "\lambda"] & m\otimes m \arrow[d, "\mu"] & m\otimes i \arrow[l, "id\otimes\eta"] \arrow[dl, "\rho"] \\
+     & m & \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -396,7 +446,9 @@ which you may recognize as the special case of horizontal composition.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/horizcomp.png}
+\begin{tikzcd}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    C \arrow[r, bend left=50, "F"{name=U, above}] \arrow[r, bend right=50, "F'"{name=D, below}] & C \arrow[Rightarrow, from=U, to=D] \arrow[r, bend left=50, "G"{name=U, above}] \arrow[r, bend right=50, "G'"{name=D, below}] & C \arrow[Rightarrow, from=U, to=D]
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -418,12 +470,42 @@ Not only that, here are the monoid laws:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/assoc.png}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \def\colspace{1.8}
+    \def\rowspace{2}
+    \node (P0) at (0*\rowspace, 1*\colspace) {$T^3$};
+    \node (P1) at (1*\rowspace, 0*\colspace) {$T$};
+    \node (P2) at (0*\rowspace, 0*\colspace) {$T^2$};
+    \node (P4) at (1*\rowspace, 1*\colspace) {$T^2$};
+
+    \path[commutative diagrams/.cd,every arrow, every label,line width=0.2mm]
+        (P0) edge node {$T\circ\mu$} (P2)
+        (P2) edge node {$\mu$} (P1)
+        (P0) edge node {$T\circ\mu$} (P4)
+        (P4) edge node {$\mu$} (P1);
+\end{tikzpicture}
+\end{figure}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{images/unitlawcomp.png}
+\begin{tikzpicture}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \def\colspace{1.8}
+    \def\rowspace{2}
+    \node (P0) at (0*\rowspace, 1*\colspace) {$T\circ I$};
+    \node (P1) at (1*\rowspace, 1*\colspace) {$T^2$};
+    \node (P2) at (2*\rowspace, 1*\colspace) {$I\circ T$};
+    \node (P3) at (1*\rowspace, 0*\colspace) {$T$};
+
+    \path[commutative diagrams/.cd,every arrow, every label,line width=0.2mm]
+        (P0) edge node {$\eta\,\circ\, T$} (P1)
+        (P1) edge node {$T\,\circ\,\eta$} (P2)
+        (P0) edge node {} (P3)
+        (P1) edge node {$\eta$} (P3)
+        (P2) edge node {} (P3);
+\end{tikzpicture}
 \end{figure}
 
 \noindent

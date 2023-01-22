@@ -60,7 +60,12 @@ of the natural transformation (which are also morphisms).
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.35\textwidth]{images/3_naturality.jpg}
+\begin{tikzcd}[row sep=large,column sep=large]
+     & F_a \arrow[dd, dashed, pos=0.7, "F_f"] \arrow[dr, "\alpha_a"] & \\
+    a \arrow[rr, crossing over] \arrow[ur] \arrow[dd, "f"] & & G_a \arrow[dd, "G_f"] \\
+     & F_b \arrow[dr, "\alpha_b"] & \\
+    b \arrow[rr] \arrow[ur] & & G_b \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -78,7 +83,33 @@ corresponding to G.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.35\textwidth]{images/sheets.png}
+\begin{tikzpicture}[scale=1.15]
+    \def\between{0.85}
+    \def\length{1.7}
+    \def\arclen{1.3}
+    \draw (-\between/2,0) arc (0:-90:1) -- (-1-\between/2,\length)
+        arc (-90:0:1) -- cycle;
+    \draw (\between/2,0) arc (-180:-90:1) -- (1+\between/2,\length)
+        arc (-90:-180:1) -- cycle;
+
+    \def\nodecoordright{\between/2+0.5}
+    \def\nodecoordleft{-\between/2-0.5}
+    \def\nodecoordhigh{\length*0.85}
+    \def\nodecoordlow{\length*0}
+    \node (Ga) at (\nodecoordright, \nodecoordhigh) {$Ga$};
+    \node (Fa) at (\nodecoordleft, \nodecoordhigh) {$Fa$};
+    \node (Gb) at (\nodecoordright, \nodecoordlow) {$Gb$};
+    \node (Fb) at (\nodecoordleft, \nodecoordlow) {$Fb$};
+    \node (a) at (4*\nodecoordleft, \nodecoordhigh) {$a$};
+    \node (b) at (4*\nodecoordleft, \nodecoordlow) {$b$};
+
+    \path[commutative diagrams/.cd,every arrow, every label,line width=0.2mm]
+        (Fa) edge node {$\alpha_a$} (Ga)
+        (Fa) edge node[swap] {$Ff$} (Fb)
+        (Ga) edge node {$Gf$} (Gb)
+        (Fb) edge node {$\alpha_b$} (Gb)
+        (a) edge node[swap] {$f$} (b);
+\end{tikzpicture}
 \end{figure}
 
 \noindent

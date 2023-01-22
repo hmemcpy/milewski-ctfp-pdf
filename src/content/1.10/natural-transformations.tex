@@ -77,7 +77,12 @@ that complete the diagram in \emph{D}:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/3_naturality.jpg}
+\begin{tikzcd}[row sep=large,column sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+     & F a \arrow[dd, dashed, pos=0.7, "F f"] \arrow[dr, "\alpha_a"] & \\
+    a \arrow[rr, crossing over] \arrow[ur] \arrow[dd, "f"] & & G a \arrow[dd, "G_f"] \\
+     & F b \arrow[dr, "\alpha_b"] & \\
+    b \arrow[rr] \arrow[ur] & & G b \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -95,7 +100,10 @@ $\alpha_a$ along $f$:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/4_transport.jpg}
+\begin{tikzcd}[row sep=huge,column sep=huge,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    F a \arrow[r, "\alpha_a"] \arrow[d, swap, bend right=30, "F f"] & G a \arrow[d, "G f"]\\
+    F b \arrow[r, dashed, "\alpha_b"] \arrow[u, swap, dashed, bend right=30, "(F f)^{-1}"] & G b
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -406,7 +414,11 @@ $\beta \cdot \alpha$ --- the composition of two natural transformations $\beta$ 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/5_vertical.jpg}
+\begin{tikzcd}[row sep=large,column sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+     & & F a \arrow[dr, "\alpha a"] \arrow[dd, dashed, out=0, in=0, looseness=2.5, "(\beta\cdot\alpha) a"] & \\
+    a \arrow[urr, "F"] \arrow[rrr, "G"] \arrow[drr, "H"] & & & G a \arrow[dl, "\beta a"] \\
+     & & H a & \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -416,7 +428,13 @@ composition is indeed a natural transformation from F to H:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.35\textwidth]{images/6_verticalnaturality.jpg}
+\begin{tikzcd}[row sep=large,column sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+     & & & F a \arrow[dl, "\alpha_a"] \arrow[dd, "F f"] \\
+    a \arrow[urrr, "F"] \arrow[rr, "G"] \arrow[dr, "H"] \arrow[dd, "f"] & & G a \arrow[dl, "\beta_a"] & \\
+     & H a & & F b \arrow[dl, "\alpha_b"] \\
+    b \arrow[urrr, dashed] \arrow[rr, dashed] \arrow[dr]  & & G b \arrow[dl, "\beta_b"] \arrow[from=uu, crossing over, "G f"] & \\
+     & H b \arrow[from=uu, crossing over, pos=0.41, "H f"] & & \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -439,7 +457,9 @@ horizontal composition shortly.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{images/6a_vertical.jpg}
+\begin{tikzcd}[column sep=huge,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \mathcal{C} \arrow[r, bend left=65, pos=.37, "F"] \arrow[r, pos=.2, "G"] \arrow[r, bend right=65, pos=.2, "H"] \arrow[r, bend left=65, ""{name=U, below}] \arrow[r, ""{name=M, below}] \arrow[r, bend right=65, ""{name=D, below}] & \mathcal{D} \arrow[Rightarrow, from=U, to=M, "\alpha"] \arrow[Rightarrow, from=M, to=D, "\beta"]
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -548,7 +568,9 @@ respectively, on functors $F$ and $G$:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/10_horizontal.jpg}
+\begin{tikzcd}[cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    \mathcal{C} \arrow[r, bend left=50, "F"{name=U, above}] \arrow[r, bend right=50, "F'"{name=D, below}] & \mathcal{D} \arrow[Rightarrow, from=U, to=D, "\alpha"] \arrow[r, bend left=50, "G"{name=U, above}] \arrow[r, bend right=50, "G'"{name=D, below}] & \mathcal{E} \arrow[Rightarrow, from=U, to=D, "\beta"]
+\end{tikzcd}
 \end{figure}
 
 \noindent

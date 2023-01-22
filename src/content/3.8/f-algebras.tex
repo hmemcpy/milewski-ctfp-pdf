@@ -209,7 +209,10 @@ be equal:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{images/alg.png}
+\begin{tikzcd}[column sep=large,row sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    F a \arrow[r, "F m"] \arrow[d, "f"] & F b \arrow[d, "g"] \\
+    a \arrow[r, "m"] & b \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -228,7 +231,10 @@ homomorphism, the following diagram must commute:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{images/alg2.png}
+\begin{tikzcd}[column sep=large,row sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    F i \arrow[r, "F m"] \arrow[d, "j"] & Fa \arrow[d, "f"] \\
+    i \arrow[r, "m"] & a \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -243,7 +249,10 @@ diagram must commute:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{images/alg3a.png}
+\begin{tikzcd}[column sep=large,row sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    F i \arrow[r, "F m"] \arrow[d, "j"] & F(F i) \arrow[d, "F j"] \\
+    i \arrow[r, "m"] & Fi \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -252,7 +261,10 @@ same!):
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{images/alg3.png}
+\begin{tikzcd}[column sep=large,row sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    F(F i) \arrow[r, "F j"] \arrow[d, "F j"] & F i \arrow[d, "j"] \\
+    F i \arrow[r, "j"] & i \\
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -262,7 +274,10 @@ glue these two diagrams together to get:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.6\textwidth]{images/alg4.png}
+\begin{tikzcd}[column sep=large,row sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    F i \arrow[r, "F m"] \arrow[d, "j"] & F(F i) \arrow[d, "F j"] \arrow[r, "F j"] & F i \arrow[d, "j"] \\
+    i \arrow[r, "m"] & F i \arrow[r, "j"] & i\\
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -319,7 +334,10 @@ algebra whose carrier is \code{a} and the evaluator is \code{alg}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/alg5.png}
+\begin{tikzcd}[column sep=large,row sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    f(Fix\,f) \arrow[r, "f\,map\,m"] \arrow[d, "Fix"] & fa \arrow[d, "alg"] \\
+    Fix\,f \arrow[r, "m"] & a
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -333,7 +351,10 @@ one arrow in this diagram to get:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/alg6.png}
+\begin{tikzcd}[column sep=large,row sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    f(Fix\,f) \arrow[r, "f\,map\,m"] \arrow[from=d, "unFix"] & fa \arrow[d, "alg"] \\
+    Fix\,f \arrow[r, "m"] & a
+\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -432,7 +453,10 @@ homomorphism $m$ that makes the following diagram commute:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{images/alg7.png}
+\begin{tikzcd}[column sep=large,row sep=large,cells={nodes={font=\fontsize{10}{6}\selectfont}}]
+    F t & F a \arrow[l, "F m"{above}] \\
+    t \arrow[u, "u"{right}] & a \arrow[u, "f"{right}] \arrow[l, "m"{above}]
+\end{tikzcd}
 \end{figure}
 
 \noindent
