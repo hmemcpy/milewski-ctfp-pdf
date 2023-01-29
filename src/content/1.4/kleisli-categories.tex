@@ -400,6 +400,23 @@ freedom which makes it possible to give simple denotational semantics to
 programs that in imperative languages are traditionally implemented
 using side effects.
 
+But, what is the real purpose of this concept from the perspective of a 
+programmer? Improved code maintainability. Recall that the \code{process}
+function can actually be written without using the fish operator:
+
+\begin{snip}{hs}
+process :: String -> Writer [String]
+process s = 
+    let (s' , log)  = upCase s   in
+    let (s'', log') = toWords s' in
+    (s'', log ++ log')
+\end{snip}
+
+However, this piece of code is not only harder to comprehend, it is also
+difficult to modify (imagine that you want to add new operations or 
+change the sequence of exisitng operations). That is why we need to leverage 
+the power of Kleisli Categories along with the fish operator.  
+
 \section{Challenge}
 
 A function that is not defined for all possible values of its argument
