@@ -29,7 +29,7 @@ An algebra for the same endofunctor is a selection of a particular
 object --- the carrier $a$ --- together with the morphism:
 \[alg \Colon m\ a \to a\]
 The first thing to notice is that the algebra goes in the opposite
-direction to $\eta_aa$. The intuition is that $\eta_a$ creates a
+direction to $\eta_a$. The intuition is that $\eta_a$ creates a
 trivial expression from a value of type $a$. The first coherence
 condition that makes the algebra compatible with the monad ensures that
 evaluating this expression using the algebra whose carrier is $a$
@@ -52,7 +52,7 @@ $T$ in anticipation of what follows):
   \begin{subfigure}
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
-      a \arrow[rd, equal] \arrow[r, "\eta_a"] 
+      a \arrow[rd, equal] \arrow[r, "\eta_a"]
           & Ta \arrow[d, "alg"] \\
           & a
     \end{tikzcd}
@@ -196,7 +196,7 @@ counit satisfy triangular identities. These are:
   \begin{subfigure}
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
-      Ta \arrow[rd, equal] \arrow[r, "T \eta_a"] 
+      Ta \arrow[rd, equal] \arrow[r, "T \eta_a"]
           & T(Ta) \arrow[d, "\mu_a"] \\
           & Ta
     \end{tikzcd}
@@ -205,7 +205,7 @@ counit satisfy triangular identities. These are:
   \begin{subfigure}
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
-      a \arrow[rd, equal] \arrow[r, "\eta_a"] 
+      a \arrow[rd, equal] \arrow[r, "\eta_a"]
           & Ta \arrow[d, "f"] \\
           & a
     \end{tikzcd}
@@ -220,7 +220,7 @@ We have established that the two functors form an adjunction:
 \[F^T \dashv U^T\]
 Every adjunction gives rise to a monad. The round trip
 \[U^T \circ F^T\]
-is the endofunctor in C that gives rise to the corresponding monad.
+is the endofunctor in $\cat{C}$ that gives rise to the corresponding monad.
 Let's see what its action on an object $a$ is. The free algebra
 created by $F^T$ is $(T\ a, \mu_a)$. The forgetful functor
 $U^T$ drops the evaluator. So, indeed, we have:
@@ -292,7 +292,7 @@ In Haskell we'd write it as:
 \src{snippet06}
 We can also define a functor $G$ from $\cat{C}_T$
 back to $\cat{C}$. It takes an object $a$ from the Kleisli
-category and maps it to an object $T\ a$ in $\cat{C}$. Its action 
+category and maps it to an object $T\ a$ in $\cat{C}$. Its action
 on a morphism $f_{\cat{K}}$ corresponding to a Kleisli arrow:
 \[f \Colon a \to T\ b\]
 is a morphism in $\cat{C}$:
@@ -329,7 +329,7 @@ with a comonad. They make the following diagrams commute:
   \begin{subfigure}
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
-      a \arrow[rd, equal] 
+      a \arrow[rd, equal]
           & Wa \arrow[l, "\epsilon_a"'] \\
           & a \arrow[u, "coa"']
     \end{tikzcd}

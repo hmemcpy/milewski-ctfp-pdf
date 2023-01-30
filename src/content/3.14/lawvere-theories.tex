@@ -112,8 +112,8 @@ corresponding to all $n$-element sets in $\cat{FinSet}$ that have been
 identified through isomorphisms.
 
 Using the category $\cat{F}$ we can formally define a \newterm{Lawvere
-theory} as a category $\cat{L}$ equipped with a special functor
-\[I_{\cat{L}} :: \Fop \to \cat{L}\]
+theory} as a category $\cat{L}$ equipped with a special functor:
+\[I_{\cat{L}} \Colon \Fop \to \cat{L}\]
 This functor must be a bijection on objects and it must preserve finite
 products (products in $\Fop$ are the same as
 coproducts in $\cat{F}$):
@@ -496,7 +496,7 @@ identified.
 \begin{tikzcd}
   & a^n \times \cat{L}(m, 1)
     \arrow[dl, "\langle f {,} \id \rangle"']
-    \arrow[dr, "\langle \id {,} f \rangle"] 
+    \arrow[dr, "\langle \id {,} f \rangle"]
     & \\
 a^m \times \cat{L}(m, 1)
   & \scalebox{2.5}[1]{\sim}
@@ -518,7 +518,7 @@ when we lift $\langle f, \id \rangle$ and:
 \[a^n \times \cat{L}(n, 1)\]
 when we lift $\langle \id, f \rangle$. This doesn't
 mean, however, that all elements of $a^n \times \cat{L}(n, 1)$ can be
-identified with $a × \cat{L}(1, 1)$. That's because not all elements
+identified with $a \times \cat{L}(1, 1)$. That's because not all elements
 of $\cat{L}(n, 1)$ can be reached from $\cat{L}(1, 1)$. Remember
 that we can only lift morphisms from $\cat{F}$. A non-trivial $n$-ary
 operation in $\cat{L}$ cannot be constructed by lifting a morphism
@@ -579,7 +579,7 @@ by lifting $0 \to n$ in two different ways.
 \begin{tikzcd}
   & a^n \times \cat{L}(0, 1)
     \arrow[dl, "\langle f {,} \id \rangle"']
-    \arrow[dr, "\langle \id {,} f \rangle"] 
+    \arrow[dr, "\langle \id {,} f \rangle"]
     & \\
 a^0 \times \cat{L}(0, 1)
   & \scalebox{2.5}[1]{\sim}

@@ -320,7 +320,7 @@ For instance a (pure) function from \code{Bool} is completely
 specified by a pair of values: one corresponding to \code{False}, and
 one corresponding to \code{True}. The set of all possible functions
 from \code{Bool} to, say, \code{Int} is the set of all pairs of
-\code{Int}s. This is the same as the product \code{Int} × \code{Int} or,
+\code{Int}s. This is the same as the product \code{Int} \times \code{Int} or,
 being a little creative with notation, \code{Int}\textsuperscript{2}.
 
 For another example, let's look at the C++ type \code{char}, which
@@ -330,7 +330,7 @@ C++ Standard Library that are usually implemented using lookups.
 Functions like \code{isupper} or \code{isspace} are implemented
 using tables, which are equivalent to tuples of 256 Boolean values. A
 tuple is a product type, so we are dealing with products of 256
-Booleans: \code{bool × bool × bool × ... × bool}. We know from
+Booleans: \code{bool \times bool \times bool \times ... \times bool}. We know from
 arithmetics that an iterated product defines a power. If you
 ``multiply'' \code{bool} by itself 256 (or \code{char}) times, you
 get \code{bool} to the power of \code{char}, or \code{bool}\textsuperscript{\code{char}}.
