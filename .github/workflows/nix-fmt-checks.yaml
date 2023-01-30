@@ -1,0 +1,17 @@
+name: Nix formatter checks
+
+on:
+  pull_request:
+
+jobs:
+  format-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v18
+
+      - name: Run nix formatter tool
+        run: nix fmt . -- --check

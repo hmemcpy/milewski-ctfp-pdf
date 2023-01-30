@@ -1,7 +1,9 @@
 name: Build PDFs
 
 on:
-  - push
+  push:
+    branches:
+      - master
 
 jobs:
   dependencies:
@@ -12,9 +14,7 @@ jobs:
 
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
+        uses: actions/checkout@v3
 
       - name: Create global variables
         id: version
@@ -30,12 +30,10 @@ jobs:
 
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
+        uses: actions/checkout@v3
 
       - name: Install the Nix package manager
-        uses: cachix/install-nix-action@v16
+        uses: cachix/install-nix-action@v18
 
       - id: set-matrix
         run: |
@@ -54,12 +52,10 @@ jobs:
 
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
+        uses: actions/checkout@v3
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v16
+        uses: cachix/install-nix-action@v18
 
       - name: Build ${{ matrix.packages }}.pdf
         run: |
@@ -80,14 +76,18 @@ jobs:
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
-      - name: Create Github pre-release (${{ needs.dependencies.outputs.version }})
+      - name:
+          Create Github pre-release (${{ needs.dependencies.outputs.version }})
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ github.run_number }}-${{ needs.dependencies.outputs.version }}
-          release_name: Version ${{ github.run_number }} (${{ needs.dependencies.outputs.version }})
+          tag_name:
+            v${{ github.run_number }}-${{ needs.dependencies.outputs.version }}
+          release_name:
+            Version ${{ github.run_number }} (${{
+            needs.dependencies.outputs.version }})
           draft: false
           prerelease: true
 
@@ -106,12 +106,16 @@ jobs:
           name: ctfp
           path: ctfp
 
-      - name: Upload release assets (${{ matrix.packages }}--${{ needs.dependencies.outputs.version }}.pdf)
+      - name:
+          Upload release assets (${{ matrix.packages }}--${{
+          needs.dependencies.outputs.version }}.pdf)
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.release.outputs.upload_url }}
           asset_path: ctfp/${{ matrix.packages }}.pdf
-          asset_name: ${{ matrix.packages }}--${{ needs.dependencies.outputs.version }}.pdf
+          asset_name:
+            ${{ matrix.packages }}--${{ needs.dependencies.outputs.version
+            }}.pdf
           asset_content_type: application/pdf
