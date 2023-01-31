@@ -167,8 +167,10 @@
               '';
 
               buildPhase = ''
-                latexmk -file-line-error -shell-escape -logfilewarninglist -interaction=nonstopmode -halt-on-error \
-                  -norc -jobname=ctfp -pdflatex="xelatex %O %S" -pdfxe "$basename.tex"
+                latexmk -file-line-error -shell-escape -logfilewarninglist \
+                        -interaction=nonstopmode -halt-on-error \
+                        -norc -jobname=ctfp -pdflatex="xelatex %O %S" \
+                        -pdfxe "$basename.tex"
               '';
 
               installPhase = "install -m 0644 -vD ctfp.pdf \"$out/$fullname.pdf\"";
