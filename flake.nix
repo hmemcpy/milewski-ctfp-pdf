@@ -27,6 +27,31 @@
         pkgs = nixpkgs.legacyPackages.${system};
 
         ###########################################################################
+        # LaTeX font
+        inconsolata-lgc-latex = pkgs.stdenvNoCC.mkDerivation {
+          name = "inconsolata-lgc-latex";
+          pname = "inconsolata-lgc-latex";
+
+          src = pkgs.inconsolata-lgc;
+
+          dontConfigure = true;
+          sourceRoot = ".";
+
+
+
+          installPhase = ''
+            runHook preInstall
+
+            find $src -name '*.ttf' -exec install -m644 -Dt $out/fonts/truetype/public/inconsolata-lgc/ {} \;
+            find $src -name '*.otf' -exec install -m644 -Dt $out/fonts/opentype/public/inconsolata-lgc/ {} \;
+
+            runHook postInstall
+          '';
+
+          tlType = "run";
+        };
+
+        ###########################################################################
         # LaTeX Environment
         texliveEnv = pkgs.texlive.combine {
           inherit
@@ -51,9 +76,11 @@
             ifplatform
             imakeidx
             import
+            inconsolata
             l3packages
             lettrine
             libertine
+            libertinus-fonts
             listings
             mdframed
             microtype
@@ -64,7 +91,7 @@
             newtx
             noindentafter
             nowidow
-            scheme-medium
+            scheme-full
             subfigure
             subfiles
             textpos
@@ -81,14 +108,18 @@
             xstring
             zref
             ;
+
+          inconsolata-lgc-latex = {
+            pkgs = [inconsolata-lgc-latex];
+          };
         };
 
         ###########################################################################
         # Python Environment
 
         # Pin the Python version and its associated package set in a single place.
-        python = pkgs.python310;
-        pythonPkgs = pkgs.python310Packages;
+        python = pkgs.python311;
+        pythonPkgs = pkgs.python311Packages;
 
         pygments-style-github = pythonPkgs.buildPythonPackage rec {
           pname = "pygments-style-github";
@@ -110,9 +141,6 @@
 
         commonAttrs = {
           nativeBuildInputs = [texliveEnv pythonEnv pkgs.which];
-          FONTCONFIG_FILE = pkgs.makeFontsConf {
-            fontDirectories = with pkgs; [inconsolata-lgc libertine libertinus];
-          };
         };
 
         mkLatex = variant: edition: let
@@ -135,12 +163,12 @@
               src = "${self}/src";
 
               configurePhase = ''
-                echo -n "\\newcommand{\\OPTversion}{$version}" > version.tex
+                substituteInPlace "version.tex" --replace "dev" "${version}"
               '';
 
               buildPhase = ''
-                latexmk -shell-escape -interaction=nonstopmode -halt-on-error \
-                  -norc -jobname=ctfp -pdflatex="xelatex %O %S" -pdf "$basename.tex"
+                latexmk -file-line-error -shell-escape -logfilewarninglist -interaction=nonstopmode -halt-on-error \
+                  -norc -jobname=ctfp -pdflatex="xelatex %O %S" -pdfxe "$basename.tex"
               '';
 
               installPhase = "install -m 0644 -vD ctfp.pdf \"$out/$fullname.pdf\"";

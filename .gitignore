@@ -1,4 +1,5 @@
 .vscode/
+/build/
 *.fls
 _minted*
 *.fdb_latexmk
@@ -6,7 +7,6 @@ out/*
 *.pdf
 *.xdv
 *.gz
-src/version.tex
 *.pyg
 *.synctex(busy)
 src/.dotty-ide-disabled
