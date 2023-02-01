@@ -12,11 +12,11 @@ object $B$ to object $C$, then there must be an arrow --- their composition
 --- that goes from $A$ to $C$.
 
 \begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{images/img_1330.jpg}
-\caption{In a category, if there is an arrow going from $A$ to $B$ and an arrow going from $B$ to $C$
-then there must also be a direct arrow from $A$ to $C$ that is their composition. This diagram is not a full
-category because it’s missing identity morphisms (see later).}
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/img_1330.jpg}
+  \caption{In a category, if there is an arrow going from $A$ to $B$ and an arrow going from $B$ to $C$
+    then there must also be a direct arrow from $A$ to $C$ that is their composition. This diagram is not a full
+    category because it’s missing identity morphisms (see later).}
 \end{figure}
 
 \section{Arrows as Functions}
@@ -100,30 +100,30 @@ There are two extremely important properties that the composition in any
 category must satisfy.
 
 \begin{enumerate}
-\item
-Composition is associative. If you have three morphisms, $f$, $g$, and $h$,
-that can be composed (that is, their objects match end-to-end), you
-don't need parentheses to compose them. In math notation this is
-expressed as:
-\[h \circ (g \circ f) = (h \circ g) \circ f = h \circ g \circ f\]
-In (pseudo) Haskell:
+  \item
+        Composition is associative. If you have three morphisms, $f$, $g$, and $h$,
+        that can be composed (that is, their objects match end-to-end), you
+        don't need parentheses to compose them. In math notation this is
+        expressed as:
+        \[h \circ (g \circ f) = (h \circ g) \circ f = h \circ g \circ f\]
+        In (pseudo) Haskell:
 
-\src{snippet04}[b]
-(I said ``pseudo,'' because equality is not defined for functions.)
+        \src{snippet04}[b]
+        (I said ``pseudo,'' because equality is not defined for functions.)
 
-Associativity is pretty obvious when dealing with functions, but it may
-be not as obvious in other categories.
+        Associativity is pretty obvious when dealing with functions, but it may
+        be not as obvious in other categories.
 
-\item
-For every object $A$ there is an arrow which is a unit of composition.
-This arrow loops from the object to itself. Being a unit of composition
-means that, when composed with any arrow that either starts at $A$ or ends
-at $A$, respectively, it gives back the same arrow. The unit arrow for
-object A is called $\idarrow[A]$ (\newterm{identity} on $A$). In math
-notation, if $f$ goes from $A$ to $B$ then
-\[f \circ \idarrow[A] = f\]
-and
-\[\idarrow[B] \circ f = f\]
+  \item
+        For every object $A$ there is an arrow which is a unit of composition.
+        This arrow loops from the object to itself. Being a unit of composition
+        means that, when composed with any arrow that either starts at $A$ or ends
+        at $A$, respectively, it gives back the same arrow. The unit arrow for
+        object A is called $\idarrow[A]$ (\newterm{identity} on $A$). In math
+        notation, if $f$ goes from $A$ to $B$ then
+        \[f \circ \idarrow[A] = f\]
+        and
+        \[\idarrow[B] \circ f = f\]
 \end{enumerate}
 When dealing with functions, the identity arrow is implemented as the
 identity function that just returns back its argument. The
@@ -209,7 +209,7 @@ imposed on us by computers. It reflects the limitations of the human
 mind. Our brains can only deal with a small number of concepts at a
 time. One of the most cited papers in psychology,
 \urlref{http://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two}{The
-Magical Number Seven, Plus or Minus Two}, postulated that we can only
+  Magical Number Seven, Plus or Minus Two}, postulated that we can only
 keep $7 \pm 2$ ``chunks'' of information in our minds. The details of our
 understanding of the human short-term memory might be changing, but we
 know for sure that it's limited. The bottom line is that we are unable
@@ -251,23 +251,23 @@ advantages of your programming paradigm.
 \section{Challenges}
 
 \begin{enumerate}
-\tightlist
-\item
-  Implement, as best as you can, the identity function in your favorite
-  language (or the second favorite, if your favorite language happens to
-  be Haskell).
-\item
-  Implement the composition function in your favorite language. It takes
-  two functions as arguments and returns a function that is their
-  composition.
-\item
-  Write a program that tries to test that your composition function
-  respects identity.
-\item
-  Is the world-wide web a category in any sense? Are links morphisms?
-\item
-  Is Facebook a category, with people as objects and friendships as
-  morphisms?
-\item
-  When is a directed graph a category?
+  \tightlist
+  \item
+        Implement, as best as you can, the identity function in your favorite
+        language (or the second favorite, if your favorite language happens to
+        be Haskell).
+  \item
+        Implement the composition function in your favorite language. It takes
+        two functions as arguments and returns a function that is their
+        composition.
+  \item
+        Write a program that tries to test that your composition function
+        respects identity.
+  \item
+        Is the world-wide web a category in any sense? Are links morphisms?
+  \item
+        Is Facebook a category, with people as objects and friendships as
+        morphisms?
+  \item
+        When is a directed graph a category?
 \end{enumerate}

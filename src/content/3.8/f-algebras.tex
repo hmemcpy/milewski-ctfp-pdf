@@ -7,8 +7,8 @@ more juice can we squeeze out of this simple concept?
 Let's try. Take this definition of a monoid as a set $m$ with a
 pair of functions:
 \begin{align*}
-\mu &\Colon m\times{}m \to m \\
-\eta &\Colon 1 \to m
+  \mu  & \Colon m\times{}m \to m \\
+  \eta & \Colon 1 \to m
 \end{align*}
 Here, 1 is the terminal object in $\Set$ --- the singleton set.
 The first function defines multiplication (it takes a pair of elements
@@ -20,8 +20,8 @@ and just consider ``potential monoids.'' A pair of functions is an
 element of a Cartesian product of two sets of functions. We know that
 these sets may be represented as exponential objects:
 \begin{align*}
-\mu &\in m^{m\times{}m} \\
-\eta &\in m^1
+  \mu  & \in m^{m\times{}m} \\
+  \eta & \in m^1
 \end{align*}
 The Cartesian product of these two sets is:
 \[m^{m\times{}m}\times{}m^1\]
@@ -42,9 +42,9 @@ $m \to m$. As an example, integers form a group with
 addition as a binary operation, zero as the unit, and negation as the
 inverse. To define a group we would start with a triple of functions:
 \begin{align*}
-m\times{}m \to m \\
-m \to m \\
-1 \to m
+  m\times{}m \to m \\
+  m \to m          \\
+  1 \to m
 \end{align*}
 As before, we can combine all these triples into one set of functions:
 \[m\times{}m + m + 1 \to m\]
@@ -94,7 +94,7 @@ In the monoid example, the functor in question is:
 \src{snippet02}
 This is Haskell for $1 + a\times{}a$ (remember
 \hyperref[simple-algebraic-data-types]{algebraic
-data structures}).
+  data structures}).
 
 A ring would be defined using the following functor:
 
@@ -159,7 +159,7 @@ Of course, this is a hand-waving argument, and I'll make it more
 rigorous later.
 
 Applying an endofunctor infinitely many times produces a \newterm{fixed
-point}, an object defined as:
+  point}, an object defined as:
 \[Fix\ f = f\ (Fix\ f)\]
 The intuition behind this definition is that, since we applied
 $f$ infinitely many times to get $Fix\ f$, applying it one
@@ -208,8 +208,8 @@ be equal:
 \[g \circ F\ m = m \circ f\]
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/alg.png}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/alg.png}
 \end{figure}
 
 \noindent
@@ -227,8 +227,8 @@ $m$ from it to any other F-algebra. Since $m$ is a
 homomorphism, the following diagram must commute:
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/alg2.png}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/alg2.png}
 \end{figure}
 
 \noindent
@@ -242,8 +242,8 @@ homomorphism $m$ from it to $(F\ i, F\ j)$. The following
 diagram must commute:
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/alg3a.png}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/alg3a.png}
 \end{figure}
 
 \noindent
@@ -251,8 +251,8 @@ But we also have this trivially commuting diagram (both paths are the
 same!):
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/alg3.png}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/alg3.png}
 \end{figure}
 
 \noindent
@@ -261,8 +261,8 @@ algebras, mapping $(F\ i, F\ j)$ to $(i, j)$. We can
 glue these two diagrams together to get:
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.6\textwidth]{images/alg4.png}
+  \centering
+  \includegraphics[width=0.6\textwidth]{images/alg4.png}
 \end{figure}
 
 \noindent
@@ -292,8 +292,8 @@ the fixed point does not depend on $a$.
 Natural numbers can also be defined as an F-algebra. The starting point
 is the pair of morphisms:
 \begin{align*}
-zero &\Colon 1 \to N \\
-succ &\Colon N \to N
+  zero & \Colon 1 \to N \\
+  succ & \Colon N \to N
 \end{align*}
 The first one picks the zero, and the second one maps all numbers to
 their successors. As before, we can combine the two into one:
@@ -318,8 +318,8 @@ algebra to any other algebra over the same functor. Let's pick an
 algebra whose carrier is \code{a} and the evaluator is \code{alg}.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/alg5.png}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/alg5.png}
 \end{figure}
 
 \noindent
@@ -332,8 +332,8 @@ isomorphism. We called its inverse \code{unFix}. We can therefore flip
 one arrow in this diagram to get:
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/alg6.png}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/alg6.png}
 \end{figure}
 
 \noindent
@@ -431,8 +431,8 @@ coalgebra. For every other algebra $(a, f)$ there is a unique
 homomorphism $m$ that makes the following diagram commute:
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/alg7.png}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/alg7.png}
 \end{figure}
 
 \noindent
@@ -523,21 +523,21 @@ with the comonad structure. We'll talk about this in the next section.
 \section{Challenges}
 
 \begin{enumerate}
-\tightlist
-\item
-  Implement the evaluation function for a ring of polynomials of one
-  variable. You can represent a polynomial as a list of coefficients in
-  front of powers of $x$. For instance, $4x^2-1$ would be
-  represented as (starting with the zero'th power)
-  \code{{[}-1, 0, 4{]}}.
-\item
-  Generalize the previous construction to polynomials of many
-  independent variables, like $x^2y-3y^3z$.
-\item
-  Implement the algebra for the ring of $2\times{}2$ matrices.
-\item
-  Define a coalgebra whose anamorphism produces a list of squares of
-  natural numbers.
-\item
-  Use \code{unfoldr} to generate a list of the first $n$ primes.
+  \tightlist
+  \item
+        Implement the evaluation function for a ring of polynomials of one
+        variable. You can represent a polynomial as a list of coefficients in
+        front of powers of $x$. For instance, $4x^2-1$ would be
+        represented as (starting with the zero'th power)
+        \code{{[}-1, 0, 4{]}}.
+  \item
+        Generalize the previous construction to polynomials of many
+        independent variables, like $x^2y-3y^3z$.
+  \item
+        Implement the algebra for the ring of $2\times{}2$ matrices.
+  \item
+        Define a coalgebra whose anamorphism produces a list of squares of
+        natural numbers.
+  \item
+        Use \code{unfoldr} to generate a list of the first $n$ primes.
 \end{enumerate}

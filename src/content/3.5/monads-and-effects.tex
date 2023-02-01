@@ -13,36 +13,36 @@ functions.
 
 Here is a short list of similar problems, copied from
 \urlref{https://core.ac.uk/download/pdf/21173011.pdf}{Eugenio Moggi's
-seminal paper}, all of which are traditionally solved by abandoning the
+  seminal paper}, all of which are traditionally solved by abandoning the
 purity of functions.
 
 \begin{itemize}
-\tightlist
-\item
-  Partiality: Computations that may not terminate
-\item
-  Nondeterminism: Computations that may return many results
-\item
-  Side effects: Computations that access/modify state
-
-  \begin{itemize}
   \tightlist
   \item
-    Read-only state, or the environment
+        Partiality: Computations that may not terminate
   \item
-    Write-only state, or a log
+        Nondeterminism: Computations that may return many results
   \item
-    Read/write state
-  \end{itemize}
-\item
-  Exceptions: Partial functions that may fail
-\item
-  Continuations: Ability to save state of the program and then restore
-  it on demand
-\item
-  Interactive Input
-\item
-  Interactive Output
+        Side effects: Computations that access/modify state
+
+        \begin{itemize}
+          \tightlist
+          \item
+                Read-only state, or the environment
+          \item
+                Write-only state, or a log
+          \item
+                Read/write state
+        \end{itemize}
+  \item
+        Exceptions: Partial functions that may fail
+  \item
+        Continuations: Ability to save state of the program and then restore
+        it on demand
+  \item
+        Interactive Input
+  \item
+        Interactive Output
 \end{itemize}
 
 What really is mind blowing is that all these problems may be solved
@@ -102,7 +102,7 @@ Haskell (lifted) types and functions rather than the simpler
 $\Set$. It is not clear, though, that $\Hask$ is a real
 category (see this
 \urlref{http://math.andrej.com/2016/08/06/hask-is-not-a-category/}{Andrej
-Bauer post}).
+  Bauer post}).
 
 \subsection{Nondeterminism}
 
@@ -134,7 +134,7 @@ From the programmer's point of view, working with a list is easier than,
 for instance, calling a non-deterministic function in a loop, or
 implementing a function that returns an iterator (although,
 \urlref{http://ericniebler.com/2014/04/27/range-comprehensions/}{in modern
-C++}, returning a lazy range would be almost equivalent to returning a
+  C++}, returning a lazy range would be almost equivalent to returning a
 list in Haskell).
 
 A good example of using non-determinism creatively is in game

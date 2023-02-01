@@ -21,19 +21,19 @@ tape) and its applications. Here's a little sample of things that you
 can do with it:
 
 \begin{itemize}
-\tightlist
-\item
-  sealing ducts
-\item
-  fixing CO\textsubscript{2} scrubbers on board Apollo 13
-\item
-  wart treatment
-\item
-  fixing Apple's iPhone 4 dropped call issue
-\item
-  making a prom dress
-\item
-  building a suspension bridge
+  \tightlist
+  \item
+        sealing ducts
+  \item
+        fixing CO\textsubscript{2} scrubbers on board Apollo 13
+  \item
+        wart treatment
+  \item
+        fixing Apple's iPhone 4 dropped call issue
+  \item
+        making a prom dress
+  \item
+        building a suspension bridge
 \end{itemize}
 
 \noindent
@@ -83,7 +83,7 @@ the first place.
 
 We have previously arrived at the
 \hyperref[kleisli-categories]{writer
-monad} by embellishing regular functions. The particular embellishment
+  monad} by embellishing regular functions. The particular embellishment
 was done by pairing their return values with strings or, more generally,
 with elements of a monoid. We can now recognize that such an embellishment
 is a functor:
@@ -311,7 +311,7 @@ Interestingly, the equivalent of the \code{do} notation has found its
 application in imperative languages, C++ in particular. I'm talking
 about resumable functions or coroutines. It's not a secret that C++
 \urlref{https://bartoszmilewski.com/2014/02/26/c17-i-see-a-monad-in-your-future/}{futures
-form a monad}. It's an example of the continuation monad, which we'll
+  form a monad}. It's an example of the continuation monad, which we'll
 discuss shortly. The problem with continuations is that they are very
 hard to compose. In Haskell, we use the \code{do} notation to turn the
 spaghetti of ``my handler will call your handler'' into something that
@@ -319,7 +319,7 @@ looks very much like sequential code. Resumable functions make the same
 transformation possible in C++. And the same mechanism can be applied to
 turn the
 \urlref{https://bartoszmilewski.com/2014/04/21/getting-lazy-with-c/}{spaghetti
-of nested loops} into list comprehensions or ``generators,'' which are
+  of nested loops} into list comprehensions or ``generators,'' which are
 essentially the \code{do} notation for the list monad. Without the
 unifying abstraction of the monad, each of these problems is typically
 addressed by providing custom extensions to the language. In Haskell,

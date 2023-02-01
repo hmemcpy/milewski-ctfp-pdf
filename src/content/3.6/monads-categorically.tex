@@ -15,8 +15,8 @@ like $1$ or $2$, bound together with operators like plus or times. As
 programmers, we often think of expressions as trees.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/exptree.png}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/exptree.png}
 \end{figure}
 
 \noindent
@@ -79,8 +79,8 @@ implemented using $\mu$:
 \[g \circ_T f = \mu_c \circ (T\ g) \circ f\]
 where
 \begin{gather*}
-f \Colon a \to T\ b \\
-g \Colon b \to T\ c
+  f \Colon a \to T\ b \\
+  g \Colon b \to T\ c
 \end{gather*}
 Here $T$, being a functor, can be applied to the morphism
 $g$. It might be easier to recognize this formula in Haskell
@@ -114,8 +114,8 @@ horizontal composition of two natural transformations:
 \[I_T \circ \mu\]
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/assoc1.png}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/assoc1.png}
 \end{figure}
 
 \noindent
@@ -131,8 +131,8 @@ must mean $I_T$ in this context.
 We can also draw the diagram in the (endo-) functor category ${[}\cat{C}, \cat{C}{]}$:
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/assoc2.png}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/assoc2.png}
 \end{figure}
 
 \noindent
@@ -142,8 +142,8 @@ $T \circ T$ which, again, can be reduced to $T$ using $\mu$. We
 require that the two paths produce the same result.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/assoc.png}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/assoc.png}
 \end{figure}
 
 \noindent
@@ -155,8 +155,8 @@ transformation directly to \code{T}. And, by analogy, the same should
 be true for $T \circ \eta$.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/unitlawcomp-1.png}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/unitlawcomp-1.png}
 \end{figure}
 
 \noindent
@@ -275,8 +275,8 @@ up to isomorphism. The associator and the two unitors are natural
 isomorphisms. The laws can be represented by commuting diagrams.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.5\textwidth]{images/assocmon.png}
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/assocmon.png}
 \end{figure}
 
 \noindent
@@ -312,9 +312,9 @@ and a distinct object $i$ called the unit object, together with
 three natural isomorphisms called, respectively, the associator and the
 left and right unitors:
 \begin{align*}
-\alpha_{a b c} &\Colon (a \otimes b) \otimes c \to a \otimes (b \otimes c) \\
-\lambda_a &\Colon i \otimes a \to a \\
-\rho_a &\Colon a \otimes i \to a
+  \alpha_{a b c} & \Colon (a \otimes b) \otimes c \to a \otimes (b \otimes c) \\
+  \lambda_a      & \Colon i \otimes a \to a                                   \\
+  \rho_a         & \Colon a \otimes i \to a
 \end{align*}
 (There is also a coherence condition for simplifying a quadruple tensor
 product.)
@@ -335,14 +335,14 @@ of $m$, but they are isomorphic through the associator. Similarly
 for higher powers of $m$ (that's where we need the coherence
 conditions). To form a monoid we need to pick two morphisms:
 \begin{align*}
-\mu &\Colon m \otimes m \to m \\
-\eta &\Colon i \to m
+  \mu  & \Colon m \otimes m \to m \\
+  \eta & \Colon i \to m
 \end{align*}
 where $i$ is the unit object for our tensor product.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/monoid-1.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/monoid-1.jpg}
 \end{figure}
 
 \noindent
@@ -350,13 +350,13 @@ These morphisms have to satisfy associativity and unit laws, which can
 be expressed in terms of the following commuting diagrams:
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.5\textwidth]{images/assoctensor.jpg}
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/assoctensor.jpg}
 \end{figure}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.5\textwidth]{images/unitmon.jpg}
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/unitmon.jpg}
 \end{figure}
 
 \noindent
@@ -395,8 +395,8 @@ transformations, and tensor products by composition, you get:
 which you may recognize as the special case of horizontal composition.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/horizcomp.png}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/horizcomp.png}
 \end{figure}
 
 \noindent
@@ -411,19 +411,19 @@ What's a monoid in this category? It's an object --- that is an
 endofunctor $T$; and two morphisms --- that is natural
 transformations:
 \begin{gather*}
-\mu \Colon T \circ T \to T \\
-\eta \Colon I \to T
+  \mu \Colon T \circ T \to T \\
+  \eta \Colon I \to T
 \end{gather*}
 Not only that, here are the monoid laws:
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/assoc.png}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/assoc.png}
 \end{figure}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.5\textwidth]{images/unitlawcomp.png}
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/unitlawcomp.png}
 \end{figure}
 
 \noindent
@@ -431,7 +431,7 @@ They are exactly the monad laws we've seen before. Now you understand
 the famous quote from Saunders Mac Lane:
 
 \begin{quote}
-All told, monad is just a monoid in the category of endofunctors.
+  All told, monad is just a monoid in the category of endofunctors.
 \end{quote}
 You might have seen it emblazoned on some t-shirts at functional
 programming conferences.
@@ -445,8 +445,8 @@ giving rise to two endofunctors, $R \circ L$ and $L \circ R$.
 As per an adjunction, these endofunctors are related to identity
 functors through two natural transformations called unit and counit:
 \begin{gather*}
-\eta \Colon I_{\cat{D}} \to R \circ L \\
-\varepsilon \Colon L \circ R \to I_{\cat{C}}
+  \eta \Colon I_{\cat{D}} \to R \circ L \\
+  \varepsilon \Colon L \circ R \to I_{\cat{C}}
 \end{gather*}
 Immediately we see that the unit of an adjunction looks just like the
 unit of a monad. It turns out that the endofunctor $R \circ L$ is
@@ -467,8 +467,8 @@ because an adjunction usually involves two categories. However, the
 definitions of an exponential, or a function object, is an exception.
 Here are the two endofunctors that form this adjunction:
 \begin{gather*}
-L\ z = z\times{}s \\
-R\ b = s \Rightarrow b
+  L\ z = z\times{}s \\
+  R\ b = s \Rightarrow b
 \end{gather*}
 You may recognize their composition as the familiar state monad:
 \[R\ (L\ z) = s \Rightarrow (z\times{}s)\]

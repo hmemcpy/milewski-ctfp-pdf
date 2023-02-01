@@ -21,7 +21,7 @@ makes sense by now. I won't use parentheses when applying functors to
 objects or morphisms.)
 
 \begin{figure}[H]
-\centering\includegraphics[width=0.3\textwidth]{images/functor.jpg}
+  \centering\includegraphics[width=0.3\textwidth]{images/functor.jpg}
 \end{figure}
 
 \noindent
@@ -36,8 +36,8 @@ and $g$:
 \[F h = F g~.~F f\]
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/functorcompos.jpg}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/functorcompos.jpg}
 \end{figure}
 
 \noindent
@@ -50,8 +50,8 @@ Here, $\idarrow[a]$ is the identity at the object $a$,
 and $\idarrow[F a]$ the identity at $F a$.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/functorid.jpg}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/functorid.jpg}
 \end{figure}
 
 \noindent
@@ -124,8 +124,8 @@ signature:
 \src{snippet04}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/functormaybe.jpg}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/functormaybe.jpg}
 \end{figure}
 
 \noindent
@@ -707,23 +707,23 @@ We'll see later that functors form categories as well.
 \section{Challenges}
 
 \begin{enumerate}
-\tightlist
-\item
-  Can we turn the \code{Maybe} type constructor into a functor by
-  defining:
+  \tightlist
+  \item
+        Can we turn the \code{Maybe} type constructor into a functor by
+        defining:
 
-\begin{snip}{haskell}
+        \begin{snip}{haskell}
 fmap _ _ = Nothing
 \end{snip}
 
-  which ignores both of its arguments? (Hint: Check the functor laws.)
-\item
-  Prove functor laws for the reader functor. Hint: it's really simple.
-\item
-  Implement the reader functor in your second favorite language (the
-  first being Haskell, of course).
-\item
-  Prove the functor laws for the list functor. Assume that the laws are
-  true for the tail part of the list you're applying it to (in other
-  words, use \emph{induction}).
+        which ignores both of its arguments? (Hint: Check the functor laws.)
+  \item
+        Prove functor laws for the reader functor. Hint: it's really simple.
+  \item
+        Implement the reader functor in your second favorite language (the
+        first being Haskell, of course).
+  \item
+        Prove the functor laws for the list functor. Assume that the laws are
+        true for the tail part of the list you're applying it to (in other
+        words, use \emph{induction}).
 \end{enumerate}

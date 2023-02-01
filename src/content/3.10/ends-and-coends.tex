@@ -77,8 +77,8 @@ family of morphisms:
 for which the following diagram commutes, for any $f \Colon a \to b$:
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/end.jpg}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/end.jpg}
 \end{figure}
 
 \noindent
@@ -89,8 +89,8 @@ from two naturality squares and one functoriality condition (profunctor
 $q$ preserving composition):
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/end-1.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/end-1.jpg}
 \end{figure}
 
 \noindent
@@ -126,8 +126,8 @@ $p\ a\ b$. We therefore insist that the following diagram
 commute:
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/end-2.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/end-2.jpg}
 \end{figure}
 
 \noindent
@@ -144,8 +144,8 @@ $h \Colon a \to e$ that makes all triangles commute:
 \[\pi_a \circ h = \alpha_a\]
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/end-21.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/end-21.jpg}
 \end{figure}
 
 \noindent
@@ -245,8 +245,8 @@ is a profunctor, so it makes sense to study its end. This is the wedge
 condition:
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/end1.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/end1.jpg}
 \end{figure}
 
 \noindent
@@ -254,8 +254,8 @@ Let's just pick one element from the set $\int_c \cat{C}(F\ c, G\ c)$.
 The two projections will map this element to two components of a
 particular transformation, let's call them:
 \begin{align*}
-\tau_a &\Colon F\ a \to G\ a \\
-\tau_b &\Colon F\ b \to G\ b
+  \tau_a & \Colon F\ a \to G\ a \\
+  \tau_b & \Colon F\ b \to G\ b
 \end{align*}
 In the left branch, we lift a pair of morphisms
 $\langle \idarrow[a], G\ f \rangle$ using the hom-functor. You
@@ -273,9 +273,9 @@ from a dual to a wedge called a cowedge (pronounced co-wedge, not
 cow-edge).
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.25\textwidth]{images/end-31.jpg}
-\caption{An edgy cow?}
+  \centering
+  \includegraphics[width=0.25\textwidth]{images/end-31.jpg}
+  \caption{An edgy cow?}
 \end{figure}
 
 \noindent
@@ -336,9 +336,9 @@ known as taking a quotient. To define a quotient we need an
 \newterm{equivalence relation} $\sim$, a relation that
 is reflexive, symmetric, and transitive:
 \begin{align*}
-&a \sim a \\
-&\text{if}\ a \sim b\ \text{then}\ b \sim a \\
-&\text{if}\ a \sim b\ \text{and}\ b \sim c\ \text{then}\ a \sim c
+   & a \sim a                                                         \\
+   & \text{if}\ a \sim b\ \text{then}\ b \sim a                       \\
+   & \text{if}\ a \sim b\ \text{and}\ b \sim c\ \text{then}\ a \sim c
 \end{align*}
 Such a relation splits the set into equivalence classes. Each class
 consists of elements that are related to each other. We form a quotient
@@ -405,7 +405,7 @@ exponential:
 \[\int_z \Set(\cat{C}(z, a), c^{(F\ z)})\]
 We can ``perform the integration'' by using the Yoneda lemma to get:
 \[c^{(F\ a)}\]
-(Notice that we used the contravariant version of the Yoneda lemma, 
+(Notice that we used the contravariant version of the Yoneda lemma,
 since the functor $c^{(F z)}$ is contravariant in $z$.)
 This exponential object is isomorphic to the hom-set:
 \[\Set(F\ a, c)\]

@@ -5,22 +5,22 @@
     overlay,
     remember picture,
     ribbon/.style={anchor=center, rotate = 45,
-                            font={\fontsize{22}{1}\selectfont\bfseries}}
-                    ]
-    \coordinate (A) at ($ (current page.south east) + (-\stripskip,0) $);% <-- changed coordinate from 'north' to south'
-    \coordinate (A') at ($(A) + (-\stripwidth,0) $);
+        font={\fontsize{22}{1}\selectfont\bfseries}}
+  ]
+  \coordinate (A) at ($ (current page.south east) + (-\stripskip,0) $);% <-- changed coordinate from 'north' to south'
+  \coordinate (A') at ($(A) + (-\stripwidth,0) $);
 
-    \coordinate (B) at ($ (current page.south east) + (0,\stripskip) $);% <-- changed coordinate from 'north' to south' and sign for \stripskip
-    \coordinate (B') at ($(B) + (0,\stripwidth) $);% <-- changed sign for \stripskip 
+  \coordinate (B) at ($ (current page.south east) + (0,\stripskip) $);% <-- changed coordinate from 'north' to south' and sign for \stripskip
+  \coordinate (B') at ($(B) + (0,\stripwidth) $);% <-- changed sign for \stripskip 
 
-    \fill [red!20] (A) -- (A') -- (B') -- (B) -- cycle;
+  \fill [red!20] (A) -- (A') -- (B') -- (B) -- cycle;
 
-    \coordinate (tempA) at ($(A)!.5!(A')$);
-    \coordinate (tempB) at ($(B)!.5!(B')$);
+  \coordinate (tempA) at ($(A)!.5!(A')$);
+  \coordinate (tempB) at ($(B)!.5!(B')$);
 
-    \node [ribbon](text) at ($(tempA)!.5!(tempB)$) {
-        \raisebox{-.30\height}{\includegraphics[width=.8cm]{\olpath/fig/icons/scala}}
-        \hspace{.5mm} Scala Edition
-    };
+  \node [ribbon](text) at ($(tempA)!.5!(tempB)$) {
+    \raisebox{-.30\height}{\includegraphics[width=.8cm]{\olpath/fig/icons/scala}}
+    \hspace{.5mm} Scala Edition
+  };
 
 \end{tikzpicture}

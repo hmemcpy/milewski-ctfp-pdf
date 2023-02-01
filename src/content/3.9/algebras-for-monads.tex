@@ -7,14 +7,14 @@ but we can also answer a few interesting questions.
 
 One such question concerns the relation between monads and adjunctions.
 As we've seen, every adjunction \hyperref[monads-categorically]{defines
-a monad} (and a comonad). The question is: Can every monad (comonad) be
+  a monad} (and a comonad). The question is: Can every monad (comonad) be
 derived from an adjunction? The answer is positive. There is a whole
 family of adjunctions that generate a given monad. I'll show you two
 such adjunctions.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.25\textwidth]{images/pigalg.png}
+  \centering
+  \includegraphics[width=0.25\textwidth]{images/pigalg.png}
 \end{figure}
 
 \noindent
@@ -22,8 +22,8 @@ Let's review the definitions. A monad is an endofunctor $m$
 equipped with two natural transformations that satisfy some coherence
 conditions. The components of these transformations at $a$ are:
 \begin{align*}
-\eta_a &\Colon a \to m\ a \\
-\mu_a &\Colon m\ (m\ a) \to m\ a
+  \eta_a & \Colon a \to m\ a         \\
+  \mu_a  & \Colon m\ (m\ a) \to m\ a
 \end{align*}
 An algebra for the same endofunctor is a selection of a particular
 object --- the carrier $a$ --- together with the morphism:
@@ -53,8 +53,8 @@ $T$ in anticipation of what follows):
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
       a \arrow[rd, equal] \arrow[r, "\eta_a"]
-          & Ta \arrow[d, "alg"] \\
-          & a
+      & Ta \arrow[d, "alg"] \\
+      & a
     \end{tikzcd}
   \end{subfigure}
   \hspace{1cm}
@@ -62,9 +62,9 @@ $T$ in anticipation of what follows):
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
       T(Ta) \arrow[r, "T\ alg"] \arrow[d, "\mu_a"]
-          & Ta \arrow[d, "alg"] \\
+      & Ta \arrow[d, "alg"] \\
       Ta \arrow[r, "alg"]
-          & a
+      & a
     \end{tikzcd}
   \end{subfigure}
 \end{figure}
@@ -130,8 +130,8 @@ evaluator.
 We still have to show that this is a T-algebra. For that, two coherence
 conditions must be satisfied:
 \begin{align*}
-alg &\circ \eta_{Ta} = \id_{Ta} \\
-alg &\circ \mu_a = alg \circ T\ alg
+  alg & \circ \eta_{Ta} = \id_{Ta}     \\
+  alg & \circ \mu_a = alg \circ T\ alg
 \end{align*}
 But these are just monadic laws, if you plug in $\mu$ for the
 algebra.
@@ -174,13 +174,13 @@ diagram that makes $f$ a T-algebra may be re-interpreted to show
 that it's a homomorphism of T-algebras:
 
 \begin{figure}[H]
-\centering
-\begin{tikzcd}[column sep=large, row sep=large]
-  T(Ta) \arrow[r, "T f"] \arrow[d, "\mu_a"]
-      & Ta \arrow[d, "f"] \\
-  Ta \arrow[r, "f"]
-      & a
-\end{tikzcd}
+  \centering
+  \begin{tikzcd}[column sep=large, row sep=large]
+    T(Ta) \arrow[r, "T f"] \arrow[d, "\mu_a"]
+    & Ta \arrow[d, "f"] \\
+    Ta \arrow[r, "f"]
+    & a
+  \end{tikzcd}
 \end{figure}
 
 \noindent
@@ -197,8 +197,8 @@ counit satisfy triangular identities. These are:
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
       Ta \arrow[rd, equal] \arrow[r, "T \eta_a"]
-          & T(Ta) \arrow[d, "\mu_a"] \\
-          & Ta
+      & T(Ta) \arrow[d, "\mu_a"] \\
+      & Ta
     \end{tikzcd}
   \end{subfigure}%
   \hspace{1cm}
@@ -206,8 +206,8 @@ counit satisfy triangular identities. These are:
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
       a \arrow[rd, equal] \arrow[r, "\eta_a"]
-          & Ta \arrow[d, "f"] \\
-          & a
+      & Ta \arrow[d, "f"] \\
+      & a
     \end{tikzcd}
   \end{subfigure}
 \end{figure}
@@ -260,20 +260,20 @@ Composition of morphisms in the Kleisli category is defined in terms of
 monadic composition of Kleisli arrows. For instance, let's compose
 $g_{\cat{K}}$ after $f_{\cat{K}}$. In the Kleisli category we have:
 \begin{gather*}
-f_{\cat{K}} \Colon a \to b \\
-g_{\cat{K}} \Colon b \to c
+  f_{\cat{K}} \Colon a \to b \\
+  g_{\cat{K}} \Colon b \to c
 \end{gather*}
 which, in the category $\cat{C}$, corresponds to:
 \begin{gather*}
-f \Colon a \to T\ b \\
-g \Colon b \to T\ c
+  f \Colon a \to T\ b \\
+  g \Colon b \to T\ c
 \end{gather*}
 We define the composition:
 \[h_{\cat{K}} = g_{\cat{K}} \circ f_{\cat{K}}\]
 as a Kleisli arrow in $\cat{C}$
 \begin{align*}
-h &\Colon a \to T\ c \\
-h &= \mu \circ (T\ g) \circ f
+  h & \Colon a \to T\ c          \\
+  h & = \mu \circ (T\ g) \circ f
 \end{align*}
 In Haskell we would write it as:
 
@@ -330,8 +330,8 @@ with a comonad. They make the following diagrams commute:
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
       a \arrow[rd, equal]
-          & Wa \arrow[l, "\epsilon_a"'] \\
-          & a \arrow[u, "coa"']
+      & Wa \arrow[l, "\epsilon_a"'] \\
+      & a \arrow[u, "coa"']
     \end{tikzcd}
   \end{subfigure}%
   \hspace{1cm}
@@ -339,9 +339,9 @@ with a comonad. They make the following diagrams commute:
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
       W(Wa)
-          & Wa \arrow[l, "W\ coa"'] \\
+      & Wa \arrow[l, "W\ coa"'] \\
       Wa \arrow[u, "\delta_a"]
-          & a \arrow[u, "coa"] \arrow[l, "coa"']
+      & a \arrow[u, "coa"] \arrow[l, "coa"']
     \end{tikzcd}
   \end{subfigure}
 \end{figure}
@@ -377,8 +377,8 @@ for the functor $Store\ s$:
 \src{snippet07}
 This coalgebra can be also expressed as a pair of functions:
 \begin{align*}
-set &\Colon a \to s \to a \\
-get &\Colon a \to s
+  set & \Colon a \to s \to a \\
+  get & \Colon a \to s
 \end{align*}
 (Think of $a$ as standing for ``all,'' and $s$ as a
 ``small'' part of it.) In terms of this pair, we have:
@@ -433,14 +433,14 @@ the \code{Store} functor.
 \section{Challenges}
 
 \begin{enumerate}
-\tightlist
-\item
-  What is the action of the free functor
-  $F \Colon C \to C^T$ on morphisms. Hint: use the
-  naturality condition for monadic $\mu$.
-\item
-  Define the adjunction:
-\[U^W \dashv F^W\]
-\item
-  Prove that the above adjunction reproduces the original comonad.
+  \tightlist
+  \item
+        What is the action of the free functor
+        $F \Colon C \to C^T$ on morphisms. Hint: use the
+        naturality condition for monadic $\mu$.
+  \item
+        Define the adjunction:
+        \[U^W \dashv F^W\]
+  \item
+        Prove that the above adjunction reproduces the original comonad.
 \end{enumerate}

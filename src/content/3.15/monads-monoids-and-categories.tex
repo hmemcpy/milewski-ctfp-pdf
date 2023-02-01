@@ -47,9 +47,9 @@ are called $0$-cells, morphisms are $1$-cells, and morphisms between
 morphisms are $2$-cells.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/twocat.png}
-\caption{$0$-cells $a, b$; $1$-cells $f, g$; and a $2$-cell $\alpha$.}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/twocat.png}
+  \caption{$0$-cells $a, b$; $1$-cells $f, g$; and a $2$-cell $\alpha$.}
 \end{figure}
 
 \noindent
@@ -99,10 +99,10 @@ words, there is a $2$-cell:
 that has an inverse.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/bicat.png}
-\caption{Identity law in a bicategory holds up to isomorphism (an invertible
-$2$-cell $\rho$).}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/bicat.png}
+  \caption{Identity law in a bicategory holds up to isomorphism (an invertible
+    $2$-cell $\rho$).}
 \end{figure}
 
 \noindent
@@ -117,13 +117,13 @@ An interesting example of a bicategory is the category of spans. A span
 between two objects $a$ and $b$ is an object $x$
 and a pair of morphisms:
 \begin{gather*}
-f \Colon x \to a \\
-g \Colon x \to b
+  f \Colon x \to a \\
+  g \Colon x \to b
 \end{gather*}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/span.png}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/span.png}
 \end{figure}
 
 \noindent
@@ -132,13 +132,13 @@ product. Here, we want to look at spans as $1$-cells in a bicategory. The
 first step is to define a composition of spans. Suppose that we have an
 adjoining span:
 \begin{gather*}
-f' \Colon y \to b \\
-g' \Colon y \to c
+  f' \Colon y \to b \\
+  g' \Colon y \to c
 \end{gather*}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.5\textwidth]{images/compspan.png}
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/compspan.png}
 \end{figure}
 
 \noindent
@@ -147,16 +147,16 @@ most natural choice for it is the pullback of $g$ along
 $f'$. Remember that a pullback is the object $z$
 together with two morphisms:
 \begin{align*}
-h &\Colon z \to x \\
-h' &\Colon z \to y
+  h  & \Colon z \to x \\
+  h' & \Colon z \to y
 \end{align*}
 such that:
 \[g \circ h = f' \circ h'\]
 which is universal among all such objects.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.5\textwidth]{images/pullspan.png}
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/pullspan.png}
 \end{figure}
 
 \noindent
@@ -169,9 +169,9 @@ a morphism $h$ between their apices, such that the appropriate
 triangles commute.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/morphspan.png}
-\caption{A $2$-cell in $\cat{Span}$.}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/morphspan.png}
+  \caption{A $2$-cell in $\cat{Span}$.}
 \end{figure}
 
 \noindent
@@ -206,8 +206,8 @@ we get:
 \[\mu \Colon T \circ T \to T\]
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/monad.png}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/monad.png}
 \end{figure}
 
 \noindent
@@ -221,14 +221,14 @@ As we've seen earlier, the hom-category $\cat{C}(a, a)$ is a monoidal
 category. We can therefore define a monoid in $\cat{C}(a, a)$ by
 picking a $1$-cell, $T$, and two $2$-cells:
 \begin{align*}
-\eta &\Colon I \to T \\
-\mu &\Colon T \circ T \to T
+  \eta & \Colon I \to T         \\
+  \mu  & \Colon T \circ T \to T
 \end{align*}
 satisfying the monoid laws. We call \emph{this} a monad.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/bimonad.png}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/bimonad.png}
 \end{figure}
 
 \noindent
@@ -243,13 +243,13 @@ $Ob$. Next, we pick an endo-$1$-cell: a span from $Ob$ back
 to $Ob$. It has a set at the apex, which I will call $Ar$,
 equipped with two functions:
 \begin{align*}
-dom &\Colon Ar \to Ob \\
-cod &\Colon Ar \to Ob
+  dom & \Colon Ar \to Ob \\
+  cod & \Colon Ar \to Ob
 \end{align*}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/spanmonad.png}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/spanmonad.png}
 \end{figure}
 
 \noindent
@@ -266,13 +266,13 @@ $Ob$ and $Ar$. In other words, $\eta$ assigns an
 ``arrow'' to every ``object.'' A $2$-cell in $\cat{Span}$ must satisfy
 commutation conditions --- in this case:
 \begin{align*}
-dom &\circ \eta = \id \\
-cod &\circ \eta = \id
+  dom & \circ \eta = \id \\
+  cod & \circ \eta = \id
 \end{align*}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/spanunit.png}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/spanunit.png}
 \end{figure}
 
 \noindent
@@ -292,8 +292,8 @@ We say that $a_1$ and $a_2$ are ``composable,'' because the
 domain of one is the codomain of the other.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.5\textwidth]{images/spanmul.png}
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/spanmul.png}
 \end{figure}
 
 \noindent
@@ -319,22 +319,22 @@ all of mathematics, this is a very humbling realization.
 \section{Challenges}
 
 \begin{enumerate}
-\tightlist
-\item
-  Derive unit and associativity laws for the tensor product defined as
-  composition of endo-$1$-cells in a bicategory.
-\item
-  Check that monad laws for a monad in $\cat{Span}$ correspond to
-  identity and associativity laws in the resulting category.
-\item
-  Show that a monad in $\cat{Prof}$ is an identity-on-objects functor.
-\item
-  What's a monad algebra for a monad in $\cat{Span}$?
+  \tightlist
+  \item
+        Derive unit and associativity laws for the tensor product defined as
+        composition of endo-$1$-cells in a bicategory.
+  \item
+        Check that monad laws for a monad in $\cat{Span}$ correspond to
+        identity and associativity laws in the resulting category.
+  \item
+        Show that a monad in $\cat{Prof}$ is an identity-on-objects functor.
+  \item
+        What's a monad algebra for a monad in $\cat{Span}$?
 \end{enumerate}
 
 \section{Bibliography}
 \begin{enumerate}
   \tightlist
   \item
-  \urlref{https://graphicallinearalgebra.net/2017/04/16/a-monoid-is-a-category-a-category-is-a-monad-a-monad-is-a-monoid/}{Paweł Sobociński’s blog}.
+        \urlref{https://graphicallinearalgebra.net/2017/04/16/a-monoid-is-a-category-a-category-is-a-monad-a-monad-is-a-monoid/}{Paweł Sobociński’s blog}.
 \end{enumerate}

@@ -18,7 +18,7 @@ $\cat{E}$. Notice that this is just saying that it's a mapping from a
 \newterm{Cartesian product} of categories $\cat{C}\times{}\cat{D}$ to $\cat{E}$.
 
 \begin{figure}[H]
-\centering\includegraphics[width=0.3\textwidth]{images/bifunctor.jpg}
+  \centering\includegraphics[width=0.3\textwidth]{images/bifunctor.jpg}
 \end{figure}
 
 \noindent
@@ -52,8 +52,8 @@ constructor that takes two type arguments. Here's the definition of the
 \src{snippet01}
 
 \begin{figure}[H]
-\centering\includegraphics[width=0.3\textwidth]{images/bimap.jpg}
-\caption{bimap}
+  \centering\includegraphics[width=0.3\textwidth]{images/bimap.jpg}
+  \caption{bimap}
 \end{figure}
 
 The type variable \code{f} represents the bifunctor. You can see that
@@ -76,14 +76,14 @@ first and the second argument, respectively.
 \begin{figure}[H]
   \centering
   \begin{minipage}{0.45\textwidth}
-      \centering
-      \includegraphics[width=0.65\textwidth]{images/first.jpg} % first figure itself
-      \caption{first}
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/first.jpg} % first figure itself
+    \caption{first}
   \end{minipage}\hfill
   \begin{minipage}{0.45\textwidth}
-      \centering
-      \includegraphics[width=0.6\textwidth]{images/second.jpg} % second figure itself
-      \caption{second}
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/second.jpg} % second figure itself
+    \caption{second}
   \end{minipage}
 \end{figure}
 
@@ -102,7 +102,7 @@ make sure they are related to each other in this manner).
 
 An important example of a bifunctor is the categorical product --- a
 product of two objects that is defined by a \hyperref[products-and-coproducts]{universal
-construction}. If the product exists for any pair of objects, the
+  construction}. If the product exists for any pair of objects, the
 mapping from those objects to the product is bifunctorial. This is true
 in general, and in Haskell in particular. Here's the \code{Bifunctor}
 instance for a pair constructor --- the simplest product type:
@@ -362,7 +362,7 @@ This implementation can also be automatically derived by the compiler.
 \section{The Writer Functor}
 
 I promised that I would come back to the \hyperref[kleisli-categories]{Kleisli
-category} I described earlier. Morphisms in that category were
+  category} I described earlier. Morphisms in that category were
 represented as ``embellished'' functions returning the \code{Writer}
 data structure.
 
@@ -488,8 +488,8 @@ by the way --- the kind we've been studying thus far --- are called
 \emph{covariant} functors.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=40mm]{images/contravariant.jpg}
+  \centering
+  \includegraphics[width=40mm]{images/contravariant.jpg}
 \end{figure}
 
 \noindent
@@ -538,9 +538,9 @@ the defaults for \code{lmap} and \code{rmap}, or implementing both
 \code{dimap}.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/dimap.jpg}
-\caption{dimap}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/dimap.jpg}
+  \caption{dimap}
 \end{figure}
 
 \noindent
@@ -562,8 +562,8 @@ category $\cat{C}^{op}\times{}\cat{C}$ to the category of sets, $\Set$.
 Let's define its action on morphisms. A morphism in
 $\cat{C}^{op}\times{}\cat{C}$ is a pair of morphisms from $\cat{C}$:
 \begin{gather*}
-f \Colon a' \to a \\
-g \Colon b \to b'
+  f \Colon a' \to a \\
+  g \Colon b \to b'
 \end{gather*}
 The lifting of this pair must be a morphism (a function) from the set
 $\cat{C}(a, b)$ to the set $\cat{C}(a', b')$. Just pick
@@ -577,48 +577,48 @@ As you can see, the hom-functor is a special case of a profunctor.
 \section{Challenges}
 
 \begin{enumerate}
-\tightlist
-\item
-  Show that the data type:
+  \tightlist
+  \item
+        Show that the data type:
 
-\begin{snip}{haskell}
+        \begin{snip}{haskell}
 data Pair a b = Pair a b
 \end{snip}
 
-  is a bifunctor. For additional credit implement all three methods of
-  \code{Bifunctor} and use equational reasoning to show that these
-  definitions are compatible with the default implementations whenever
-  they can be applied.
-\item
-  Show the isomorphism between the standard definition of \code{Maybe}
-  and this desugaring:
+        is a bifunctor. For additional credit implement all three methods of
+        \code{Bifunctor} and use equational reasoning to show that these
+        definitions are compatible with the default implementations whenever
+        they can be applied.
+  \item
+        Show the isomorphism between the standard definition of \code{Maybe}
+        and this desugaring:
 
-\begin{snip}{haskell}
+        \begin{snip}{haskell}
 type Maybe' a = Either (Const () a) (Identity a)
 \end{snip}
 
-  Hint: Define two mappings between the two implementations. For
-  additional credit, show that they are the inverse of each other using
-  equational reasoning.
-\item
-  Let's try another data structure. I call it a \code{PreList} because
-  it's a precursor to a \code{List}. It replaces recursion with a type
-  parameter \code{b}.
+        Hint: Define two mappings between the two implementations. For
+        additional credit, show that they are the inverse of each other using
+        equational reasoning.
+  \item
+        Let's try another data structure. I call it a \code{PreList} because
+        it's a precursor to a \code{List}. It replaces recursion with a type
+        parameter \code{b}.
 
-\begin{snip}{haskell}
+        \begin{snip}{haskell}
 data PreList a b = Nil | Cons a b
 \end{snip}
 
-  You could recover our earlier definition of a \code{List} by
-  recursively applying \code{PreList} to itself (we'll see how it's
-  done when we talk about fixed points).
+        You could recover our earlier definition of a \code{List} by
+        recursively applying \code{PreList} to itself (we'll see how it's
+        done when we talk about fixed points).
 
-  Show that \code{PreList} is an instance of \code{Bifunctor}.
-\item
-  Show that the following data types define bifunctors in \code{a} and
-  \code{b}:
+        Show that \code{PreList} is an instance of \code{Bifunctor}.
+  \item
+        Show that the following data types define bifunctors in \code{a} and
+        \code{b}:
 
-\begin{snip}{haskell}
+        \begin{snip}{haskell}
 data K2 c a b = K2 c
 
 data Fst a b = Fst a
@@ -626,14 +626,14 @@ data Fst a b = Fst a
 data Snd a b = Snd b
 \end{snip}
 
-  For additional credit, check your solutions against Conor McBride's
-  paper \urlref{http://strictlypositive.org/CJ.pdf}{Clowns to the Left of
-  me, Jokers to the Right}.
-\item
-  Define a bifunctor in a language other than Haskell. Implement
-  \code{bimap} for a generic pair in that language.
-\item
-  Should \code{std::map} be considered a bifunctor or a profunctor in
-  the two template arguments \code{Key} and \code{T}? How would you
-  redesign this data type to make it so?
+        For additional credit, check your solutions against Conor McBride's
+        paper \urlref{http://strictlypositive.org/CJ.pdf}{Clowns to the Left of
+          me, Jokers to the Right}.
+  \item
+        Define a bifunctor in a language other than Haskell. Implement
+        \code{bimap} for a generic pair in that language.
+  \item
+        Should \code{std::map} be considered a bifunctor or a profunctor in
+        the two template arguments \code{Key} and \code{T}? How would you
+        redesign this data type to make it so?
 \end{enumerate}
