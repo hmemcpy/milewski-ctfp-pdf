@@ -58,8 +58,8 @@ fixed, $\cat{C}(a, x)$ will also vary in $\Set$. Thus we have a
 mapping from $x$ to $\Set$.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.45\textwidth]{images/hom-set.jpg}
+  \centering
+  \includegraphics[width=0.45\textwidth]{images/hom-set.jpg}
 \end{figure}
 
 \noindent
@@ -85,8 +85,8 @@ is a morphism going from $a$ to $y$. It is therefore a
 member of $\cat{C}(a, y)$.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.45\textwidth]{images/hom-functor.jpg}
+  \centering
+  \includegraphics[width=0.45\textwidth]{images/hom-functor.jpg}
 \end{figure}
 
 \noindent
@@ -202,7 +202,7 @@ It must respect naturality conditions, and it must be the inverse of \code{alpha
 alpha . beta = id = beta . alpha
 \end{snip}
 We will see later that a natural transformation from $\cat{C}(a, -)$
-to any $\Set$-valued functor always exists as long as $F a$ is 
+to any $\Set$-valued functor always exists as long as $F a$ is
 non-empty (Yoneda's lemma) but it is not necessarily invertible.
 
 Let me give you an example in Haskell with the list functor and
@@ -297,36 +297,36 @@ explore alternative implementations that have practical value.
 \section{Challenges}
 
 \begin{enumerate}
-\tightlist
-\item
-  Show that the hom-functors map identity morphisms in \emph{C} to
-  corresponding identity functions in $\Set$.
-\item
-  Show that \code{Maybe} is not representable.
-\item
-  Is the \code{Reader} functor representable?
-\item
-  Using \code{Stream} representation, memoize a function that squares
-  its argument.
-\item
-  Show that \code{tabulate} and \code{index} for \code{Stream} are
-  indeed the inverse of each other. (Hint: use induction.)
-\item
-  The functor:
+  \tightlist
+  \item
+        Show that the hom-functors map identity morphisms in \emph{C} to
+        corresponding identity functions in $\Set$.
+  \item
+        Show that \code{Maybe} is not representable.
+  \item
+        Is the \code{Reader} functor representable?
+  \item
+        Using \code{Stream} representation, memoize a function that squares
+        its argument.
+  \item
+        Show that \code{tabulate} and \code{index} for \code{Stream} are
+        indeed the inverse of each other. (Hint: use induction.)
+  \item
+        The functor:
 
-\begin{snip}{haskell}
+        \begin{snip}{haskell}
 Pair a = Pair a a
 \end{snip}
-  is representable. Can you guess the type that represents it? Implement
-  \code{tabulate} and \code{index}.
+        is representable. Can you guess the type that represents it? Implement
+        \code{tabulate} and \code{index}.
 \end{enumerate}
 
 \section{Bibliography}
 
 \begin{enumerate}
-\tightlist
-\item
-  The Catsters video about
-  \urlref{https://www.youtube.com/watch?v=4QgjKUzyrhM}{representable
-  functors}.
+  \tightlist
+  \item
+        The Catsters video about
+        \urlref{https://www.youtube.com/watch?v=4QgjKUzyrhM}{representable
+          functors}.
 \end{enumerate}

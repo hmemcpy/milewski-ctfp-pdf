@@ -45,13 +45,13 @@ or equal-to another object. Which leads us to this definition of the
 initial object:
 
 \begin{quote}
-The \textbf{initial object} is the object that has one and only one
-morphism going to any object in the category.
+  The \textbf{initial object} is the object that has one and only one
+  morphism going to any object in the category.
 \end{quote}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/initial.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/initial.jpg}
 \end{figure}
 
 \noindent
@@ -87,13 +87,13 @@ object that's more terminal than any other object in the category.
 Again, we will insist on uniqueness:
 
 \begin{quote}
-The \textbf{terminal object} is the object with one and only one
-morphism coming to it from any object in the category.
+  The \textbf{terminal object} is the object with one and only one
+  morphism coming to it from any object in the category.
 \end{quote}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/final.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/final.jpg}
 \end{figure}
 
 \noindent
@@ -192,9 +192,9 @@ $i_{2}$ to $i_{1}$. What's the composition of
 these two morphisms?
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/uniqueness.jpg}
-\caption{All morphisms in this diagram are unique.}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/uniqueness.jpg}
+  \caption{All morphisms in this diagram are unique.}
 \end{figure}
 
 \noindent
@@ -259,8 +259,8 @@ respectively:
 \src{snippet09}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/productpattern.jpg}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/productpattern.jpg}
 \end{figure}
 
 \noindent
@@ -268,8 +268,8 @@ All $c$s that fit this pattern will be considered candidates for
 the product. There may be lots of them.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/productcandidates.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/productcandidates.jpg}
 \end{figure}
 
 \noindent
@@ -307,8 +307,8 @@ $p'$ and $q'$ can be reconstructed from $p$ and $q$ using $m$:
 \src{snippet12}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/productranking.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/productranking.jpg}
 \end{figure}
 
 \noindent
@@ -323,8 +323,8 @@ and \code{snd} is indeed \emph{better} than the two candidates I
 presented before.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/not-a-product.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/not-a-product.jpg}
 \end{figure}
 
 \noindent
@@ -375,10 +375,10 @@ category using the same universal construction. Such a product doesn't
 always exist, but when it does, it is unique up to a unique isomorphism.
 
 \begin{quote}
-A \textbf{product} of two objects $a$ and $b$ is the object
-$c$ equipped with two projections such that for any other object
-$c'$ equipped with two projections there is a unique morphism
-$m$ from $c'$ to $c$ that factorizes those projections.
+  A \textbf{product} of two objects $a$ and $b$ is the object
+  $c$ equipped with two projections such that for any other object
+  $c'$ equipped with two projections there is a unique morphism
+  $m$ from $c'$ to $c$ that factorizes those projections.
 \end{quote}
 
 \noindent
@@ -399,8 +399,8 @@ and $b$ to $c$.
 \src{snippet21}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/coproductpattern.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/coproductpattern.jpg}
 \end{figure}
 
 \noindent
@@ -412,8 +412,8 @@ factorizes the injections:
 \src{snippet22}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/coproductranking.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/coproductranking.jpg}
 \end{figure}
 
 \noindent
@@ -422,10 +422,10 @@ any other pattern, is called a coproduct and, if it exists, is unique up
 to unique isomorphism.
 
 \begin{quote}
-A \textbf{coproduct} of two objects $a$ and $b$ is the object
-$c$ equipped with two injections such that for any other object
-$c'$ equipped with two injections there is a unique morphism
-$m$ from $c$ to $c'$ that factorizes those injections.
+  A \textbf{coproduct} of two objects $a$ and $b$ is the object
+  $c$ equipped with two injections such that for any other object
+  $c'$ equipped with two injections there is a unique morphism
+  $m$ from $c$ to $c'$ that factorizes those injections.
 \end{quote}
 
 \noindent
@@ -588,41 +588,41 @@ isomorphism is the same as a bijection.
 \section{Challenges}
 
 \begin{enumerate}
-\tightlist
-\item
-  Show that the terminal object is unique up to unique isomorphism.
-\item
-  What is a product of two objects in a poset? Hint: Use the universal
-  construction.
-\item
-  What is a coproduct of two objects in a poset?
-\item
-  Implement the equivalent of Haskell \code{Either} as a generic type
-  in your favorite language (other than Haskell).
-\item
-  Show that \code{Either} is a ``better'' coproduct than \code{int}
-  equipped with two injections:
+  \tightlist
+  \item
+        Show that the terminal object is unique up to unique isomorphism.
+  \item
+        What is a product of two objects in a poset? Hint: Use the universal
+        construction.
+  \item
+        What is a coproduct of two objects in a poset?
+  \item
+        Implement the equivalent of Haskell \code{Either} as a generic type
+        in your favorite language (other than Haskell).
+  \item
+        Show that \code{Either} is a ``better'' coproduct than \code{int}
+        equipped with two injections:
 
-\begin{snip}{cpp}
+        \begin{snip}{cpp}
 int i(int n) { return n; }
 int j(bool b) { return b ? 0: 1; }
 \end{snip}
 
-  Hint: Define a function
+        Hint: Define a function
 
-\begin{snip}{cpp}
+        \begin{snip}{cpp}
 int m(Either const & e);
 \end{snip}
 
-  that factorizes \code{i} and \code{j}.
-\item
-  Continuing the previous problem: How would you argue that \code{int}
-  with the two injections \code{i} and \code{j} cannot be ``better''
-  than \code{Either}?
-\item
-  Still continuing: What about these injections?
+        that factorizes \code{i} and \code{j}.
+  \item
+        Continuing the previous problem: How would you argue that \code{int}
+        with the two injections \code{i} and \code{j} cannot be ``better''
+        than \code{Either}?
+  \item
+        Still continuing: What about these injections?
 
-\begin{snip}{cpp}
+        \begin{snip}{cpp}
 int i(int n) { 
     if (n < 0) return n;
     return n + 2;
@@ -630,18 +630,18 @@ int i(int n) {
 
 int j(bool b) { return b ? 0: 1; }
 \end{snip}
-\item
-  Come up with an inferior candidate for a coproduct of \code{int} and
-  \code{bool} that cannot be better than \code{Either} because it
-  allows multiple acceptable morphisms from it to \code{Either}.
+  \item
+        Come up with an inferior candidate for a coproduct of \code{int} and
+        \code{bool} that cannot be better than \code{Either} because it
+        allows multiple acceptable morphisms from it to \code{Either}.
 \end{enumerate}
 
 \section{Bibliography}
 
 \begin{enumerate}
-\tightlist
-\item
-  The Catsters,
-  \urlref{https://www.youtube.com/watch?v=upCSDIO9pjc}{Products and
-  Coproducts} video.
+  \tightlist
+  \item
+        The Catsters,
+        \urlref{https://www.youtube.com/watch?v=upCSDIO9pjc}{Products and
+          Coproducts} video.
 \end{enumerate}

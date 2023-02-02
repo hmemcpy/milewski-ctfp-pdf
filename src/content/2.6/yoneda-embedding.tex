@@ -15,11 +15,11 @@ It's a mapping of objects from category $\cat{C}$ to functors, which are
 \emph{objects} in the functor category (see the section about functor
 categories in
 \hyperref[natural-transformations]{Natural
-Transformations}). Let's use the notation $[\cat{C}, \Set]$ for the
+  Transformations}). Let's use the notation $[\cat{C}, \Set]$ for the
 functor category from $\cat{C}$ to $\Set$. You may also recall that
 hom-functors are the prototypical
 \hyperref[representable-functors]{representable
-functors}.
+  functors}.
 
 Every time we have a mapping of objects between two categories, it's
 natural to ask if such a mapping is also a functor. In other words
@@ -41,8 +41,8 @@ and replace the generic $F$ with the hom-functor
 $\cat{C}(b, -)$. We get:
 \[[\cat{C}, \Set](\cat{C}(a, -), \cat{C}(b, -)) \cong \cat{C}(b, a)\]
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.6\textwidth]{images/yoneda-embedding.jpg}
+  \centering
+  \includegraphics[width=0.6\textwidth]{images/yoneda-embedding.jpg}
 \end{figure}
 
 \noindent
@@ -53,8 +53,8 @@ $\cat{C}(b, a)$ --- that goes in the ``wrong'' direction. But that's
 okay; it only means that the functor we are looking at is contravariant.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.65\textwidth]{images/yoneda-embedding-2.jpg}
+  \centering
+  \includegraphics[width=0.65\textwidth]{images/yoneda-embedding-2.jpg}
 \end{figure}
 
 \noindent
@@ -105,7 +105,7 @@ hom-set, $\cat{C}(-, a)$. That would give us a contravariant
 hom-functor. Contravariant functors from $\cat{C}$ to $\Set$ are
 our familiar presheaves (see, for instance,
 \hyperref[limits-and-colimits]{Limits
-and Colimits}). The co-Yoneda embedding defines the embedding of a
+  and Colimits}). The co-Yoneda embedding defines the embedding of a
 category $\cat{C}$ in the category of presheaves. Its action on morphisms
 is given by:
 \[[\cat{C}, \Set](\cat{C}(-, a), \cat{C}(-, b)) \cong \cat{C}(a, b)\]
@@ -275,23 +275,23 @@ to go wrong.
 \section{Challenges}
 
 \begin{enumerate}
-\tightlist
-\item
-  Express the co-Yoneda embedding in Haskell.
-\item
-  Show that the bijection we established between \code{fromY} and
-  \code{btoa} is an isomorphism (the two mappings are the inverse of
-  each other).
-\item
-  Work out the Yoneda embedding for a monoid. What functor corresponds
-  to the monoid's single object? What natural transformations correspond
-  to monoid morphisms?
-\item
-  What is the application of the \emph{covariant} Yoneda embedding to
-  preorders? (Question suggested by Gershom Bazerman.)
-\item
-  Yoneda embedding can be used to embed an arbitrary functor category
-  $[\cat{C}, \cat{D}]$ in the functor category
-  $[[\cat{C}, \cat{D}], \Set]$. Figure out how it works on morphisms
-  (which in this case are natural transformations).
+  \tightlist
+  \item
+        Express the co-Yoneda embedding in Haskell.
+  \item
+        Show that the bijection we established between \code{fromY} and
+        \code{btoa} is an isomorphism (the two mappings are the inverse of
+        each other).
+  \item
+        Work out the Yoneda embedding for a monoid. What functor corresponds
+        to the monoid's single object? What natural transformations correspond
+        to monoid morphisms?
+  \item
+        What is the application of the \emph{covariant} Yoneda embedding to
+        preorders? (Question suggested by Gershom Bazerman.)
+  \item
+        Yoneda embedding can be used to embed an arbitrary functor category
+        $[\cat{C}, \cat{D}]$ in the functor category
+        $[[\cat{C}, \cat{D}], \Set]$. Figure out how it works on morphisms
+        (which in this case are natural transformations).
 \end{enumerate}

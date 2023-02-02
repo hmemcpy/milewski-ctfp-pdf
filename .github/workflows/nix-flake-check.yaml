@@ -1,0 +1,64 @@
+name: Check and build
+
+on:
+    pull_request:
+    push:
+        branches:
+            - master
+jobs:
+    dependencies:
+        name: Build dependencies
+        runs-on: ubuntu-latest
+        outputs:
+            version: ${{ steps.version.outputs.version }}
+
+        steps:
+            - name: Set up Git repository
+              uses: actions/checkout@v3
+
+            - name: Create global variables
+              id: version
+              run:
+                  echo "version=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+    determine-matrix:
+        name: Figure out the packages we need to build
+        runs-on: ubuntu-latest
+        needs: [dependencies]
+
+        outputs:
+            matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+        steps:
+            - name: Set up Git repository
+              uses: actions/checkout@v3
+
+            - name: Install the Nix package manager
+              uses: cachix/install-nix-action@v18
+
+            - id: set-matrix
+              run: |
+                  echo "matrix=$(
+                    nix eval --json .#packages.x86_64-linux --apply builtins.attrNames
+                  )" >> $GITHUB_OUTPUT
+
+    build:
+        name: Build
+        needs: determine-matrix
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                packages: ${{fromJson(needs.determine-matrix.outputs.matrix)}}
+
+        steps:
+            - name: Set up Git repository
+              uses: actions/checkout@v3
+
+            - name: Install Nix
+              uses: cachix/install-nix-action@v18
+
+            - name: Nix flake check
+              run: nix flake check
+
+            - name: Build ${{ matrix.packages }}.pdf
+              run: nix build .#${{ matrix.packages }}

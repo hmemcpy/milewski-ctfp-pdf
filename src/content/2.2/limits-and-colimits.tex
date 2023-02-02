@@ -8,8 +8,8 @@ Now that we know more about \hyperref[functors]{functors} and
 try.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/productpattern.jpg}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/productpattern.jpg}
 \end{figure}
 
 \noindent
@@ -36,10 +36,10 @@ nothing can stop us from using categories more complex than $\cat{2}$
 to define our patterns.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/two.jpg}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/two.jpg}
 \end{figure}
-  
+
 \noindent
 But let's continue. The next step in the definition of a product is the
 selection of the candidate object $c$. Here again, we could
@@ -52,8 +52,8 @@ done with $\Delta_c$. Remember, $\Delta_c$ maps all
 objects into $c$ and all morphisms into $\idarrow[c]$.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/twodelta.jpg}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/twodelta.jpg}
 \end{figure}
 
 \noindent
@@ -75,8 +75,8 @@ is trivially satisfied, because there are no morphisms (other than the
 identities) in $\cat{2}$.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/productcone.jpg}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/productcone.jpg}
 \end{figure}
 
 \noindent
@@ -99,8 +99,8 @@ morphisms connecting $c$ to the diagram: the image of $\cat{I}$
 under $D$.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/cone.jpg}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/cone.jpg}
 \end{figure}
 
 \noindent
@@ -114,13 +114,13 @@ the naturality square becomes a commuting triangle. The two arms of this
 triangle are the components of the natural transformation.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/conenaturality.jpg}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/conenaturality.jpg}
 \end{figure}
 
 \noindent
 So that's one cone. What we are interested in is the \newterm{universal
-cone} --- just like we picked a universal object for our definition of a
+  cone} --- just like we picked a universal object for our definition of a
 product.
 
 There are many ways to go about it. For instance, we may define a
@@ -139,19 +139,19 @@ instance:
 \src{snippet01}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/productranking.jpg}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/productranking.jpg}
 \end{figure}
 
 This condition translates, in the general case, to the condition that
 the triangles whose one side is the factorizing morphism all commute.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/conecommutativity.jpg}
-\caption{The commuting triangle connecting two cones, with the factorizing
-morphism $h$ (here, the lower cone is the universal one, with
-$\Lim[D]$ as its apex)}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/conecommutativity.jpg}
+  \caption{The commuting triangle connecting two cones, with the factorizing
+    morphism $h$ (here, the lower cone is the universal one, with
+    $\Lim[D]$ as its apex)}
 \end{figure}
 
 \noindent
@@ -231,8 +231,8 @@ Notice the inversion in the order of $c$ and $c'$
 characteristic of a \emph{contravariant} functor.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/homsetmapping.jpg}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/homsetmapping.jpg}
 \end{figure}
 
 \noindent
@@ -265,8 +265,8 @@ It's relatively easy to show that those components indeed add up to a
 natural transformation.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/natmapping.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/natmapping.jpg}
 \end{figure}
 
 \noindent
@@ -346,8 +346,8 @@ and two projections:
 \src{snippet04}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/equalizercone.jpg}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/equalizercone.jpg}
 \end{figure}
 
 \noindent
@@ -401,8 +401,8 @@ with
 \src{snippet12}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/equilizerlimit.jpg}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/equilizerlimit.jpg}
 \end{figure}
 
 \noindent
@@ -428,8 +428,8 @@ and three morphisms:
 \src{snippet14}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/pullbackcone.jpg}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/pullbackcone.jpg}
 \end{figure}
 
 \noindent
@@ -441,8 +441,8 @@ So we are only left with the following condition:
 A pullback is a universal cone of this shape.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/pullbacklimit.jpg}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/pullbacklimit.jpg}
 \end{figure}
 
 \noindent
@@ -490,8 +490,8 @@ overriding of methods. And, of course, there would be no pullback if
 there is a name conflict between some methods of \code{B} and \code{C}.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.25\textwidth]{images/classes.jpg}
+  \centering
+  \includegraphics[width=0.25\textwidth]{images/classes.jpg}
 \end{figure}
 
 \noindent
@@ -551,9 +551,9 @@ morphism, which now flows from the universal co-cone to any other
 co-cone.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/colimit.jpg}
-\caption{Cocone with a factorizing morphism $h$ connecting two apexes.}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/colimit.jpg}
+  \caption{Cocone with a factorizing morphism $h$ connecting two apexes.}
 \end{figure}
 
 \noindent
@@ -562,8 +562,8 @@ diagram generated by $\cat{2}$, the category we've used in the
 definition of the product.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/coproductranking.jpg}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/coproductranking.jpg}
 \end{figure}
 
 \noindent
@@ -582,7 +582,7 @@ $1\leftarrow2\rightarrow3$.
 I said previously that functors come close to the idea of continuous
 mappings of categories, in the sense that they never break existing
 connections (morphisms). The actual definition of a \emph{continuous
-functor} $F$ from a category $\cat{C}$ to $\cat{C'}$ includes the
+  functor} $F$ from a category $\cat{C}$ to $\cat{C'}$ includes the
 requirement that the functor preserve limits. Every diagram $D$
 in $\cat{C}$ can be mapped to a diagram $F \circ D$ in $\cat{C'}$ by
 simply composing two functors. The continuity condition for $F$
@@ -591,8 +591,8 @@ the diagram $F \circ D$ also has a limit, and it is equal to
 $F (\Lim[D])$.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.6\textwidth]{images/continuity.jpg}
+  \centering
+  \includegraphics[width=0.6\textwidth]{images/continuity.jpg}
 \end{figure}
 
 \noindent
@@ -650,23 +650,23 @@ poset).
 \section{Challenges}
 
 \begin{enumerate}
-\tightlist
-\item
-  How would you describe a pushout in the category of C++ classes?
-\item
-  Show that the limit of the identity functor
-  $\mathbf{Id} \Colon \cat{C} \to \cat{C}$ is the initial object.
-\item
-  Subsets of a given set form a category. A morphism in that category is
-  defined to be an arrow connecting two sets if the first is the subset
-  of the second. What is a pullback of two sets in such a category?
-  What's a pushout? What are the initial and terminal objects?
-\item
-  Can you guess what a coequalizer is?
-\item
-  Show that, in a category with a terminal object, a pullback towards
-  the terminal object is a product.
-\item
-  Similarly, show that a pushout from an initial object (if one exists)
-  is the coproduct.
+  \tightlist
+  \item
+        How would you describe a pushout in the category of C++ classes?
+  \item
+        Show that the limit of the identity functor
+        $\mathbf{Id} \Colon \cat{C} \to \cat{C}$ is the initial object.
+  \item
+        Subsets of a given set form a category. A morphism in that category is
+        defined to be an arrow connecting two sets if the first is the subset
+        of the second. What is a pullback of two sets in such a category?
+        What's a pushout? What are the initial and terminal objects?
+  \item
+        Can you guess what a coequalizer is?
+  \item
+        Show that, in a category with a terminal object, a pullback towards
+        the terminal object is a product.
+  \item
+        Similarly, show that a pushout from an initial object (if one exists)
+        is the coproduct.
 \end{enumerate}

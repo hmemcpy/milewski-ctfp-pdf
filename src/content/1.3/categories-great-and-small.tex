@@ -95,7 +95,7 @@ The neutral element is zero, because:
 and
 \[a + 0 = a\]
 The second equation is redundant, because addition is commutative $(a + b
-= b + a)$, but commutativity is not part of the definition of a monoid.
+  = b + a)$, but commutativity is not part of the definition of a monoid.
 For instance, string concatenation is not commutative and yet it forms a
 monoid. The neutral element for string concatenation, by the way, is an
 empty string, which can be attached to either side of a string without
@@ -260,8 +260,8 @@ monoid can be described as a single object category with a set of
 morphisms that follow appropriate rules of composition.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/monoid.jpg}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/monoid.jpg}
 \end{figure}
 
 \noindent
@@ -289,9 +289,9 @@ this product. So we can always recover a set monoid from a category
 monoid. For all intents and purposes they are one and the same.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/monoidhomset.jpg}
-\caption{Monoid hom-set seen as morphisms and as points in a set.}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/monoidhomset.jpg}
+  \caption{Monoid hom-set seen as morphisms and as points in a set.}
 \end{figure}
 
 \noindent
@@ -310,43 +310,43 @@ set $\cat{M}(m, m)$.
 \section{Challenges}
 
 \begin{enumerate}
-\tightlist
-\item
-  Generate a free category from:
-
-  \begin{enumerate}
   \tightlist
   \item
-    A graph with one node and no edges
-  \item
-    A graph with one node and one (directed) edge (hint: this edge can
-    be composed with itself)
-  \item
-    A graph with two nodes and a single arrow between them
-  \item
-    A graph with a single node and 26 arrows marked with the letters of
-    the alphabet: a, b, c \ldots{} z.
-  \end{enumerate}
-\item
-  What kind of order is this?
+        Generate a free category from:
 
-  \begin{enumerate}
-  \tightlist
+        \begin{enumerate}
+          \tightlist
+          \item
+                A graph with one node and no edges
+          \item
+                A graph with one node and one (directed) edge (hint: this edge can
+                be composed with itself)
+          \item
+                A graph with two nodes and a single arrow between them
+          \item
+                A graph with a single node and 26 arrows marked with the letters of
+                the alphabet: a, b, c \ldots{} z.
+        \end{enumerate}
   \item
-    A set of sets with the inclusion relation: $A$ is included in $B$ if
-    every element of $A$ is also an element of $B$.
+        What kind of order is this?
+
+        \begin{enumerate}
+          \tightlist
+          \item
+                A set of sets with the inclusion relation: $A$ is included in $B$ if
+                every element of $A$ is also an element of $B$.
+          \item
+                C++ types with the following subtyping relation: \code{T1} is a subtype of
+                \code{T2} if a pointer to \code{T1} can be passed to a function that expects a
+                pointer to \code{T2} without triggering a compilation error.
+        \end{enumerate}
   \item
-    C++ types with the following subtyping relation: \code{T1} is a subtype of
-    \code{T2} if a pointer to \code{T1} can be passed to a function that expects a
-    pointer to \code{T2} without triggering a compilation error.
-  \end{enumerate}
-\item
-  Considering that \code{Bool} is a set of two values \code{True} and \code{False}, show that
-  it forms two (set-theoretical) monoids with respect to, respectively,
-  operator \code{\&\&} (AND) and \code{||} (OR).
-\item
-  Represent the \code{Bool} monoid with the AND operator as a category: List
-  the morphisms and their rules of composition.
-\item
-  Represent addition modulo 3 as a monoid category.
+        Considering that \code{Bool} is a set of two values \code{True} and \code{False}, show that
+        it forms two (set-theoretical) monoids with respect to, respectively,
+        operator \code{\&\&} (AND) and \code{||} (OR).
+  \item
+        Represent the \code{Bool} monoid with the AND operator as a category: List
+        the morphisms and their rules of composition.
+  \item
+        Represent addition modulo 3 as a monoid category.
 \end{enumerate}

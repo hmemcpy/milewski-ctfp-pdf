@@ -12,9 +12,9 @@ in the category $\Set$ every hom-set is itself an object in the
 same category ---because it is, after all, a \emph{set}.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/set-hom-set.jpg}
-\caption{Hom-set in Set is just a set}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/set-hom-set.jpg}
+  \caption{Hom-set in Set is just a set}
 \end{figure}
 
 \noindent
@@ -22,9 +22,9 @@ The same is not true of other categories where hom-sets are external to
 a category. They are even called \emph{external} hom-sets.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/hom-set.jpg}
-\caption{Hom-set in category C is an external set}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/hom-set.jpg}
+  \caption{Hom-set in category C is an external set}
 \end{figure}
 
 \noindent
@@ -46,7 +46,7 @@ relationship to the argument type and the result type. We've already
 seen the constructions of composite types --- those that involved
 relationships between objects. We used universal constructions to define
 a \hyperref[products-and-coproducts]{product
-and coproduct types}. We can use the same trick to define a
+  and coproduct types}. We can use the same trick to define a
 function type. We will need a pattern that involves three objects: the
 function type that we are constructing, the argument type, and the
 result type.
@@ -68,10 +68,10 @@ $f x$ (the application of $f$ to $x$, which is an
 element of $b$).
 
 \begin{figure}[H]
-\centering\includegraphics[width=0.35\textwidth]{images/functionset.jpg}
-\caption{In Set we can pick a function $f$ from a set of functions $z$ and we can
-pick an argument $x$ from the set (type) $a$. We get an element $f x$ in the
-set (type) $b$.}
+  \centering\includegraphics[width=0.35\textwidth]{images/functionset.jpg}
+  \caption{In Set we can pick a function $f$ from a set of functions $z$ and we can
+    pick an argument $x$ from the set (type) $a$. We get an element $f x$ in the
+    set (type) $b$.}
 \end{figure}
 
 \noindent
@@ -86,10 +86,10 @@ So that's the pattern: a product of two objects $z$ and
 $a$ connected to another object $b$ by a morphism $g$.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/functionpattern.jpg}
-\caption{A pattern of objects and morphisms that is the starting point of the
-universal construction}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/functionpattern.jpg}
+  \caption{A pattern of objects and morphisms that is the starting point of the
+    universal construction}
 \end{figure}
 
 \noindent
@@ -121,9 +121,9 @@ through the application of $g$. (Hint: Read this sentence while
 looking at the picture.)
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/functionranking.jpg}
-\caption{Establishing a ranking between candidates for the function object}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/functionranking.jpg}
+  \caption{Establishing a ranking between candidates for the function object}
 \end{figure}
 
 \noindent
@@ -134,7 +134,7 @@ that has both $z'$ and $z$ crossed with $a$.
 What we really need, given the mapping $h$ from $z'$
 to $z$, is a mapping from $z' \times a$ to $z \times a$.
 And now, after discussing the \hyperref[functoriality]{functoriality
-of the product}, we know how to do it. Because the product itself is a
+  of the product}, we know how to do it. Because the product itself is a
 functor (more precisely an endo-bi-functor), it's possible to lift pairs
 of morphisms. In other words, we can define not only products of objects
 but also products of morphisms.
@@ -161,29 +161,29 @@ $eval$. This object is better than any other object according to
 our ranking.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/universalfunctionobject.jpg}
-\caption{The definition of the universal function object. This is the same
-diagram as above, but now the object $a \Rightarrow b$ is \emph{universal}.}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/universalfunctionobject.jpg}
+  \caption{The definition of the universal function object. This is the same
+    diagram as above, but now the object $a \Rightarrow b$ is \emph{universal}.}
 \end{figure}
 
 \noindent
 Formally:
 
 \begin{longtable}[]{@{}l@{}}
-\toprule
-\begin{minipage}[t]{0.97\columnwidth}\raggedright\strut
-A \emph{function object} from $a$ to $b$ is an object
-$a \Rightarrow b$ together with the morphism
-\[eval \Colon ((a \Rightarrow b) \times a) \to b\]
-such that for any other object $z$ with a morphism
-\[g \Colon z \times a \to b\]
-there is a unique morphism
-\[h \Colon z \to (a \Rightarrow b)\]
-that factors $g$ through $eval$:
-\[g = eval \circ (h \times \id)\]
-\end{minipage}\tabularnewline
-\bottomrule
+  \toprule
+  \begin{minipage}[t]{0.97\columnwidth}\raggedright\strut
+    A \emph{function object} from $a$ to $b$ is an object
+    $a \Rightarrow b$ together with the morphism
+    \[eval \Colon ((a \Rightarrow b) \times a) \to b\]
+    such that for any other object $z$ with a morphism
+    \[g \Colon z \times a \to b\]
+    there is a unique morphism
+    \[h \Colon z \to (a \Rightarrow b)\]
+    that factors $g$ through $eval$:
+    \[g = eval \circ (h \times \id)\]
+  \end{minipage}\tabularnewline
+  \bottomrule
 \end{longtable}
 
 \noindent
@@ -365,13 +365,13 @@ such a category.
 A Cartesian closed category must contain:
 
 \begin{enumerate}
-\tightlist
-\item
-  The terminal object,
-\item
-  A product of any pair of objects, and
-\item
-  An exponential for any pair of objects.
+  \tightlist
+  \item
+        The terminal object,
+  \item
+        A product of any pair of objects, and
+  \item
+        An exponential for any pair of objects.
 \end{enumerate}
 If you consider an exponential as an iterated product (possibly
 infinitely many times), then you can think of a Cartesian closed
@@ -388,8 +388,8 @@ The terminal object and the product have their duals: the initial object
 and the coproduct. A Cartesian closed category that also supports those
 two, and in which product can be distributed over coproduct
 \begin{gather*}
-a \times (b + c) = a \times b + a \times c \\
-(b + c) \times a = b \times a + c \times a
+  a \times (b + c) = a \times b + a \times c \\
+  (b + c) \times a = b \times a + c \times a
 \end{gather*}
 is called a \newterm{bicartesian closed} category. We'll see in the next
 section that bicartesian closed categories, of which $\Set$ is a
@@ -596,11 +596,11 @@ revolutionizing the world in more than one way.
 \section{Bibliography}
 
 \begin{enumerate}
-\tightlist
-\item
-  Ralph Hinze, Daniel W. H. James,
-  \urlref{http://www.cs.ox.ac.uk/ralf.hinze/publications/WGP10.pdf}{Reason
-  Isomorphically!}. This paper contains proofs of all those high-school
-  algebraic identities in category theory that I mentioned in this
-  chapter.
+  \tightlist
+  \item
+        Ralph Hinze, Daniel W. H. James,
+        \urlref{http://www.cs.ox.ac.uk/ralf.hinze/publications/WGP10.pdf}{Reason
+          Isomorphically!}. This paper contains proofs of all those high-school
+        algebraic identities in category theory that I mentioned in this
+        chapter.
 \end{enumerate}

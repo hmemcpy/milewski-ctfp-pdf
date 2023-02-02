@@ -10,7 +10,7 @@ category inside another. The source category serves as a model, a
 blueprint, for some structure that's part of the target category.
 
 \begin{figure}[H]
-\centering\includegraphics[width=0.4\textwidth]{images/1_functors.jpg}
+  \centering\includegraphics[width=0.4\textwidth]{images/1_functors.jpg}
 \end{figure}
 
 \noindent
@@ -29,8 +29,8 @@ A mapping of functors should therefore map $F a$ to
 $G a$.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/2_natcomp.jpg}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/2_natcomp.jpg}
 \end{figure}
 
 \noindent
@@ -64,26 +64,26 @@ and $b$ in $\cat{C}$. It's mapped to two morphisms, $F\ f$
 and $G f$ in $\cat{D}$:
 
 \begin{gather*}
-F f \Colon F a \to F b \\
-G f \Colon G a \to G b
+  F f \Colon F a \to F b \\
+  G f \Colon G a \to G b
 \end{gather*}
 The natural transformation $\alpha$ provides two additional morphisms
 that complete the diagram in \emph{D}:
 
 \begin{gather*}
-\alpha_a \Colon F a \to G a \\
-\alpha_b \Colon F b \to G b
+  \alpha_a \Colon F a \to G a \\
+  \alpha_b \Colon F b \to G b
 \end{gather*}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/3_naturality.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/3_naturality.jpg}
 \end{figure}
 
 \noindent
 Now we have two ways of getting from $F a$ to $G b$. To
 make sure that they are equal, we must impose the \newterm{naturality
-condition} that holds for any $f$:
+  condition} that holds for any $f$:
 
 \[G f \circ \alpha_a = \alpha_b \circ F f\]
 The naturality condition is a pretty stringent requirement. For
@@ -94,8 +94,8 @@ $\alpha_a$ along $f$:
 \[\alpha_b = (G f) \circ \alpha_a \circ (F f)^{-1}\]
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/4_transport.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/4_transport.jpg}
 \end{figure}
 
 \noindent
@@ -114,8 +114,8 @@ also say that it maps morphisms to commuting squares --- there is one
 commuting naturality square in $\cat{D}$ for every morphism in $\cat{C}$.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/naturality.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/naturality.jpg}
 \end{figure}
 
 \noindent
@@ -215,9 +215,9 @@ limitations on the implementation --- one formula for all types. These
 limitations translate into equational theorems about such functions. In
 the case of functions that transform functors, free theorems are the
 naturality conditions.\footnote{
-You may read more about free theorems in my
-blog \href{https://bartoszmilewski.com/2014/09/22/parametricity-money-for-nothing-and-theorems-for-free/}{``Parametricity:
-Money for Nothing and Theorems for Free}.''}
+  You may read more about free theorems in my
+  blog \href{https://bartoszmilewski.com/2014/09/22/parametricity-money-for-nothing-and-theorems-for-free/}{``Parametricity:
+    Money for Nothing and Theorems for Free}.''}
 
 One way of thinking about functors in Haskell that I mentioned earlier
 is to consider them generalized containers. We can continue this analogy
@@ -405,8 +405,8 @@ $\beta \cdot \alpha$ --- the composition of two natural transformations $\beta$ 
 \[(\beta \cdot \alpha)_a = \beta_a \circ \alpha_a\]
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/5_vertical.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/5_vertical.jpg}
 \end{figure}
 
 \noindent
@@ -415,8 +415,8 @@ composition is indeed a natural transformation from F to H:
 \[H f \circ (\beta \cdot \alpha)_a = (\beta \cdot \alpha)_b \circ F f\]
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/6_verticalnaturality.jpg}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/6_verticalnaturality.jpg}
 \end{figure}
 
 \noindent
@@ -438,8 +438,8 @@ composition is important in defining the functor category. I'll explain
 horizontal composition shortly.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/6a_vertical.jpg}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/6a_vertical.jpg}
 \end{figure}
 
 \noindent
@@ -458,8 +458,8 @@ functors. A Hom-set in $\Cat$ is a set of functors. For instance
 $\cat{Cat(C, D)}$ is a set of functors between two categories $\cat{C}$ and $\cat{D}$.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/7_cathomset.jpg}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/7_cathomset.jpg}
 \end{figure}
 
 \noindent
@@ -506,18 +506,18 @@ morphisms between morphisms.
 In the case of $\Cat$ seen as a $\cat{2}$-category we have:
 
 \begin{itemize}
-\tightlist
-\item
-  Objects: (Small) categories
-\item
-  1-morphisms: Functors between categories
-\item
-  2-morphisms: Natural transformations between functors.
+  \tightlist
+  \item
+        Objects: (Small) categories
+  \item
+        1-morphisms: Functors between categories
+  \item
+        2-morphisms: Natural transformations between functors.
 \end{itemize}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/8_cat-2-cat.jpg}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/8_cat-2-cat.jpg}
 \end{figure}
 
 \noindent
@@ -534,21 +534,21 @@ do they interact with each other?
 
 Let's pick two functors, or 1-morphisms, in $\Cat$:
 \begin{gather*}
-F \Colon \cat{C} \to \cat{D} \\
-G \Colon \cat{D} \to \cat{E}
+  F \Colon \cat{C} \to \cat{D} \\
+  G \Colon \cat{D} \to \cat{E}
 \end{gather*}
 and their composition:
 \[G \circ F \Colon \cat{C} \to \cat{E}\]
 Suppose we have two natural transformations, $\alpha$ and $\beta$, that act,
 respectively, on functors $F$ and $G$:
 \begin{gather*}
-\alpha \Colon F \to F' \\
-\beta \Colon G \to G'
+  \alpha \Colon F \to F' \\
+  \beta \Colon G \to G'
 \end{gather*}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/10_horizontal.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/10_horizontal.jpg}
 \end{figure}
 
 \noindent
@@ -563,8 +563,8 @@ Having $\alpha$ and $\beta$ at our disposal, can we define a natural transformat
 from $G \circ F$ to $G' \circ F'$? Let me sketch the construction.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.5\textwidth]{images/9_horizontal.jpg}
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/9_horizontal.jpg}
 \end{figure}
 
 \noindent
@@ -577,14 +577,14 @@ objects: $G (F a)$, $G'(F a)$, $G (F'a)$, $G'(F'a)$.
 We also have four morphisms forming a square. Two of these morphisms are
 the components of the natural transformation $\beta$:
 \begin{gather*}
-\beta_{F a} \Colon G (F a) \to G'(F a) \\
-\beta_{F'a} \Colon G (F'a) \to G'(F'a)
+  \beta_{F a} \Colon G (F a) \to G'(F a) \\
+  \beta_{F'a} \Colon G (F'a) \to G'(F'a)
 \end{gather*}
 The other two are the images of $\alpha_a$ under the two
 functors (functors map morphisms):
 \begin{gather*}
-G \alpha_a \Colon G (F a) \to G (F'a) \\
-G'\alpha_a \Colon G'(F a) \to G'(F'a)
+  G \alpha_a \Colon G (F a) \to G (F'a) \\
+  G'\alpha_a \Colon G'(F a) \to G'(F'a)
 \end{gather*}
 That's a lot of morphisms. Our goal is to find a morphism that goes from
 $G (F a)$ to $G'(F'a)$, a candidate for the
@@ -592,8 +592,8 @@ component of a natural transformation connecting the two functors $G \circ F$
 and $G' \circ F'$. In fact there's not one but two paths we can take from
 $G (F a)$ to $G'(F'a)$:
 \begin{gather*}
-G'\alpha_a \circ \beta_{F a} \\
-\beta_{F'a} \circ G \alpha_a
+  G'\alpha_a \circ \beta_{F a} \\
+  \beta_{F'a} \circ G \alpha_a
 \end{gather*}
 Luckily for us, they are equal, because the square we have formed turns
 out to be the naturality square for $\beta$.
@@ -620,8 +620,8 @@ categories, the ones that are connected by the functors it transforms.
 We can think of it as connecting these two categories.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.5\textwidth]{images/sideways.jpg}
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/sideways.jpg}
 \end{figure}
 
 \noindent
@@ -689,36 +689,36 @@ natural transformation is a special type of polymorphic function.
 \section{Challenges}
 
 \begin{enumerate}
-\tightlist
-\item
-  Define a natural transformation from the \code{Maybe} functor to the
-  list functor. Prove the naturality condition for it.
-\item
-  Define at least two different natural transformations between
-  \code{Reader ()} and the list functor. How many different lists of
-  \code{()} are there?
-\item
-  Continue the previous exercise with \code{Reader Bool} and
-  \code{Maybe}.
-\item
-  Show that horizontal composition of natural transformation satisfies
-  the naturality condition (hint: use components). It's a good exercise
-  in diagram chasing.
-\item
-  Write a short essay about how you may enjoy writing down the evident
-  diagrams needed to prove the interchange law.
-\item
-  Create a few test cases for the opposite naturality condition of
-  transformations between different \code{Op} functors. Here's one
-  choice:
+  \tightlist
+  \item
+        Define a natural transformation from the \code{Maybe} functor to the
+        list functor. Prove the naturality condition for it.
+  \item
+        Define at least two different natural transformations between
+        \code{Reader ()} and the list functor. How many different lists of
+        \code{()} are there?
+  \item
+        Continue the previous exercise with \code{Reader Bool} and
+        \code{Maybe}.
+  \item
+        Show that horizontal composition of natural transformation satisfies
+        the naturality condition (hint: use components). It's a good exercise
+        in diagram chasing.
+  \item
+        Write a short essay about how you may enjoy writing down the evident
+        diagrams needed to prove the interchange law.
+  \item
+        Create a few test cases for the opposite naturality condition of
+        transformations between different \code{Op} functors. Here's one
+        choice:
 
-\begin{snip}{haskell}
+        \begin{snip}{haskell}
 op :: Op Bool Int
 op = Op (\x -> x > 0)
 \end{snip}
-and
+        and
 
-\begin{snip}{haskell}
+        \begin{snip}{haskell}
 f :: String -> Int
 f x = read x
 \end{snip}

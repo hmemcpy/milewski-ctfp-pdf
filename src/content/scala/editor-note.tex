@@ -1,29 +1,29 @@
 % !TEX root = ctfp-print.tex
 
 \lettrine[lhang=0.17]{T}{his is the Scala edition} of \emph{Category Theory for Programmers}.
-It's been a tremendous success, making Bartosz Milewski's blog post series available as a nicely 
+It's been a tremendous success, making Bartosz Milewski's blog post series available as a nicely
 typeset \acronym{PDF}, as well as a hardcover book. There have been numerous contributions made
 to improve the book, by fixing typos and errors, as well as translating the code snippets into
 other programming languages.
 
 I am thrilled to present this edition of the book, containing the original Haskell code, followed by
-its Scala counterpart. The Scala code snippets were generously provided by 
-\urlref{https://github.com/typelevel/CT_from_Programmers.scala}{Typelevel} contributors, slightly 
+its Scala counterpart. The Scala code snippets were generously provided by
+\urlref{https://github.com/typelevel/CT_from_Programmers.scala}{Typelevel} contributors, slightly
 modified to suit the format of this book.
 
 To support code snippets in multiple languages, I am using a \LaTeX{} macro to load the code snippets
-from external files. This allows easily extending the book with other languages, while leaving the 
+from external files. This allows easily extending the book with other languages, while leaving the
 original text intact. Which is why you should mentally append the words ``and Scala'' whenever you see
 ``in Haskell'' in the text.
 
 The code is laid out in the following manner: the original Haskell code, followed by Scala code.
 To distinguish between them, the code snippets are braced from the left with a vertical bar, in the primary
-color of the language's logo, \raisebox{-.2mm}{\includegraphics[height=.3cm]{fig/icons/haskell.png}}, 
+color of the language's logo, \raisebox{-.2mm}{\includegraphics[height=.3cm]{fig/icons/haskell.png}},
 and \raisebox{-.2mm}{\includegraphics[height=.3cm]{fig/icons/scala.png}} respectively, e.g.:
 
 \srcsnippet{content/3.6/code/haskell/snippet03.hs}{blue}{haskell}
 \unskip
 \srcsnippet{content/3.6/code/scala/snippet03.scala}{red}{scala}
 \NoIndentAfterThis
-In addition, some Scala snippets make use of the 
+In addition, some Scala snippets make use of the
 \urlref{https://github.com/non/kind-projector}{Kind Projector} compiler plugin, to support nicer syntax for partially-applied types.

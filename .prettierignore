@@ -1,0 +1,6 @@
+/.direnv/
+/.idea/
+/vendor/
+/docs/
+/build/
+CHANGELOG.md

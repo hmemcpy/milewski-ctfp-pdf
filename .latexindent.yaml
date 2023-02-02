@@ -1,0 +1,7 @@
+defaultIndent: "  "
+verbatimEnvironments:
+    verbatim: 1
+    lstlisting: 1
+    minted: 1
+    snip: 1
+    snipv: 1

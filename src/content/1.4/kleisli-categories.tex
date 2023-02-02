@@ -110,8 +110,8 @@ that they piggyback a message string on top of their regular return
 values.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/piggyback.jpg}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/piggyback.jpg}
 \end{figure}
 \noindent
 We will ``embellish'' the return values of these functions. Let's do it
@@ -156,7 +156,7 @@ Now imagine a whole program written in this style. It's a nightmare of
 repetitive, error-prone code. But we are programmers. We know how to
 deal with repetitive code: we abstract it! This is, however, not your
 run of the mill abstraction --- we have to abstract \newterm{function
-composition} itself. But composition is the essence of category theory,
+  composition} itself. But composition is the essence of category theory,
 so before we write more code, let's analyze the problem from the
 categorical point of view.
 
@@ -205,18 +205,18 @@ So here's the recipe for the composition of two morphisms in this new
 category we are constructing:
 
 \begin{enumerate}
-\tightlist
-\item
-  Execute the embellished function corresponding to the first morphism
-\item
-  Extract the first component of the result pair and pass it to the
-  embellished function corresponding to the second morphism
-\item
-  Concatenate the second component (the string) of the first result
-  and the second component (the string) of the second result
-\item
-  Return a new pair combining the first component of the final result
-  with the concatenated string.
+  \tightlist
+  \item
+        Execute the embellished function corresponding to the first morphism
+  \item
+        Extract the first component of the result pair and pass it to the
+        embellished function corresponding to the second morphism
+  \item
+        Concatenate the second component (the string) of the first result
+        and the second component (the string) of the second result
+  \item
+        Return a new pair combining the first component of the final result
+        with the concatenated string.
 \end{enumerate}
 
 If we want to abstract this composition as a higher order function in
@@ -431,16 +431,16 @@ optional<double> safe_root(double x) {
 Here's the challenge:
 
 \begin{enumerate}
-\tightlist
-\item
-  Construct the Kleisli category for partial functions (define
-  composition and identity).
-\item
-  Implement the embellished function \code{safe\_reciprocal} that
-  returns a valid reciprocal of its argument, if it's different from
-  zero.
-\item
-  Compose the functions \code{safe\_root} and \code{safe\_reciprocal} to implement
-  \code{safe\_root\_reciprocal} that calculates \code{sqrt(1/x)}
-  whenever possible.
+  \tightlist
+  \item
+        Construct the Kleisli category for partial functions (define
+        composition and identity).
+  \item
+        Implement the embellished function \code{safe\_reciprocal} that
+        returns a valid reciprocal of its argument, if it's different from
+        zero.
+  \item
+        Compose the functions \code{safe\_root} and \code{safe\_reciprocal} to implement
+        \code{safe\_root\_reciprocal} that calculates \code{sqrt(1/x)}
+        whenever possible.
 \end{enumerate}

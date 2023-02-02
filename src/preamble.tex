@@ -23,7 +23,7 @@
 \defaultfontfeatures{%                                         %  is important for
   Scale=MatchLowercase, % needed here ...                      %  single quotes not
 }                                                              %  to turn out curly
-\setmonofont[Path=fonts/, BoldFont=Inconsolata-LGC-Bold.ttf]{Inconsolata-LGC-Bold.ttf} %  ("typographic")
+\setmonofont[BoldFont=Inconsolata-LGC-Bold.ttf]{Inconsolata-LGC-Bold.ttf} %  ("typographic")
                                                                %  in verbatim blocks
 \defaultfontfeatures{%                                         %  of Haskell code.
   Scale=MatchLowercase, % ... and here again                   %  Now the quote is
@@ -43,7 +43,7 @@
 \expandafter\let\csname not<\endcsname\relax
 \expandafter\let\csname not>\endcsname\relax
 \usepackage{unicode-math}
-\setmathfont[Path=fonts/]{LibertinusMath-Regular.otf}
+\setmathfont{LibertinusMath-Regular.otf}
 
 \usepackage[all]{nowidow}
 \usepackage{emptypage}
@@ -169,6 +169,16 @@
  \begin{mdframed}\begin{Verbatim}[commandchars=\\\{\}]}
 {\end{Verbatim}\end{mdframed}
 \vspace{-1ex}}
+
+% See the context about this workaround at
+% https://github.com/gpoore/minted/issues/354
+\makeatletter
+\ifwindows
+  \def\minted@opt@quote#1{\detokenize\expandafter{\expandafter"\expanded{#1}"}}
+\else
+  \def\minted@opt@quote#1{\detokenize\expandafter{\expandafter'\expanded{#1}'}}
+\fi
+\makeatother
 
 \NewDocumentCommand\src{mO{}}{
   \srcsnippet{\currfileabsdir/code/haskell/#1.hs}{blue}{haskell}{#2}

@@ -22,8 +22,8 @@ in C++ it's a relatively complex template defined in the Standard
 Library.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{images/pair.jpg}
+  \centering
+  \includegraphics[width=0.35\textwidth]{images/pair.jpg}
 \end{figure}
 
 \noindent
@@ -384,17 +384,17 @@ statements about, say, natural numbers, which form a rig, to statements
 about types. Here's a translation table with some entries of interest:
 
 \begin{longtable}[]{@{}ll@{}}
-\toprule
-Numbers & Types\tabularnewline
-\midrule
-\endhead
-$0$ & \code{Void}\tabularnewline
-$1$ & \code{()}\tabularnewline
-$a + b$ & \code{Either a b = Left a | Right b}\tabularnewline
-$a \times b$ & \code{(a, b)} or \code{Pair a b = Pair a b}\tabularnewline
-$2 = 1 + 1$ & \code{data Bool = True | False}\tabularnewline
-$1 + a$ & \code{data Maybe = Nothing | Just a}\tabularnewline
-\bottomrule
+  \toprule
+  Numbers      & Types\tabularnewline
+  \midrule
+  \endhead
+  $0$          & \code{Void}\tabularnewline
+  $1$          & \code{()}\tabularnewline
+  $a + b$      & \code{Either a b = Left a | Right b}\tabularnewline
+  $a \times b$ & \code{(a, b)} or \code{Pair a b = Pair a b}\tabularnewline
+  $2 = 1 + 1$  & \code{data Bool = True | False}\tabularnewline
+  $1 + a$      & \code{data Maybe = Nothing | Just a}\tabularnewline
+  \bottomrule
 \end{longtable}
 
 \noindent
@@ -407,7 +407,7 @@ If we do our usual substitutions, and also replace \code{List a} with
 \code{x}, we get the equation:
 
 \begin{Verbatim}
-x = 1 + a * x
+  x = 1 + a * x
 \end{Verbatim}
 We can't solve it using traditional algebraic methods because we can't
 subtract or divide types. But we can try a series of substitutions,
@@ -416,11 +416,11 @@ where we keep replacing \code{x} on the right hand side with
 the following series:
 
 \begin{Verbatim}
-x = 1 + a*x
-x = 1 + a*(1 + a*x) = 1 + a + a*a*x
-x = 1 + a + a*a*(1 + a*x) = 1 + a + a*a + a*a*a*x
-...
-x = 1 + a + a*a + a*a*a + a*a*a*a...
+  x = 1 + a*x
+  x = 1 + a*(1 + a*x) = 1 + a + a*a*x
+  x = 1 + a + a*a*(1 + a*x) = 1 + a + a*a + a*a*a*x
+  ...
+  x = 1 + a + a*a + a*a*a + a*a*a*a...
 \end{Verbatim}
 We end up with an infinite sum of products (tuples), which can be
 interpreted as: A list is either empty, \code{1}; or a singleton,
@@ -445,15 +445,15 @@ of them is inhabited. Logical \emph{and} and \emph{or} also form a
 semiring, and it too can be mapped into type theory:
 
 \begin{longtable}[]{@{}ll@{}}
-\toprule
-Logic & Types\tabularnewline
-\midrule
-\endhead
-$\mathit{false}$ & \code{Void}\tabularnewline
-$\mathit{true}$ & \code{()}\tabularnewline
-$a \mathbin{||} b$ & \code{Either a b = Left a | Right b}\tabularnewline
-$a \mathbin{\&\&} b$ & \code{(a, b)}\tabularnewline
-\bottomrule
+  \toprule
+  Logic                & Types\tabularnewline
+  \midrule
+  \endhead
+  $\mathit{false}$     & \code{Void}\tabularnewline
+  $\mathit{true}$      & \code{()}\tabularnewline
+  $a \mathbin{||} b$   & \code{Either a b = Left a | Right b}\tabularnewline
+  $a \mathbin{\&\&} b$ & \code{(a, b)}\tabularnewline
+  \bottomrule
 \end{longtable}
 
 \noindent
@@ -464,47 +464,47 @@ talk about function types.
 \section{Challenges}
 
 \begin{enumerate}
-\tightlist
-\item
-  Show the isomorphism between \code{Maybe a} and
-  \code{Either () a}.
-\item
-  Here's a sum type defined in Haskell:
+  \tightlist
+  \item
+        Show the isomorphism between \code{Maybe a} and
+        \code{Either () a}.
+  \item
+        Here's a sum type defined in Haskell:
 
-\begin{snip}{haskell}
+        \begin{snip}{haskell}
 data Shape = Circle Float 
            | Rect Float Float
 \end{snip}
-  When we want to define a function like \code{area} that acts on a
-  \code{Shape}, we do it by pattern matching on the two constructors:
+        When we want to define a function like \code{area} that acts on a
+        \code{Shape}, we do it by pattern matching on the two constructors:
 
-\begin{snip}{haskell}
+        \begin{snip}{haskell}
 area :: Shape -> Float
 area (Circle r) = pi * r * r
 area (Rect d h) = d * h
 \end{snip}
-  Implement \code{Shape} in C++ or Java as an interface and create two
-  classes: \code{Circle} and \code{Rect}. Implement \code{area} as
-  a virtual function.
-\item
-  Continuing with the previous example: We can easily add a new function
-  \code{circ} that calculates the circumference of a \code{Shape}.
-  We can do it without touching the definition of \code{Shape}:
+        Implement \code{Shape} in C++ or Java as an interface and create two
+        classes: \code{Circle} and \code{Rect}. Implement \code{area} as
+        a virtual function.
+  \item
+        Continuing with the previous example: We can easily add a new function
+        \code{circ} that calculates the circumference of a \code{Shape}.
+        We can do it without touching the definition of \code{Shape}:
 
-\begin{snip}{haskell}
+        \begin{snip}{haskell}
 circ :: Shape -> Float
 circ (Circle r) = 2.0 * pi * r
 circ (Rect d h) = 2.0 * (d + h)
 \end{snip}
-  Add \code{circ} to your C++ or Java implementation. What parts of
-  the original code did you have to touch?
-\item
-  Continuing further: Add a new shape, \code{Square}, to
-  \code{Shape} and make all the necessary updates. What code did you
-  have to touch in Haskell vs. C++ or Java? (Even if you're not a
-  Haskell programmer, the modifications should be pretty obvious.)
-\item
-  Show that $a + a = 2 \times a$ holds for types (up to
-  isomorphism). Remember that $2$ corresponds to \code{Bool},
-  according to our translation table.
+        Add \code{circ} to your C++ or Java implementation. What parts of
+        the original code did you have to touch?
+  \item
+        Continuing further: Add a new shape, \code{Square}, to
+        \code{Shape} and make all the necessary updates. What code did you
+        have to touch in Haskell vs. C++ or Java? (Even if you're not a
+        Haskell programmer, the modifications should be pretty obvious.)
+  \item
+        Show that $a + a = 2 \times a$ holds for types (up to
+        isomorphism). Remember that $2$ corresponds to \code{Bool},
+        according to our translation table.
 \end{enumerate}

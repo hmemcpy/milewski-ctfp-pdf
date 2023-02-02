@@ -84,37 +84,37 @@ that serves as the unit of the tensor product; again, up to natural
 isomorphism. The two isomorphisms are called, respectively, the left and
 the right unitor, and their components are:
 \begin{align*}
-\lambda_a &\Colon i \otimes a \to a \\
-\rho_a &\Colon a \otimes i \to a
+  \lambda_a & \Colon i \otimes a \to a \\
+  \rho_a    & \Colon a \otimes i \to a
 \end{align*}
 The associator and the unitors must satisfy coherence conditions:
 
 \begin{figure}[H]
-\centering
-\begin{tikzcd}[row sep=large]
-((a \otimes b) \otimes c) \otimes d
-\arrow[d, "\alpha_{(a \otimes b)cd}"]
-\arrow[rr, "\alpha_{abc} \otimes \id_d"]
-  & & (a \otimes (b \otimes c)) \otimes d
-      \arrow[d, "\alpha_{a(b \otimes c)d}"] \\
-(a \otimes b) \otimes (c \otimes d)
-\arrow[rd, "\alpha_{ab(c \otimes d)}"]
-  & & a \otimes ((b \otimes c) \otimes d)
-      \arrow[ld, "\id_a \otimes \alpha_{bcd}"] \\
-  & a \otimes (b \otimes (c \otimes d))
-\end{tikzcd}
+  \centering
+  \begin{tikzcd}[row sep=large]
+    ((a \otimes b) \otimes c) \otimes d
+    \arrow[d, "\alpha_{(a \otimes b)cd}"]
+    \arrow[rr, "\alpha_{abc} \otimes \id_d"]
+    & & (a \otimes (b \otimes c)) \otimes d
+    \arrow[d, "\alpha_{a(b \otimes c)d}"] \\
+    (a \otimes b) \otimes (c \otimes d)
+    \arrow[rd, "\alpha_{ab(c \otimes d)}"]
+    & & a \otimes ((b \otimes c) \otimes d)
+    \arrow[ld, "\id_a \otimes \alpha_{bcd}"] \\
+    & a \otimes (b \otimes (c \otimes d))
+  \end{tikzcd}
 \end{figure}
 
 \begin{figure}[H]
-\centering
-\begin{tikzcd}[row sep=large]
-(a \otimes i) \otimes b
-\arrow[dr, "\rho_{a} \otimes \id_b"']
-\arrow[rr, "\alpha_{aib}"]
-  & & a \otimes (i \otimes b)
-      \arrow[dl, "\id_a \otimes \lambda_b"] \\
-  & a \otimes b
-\end{tikzcd}
+  \centering
+  \begin{tikzcd}[row sep=large]
+    (a \otimes i) \otimes b
+    \arrow[dr, "\rho_{a} \otimes \id_b"']
+    \arrow[rr, "\alpha_{aib}"]
+    & & a \otimes (i \otimes b)
+    \arrow[dl, "\id_a \otimes \lambda_b"] \\
+    & a \otimes b
+  \end{tikzcd}
 \end{figure}
 
 \noindent
@@ -135,7 +135,7 @@ that defines the internal hom in a monoidal category:
 \[\cat{V}(a \otimes b, c) \sim \cat{V}(a, [b, c])\]
 Following
 \urlref{http://www.tac.mta.ca/tac/reprints/articles/10/tr10.pdf}{G. M.
-Kelly}, I'm using the notation ${[}b, c{]}$ for the internal
+  Kelly}, I'm using the notation ${[}b, c{]}$ for the internal
 hom. The counit of this adjunction is the natural transformation whose
 components are called evaluation morphisms:
 \[\varepsilon_{a b} \Colon ([a, b] \otimes a) \to b\]
@@ -164,8 +164,8 @@ of morphisms is replaced by a family of morphisms in $\cat{V}$:
 \[\circ \Colon \cat{C}(b, c) \otimes \cat{C}(a, b) \to \cat{C}(a, c)\]
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.45\textwidth]{images/composition.jpg}
+  \centering
+  \includegraphics[width=0.45\textwidth]{images/composition.jpg}
 \end{figure}
 
 \noindent
@@ -175,8 +175,8 @@ $\cat{V}$:
 where $i$ is the tensor unit in $\cat{V}$.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.4\textwidth]{images/id.jpg}
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/id.jpg}
 \end{figure}
 
 \noindent
@@ -184,19 +184,19 @@ Associativity of composition is defined in terms of the associator in
 $\cat{V}$:
 
 \begin{figure}[H]
-\centering
-\begin{tikzcd}[column sep=large]
-(\cat{C}(c,d) \otimes \cat{C}(b,c)) \otimes \cat{C}(a,b)
-\arrow[r, "\circ\otimes\id"]
-\arrow[dd, "\alpha"]
-  & \cat{C}(b,d) \otimes \cat{C}(a,b)
+  \centering
+  \begin{tikzcd}[column sep=large]
+    (\cat{C}(c,d) \otimes \cat{C}(b,c)) \otimes \cat{C}(a,b)
+    \arrow[r, "\circ\otimes\id"]
+    \arrow[dd, "\alpha"]
+    & \cat{C}(b,d) \otimes \cat{C}(a,b)
     \arrow[dr, "\circ"] \\
-  & & \cat{C}(a,d) \\
-\cat{C}(c,d) \otimes (\cat{C}(b,c) \otimes \cat{C}(a,b))
-\arrow[r, "\id\otimes\circ"]
-  & \cat{C}(c,d) \otimes \cat{C}(a,c)
+    & & \cat{C}(a,d) \\
+    \cat{C}(c,d) \otimes (\cat{C}(b,c) \otimes \cat{C}(a,b))
+    \arrow[r, "\id\otimes\circ"]
+    & \cat{C}(c,d) \otimes \cat{C}(a,c)
     \arrow[ur, "\circ"]
-\end{tikzcd}
+  \end{tikzcd}
 \end{figure}
 
 \noindent
@@ -210,9 +210,9 @@ Unit laws are likewise expressed in terms of unitors:
       \cat{C}(a,b) \otimes i
       \arrow[rr, "\id \otimes j_a"]
       \arrow[dr, "\rho"]
-        & & \cat{C}(a,b) \otimes \cat{C}(a,a)
-            \arrow[dl, "\circ"] \\
-        & \cat{C}(a,b)
+      & & \cat{C}(a,b) \otimes \cat{C}(a,a)
+      \arrow[dl, "\circ"] \\
+      & \cat{C}(a,b)
     \end{tikzcd}
   \end{subfigure}
   \hspace{1cm}
@@ -222,9 +222,9 @@ Unit laws are likewise expressed in terms of unitors:
       i \otimes \cat{C}(a,b)
       \arrow[rr, "j_b \otimes \id"]
       \arrow[dr, "\lambda"]
-        & & \cat{C}(b,b) \otimes \cat{C}(a,b)
-            \arrow[dl, "\circ"] \\
-        & \cat{C}(a,b)
+      & & \cat{C}(b,b) \otimes \cat{C}(a,b)
+      \arrow[dl, "\circ"] \\
+      & \cat{C}(a,b)
     \end{tikzcd}
   \end{subfigure}
 \end{figure}
@@ -271,7 +271,7 @@ enforced, if we implement a preorder as an enriched category.
 
 An interesting example is due to
 \urlref{http://www.tac.mta.ca/tac/reprints/articles/1/tr1.pdf}{William
-Lawvere}. He noticed that metric spaces can be defined using enriched
+  Lawvere}. He noticed that metric spaces can be defined using enriched
 categories. A metric space defines a distance between any two objects.
 This distance is a non-negative real number. It's convenient to include
 infinity as a possible value. If the distance is infinite, there is no
@@ -344,17 +344,17 @@ meant preserving composition and identity. In the enriched setting, the
 preservation of composition means that the following diagram commute:
 
 \begin{figure}[H]
-\centering
-\begin{tikzcd}[column sep=large, row sep=large]
-  \cat{C}(b,c) \otimes \cat{C}(a,b)
-  \arrow[r, "\circ"]
-  \arrow[d, "F_{bc} \otimes F_{ab}"]
+  \centering
+  \begin{tikzcd}[column sep=large, row sep=large]
+    \cat{C}(b,c) \otimes \cat{C}(a,b)
+    \arrow[r, "\circ"]
+    \arrow[d, "F_{bc} \otimes F_{ab}"]
     & \cat{C}(a,c)
-      \arrow[d, "F_{ac}"] \\
-  \cat{D}(F\ b, F\ c) \otimes \cat{D}(F\ a, F\ b)
-  \arrow[r,  "\circ"]
+    \arrow[d, "F_{ac}"] \\
+    \cat{D}(F\ b, F\ c) \otimes \cat{D}(F\ a, F\ b)
+    \arrow[r,  "\circ"]
     & \cat{D}(F\ a, F\ c)
-\end{tikzcd}
+  \end{tikzcd}
 \end{figure}
 
 \noindent
@@ -362,13 +362,13 @@ The preservation of identity is replaced by the preservation of the
 morphisms in $\cat{V}$ that ``select'' the identity:
 
 \begin{figure}[H]
-\centering
-\begin{tikzcd}[row sep=large]
+  \centering
+  \begin{tikzcd}[row sep=large]
     & i \arrow[dl, "j_a"'] \arrow[dr, "j_{F a}"] & \\
-  \cat{C}(a,a)
-  \arrow[rr, "F_{aa}"]
+    \cat{C}(a,a)
+    \arrow[rr, "F_{aa}"]
     & & \cat{D}(F\ a, F\ a)
-\end{tikzcd}
+  \end{tikzcd}
 \end{figure}
 
 \section{Self Enrichment}

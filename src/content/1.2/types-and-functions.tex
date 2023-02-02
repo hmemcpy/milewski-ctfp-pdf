@@ -12,8 +12,8 @@ happily hitting random keys, producing programs, compiling, and running
 them.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\textwidth]{images/img_1329.jpg}
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/img_1329.jpg}
 \end{figure}
 
 \noindent
@@ -71,7 +71,7 @@ optional. Programmers tend to use them anyway, because they can tell a
 lot about the semantics of code, and they make compilation errors easier
 to understand. It's a common practice in Haskell to start a project by
 designing the types. \sloppy{Later, type annotations drive the implementation
-and become compiler-enforced comments.}
+  and become compiler-enforced comments.}
 
 Strong static typing is often used as an excuse for not testing the
 code. You may sometimes hear Haskell programmers saying, ``If it
@@ -178,8 +178,8 @@ complications, so at this point I will use my butcher's knife and
 terminate this line of reasoning. From the pragmatic point of view, it's
 okay to ignore non-terminating functions and bottoms, and treat
 $\Hask$ as bona fide $\Set$.\footnote{Nils Anders Danielsson,
-John Hughes, Patrik Jansson, Jeremy Gibbons, \href{http://www.cs.ox.ac.uk/jeremy.gibbons/publications/fast+loose.pdf}{
-Fast and Loose Reasoning is Morally Correct}. This paper provides justification for ignoring bottoms in most contexts.}
+  John Hughes, Patrik Jansson, Jeremy Gibbons, \href{http://www.cs.ox.ac.uk/jeremy.gibbons/publications/fast+loose.pdf}{
+    Fast and Loose Reasoning is Morally Correct}. This paper provides justification for ignoring bottoms in most contexts.}
 
 \section{Why Do We Need a Mathematical Model?}
 
@@ -292,7 +292,7 @@ cannot be easily modelled as a mathematical function.
 
 In programming languages, functions that always produce the same result
 given the same input and have no side effects are called \newterm{pure
-functions}. In a pure functional language like Haskell all functions are
+  functions}. In a pure functional language like Haskell all functions are
 pure. Because of that, it's easier to give these languages denotational
 semantics and model them using category theory. As for other languages,
 it's always possible to restrict yourself to a pure subset, or reason
@@ -433,61 +433,61 @@ have the form \code{ctype::is(alpha, c)}, \code{ctype::is(digit, c)}, etc.
 \section{Challenges}
 
 \begin{enumerate}
-\tightlist
-\item
-  Define a higher-order function (or a function object) \code{memoize}
-  in your favorite language. This function takes a pure function
-  \code{f} as an argument and returns a function that behaves almost
-  exactly like \code{f}, except that it only calls the original
-  function once for every argument, stores the result internally, and
-  subsequently returns this stored result every time it's called with
-  the same argument. You can tell the memoized function from the
-  original by watching its performance. For instance, try to memoize a
-  function that takes a long time to evaluate. You'll have to wait for
-  the result the first time you call it, but on subsequent calls, with
-  the same argument, you should get the result immediately.
-\item
-  Try to memoize a function from your standard library that you normally
-  use to produce random numbers. Does it work?
-\item
-  Most random number generators can be initialized with a seed.
-  Implement a function that takes a seed, calls the random number
-  generator with that seed, and returns the result. Memoize that
-  function. Does it work?
-\item
-  Which of these C++ functions are pure? Try to memoize them and observe
-  what happens when you call them multiple times: memoized and not.
-
-  \begin{enumerate}
   \tightlist
   \item
-    The factorial function from the example in the text.
+        Define a higher-order function (or a function object) \code{memoize}
+        in your favorite language. This function takes a pure function
+        \code{f} as an argument and returns a function that behaves almost
+        exactly like \code{f}, except that it only calls the original
+        function once for every argument, stores the result internally, and
+        subsequently returns this stored result every time it's called with
+        the same argument. You can tell the memoized function from the
+        original by watching its performance. For instance, try to memoize a
+        function that takes a long time to evaluate. You'll have to wait for
+        the result the first time you call it, but on subsequent calls, with
+        the same argument, you should get the result immediately.
   \item
-\begin{minted}{cpp}
+        Try to memoize a function from your standard library that you normally
+        use to produce random numbers. Does it work?
+  \item
+        Most random number generators can be initialized with a seed.
+        Implement a function that takes a seed, calls the random number
+        generator with that seed, and returns the result. Memoize that
+        function. Does it work?
+  \item
+        Which of these C++ functions are pure? Try to memoize them and observe
+        what happens when you call them multiple times: memoized and not.
+
+        \begin{enumerate}
+          \tightlist
+          \item
+                The factorial function from the example in the text.
+          \item
+                \begin{minted}{cpp}
 std::getchar()
 \end{minted}
-  \item
-\begin{minted}{cpp}
+          \item
+                \begin{minted}{cpp}
 bool f() {
     std::cout << "Hello!" << std::endl;
     return true;
 }
 \end{minted}
-  \item
-\begin{minted}{cpp}
+          \item
+                \begin{minted}{cpp}
 int f(int x) {
     static int y = 0;
     y += x;
     return y;
 }
 \end{minted}
-  \end{enumerate}
-\item
-  How many different functions are there from \code{Bool} to
-  \code{Bool}? Can you implement them all?
-\item
-  Draw a picture of a category whose only objects are the types
-  \code{Void}, \code{()} (unit), and \code{Bool}; with arrows
-  corresponding to all possible functions between these types. Label the
-  arrows with the names of the functions.
+        \end{enumerate}
+  \item
+        How many different functions are there from \code{Bool} to
+        \code{Bool}? Can you implement them all?
+  \item
+        Draw a picture of a category whose only objects are the types
+        \code{Void}, \code{()} (unit), and \code{Bool}; with arrows
+        corresponding to all possible functions between these types. Label the
+        arrows with the names of the functions.
 \end{enumerate}
