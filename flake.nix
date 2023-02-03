@@ -26,8 +26,8 @@
 
         pkgs = nixpkgs.legacyPackages.${system};
 
-        ###########################################################################
-        # LaTeX font
+        ########################################################################
+        # LaTeX Font
         inconsolata-lgc-latex = pkgs.stdenvNoCC.mkDerivation {
           name = "inconsolata-lgc-latex";
           pname = "inconsolata-lgc-latex";
@@ -49,7 +49,7 @@
           tlType = "run";
         };
 
-        ###########################################################################
+        ########################################################################
         # LaTeX Environment
         texliveEnv = pkgs.texlive.combine {
           inherit
@@ -113,33 +113,14 @@
           };
         };
 
-        ###########################################################################
-        # Python Environment
-
-        # Pin the Python version and its associated package set in a single place.
-        python = pkgs.python311;
-        pythonPkgs = pkgs.python311Packages;
-
-        pygments-style-github = pythonPkgs.buildPythonPackage rec {
-          pname = "pygments-style-github";
-          version = "0.4";
-
-          doCheck = false; # Hopefully someone else has run the tests.
-
-          src = pythonPkgs.fetchPypi {
-            inherit pname version;
-            sha256 = "19zl8l5fyb8z3j8pdlm0zbgag669af66f8gn81ichm3x2hivvjhg";
-          };
-
-          # Anything depending on this derivation is probably also gonna want
-          # pygments to be available.
-          propagatedBuildInputs = with pythonPkgs; [pygments];
-        };
-
-        pythonEnv = python.withPackages (p: [p.pygments pygments-style-github]);
-
         commonAttrs = {
-          nativeBuildInputs = [texliveEnv pythonEnv pkgs.which];
+          nativeBuildInputs = [
+            texliveEnv
+            (
+              pkgs.python3.withPackages (p: [p.pygments p.pygments-style-github])
+            )
+            pkgs.which
+          ];
         };
 
         mkLatex = variant: edition: let
@@ -149,16 +130,16 @@
             if variant == null
             then "reader"
             else variant;
-          suffix = maybeVariant + maybeEdition;
           basename = "ctfp-${variantStr}${maybeEdition}";
           version = self.shortRev or self.lastModifiedDate;
+          suffix = maybeVariant + maybeEdition;
+          fullname = "ctfp${suffix}";
         in
-          pkgs.stdenv.mkDerivation (commonAttrs
+          pkgs.stdenvNoCC.mkDerivation (commonAttrs
             // {
               inherit basename version;
+              name = basename;
 
-              name = "ctfp${suffix}";
-              fullname = "ctfp${suffix}";
               src = "${self}/src";
 
               configurePhase = ''
@@ -166,13 +147,15 @@
               '';
 
               buildPhase = ''
-                latexmk -file-line-error -shell-escape -logfilewarninglist -interaction=nonstopmode -halt-on-error \
-                  -norc -jobname=ctfp -pdflatex="xelatex %O %S" -pdfxe "$basename.tex"
+                latexmk -file-line-error -shell-escape -logfilewarninglist \
+                        -interaction=nonstopmode -halt-on-error -norc \
+                        -jobname=ctfp -pdflatex="xelatex %O %S" -pdfxe \
+                        "$basename.tex"
               '';
 
               installPhase = "install -m 0644 -vD ctfp.pdf \"$out/$fullname.pdf\"";
 
-              passthru.packageName = "ctfp${suffix}";
+              passthru.packageName = fullname;
             });
 
         editions = [null "scala" "ocaml" "reason"];
