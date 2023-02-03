@@ -81,7 +81,7 @@ License version 3][license gnu gpl].
 [github stars]:
   https://img.shields.io/github/stars/hmemcpy/milewski-ctfp-pdf.svg?style=flat-square
 [github workflow status]:
-  https://img.shields.io/github/actions/workflow/status/hmemcpy/milewski-ctfp-pdf/build.yml?branch=master&style=flat-square
+  https://img.shields.io/github/actions/workflow/status/hmemcpy/milewski-ctfp-pdf/nix-flake-check.yaml?branch=master&style=flat-square
 [github latest release]:
   https://github.com/hmemcpy/milewski-ctfp-pdf/releases/latest
 [license badge]:
