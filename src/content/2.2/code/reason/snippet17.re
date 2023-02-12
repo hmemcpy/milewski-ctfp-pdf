@@ -8,6 +8,6 @@ type tostring('a) =
 
 module ToStringInstance: Contravariant = {
   type t('a) = tostring('a);
-  
+
   let contramap = (f, ToString(g)) => ToString(compose(g, f));
 };

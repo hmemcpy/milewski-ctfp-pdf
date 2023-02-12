@@ -1,4 +1,4 @@
-/* Putting it all together to show the equivalence between 
+/* Putting it all together to show the equivalence between
 * unit & counit and left_adjunct & right_adjunct */
 module type Adjunction =
   (F: Functor, U: Representable) => {

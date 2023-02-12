@@ -1,4 +1,4 @@
-module Process_Do = (W: Monad_Bind with type m('a) = 
+module Process_Do = (W: Monad_Bind with type m('a) =
     writer(string, 'a)) => {
   /* Needs Reason parser >= 3.6.0 */
   let (let*) = W.(>>=);

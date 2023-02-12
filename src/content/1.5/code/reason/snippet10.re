@@ -1,5 +1,5 @@
 module Chapter5_Product_Example:
-  Chapter5_Product 
+  Chapter5_Product
     with type a = int
     and type b = bool
     and type c = int = {

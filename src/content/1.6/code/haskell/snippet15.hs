@@ -1,3 +1,3 @@
-data Element = Element { name :: String 
-                       , symbol :: String 
+data Element = Element { name :: String
+                       , symbol :: String
                        , atomicNumber :: Int }

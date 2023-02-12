@@ -1,4 +1,4 @@
-class Bifunctor f where 
+class Bifunctor f where
     bimap :: (a -> c) -> (b -> d) -> f a b -> f c d
     bimap g h = first g . second h
     first :: (a -> c) -> f a b -> f c b

@@ -1,4 +1,4 @@
-(* OCaml library `gen` provides useful helpers for 
+(* OCaml library `gen` provides useful helpers for
    potentially infinite iterators. You can install it
    with `opam install gen`. To use it in the toplevel,
    you need to `#require "gen"` *)

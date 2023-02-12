@@ -1,4 +1,4 @@
-data Expr = RZero 
+data Expr = RZero
           | ROne
           | RAdd Expr Expr
           | RMul Expr Expr

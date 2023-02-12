@@ -1,3 +1,3 @@
-process s = 
+process s =
     upCase s >>= \upStr ->
         toWords upStr
