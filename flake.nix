@@ -143,17 +143,25 @@
               src = "${self}/src";
 
               configurePhase = ''
+                runHook preConfigure
+
                 substituteInPlace "version.tex" --replace "dev" "${version}"
+
+                runHook postConfigure
               '';
 
               buildPhase = ''
+                runHook preBuild
+
                 latexmk -file-line-error -shell-escape -logfilewarninglist \
                         -interaction=nonstopmode -halt-on-error -norc \
                         -jobname=ctfp -pdflatex="xelatex %O %S" -pdfxe \
                         "$basename.tex"
+
+                runHook postBuild
               '';
 
-              installPhase = "install -m 0644 -vD ctfp.pdf \"$out/$fullname.pdf\"";
+              installPhase = "install -m 0644 -vD ctfp.pdf \"$out/${fullname}.pdf\"";
 
               passthru.packageName = fullname;
             });
