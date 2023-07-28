@@ -166,7 +166,7 @@
               passthru.packageName = fullname;
             });
 
-        editions = [null "scala" "ocaml" "reason"];
+        editions = [null "agda" "scala" "ocaml" "reason"];
         variants = [null "print"];
       in rec {
         formatter = pkgs.alejandra;
