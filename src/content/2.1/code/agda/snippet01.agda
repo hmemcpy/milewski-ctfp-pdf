@@ -1,4 +1,4 @@
--- dependent version
+-- non-dependent version
 _∘_ :  ∀{a b c}{A : Set a}{B : Set b}{C : Set c}
   →    (f : B → C) → (g : A → B)
   →    A → C
