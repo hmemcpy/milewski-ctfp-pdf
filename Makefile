@@ -17,6 +17,9 @@ ctfp-ocaml:
 ctfp-scala:
 	cd src; $(LATEXMK_COMMAND) -jobname=ctfp-scala ctfp-reader-scala.tex
 
+ctfp-agda:
+	cd src; $(LATEXMK_COMMAND) -jobname=ctfp-agda ctfp-reader-agda.tex
+
 ctfp-print:
 	cd src; $(LATEXMK_COMMAND) -jobname=ctfp-print ctfp-print.tex
 

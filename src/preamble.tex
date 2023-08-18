@@ -76,7 +76,8 @@
 \usepackage{fancyvrb}
 \fvset{fontsize=\small}
 
-\usepackage[cachedir=_minted-ctfp]{minted}
+%\usepackage[cachedir=_minted-ctfp]{minted}
+\usepackage[cache=false]{minted}
 \setminted[text]{fontsize=\small,breaklines}
 \usemintedstyle{github}
 \makeatletter
@@ -143,6 +144,8 @@
 
 \usepackage{xparse}
 \usepackage[abspath]{currfile}
+
+\usepackage{xspace}
 
 \newenvironment{snip}[2][]
   {\VerbatimEnvironment
