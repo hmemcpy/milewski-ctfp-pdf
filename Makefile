@@ -29,6 +29,9 @@ ctfp-print-ocaml:
 ctfp-print-scala:
 	cd src; $(LATEXMK_COMMAND) -jobname=ctfp-print-scala ctfp-print-scala.tex
 
+ctfp-print-agda:
+	cd src; $(LATEXMK_COMMAND) -jobname=ctfp-print-agda ctfp-print-agda.tex
+
 lint:
 	$(foreach file, $(call rwildcard,$(shell dirname "$(INPUT)"),*.tex), latexindent -l -w $(file);)
 
