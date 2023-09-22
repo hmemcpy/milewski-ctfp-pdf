@@ -3,7 +3,7 @@ module Section-1-1 where
 
 open import Data.Product using (_×_ ; _,_)
 open import Function using (_∘_)
-open import Relation.Binary.PropositionalEquality using (_≡_)
+open import Relation.Binary.PropositionalEquality using (_≡_; refl)
 
 private variable
   A B C D : Set
@@ -19,11 +19,11 @@ _ :  (f : A → B)
      (h : C → D)
   →  (h ∘ g) ∘ f ≡ h ∘ (g ∘ f)
 
-_ = λ f g h → _≡_.refl
+_ = λ f g h → refl
 
 id : A → A
 id a = a
 
 _ : {f : A → B} → (f ∘ id ≡ f) × (id ∘ f ≡ f)
-_ = _≡_.refl , _≡_.refl
+_ = refl , refl
 \end{code}

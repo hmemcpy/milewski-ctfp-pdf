@@ -1,2 +1,2 @@
-id : ∀ {A} → A → A
+id : ∀ {a} → a → a
 id a = a
