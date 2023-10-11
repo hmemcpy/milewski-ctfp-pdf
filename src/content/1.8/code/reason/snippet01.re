@@ -21,7 +21,7 @@ module BifunctorCore_Using_Ext = (M: BifunctorExt) : BifunctorCore => {
 
 module BifunctorExt_Using_Core = (M: BifunctorCore) : BifunctorExt => {
   type t('a, 'b) = M.t('a, 'b);
-  
+
   let first = (g, x) => M.bimap(g, id, x);
   let second = (h, x) => M.bimap(id, h, x);
 };

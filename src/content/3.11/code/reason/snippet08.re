@@ -12,7 +12,7 @@ let to_exp = (type a', type b', f) :
      let di = I();
   });
 
-let from_exp = (type a', type b', 
+let from_exp = (type a', type b',
     module E: Exp with type a = a' and type b = b', a) => {
   let I(i) = E.di;
   E.fk((a, i));

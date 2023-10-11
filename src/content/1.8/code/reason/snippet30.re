@@ -5,7 +5,7 @@ module ProfunctorArrow: Profunctor = {
 };
 module ProfunctorExtArrow: ProfunctorExt = {
   type p('a, 'b) = 'a => 'b;
-  
+
   let lmap = (f, p) => (flip(compose))(f, p);
   let rmap = compose;
 };

@@ -23,7 +23,7 @@ module Profunctor_Using_Ext = (PF: ProfunctorExt) : Profunctor => {
 /** Profunctor lmap and rmap defined using dimap */
 module ProfunctorExt_Using_Dimap = (PF: Profunctor) : ProfunctorExt => {
   type p('a, 'b) = PF.p('a, 'b);
-  
+
   let lmap = f => PF.dimap(f, id);
   let rmap = g => PF.dimap(id, g);
 };

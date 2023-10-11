@@ -98,7 +98,7 @@ vector<string> words(string s) {
     for (auto i = begin(s); i != end(s); ++i)
     {
         if (isspace(*i))
-            result.push_back(""); 
+            result.push_back("");
         else
             result.back() += *i;
     }
@@ -120,7 +120,7 @@ encapsulates a pair whose first component is a value of arbitrary type
 \code{A} and the second component is a string:
 
 \begin{snip}{cpp}
-template<class A>
+template<typename A>
 using Writer = pair<A, string>;
 \end{snip}
 Here are the embellished functions:
@@ -130,10 +130,10 @@ Writer<string> toUpper(string s) {
     string result;
     int (*toupperp)(int) = &toupper;
     transform(begin(s), end(s), back_inserter(result), toupperp);
-    return make_pair(result, "toUpper "); 
+    return make_pair(result, "toUpper ");
 }
 
-Writer<vector<string>> toWords(string s) { 
+Writer<vector<string>> toWords(string s) {
     return make_pair(words(s), "toWords ");
 }
 \end{snip}
@@ -226,14 +226,14 @@ embellished functions that are composable according to our rules, and
 return a third embellished function:
 
 \begin{snip}{cpp}
-template<class A, class B, class C>
+template<typename A, typename B, typename C>
 function<Writer<C>(A)> compose(function<Writer<B>(A)> m1,
                                function<Writer<C>(B)> m2)
 {
     return [m1, m2](A x) {
         auto p1 = m1(x);
         auto p2 = m2(p1.first);
-        return make_pair(p2.first, p1.second + p2.second); 
+        return make_pair(p2.first, p1.second + p2.second);
     };
 }
 \end{snip}
@@ -241,7 +241,7 @@ Now we can go back to our earlier example and implement the composition
 of \code{toUpper} and \code{toWords} using this new template:
 
 \begin{snip}{cpp}
-Writer<vector<string>> process(string s) { 
+Writer<vector<string>> process(string s) {
     return compose<string, string, vector<string>>(toUpper, toWords)(s);
 }
 \end{snip}
@@ -251,8 +251,8 @@ C++14-compliant compiler that supports generalized lambda functions with
 return type deduction (credit for this code goes to Eric Niebler):
 
 \begin{snip}{cpp}
-auto const compose = [](auto m1, auto m2) { 
-    return [m1, m2](auto x) { 
+auto const compose = [](auto m1, auto m2) {
+    return [m1, m2](auto x) {
         auto p1 = m1(x);
         auto p2 = m2(p1.first);
         return make_pair(p2.first, p1.second + p2.second);
@@ -281,7 +281,8 @@ should pass its argument without change, and only contribute an empty
 string to the log:
 
 \begin{snip}{cpp}
-template<class A> Writer<A> identity(A x) {
+template<typename A>
+Writer<A> identity(A x) {
     return make_pair(x, "");
 }
 \end{snip}
@@ -409,10 +410,11 @@ can, however, be represented by a function that returns an embellished
 type \code{optional}:
 
 \begin{snip}{cpp}
-template<class A> class optional {
+template<typename A>
+class optional {
     bool _isValid;
     A _value;
-public: 
+public:
     optional()    : _isValid(false) {}
     optional(A v) : _isValid(true), _value(v) {}
     bool isValid() const { return _isValid; }
@@ -424,7 +426,7 @@ For example, here's the implementation of the embellished function
 
 \begin{snip}{cpp}
 optional<double> safe_root(double x) {
-    if (x >= 0) return optional<double>{sqrt(x)}; 
+    if (x >= 0) return optional<double>{sqrt(x)};
     else return optional<double>{};
 }
 \end{snip}

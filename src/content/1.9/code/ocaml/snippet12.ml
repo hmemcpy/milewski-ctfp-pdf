@@ -1,1 +1,1 @@
-val eval : (('a -> 'b), 'a) -> 'b 
+val eval : (('a -> 'b), 'a) -> 'b

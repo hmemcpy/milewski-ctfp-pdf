@@ -1,4 +1,4 @@
-/* ReasonML requires mutually recursive functions 
+/* ReasonML requires mutually recursive functions
 * to be defined together */
 let rec length: list('a) => const(int, 'a) = (
   fun

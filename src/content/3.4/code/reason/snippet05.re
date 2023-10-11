@@ -1,4 +1,4 @@
-module WriterMonad = (W: Monoid) : 
+module WriterMonad = (W: Monoid) :
     (Monad with type m('a) = writer(W.a, 'a)) => {
   type m('a) = writer(W.a, 'a);
 

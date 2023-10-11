@@ -244,8 +244,8 @@ wildcards:
 In C++, we would use template functions, for instance:
 
 \begin{snip}{cpp}
-template<class A, class B> A
-fst(pair<A, B> const & p) {
+template<typename A, typename B>
+A fst(pair<A, B> const & p) {
     return p.first;
 }
 \end{snip}
@@ -445,7 +445,7 @@ union. For instance, a tagged union of an \code{int} and a
 \code{char const *} could be implemented as:
 
 \begin{snip}{cpp}
-struct Contact { 
+struct Contact {
     enum { isPhone, isEmail } tag;
     union { int phoneNum; char const * emailAddr; };
 };
@@ -455,7 +455,7 @@ functions. For instance, here's the first injection as a function
 \code{PhoneNum}:
 
 \begin{snip}{cpp}
-Contact PhoneNum(int n) { 
+Contact PhoneNum(int n) {
     Contact c;
     c.tag = isPhone;
     c.phoneNum = n;
@@ -623,7 +623,7 @@ int m(Either const & e);
         Still continuing: What about these injections?
 
         \begin{snip}{cpp}
-int i(int n) { 
+int i(int n) {
     if (n < 0) return n;
     return n + 2;
 }
