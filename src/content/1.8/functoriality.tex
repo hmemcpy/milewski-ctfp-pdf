@@ -306,7 +306,7 @@ a good idea in any case):
 
 \begin{snip}{cpp}
 template<class T>
-struct Tree { 
+struct Tree {
     virtual ~Tree() {}
 };
 \end{snip}
@@ -345,7 +345,7 @@ Tree<B> * fmap(std::function<B(A)> f, Tree<A> * t) {
         return new Leaf<B>(f (pl->_label));
     Node<A> * pn = dynamic_cast<Node<A>*>(t);
     if (pn)
-        return new Node<B>( fmap<A>(f, pn->_left) 
+        return new Node<B>( fmap<A>(f, pn->_left)
                           , fmap<A>(f, pn->_right));
     return nullptr;
 }
@@ -476,7 +476,7 @@ $G$. It's a mapping from $\cat{C}$ to $\cat{D}$. It maps objects the
 same way $F$ does, but when it comes to mapping morphisms, it
 reverses them. It takes a morphism $f \Colon b \to a$ in $\cat{C}$, maps
 it first to the opposite morphism $f^{op} \Colon a \to b$
-and then uses the functor $F$ on it, to get $F f^{op} \Colon F\ a \to F\ b$.
+and then uses the functor $F$ on it, to get $F f^{op} \Colon F a \to F b$.
 
 Considering that $F a$ is the same as $G a$ and $F b$ is
 the same as $G b$, the whole trip can be described as: $G f \Colon (b \to a) \to (G a \to G b)$

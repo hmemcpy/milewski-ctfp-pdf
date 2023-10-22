@@ -289,15 +289,15 @@ Let's revisit the idea that a Kan extension can be used to extend the
 action of a functor outside of its original domain. Suppose that
 $K$ embeds $\cat{I}$ inside $\cat{A}$. Functor $D$ maps
 $\cat{I}$ to $\Set$. We could just say that for any object
-$a$ in the image of $K$, that is $a = K\ i$, the
-extended functor maps $a$ to $D\ i$. The problem is, what
+$a$ in the image of $K$, that is $a = K i$, the
+extended functor maps $a$ to $D i$. The problem is, what
 to do with those objects in $\cat{A}$ that are outside of the image of
 $K$? The idea is that every such object is potentially connected
 through lots of morphisms to every object in the image of $K$. A
 functor must preserve these morphisms. The totality of morphisms from an
 object $a$ to the image of $K$ is characterized by the
 hom-functor:
-\[\cat{A}(a, K\ -)\]
+\[\cat{A}(a, K -)\]
 
 \begin{figure}[H]
   \centering
@@ -306,43 +306,43 @@ hom-functor:
 
 \noindent
 Notice that this hom-functor is a composition of two functors:
-\[\cat{A}(a, K\ -) = \cat{A}(a, -) \circ K\]
+\[\cat{A}(a, K -) = \cat{A}(a, -) \circ K\]
 The right Kan extension is the right adjoint of functor composition:
 \[[\cat{I}, \Set](F' \circ K, D) \cong [\cat{A}, \Set](F', \Ran_{K}D)\]
 Let's see what happens when we replace $F'$ with the hom
 functor:
 \[[\cat{I}, \Set](\cat{A}(a, -) \circ K, D) \cong [\cat{A}, \Set](\cat{A}(a, -), \Ran_{K}D)\]
 and then inline the composition:
-\[[\cat{I}, \Set](\cat{A}(a, K\ -), D) \cong [\cat{A}, \Set](\cat{A}(a, -), \Ran_{K}D)\]
+\[[\cat{I}, \Set](\cat{A}(a, K -), D) \cong [\cat{A}, \Set](\cat{A}(a, -), \Ran_{K}D)\]
 The right hand side can be reduced using the Yoneda lemma:
-\[[\cat{I}, \Set](\cat{A}(a, K\ -), D) \cong \Ran_{K}D\ a\]
+\[[\cat{I}, \Set](\cat{A}(a, K -), D) \cong \Ran_{K}D a\]
 We can now rewrite the set of natural transformations as the end to get
 this very convenient formula for the right Kan extension:
-\[\Ran_{K}D\ a \cong \int_i \Set(\cat{A}(a, K\ i), D\ i)\]
+\[\Ran_{K}D a \cong \int_i \Set(\cat{A}(a, K i), D i)\]
 There is an analogous formula for the left Kan extension in terms of a
 coend:
-\[\Lan_{K}D\ a = \int^i \cat{A}(K\ i, a)\times{}D\ i\]
+\[\Lan_{K}D a = \int^i \cat{A}(K i, a)\times{}D i\]
 To see that this is the case, we'll show that this is indeed the left
 adjoint to functor composition:
 \[[\cat{A}, \Set](\Lan_{K}D, F') \cong [\cat{I}, \Set](D, F' \circ K)\]
 Let's substitute our formula in the left hand side:
-\[[\cat{A}, \Set](\int^i \cat{A}(K\ i, -)\times{}D\ i, F')\]
+\[[\cat{A}, \Set](\int^i \cat{A}(K i, -)\times{}D i, F')\]
 This is a set of natural transformations, so it can be rewritten as an
 end:
-\[\int_a \Set(\int^i \cat{A}(K\ i, a)\times{}D\ i, F'\ a)\]
+\[\int_a \Set(\int^i \cat{A}(K i, a)\times{}D i, F' a)\]
 Using the continuity of the hom-functor, we can replace the coend with
 the end:
-\[\int_a \int_i \Set(\cat{A}(K\ i, a)\times{}D\ i, F'\ a)\]
+\[\int_a \int_i \Set(\cat{A}(K i, a)\times{}D i, F' a)\]
 We can use the product-exponential adjunction:
-\[\int_a \int_i \Set(\cat{A}(K\ i, a),\ (F'\ a)^{D\ i})\]
+\[\int_a \int_i \Set(\cat{A}(K i, a),\ (F' a)^{D i})\]
 The exponential is isomorphic to the corresponding hom-set:
-\[\int_a \int_i \Set(\cat{A}(K\ i, a),\ \cat{A}(D\ i, F'\ a))\]
+\[\int_a \int_i \Set(\cat{A}(K i, a),\ \cat{A}(D i, F' a))\]
 There is a theorem called the Fubini theorem that allows us to swap the
 two ends:
-\[\int_i \int_a \Set(\cat{A}(K\ i, a),\ A(D\ i, F'\ a))\]
+\[\int_i \int_a \Set(\cat{A}(K i, a),\ A(D i, F' a))\]
 The inner end represents the set of natural transformations between two
 functors, so we can use the Yoneda lemma:
-\[\int_i \cat{A}(D\ i, F'\ (K\ i))\]
+\[\int_i \cat{A}(D i, F' (K i))\]
 This is indeed the set of natural transformations that forms the right
 hand side of the adjunction we set out to prove:
 \[[\cat{I}, \Set](D, F' \circ K)\]
@@ -353,7 +353,7 @@ pretty typical for the ``calculus'' of ends.
 
 The end/coend formulas for Kan extensions can be easily translated to
 Haskell. Let's start with the right extension:
-\[\Ran_{K}D\ a \cong \int_i \Set(\cat{A}(a, K\ i), D\ i)\]
+\[\Ran_{K}D a \cong \int_i \Set(\cat{A}(a, K i), D i)\]
 We replace the end with the universal quantifier, and hom-sets with
 function types:
 
@@ -389,7 +389,7 @@ As expected, it generates free monoids, or Haskell lists:
 
 \src{snippet05}
 The left Kan extension is a coend:
-\[\Lan_{K}D\ a = \int^i \cat{A}(K\ i, a)\times{}D\ i\]
+\[\Lan_{K}D a = \int^i \cat{A}(K i, a)\times{}D i\]
 so it translates to an existential quantifier. Symbolically:
 
 \begin{snip}{haskell}
@@ -454,7 +454,7 @@ a canonical functor $J$ that injects $\cat{|C|}$
 into $\cat{C}$: it's an identity on objects (and on identity morphisms).
 The left Kan extension of $F$ along $J$, if it exists, is
 then a functor for $\cat{C}$ to $\cat{C}$:
-\[\Lan_{J}F\ a = \int^i \cat{C}(J\ i, a)\times{}F\ i\]
+\[\Lan_{J}F a = \int^i \cat{C}(J i, a)\times{}F i\]
 It's called a free functor based on $F$.
 
 In Haskell, we would write it as:
