@@ -76,11 +76,11 @@ $a$ and $b$ is defined as a morphism
 $a \to T b$. The composition of two such arrows
 (I'll write it as a circle with the subscript $T$) can be
 implemented using $\mu$:
-\[g \circ_T f = \mu_c \circ (T\ g) \circ f\]
+\[g \circ_T f = \mu_c \circ (T g) \circ f\]
 where
 \begin{gather*}
-  f \Colon a \to T\ b \\
-  g \Colon b \to T\ c
+  f \Colon a \to T b \\
+  g \Colon b \to T c
 \end{gather*}
 Here $T$, being a functor, can be applied to the morphism
 $g$. It might be easier to recognize this formula in Haskell
@@ -467,11 +467,11 @@ because an adjunction usually involves two categories. However, the
 definitions of an exponential, or a function object, is an exception.
 Here are the two endofunctors that form this adjunction:
 \begin{gather*}
-  L\ z = z\times{}s \\
-  R\ b = s \Rightarrow b
+  L z = z\times{}s \\
+  R b = s \Rightarrow b
 \end{gather*}
 You may recognize their composition as the familiar state monad:
-\[R\ (L\ z) = s \Rightarrow (z\times{}s)\]
+\[R (L z) = s \Rightarrow (z\times{}s)\]
 We've seen this monad before in Haskell:
 
 \src{snippet18}

@@ -122,8 +122,8 @@ free functor.
 
 The left adjoint to $U^T$ is called $F^T$. It maps an object
 $a$ in $\cat{C}$ to a free algebra in $\cat{C}^T$. The carrier
-of this free algebra is $T\ a$. Its evaluator is a morphism from
-$T\ (T\ a)$ back to $T\ a$. Since $T$ is a monad,
+of this free algebra is $T a$. Its evaluator is a morphism from
+$T (T a)$ back to $T a$. Since $T$ is a monad,
 we can use the monadic $\mu_a$ (\code{join} in Haskell) as the
 evaluator.
 
@@ -154,20 +154,20 @@ The unit of the adjunction is the natural transformation:
 \[\eta \Colon I \to U^T \circ F^T\]
 Let's calculate the $a$ component of this transformation. The
 identity functor gives us $a$. The free functor produces the free
-algebra $(T\ a, \mu_a)$, and the forgetful functor reduces it to
-$T\ a$. Altogether we get a mapping from $a$ to
-$T\ a$. We'll simply use the unit of the monad $T$ as the
+algebra $(T a, \mu_a)$, and the forgetful functor reduces it to
+$T a$. Altogether we get a mapping from $a$ to
+$T a$. We'll simply use the unit of the monad $T$ as the
 unit of this adjunction.
 
 Let's look at the counit:
 \[\varepsilon \Colon F^T \circ U^T \to I\]
 Let's calculate its component at some T-algebra $(a, f)$. The
 forgetful functor forgets the $f$, and the free functor produces
-the pair $(T\ a, \mu_a)$. So in order to define the component of
+the pair $(T a, \mu_a)$. So in order to define the component of
 the counit $\varepsilon$ at $(a, f)$, we need the right morphism in
 the Eilenberg-Moore category, or a homomorphism of T-algebras:
-\[(T\ a, \mu_a) \to (a, f)\]
-Such a homomorphism should map the carrier $T\ a$ to $a$.
+\[(T a, \mu_a) \to (a, f)\]
+Such a homomorphism should map the carrier $T a$ to $a$.
 Let's just resurrect the forgotten evaluator $f$. This time we'll
 use it as a homomorphism of T-algebras. Indeed, the same commuting
 diagram that makes $f$ a T-algebra may be re-interpreted to show
@@ -222,7 +222,7 @@ Every adjunction gives rise to a monad. The round trip
 \[U^T \circ F^T\]
 is the endofunctor in $\cat{C}$ that gives rise to the corresponding monad.
 Let's see what its action on an object $a$ is. The free algebra
-created by $F^T$ is $(T\ a, \mu_a)$. The forgetful functor
+created by $F^T$ is $(T a, \mu_a)$. The forgetful functor
 $U^T$ drops the evaluator. So, indeed, we have:
 \[U^T \circ F^T = T\]
 As expected, the unit of the adjunction is the unit of the monad $T$.
@@ -238,8 +238,8 @@ algebra $(a, f)$ is $f$.
 
 Let's calculate the component $\mu_a$. We first horizontally compose
 $\varepsilon$ after $F^T$, which results in the component of
-$\varepsilon$ at $F^T\ a$. Since $F^T$ takes $a$ to the
-algebra $(T\ a, \mu_a)$, and $\varepsilon$ picks the evaluator, we end
+$\varepsilon$ at $F^T a$. Since $F^T$ takes $a$ to the
+algebra $(T a, \mu_a)$, and $\varepsilon$ picks the evaluator, we end
 up with $\mu_a$. Horizontal composition on the left with $U^T$
 doesn't change anything, since the action of $U^T$ on morphisms is
 trivial. So, indeed, the $\mu$ obtained from the adjunction is the
@@ -253,7 +253,7 @@ category $\cat{C}_T$. The objects in the Kleisli category
 $\cat{C}_T$ are the objects of $\cat{C}$, but the morphisms
 are different. A morphism $f_{\cat{K}}$ from $a$ to $b$ in
 the Kleisli category corresponds to a morphism $f$ from
-$a$ to $T\ b$ in the original category. We call this
+$a$ to $T b$ in the original category. We call this
 morphism a Kleisli arrow from $a$ to $b$.
 
 Composition of morphisms in the Kleisli category is defined in terms of
@@ -265,15 +265,15 @@ $g_{\cat{K}}$ after $f_{\cat{K}}$. In the Kleisli category we have:
 \end{gather*}
 which, in the category $\cat{C}$, corresponds to:
 \begin{gather*}
-  f \Colon a \to T\ b \\
-  g \Colon b \to T\ c
+  f \Colon a \to T b \\
+  g \Colon b \to T c
 \end{gather*}
 We define the composition:
 \[h_{\cat{K}} = g_{\cat{K}} \circ f_{\cat{K}}\]
 as a Kleisli arrow in $\cat{C}$
 \begin{align*}
-  h & \Colon a \to T\ c          \\
-  h & = \mu \circ (T\ g) \circ f
+  h & \Colon a \to T c          \\
+  h & = \mu \circ (T g) \circ f
 \end{align*}
 In Haskell we would write it as:
 
@@ -292,13 +292,13 @@ In Haskell we'd write it as:
 \src{snippet06}
 We can also define a functor $G$ from $\cat{C}_T$
 back to $\cat{C}$. It takes an object $a$ from the Kleisli
-category and maps it to an object $T\ a$ in $\cat{C}$. Its action
+category and maps it to an object $T a$ in $\cat{C}$. Its action
 on a morphism $f_{\cat{K}}$ corresponding to a Kleisli arrow:
-\[f \Colon a \to T\ b\]
+\[f \Colon a \to T b\]
 is a morphism in $\cat{C}$:
-\[T\ a \to T\ b\]
+\[T a \to T b\]
 given by first lifting $f$ and then applying $\mu$:
-\[\mu_{T b} \circ T\ f\]
+\[\mu_{T b} \circ T f\]
 In Haskell notation this would read:
 
 \begin{snipv}
@@ -349,7 +349,7 @@ with a comonad. They make the following diagrams commute:
 \noindent
 where $coa$ is the coevaluation morphism of the coalgebra whose
 carrier is $a$:
-\[coa \Colon a \to W\ a\]
+\[coa \Colon a \to W a\]
 and $\varepsilon$ and $\delta$ are the two natural transformations
 defining the comonad (in Haskell, their components are called
 \code{extract} and \code{duplicate}).
@@ -360,7 +360,7 @@ consider its right adjoint $F^W$.
 \[U^W \dashv F^W\]
 The right adjoint to a forgetful functor is called a cofree functor.
 $F^W$ generates cofree coalgebras. It assigns, to an object
-$a$ in $\cat{C}$, the coalgebra $(W\ a, \delta_a)$. The
+$a$ in $\cat{C}$, the coalgebra $(W a, \delta_a)$. The
 adjunction reproduces the original comonad as the composite
 $U^W \circ F^W$.
 

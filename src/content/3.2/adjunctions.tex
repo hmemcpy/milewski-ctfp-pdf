@@ -362,7 +362,7 @@ naturally isomorphic:
 \[\cat{C}(L (), c) \cong \Set((), R c)\]
 For a given $c$, the right hand side is the set of functions from
 the singleton set $()$ to $R c$. We've seen earlier that
-each such function picks one element from the set $R\ c$. The set
+each such function picks one element from the set $R c$. The set
 of such functions is isomorphic to the set $R c$. So we have:
 \[\cat{C}(L (), -) \cong R\]
 which shows that $R$ is indeed representable.
@@ -451,9 +451,9 @@ object --- it's the result of the left functor $L$ acting on some
 object from the right category. The functor that fits the bill is easy
 to guess --- it's the diagonal functor $\Delta$ from $\cat{C}$ to $\cat{C}\times{}\cat{C}$,
 whose action on objects is:
-\[\Delta\ c = \langle c, c \rangle\]
+\[\Delta c = \langle c, c \rangle\]
 The left-hand side hom-set in our adjunction should thus be:
-\[(\cat{C}\times{}\cat{C})(\Delta\ c, \langle a, b \rangle)\]
+\[(\cat{C}\times{}\cat{C})(\Delta c, \langle a, b \rangle)\]
 It's a hom-set in the product category. Its elements are pairs of
 morphisms that we recognize as the arguments to our \code{factorizer}:
 \[(c \to a) \to (c \to b) \ldots{}\]
@@ -502,7 +502,7 @@ an exercise for the dedicated reader.
 
 To summarize what we have done: A categorical product may be defined
 globally as the \newterm{right adjoint} of the diagonal functor:
-\[(\cat{C}\times{}\cat{C})(\Delta\ c, \langle a, b \rangle) \cong \cat{C}(c, a\times{}b)\]
+\[(\cat{C}\times{}\cat{C})(\Delta c, \langle a, b \rangle) \cong \cat{C}(c, a\times{}b)\]
 Here, $a\times{}b$ is the result of the action of our right adjoint
 functor $Product$ on the pair
 $\langle a, b \rangle$. Notice that any functor from

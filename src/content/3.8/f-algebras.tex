@@ -77,7 +77,7 @@ F-algebra.
 
 An F-algebra is a triple consisting of an endofunctor $F$, an
 object $a$, and a morphism
-\[F\ a \to a\]
+\[F a \to a\]
 The object is often called the carrier, an underlying object or, in the
 context of programming, the carrier \emph{type}. The morphism is often
 called the evaluation function or the structure map. Think of the
@@ -189,7 +189,7 @@ constructing some new objects, see if they form a category. Not
 surprisingly, algebras over a given endofunctor $F$ form a
 category. Objects in that category are algebras --- pairs consisting of
 a carrier object $a$ and a morphism
-$F\ a \to a$, both from the original category
+$F a \to a$, both from the original category
 $\cat{C}$.
 
 To complete the picture, we have to define morphisms in the category of
@@ -200,12 +200,12 @@ original category. Not any morphism will do: we want it to be compatible
 with the two evaluators. (We call such a structure-preserving morphism a
 \newterm{homomorphism}.) Here's how you define a homomorphism of
 F-algebras. First, notice that we can lift $m$ to the mapping:
-\[F\ m \Colon F\ a \to F\ b\]
+\[F m \Colon F a \to F b\]
 we can then follow it with $g$ to get to $b$.
-Equivalently, we can use $f$ to go from $F\ a$ to
+Equivalently, we can use $f$ to go from $F a$ to
 $a$ and then follow it with $m$. We want the two paths to
 be equal:
-\[g \circ F\ m = m \circ f\]
+\[g \circ F m = m \circ f\]
 
 \begin{figure}[H]
   \centering
@@ -219,7 +219,7 @@ homomorphisms is a homomorphism).
 
 An initial object in the category of F-algebras, if it exists, is called
 the \newterm{initial algebra}. Let's call the carrier of this initial
-algebra $i$ and its evaluator $j \Colon F\ i \to i$. It turns out that $j$,
+algebra $i$ and its evaluator $j \Colon F i \to i$. It turns out that $j$,
 the evaluator of the initial algebra, is an isomorphism. This result is
 known as Lambek's theorem. The proof relies on the definition of the
 initial object, which requires that there be a unique homomorphism
@@ -232,13 +232,13 @@ homomorphism, the following diagram must commute:
 \end{figure}
 
 \noindent
-Now let's construct an algebra whose carrier is $F\ i$. The
-evaluator of such an algebra must be a morphism from $F\ (F\ i)$
-to $F\ i$. We can easily construct such an evaluator simply by
+Now let's construct an algebra whose carrier is $F i$. The
+evaluator of such an algebra must be a morphism from $F (F i)$
+to $F i$. We can easily construct such an evaluator simply by
 lifting $j$:
-\[F\ j \Colon F\ (F\ i) \to F\ i\]
+\[F j \Colon F (F i) \to F i\]
 Because $(i, j)$ is the initial algebra, there must be a unique
-homomorphism $m$ from it to $(F\ i, F\ j)$. The following
+homomorphism $m$ from it to $(F i, F j)$. The following
 diagram must commute:
 
 \begin{figure}[H]
@@ -257,7 +257,7 @@ same!):
 
 \noindent
 which can be interpreted as showing that $j$ is a homomorphism of
-algebras, mapping $(F\ i, F\ j)$ to $(i, j)$. We can
+algebras, mapping $(F i, F j)$ to $(i, j)$. We can
 glue these two diagrams together to get:
 
 \begin{figure}[H]
@@ -275,8 +275,8 @@ homomorphism of algebras. Therefore $j \circ m = \id_i$. Using this
 fact and the commuting property of the left diagram we can prove that
 $m \circ j = \id_{Fi}$. This shows that $m$ is the inverse of
 $j$ and therefore $j$ is an isomorphism between
-$F\ i$ and $i$:
-\[F\ i \cong i\]
+$F i$ and $i$:
+\[F i \cong i\]
 But that is just saying that $i$ is a fixed point of $F$.
 That's the formal proof behind the original hand-waving argument.
 
@@ -423,7 +423,7 @@ catamorphism to lists.
 
 As usual, we have a dual construction of an F-coalgebra, where the
 direction of the morphism is reversed:
-\[a \to F\ a\]
+\[a \to F a\]
 Coalgebras for a given functor also form a category, with homomorphisms
 preserving the coalgebraic structure. The terminal object
 $(t, u)$ in that category is called the terminal (or final)
@@ -437,9 +437,9 @@ homomorphism $m$ that makes the following diagram commute:
 
 \noindent
 A terminal coalgebra is a fixed point of the functor, in the sense that
-the morphism $u \Colon t \to F\ t$ is an isomorphism
+the morphism $u \Colon t \to F t$ is an isomorphism
 (Lambek's theorem for coalgebras):
-\[F\ t \cong t\]
+\[F t \cong t\]
 A terminal coalgebra is usually interpreted in programming as a recipe
 for generating (possibly infinite) data structures or transition
 systems.
