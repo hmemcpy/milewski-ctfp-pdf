@@ -154,10 +154,10 @@ of this as a symbolic name for one object, not to be confused with a
 Haskell typeclass constraint --- I'll discuss different ways of naming
 it later). This object comes with its own application --- a morphism
 from $(a \Rightarrow b) \times a$ to $b$ --- which we will call
-$eval$. The object \code{$a \Rightarrow b$} is the best if any other
+$\mathit{eval}$. The object \code{$a \Rightarrow b$} is the best if any other
 candidate for a function object can be uniquely mapped to it in such a
 way that its application morphism $g$ factorizes through
-$eval$. This object is better than any other object according to
+$\mathit{eval}$. This object is better than any other object according to
 our ranking.
 
 \begin{figure}[H]
@@ -175,13 +175,13 @@ Formally:
   \begin{minipage}[t]{0.97\columnwidth}\raggedright\strut
     A \emph{function object} from $a$ to $b$ is an object
     $a \Rightarrow b$ together with the morphism
-    \[eval \Colon ((a \Rightarrow b) \times a) \to b\]
+    \[\mathit{eval} \Colon ((a \Rightarrow b) \times a) \to b\]
     such that for any other object $z$ with a morphism
     \[g \Colon z \times a \to b\]
     there is a unique morphism
     \[h \Colon z \to (a \Rightarrow b)\]
-    that factors $g$ through $eval$:
-    \[g = eval \circ (h \times \id)\]
+    that factors $g$ through $\mathit{eval}$:
+    \[g = \mathit{eval} \circ (h \times \id)\]
   \end{minipage}\tabularnewline
   \bottomrule
 \end{longtable}
@@ -221,7 +221,7 @@ variable returning functions. This correspondence is called
 This correspondence is one-to-one, because given any $g$ there is
 a unique $h$, and given any $h$ you can always recreate
 the two-argument function $g$ using the formula:
-\[g = eval \circ (h \times \id)\]
+\[g = \mathit{eval} \circ (h \times \id)\]
 The function $g$ can be called the \emph{uncurried} version of $h$.
 
 Currying is essentially built into the syntax of Haskell. A function
@@ -522,7 +522,7 @@ It takes a pair consisting of a function and its argument and produces a
 result of the appropriate type. It's the Haskell implementation of the
 morphism:
 
-\[eval \Colon (a \Rightarrow b) \times a \to b\]
+\[\mathit{eval} \Colon (a \Rightarrow b) \times a \to b\]
 which defines the function type $a \Rightarrow b$ (or the exponential object
 $b^{a}$). Let's translate this signature to a logical predicate
 using the Curry-Howard isomorphism:
@@ -563,7 +563,7 @@ Finally, we come to the meaning of the \code{absurd} function:
 \src{snippet15}
 Considering that \code{Void} translates into false, we get:
 
-\[false \Rightarrow a\]
+\[\mathit{false} \Rightarrow a\]
 Anything follows from falsehood (\emph{ex falso quodlibet}). Here's one
 possible proof (implementation) of this statement (function) in Haskell:
 

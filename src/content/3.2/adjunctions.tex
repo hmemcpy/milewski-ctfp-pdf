@@ -350,13 +350,13 @@ can treat the category of Haskell types as the category of sets.
 
 When the right category $\cat{D}$ is $\Set$, the right adjoint
 $R$ is a functor from $\cat{C}$ to $\Set$. Such a functor is
-representable if we can find an object $rep$ in $\cat{C}$ such
-that the hom-functor $\cat{C}(rep, \_)$ is naturally isomorphic to
+representable if we can find an object $\mathit{rep}$ in $\cat{C}$ such
+that the hom-functor $\cat{C}(\mathit{rep}, \_)$ is naturally isomorphic to
 $R$. It turns out that, if $R$ is the right adjoint of
 some functor $L$ from $\Set$ to $\cat{C}$, such an object
 always exists --- it's the image of the singleton set $()$ under
 $L$:
-\[rep = L ()\]
+\[\mathit{rep} = L ()\]
 Indeed, the adjunction tells us that the following two hom-sets are
 naturally isomorphic:
 \[\cat{C}(L (), c) \cong \Set((), R c)\]
@@ -378,11 +378,11 @@ product-like candidate through the universal product.
 
 More precisely, the product of two objects $a$ and $b$ is
 the object $(a\times{}b)$ (or \code{(a, b)} in the Haskell
-notation) equipped with two morphisms $fst$ and $snd$ such
+notation) equipped with two morphisms $\mathit{fst}$ and $\mathit{snd}$ such
 that, for any other candidate $c$ equipped with two morphisms
 $p \Colon c \to a$ and $q \Colon c \to b$, there
 exists a unique morphism $m \Colon c \to (a, b)$ that
-factorizes $p$ and $q$ through $fst$ and $snd$.
+factorizes $p$ and $q$ through $\mathit{fst}$ and $\mathit{snd}$.
 
 As we've seen earlier, in Haskell, we can implement a \code{factorizer} that generates this
 morphism from the two projections:
@@ -504,10 +504,10 @@ To summarize what we have done: A categorical product may be defined
 globally as the \newterm{right adjoint} of the diagonal functor:
 \[(\cat{C}\times{}\cat{C})(\Delta c, \langle a, b \rangle) \cong \cat{C}(c, a\times{}b)\]
 Here, $a\times{}b$ is the result of the action of our right adjoint
-functor $Product$ on the pair
+functor $\mathit{Product}$ on the pair
 $\langle a, b \rangle$. Notice that any functor from
-$\cat{C}\times{}\cat{C}$ is a bifunctor, so $Product$ is a bifunctor. In
-Haskell, the $Product$ bifunctor is written simply as
+$\cat{C}\times{}\cat{C}$ is a bifunctor, so $\mathit{Product}$ is a bifunctor. In
+Haskell, the $\mathit{Product}$ bifunctor is written simply as
 \code{(,)}. You can apply it to two types and get their product type,
 for instance:
 
@@ -546,7 +546,7 @@ redrawing the diagram that we used in the universal construction.
 \end{figure}
 
 \noindent
-Notice that the $eval$ morphism\footnote{See ch.9 on \hyperref[function-types]{universal
+Notice that the $\mathit{eval}$ morphism\footnote{See ch.9 on \hyperref[function-types]{universal
     construction}.} is nothing else but the counit of
 this adjunction:
 \[(a \Rightarrow b)\times{}a \to b\]

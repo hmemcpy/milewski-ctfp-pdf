@@ -239,12 +239,12 @@ bicategories.
 
 Let's construct a monad in $\cat{Span}$. We pick a $0$-cell, which is a
 set that, for reasons that will become clear soon, I will call
-$Ob$. Next, we pick an endo-$1$-cell: a span from $Ob$ back
-to $Ob$. It has a set at the apex, which I will call $Ar$,
+$\mathit{Ob}$. Next, we pick an endo-$1$-cell: a span from $\mathit{Ob}$ back
+to $\mathit{Ob}$. It has a set at the apex, which I will call $\mathit{Ar}$,
 equipped with two functions:
 \begin{align*}
-  dom & \Colon Ar \to Ob \\
-  cod & \Colon Ar \to Ob
+  \mathit{dom} & \Colon \mathit{Ar} \to \mathit{Ob} \\
+  \mathit{cod} & \Colon \mathit{Ar} \to \mathit{Ob}
 \end{align*}
 
 \begin{figure}[H]
@@ -253,21 +253,21 @@ equipped with two functions:
 \end{figure}
 
 \noindent
-Let's call the elements of the set $Ar$ ``arrows.'' If I also
-tell you to call the elements of $Ob$ ``objects,'' you might get
-a hint where this is leading to. The two functions $dom$ and
-$cod$ assign the domain and the codomain to an ``arrow.''
+Let's call the elements of the set $\mathit{Ar}$ ``arrows.'' If I also
+tell you to call the elements of $\mathit{Ob}$ ``objects,'' you might get
+a hint where this is leading to. The two functions $\mathit{dom}$ and
+$\mathit{cod}$ assign the domain and the codomain to an ``arrow.''
 
 To make our span into a monad, we need two $2$-cells, $\eta$ and
 $\mu$. The monoidal unit, in this case, is the trivial span from
-$Ob$ to $Ob$ with the apex at $Ob$ and two identity
+$\mathit{Ob}$ to $\mathit{Ob}$ with the apex at $\mathit{Ob}$ and two identity
 functions. The $2$-cell $\eta$ is a function between the apices
-$Ob$ and $Ar$. In other words, $\eta$ assigns an
+$\mathit{Ob}$ and $\mathit{Ar}$. In other words, $\eta$ assigns an
 ``arrow'' to every ``object.'' A $2$-cell in $\cat{Span}$ must satisfy
 commutation conditions --- in this case:
 \begin{align*}
-  dom & \circ \eta = \id \\
-  cod & \circ \eta = \id
+  \mathit{dom} & \circ \eta = \id \\
+  \mathit{cod} & \circ \eta = \id
 \end{align*}
 
 \begin{figure}[H]
@@ -277,17 +277,17 @@ commutation conditions --- in this case:
 
 \noindent
 In components, this becomes:
-\[dom\ (\eta\ ob) = ob = cod\ (\eta\ ob)\]
-where $ob$ is an ``object'' in $Ob$. In other words,
+\[\mathit{dom}\ (\eta\ \mathit{ob}) = \mathit{ob} = \mathit{cod}\ (\eta\ \mathit{ob})\]
+where $\mathit{ob}$ is an ``object'' in $\mathit{Ob}$. In other words,
 $\eta$ assigns to every ``object'' and ``arrow'' whose domain and
 codomain are that ``object.'' We'll call this special ``arrow'' the
 ``identity arrow.''
 
 The second $2$-cell $\mu$ acts on the composition of the span
-$Ar$ with itself. The composition is defined as a pullback, so
-its elements are pairs of elements from $Ar$ --- pairs of
+$\mathit{Ar}$ with itself. The composition is defined as a pullback, so
+its elements are pairs of elements from $\mathit{Ar}$ --- pairs of
 ``arrows'' $(a_1, a_2)$. The pullback condition is:
-\[cod\ a_1 = dom\ a_2\]
+\[\mathit{cod}\ a_1 = \mathit{dom}\ a_2\]
 We say that $a_1$ and $a_2$ are ``composable,'' because the
 domain of one is the codomain of the other.
 
@@ -299,7 +299,7 @@ domain of one is the codomain of the other.
 \noindent
 The $2$-cell $\mu$ is a function that maps a pair of composable
 arrows $(a_1, a_2)$ to a single arrow $a_3$ from
-$Ar$. In other words $\mu$ defines composition of arrows.
+$\mathit{Ar}$. In other words $\mu$ defines composition of arrows.
 
 It's easy to check that monad laws correspond to identity and
 associativity laws for arrows. We have just defined a category (a small

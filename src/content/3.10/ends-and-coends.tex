@@ -12,12 +12,12 @@ of ``proofs.'' This mapping is functorial --- contravariant in the first
 argument and covariant in the second. We can look at it as establishing
 a global relationship between objects in the category. This relationship
 is described by the hom-functor:
-\[\cat{C}(-, =) \Colon \cat{C}^{op}\times{}\cat{C} \to \Set\]
+\[\cat{C}(-, =) \Colon \cat{C}^\mathit{op}\times{}\cat{C} \to \Set\]
 In general, any functor like this may be interpreted as establishing a
 relation between objects in a category. A relation may also involve two
 different categories $\cat{C}$ and $\cat{D}$. A functor, which describes
 such a relation, has the following signature and is called a profunctor:
-\[p \Colon \cat{D}^{op}\times{}\cat{C} \to \Set\]
+\[p \Colon \cat{D}^\mathit{op}\times{}\cat{C} \to \Set\]
 Mathematicians say that it's a profunctor from $\cat{C}$ to $\cat{D}$
 (notice the inversion), and use a slashed arrow as a symbol for it:
 \[\cat{C} \nrightarrow \cat{D}\]
@@ -71,7 +71,7 @@ transformation is called a dinatural transformation, provided it
 satisfies the commuting conditions that reflect the two ways we can
 connect diagonal elements to non-diagonal ones. A dinatural
 transformation between two profunctors $p$ and $q$, which
-are members of the functor category ${[}\cat{C}^{op}\times{}\cat{C}, \Set{]}$, is a
+are members of the functor category ${[}\cat{C}^\mathit{op}\times{}\cat{C}, \Set{]}$, is a
 family of morphisms:
 \[\alpha_a \Colon p\ a\ a \to q\ a\ a\]
 for which the following diagram commutes, for any $f \Colon a \to b$:
@@ -84,7 +84,7 @@ for which the following diagram commutes, for any $f \Colon a \to b$:
 \noindent
 Notice that this is strictly weaker than the naturality condition. If
 $\alpha$ were a natural transformation in
-${[}\cat{C}^{op}\times{}\cat{C}, \Set{]}$, the above diagram could be constructed
+${[}\cat{C}^\mathit{op}\times{}\cat{C}, \Set{]}$, the above diagram could be constructed
 from two naturality squares and one functoriality condition (profunctor
 $q$ preserving composition):
 
@@ -95,7 +95,7 @@ $q$ preserving composition):
 
 \noindent
 Notice that a component of a natural transformation $\alpha$ in
-${[}\cat{C}^{op}\times{}\cat{C}, \Set{]}$ is indexed by a pair of objects
+${[}\cat{C}^\mathit{op}\times{}\cat{C}, \Set{]}$ is indexed by a pair of objects
 $\alpha_{a b}$. A dinatural transformation, on the other hand, is
 indexed by one object, since it only maps diagonal elements of the
 respective profunctors.
@@ -117,7 +117,7 @@ $\Set$-valued profunctors), and the sides are a family of
 functions mapping the apex to the sets in the base. You may think of
 this family as one polymorphic function --- a function that's
 polymorphic in its return type:
-\[\alpha \Colon \forall a\ .\ apex \to p\ a\ a\]
+\[\alpha \Colon \forall a\ .\ \mathit{apex} \to p\ a\ a\]
 Unlike in cones, within a wedge we don't have any functions that would
 connect vertices of the base. However, as we've seen earlier, given any
 morphism $f \Colon a \to b$ in $\cat{C}$, we can connect both

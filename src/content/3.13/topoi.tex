@@ -108,8 +108,8 @@ subset, and ``false'' to those that aren't.
 It remains to specify what it means to designate an element of
 $\Omega$ as ``true.'' We can use the standard trick: use a function
 from a singleton set to $\Omega$. We'll call this function
-$true$:
-\[true \Colon 1 \to \Omega\]
+$\mathit{true}$:
+\[\mathit{true} \Colon 1 \to \Omega\]
 
 \begin{figure}[H]
   \centering
@@ -120,17 +120,17 @@ $true$:
 These definitions can be combined in such a way that they not only
 define what a subobject is, but also define the special object
 $\Omega$ without talking about elements. The idea is that we want the
-morphism $true$ to represent a ``generic'' subobject. In
+morphism $\mathit{true}$ to represent a ``generic'' subobject. In
 $\Set$, it picks a single-element subset from a two-element set
 $\Omega$. This is as generic as it gets. It's clearly a proper subset,
 because $\Omega$ has one more element that's \emph{not} in that
 subset.
 
-In a more general setting, we define $true$ to be a monomorphism
+In a more general setting, we define $\mathit{true}$ to be a monomorphism
 from the terminal object to the \emph{classifying object} $\Omega$.
 But we have to define the classifying object. We need a universal
 property that links this object to the characteristic function. It turns
-out that, in $\Set$, the pullback of $true$ along the
+out that, in $\Set$, the pullback of $\mathit{true}$ along the
 characteristic function $\chi$ defines both the subset $a$
 and the injective function that embeds it in $b$. Here's the
 pullback diagram:
@@ -142,8 +142,8 @@ pullback diagram:
 
 \noindent
 Let's analyze this diagram. The pullback equation is:
-\[true\ .\ unit = \chi\ .\ f\]
-The function $true\ .\ unit$ maps every element of $a$ to
+\[\mathit{true}\ .\ \mathit{unit} = \chi\ .\ f\]
+The function $\mathit{true}\ .\ \mathit{unit}$ maps every element of $a$ to
 ``true.'' Therefore $f$ must map all elements of $a$ to
 those elements of $b$ for which $\chi$ is ``true.'' These
 are, by definition, the elements of the subset that is specified by the
@@ -153,7 +153,7 @@ $f$ is injective.
 
 This pullback diagram can be used to define the classifying object in
 categories other than $\Set$. Such a category must have a terminal
-object, which will let us define the monomorphism $true$. It must
+object, which will let us define the monomorphism $\mathit{true}$. It must
 also have pullbacks --- the actual requirement is that it must have all
 finite limits (a pullback is an example of a finite limit). Under those
 assumptions, we define the classifying object $\Omega$ by the property
@@ -162,14 +162,14 @@ $\chi$ that completes the pullback diagram.
 
 Let's analyze the last statement. When we construct a pullback, we are
 given three objects $\Omega$, $b$ and $1$; and two
-morphisms, $true$ and $\chi$. The existence of a pullback
+morphisms, $\mathit{true}$ and $\chi$. The existence of a pullback
 means that we can find the best such object $a$, equipped with
-two morphisms $f$ and $unit$ (the latter is uniquely
+two morphisms $f$ and $\mathit{unit}$ (the latter is uniquely
 determined by the definition of the terminal object), that make the
 diagram commute.
 
 Here we are solving a different system of equations. We are solving for
-$\Omega$ and $true$ while varying both $a$ \emph{and}
+$\Omega$ and $\mathit{true}$ while varying both $a$ \emph{and}
 $b$. For a given $a$ and $b$ there may or may not
 be a monomorphism $f \Colon a \to b$. But if there is one, we
 want it to be a pullback of some $\chi$. Moreover, we want this
@@ -184,12 +184,12 @@ equivalent monomorphisms to $b$. This family of monomorphisms is
 in one-to-one correspondence with the family of equivalent pullbacks of
 our diagram.
 
-We can thus define a set of subobjects of $b$, $Sub(b)$,
+We can thus define a set of subobjects of $b$, $\mathit{Sub}(b)$,
 as a family of monomorphisms, and see that it is isomorphic to the set
 of morphisms from $b$ to $\Omega$:
-\[Sub(b) \cong \cat{C}(b, \Omega)\]
+\[\mathit{Sub}(b) \cong \cat{C}(b, \Omega)\]
 This happens to be a natural isomorphism of two functors. In other
-words, $Sub(-)$ is a representable (contravariant) functor whose
+words, $\mathit{Sub}(-)$ is a representable (contravariant) functor whose
 representation is the object $\Omega$.
 
 \section{Topos}
@@ -221,7 +221,7 @@ this is true are called Boolean.
 
 In set theory, a characteristic function may be interpreted as defining
 a property of the elements of a set --- a \newterm{predicate} that is true
-for some elements and false for others. The predicate $isEven$
+for some elements and false for others. The predicate $\mathit{isEven}$
 selects a subset of even numbers from the set of natural numbers. In a
 topos, we can generalize the idea of a predicate to be a morphism from
 object $a$ to $\Omega$. This is why $\Omega$ is sometimes
@@ -254,5 +254,5 @@ logics.
   \tightlist
   \item
         Show that the function $f$ that is the pullback of
-        $true$ along the characteristic function must be injective.
+        $\mathit{true}$ along the characteristic function must be injective.
 \end{enumerate}

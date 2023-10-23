@@ -239,23 +239,23 @@ characteristic of a \emph{contravariant} functor.
 To define a natural transformation, we need another functor that's also
 a mapping from $\cat{C}$ to $\Set$. But this time we'll consider a
 set of cones. Cones are just natural transformations, so we are looking
-at the set of natural transformations $Nat(\Delta_c, D)$. The mapping
+at the set of natural transformations $\mathit{Nat}(\Delta_c, D)$. The mapping
 from \code{c} to this particular set of natural transformations is a
 (contravariant) functor. How can we show that? Again, let's define its
 action on a morphism:
 \[f \Colon c' \to c\]
 The lifting of $f$ should be a mapping of natural transformations
 between two functors that go from $\cat{I}$ to $\cat{C}$:
-\[Nat(\Delta_c, D) \to Nat(\Delta_{c'}, D)\]
+\[\mathit{Nat}(\Delta_c, D) \to \mathit{Nat}(\Delta_{c'}, D)\]
 How do we map natural transformations? Every natural transformation is a
 selection of morphisms --- its components --- one morphism per element
-of $\cat{I}$. A component of some $\alpha$ (a member of $Nat(\Delta_c, D)$) at
+of $\cat{I}$. A component of some $\alpha$ (a member of $\mathit{Nat}(\Delta_c, D)$) at
 $a$ (an object in $\cat{I}$) is a morphism:
 \[\alpha_a \Colon \Delta_c a \to D a\]
 or, using the definition of the constant functor $\Delta$,
 \[\alpha_a \Colon c \to D a\]
 Given $f$ and $\alpha$, we have to construct a $\beta$, a member of
-$Nat(\Delta_{c'}, D)$. Its component at $a$ should be a
+$\mathit{Nat}(\Delta_{c'}, D)$. Its component at $a$ should be a
 morphism:
 \[\beta_a \Colon c' \to D a\]
 We can easily get the latter ($\beta_a$) from the former ($\alpha_a$) by precomposing it with
@@ -273,7 +273,7 @@ natural transformation.
 Given our morphism $f$, we have thus built a mapping between two
 natural transformations, component-wise. This mapping defines
 \code{contramap} for the functor:
-\[c \to Nat(\Delta_c, D)\]
+\[c \to \mathit{Nat}(\Delta_c, D)\]
 What I have just done is to show you that we have two (contravariant)
 functors from $\cat{C}$ to $\Set$. I haven't made any assumptions
 --- these functors always exist.
@@ -290,7 +290,7 @@ between them. So without further ado, here's the conclusion: A functor
 $D$ from $\cat{I}$ to $\cat{C}$ has a limit $\Lim[D]$ if and
 only if there is a natural isomorphism between the two functors I have
 just defined:
-\[\cat{C}(c, \Lim[D]) \simeq Nat(\Delta_c, D)\]
+\[\cat{C}(c, \Lim[D]) \simeq \mathit{Nat}(\Delta_c, D)\]
 Let me remind you what a natural isomorphism is. It's a natural
 transformation whose every component is an isomorphism, that is to say
 an invertible morphism.
@@ -304,7 +304,7 @@ higher order functions, because they go from the hom-set to the set of
 natural transformations. Again, you can analyze a function by
 considering what it does to its argument: here the argument will be a
 morphism --- a member of $\cat{C}(c, \Lim[D])$ --- and the result will
-be a natural transformation --- a member of $Nat(\Delta_c, D)$, or
+be a natural transformation --- a member of $\mathit{Nat}(\Delta_c, D)$, or
 what we have called a cone. This natural transformation, in turn, has
 its own components, which are morphisms. So it's morphisms all the way
 down, and if you can keep track of them, you can prove the statement.
@@ -314,7 +314,7 @@ isomorphism is exactly the commutativity condition for the mapping of
 cones.
 
 As a preview of coming attractions, let me mention that the set
-$Nat(\Delta_c, D)$ can be thought of as a hom-set in the functor
+$\mathit{Nat}(\Delta_c, D)$ can be thought of as a hom-set in the functor
 category; so our natural isomorphism relates two hom-sets, which points
 at an even more general relationship called an adjunction.
 
@@ -520,7 +520,7 @@ It will also come up with a set of constraints resulting from the rules
 of function application:
 
 \begin{snip}{haskell}
-t0 = t1 -> t2 -- because f is applied to x 
+t0 = t1 -> t2 -- because f is applied to x
 t0 = t2 -> t3 -- because f is applied to (f x)
 \end{snip}
 These constraints have to be unified by finding a set of types (or type
@@ -528,7 +528,7 @@ variables) that, when substituted for the unknown types in both
 expressions, produce the same type. One such substitution is:
 
 \begin{snip}{haskell}
-t1 = t2 = t3 = Int 
+t1 = t2 = t3 = Int
 twice :: (Int -> Int) -> Int -> Int
 \end{snip}
 but, obviously, it's not the most general one. The most general
@@ -609,7 +609,7 @@ not available in $\cat{C}$.
 A hom-functor is an example of a continuous functor. Recall that the
 hom-functor, $\cat{C}(a, b)$, is contravariant in the first variable
 and covariant in the second. In other words, it's a functor:
-\[\cat{C}^{op} \times \cat{C} \to \Set\]
+\[\cat{C}^\mathit{op} \times \cat{C} \to \Set\]
 When its second argument is fixed, the hom-set functor (which becomes
 the representable presheaf) maps colimits in $\cat{C}$ to limits in
 $\Set$; and when its first argument is fixed, it maps limits to
