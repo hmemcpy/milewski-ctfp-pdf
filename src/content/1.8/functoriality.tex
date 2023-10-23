@@ -458,15 +458,15 @@ returned \code{a} instead. We can't invert an arbitrary function, but
 we can go to the opposite category.
 
 A short recap: For every category $\cat{C}$ there is a dual category
-$\cat{C}^{op}$. It's a category with the same objects as
+$\cat{C}^\mathit{op}$. It's a category with the same objects as
 $\cat{C}$, but with all the arrows reversed.
 
-Consider a functor that goes between $\cat{C}^{op}$ and
+Consider a functor that goes between $\cat{C}^\mathit{op}$ and
 some other category $\cat{D}$:
-\[F \Colon \cat{C}^{op} \to \cat{D}\]
-Such a functor maps a morphism $f^{op} \Colon a \to b$ in
-$\cat{C}^{op}$ to the morphism $F f^{op} \Colon F a \to F b$ in $\cat{D}$. But the morphism
-$f^{op}$ secretly corresponds to some morphism
+\[F \Colon \cat{C}^\mathit{op} \to \cat{D}\]
+Such a functor maps a morphism $f^\mathit{op} \Colon a \to b$ in
+$\cat{C}^\mathit{op}$ to the morphism $F f^\mathit{op} \Colon F a \to F b$ in $\cat{D}$. But the morphism
+$f^\mathit{op}$ secretly corresponds to some morphism
 $f \Colon b \to a$ in the original category $\cat{C}$. Notice the
 inversion.
 
@@ -475,8 +475,8 @@ define based on $F$, which is not a functor --- let's call it
 $G$. It's a mapping from $\cat{C}$ to $\cat{D}$. It maps objects the
 same way $F$ does, but when it comes to mapping morphisms, it
 reverses them. It takes a morphism $f \Colon b \to a$ in $\cat{C}$, maps
-it first to the opposite morphism $f^{op} \Colon a \to b$
-and then uses the functor $F$ on it, to get $F f^{op} \Colon F a \to F b$.
+it first to the opposite morphism $f^\mathit{op} \Colon a \to b$
+and then uses the functor $F$ on it, to get $F f^\mathit{op} \Colon F a \to F b$.
 
 Considering that $F a$ is the same as $G a$ and $F b$ is
 the same as $G b$, the whole trip can be described as: $G f \Colon (b \to a) \to (G a \to G b)$
@@ -522,7 +522,7 @@ beast? It turns out that, if the target category is $\Set$, such a
 beast is called a \newterm{profunctor}. Because a contravariant functor is
 equivalent to a covariant functor from the opposite category, a
 profunctor is defined as:
-\[\cat{C}^{op} \times \cat{D} \to \Set\]
+\[\cat{C}^\mathit{op} \times \cat{D} \to \Set\]
 Since, to first approximation, Haskell types are sets, we apply the name
 \code{Profunctor} to a type constructor \code{p} of two arguments,
 which is contra-functorial in the first argument and functorial in the
@@ -557,10 +557,10 @@ The above examples are the reflection of a more general statement that
 the mapping that takes a pair of objects $a$ and $b$ and
 assigns to it the set of morphisms between them, the hom-set
 $\cat{C}(a, b)$, is a functor. It is a functor from the product
-category $\cat{C}^{op}\times{}\cat{C}$ to the category of sets, $\Set$.
+category $\cat{C}^\mathit{op}\times{}\cat{C}$ to the category of sets, $\Set$.
 
 Let's define its action on morphisms. A morphism in
-$\cat{C}^{op}\times{}\cat{C}$ is a pair of morphisms from $\cat{C}$:
+$\cat{C}^\mathit{op}\times{}\cat{C}$ is a pair of morphisms from $\cat{C}$:
 \begin{gather*}
   f \Colon a' \to a \\
   g \Colon b \to b'

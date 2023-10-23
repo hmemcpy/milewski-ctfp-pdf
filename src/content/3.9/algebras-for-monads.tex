@@ -27,23 +27,23 @@ conditions. The components of these transformations at $a$ are:
 \end{align*}
 An algebra for the same endofunctor is a selection of a particular
 object --- the carrier $a$ --- together with the morphism:
-\[alg \Colon m\ a \to a\]
+\[\mathit{alg} \Colon m\ a \to a\]
 The first thing to notice is that the algebra goes in the opposite
 direction to $\eta_a$. The intuition is that $\eta_a$ creates a
 trivial expression from a value of type $a$. The first coherence
 condition that makes the algebra compatible with the monad ensures that
 evaluating this expression using the algebra whose carrier is $a$
 gives us back the original value:
-\[alg \circ \eta_a = \id_a\]
+\[\mathit{alg} \circ \eta_a = \id_a\]
 The second condition arises from the fact that there are two ways of
 evaluating the doubly nested expression $m\ (m\ a)$. We can first
 apply $\mu_a$ to flatten the expression, and then use the evaluator
 of the algebra; or we can apply the lifted evaluator to evaluate the
 inner expressions, and then apply the evaluator to the result. We'd like
 the two strategies to be equivalent:
-\[alg \circ \mu_a = alg \circ m\ alg\]
+\[\mathit{alg} \circ \mu_a = \mathit{alg} \circ m\ \mathit{alg}\]
 Here, \code{m alg} is the morphism resulting from lifting
-$alg$ using the functor $m$. The following commuting
+$\mathit{alg}$ using the functor $m$. The following commuting
 diagrams describe the two conditions (I replaced $m$ with
 $T$ in anticipation of what follows):
 
@@ -53,7 +53,7 @@ $T$ in anticipation of what follows):
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
       a \arrow[rd, equal] \arrow[r, "\eta_a"]
-      & Ta \arrow[d, "alg"] \\
+      & Ta \arrow[d, "\mathit{alg}"] \\
       & a
     \end{tikzcd}
   \end{subfigure}
@@ -61,9 +61,9 @@ $T$ in anticipation of what follows):
   \begin{subfigure}
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
-      T(Ta) \arrow[r, "T\ alg"] \arrow[d, "\mu_a"]
-      & Ta \arrow[d, "alg"] \\
-      Ta \arrow[r, "alg"]
+      T(Ta) \arrow[r, "T\ \mathit{alg}"] \arrow[d, "\mu_a"]
+      & Ta \arrow[d, "\mathit{alg}"] \\
+      Ta \arrow[r, "\mathit{alg}"]
       & a
     \end{tikzcd}
   \end{subfigure}
@@ -130,8 +130,8 @@ evaluator.
 We still have to show that this is a T-algebra. For that, two coherence
 conditions must be satisfied:
 \begin{align*}
-  alg & \circ \eta_{Ta} = \id_{Ta}     \\
-  alg & \circ \mu_a = alg \circ T\ alg
+  \mathit{alg} & \circ \eta_{Ta} = \id_{Ta}     \\
+  \mathit{alg} & \circ \mu_a = \mathit{alg} \circ T\ \mathit{alg}
 \end{align*}
 But these are just monadic laws, if you plug in $\mu$ for the
 algebra.
@@ -331,7 +331,7 @@ with a comonad. They make the following diagrams commute:
     \begin{tikzcd}[column sep=large, row sep=large]
       a \arrow[rd, equal]
       & Wa \arrow[l, "\epsilon_a"'] \\
-      & a \arrow[u, "coa"']
+      & a \arrow[u, "\mathit{coa}"']
     \end{tikzcd}
   \end{subfigure}%
   \hspace{1cm}
@@ -339,17 +339,17 @@ with a comonad. They make the following diagrams commute:
     \centering
     \begin{tikzcd}[column sep=large, row sep=large]
       W(Wa)
-      & Wa \arrow[l, "W\ coa"'] \\
+      & Wa \arrow[l, "W\ \mathit{coa}"'] \\
       Wa \arrow[u, "\delta_a"]
-      & a \arrow[u, "coa"] \arrow[l, "coa"']
+      & a \arrow[u, "\mathit{coa}"] \arrow[l, "\mathit{coa}"']
     \end{tikzcd}
   \end{subfigure}
 \end{figure}
 
 \noindent
-where $coa$ is the coevaluation morphism of the coalgebra whose
+where $\mathit{coa}$ is the coevaluation morphism of the coalgebra whose
 carrier is $a$:
-\[coa \Colon a \to W a\]
+\[\mathit{coa} \Colon a \to W a\]
 and $\varepsilon$ and $\delta$ are the two natural transformations
 defining the comonad (in Haskell, their components are called
 \code{extract} and \code{duplicate}).
@@ -371,34 +371,34 @@ and regenerate the comonad from the corresponding adjunction.
 
 Let's go back to our discussion of lenses. A lens can be written as a
 coalgebra:
-\[coalg_s \Colon a \to Store\ s\ a\]
-for the functor $Store\ s$:
+\[\mathit{coalg}_s \Colon a \to \mathit{Store}\ s\ a\]
+for the functor $\mathit{Store}\ s$:
 
 \src{snippet07}
 This coalgebra can be also expressed as a pair of functions:
 \begin{align*}
-  set & \Colon a \to s \to a \\
-  get & \Colon a \to s
+  \mathit{set} & \Colon a \to s \to a \\
+  \mathit{get} & \Colon a \to s
 \end{align*}
 (Think of $a$ as standing for ``all,'' and $s$ as a
 ``small'' part of it.) In terms of this pair, we have:
-\[coalg_s\ a = Store\ (set\ a)\ (get\ a)\]
+\[\mathit{coalg}_s\ a = \mathit{Store}\ (\mathit{set}\ a)\ (\mathit{get}\ a)\]
 Here, $a$ is a value of type $a$. Notice that partially
 applied \code{set} is a function $s \to a$.
 
-We also know that $Store\ s$ is a comonad:
+We also know that $\mathit{Store}\ s$ is a comonad:
 
 \src{snippet08}
 The question is: Under what conditions is a lens a coalgebra for this
 comonad? The first coherence condition:
-\[\varepsilon_a \circ coalg = \idarrow[a]\]
+\[\varepsilon_a \circ \mathit{coalg} = \idarrow[a]\]
 translates to:
-\[set\ a\ (get\ a) = a\]
+\[\mathit{set}\ a\ (\mathit{get}\ a) = a\]
 This is the lens law that expresses the fact that if you set a field of
 the structure $a$ to its previous value, nothing changes.
 
 The second condition:
-\[fmap\ coalg \circ coalg = \delta_a \circ coalg\]
+\[\mathit{fmap}\ \mathit{coalg} \circ \mathit{coalg} = \delta_a \circ \mathit{coalg}\]
 requires a little more work. First, recall the definition of
 \code{fmap} for the \code{Store} functor:
 
