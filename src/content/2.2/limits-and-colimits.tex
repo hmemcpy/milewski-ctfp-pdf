@@ -222,7 +222,7 @@ $\cat{C}(c', \Lim[D])$. An element of a hom-set is a morphism, so
 we have:
 \[u \Colon c \to \Lim[D]\]
 We can precompose $u$ with $f$ to get:
-\[u . f \Colon c' \to \Lim[D]\]
+\[u \circ f \Colon c' \to \Lim[D]\]
 And that's an element of $\cat{C}(c', \Lim[D])$--- so indeed, we
 have found a mapping of morphisms:
 
@@ -240,7 +240,7 @@ To define a natural transformation, we need another functor that's also
 a mapping from $\cat{C}$ to $\Set$. But this time we'll consider a
 set of cones. Cones are just natural transformations, so we are looking
 at the set of natural transformations $\mathit{Nat}(\Delta_c, D)$. The mapping
-from \code{c} to this particular set of natural transformations is a
+from $c$ to this particular set of natural transformations is a
 (contravariant) functor. How can we show that? Again, let's define its
 action on a morphism:
 \[f \Colon c' \to c\]
@@ -260,7 +260,7 @@ morphism:
 \[\beta_a \Colon c' \to D a\]
 We can easily get the latter ($\beta_a$) from the former ($\alpha_a$) by precomposing it with
 $f$:
-\[\beta_a = \alpha_a . f\]
+\[\beta_a = \alpha_a \circ f\]
 It's relatively easy to show that those components indeed add up to a
 natural transformation.
 
