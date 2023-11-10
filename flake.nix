@@ -48,6 +48,25 @@
 
           tlType = "run";
         };
+        julia-mono-latex = pkgs.stdenvNoCC.mkDerivation {
+          name = "julia-mono-latex";
+          pname = "julia-mono-latex";
+
+          src = pkgs.julia-mono;
+
+          dontConfigure = true;
+          sourceRoot = ".";
+
+          installPhase = ''
+            runHook preInstall
+
+            find $src -name '*.ttf' -exec install -m644 -Dt $out/fonts/truetype/public/julia-mono/ {} \;
+
+            runHook postInstall
+          '';
+
+          tlType = "run";
+        };
 
         ########################################################################
         # LaTeX Environment
@@ -57,10 +76,15 @@
             adjustbox
             alegreya
             babel
+            bclogo
             bookcover
             catchfile
             chngcntr
             collectbox
+            collection-latexextra
+            collection-latexrecommended
+            collection-mathscience
+            comment
             currfile
             emptypage
             enumitem
@@ -77,6 +101,8 @@
             import
             inconsolata
             l3packages
+            latexmk
+            lazylist
             lettrine
             libertine
             libertinus-fonts
@@ -90,6 +116,7 @@
             newtx
             noindentafter
             nowidow
+            polytable
             scheme-medium
             subfigure
             subfiles
@@ -102,6 +129,7 @@
             trimspaces
             upquote
             wrapfig
+            xits
             xifthen
             xpatch
             xstring
@@ -110,6 +138,9 @@
 
           inconsolata-lgc-latex = {
             pkgs = [inconsolata-lgc-latex];
+          };
+          julia-mono-latex = {
+            pkgs = [julia-mono-latex];
           };
         };
 
