@@ -236,7 +236,7 @@ either empty or a singleton. We interpret a non-empty set
 $\cat{C}(a, b)$ as the proof that $a$ is less than or equal to
 $b$. Such a category can be interpreted as enriched over a very
 simple monoidal category that contains just two objects, $0$ and $1$
-(sometimes called $False$ and $True$). Besides the mandatory identity
+(sometimes called $\mathit{False}$ and $\mathit{True}$). Besides the mandatory identity
 morphisms, this category has a single morphism going from $0$ to $1$, let's
 call it $0 \to 1$. A simple monoidal structure can be
 established in it, with the tensor product modeling the simple
@@ -338,7 +338,7 @@ between two enriched categories.
 An \newterm{enriched functor} $F$ between two categories $\cat{C}$
 and $\cat{D}$, besides mapping objects to objects, also assigns, to every
 pair of objects in $\cat{C}$, a morphism in $\cat{V}$:
-\[F_{a b} \Colon \cat{C}(a, b) \to \cat{D}(F\ a, F\ b)\]
+\[F_{a b} \Colon \cat{C}(a, b) \to \cat{D}(F a, F b)\]
 A functor is a structure-preserving mapping. For regular functors it
 meant preserving composition and identity. In the enriched setting, the
 preservation of composition means that the following diagram commute:
@@ -351,9 +351,9 @@ preservation of composition means that the following diagram commute:
     \arrow[d, "F_{bc} \otimes F_{ab}"]
     & \cat{C}(a,c)
     \arrow[d, "F_{ac}"] \\
-    \cat{D}(F\ b, F\ c) \otimes \cat{D}(F\ a, F\ b)
+    \cat{D}(F b, F c) \otimes \cat{D}(F a, F b)
     \arrow[r,  "\circ"]
-    & \cat{D}(F\ a, F\ c)
+    & \cat{D}(F a, F c)
   \end{tikzcd}
 \end{figure}
 
@@ -367,7 +367,7 @@ morphisms in $\cat{V}$ that ``select'' the identity:
     & i \arrow[dl, "j_a"'] \arrow[dr, "j_{F a}"] & \\
     \cat{C}(a,a)
     \arrow[rr, "F_{aa}"]
-    & & \cat{D}(F\ a, F\ a)
+    & & \cat{D}(F a, F a)
   \end{tikzcd}
 \end{figure}
 

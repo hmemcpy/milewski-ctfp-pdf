@@ -12,12 +12,12 @@ of ``proofs.'' This mapping is functorial --- contravariant in the first
 argument and covariant in the second. We can look at it as establishing
 a global relationship between objects in the category. This relationship
 is described by the hom-functor:
-\[\cat{C}(-, =) \Colon \cat{C}^{op}\times{}\cat{C} \to \Set\]
+\[\cat{C}(-, =) \Colon \cat{C}^\mathit{op}\times{}\cat{C} \to \Set\]
 In general, any functor like this may be interpreted as establishing a
 relation between objects in a category. A relation may also involve two
 different categories $\cat{C}$ and $\cat{D}$. A functor, which describes
 such a relation, has the following signature and is called a profunctor:
-\[p \Colon \cat{D}^{op}\times{}\cat{C} \to \Set\]
+\[p \Colon \cat{D}^\mathit{op}\times{}\cat{C} \to \Set\]
 Mathematicians say that it's a profunctor from $\cat{C}$ to $\cat{D}$
 (notice the inversion), and use a slashed arrow as a symbol for it:
 \[\cat{C} \nrightarrow \cat{D}\]
@@ -71,7 +71,7 @@ transformation is called a dinatural transformation, provided it
 satisfies the commuting conditions that reflect the two ways we can
 connect diagonal elements to non-diagonal ones. A dinatural
 transformation between two profunctors $p$ and $q$, which
-are members of the functor category ${[}\cat{C}^{op}\times{}\cat{C}, \Set{]}$, is a
+are members of the functor category ${[}\cat{C}^\mathit{op}\times{}\cat{C}, \Set{]}$, is a
 family of morphisms:
 \[\alpha_a \Colon p\ a\ a \to q\ a\ a\]
 for which the following diagram commutes, for any $f \Colon a \to b$:
@@ -84,7 +84,7 @@ for which the following diagram commutes, for any $f \Colon a \to b$:
 \noindent
 Notice that this is strictly weaker than the naturality condition. If
 $\alpha$ were a natural transformation in
-${[}\cat{C}^{op}\times{}\cat{C}, \Set{]}$, the above diagram could be constructed
+${[}\cat{C}^\mathit{op}\times{}\cat{C}, \Set{]}$, the above diagram could be constructed
 from two naturality squares and one functoriality condition (profunctor
 $q$ preserving composition):
 
@@ -95,7 +95,7 @@ $q$ preserving composition):
 
 \noindent
 Notice that a component of a natural transformation $\alpha$ in
-${[}\cat{C}^{op}\times{}\cat{C}, \Set{]}$ is indexed by a pair of objects
+${[}\cat{C}^\mathit{op}\times{}\cat{C}, \Set{]}$ is indexed by a pair of objects
 $\alpha_{a b}$. A dinatural transformation, on the other hand, is
 indexed by one object, since it only maps diagonal elements of the
 respective profunctors.
@@ -117,7 +117,7 @@ $\Set$-valued profunctors), and the sides are a family of
 functions mapping the apex to the sets in the base. You may think of
 this family as one polymorphic function --- a function that's
 polymorphic in its return type:
-\[\alpha \Colon \forall a\ .\ apex \to p\ a\ a\]
+\[\alpha \Colon \forall a\ .\ \mathit{apex} \to p\ a\ a\]
 Unlike in cones, within a wedge we don't have any functions that would
 connect vertices of the base. However, as we've seen earlier, given any
 morphism $f \Colon a \to b$ in $\cat{C}$, we can connect both
@@ -231,7 +231,7 @@ elements for which the wedge diagrams commute.
 The most important example of an end is the set of natural
 transformations. A natural transformation between two functors
 $F$ and $G$ is a family of morphisms picked from hom-sets
-of the form $\cat{C}(F\ a, G\ a)$. If it weren't for the naturality
+of the form $\cat{C}(F a, G a)$. If it weren't for the naturality
 condition, the set of natural transformations would be just the product
 of all these hom-sets. In fact, in Haskell, it is:
 
@@ -240,7 +240,7 @@ The reason it works in Haskell is because naturality follows from
 parametricity. Outside of Haskell, though, not all diagonal sections
 across such hom-sets will yield natural transformations. But notice that
 the mapping:
-\[\langle a, b \rangle \to \cat{C}(F\ a, G\ b)\]
+\[\langle a, b \rangle \to \cat{C}(F a, G b)\]
 is a profunctor, so it makes sense to study its end. This is the wedge
 condition:
 
@@ -250,20 +250,20 @@ condition:
 \end{figure}
 
 \noindent
-Let's just pick one element from the set $\int_c \cat{C}(F\ c, G\ c)$.
+Let's just pick one element from the set $\int_c \cat{C}(F c, G c)$.
 The two projections will map this element to two components of a
 particular transformation, let's call them:
 \begin{align*}
-  \tau_a & \Colon F\ a \to G\ a \\
-  \tau_b & \Colon F\ b \to G\ b
+  \tau_a & \Colon F a \to G a \\
+  \tau_b & \Colon F b \to G b
 \end{align*}
 In the left branch, we lift a pair of morphisms
-$\langle \idarrow[a], G\ f \rangle$ using the hom-functor. You
+$\langle \idarrow[a], G f \rangle$ using the hom-functor. You
 may recall that such lifting is implemented as simultaneous pre- and
 post-composition. When acting on $\tau_a$ the lifted pair gives us:
-\[G\ f \circ \tau_a \circ \idarrow[a]\]
+\[G f \circ \tau_a \circ \idarrow[a]\]
 The other branch of the diagram gives us:
-\[\idarrow[b] \circ \tau_b \circ F\ f\]
+\[\idarrow[b] \circ \tau_b \circ F f\]
 Their equality, demanded by the wedge condition, is nothing but the
 naturality condition for $\tau$.
 
@@ -376,9 +376,9 @@ becomes an end, or a polymorphic function.
 
 The set of natural transformations that appears in the Yoneda lemma may
 be encoded using an end, resulting in the following formulation:
-\[\int_z \Set(\cat{C}(a, z), F\ z) \cong F\ a\]
+\[\int_z \Set(\cat{C}(a, z), F z) \cong F a\]
 There is also a dual formula:
-\[\int^z \cat{C}(z, a)\times{}F\ z \cong F\ a\]
+\[\int^z \cat{C}(z, a)\times{}F z \cong F a\]
 This identity is strongly reminiscent of the formula for the Dirac delta
 function (a function $\delta(a - z)$, or rather a distribution, that
 has an infinite peak at $a = z$). Here, the hom-functor plays
@@ -397,21 +397,21 @@ that is an isomorphism.
 We start by inserting the left-hand side of the identity we want to
 prove inside a hom-functor that's going to some arbitrary object
 $c$:
-\[\Set(\int^z \cat{C}(z, a)\times{}F\ z, c)\]
+\[\Set(\int^z \cat{C}(z, a)\times{}F z, c)\]
 Using the continuity argument, we can replace the coend with the end:
-\[\int_z \Set(\cat{C}(z, a)\times{}F\ z, c)\]
+\[\int_z \Set(\cat{C}(z, a)\times{}F z, c)\]
 We can now take advantage of the adjunction between the product and the
 exponential:
-\[\int_z \Set(\cat{C}(z, a), c^{(F\ z)})\]
+\[\int_z \Set(\cat{C}(z, a), c^{(F z)})\]
 We can ``perform the integration'' by using the Yoneda lemma to get:
-\[c^{(F\ a)}\]
+\[c^{(F a)}\]
 (Notice that we used the contravariant version of the Yoneda lemma,
 since the functor $c^{(F z)}$ is contravariant in $z$.)
 This exponential object is isomorphic to the hom-set:
-\[\Set(F\ a, c)\]
+\[\Set(F a, c)\]
 Finally, we take advantage of the Yoneda embedding to arrive at the
 isomorphism:
-\[\int^z \cat{C}(z, a)\times{}F\ z \cong F\ a\]
+\[\int^z \cat{C}(z, a)\times{}F z \cong F a\]
 
 \section{Profunctor Composition}
 

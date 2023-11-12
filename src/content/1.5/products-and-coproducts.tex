@@ -128,14 +128,14 @@ the definition of the terminal object to just one type.
 You can't help but to notice the symmetry between the way we defined the
 initial object and the terminal object. The only difference between the
 two was the direction of morphisms. It turns out that for any category $\cat{C}$
-we can define the \newterm{opposite category} $\cat{C}^{op}$ just by
+we can define the \newterm{opposite category} $\cat{C}^\mathit{op}$ just by
 reversing all the arrows. The opposite category automatically satisfies
 all the requirements of a category, as long as we simultaneously
 redefine composition. If original morphisms
 $f \Colon a \to b$ and $g \Colon b \to c$ composed
 to $h \Colon a \to c$ with $h = g \circ f$, then the reversed
-morphisms $f^{op} \Colon b \to a$ and $g^{op} \Colon c \to b$ will compose to
-$h^{op} \Colon c \to a$ with $h^{op} = f^{op} \circ g^{op}$. And reversing
+morphisms $f^\mathit{op} \Colon b \to a$ and $g^\mathit{op} \Colon c \to b$ will compose to
+$h^\mathit{op} \Colon c \to a$ with $h^\mathit{op} = f^\mathit{op} \circ g^\mathit{op}$. And reversing
 the identity arrows is a (pun alert!) no-op.
 
 Duality is a very important property of categories because it doubles
@@ -445,7 +445,7 @@ union. For instance, a tagged union of an \code{int} and a
 \code{char const *} could be implemented as:
 
 \begin{snip}{cpp}
-struct Contact { 
+struct Contact {
     enum { isPhone, isEmail } tag;
     union { int phoneNum; char const * emailAddr; };
 };
@@ -455,7 +455,7 @@ functions. For instance, here's the first injection as a function
 \code{PhoneNum}:
 
 \begin{snip}{cpp}
-Contact PhoneNum(int n) { 
+Contact PhoneNum(int n) {
     Contact c;
     c.tag = isPhone;
     c.phoneNum = n;
@@ -623,7 +623,7 @@ int m(Either const & e);
         Still continuing: What about these injections?
 
         \begin{snip}{cpp}
-int i(int n) { 
+int i(int n) {
     if (n < 0) return n;
     return n + 2;
 }

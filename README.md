@@ -11,6 +11,32 @@ series][blogpost series] (_with permission!_).
 
 ![Category Theory for Programmers][ctfp image]
 
+## WARNING/DISCLAIMER
+
+This is a fork of the original "upstream" repository, which can be found at
+[github.com/hmemcpy/milewski-ctfp-pdf](https://github.com/hmemcpy/milewski-ctfp-pdf).
+
+Currently, we have no plans to submit pull requests to merge this fork into the
+upstream master repository, though this may change if there's some interest in
+the Agda version.
+
+We may occasionally fetch improvements from the upstream repo and merge them
+into this fork.
+
+This is done as follows:
+
+```sh
+git remote add upstream git@github.com:hmemcpy/milewski-ctfp-pdf.git
+git fetch upstream
+git checkout master        # make sure you currently have the local master branch checked out
+git merge upstream/master
+```
+
+This may result in conflicts that must be resolved (e.g., with `git mergetool`;
+personally, I like `meld`, which can be set as the default `mergetool` by adding
+the following to `~/.gitconfig` or `~/.config/git/config`:
+`[merge] tool = meld`).
+
 ## Buy the book
 
 - **[Standard edition in full-color hardcover
@@ -104,3 +130,7 @@ License version 3][license gnu gpl].
   https://github.com/hmemcpy/milewski-ctfp-pdf/releases/tag/v1.3.0
 [nix website]: https://nixos.org/nix/
 [nix download website]: https://nixos.org/download.html
+
+```
+
+```
