@@ -1,2 +1,2 @@
-f : Bool → Bool
-f = ?
+f : Bool -> Bool
+f = { }

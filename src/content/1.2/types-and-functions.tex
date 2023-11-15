@@ -157,7 +157,13 @@ the latter meaning that it would never terminate.
 Interestingly, once you accept the bottom as part of the type system, it
 is convenient to treat every runtime error as a bottom, and even allow
 functions to return the bottom explicitly. The latter is usually done
-using the expression \code{undefined}, as in:
+using the expression \code{undefined}, as in:\footnote{%
+  \texttt{\{}~\texttt{\}} denotes a ``hole'' in an Agda program.  When a hole
+  is present, the program is incomplete.  There are no partial functions in
+  Agda, per se---Agda is a ``total'' functional language. Thus, an Agda program
+  that can be fully and successfully type-checked cannot have holes. There are
+  no non-terminating function calls and recursion is limited to functions that
+  provably terminate.}
 
 \src{snippet03}
 This definition type checks because \code{undefined} evaluates to
