@@ -1,18 +1,18 @@
 open import Data.Char using (Char; toUpper)
 open import Data.String using (String; _++_; fromList; toList; words)
-open import Data.Product using (_×_; _,_)
+open import Data.Product using (_×_; _,_) renaming (proj₁ to fst; proj₂ to snd)
 open import Data.List using (List) renaming (map to lmap)
-open import Function using (_∘_)
+open import Function using (_∘_; _$_)
 
-variable a b : Set
+private variable a b c : Set
 
 Writer : Set → Set
-Writer a = ( a × String )
+Writer a = a × String
 
-morphism : ∀ (a b : Set) → a → Writer b
-morphism = {!   !}
+morphism : a → Writer b
+morphism = {!!}
 
-_>=>_ : ∀ {a b c : Set} → (a → Writer b) → (b → Writer c) → (a → Writer c)
+_>=>_ : (a → Writer b) → (b → Writer c) → (a → Writer c)
 m1 >=> m2 = λ x →
   let (y , s1) = m1 x
       (z , s2) = m2 y
@@ -21,7 +21,7 @@ m1 >=> m2 = λ x →
 map : (Char → Char) → String → String
 map f = fromList ∘ lmap f ∘ toList
 
-return : ∀ {a : Set} → a → Writer a
+return : a → Writer a
 return x = (x , "")
 
 upCase : String → Writer String

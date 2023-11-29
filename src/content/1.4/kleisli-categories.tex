@@ -3,8 +3,8 @@
 \lettrine[lhang=0.17]{Y}{ou've seen how to model} types and pure functions as a category. I also
 mentioned that there is a way to model side effects, or non-pure
 functions, in category theory. Let's have a look at one such example:
-functions that log or trace their execution. Something that, in an
-imperative language, would likely be implemented by mutating some global
+functions that log or trace their execution. In an imperative language,
+such functions would likely be implemented by mutating some global
 state, as in:
 
 \begin{snip}{cpp}
@@ -19,7 +19,7 @@ You know that this is not a pure function, because its memoized version
 would fail to produce a log. This function has \newterm{side effects}.
 
 In modern programming, we try to stay away from global mutable state as
-much as possible --- if only because of the complications of
+much as possible---if only because of the complications of
 concurrency. And you would never put code like this in a library.
 
 Fortunately for us, it's possible to make this function pure. You just
@@ -324,9 +324,9 @@ called the ``fish'':
 \src{snippet03}
 It's a function of two arguments, each being a function on its own, and
 returning a function. The first argument is of the type
-\code{(a -> Writer b)}, the second is
-\code{(b -> Writer c)}, and the result is
-\code{(a -> Writer c)}.
+\code{a -> Writer b}, the second is
+\code{b -> Writer c}, and the result is
+\code{a -> Writer c}.
 
 Here's the definition of this infix operator --- the two arguments
 \code{m1} and \code{m2} appearing on either side of the fishy

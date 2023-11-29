@@ -1,1 +1,1 @@
-∀ (a b c : Set) → (a → Writer b) → (b → Writer c) → (a → Writer c)
+_>=>_ : (a → Writer b) → (b → Writer c) → (a → Writer c)
