@@ -228,7 +228,8 @@ can figure that out, we'll be able to generalize it to other categories.
 All we can say is that there are two functions, the projections, from
 the product to each of the constituents. In Haskell, these two functions
 are called \code{fst} and \code{snd} and they pick, respectively,
-the first and the second component of a pair:
+the first and the second component of a pair:\footnote{In Agda the
+first and second projections are often denoted by \code{proj₁} and \code{proj₂}.}
 
 \src{snippet06}
 
@@ -394,7 +395,9 @@ Like every construction in category theory, the product has a dual,
 which is called the coproduct. When we reverse the arrows in the product
 pattern, we end up with an object $c$ equipped with two
 \emph{injections}, \code{i} and \code{j}: morphisms from $a$
-and $b$ to $c$.
+and $b$ to $c$.\footnote{Often the two injections are called \code{inl} and
+\code{inr} (for ``in-left'' and ``in-right,'' respectively).  In Agda,
+the usual notation is \code{inj₁} and \code{inj₂}.}
 
 \src{snippet21}
 
