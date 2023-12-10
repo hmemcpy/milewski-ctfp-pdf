@@ -552,7 +552,8 @@ seen that pure functions can be memoized, and function execution can be
 turned into table lookup. Tables are data. Conversely, because of
 Haskell's laziness, a traditional container, like a list, may actually
 be implemented as a function. Consider, for instance, an infinite list
-of natural numbers, which can be compactly defined as:
+of natural numbers, which can be compactly defined as:\footnote{%
+  See the \code{Codata.Sized.Stream} module of the Agda Standard Library.}
 
 \src{snippet25}
 In the first line, a pair of square brackets is Haskell's built-in
@@ -659,7 +660,11 @@ through the outer \code{Maybe}. But we can't just send \code{f}
 inside \code{Maybe} because \code{f} doesn't work on lists. We have
 to send \code{(fmap f)} to operate on the inner list. For instance,
 let's see how we can square the elements of a \code{Maybe} list of
-integers:
+integers:\footnote{Note that we must add a new Functor instance
+for the built-in \code{List} type since our previous list functor
+instance implemented our own \code{List} type (with constructors
+\code{Nil} and \code{Cons}). (For details see the \code{full.agda}
+file for this section.)}
 
 \src{snippet30}
 The compiler, after analyzing the types, will figure out that, for the
