@@ -11,9 +11,13 @@ private variable
 f : A → B
 f = {!!}
 
+{-                                                                   [snippet02] -}
 g : B → C
 g = {!!}
 
+{- g ∘ f                                                             [snippet03] -}
+
+{-                                                                   [snippet04] -}
 _ :  (f : A → B)
      (g : B → C)
      (h : C → D)
@@ -21,6 +25,7 @@ _ :  (f : A → B)
 
 _ = λ f g h → refl
 
+{-                                                                   [snippet05] -}
 id : a → a
 id x = x
 

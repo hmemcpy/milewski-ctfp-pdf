@@ -20,18 +20,18 @@ m1 >=> m2 = λ x →                                                 -- [snippet
   let (y , s1) = m1 x
       (z , s2) = m2 y
   in (z , s1 ++ s2)
-
-map : (Char → Char) → String → String
-map f = fromList ∘ lmap f ∘ toList
-
+{-                                                                   [snippet05] -}
 return : a → Writer a
 return x = (x , "")
 
+map : (Char → Char) → String → String
+map f = fromList ∘ lmap f ∘ toList
+{-                                                                   [snippet06] -}
 upCase : String → Writer String
 upCase s = ( map toUpper s , "upCase " )
 
 toWords : String → Writer (List String)
 toWords s = ( words s , "toWords " )
-
+{-                                                                   [snippet07] -}
 process : String → Writer (List String)
 process = upCase >=> toWords
