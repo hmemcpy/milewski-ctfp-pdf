@@ -1,2 +1,2 @@
-factorizer : (C → A) → (C → B) → C → A × B
+factorizer : (c → a) → (c → b) → c → a × b
 factorizer p q = λ x → (p x , q x)

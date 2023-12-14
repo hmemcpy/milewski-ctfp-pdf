@@ -1,2 +1,2 @@
-yes : A → Bool
+yes : a → Bool
 yes _ = true

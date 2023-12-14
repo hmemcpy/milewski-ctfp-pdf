@@ -1,1 +1,1 @@
-absurd : ⊥ → A
+absurd : ⊥ → a
