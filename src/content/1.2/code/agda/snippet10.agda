@@ -1,2 +1,2 @@
-unit : A → ⊤
+unit : a → ⊤
 unit _ = tt

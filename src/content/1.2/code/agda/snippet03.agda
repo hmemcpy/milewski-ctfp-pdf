@@ -1,2 +1,2 @@
-f : Bool -> Bool
+f : Bool → Bool
 f x = { }

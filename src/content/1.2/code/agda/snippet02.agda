@@ -1,1 +1,1 @@
-f : Bool -> Bool
+f : Bool → Bool

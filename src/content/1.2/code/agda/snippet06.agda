@@ -1,2 +1,2 @@
-absurd : ⊥ → A
+absurd : ⊥ → a
 absurd = ⊥-elim
