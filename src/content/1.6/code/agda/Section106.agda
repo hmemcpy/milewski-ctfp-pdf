@@ -60,7 +60,7 @@ that maps one to the other:                                          [snippet04]
 alpha : (a × b) × c → a × b × c
 alpha ((x , y) , z) = x , y , z
 
-{- and this function is invertible:                                   [snippet05] -}
+{- and this function is invertible:                                  [snippet05] -}
 alpha-inv : a × b × c → (a × b) × c
 alpha-inv (x , y , z) = (x , y) , z
 
@@ -72,13 +72,13 @@ can even show that the unit type, ⊤ , is the unit of the product the same way 
 the unit of multiplication.  Indeed, the pairing of a value of some type a with a
 unit doesn't add any information.  The type
 
-                 a × ⊤                                                [snippet06]
+                 a × ⊤                                               [snippet06]
 
-is isomorphic to a.  Here's the isomorphism:                          [snippet07] -}
+is isomorphic to a.  Here's the isomorphism:                         [snippet07] -}
 rho : a × ⊤ → a
 rho (x , tt) = x
 
-{- and its inverse:                                                   [snippet08] -}
+{- and its inverse:                                                  [snippet08] -}
 
 rho-inv : a → a × ⊤
 rho-inv x = x , tt
@@ -115,7 +115,8 @@ data constructors, to construct values.
 
 Since the name spaces for type and data constructors are separate in
 Haskell, you will often see the same name used for both.  However, in Agda this is
-not so and we must use a different name for the data constructor, as in:         -}
+not so and we must use a different name for the data constructor, as in:
+                                                                     [snippet11] -}
 data Pair (a b : Set) : Set where
   pair : a → b → Pair a b
 
@@ -124,7 +125,6 @@ variation on this kind of declaration, where the name Pair is replaced with the
 binary operator _×_ and the constructor pair is replaced with _,_.  In fact you
 can use _,_ just like any other named constructor and create pairs using prefix
 notation:                                                            [snippet12] -}
-
 module snippet12 where
   open import Data.Bool using (Bool; false)
   stmt : String × Bool

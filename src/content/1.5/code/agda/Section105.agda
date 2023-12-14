@@ -175,26 +175,30 @@ denote them by i and j as in the text.
 
 Again, we want the "best" candidate c, but the ranking is inverted: object c is
 "better" than object c' equipped with the injections i' and j' if there is a
-morphism m from c to c' that factorizes the injections:                          -}
-data _+_ (a b : Set) : Set where
-  i : a → a + b
-  j : b → a + b
-
-factorizer : (a → c) → (b → c) → a + b → c
-factorizer i'  _   (i x) = i' x
-factorizer _   j'  (j y) = j' y
-
-{-                                                                   [snippet23] -}
+morphism m from c to c' that factorizes the injections:
+                                                                     [snippet21]
+i : a → c
+j : b → c
+                                                                     [snippet22]
+i' = m ∘ i
+j' = m ∘ j
+                                                                     [snippet23] -}
 data Contact : Set where
   PhoneNum : Nat → Contact
   EmailAddr : String → Contact
-
 {-                                                                   [snippet24] -}
 helpdesk : Contact
 helpdesk = PhoneNum 2222222
 
-{- The coproduct a + b.
-
+{- The coproduct a + b -----------------------------------------------------------}
+module coprod where
+  data _+_ (a b : Set) : Set where
+    i : a → a + b
+    j : b → a + b
+  factorizer : (a → c) → (b → c) → a + b → c
+  factorizer i'  _   (i x) = i' x
+  factorizer _   j'  (j y) = j' y
+  {-
          c'
        ↗ ↑ ↖
       /  m  \
@@ -203,15 +207,18 @@ helpdesk = PhoneNum 2222222
     |   ↗ ↖   |
     |  i   j  |
     |/       \|
-    a         b
+    a         b                                                                   -}
 
--}
+  +-universal-property :  {a b c' : Set} (i' : a → c')(j' : b → c')
+    →                     Σ[ m ∈ (a + b → c') ]  i' ≡ m ∘ i  ⋀  j' ≡ m ∘ j
 
-+-universal-property :  {a b c' : Set} (i' : a → c')(j' : b → c')
-  →                     Σ[ m ∈ (a + b → c') ]  i' ≡ m ∘ i  ⋀  j' ≡ m ∘ j
+  +-universal-property i' j' = factorizer i' j' , refl , refl
 
-+-universal-property {a}{b}{c'} i' j' = m , refl , refl
-  where
-  m : a + b → c'
-  m (i x) = i' x
-  m (j y) = j' y
+{-                                                                   [snippet25] -}
+data Either (a b : Set) : Set where
+  Left : a → Either a b
+  Right : b → Either a b
+module snippet26 where
+  factorizer : (a → c) → (b → c) → Either a b → c
+  factorizer i j (Left x) = i x
+  factorizer i j (Right y) = j y
