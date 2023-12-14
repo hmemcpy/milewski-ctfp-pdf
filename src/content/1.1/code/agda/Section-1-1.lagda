@@ -6,24 +6,24 @@ open import Function using (_∘_)
 open import Relation.Binary.PropositionalEquality using (_≡_; refl)
 
 private variable
-  A B C D : Set
+  a b c d : Set
 
-f : A → B
+f : a → b
 f = {!!}
 
-g : B → C
+g : b → c
 g = {!!}
 
-_ :  (f : A → B)
-     (g : B → C)
-     (h : C → D)
+_ :  (f : a → b)
+     (g : b → c)
+     (h : c → d)
   →  (h ∘ g) ∘ f ≡ h ∘ (g ∘ f)
 
 _ = λ f g h → refl
 
-id : A → A
-id a = a
+id : a → a
+id x = x
 
-_ : {f : A → B} → (f ∘ id ≡ f) × (id ∘ f ≡ f)
+_ : {f : a → b} → (f ∘ id ≡ f) × (id ∘ f ≡ f)
 _ = refl , refl
 \end{code}
