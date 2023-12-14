@@ -1,3 +1,5 @@
+module Section104 where
+
 open import Data.Char using (Char; toUpper)
 open import Data.String using (String; _++_; fromList; toList; words)
 open import Data.Product using (_×_; _,_) renaming (proj₁ to fst; proj₂ to snd)
@@ -6,14 +8,15 @@ open import Function using (_∘_; _$_)
 
 private variable a b c : Set
 
+{-                                                                   [snippet01] -}
 Writer : Set → Set
 Writer a = a × String
-
+{-                                                                   [snippet02] -}
 morphism : a → Writer b
 morphism = {!!}
-
+{-                                                                   [snippet03] -}
 _>=>_ : (a → Writer b) → (b → Writer c) → (a → Writer c)
-m1 >=> m2 = λ x →
+m1 >=> m2 = λ x →                                                 -- [snippet04] -}
   let (y , s1) = m1 x
       (z , s2) = m2 y
   in (z , s1 ++ s2)
