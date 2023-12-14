@@ -153,7 +153,6 @@ module snippet13 where
   and which cannot be substituted for each other.                                -}
 
 {- Section 6.2. Records ----------------------------------------------------------}
-
 module snippet14 where
   open import Data.Bool using (Bool; true; false; _∧_)
   open import Data.List
@@ -170,23 +169,19 @@ module snippet14 where
 
 {- This code is error prone, and is hard to read and maintain. It's much
 better to define a record:                                           [snippet15] -}
-
 record Element : Set where
   constructor element
   field
     name          : String
     symbol        : String
     atomicNumber  : ℤ
-
 open Element
-
 {-                                                                   [snippet16] -}
 tupleToElem : String × String × ℤ → Element
 tupleToElem (n , s , a) = element s s a
 {-                                                                   [snippet17] -}
 elemToTuple : Element → String × String × ℤ
 elemToTuple e = name e , name e , atomicNumber e
-
 {-                                                                   [snippet18] -}
 AtomicNumber : Element → ℤ
 AtomicNumber = atomicNumber
