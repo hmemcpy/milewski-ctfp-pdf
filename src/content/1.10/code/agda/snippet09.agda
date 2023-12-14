@@ -1,1 +1,1 @@
-safeHead (fmap f (x ∷ xs)) = safeHead (f x ∷ fmap f xs) = Just (f x)
+safeHead (fmap f (x ∷ xs)) = safeHead (f x ∷ fmap f xs) = just (f x)
