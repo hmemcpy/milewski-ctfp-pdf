@@ -1,2 +1,2 @@
-record Eq (A : Set) : Set where
-  field _==_ : A → A → Bool
+record Eq (a : Set) : Set where
+  field _==_ : a → a → Bool

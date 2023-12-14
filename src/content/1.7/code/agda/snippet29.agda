@@ -1,3 +1,3 @@
-maybeTail : List A → Maybe (List A)
+maybeTail : List a → Maybe (List a)
 maybeTail [] = Nothing
 maybeTail (x ∷ xs) = Just xs

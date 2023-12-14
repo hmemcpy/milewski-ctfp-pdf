@@ -1,3 +1,3 @@
-data Maybe (A : Set) : Set where
-  Nothing : Maybe A
-  Just : A → Maybe A
+data Maybe (a : Set) : Set where
+  Nothing : Maybe a
+  Just : a → Maybe a

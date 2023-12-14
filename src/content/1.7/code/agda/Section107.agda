@@ -1,19 +1,19 @@
 {- 7 Functors -----------------------------------------------------------}
 {- A functor is a mapping between categories.  Given two categories, ℂ and 𝔻, a
-functor F maps objects in ℂ to objects in 𝔻---it's a function on objects.  If A is
-an object in ℂ, we'll write its image in 𝔻 as F A (no parentheses).  But a
+functor F maps objects in ℂ to objects in 𝔻---it's a function on objects.  If a is
+an object in ℂ, we'll write its image in 𝔻 as F a (no parentheses).  But a
 category is not just objects---it's objects and morphisms that connect them.  A
 functor also maps morphisms---it's a function on morphisms.  But it doesn't map
 morphisms willy-nilly---it preserves connections.  So if a morphism f in ℂ
-connects object A to object B, f : A → B, then the image of f in 𝔻, F f, will
-connect the image of A to the image of B: F f : F A → F B.
+connects object a to object b, f : a → b, then the image of f in 𝔻, F f, will
+connect the image of a to the image of b: F f : F a → F b.
 
-   𝔻     F A --- F f ---→ F B
+   𝔻     F a --- F f ---→ F b
           ↑                ↑
           |                |
           |                |
           |                |
-   ℂ      A ----- f -----→ B
+   ℂ      a ----- f -----→ b
                                                                                  -}
 {-# OPTIONS --guardedness --sized-types #-}
 
@@ -31,7 +31,7 @@ open import Size using (Size; ∞)
 open import Codata.Sized.Thunk as Thunk using (Thunk; force)
 
 private variable
-  A B C R a b c r : Set
+  a b c r : Set
   i : Size
 
 {- 7.1 Functors in Programming ---------------------------------------------------}
@@ -44,25 +44,25 @@ definitions of types that were parameterized by other types. Let's see a few
 examples.                                                                        -}
 {- 7.1.1 The Maybe Functor -------------------------------------------------------}
 {- The definition of Maybe is a mapping from types to types that takes a given
-type A to type Maybe A:                                              [snippet01] -}
-data Maybe (A : Set) : Set where
-  Nothing : Maybe A
-  Just : A → Maybe A
+type a to type Maybe a:                                              [snippet01] -}
+data Maybe (a : Set) : Set where
+  Nothing : Maybe a
+  Just : a → Maybe a
 {- Here's an important subtlety: Maybe itself is not a type, it's a *type
 constructor*.  You have to give it a type argument, like Int or Bool, in order to
 turn it into a type.  Maybe without any argument represents a function on types.
 But can we turn Maybe into a functor?  (From now on, when we speak of functors in
 the context of programming, we almost always mean endofunctors.)  A functor is not
 only a mapping of objects (here, types) but also a mapping of morphisms (here,
-functions). For any function from A to B:                            [snippet02] -}
-f : A → B
+functions). For any function from a to b:                            [snippet02] -}
+f : a → b
 f = {!!}
-{- we would like to produce a function from Maybe A to Maybe B.  To define such a
+{- we would like to produce a function from Maybe a to Maybe b.  To define such a
 function, we'll have two cases to consider, corresponding to the two constructors
 of Maybe.  The Nothing case is simple: just return Nothing.  If the argument is
 Just x, then we'll apply the function, f, to the contents, x, of Just.  So the
 image of f under Maybe is the function:                              [snippet03] -}
-f' : Maybe A → Maybe B
+f' : Maybe a → Maybe b
 f' Nothing = Nothing
 f' (Just x) = Just (f x)
 
@@ -70,14 +70,14 @@ f' (Just x) = Just (f x)
 called fmap.  In the case of Maybe, it has the following signature and definition:
                                                                                  -}
 module snippet04 where
-  fmap : (A → B) → Maybe A → Maybe B                              -- [snippet05] -}
+  fmap : (a → b) → Maybe a → Maybe b                              -- [snippet05] -}
   fmap _ Nothing = Nothing                                        -- [snippet06] -}
   fmap f (Just x) = Just (f x)
 
 {- 7.1.2 Equational Reasoning ----------------------------------------------------}
 
 {-                                                                   [snippet07] -}
-id : A → A
+id : a → a
 id x = x
 
 {- If a function is defined by pattern matching, you can use each sub-definition
@@ -86,20 +86,20 @@ fmap f Nothing with Nothing, or the other way around.  Let's see how this works 
 practice.  Let's start with the preservation of identity:                        -}
 module snippet08 where
   open snippet04
-  fmap-id : (x : Maybe A) → fmap id x ≡ id x
+  fmap-id : (x : Maybe a) → fmap id x ≡ id x
   fmap-id Nothing = refl
   fmap-id (Just x) = refl
 
 -- non-dependent function composition
-_∘_ : (B → C) → (A → B) → A → C
+_∘_ : (b → c) → (a → b) → a → c
 f ∘ g = λ x → f (g x)
 
-module snippet09 {f : A → B}{g : B → C} where
+module snippet09 {f : a → b}{g : b → c} where
   open snippet04
   _ : fmap (g ∘ f) ≡ fmap g ∘ fmap f
   _ = {!!}  -- We can't prove this in pure Martin-Löf Type Theory;
             -- but we can prove the following extensional version:
-  fmap-∘ : ∀(x : Maybe A) → fmap (g ∘ f) x ≡ (fmap g ∘ fmap f) x
+  fmap-∘ : ∀(x : Maybe a) → fmap (g ∘ f) x ≡ (fmap g ∘ fmap f) x
   fmap-∘ Nothing = refl
   fmap-∘ (Just x) = refl
 
@@ -107,13 +107,13 @@ module snippet09 {f : A → B}{g : B → C} where
 {- A typeclass defines a family of types that support a common interface. For
 instance, the class of objects that support equality is defined as follows:
                                                                      [snippet10] -}
-record Eq (A : Set) : Set where
-  field _==_ : A → A → Bool
+record Eq (a : Set) : Set where
+  field _==_ : a → a → Bool
 
 open Eq ⦃...⦄
 
-{- This definition states that type A is of the class Eq if it supports the
-operator (==) that takes two arguments of type A and returns a Bool. If you want
+{- This definition states that type a is of the class Eq if it supports the
+operator (==) that takes two arguments of type a and returns a Bool. If you want
 to tell Agda that a particular type has such an equality, you have to declare it
 an instance of this type class and provide the implementation of (==). For
 example, given the definition of a 2D Point (a product type of two Floats),
@@ -142,7 +142,7 @@ record Functor (f : Set → Set) : Set₁ where
   field fmap : (a → b) → f a → f b
 {- (We use lower case f, a, b here for consistency with the text, though we would
 prefer to use capital F for the type constructor/functor and capital letters like
-A and B for types.)
+a and b for types.)
 
 The above record definition stipulates that f is a Functor if there exists a
 function fmap with the specified type signature.  The lowercase f is a type
@@ -173,7 +173,7 @@ module snippet15 where
     listFunc .fmap _ Nil = Nil
     listFunc .fmap f (Cons x as) = Cons (f x) (fmap f as)         -- [snippet17] -}
 
-    fromR : Functor λ A → (R → A)
+    fromR : Functor λ a → (r → a)
     fromR .fmap = _∘_
 
 {- 7.1.7 The Reader Functor ------------------------------------------------------}
@@ -238,7 +238,7 @@ instance
 
 {- 7.3 Functor Composition -------------------------------------------------------}
 open import Agda.Builtin.List
-maybeTail : List A → Maybe (List A)
+maybeTail : List a → Maybe (List a)
 maybeTail [] = Nothing
 maybeTail (x ∷ xs) = Just xs
 

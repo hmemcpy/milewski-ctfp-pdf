@@ -1,1 +1,1 @@
-fmap : (A → B) → (Maybe A → Maybe B)
+fmap : (a → b) → (Maybe a → Maybe b)
