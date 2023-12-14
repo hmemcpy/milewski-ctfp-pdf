@@ -1,2 +1,2 @@
-rho_inv : a → (a × ⊤)
-rho_inv x = x , tt
+rho-inv : a → a × ⊤
+rho-inv x = x , tt

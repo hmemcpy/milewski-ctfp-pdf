@@ -1,2 +1,2 @@
-rho : (a × ⊤) → a
-rho (a , tt) = a
+rho : a × ⊤ → a
+rho (x , tt) = x

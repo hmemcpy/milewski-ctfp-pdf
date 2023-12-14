@@ -115,8 +115,10 @@ And if you squint hard enough, you may even view the built-in pair type
 as a variation on this kind of declaration, where the name \code{Pair}
 is replaced with the binary operator \code{(,)}. In fact you can use
 \code{(,)} just like any other named constructor and create pairs
-using prefix notation:
-
+using prefix notation:\footnote{%
+  Actually, Agda's built-in product type is not defined as an inductive
+  \code{data} type, but rather as a special case of the dependent pair
+  type, and the latter is defined as a record type.}
 \src{snippet12}
 Similarly, you can use \code{(,,)} to create triples, and so on.
 
