@@ -1,2 +1,2 @@
-i' = m ∘ inj₁
-j' = m ∘ inj₂
+i' = m ∘ i
+j' = m ∘ j

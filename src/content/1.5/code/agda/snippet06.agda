@@ -1,2 +1,2 @@
-fst : A × B → A
+fst : a × b → a
 fst (x , y) = x

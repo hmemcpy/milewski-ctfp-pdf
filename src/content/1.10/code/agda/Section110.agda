@@ -195,7 +195,7 @@ verify the naturality condition.                                                
 module snippet05 where
   open RawFunctor ⦃...⦄ renaming (_<$>_ to fmap)
   nc :  ∀{a : Set}{f : a → a}(l : List a)
-    →   (fmap f ∘ safeHead) l ≡ (safeHead ∘ fmap f) l
+    →   (fmap f ∘ safeHead) l ≡ (safeHead ∘ fmap f) l            -- [snippet05]  -}
   nc [] = refl
   nc (x ∷ l) = refl
 
@@ -212,8 +212,8 @@ module _ where
    fmap f (safeHead []) = fmap f nothing = nothing                   [snippet06]
    safeHead (fmap f []) = safeHead [] = nothing                      [snippet07]
 and a non-empty list:
-   fmap f (safeHead (x ∷ xs)) = fmap f (Just x) = Just (f x)         [snippet08]
-   safeHead (fmap f (x ∷ xs)) = safeHead (f x ∷ fmap f xs) = Just (f x)
+   fmap f (safeHead (x ∷ xs)) = fmap f (just x) = just (f x)         [snippet08]
+   safeHead (fmap f (x ∷ xs)) = safeHead (f x ∷ fmap f xs) = just (f x)
                                                                      [snippet09]
 We can implement fmap for lists...                                   [snippet10] -}
 module snippet10 where

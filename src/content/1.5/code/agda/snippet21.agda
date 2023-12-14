@@ -1,2 +1,2 @@
-inj₁ : A → C
-inj₂ : B → C
+i : a → c
+j : b → c

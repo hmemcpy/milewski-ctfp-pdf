@@ -1,2 +1,2 @@
-no : A → Bool
+no : a → Bool
 no _ = false

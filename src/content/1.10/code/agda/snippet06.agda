@@ -1,1 +1,1 @@
-fmap f (safeHead []) = fmap f Nothing = Nothing
+fmap f (safeHead []) = fmap f nothing = nothing

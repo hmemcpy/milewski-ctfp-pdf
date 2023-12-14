@@ -136,7 +136,7 @@ uncurry f (a , b) = f a b
 
 {-                                                                   [snippet09] -}
 factorizer : (a × b → c) → a → (b → c)
-factorizer g = λ a → (λ b → g (a , b))
+factorizer g = λ x → λ y → g (x , y)
 
 
 {- Existence of morphism h in universal property of function type ----------------}
@@ -204,6 +204,6 @@ f (Right n) = if (n <ᶠᵇ 0.0) then "Negative Float" else "Nonnegative Float"
 {- 9.6 Curry-Howard Isomorphism --------------------------------------------------}
 {- _ : Either a b → a                                                [snippet14] -}
 
-{- absurd : ⊥ → a                                                   [snippet15] -}
+{- absurd : ⊥ → a                                                    [snippet15] -}
 absurd : ⊥ → a
 absurd ()
