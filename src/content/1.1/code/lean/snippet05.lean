@@ -1,1 +1,1 @@
-def id {A : Type} : A → A := λ x => x
+def id : A → A := λ x => x

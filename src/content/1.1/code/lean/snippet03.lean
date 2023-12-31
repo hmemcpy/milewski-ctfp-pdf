@@ -1,1 +1,1 @@
-#check g ∘ f
+g ∘ f

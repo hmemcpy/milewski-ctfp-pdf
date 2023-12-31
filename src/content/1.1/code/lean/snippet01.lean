@@ -1,1 +1,1 @@
-variable (f : A → B)
+f : A → B
