@@ -14,6 +14,9 @@ ctfp:
 ctfp-ocaml:
 	cd src; $(LATEXMK_COMMAND) -jobname=ctfp-ocaml ctfp-reader-ocaml.tex
 
+ctfp-lean:
+	cd src; $(LATEXMK_COMMAND) -jobname=ctfp-lean ctfp-reader-lean.tex
+
 ctfp-scala:
 	cd src; $(LATEXMK_COMMAND) -jobname=ctfp-scala ctfp-reader-scala.tex
 
@@ -22,6 +25,9 @@ ctfp-print:
 
 ctfp-print-ocaml:
 	cd src; $(LATEXMK_COMMAND) -jobname=ctfp-print-ocaml ctfp-print-ocaml.tex
+
+ctfp-print-lean:
+	cd src; $(LATEXMK_COMMAND) -jobname=ctfp-print-lean ctfp-print-lean.tex
 
 ctfp-print-scala:
 	cd src; $(LATEXMK_COMMAND) -jobname=ctfp-print-scala ctfp-print-scala.tex

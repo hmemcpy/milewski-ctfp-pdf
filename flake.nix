@@ -159,7 +159,7 @@
               passthru.packageName = fullname;
             });
 
-          editions = [ null "scala" "ocaml" "reason" ];
+          editions = [ null "lean" "scala" "ocaml" "reason" ];
           variants = [ null "print" ];
         in
         {
