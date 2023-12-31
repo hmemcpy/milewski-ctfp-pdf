@@ -1,5 +1,5 @@
-variable (f : A → B)
-variable (g : B → C)
-variable (h : C → D)
-example : h ∘ (g ∘ f) = (h ∘ g) ∘ f
-  := sorry
+variable
+  (f : A → B)
+  (g : B → C)
+  (h : C → D)
+example : h ∘ (g ∘ f) = (h ∘ g) ∘ f := rfl
