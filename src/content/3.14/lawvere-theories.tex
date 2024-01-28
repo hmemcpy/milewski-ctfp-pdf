@@ -425,7 +425,7 @@ mapping describes a selection of $m$ elements from an $n$-element set
 $a$, namely (notice the direction):
 \[a^n \to a^m\]
 The lifting simply selects $m$ elements from a tuple of $n$ elements\\
-$(a_1, a_2,...a_n)$ (possibly with repetitions).
+$(a_1, a_2, \ldots{}, a_n)$ (possibly with repetitions).
 
 \begin{figure}[H]
   \centering
@@ -441,7 +441,7 @@ the $k^\text{th}$ one.
 Or let's take $f \Colon m \to 1$ --- a constant
 function that maps all $m$ elements to one. Its lifting is a function that
 takes a single element of $a$ and duplicates it $m$ times:
-\[\lambda{}x \to (\underbrace{x, x,\ ...\ , x}_{m})\]
+\[\lambda{}x \to (\underbrace{x, x, \ldots{}, x}_{m})\]
 You might notice that it's not immediately obvious that the profunctor
 in question is covariant in the second argument. The hom-functor
 $\cat{L}(m, 1)$ is actually contravariant in $m$. However, we
