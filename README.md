@@ -89,7 +89,7 @@ License version 3][license gnu gpl].
 [ctfp image]:
   https://user-images.githubusercontent.com/601206/47271389-8eea0900-d581-11e8-8e81-5b932e336336.png
 [bartosz github]: https://github.com/BartoszMilewski
-[nixos wiki flake]: https://nixos.wiki/wiki/Flakes
+[nixos wiki flake]: https://wiki.nixos.org/wiki/Flakes
 [andres raba github]: https://github.com/sarabander
 [contributors]: https://github.com/hmemcpy/milewski-ctfp-pdf/graphs/contributors
 [license cc by sa]: https://spdx.org/licenses/CC-BY-SA-4.0.html
