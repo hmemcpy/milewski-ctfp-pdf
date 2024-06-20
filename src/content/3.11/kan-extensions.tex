@@ -336,13 +336,13 @@ the end:
 We can use the product-exponential adjunction:
 \[\int_a \int_i \Set(\cat{A}(K i, a),\ (F' a)^{D i})\]
 The exponential is isomorphic to the corresponding hom-set:
-\[\int_a \int_i \Set(\cat{A}(K i, a),\ \cat{A}(D i, F' a))\]
+\[\int_a \int_i \Set(\cat{A}(K i, a),\ \Set(D i, F' a))\]
 There is a theorem called the Fubini theorem that allows us to swap the
 two ends:
-\[\int_i \int_a \Set(\cat{A}(K i, a),\ A(D i, F' a))\]
+\[\int_i \int_a \Set(\cat{A}(K i, a),\ \Set(D i, F' a))\]
 The inner end represents the set of natural transformations between two
 functors, so we can use the Yoneda lemma:
-\[\int_i \cat{A}(D i, F' (K i))\]
+\[\int_i \Set(D i, F' (K i))\]
 This is indeed the set of natural transformations that forms the right
 hand side of the adjunction we set out to prove:
 \[[\cat{I}, \Set](D, F' \circ K)\]
