@@ -33,8 +33,8 @@ feature-flags.
 
 Afterwards, type `nix flake show` in the root directory of the project to see
 all the available versions of this book. Then type `nix build .#<edition>` to
-build the edition you want (Scala, OCaml, Reason and their printed
-versions). For example, to build the Scala edition you'll have to type
+build the edition you want (Scala, OCaml, Reason and their printed versions).
+For example, to build the Scala edition you'll have to type
 `nix build .#ctfp-scala`. For Haskell (the original version) that is just
 `nix build .#ctfp`.
 

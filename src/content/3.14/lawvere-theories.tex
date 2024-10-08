@@ -63,7 +63,7 @@ the roadmap:
         Lawvere theory $\cat{L}$: an object in the category $\cat{Law}$.
   \item
         Model $M$ of a Lawvere category: an object in the category\\
-        $\cat{Mod}(\cat{Law}, \Set)$.
+        $\cat{Mod}(\cat{L}, \Set)$.
 \end{enumerate}
 
 \begin{figure}[H]
@@ -352,7 +352,7 @@ $n$. We can implement $F$ as the representable functor:
 \[\cat{L}(n, -) \Colon \cat{L} \to \Set\]
 To show that it's indeed free, all we have to do is to prove that it's a
 left adjoint to the forgetful functor:
-\[\cat{Mod}(\cat{L}(n, -), M) \cong \Set(n, U(M))\]
+\[\cat{Mod}(\cat{L}, \Set)(\cat{L}(n, -), M) \cong \Set(n, U(M))\]
 Let's simplify the right hand side:
 \[\Set(n, U(M)) \cong \Set(n, M 1) \cong (M 1)^n \cong M n\]
 (I used the fact that a set of morphisms is isomorphic to the
