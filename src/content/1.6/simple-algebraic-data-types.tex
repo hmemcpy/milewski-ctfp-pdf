@@ -390,10 +390,10 @@ about types. Here's a translation table with some entries of interest:
   \endhead
   $0$          & \code{Void}\tabularnewline
   $1$          & \code{()}\tabularnewline
-  $a + b$      & \code{Either a b = Left a | Right b}\tabularnewline
-  $a \times b$ & \code{(a, b)} or \code{Pair a b = Pair a b}\tabularnewline
+  $a + b$      & \code{data Either a b = Left a | Right b}\tabularnewline
+  $a \times b$ & \code{(a, b)} or \code{data Pair a b = Pair a b}\tabularnewline
   $2 = 1 + 1$  & \code{data Bool = True | False}\tabularnewline
-  $1 + a$      & \code{data Maybe = Nothing | Just a}\tabularnewline
+  $1 + a$      & \code{data Maybe a = Nothing | Just a}\tabularnewline
   \bottomrule
 \end{longtable}
 
@@ -451,7 +451,7 @@ semiring, and it too can be mapped into type theory:
   \endhead
   $\mathit{false}$     & \code{Void}\tabularnewline
   $\mathit{true}$      & \code{()}\tabularnewline
-  $a \mathbin{||} b$   & \code{Either a b = Left a | Right b}\tabularnewline
+  $a \mathbin{||} b$   & \code{data Either a b = Left a | Right b}\tabularnewline
   $a \mathbin{\&\&} b$ & \code{(a, b)}\tabularnewline
   \bottomrule
 \end{longtable}
