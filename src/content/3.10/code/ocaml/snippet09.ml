@@ -1,9 +1,7 @@
 module EndsEqualizer (P : Profunctor) = struct
-  let lambda : ('a, 'a) P.p -> ('a -> 'b) -> ('a, 'b) P.p =
-   fun paa f -> P.dimap id f paa
- ;;
+  let lambda (paa : ('a, 'a) P.t) (f : 'a -> 'b) : ('a, 'b) P.t =
+    P.dimap Fun.id f paa
 
-  let rho : ('b, 'b) P.p -> ('a -> 'b) -> ('a, 'b) P.p =
-   fun pbb f -> P.dimap f id pbb
- ;;
+  let rho (pbb : ('b, 'b) P.t) (f : 'a -> 'b) : ('a, 'b) P.t =
+    P.dimap f Fun.id pbb
 end

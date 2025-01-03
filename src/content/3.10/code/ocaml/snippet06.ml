@@ -1,2 +1,1 @@
-;;
-compose (dimap f id) pi = compose (dimap id f) pi
+dimap f id % pi = dimap id f % pi
