@@ -1,2 +1,2 @@
-f >> id
-id >> f
+f % Fun.id = f
+Fun.id % f = f
