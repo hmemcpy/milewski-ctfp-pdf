@@ -1,1 +1,1 @@
-('b 'c either) tostring ~ ('b -> string, 'c -> string)
+('b, 'c) Either.t tostring ~ ('b -> string * 'c -> string)
