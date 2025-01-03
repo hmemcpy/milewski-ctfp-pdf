@@ -1,1 +1,1 @@
-('a, 'b) either -> 'a
+('a, 'b) Either.t -> 'a
