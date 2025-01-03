@@ -1,1 +1,1 @@
-let unit x = ()
+let unit _ = ()
