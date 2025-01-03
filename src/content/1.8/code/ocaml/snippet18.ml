@@ -1,3 +1,3 @@
 module KleisliIdentity = struct
-  let return : 'a -> 'a writer = fun a -> a, ""
+  let return (x : 'a) : 'a writer = (x, "")
 end

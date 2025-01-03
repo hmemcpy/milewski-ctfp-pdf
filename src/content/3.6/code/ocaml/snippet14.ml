@@ -1,4 +1,2 @@
-;;
-(compose mu (bimap eta id)) ((), x)
-= lambda ((), x) (compose mu (bimap id eta)) (x, ())
-= rho (x, ())
+(mu % bimap eta Fun.id) ((), x) = lambda ((), x)
+(mu % bimap Fun.id eta) (x, ()) = rho (x, ())

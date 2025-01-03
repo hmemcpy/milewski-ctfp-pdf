@@ -1,3 +1,1 @@
-let scam : 'a. ('int, 'a) const -> 'a option = function
-  | Const a -> None
-;;
+let scam (Const x : (int, 'a) const) : 'a option = None

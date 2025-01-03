@@ -45,7 +45,6 @@ functor
 
     let counit : 'a. 'a u f -> 'a =
      fun fua -> M.right_adjunct idty fua
-   ;;
   end
 
 (* Implementing left and right adjunct from unit/counit Definitions *)
