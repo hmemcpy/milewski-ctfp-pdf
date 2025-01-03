@@ -1,5 +1,5 @@
 module type Unit_Example = sig
-  type 'a m
+  type 'd m
 
   val return : 'd -> 'd m
 end
