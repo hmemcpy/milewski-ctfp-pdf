@@ -1,1 +1,1 @@
-let h (a * b) = h a * h b
+h (a * b) = h a * h b
