@@ -1,6 +1,6 @@
 module type Monad = sig
-  type 'a m
+  type 'a t
 
-  val ( >=> ) : ('a -> 'b m) -> ('b -> 'c m) -> 'a -> 'c m
-  val return : 'a -> 'a m
+  val ( >=> ) : ('a -> 'b t) -> ('b -> 'c t) -> 'a -> 'c t
+  val return : 'a -> 'a t
 end
