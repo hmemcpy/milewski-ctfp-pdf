@@ -1,1 +1,1 @@
-type ('a FU.t, 'b GU.t) BF.t
+('a FU.t, 'b GU.t) BF.t

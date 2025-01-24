@@ -1,3 +1,2 @@
-type 'a maybe =
-  | Nothing
-  | Just of 'a
+(* In OCaml, this is called option *)
+type 'a option = None | Some of 'a
