@@ -368,7 +368,7 @@ to a polymorphic function. This makes perfect sense, because such a
 function must be prepared to handle any one of the types that may be
 encoded in the existential type. It's the same principle that tells us
 that a function that accepts a sum type must be implemented as a case
-statement, with a tuple of handlers, one for every type present in the
+clause, with a tuple of handlers, one for every type present in the
 sum. Here, the sum type is replaced by a coend, and a family of handlers
 becomes an end, or a polymorphic function.
 
