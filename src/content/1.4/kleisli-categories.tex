@@ -241,8 +241,9 @@ Now we can go back to our earlier example and implement the composition
 of \code{toUpper} and \code{toWords} using this new template:
 
 \begin{snip}{cpp}
-Writer<vector<string>> process(string s) { 
-    return compose<string, string, vector<string>>(toUpper, toWords)(s);
+Writer<vector<string>> process(string s) {
+    return compose<string, string, vector<string>>(
+        toUpper, toWords)(s);
 }
 \end{snip}
 There is still a lot of noise with the passing of types to the
