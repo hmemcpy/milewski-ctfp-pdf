@@ -1,6 +1,6 @@
 module type Monad_Bind = sig
-  type 'a m
+  type 'a t
 
-  val ( >>= ) : 'a m -> ('a -> 'b m) -> 'b m
-  val return : 'a -> 'a m
+  val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
+  val return : 'a -> 'a t
 end

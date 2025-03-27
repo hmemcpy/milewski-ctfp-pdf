@@ -1,2 +1,2 @@
-;;
-compose alg return = id compose alg join = compose alg (fmap alg)
+alg % return = Fun.id
+alg % join = alg % fmap alg

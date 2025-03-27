@@ -1,1 +1,3 @@
-compose (fmap f) safe_head = compose safe_head (fmap f)
+(* Given a Functor implementation for Option and List,
+   the following equality should hold: *)
+OptionFunctor.fmap f % safe_head = safe_head % ListFunctor.fmap f

@@ -1,1 +1,1 @@
-type 'a maybe = (unit, 'a) either
+type 'a option = (unit, 'a) Either.t
