@@ -1,5 +1,5 @@
 module Process_Do
-    (W : Monad_Bind with type 'a m = (string, 'a) writer) =
+    (W : Monad_Bind with type 'a t = (string, 'a) writer) =
 struct
   (* Needs OCaml compiler >= 4.08 *)
   let ( let* ) = W.( >>= )

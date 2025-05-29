@@ -1,1 +1,1 @@
-val alpha : 'a f -> 'a g
+val alpha : 'a F.t -> 'a G.t

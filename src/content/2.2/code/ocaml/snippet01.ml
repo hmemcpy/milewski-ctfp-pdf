@@ -1,2 +1,2 @@
-let p1 = compose p m
-let q1 = compose q m
+let p' = Fun.compose p m
+let q' = Fun.compose q m

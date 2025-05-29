@@ -1,2 +1,2 @@
-p = compose fst m
-q = compose snd m
+let p = Fun.compose fst m
+let q = Fun.compose snd m
