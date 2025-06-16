@@ -1,1 +1,1 @@
-let helpdesk = PhoneNum 2222222
+let helpdesk : contact = PhoneNum 2222222

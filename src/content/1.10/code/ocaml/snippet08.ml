@@ -1,1 +1,3 @@
-let fmap f (safe_head (x :: xs)) = fmap f (Some x)= Some (f x)
+OptFunctor.fmap f (safe_head (x :: xs))
+  = OptFunctor.fmap f (Some x)
+  = Some (f x)

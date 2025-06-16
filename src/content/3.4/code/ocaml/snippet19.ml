@@ -1,1 +1,1 @@
-let up_case s = Writer (String.uppercase s, "up_case ")
+let up_case s = Writer (String.uppercase_ascii s, "up_case ")

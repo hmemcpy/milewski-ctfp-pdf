@@ -15,7 +15,6 @@ module StreamComonadDuplicate :
 
   let rec duplicate (Cons (x, xs)) =
     Cons (Cons (x, xs), Lazy.from_val (duplicate (Lazy.force xs)))
-  ;;
 end
 
 (* Generate full Comonad Instance *)
