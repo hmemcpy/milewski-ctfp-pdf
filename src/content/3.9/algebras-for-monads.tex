@@ -103,19 +103,19 @@ lists, and then fold the resulting list. Again, if we interpret
 binary operation is associative. These conditions are certainly
 fulfilled when \code{(a, f, z)} is a monoid.
 
-\section{T-algebras}
+\section{$T$-algebras}
 
 Since mathematicians prefer to call their monads $T$, they call
-algebras compatible with them T-algebras. T-algebras for a given monad $T$
+algebras compatible with them $T$-algebras. $T$-algebras for a given monad $T$
 in a category $\cat{C}$ form a category called the Eilenberg-Moore
 category, often denoted by $\cat{C}^T$. Morphisms in that
 category are homomorphisms of algebras. These are the same homomorphisms
-we've seen defined for F-algebras.
+we've seen defined for $F$-algebras.
 
-A T-algebra is a pair consisting of a carrier object and an evaluator,
+A $T$-algebra is a pair consisting of a carrier object and an evaluator,
 $(a, f)$. There is an obvious forgetful functor $U^T$ from
 $\cat{C}^T$ to $\cat{C}$, which maps $(a, f)$ to $a$. It
-also maps a homomorphism of T-algebras to a corresponding morphism
+also maps a homomorphism of $T$-algebras to a corresponding morphism
 between carrier objects in $\cat{C}$. You may remember from our discussion of
 adjunctions that the left adjoint to a forgetful functor is called a
 free functor.
@@ -127,7 +127,7 @@ $T (T a)$ back to $T a$. Since $T$ is a monad,
 we can use the monadic $\mu_a$ (\code{join} in Haskell) as the
 evaluator.
 
-We still have to show that this is a T-algebra. For that, two coherence
+We still have to show that this is a $T$-algebra. For that, two coherence
 conditions must be satisfied:
 \begin{align*}
   \mathit{alg} & \circ \eta_{Ta} = \id_{Ta}     \\
@@ -161,17 +161,17 @@ unit of this adjunction.
 
 Let's look at the counit:
 \[\varepsilon \Colon F^T \circ U^T \to I\]
-Let's calculate its component at some T-algebra $(a, f)$. The
+Let's calculate its component at some $T$-algebra $(a, f)$. The
 forgetful functor forgets the $f$, and the free functor produces
 the pair $(T a, \mu_a)$. So in order to define the component of
 the counit $\varepsilon$ at $(a, f)$, we need the right morphism in
-the Eilenberg-Moore category, or a homomorphism of T-algebras:
+the Eilenberg-Moore category, or a homomorphism of $T$-algebras:
 \[(T a, \mu_a) \to (a, f)\]
 Such a homomorphism should map the carrier $T a$ to $a$.
 Let's just resurrect the forgotten evaluator $f$. This time we'll
-use it as a homomorphism of T-algebras. Indeed, the same commuting
-diagram that makes $f$ a T-algebra may be re-interpreted to show
-that it's a homomorphism of T-algebras:
+use it as a homomorphism of $T$-algebras. Indeed, the same commuting
+diagram that makes $f$ a $T$-algebra may be re-interpreted to show
+that it's a homomorphism of $T$-algebras:
 
 \begin{figure}[H]
   \centering
@@ -185,7 +185,7 @@ that it's a homomorphism of T-algebras:
 
 \noindent
 We have thus defined the component of the counit natural transformation
-$\varepsilon$ at $(a, f)$ (an object in the category of T-algebras)
+$\varepsilon$ at $(a, f)$ (an object in the category of $T$-algebras)
 to be $f$.
 
 To complete the adjunction we also need to show that the unit and the
@@ -214,7 +214,7 @@ counit satisfy triangular identities. These are:
 
 \noindent
 The first one holds because of the unit law for the monad $T$.
-The second is just the law of the T-algebra $(a, f)$.
+The second is just the law of the $T$-algebra $(a, f)$.
 
 We have established that the two functors form an adjunction:
 \[F^T \dashv U^T\]
