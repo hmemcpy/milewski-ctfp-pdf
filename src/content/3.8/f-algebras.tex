@@ -73,9 +73,9 @@ and concentrate on the final product. The sum of products on the left
 hand side of our morphism defines an endofunctor. What if we pick an
 arbitrary endofunctor $F$ instead? In that case we don't have to
 impose any constraints on our category. What we obtain is called an
-F-algebra.
+$F$-algebra.
 
-An F-algebra is a triple consisting of an endofunctor $F$, an
+An $F$-algebra is a triple consisting of an endofunctor $F$, an
 object $a$, and a morphism
 \[F a \to a\]
 The object is often called the carrier, an underlying object or, in the
@@ -84,7 +84,7 @@ called the evaluation function or the structure map. Think of the
 functor $F$ as forming expressions and the morphism as evaluating
 them.
 
-Here's the Haskell definition of an F-algebra:
+Here's the Haskell definition of an $F$-algebra:
 
 \src{snippet01}
 It identifies the algebra with its evaluation function.
@@ -106,7 +106,7 @@ An example of a ring is the set of integers. We can choose
 as:
 
 \src{snippet04}
-There are more F-algebras based on the same functor \code{RingF}. For
+There are more $F$-algebras based on the same functor \code{RingF}. For
 instance, polynomials form a ring and so do square matrices.
 
 As you can see, the role of the functor is to generate expressions that
@@ -129,7 +129,7 @@ This is still not very practical, since we are forced to represent all
 integers as sums of ones, but it will do in a pinch.
 
 But how can we describe expression trees using the language of
-F-algebras? We have to somehow formalize the process of replacing the
+$F$-algebras? We have to somehow formalize the process of replacing the
 free type variable in the definition of our functor, recursively, with
 the result of the replacement. Imagine doing this in steps. First,
 define a depth-one tree as:
@@ -182,7 +182,7 @@ application:
 The two functions are the inverse of each other. We'll use these
 functions later.
 
-\section{Category of F-Algebras}
+\section{Category of $F$-Algebras}
 
 Here's the oldest trick in the book: Whenever you come up with a way of
 constructing some new objects, see if they form a category. Not
@@ -193,13 +193,13 @@ $F a \to a$, both from the original category
 $\cat{C}$.
 
 To complete the picture, we have to define morphisms in the category of
-F-algebras. A morphism must map one algebra $(a, f)$ to another
+$F$-algebras. A morphism must map one algebra $(a, f)$ to another
 algebra $(b, g)$. We'll define it as a morphism $m$ that
 maps the carriers --- it goes from $a$ to $b$ in the
 original category. Not any morphism will do: we want it to be compatible
 with the two evaluators. (We call such a structure-preserving morphism a
 \newterm{homomorphism}.) Here's how you define a homomorphism of
-F-algebras. First, notice that we can lift $m$ to the mapping:
+$F$-algebras. First, notice that we can lift $m$ to the mapping:
 \[F m \Colon F a \to F b\]
 we can then follow it with $g$ to get to $b$.
 Equivalently, we can use $f$ to go from $F a$ to
@@ -217,13 +217,13 @@ It's easy to convince yourself that this is indeed a category (hint:
 identity morphisms from $\cat{C}$ work just fine, and a composition of
 homomorphisms is a homomorphism).
 
-An initial object in the category of F-algebras, if it exists, is called
+An initial object in the category of $F$-algebras, if it exists, is called
 the \newterm{initial algebra}. Let's call the carrier of this initial
 algebra $i$ and its evaluator $j \Colon F i \to i$. It turns out that $j$,
 the evaluator of the initial algebra, is an isomorphism. This result is
 known as Lambek's theorem. The proof relies on the definition of the
 initial object, which requires that there be a unique homomorphism
-$m$ from it to any other F-algebra. Since $m$ is a
+$m$ from it to any other $F$-algebra. Since $m$ is a
 homomorphism, the following diagram must commute:
 
 \begin{figure}[H]
@@ -289,7 +289,7 @@ the fixed point does not depend on $a$.
 
 \section{Natural Numbers}
 
-Natural numbers can also be defined as an F-algebra. The starting point
+Natural numbers can also be defined as an $F$-algebra. The starting point
 is the pair of morphisms:
 \begin{align*}
   zero & \Colon 1 \to N \\
