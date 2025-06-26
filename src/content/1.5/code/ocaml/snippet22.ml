@@ -1,2 +1,2 @@
-i' == compose m i
-j' == compose m j
+let i' = Fun.compose m i
+let j' = Fun.compose m j
