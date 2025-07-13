@@ -1,6 +1,6 @@
 module type Monoid = sig
-  type m
+  type t
 
-  val mempty : m
-  val mappend : m -> m -> m
+  val mempty : t
+  val mappend : t -> t -> t
 end
