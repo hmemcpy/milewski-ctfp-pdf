@@ -13,7 +13,7 @@ a lot of intuitions about morphisms --- and functions in particular ---
 apply to functors as well. For instance, just like you can have a
 function of two arguments, you can have a functor of two arguments, or a
 \newterm{bifunctor}. On objects, a bifunctor maps every pair of objects,
-one from category $\cat{C}$, and one from category $\cat{D}$, to an object in category
+one in category $\cat{C}$, and one in category $\cat{D}$, to an object in category
 $\cat{E}$. Notice that this is just saying that it's a mapping from a
 \newterm{Cartesian product} of categories $\cat{C}\times{}\cat{D}$ to $\cat{E}$.
 
@@ -24,9 +24,9 @@ $\cat{E}$. Notice that this is just saying that it's a mapping from a
 \noindent
 That's pretty straightforward. But functoriality means that a bifunctor
 has to map morphisms as well. This time, though, it must map a pair of
-morphisms, one from $\cat{C}$ and one from $\cat{D}$, to a morphism in $\cat{E}$.
+morphisms, one in $\cat{C}$ and one in $\cat{D}$, to a morphism in $\cat{E}$.
 
-Again, a pair of morphisms is just a single morphism in the product
+Again, such a pair of morphisms is nothing but a single morphism in the product
 category $\cat{C}\times{}\cat{D}$. We define a morphism in a Cartesian product of categories
 as a pair of morphisms which goes from one pair of objects to another
 pair of objects. These pairs of morphisms can be composed in the obvious
@@ -37,9 +37,11 @@ identity morphisms $(\id, \id)$. So a Cartesian product of categories
 is indeed a category.
 
 An easier way to think about bifunctors would be to consider them functors in
-each argument separately. So instead of translating functorial laws ---
-associativity and identity preservation --- from functors to bifunctors,
-it would be enough to check them separately for each argument. However, in general,
+each argument separately.  For composition to work properly, we only consider 
+bifunctors on a single category, i.e., where $C = D = E$. 
+Then, instead of translating functorial laws ---
+associativity and identity preservation --- from functors on $E$ to bifunctors on $E$,
+it should be enough to check them separately for each argument. However, in general,
 separate functoriality is not enough to prove joint functoriality. Categories in which
 joint functoriality fails are called \newterm{premonoidal}.
 
@@ -194,8 +196,8 @@ partially applied.)
 
 We've already seen that a composition of functors is a functor --- we
 can easily convince ourselves that the same is true of bifunctors. All
-we need is to figure out how a composition of a bifunctor with two
-functors works on morphisms. Given two morphisms, we simply lift one
+we need is to figure out how the composition of a bifunctor on $E$ with two
+functors on $E$ works on morphisms. Given two morphisms in $E$, we simply lift one
 with one functor and the other with the other functor. We then lift the
 resulting pair of lifted morphisms with the bifunctor.
 
@@ -398,12 +400,12 @@ Well, not really. Nobody says that \code{a} in
 type variable, so it can be anything, in particular it can be an
 embellished type, like \code{Writer b}.
 
-So \code{id} will take \code{Writer a} and turn it into
-\code{Writer a}. The fish operator will fish out the value of
-\code{a} and pass it as \code{x} to the lambda. There, \code{f}
-will turn it into a \code{b} and \code{return} will embellish it,
-making it \code{Writer b}. Putting it all together, we end up with a
-function that takes \code{Writer a} and returns \code{Writer b},
+So \code{id} will take \code{Writer b} and turn it into
+\code{Writer b}. The fish operator will fish out the value of
+\code{b} and pass it as \code{x} to the lambda. There, \code{f}
+will turn it into a \code{c} and \code{return} will embellish it,
+making it \code{Writer c}. Putting it all together, we end up with a
+function that takes \code{Writer b} and returns \code{Writer c},
 exactly what \code{fmap} is supposed to produce.
 
 Notice that this argument is very general: you can replace
@@ -437,10 +439,10 @@ for which the \code{Functor} instance, as we've seen before, reads:
 But just like the pair type constructor, or the \code{Either} type
 constructor, the function type constructor takes two type arguments. The
 pair and \code{Either} were functorial in both arguments --- they were
-bifunctors. Is the function constructor a bifunctor too?
+bifunctors. However, the function constructor is not a bifunctor.
 
-Let's try to make it functorial in the first argument. We'll start with
-a type synonym --- it's just like the \code{Reader} but with the
+In order to see this, let's try to make it functorial in the first argument. 
+We'll start with a type synonym --- it's just like the \code{Reader} but with the
 arguments flipped:
 
 \src{snippet23}
@@ -454,8 +456,8 @@ With just two functions taking \code{a} and returning, respectively,
 \code{b} and \code{r}, there is simply no way to build a function
 taking \code{b} and returning \code{r}! It would be different if we
 could somehow invert the first function, so that it took \code{b} and
-returned \code{a} instead. We can't invert an arbitrary function, but
-we can go to the opposite category.
+returned \code{a} instead. But we can't invert an arbitrary function, so 
+we instead go to the opposite category.
 
 A short recap: For every category $\cat{C}$ there is a dual category
 $\cat{C}^\mathit{op}$. It's a category with the same objects as
