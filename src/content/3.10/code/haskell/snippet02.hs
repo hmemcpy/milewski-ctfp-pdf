@@ -1,1 +1,1 @@
-dimap f id (p b b) :: p a b
+dimap f id pbb :: p a b
