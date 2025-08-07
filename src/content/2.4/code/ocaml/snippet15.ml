@@ -6,5 +6,4 @@ module StreamRepresentable : Representable = struct
 
   let rec index (Cons (b, bs)) n =
     if n = 0 then b else index (Lazy.force bs) (n - 1)
-  ;;
 end

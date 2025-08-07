@@ -1,7 +1,9 @@
-module ProfunctorArrow : Profunctor = struct
-  type ('a, 'b) p = 'a -> 'b
+module ProfunctorArrow : Profunctor
+with type ('a, 'b) t = 'a -> 'b = struct
+  type ('a, 'b) t = 'a -> 'b
 
-  let dimap f g p = compose g (compose p f)
-  let lmap f p = (flip compose) f p
-  let rmap = compose
+  let ( % ) = Fun.compose
+  let dimap ab cd f = cd % f % ab
+  let lmap f g = g % f
+  let rmap f g = f % g
 end

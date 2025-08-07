@@ -1,2 +1,1 @@
-;;
-compose mu (bimap id mu) = compose mu (bimap mu id)
+mu % bimap Fun.id mu = mu % bimap mu Fun.id

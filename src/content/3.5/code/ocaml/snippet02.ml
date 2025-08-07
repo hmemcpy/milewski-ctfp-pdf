@@ -1,1 +1,1 @@
-let ( >>= ) xs k = List.concat (List.map k xs)
+let ( >>= ) seq f = Seq.concat (Seq.map f seq)

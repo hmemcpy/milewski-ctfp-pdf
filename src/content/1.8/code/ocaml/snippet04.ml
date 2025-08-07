@@ -1,12 +1,9 @@
-type ('a, 'b) either =
-  | Left of 'a
-  | Right of 'b
+module Bifunctor_Either = Bifunctor_From_Bimap (struct
+  open Either
 
-module Bifunctor_Either : BifunctorCore = struct
-  type ('a, 'b) t = ('a, 'b) either
+  type ('a, 'b) t = ('a, 'b) Either.t
 
   let bimap f g = function
     | Left a -> Left (f a)
     | Right b -> Right (g b)
-  ;;
-end
+end)

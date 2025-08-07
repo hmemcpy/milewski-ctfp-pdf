@@ -1,4 +1,1 @@
-type color =
-  | Red
-  | Green
-  | Blue
+type color = Red | Green | Blue
