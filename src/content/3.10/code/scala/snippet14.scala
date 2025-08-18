@@ -1,3 +1,1 @@
-trait Coend[P[_, _]] {
-  def paa[A]: P[A, A]
-}
+trait Coend[P[_, _]] { type A; val p: P[A, A] }
