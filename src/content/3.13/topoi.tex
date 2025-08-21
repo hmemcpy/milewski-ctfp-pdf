@@ -58,7 +58,7 @@ their domains. More precisely, we say that two injective functions:
 are equivalent if there is an isomorphism:
 \[h \Colon a \to a'\]
 such that:
-\[f = f'\ .\ h\]
+\[f = f' \circ h\]
 Such a family of equivalent injections defines a subset of $b$.
 
 \begin{figure}[H]
@@ -76,7 +76,7 @@ universal property. For any object $c$ and any pair of morphisms:
   g' & \Colon c \to a
 \end{align*}
 such that:
-\[m\ .\ g = m\ .\ g'\]
+\[m \circ g = m \circ g'\]
 it must be that $g = g'$.
 
 \begin{figure}[H]
@@ -142,8 +142,8 @@ pullback diagram:
 
 \noindent
 Let's analyze this diagram. The pullback equation is:
-\[\mathit{true}\ .\ \mathit{unit} = \chi\ .\ f\]
-The function $\mathit{true}\ .\ \mathit{unit}$ maps every element of $a$ to
+\[\mathit{true} \circ \mathit{unit} = \chi \circ f\]
+The function $\mathit{true} \circ \mathit{unit}$ maps every element of $a$ to
 ``true.'' Therefore $f$ must map all elements of $a$ to
 those elements of $b$ for which $\chi$ is ``true.'' These
 are, by definition, the elements of the subset that is specified by the
