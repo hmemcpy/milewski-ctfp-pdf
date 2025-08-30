@@ -1,1 +1,1 @@
-type Exp a b = Lan ((,) a) I b
+type Exp a b = Lan ((,) a) Identity b
