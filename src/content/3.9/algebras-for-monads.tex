@@ -396,6 +396,7 @@ translates to:
 \[\mathit{set}\ a\ (\mathit{get}\ a) = a\]
 This is the lens law that expresses the fact that if you set a field of
 the structure $a$ to its previous value, nothing changes.
+This law is also known as GETPUT.
 
 The second condition:
 \[\mathit{fmap}\ \mathit{coalg} \circ \mathit{coalg} = \delta_a \circ \mathit{coalg}\]
@@ -421,13 +422,15 @@ This is equivalent to two remaining lens laws. The first one:
 
 \src{snippet14}
 tells us that setting the value of a field twice is the same as setting
-it once. The second law:
+it once. This law is also known as PUTPUT. The second law:
 
 \src{snippet15}
 tells us that getting a value of a field that was set to $s$
-gives $s$ back.
+gives $s$ back. This law is also known as PUTGET.
 
-In other words, a very well behaved lens is indeed a comonad coalgebra for
+A lens that satisfies GETPUT and PUTGET is called a well-behaved lens.
+If the lens also satisfies PUTPUT, it is called a very well behaved lens.
+So, in other words, a very well behaved lens is indeed a comonad coalgebra for
 the \code{Store} functor.
 
 \section{Challenges}
