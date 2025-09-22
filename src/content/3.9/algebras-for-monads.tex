@@ -393,7 +393,8 @@ The question is: Under what conditions is a lens a coalgebra for this
 comonad? The first coherence condition:
 \[\varepsilon_a \circ \mathit{coalg} = \idarrow[a]\]
 translates to:
-\[\mathit{set}\ a\ (\mathit{get}\ a) = a\]
+
+\src{snippet16}
 This is the lens law that expresses the fact that if you set a field of
 the structure $a$ to its previous value, nothing changes.
 This law is also known as GETPUT.
