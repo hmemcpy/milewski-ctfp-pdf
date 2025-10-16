@@ -1,1 +1,1 @@
-let dimap f id (P (b, b)) : ('a, 'b) p
+val dimap f Fun.id (P (b, b)) : ('a, 'b) p

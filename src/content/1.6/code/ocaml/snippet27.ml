@@ -1,1 +1,1 @@
-type nothing_type = Nothing
+type none_type = None

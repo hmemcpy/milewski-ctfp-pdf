@@ -11,5 +11,4 @@ end)
 
   let duplicate : 'a w -> 'a w w =
    fun (Store (f, s)) -> Store ((fun s -> Store (f, s)), s)
- ;;
 end
