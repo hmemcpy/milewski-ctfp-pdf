@@ -240,11 +240,11 @@ bicategories.
 Let's construct a monad in $\cat{Span}$. We pick a $0$-cell, which is a
 set that, for reasons that will become clear soon, I will call
 $\mathit{Ob}$. Next, we pick an endo-$1$-cell: a span from $\mathit{Ob}$ back
-to $\mathit{Ob}$. It has a set at the apex, which I will call $\mathit{Ar}$,
+to $\mathit{Ob}$. It has a set at the apex, which I will call $\mathit{Arr}$,
 equipped with two functions:
 \begin{align*}
-  \mathit{dom} & \Colon \mathit{Ar} \to \mathit{Ob} \\
-  \mathit{cod} & \Colon \mathit{Ar} \to \mathit{Ob}
+  \mathit{dom} & \Colon \mathit{Arr} \to \mathit{Ob} \\
+  \mathit{cod} & \Colon \mathit{Arr} \to \mathit{Ob}
 \end{align*}
 
 \begin{figure}[H]
@@ -253,7 +253,7 @@ equipped with two functions:
 \end{figure}
 
 \noindent
-Let's call the elements of the set $\mathit{Ar}$ ``arrows.'' If I also
+Let's call the elements of the set $\mathit{Arr}$ ``arrows.'' If I also
 tell you to call the elements of $\mathit{Ob}$ ``objects,'' you might get
 a hint where this is leading to. The two functions $\mathit{dom}$ and
 $\mathit{cod}$ assign the domain and the codomain to an ``arrow.''
@@ -262,7 +262,7 @@ To make our span into a monad, we need two $2$-cells, $\eta$ and
 $\mu$. The monoidal unit, in this case, is the trivial span from
 $\mathit{Ob}$ to $\mathit{Ob}$ with the apex at $\mathit{Ob}$ and two identity
 functions. The $2$-cell $\eta$ is a function between the apices
-$\mathit{Ob}$ and $\mathit{Ar}$. In other words, $\eta$ assigns an
+$\mathit{Ob}$ and $\mathit{Arr}$. In other words, $\eta$ assigns an
 ``arrow'' to every ``object.'' A $2$-cell in $\cat{Span}$ must satisfy
 commutation conditions --- in this case:
 \begin{align*}
@@ -284,8 +284,8 @@ codomain are that ``object.'' We'll call this special ``arrow'' the
 ``identity arrow.''
 
 The second $2$-cell $\mu$ acts on the composition of the span
-$\mathit{Ar}$ with itself. The composition is defined as a pullback, so
-its elements are pairs of elements from $\mathit{Ar}$ --- pairs of
+$\mathit{Arr}$ with itself. The composition is defined as a pullback, so
+its elements are pairs of elements from $\mathit{Arr}$ --- pairs of
 ``arrows'' $(a_1, a_2)$. The pullback condition is:
 \[\mathit{cod}\ a_1 = \mathit{dom}\ a_2\]
 We say that $a_1$ and $a_2$ are ``composable,'' because the
@@ -299,7 +299,7 @@ domain of one is the codomain of the other.
 \noindent
 The $2$-cell $\mu$ is a function that maps a pair of composable
 ``arrows'' $(a_1, a_2)$ to a single ``arrow'' $a_3$ from
-$\mathit{Ar}$. In other words $\mu$ defines composition of ``arrows''.
+$\mathit{Arr}$. In other words $\mu$ defines composition of ``arrows''.
 
 It's easy to check that monad laws correspond to identity and
 associativity laws for arrows. We have just defined a category (a small
