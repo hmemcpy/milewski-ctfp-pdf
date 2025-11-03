@@ -257,7 +257,7 @@ its value at $1$, $M 1$. Since $M 1$ can be any
 set, there are as many of these models as there are sets in
 $\Set$. Moreover, every morphism in $\cat{Mod}(\Fop, \Set)$ (a
 natural transformation between functors $M$ and $N$) is
-uniquely determined by its component at $M 1$. Conversely, every
+uniquely determined by its component at $1$. Conversely, every
 function $M 1 \to N 1$ induces a natural
 transformation between the two models $M$ and $N$.
 Therefore $\cat{Mod}(\Fop, \Set)$ is equivalent to $\Set$.
@@ -369,7 +369,7 @@ It turns out that the category of
   for this monad} is equivalent to the category of models.
 
 You may recall that monad algebras define ways to evaluate expressions
-that are formed using monads. A Lawvere theory defines n-ary operations
+that are formed using monads. A Lawvere theory defines $n$-ary operations
 that can be used to generate expressions. Models provide means to
 evaluate these expressions.
 
@@ -402,7 +402,7 @@ When restricted to finite sets, this becomes:
 The category opposite to this Kleisli category,
 $\cat{Kl}^\mathit{op}_{T}$, restricted to finite
 sets, is the Lawvere theory in question. In particular, the hom-set
-$\cat{L}(n, 1)$ that describes n-ary operations in $\cat{L}$ is given
+$\cat{L}(n, 1)$ that describes $n$-ary operations in $\cat{L}$ is given
 by the hom-set $\cat{Kl}_{T}(1, n)$.
 
 It turns out that most monads that we encounter in programming are
@@ -565,7 +565,7 @@ maps the nullary operation to a function:
 \src{snippet02}
 We can recover the \code{Maybe} monad using the coend formula. Let's
 consider what the addition of the nullary operation does to the hom-sets
-$\cat{L}(n, 1)$. Besides creating a new $\cat{L}(0, 1)$ (which is
+$\cat{L}(n, 1)$. Besides creating a new element in $\cat{L}(0, 1)$ (which is
 absent from $\Fop$), it also adds new morphisms
 to $\cat{L}(n, 1)$. These are the results of composing morphism of the
 type $n \to 0$ with our $0 \to 1$.
