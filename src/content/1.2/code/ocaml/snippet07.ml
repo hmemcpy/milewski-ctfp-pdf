@@ -1,1 +1,2 @@
-let f44 () : int = 44
+(* val f44 : unit -> int *)
+let f44 () = 44

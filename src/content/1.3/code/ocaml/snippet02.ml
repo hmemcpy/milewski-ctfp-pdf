@@ -1,6 +1,8 @@
-module StringMonoid : Monoid = struct
-  type a = string
+(* In OCaml, any module that defines a module type's members,
+   automatically conforms to that module type. It doesn't need to
+   explicitly declare that it conforms. *)
 
-  let mempty = ""
-  let mappend = ( ^ )
-end
+type t = string
+
+let mempty = ""
+let mappend = ( ^ )
