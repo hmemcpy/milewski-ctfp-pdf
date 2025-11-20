@@ -1,1 +1,1 @@
-type 'a just_type = Just of 'a
+type 'a some_type = Some of 'a

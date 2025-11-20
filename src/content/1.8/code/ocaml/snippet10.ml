@@ -1,10 +1,6 @@
-module BiCompBifunctor
-    (BF : BifunctorCore)
-    (FU : Functor)
-    (GU : Functor) : BifunctorCore = struct
-  type ('a, 'b) t = BiComp of ('a FU.t, 'b GU.t) BF.t
+module BiCompBifunctor (BF : Bifunctor) (FU : Functor) (GU : Functor) =
+Bifunctor_From_Bimap (struct
+  type ('a, 'b) t = ('a FU.t, 'b GU.t) BF.t
 
-  let bimap f g (BiComp x) =
-    BiComp (BF.bimap (FU.fmap f) (GU.fmap g) x)
-  ;;
-end
+  let bimap f g x = BF.bimap (FU.fmap f) (GU.fmap g) x
+end)

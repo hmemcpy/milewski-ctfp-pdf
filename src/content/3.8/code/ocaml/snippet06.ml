@@ -4,4 +4,3 @@ let rec eval_z : expr -> int = function
   | RAdd (e1, e2) -> eval_z e1 + eval_z e2
   | RMul (e1, e2) -> eval_z e1 * eval_z e2
   | RNeg e -> -eval_z e
-;;

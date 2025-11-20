@@ -1,1 +1,1 @@
-val h : m -> n
+val h : 'm -> 'n

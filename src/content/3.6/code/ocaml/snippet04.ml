@@ -1,1 +1,1 @@
-val mappend : m -> m -> m
+val mappend : 'm -> ('m -> 'm)

@@ -9,5 +9,4 @@ module Ring = struct
     | RAdd (m, n) -> m + n
     | RMul (m, n) -> m * n
     | RNeg n -> -n
-  ;;
 end

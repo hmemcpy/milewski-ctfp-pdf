@@ -1,10 +1,9 @@
 module Process_Bind_Without_Do
-    (W : Monad_Bind with type 'a m = (string, 'a) writer) =
+    (W : Monad_Bind with type 'a t = (string, 'a) writer) =
 struct
-  let tell w = Writer ((), w)
+  open W
 
   let process s =
-    W.(
-      up_case s
-      >>= fun up_str -> tell "to_words" >>= fun _ -> to_words up_str)
+    up_case s >>= fun up_str ->
+    tell "to_words" >>= fun () -> return (words up_str)
 end

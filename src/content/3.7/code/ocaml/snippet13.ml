@@ -7,7 +7,6 @@ end
 module CoKleisliImpl (C : CoKleisliExtend) = struct
   type 'a w = 'a C.w
 
-  let ( =>= ) : ('a w -> 'b) -> ('b w -> 'c) -> 'a w -> 'c =
-   fun f g -> compose g (C.extend f)
- ;;
+  let ( =>= ) (f : 'a w -> 'b) (g : 'b w -> 'c) : 'a w -> 'c =
+    Fun.compose g (C.extend f)
 end

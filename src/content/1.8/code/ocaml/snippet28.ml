@@ -1,3 +1,2 @@
-let contramap : ('b -> 'a) -> ('r, 'a) op -> ('r, 'b) op =
- fun f g -> flip compose f g
-;;
+let contramap (f : 'b -> 'a) (g : ('r, 'a) op) : ('r, 'b) op =
+  Fun.flip Fun.compose f g

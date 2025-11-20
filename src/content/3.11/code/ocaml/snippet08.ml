@@ -11,7 +11,6 @@ let to_exp (type a' b') f =
   end : Exp
     with type a = a'
      and type b = b')
-;;
 
 let from_exp
     (type a' b')
@@ -20,4 +19,3 @@ let from_exp
   =
   let (I i) = E.di in
   E.fk (a, i)
-;;

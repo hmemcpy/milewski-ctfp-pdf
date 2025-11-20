@@ -1,10 +1,7 @@
 module Op_Contravariant (T : sig
   type r
-end) : Contravariant = struct
+end) : Contravariant with type 'a t = (T.r, 'a) op = struct
   type 'a t = (T.r, 'a) op
 
-  let contramap : ('b -> 'a) -> 'a t -> 'b t =
-   fun f -> function
-    | Op g -> Op (compose g f)
- ;;
+  let contramap f (Op g) = Op (Fun.compose g f)
 end
