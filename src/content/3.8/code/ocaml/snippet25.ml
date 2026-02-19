@@ -1,7 +1,5 @@
-module Ana (F : Functor) = struct
-  type 'a fix = Fix of 'a fix F.t
-
-  let rec ana : ('a -> 'a F.t) -> 'a -> 'a fix =
-   fun coalg a -> Fix (F.fmap (ana coalg) (coalg a))
- ;;
+module Ana (F : Functor) (Fix : Fixpoint with type 'a funct = 'a F.t) =
+struct
+  let rec ana (coalg : 'a -> 'a F.t) (a : 'a) : 'a Fix.t =
+    Fix.Fix (F.fmap (fun x -> ana coalg x) (coalg a))
 end

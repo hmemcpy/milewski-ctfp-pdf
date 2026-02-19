@@ -1,3 +1,1 @@
-type contact =
-  | PhoneNum of int
-  | EmailAddr of string
+type contact = PhoneNum of int | EmailAddr of string
