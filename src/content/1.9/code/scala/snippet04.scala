@@ -1,2 +1,2 @@
-val catstrᛌ: String => String => String = 
-  s => s1 => s ++ s1
+def catstr_prime(s: String): String => String = 
+  s1 => s ++ s1
