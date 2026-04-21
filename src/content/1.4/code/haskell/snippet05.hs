@@ -1,2 +1,2 @@
 return :: a -> Writer a
-return x = (x, "")
+return x = (x, mempty)
