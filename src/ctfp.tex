@@ -14,8 +14,16 @@
 
 \mainmatter
 
-\part*{Part One}
-\addcontentsline{toc}{part}{Part One}
+% tex4ebook collects empty \part* pages into the front HTML; omit them in EPUB.
+\newcommand{\BookPart}[1]{%
+	\ifdefined\HCode
+	\else
+		\part*{#1}
+		\addcontentsline{toc}{part}{#1}
+	\fi
+}
+
+\BookPart{Part One}
 
 \chapter{Category: The Essence of Composition}\label{category-the-essence-of-composition}
 \subfile{content/1.1/category-the-essence-of-composition}
@@ -47,8 +55,7 @@
 \chapter{Natural Transformations}\label{natural-transformations}
 \subfile{content/1.10/natural-transformations}
 
-\part*{Part Two}
-\addcontentsline{toc}{part}{Part Two}
+\BookPart{Part Two}
 
 \chapter{Declarative Programming}\label{declarative-programming}
 \subfile{content/2.1/declarative-programming}
@@ -68,8 +75,7 @@
 \chapter{Yoneda Embedding}\label{yoneda-embedding}
 \subfile{content/2.6/yoneda-embedding}
 
-\part*{Part Three}
-\addcontentsline{toc}{part}{Part Three}
+\BookPart{Part Three}
 
 \chapter{It's All About Morphisms}\label{all-about-morphisms}
 \subfile{content/3.1/its-all-about-morphisms}
