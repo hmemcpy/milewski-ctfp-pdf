@@ -1,0 +1,37 @@
+\documentclass[11pt]{article}
+
+\usepackage[papersize={6.125in,9.25in},margin=0in,noheadfoot]{geometry}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\setmainfont{Alegreya Sans}
+\definecolor{BackgroundColor}{HTML}{F3F6ED}
+
+\pagestyle{empty}
+
+\begin{document}
+\thispagestyle{empty}
+\pagecolor{BackgroundColor}
+\null
+
+\begin{tikzpicture}[remember picture, overlay]
+	\node[anchor=north, align=center, font=\bfseries\fontsize{38pt}{44pt}\selectfont]
+	at ([yshift=-0.95in]current page.north)
+	{CATEGORY THEORY\\FOR PROGRAMMERS};
+
+	\node[anchor=north]
+	at ([yshift=-3.7in]current page.north)
+	{\includegraphics[width=0.52\paperwidth]{cover/piggie}};
+
+	\draw[line width=0.5pt]
+	([yshift=1.55in]current page.south) ++(-0.275\paperwidth,0)
+	-- ++(0.55\paperwidth,0);
+
+	\node[anchor=south, font=\bfseries\fontsize{22pt}{28pt}\selectfont]
+	at ([yshift=0.95in]current page.south)
+	{Bartosz Milewski};
+\end{tikzpicture}
+
+\end{document}

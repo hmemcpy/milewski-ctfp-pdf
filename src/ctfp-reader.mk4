@@ -1,0 +1,14 @@
+filter_settings("dvisvgm_hashes") {
+  scale = 2.2,
+}
+
+Make:add(
+  "epubcover",
+  "lualatex -interaction=nonstopmode -halt-on-error -output-directory=cover cover/epub-cover.tex && pdftoppm -png -singlefile -f 1 -r 240 cover/epub-cover.pdf cover/epub-cover",
+  {correct_exit = 0}
+)
+
+Make:epubcover()
+Make:autohtlatex()
+Make:tex4ht()
+Make:t4ht()
