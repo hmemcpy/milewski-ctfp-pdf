@@ -39,7 +39,7 @@ generic object). A unary operation is just an endomorphism of
 $a$. But what about other arities (\newterm{arity} is the number of
 arguments for a given operation)? A binary operation (arity 2) can be
 defined as a morphism from the product $a\times{}a$ back to $a$.
-A general $n$-ary operation is a morphism from the $n^\text{th}$ power of
+A general $n$-ary operation is a morphism from the $n$th power of
 $a$ to $a$:
 \[\alpha_n \Colon a^n \to a\]
 A nullary operation is a morphism from the terminal object (the zeroth
@@ -52,23 +52,23 @@ The derivation of Lawvere theories goes through many steps, so here's
 the roadmap:
 
 \begin{enumerate}
-  \tightlist
-  \item
-        Category of finite sets $\cat{FinSet}$.
-  \item
-        Its skeleton $\cat{F}$.
-  \item
-        Its opposite $\Fop$.
-  \item
-        Lawvere theory $\cat{L}$: an object in the category $\cat{Law}$.
-  \item
-        Model $M$ of a Lawvere category: an object in the category\\
-        $\cat{Mod}(\cat{L}, \Set)$.
+	\tightlist
+	\item
+	      Category of finite sets $\cat{FinSet}$.
+	\item
+	      Its skeleton $\cat{F}$.
+	\item
+	      Its opposite $\Fop$.
+	\item
+	      Lawvere theory $\cat{L}$: an object in the category $\cat{Law}$.
+	\item
+	      Model $M$ of a Lawvere category: an object in the category\\
+	      $\cat{Mod}(\cat{L}, \Set)$.
 \end{enumerate}
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{images/lawvere1.png}
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/lawvere1.png}
 \end{figure}
 
 \section{Lawvere Theories}
@@ -112,7 +112,7 @@ corresponding to all $n$-element sets in $\cat{FinSet}$ that have been
 identified through isomorphisms.
 
 Using the category $\cat{F}$ we can formally define a \newterm{Lawvere
-  theory} as a category $\cat{L}$ equipped with a special functor:
+	theory} as a category $\cat{L}$ equipped with a special functor:
 \[I_{\cat{L}} \Colon \Fop \to \cat{L}\]
 This functor must be a bijection on objects and it must preserve finite
 products (products in $\Fop$ are the same as
@@ -144,7 +144,7 @@ particular coproduct injections $i_k$ become product projections
 $p_k$. A useful intuition is to imagine the projection:
 \[p_k \Colon 1^n \to 1\]
 as the prototype for a function of $n$ variables that ignores all but the
-$k^\text{th}$ variable. Conversely, constant morphisms $n \to 1$
+$k$th variable. Conversely, constant morphisms $n \to 1$
 in $\cat{F}$ become diagonal morphisms $1 \to 1^n$ in
 $\cat{L}$. They correspond to duplication of variables.
 
@@ -161,12 +161,12 @@ statement that a function that returns a product is a product of
 functions; as we've seen earlier, the hom-functor is continuous.
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{images/lawvere1.png}
-  \caption{Lawvere theory $\cat{L}$ is based on $\Fop$, from which
-    it inherits the ``boring'' morphisms that define the products. It adds
-    the ``interesting'' morphisms that describe the $n$-ary operations (dotted
-    arrows).}
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/lawvere1.png}
+	\caption{Lawvere theory $\cat{L}$ is based on $\Fop$, from which
+		it inherits the ``boring'' morphisms that define the products. It adds
+		the ``interesting'' morphisms that describe the $n$-ary operations (dotted
+		arrows).}
 \end{figure}
 
 Lawvere theories form a category $\cat{Law}$, in which morphisms are
@@ -175,8 +175,8 @@ $I$. Given two such theories, $(\cat{L}, I_{\cat{L}})$ and
 $(\cat{L'}, I'_{\cat{L'}})$, a morphism between them is a
 functor $F \Colon \cat{L} \to \cat{L'}$ such that:
 \begin{gather*}
-  F (m \times n) = F m \times F n \\
-  F \circ I_{\cat{L}} = I'_{\cat{L'}}
+	F (m \times n) = F m \times F n \\
+	F \circ I_{\cat{L}} = I'_{\cat{L'}}
 \end{gather*}
 Morphisms between Lawvere theories encapsulate the idea of the
 interpretation of one theory inside another. For instance, group
@@ -207,11 +207,11 @@ products, we require that such a functor preserve finite products. A
 model of $\cat{L}$, also called the algebra over the Lawvere theory
 $\cat{L}$, is therefore defined by a functor:
 \begin{gather*}
-  M \Colon \cat{L} \to \Set \\
-  M (a \times b) \cong M a \times M b
+	M \Colon \cat{L} \to \Set \\
+	M (a \times b) \cong M a \times M b
 \end{gather*}
 Notice that we require the preservation of products only \emph{up to
-  isomorphism}. This is very important, because strict preservation of
+	isomorphism}. This is very important, because strict preservation of
 products would eliminate most interesting theories.
 
 The preservation of products by models means that the image of
@@ -268,7 +268,7 @@ structure of monoids. It is a single theory that distills the structure
 of all possible monoids, in the sense that the models of this theory
 span the whole category $\cat{Mon}$ of monoids. We've already seen a
 \hyperref[free-monoids]{universal
-  construction}, which showed that every monoid can be obtained from an
+	construction}, which showed that every monoid can be obtained from an
 appropriate free monoid by identifying a subset of morphisms. So a
 single free monoid already generalizes a whole lot of monoids. There
 are, however, infinitely many free monoids. The Lawvere theory for
@@ -319,7 +319,7 @@ $\cat{Mon}$.
 As you may remember, algebraic theories can be described using monads
 --- in particular
 \hyperref[algebras-for-monads]{algebras
-  for monads}. It should be no surprise then that there is a connection
+	for monads}. It should be no surprise then that there is a connection
 between Lawvere theories and monads.
 
 First, let's see how a Lawvere theory induces a monad. It does it
@@ -365,7 +365,7 @@ a monad.
 
 It turns out that the category of
 \hyperref[algebras-for-monads]{algebras
-  for this monad} is equivalent to the category of models.
+	for this monad} is equivalent to the category of models.
 
 You may recall that monad algebras define ways to evaluate expressions
 that are formed using monads. A Lawvere theory defines $n$-ary operations
@@ -399,7 +399,7 @@ category:
 When restricted to finite sets, this becomes:
 \[m \to T n\]
 The category opposite to this Kleisli category,
-$\cat{Kl}^\mathit{op}_{T}$, restricted to finite
+$\cat{Kl}^{\mathrm{op}}_{T}$, restricted to finite
 sets, is the Lawvere theory in question. In particular, the hom-set
 $\cat{L}(n, 1)$ that describes $n$-ary operations in $\cat{L}$ is given
 by the hom-set $\cat{Kl}_{T}(1, n)$.
@@ -427,15 +427,15 @@ The lifting simply selects $m$ elements from a tuple of $n$ elements\\
 $(a_1, a_2, \ldots{}, a_n)$ (possibly with repetitions).
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.5\textwidth]{images/liftpower.png}
+	\centering
+	\includegraphics[width=0.5\textwidth]{images/liftpower.png}
 \end{figure}
 
 \noindent
 For instance, let's take $f_k \Colon 1 \to n$ --- a
-selection of the $k^\text{th}$ element from an $n$-element set. It lifts to
+selection of the $k$th element from an $n$-element set. It lifts to
 a function that takes a $n$-tuple of elements of $a$ and returns
-the $k^\text{th}$ one.
+the $k$th one.
 
 Or let's take $f \Colon m \to 1$ --- a constant
 function that maps all $m$ elements to one. Its lifting is a function that
@@ -461,11 +461,11 @@ morphism with $\cat{L}(m, 1)$ gives us a subset of
 $\cat{L}(n, 1)$.
 
 \begin{figure}[H]
-  \centering
-  \begin{tikzcd}[column sep=large]
-    \cat{L}(m, 1) \arrow[r] & \cat{L}(n, 1)\\
-    {}^m \bullet \arrow[r, "f"'] & \bullet^n
-  \end{tikzcd}
+	\centering
+	\begin{tikzcd}[column sep=large]
+		\cat{L}(m, 1) \arrow[r] & \cat{L}(n, 1)\\
+		{}^m \bullet \arrow[r, "f"'] & \bullet^n
+	\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -484,24 +484,24 @@ Here, the coend starts as the disjoint sum of sets
 $a^n \times \cat{L}(n, 1)$ over all $n$s. The identifications can
 be generated by expressing the
 \hyperref[ends-and-coends]{coend as
-  a coequalizer}. We start with an off-diagonal term
+	a coequalizer}. We start with an off-diagonal term
 $a^n \times \cat{L}(m, 1)$. To get to the diagonal, we can apply a
 morphism $f \Colon m \to n$ either to the first or
 the second component of the product. The two results are then
 identified.
 
 \begin{figure}[H]
-  \centering
-  \begin{tikzcd}
-    & a^n \times \cat{L}(m, 1)
-    \arrow[dl, "\langle f {,} \id \rangle"']
-    \arrow[dr, "\langle \id {,} f \rangle"]
-    & \\
-    a^m \times \cat{L}(m, 1)
-    & \scalebox{2.5}[1]{\sim}
-    & a^n \times \cat{L}(n, 1) \\
-    & f \Colon m \to n &
-  \end{tikzcd}
+	\centering
+	\begin{tikzcd}
+		& a^n \times \cat{L}(m, 1)
+		\arrow[dl, "\langle f {,} \id \rangle"']
+		\arrow[dr, "\langle \id {,} f \rangle"]
+		& \\
+		a^m \times \cat{L}(m, 1)
+		& \scalebox{2.5}[1]{\sim}
+		& a^n \times \cat{L}(n, 1) \\
+		& f \Colon m \to n &
+	\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -574,17 +574,17 @@ the coend formula, because they can be obtained from:
 by lifting $0 \to n$ in two different ways.
 
 \begin{figure}[H]
-  \centering
-  \begin{tikzcd}
-    & a^n \times \cat{L}(0, 1)
-    \arrow[dl, "\langle f {,} \id \rangle"']
-    \arrow[dr, "\langle \id {,} f \rangle"]
-    & \\
-    a^0 \times \cat{L}(0, 1)
-    & \scalebox{2.5}[1]{\sim}
-    & a^n \times \cat{L}(n, 1) \\
-    & f \Colon 0 \to n &
-  \end{tikzcd}
+	\centering
+	\begin{tikzcd}
+		& a^n \times \cat{L}(0, 1)
+		\arrow[dl, "\langle f {,} \id \rangle"']
+		\arrow[dr, "\langle \id {,} f \rangle"]
+		& \\
+		a^0 \times \cat{L}(0, 1)
+		& \scalebox{2.5}[1]{\sim}
+		& a^n \times \cat{L}(n, 1) \\
+		& f \Colon 0 \to n &
+	\end{tikzcd}
 \end{figure}
 
 \noindent
@@ -602,29 +602,29 @@ not their handling.
 \section{Challenges}
 
 \begin{enumerate}
-  \tightlist
-  \item
-        Enumerate all morphisms between $2$ and $3$ in $\cat{F}$ (the skeleton of
-        $\cat{FinSet}$).
-  \item
-        Show that the category of models for the Lawvere theory of monoids is
-        equivalent to the category of monad algebras for the list monad.
-  \item
-        The Lawvere theory of monoids generates the list monad. Show that its
-        binary operations can be generated using the corresponding Kleisli
-        arrows.
-  \item
-        $\cat{FinSet}$ is a subcategory of $\Set$ and there is a
-        functor that embeds it in $\Set$. Any functor on $\Set$
-        can be restricted to $\cat{FinSet}$. Show that a finitary functor is
-        the left Kan extension of its own restriction.
+	\tightlist
+	\item
+	      Enumerate all morphisms between $2$ and $3$ in $\cat{F}$ (the skeleton of
+	      $\cat{FinSet}$).
+	\item
+	      Show that the category of models for the Lawvere theory of monoids is
+	      equivalent to the category of monad algebras for the list monad.
+	\item
+	      The Lawvere theory of monoids generates the list monad. Show that its
+	      binary operations can be generated using the corresponding Kleisli
+	      arrows.
+	\item
+	      $\cat{FinSet}$ is a subcategory of $\Set$ and there is a
+	      functor that embeds it in $\Set$. Any functor on $\Set$
+	      can be restricted to $\cat{FinSet}$. Show that a finitary functor is
+	      the left Kan extension of its own restriction.
 \end{enumerate}
 
 \section{Further Reading}
 \begin{enumerate}
-  \tightlist
-  \item
-        \urlref{http://www.tac.mta.ca/tac/reprints/articles/5/tr5.pdf}{Functorial Semantics of Algebraic Theories}, F. William Lawvere
-  \item
-        \urlref{http://homepages.inf.ed.ac.uk/gdp/publications/Comp_Eff_Monads.pdf}{Notions of computation determine monads}, Gordon Plotkin and John Power
+	\tightlist
+	\item
+	      \urlref{http://www.tac.mta.ca/tac/reprints/articles/5/tr5.pdf}{Functorial Semantics of Algebraic Theories}, F. William Lawvere
+	\item
+	      \urlref{http://homepages.inf.ed.ac.uk/gdp/publications/Comp_Eff_Monads.pdf}{Notions of computation determine monads}, Gordon Plotkin and John Power
 \end{enumerate}
