@@ -23,7 +23,13 @@
 \defaultfontfeatures{%                                         %  is important for
   Scale=MatchLowercase, % needed here ...                      %  single quotes not
 }                                                              %  to turn out curly
-\setmonofont[BoldFont=Inconsolata-LGC-Bold.ttf]{Inconsolata-LGC-Bold.ttf} %  ("typographic")
+% \setmonofont[BoldFont=Inconsolata-LGC-Bold.ttf]{Inconsolata-LGC-Bold.ttf} %  ("typographic")
+\setmonofont[
+  BoldFont={TX-02 Bold Condensed},
+  ItalicFont={TX-02 Condensed Oblique},
+  BoldItalicFont={TX-02 Bold Condensed Oblique}
+]{TX-02 Condensed}
+% \setmonofont{Inconsolata LGC Nerd Font}
                                                                %  in verbatim blocks
 \defaultfontfeatures{%                                         %  of Haskell code.
   Scale=MatchLowercase, % ... and here again                   %  Now the quote is
@@ -34,8 +40,13 @@
 
 % To use Libertine letters and numbers,
 % but tx-style operators in math environment:
+\ifdefined\HCode
+\usepackage{amsmath}
+\usepackage{amssymb}
+\else
 \usepackage[libertine]{newtxmath}
 \usepackage{amsmath}
+\usepackage{amssymb}
 % Needed to display additional math unicode symbols (like double-colon)
 
 % https://github.com/wspr/unicode-math/issues/469
@@ -44,6 +55,8 @@
 \expandafter\let\csname not>\endcsname\relax
 \usepackage{unicode-math}
 \setmathfont{LibertinusMath-Regular.otf}
+\fi
+\providecommand{\Colon}{\mathpunct{:}}
 
 \usepackage[all]{nowidow}
 \usepackage{emptypage}
@@ -88,7 +101,10 @@
 \usepackage[totoc,font=footnotesize]{idxlayout}
 \usepackage{fancyhdr}
 \pagestyle{plain}
+\ifdefined\HCode
+\else
 \usepackage[final]{pdfpages} % inserts pages from a pdf file
+\fi
 
 \usepackage{titlesec}  % to change the appearance of section titles
 \usepackage{listings}  % for syntax highlighted code listings
@@ -180,11 +196,16 @@
 \fi
 \makeatother
 
+\newcommand{\srcbasepath}{\currfileabsdir}
+\ifdefined\HCode
+  \renewcommand{\srcbasepath}{\currfiledir}
+\fi
+
 \NewDocumentCommand\src{mO{}}{
-  \srcsnippet{\currfileabsdir/code/haskell/#1.hs}{blue}{haskell}{#2}
+  \srcsnippet{\srcbasepath/code/haskell/#1.hs}{blue}{haskell}{#2}
   \ifdefined\OPTCustomLanguage{%
     \unskip
-    \srcsnippet{\currfileabsdir/code/\OPTCustomLanguage/#1.\OPTCustomLanguageExt}{\OPTCustomLanguageColor}{\OPTCustomLanguage}{#2}
+    \srcsnippet{\srcbasepath/code/\OPTCustomLanguage/#1.\OPTCustomLanguageExt}{\OPTCustomLanguageColor}{\OPTCustomLanguage}{#2}
   }
   \fi
   \NoIndentAfterThis
@@ -260,6 +281,17 @@
 \sloppy
 \frenchspacing
 \makeindex
+
+\newcommand{\EpubFrontCover}{}
+\ifdefined\HCode
+  \title{Category Theory for Programmers}
+  \author{Bartosz Milewski}
+  \date{\today}
+  \renewcommand{\EpubFrontCover}{%
+    \coverimage[width=\textwidth]{cover/epub-cover.png}%
+    \epubpage%
+  }
+\fi
 
 % reduce space between items in a list
 \providecommand{\tightlist}{%
