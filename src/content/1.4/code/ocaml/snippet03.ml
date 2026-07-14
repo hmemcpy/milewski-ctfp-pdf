@@ -3,5 +3,5 @@ module type Kleisli = sig
   type b
   type c
 
-  val ( >=> ) : (a -> b writer) -> (b -> c writer) -> a -> c writer
+  val ( >=> ) : (a -> b writer) -> (b -> c writer) -> (a -> c writer)
 end
