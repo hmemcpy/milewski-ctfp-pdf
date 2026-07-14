@@ -418,17 +418,17 @@ isomorphism:
 Let's explore further the idea that a profunctor describes a relation
 --- more precisely, a proof-relevant relation, meaning that the set
 $p\ a\ b$ represents the set of proofs that $a$ is related
-to $b$. If we have two relations $p$ and $q$ we can
+to $b$. If we have two relations $p$ and $q$, we can
 try to compose them. We'll say that $a$ is related to $b$
 through the composition of $q$ after $p$ if there exist an
-intermediary object $c$ such that both $q\ b\ c$ and
-$p\ c\ a$ are non-empty. The proofs of this new relation are all
+intermediary object $c$ such that both $q\ a\ c$ and
+$p\ c\ b$ are non-empty. The proofs of this new relation are all
 pairs of proofs of individual relations. Therefore, with the
 understanding that the existential quantifier corresponds to a coend,
 and the Cartesian product of two sets corresponds to ``pairs of
 proofs,'' we can define composition of profunctors using the following
 formula:
-\[(q \circ p)\ a\ b = \int^c p\ c\ a\times{}q\ b\ c\]
+\[(q \circ p)\ a\ b = \int^c p\ c\ b\times{}q\ a\ c\]
 Here's the equivalent Haskell definition from
 \code{Data.Profunctor.Composition}, after some renaming:
 
