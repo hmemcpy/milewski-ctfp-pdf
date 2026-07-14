@@ -51,10 +51,12 @@ subset. But you can easily convince yourself that such a set would have
 to be isomorphic to $a$. We can use this fact to define a subset
 as a family of injective functions that are related by isomorphisms of
 their domains. More precisely, we say that two injective functions:
-\begin{align*}
-  f  & \Colon a \to b  \\
-  f' & \Colon a' \to b
-\end{align*}
+\[
+	\begin{aligned}
+		f  & \Colon a \to b  \\
+		f' & \Colon a' \to b
+	\end{aligned}
+\]
 are equivalent if there is an isomorphism:
 \[h \Colon a \to a'\]
 such that:
@@ -62,8 +64,8 @@ such that:
 Such a family of equivalent injections defines a subset of $b$.
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.4\textwidth]{images/subsetinjection.jpg}
+	\centering
+	\includegraphics[width=0.4\textwidth]{images/subsetinjection.jpg}
 \end{figure}
 
 \noindent
@@ -71,17 +73,19 @@ This definition can be lifted to an arbitrary category if we replace
 injective functions with monomorphism. Just to remind you, a
 monomorphism $m$ from $a$ to $b$ is defined by its
 universal property. For any object $c$ and any pair of morphisms:
-\begin{align*}
-  g  & \Colon c \to a \\
-  g' & \Colon c \to a
-\end{align*}
+\[
+	\begin{aligned}
+		g  & \Colon c \to a \\
+		g' & \Colon c \to a
+	\end{aligned}
+\]
 such that:
 \[m \circ g = m \circ g'\]
 it must be that $g = g'$.
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.4\textwidth]{images/monomorphism.jpg}
+	\centering
+	\includegraphics[width=0.4\textwidth]{images/monomorphism.jpg}
 \end{figure}
 
 \noindent
@@ -93,8 +97,8 @@ $g'$ that differ only at those two elements. The
 postcomposition with $m$ would then mask this difference.
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.4\textwidth]{images/notmono.jpg}
+	\centering
+	\includegraphics[width=0.4\textwidth]{images/notmono.jpg}
 \end{figure}
 
 \noindent
@@ -112,8 +116,8 @@ $\mathit{true}$:
 \[\mathit{true} \Colon 1 \to \Omega\]
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.4\textwidth]{images/true.jpg}
+	\centering
+	\includegraphics[width=0.4\textwidth]{images/true.jpg}
 \end{figure}
 
 \noindent
@@ -137,8 +141,8 @@ and the injective function that embeds it in $b$. Here's the
 pullback diagram:
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.4\textwidth]{images/pullback.jpg}
+	\centering
+	\includegraphics[width=0.4\textwidth]{images/pullback.jpg}
 \end{figure}
 
 \noindent
@@ -198,14 +202,14 @@ representation is the object $\Omega$.
 A topos is a category that:
 
 \begin{enumerate}
-  \tightlist
-  \item
-        Is Cartesian closed: It has all products, the terminal object, and
-        exponentials (defined as right adjoints to products),
-  \item
-        Has limits for all finite diagrams,
-  \item
-        Has a subobject classifier $\Omega$.
+	\tightlist
+	\item
+	      Is Cartesian closed: It has all products, the terminal object, and
+	      exponentials (defined as right adjoints to products),
+	\item
+	      Has limits for all finite diagrams,
+	\item
+	      Has a subobject classifier $\Omega$.
 \end{enumerate}
 
 This set of properties makes a topos a shoe-in for $\Set$ in most
@@ -252,8 +256,8 @@ logics.
 \section{Challenges}
 
 \begin{enumerate}
-  \tightlist
-  \item
-        Show that the function $f$ that is the pullback of
-        $\mathit{true}$ along the characteristic function must be injective.
+	\tightlist
+	\item
+	      Show that the function $f$ that is the pullback of
+	      $\mathit{true}$ along the characteristic function must be injective.
 \end{enumerate}

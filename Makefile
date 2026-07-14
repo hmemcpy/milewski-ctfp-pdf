@@ -11,6 +11,9 @@ rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
 ctfp:
 	cd src; $(LATEXMK_COMMAND) -jobname=ctfp ctfp-reader.tex
 
+ctfp-epub:
+	cd src; tex4ebook -l -s -t -c ctfp-reader -f epub+dvisvgm_hashes ctfp-reader.tex || { status=$$?; test -f ctfp-reader.epub && test -f ctfp-reader-epub/ctfp-reader.epub && exit 0; exit $$status; }
+
 ctfp-ocaml:
 	cd src; $(LATEXMK_COMMAND) -jobname=ctfp-ocaml ctfp-reader-ocaml.tex
 
@@ -28,4 +31,3 @@ ctfp-print-scala:
 
 lint:
 	$(foreach file, $(call rwildcard,$(shell dirname "$(INPUT)"),*.tex), latexindent -l -w $(file);)
-

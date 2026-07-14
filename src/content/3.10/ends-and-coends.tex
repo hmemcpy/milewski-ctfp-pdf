@@ -12,12 +12,12 @@ of ``proofs.'' This mapping is functorial --- contravariant in the first
 argument and covariant in the second. We can look at it as establishing
 a global relationship between objects in the category. This relationship
 is described by the hom-functor:
-\[\cat{C}(-, =) \Colon \cat{C}^\mathit{op}\times{}\cat{C} \to \Set\]
+\[\cat{C}(-, =) \Colon \cat{C}^{\mathrm{op}}\times{}\cat{C} \to \Set\]
 In general, any functor like this may be interpreted as establishing a
 relation between objects in a category. A relation may also involve two
 different categories $\cat{C}$ and $\cat{D}$. A functor, which describes
 such a relation, has the following signature and is called a profunctor:
-\[p \Colon \cat{D}^\mathit{op}\times{}\cat{C} \to \Set\]
+\[p \Colon \cat{D}^{\mathrm{op}}\times{}\cat{C} \to \Set\]
 Mathematicians say that it's a profunctor from $\cat{C}$ to $\cat{D}$
 (notice the inversion), and use a slashed arrow as a symbol for it:
 \[\cat{C} \nrightarrow \cat{D}\]
@@ -71,31 +71,31 @@ transformation is called a dinatural transformation, provided it
 satisfies the commuting conditions that reflect the two ways we can
 connect diagonal elements to non-diagonal ones. A dinatural
 transformation between two profunctors $p$ and $q$, which
-are members of the functor category ${[}\cat{C}^\mathit{op}\times{}\cat{C}, \Set{]}$, is a
+are members of the functor category ${[}\cat{C}^{\mathrm{op}}\times{}\cat{C}, \Set{]}$, is a
 family of morphisms:
 \[\alpha_a \Colon p\ a\ a \to q\ a\ a\]
 for which the following diagram commutes, for any $f \Colon a \to b$:
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.35\textwidth]{images/end.jpg}
+	\centering
+	\includegraphics[width=0.35\textwidth]{images/end.jpg}
 \end{figure}
 
 \noindent
 Notice that this is strictly weaker than the naturality condition. If
 $\alpha$ were a natural transformation in
-${[}\cat{C}^\mathit{op}\times{}\cat{C}, \Set{]}$, the above diagram could be constructed
+${[}\cat{C}^{\mathrm{op}}\times{}\cat{C}, \Set{]}$, the above diagram could be constructed
 from two naturality squares and one functoriality condition (profunctor
 $q$ preserving composition):
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.4\textwidth]{images/end-1.jpg}
+	\centering
+	\includegraphics[width=0.4\textwidth]{images/end-1.jpg}
 \end{figure}
 
 \noindent
 Notice that a component of a natural transformation $\alpha$ in
-${[}\cat{C}^\mathit{op}\times{}\cat{C}, \Set{]}$ is indexed by a pair of objects
+${[}\cat{C}^{\mathrm{op}}\times{}\cat{C}, \Set{]}$ is indexed by a pair of objects
 $\alpha_{a b}$. A dinatural transformation, on the other hand, is
 indexed by one object, since it only maps diagonal elements of the
 respective profunctors.
@@ -126,8 +126,8 @@ $p\ a\ b$. We therefore insist that the following diagram
 commute:
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.4\textwidth]{images/end-2.jpg}
+	\centering
+	\includegraphics[width=0.4\textwidth]{images/end-2.jpg}
 \end{figure}
 
 \noindent
@@ -144,8 +144,8 @@ $h \Colon e' \to e$ that makes all triangles commute:
 \[\pi_a \circ h = \alpha_a\]
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.4\textwidth]{images/end-21.jpg}
+	\centering
+	\includegraphics[width=0.4\textwidth]{images/end-21.jpg}
 \end{figure}
 
 \noindent
@@ -173,7 +173,7 @@ $f \Colon a \to b$, the wedge condition reads:
 or, with type annotations:
 
 \begin{snipv}
-dimap f id\textsubscript{b} . pi\textsubscript{b} = dimap id\textsubscript{a} f . pi\textsubscript{a}
+	dimap f id\textsubscript{b} . pi\textsubscript{b} = dimap id\textsubscript{a} f . pi\textsubscript{a}
 \end{snipv}
 where both sides of the equation have the type:
 
@@ -245,18 +245,20 @@ is a profunctor, so it makes sense to study its end. This is the wedge
 condition:
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.4\textwidth]{images/end1.jpg}
+	\centering
+	\includegraphics[width=0.4\textwidth]{images/end1.jpg}
 \end{figure}
 
 \noindent
 Let's just pick one element from the set $\int_c \cat{C}(F c, G c)$.
 The two projections will map this element to two components of a
 particular transformation, let's call them:
-\begin{align*}
-  \tau_a & \Colon F a \to G a \\
-  \tau_b & \Colon F b \to G b
-\end{align*}
+\[
+	\begin{aligned}
+		\tau_a & \Colon F a \to G a \\
+		\tau_b & \Colon F b \to G b
+	\end{aligned}
+\]
 In the left branch, we lift a pair of morphisms
 $\langle \idarrow[a], G f \rangle$ using the hom-functor. You
 may recall that such lifting is implemented as simultaneous pre- and
@@ -273,9 +275,9 @@ from a dual to a wedge called a cowedge (pronounced co-wedge, not
 cow-edge).
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.25\textwidth]{images/end-31.jpg}
-  \caption{An edgy cow?}
+	\centering
+	\includegraphics[width=0.25\textwidth]{images/end-31.jpg}
+	\caption{An edgy cow?}
 \end{figure}
 
 \noindent
@@ -297,7 +299,7 @@ coend.
 This is why, in pseudo-Haskell, we would define the coend as:
 
 \begin{snip}{text}
-exists a. p a a
+	exists a. p a a
 \end{snip}
 The standard way of encoding existential quantifiers in Haskell is to
 use universally quantified data constructors. We can thus define:
@@ -335,11 +337,13 @@ The process of identification of related elements in a set is formally
 known as taking a quotient. To define a quotient we need an
 \newterm{equivalence relation} $\sim$, a relation that
 is reflexive, symmetric, and transitive:
-\begin{align*}
-   & a \sim a                                                         \\
-   & \text{if}\ a \sim b\ \text{then}\ b \sim a                       \\
-   & \text{if}\ a \sim b\ \text{and}\ b \sim c\ \text{then}\ a \sim c
-\end{align*}
+\[
+	\begin{aligned}
+		 & a \sim a                                                         \\
+		 & \text{if}\ a \sim b\ \text{then}\ b \sim a                       \\
+		 & \text{if}\ a \sim b\ \text{and}\ b \sim c\ \text{then}\ a \sim c
+	\end{aligned}
+\]
 Such a relation splits the set into equivalence classes. Each class
 consists of elements that are related to each other. We form a quotient
 set by picking one representative from each class. A classic example is
@@ -361,7 +365,7 @@ identity for converting coends to ends:
 Let's have a look at it in pseudo-Haskell:
 
 \begin{snipv}
-(exists x. p x x) -> c \ensuremath{\cong} forall x. p x x -> c
+	(exists x. p x x) -> c \ensuremath{\cong} forall x. p x x -> c
 \end{snipv}
 It tells us that a function that takes an existential type is equivalent
 to a polymorphic function. This makes perfect sense, because such a
@@ -439,7 +443,7 @@ quantified. The (uncurried) data constructor \code{Procompose} is
 thus equivalent to:
 
 \begin{snip}{text}
-exists c. (q a c, p c b)
+	exists c. (q a c, p c b)
 \end{snip}
 The unit of so defined composition is the hom-functor --- this
 immediately follows from the Ninja Yoneda lemma. It makes sense,
