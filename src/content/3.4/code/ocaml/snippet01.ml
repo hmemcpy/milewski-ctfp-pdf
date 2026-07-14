@@ -1,12 +1,8 @@
-(* Depends on OCaml library Core *)
-module Vlen (F : Functor with type 'a t = 'a list) = struct
-  let summable =
-    (module Float : Base__.Container_intf.Summable
-      with type t = float)
+let ( % ) = Fun.compose
 
+(* There's no sum function in the List module *)
+let sum = List.fold_left ( +. ) 0.
 
-  let vlen =
-    Float.sqrt
-    <.> List.sum summable ~f:Fn.id
-    <.> F.fmap (flip Float.int_pow 2)
-end
+(* The vlen function, like the Haskell version, using
+   List.map as the list functor fmap *)
+let vlen = sqrt % sum % List.map (Fun.flip ( ** ) 2.)

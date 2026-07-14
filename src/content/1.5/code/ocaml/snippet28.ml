@@ -1,2 +1,2 @@
-p () = fst (m ())
-q () = snd (m ())
+let p () = fst (m ())
+let q () = snd (m ())

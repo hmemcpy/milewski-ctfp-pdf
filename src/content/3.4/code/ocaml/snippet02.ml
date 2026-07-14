@@ -1,3 +1,5 @@
+type ('w, 'a) writer = Writer of 'a * 'w
+
 module WriterInstance (W : sig
   type w
 end) : Functor with type 'a t = (W.w, 'a) writer = struct

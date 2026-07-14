@@ -1,1 +1,1 @@
-val join : ('a m) m : 'a m
+val join : ('a M.t) M.t -> 'a M.t

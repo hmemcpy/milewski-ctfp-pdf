@@ -1,5 +1,5 @@
-module Fix (F : Functor) = struct
-  type 'a fix = Fix of 'a fix F.t
+module Fixpoint (F : Functor) = struct
+  type 'a t = Fix of 'a t F.t
 
-  let fix : 'a fix F.t -> 'a fix = fun f -> Fix f
+  let fix (f : 'a t F.t) : 'a t = Fix f
 end

@@ -1,1 +1,1 @@
-let p' = compose p h
+let p' = Fun.compose p h

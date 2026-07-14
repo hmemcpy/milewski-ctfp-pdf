@@ -1,1 +1,1 @@
-let m (x : int) = x, true
+let m (x : int) : int * bool = x, true

@@ -1,3 +1,1 @@
-let un_const : 'c 'a. ('c, 'a) const -> 'c = function
-  | Const c -> c
-;;
+let un_const (Const c) = c

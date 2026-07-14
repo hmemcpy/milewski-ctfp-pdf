@@ -1,1 +1,1 @@
-compose (F.fmap f) NT.alpha = compose NT.alpha (F.fmap f)
+F.fmap f % alpha = alpha % F.fmap f

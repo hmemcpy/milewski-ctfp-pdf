@@ -1,1 +1,1 @@
-compose g q = compose f p
+Fun.compose g q = Fun.compose f p

@@ -1,1 +1,1 @@
-val mu : (m, m) -> m
+val mu : 'm * 'm -> m

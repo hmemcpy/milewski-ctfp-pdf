@@ -1,2 +1,1 @@
-;;
-(compose mu (bimap id mu)) (x, (y, z))
+(mu % bimap Fun.id mu) (x, (y, z))

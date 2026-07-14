@@ -1,1 +1,1 @@
-let fact n = List.fold (List.range 1 n) ~init:1 ~f:( * )
+let fact n = Seq.(fold_left ( * ) 1 (take n (ints 1)))

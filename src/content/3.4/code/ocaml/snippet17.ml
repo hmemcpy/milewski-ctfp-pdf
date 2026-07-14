@@ -1,7 +1,10 @@
-(* Import Str module using this - #require "str" *)
-let to_words s = Writer (Str.split (Str.regexp "\b") s, "to_words")
+let up_case s = Writer (String.uppercase_ascii s, "up_case ")
+let to_words s = Writer (String.split_on_char ' ' s, "to_words ")
 
-module Writer_Process (W : Monad with type 'a m = (string, 'a) writer) =
+module Writer_Process
+    (W : Monad with type 'a t = (string, 'a) writer) =
 struct
-  let process = W.(up_case >=> to_words)
+  open W
+
+  let process = up_case >=> to_words
 end

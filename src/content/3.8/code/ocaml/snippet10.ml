@@ -1,3 +1,3 @@
-module Fix (F : Functor) = struct
-  type 'a fix = Fix of 'a fix F.t
+module Fixpoint (F : Functor) = struct
+  type 'a t = Fix of 'a t F.t
 end

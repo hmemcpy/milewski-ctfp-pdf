@@ -1,1 +1,1 @@
-let uncurry f p = f (fst p) (snd p)
+let uncurry f (a, b) = f a b

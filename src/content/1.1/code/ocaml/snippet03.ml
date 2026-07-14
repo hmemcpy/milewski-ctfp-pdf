@@ -1,9 +1,7 @@
-module Compose_Example
-    (F : Polymorphic_Function_F)
-    (G : Polymorphic_Function_G with type b = F.b) =
-struct
-  (** OCaml doesn't have a compose operator. So, creating one. **)
-  let ( >> ) g f x = g (f x)
+Fun.compose g f (* Since OCaml 5.2 *)
 
-  let compose : 'a -> 'c = G.g >> F.f
-end
+(* Alternatively, you can also define it as follows: *)
+let compose f g x = f (g x)
+
+(* Or even as an infix operator: *)
+let ( % ) = Fun.compose (* Like in the Batteries library *)

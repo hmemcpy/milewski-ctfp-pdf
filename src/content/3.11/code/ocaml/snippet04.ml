@@ -2,9 +2,9 @@ module type Lst = sig
   type a
   type m
 
-  module M : Monoid with type m = m
+  module M : Monoid with type t = m
 
-  type lst = (a -> M.m) -> M.m
+  type lst = (a -> M.t) -> M.t
 
   val f : lst
 end

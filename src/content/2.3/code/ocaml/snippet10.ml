@@ -1,1 +1,1 @@
-val q = compose uh p
+q = Fun.compose uh p

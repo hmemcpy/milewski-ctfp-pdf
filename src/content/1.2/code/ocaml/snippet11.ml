@@ -1,3 +1,1 @@
-type bool =
-  | false
-  | true
+type bool = false | true

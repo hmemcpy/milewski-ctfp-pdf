@@ -1,3 +1,0 @@
-type bool =
-  | false
-  | true

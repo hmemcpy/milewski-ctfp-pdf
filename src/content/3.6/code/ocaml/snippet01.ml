@@ -1,5 +1,4 @@
-module Kleisli (M : MonadJoin) = struct
-  (* compose *)
-  let ( <.> ) f g x = f (g x)
-  let ( >=> ) f g = M.join <.> M.fmap g <.> f
+module Kleisli (M : Monad_Join) = struct
+  let ( % ) = Fun.compose
+  let ( >=> ) f g = M.join % M.fmap g % f
 end

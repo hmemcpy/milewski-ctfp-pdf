@@ -1,2 +1,2 @@
-compose f g = id
-compose g f = id
+Fun.compose f g = Fun.id
+Fun.compose g f = Fun.id

@@ -1,1 +1,1 @@
-'a void either
+('a, void) Either.t
