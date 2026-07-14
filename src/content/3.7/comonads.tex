@@ -328,12 +328,9 @@ or, in Haskell notation:
 This becomes our \code{extract}:
 
 \src{snippet33}
-The unit of the adjunction:
+The unit of the adjunction is:
 
 \src{snippet34}
-can be rewritten as partially applied data constructor:
-
-\src{snippet35}
 We construct $\delta$, or \code{duplicate}, as the horizontal composition:
 \begin{align*}
   \delta & \Colon L \circ R \to L \circ R \circ L \circ R \\

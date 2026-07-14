@@ -1,1 +1,0 @@
-Store f :: s -> Store f s
