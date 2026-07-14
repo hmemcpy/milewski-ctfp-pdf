@@ -1,3 +1,1 @@
-module type Chapter2_DeclareVariable = sig
-  val x : int
-end
+val x : int
